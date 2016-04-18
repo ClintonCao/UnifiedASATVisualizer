@@ -1,4 +1,4 @@
-# Contextproject-TSE
+# Contextproject-TSE &nbsp; [![Build Status](https://travis-ci.org/ClintonCao/Contextproject-TSE.svg?branch=master)](https://travis-ci.org/ClintonCao/Contextproject-TSE)
 This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016.
 
 Team Members:
