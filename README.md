@@ -16,6 +16,6 @@ Tim Buckers
 **SE TA**: Bastiaan Reijm
 
 
-## Links for documentation
+## Links to documents
 
 Sprint Plan 1: [sprint plan 1] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog1(BlueTurtle).pdf)
