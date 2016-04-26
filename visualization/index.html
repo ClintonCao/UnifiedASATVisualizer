@@ -44,11 +44,11 @@ rect.parent {
 }
 
 .grandparent rect {
-  fill: orange;
+  fill: rgb(49, 130, 189);
 }
 
 .grandparent:hover rect {
-  fill: #ee9700;
+  fill: rgb(85, 155, 210);
 }
 
 .children rect.parent,
@@ -256,7 +256,7 @@ function main(o, data) {
     t.call(text);
 
     g.selectAll("rect")
-        .style("fill", function(d) { return color(d.key); });
+        .style("fill", function(d) { return color(d.bugs); });
 
     function transition(d) {
       if (transitioning || !d) return;
@@ -314,7 +314,7 @@ function main(o, data) {
   function rect(rect) {
     rect.attr("x", function(d) { return x(d.x); })
         .attr("y", function(d) { return y(d.y); })
-        .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
+        .attr("width", function(d) { return x(d.x+ d.dx) - x(d.x); })
         .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); });
   }
 
@@ -325,9 +325,9 @@ function main(o, data) {
   }
 }
 
-var data = d3.nest().key(function(d) { return d.region; }).key(function(d) { return d.subregion; }).entries(inputdata);
-console.log(data)
-main({title: "World Population"}, {key: "World", values: data});
+//var data = d3.nest().key(function(d) { return d.region; }).key(function(d) { return d.subregion; }).entries(inputdata);
+//console.log(data)
+main({title: "World Population"}, {key: "World", values: inputdata});
 
 
 </script>
