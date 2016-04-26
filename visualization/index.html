@@ -92,8 +92,8 @@ var defaults = {
     rootname: "TOP",
     format: ",d",
     title: "",
-    width: 1820,
-    height: 980
+    width: window.innerWidth - 50,
+    height: window.innerHeight- 30 
 };
 
   console.log("main");
@@ -325,9 +325,9 @@ function main(o, data) {
   }
 }
 
-var data = d3.nest().key(function(d) { return d.region; }).key(function(d) { return d.subregion; }).entries(inputdata);
-console.log(data)
-main({title: "World Population"}, {key: "World", values: data});
+//var data = d3.nest().key(function(d) { return d.region; }).key(function(d) { return d.subregion; }).entries(inputdata);
+//console.log(data)
+main({title: "World Population"}, {key: "World", values: inputdata});
 
 
 </script>

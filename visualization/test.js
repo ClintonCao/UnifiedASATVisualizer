@@ -4,25 +4,39 @@ var inputdata = [
     "values": [
     {
       "key": "India",
-      "value": 1236670000
+      "values": [
+        {
+          "key": "Delhi",
+          "value": 50
+        }, 
+        {
+          "key": "Mumbai",
+          "value": 60
+        }]
     },
     {
       "key": "China",
-      "value": 1361170000
-    }
-	]
+      "values": [
+        {
+          "key": "Beijing",
+          "value": 130
+        }, 
+        {
+          "key": "Shanghai",
+          "value": 80
+        }]
+    }]
   },
   {
     "key": "Africa",
     "values": [
     {
       "key": "Nigeria",
-      "value": 173615000
+      "value": 100
     },
     {
       "key": "Egypt",
-      "value": 83661000
-    }
-	]
+      "value": 200
+    }]
   }
 ];
