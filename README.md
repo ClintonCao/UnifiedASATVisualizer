@@ -23,4 +23,5 @@ Sprint Plan 1: [sprint plan 1] (https://github.com/ClintonCao/Contextproject-TSE
 ## Links to product related documents:
 
 Product Planning: [product planning] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductPlanningBlueTurtle.pdf)
+
 Product Vision: [product vision] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductVisionBlueTurtle.pdf)
