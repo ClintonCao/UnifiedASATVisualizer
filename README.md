@@ -19,6 +19,7 @@ Tim Buckers
 ## Links to documents
 
 product planning: [product planning] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductPlanningBlueTurtle.pdf)
+
 product vision: [product vision] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductVisionBlueTurtle.pdf)
 
 Sprint Plan 1: [sprint plan 1] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog1(BlueTurtle).pdf)
