@@ -31,7 +31,11 @@ Product Planning: [product planning] (https://github.com/ClintonCao/Contextproje
 
 Product Vision: [product vision] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductVisionBlueTurtle.pdf)
 
+Architecture Design: [architecture design] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ArchitectureDesign.pdf)
+
 Product Requirement: [product requirement] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Requirements/RequirementsSoftwareVisualizationToolBlueTurtle.pdf)
+
+First Concept: [first concept] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/First%20Concept/FirstConceptBlueTurtle.pdf)
 
 ## Links to other documents:
 
