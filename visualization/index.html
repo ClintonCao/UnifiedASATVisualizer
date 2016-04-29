@@ -98,16 +98,25 @@ var defaults = {
 
   console.log("main");
 
-// d3.rgb = d3_rgb;
-//   function d3_rgb(r, g, b) {
-//     return this instanceof d3_rgb ? void (this.r = ~~r, this.g = ~~g, this.b = ~~b) : arguments.length < 2 ? r instanceof d3_rgb ? new d3_rgb(r.r, r.g, r.b) : d3_rgb_parse("" + r, d3_rgb, d3_hsl_rgb) : new d3_rgb(r, g, b);
-//   }
-//   function d3_rgbNumber(value) {
-//     return new d3_rgb(value >> 16, value >> 8 & 255, value & 255);
-//   }
-//   function d3_rgbString(value) {
-//     return d3_rgbNumber(value) + "";
-//   }
+  function yn(n, t, e) {
+        return this instanceof yn ? (this.r = ~~n, this.g = ~~t, void(this.b = ~~e)) : arguments.length < 2 ? n instanceof yn ? new yn(n.r, n.g, n.b) : _n("" + n, yn, cn) : new yn(n, t, e)
+    }
+
+    function Mn(n) {
+        return new yn(n >> 16, n >> 8 & 255, 255 & n)
+    }
+
+    function xn(n) {
+        return Mn(n) + ""
+    }
+
+    oa.scale.ordinal = function() {
+        return ai([], {
+            t: "range",
+            a: [
+                []
+            ]
+        });
 
 function main(o, data) {
   var root,
@@ -122,10 +131,10 @@ function main(o, data) {
       height = opts.height - margin.top - margin.bottom - theight,
       transitioning;
 
-  var d3_category20GreenToRed = [ 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 16761035, 19761035 ].map(d3_rgbString);
+  var greenToRedScale = [ 16761035, 16761035, 16723035, 16541035, 16754035, 16341035, 16701035, 16764335, 16769135, 16766035, 16754035, 16743035, 15361035, 16763235, 16721035, 16761065, 16761039, 16764035, 16261035, 19761035 ].map(xn);
 
   //var color = d3.scale.category20c();
-  var color = d3.scale.ordinal().range(d3_category20GreenToRed);
+  var color = oa.scale.ordinal().range(greenToRedScale);
   
   var x = d3.scale.linear()
       .domain([0, width])
