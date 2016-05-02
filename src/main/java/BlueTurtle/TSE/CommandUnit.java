@@ -1,14 +1,13 @@
 package BlueTurtle.TSE;
 
-public class Command {
+public class CommandUnit {
 	private Settings settings;
 	private String[] args;
 	
-	public Command(Settings settings, String[] args) {
+	public CommandUnit(Settings settings, String[] args) {
 		this.setSettings(settings);
 		this.setArgs(args);
 	}
-
 
 	public String[] getArgs() {
 		return args;
@@ -26,5 +25,13 @@ public class Command {
 
 	public void setSettings(Settings settings) {
 		this.settings = settings;
+	}
+	
+	public String getOutputFilePath() {
+		return settings.getOutputFilePath();
+	}
+
+	public void setOutputFilePath(String outputFilePath) {
+		settings.setOutputFilePath(outputFilePath);
 	}
 }

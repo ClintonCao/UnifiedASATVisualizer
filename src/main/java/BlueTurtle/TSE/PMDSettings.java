@@ -1,15 +1,14 @@
 package BlueTurtle.TSE;
 
 public class PMDSettings implements Settings {
+	boolean enabled;
 	private static String outputFilePath = "./Runnables/Testcode/output.xml";
 
 	public void readSettings() {
-		// TODO Auto-generated method stub
-		
+			
 	}
 
 	public void writeSettings() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -19,6 +18,14 @@ public class PMDSettings implements Settings {
 
 	public void setOutputFilePath(String outputFilePath) {
 		PMDSettings.outputFilePath = outputFilePath;
+	}
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 }
