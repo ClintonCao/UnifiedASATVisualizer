@@ -17,14 +17,14 @@ var inputdata = [
     },
     {
       "key": "Cast",
-      "value": 2,
+      "value": 3,
 	  "bugs" : 5,
 	  "lines": 14,
 	  "methods": 5
     },
     {
       "key": "Character",
-      "value": 2,
+      "value": 3,
 	  "bugs" : 3,
 	  "lines": 3,
 	  "methods": 9
@@ -38,7 +38,7 @@ var inputdata = [
     },
     {
       "key": "Goal",
-      "value": 2,
+      "value": 3,
 	  "bugs" : 3,
 	  "lines": 40,
 	  "methods": 6
@@ -59,7 +59,7 @@ var inputdata = [
     },
     {
       "key": "EnemyBoat",
-      "value": 2,
+      "value": 0,
 	  "bugs" : 9,
 	  "lines": 40,
 	  "methods": 14
@@ -113,7 +113,7 @@ var inputdata = [
     },
     {
       "key": "Night",
-      "value": 2,
+      "value": 3,
 	  "bugs" : 6,
 	  "lines": 40,
 	  "methods": 15
@@ -139,7 +139,7 @@ var inputdata = [
     },
     {
       "key": "Location",
-      "value": 2,
+      "value": 3,
 	  "bugs" : 3,
 	  "lines": 40,
 	  "methods": 1

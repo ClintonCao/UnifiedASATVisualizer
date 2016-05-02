@@ -71,12 +71,10 @@ rect.parent {
 <body>
 <div id="chart"></div>
 
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="test.js"></script>
 <script>
-
-  console.log("addEventListener");
 
 window.addEventListener('message', function(e) {
     var opts = e.data.opts,
@@ -86,6 +84,15 @@ window.addEventListener('message', function(e) {
 });
 
   console.log("defaults");
+
+  // oa.scale.ordinal = function() {
+  //       return ai([], {
+  //           t: "range",
+  //           a: [
+  //               []
+  //           ]
+  //       })
+  //   };
 
 var defaults = {
     margin: {top: 24, right: 0, bottom: 0, left: 0},
@@ -110,8 +117,12 @@ function main(o, data) {
   var width = opts.width - margin.left - margin.right,
       height = opts.height - margin.top - margin.bottom - theight,
       transitioning;
-  
+
+  //var greenToRedScale = [ 16761035, 16761035, 16723035, 16541035, 16754035, 16341035, 16701035, 16764335, 16769135, 16766035, 16754035, 16743035, 15361035, 16763235, 16721035, 16761065, 16761039, 16764035, 16261035, 19761035 ].map(xn);
+
   var color = d3.scale.category20c();
+  //console.log(Cl);
+  //var color = oa.scale.ordinal().range([rgb(255, 255, 255)]);
   
   var x = d3.scale.linear()
       .domain([0, width])
@@ -234,7 +245,7 @@ function main(o, data) {
         .attr("class", "child")
         .call(rect)
       .append("title")
-        .text(function(d) { return d.key + " (" + formatNumber(d.value) + ")"; });
+        .text(function(d) { return d.key + " (" + formatNumber(d.bugs) + ")"; });
     children.append("text")
         .attr("class", "ctext")
         .text(function(d) { return d.key; })
@@ -256,7 +267,7 @@ function main(o, data) {
     t.call(text);
 
     g.selectAll("rect")
-        .style("fill", function(d) { return color(d.bugs); });
+        .style("fill", function(d) { return color(d.value); });
 
     function transition(d) {
       if (transitioning || !d) return;
@@ -320,14 +331,14 @@ function main(o, data) {
 
   function name(d) {
     return d.parent
-        ? name(d.parent) + " / " + d.key + " (" + formatNumber(d.value) + ")"
+        ? name(d.parent) + " / " + d.key + " (" + formatNumber(d.bugs) + ")"
         : d.key + " (" + formatNumber(d.value) + ")";
   }
 }
 
 //var data = d3.nest().key(function(d) { return d.region; }).key(function(d) { return d.subregion; }).entries(inputdata);
 //console.log(data)
-main({title: "World Population"}, {key: "World", values: inputdata});
+main({title: "Amount of warnings"}, {key: "Test Project", values: inputdata});
 
 
 </script>
