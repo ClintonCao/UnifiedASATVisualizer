@@ -10,63 +10,63 @@ var inputdata = [
     "values": [
     {
       "key": "Boat",
-      "value": 3,
+      "value": 90,
 	  "bugs" : 5,
 	  "lines": 20,
 	  "methods": 5
     },
     {
       "key": "Cast",
-      "value": 3,
+      "value": 65,
 	  "bugs" : 5,
 	  "lines": 14,
 	  "methods": 5
     },
     {
       "key": "Character",
-      "value": 3,
+      "value": 30,
 	  "bugs" : 3,
 	  "lines": 3,
 	  "methods": 9
     },
     {
       "key": "EnemyBoat",
-      "value": 2,
+      "value": 20,
 	  "bugs" : 4,
 	  "lines": 40,
 	  "methods": 8
     },
     {
       "key": "Goal",
-      "value": 3,
+      "value": 30,
 	  "bugs" : 3,
 	  "lines": 40,
 	  "methods": 6
     },
     {
       "key": "Cast",
-      "value": 2,
+      "value": 20,
 	  "bugs" : 8,
 	  "lines": 40,
 	  "methods": 12
     },
     {
       "key": "Character",
-      "value": 2,
+      "value": 20,
 	  "bugs" : 3,
 	  "lines": 40,
 	  "methods": 5
     },
     {
       "key": "EnemyBoat",
-      "value": 0,
+      "value": 5,
 	  "bugs" : 9,
 	  "lines": 40,
 	  "methods": 14
     },
     {
       "key": "Goal",
-      "value": 2,
+      "value": 20,
 	  "bugs" : 0,
 	  "lines": 30,
 	  "methods": 15
@@ -80,21 +80,21 @@ var inputdata = [
     },
     {
       "key": "Character",
-      "value": 2,
+      "value": 20,
 	  "bugs" : 10,
 	  "lines": 40,
 	  "methods": 8
     },
     {
       "key": "EnemyBoat",
-      "value": 2,
+      "value": 20,
 	  "bugs" : 2,
 	  "lines": 40,
 	  "methods": 1
     },
     {
       "key": "Goal",
-      "value": 2,
+      "value": 20,
 	  "bugs" : 3,
 	  "lines": 40,
 	  "methods": 5
@@ -106,14 +106,14 @@ var inputdata = [
     "values": [
     {
       "key": "Boat",
-      "value": 2,
+      "value": 75,
 	  "bugs" : 10,
 	  "lines": 250,
 	  "methods": 2
     },
     {
       "key": "Night",
-      "value": 3,
+      "value": 100,
 	  "bugs" : 6,
 	  "lines": 40,
 	  "methods": 15
@@ -125,21 +125,21 @@ var inputdata = [
     "values": [
     {
       "key": "Movement",
-      "value": 2,
+      "value": 200,
 	  "bugs" : 3,
 	  "lines": 30,
 	  "methods": 7
     },
     {
       "key": "Random",
-      "value": 2,
+      "value": 20,
 	  "bugs" : 3,
 	  "lines": 40,
 	  "methods": 3
     },
     {
       "key": "Location",
-      "value": 3,
+      "value": 15,
 	  "bugs" : 3,
 	  "lines": 40,
 	  "methods": 1

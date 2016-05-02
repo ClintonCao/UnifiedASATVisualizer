@@ -85,15 +85,6 @@ window.addEventListener('message', function(e) {
 
   console.log("defaults");
 
-  // oa.scale.ordinal = function() {
-  //       return ai([], {
-  //           t: "range",
-  //           a: [
-  //               []
-  //           ]
-  //       })
-  //   };
-
 var defaults = {
     margin: {top: 24, right: 0, bottom: 0, left: 0},
     rootname: "TOP",
@@ -118,11 +109,10 @@ function main(o, data) {
       height = opts.height - margin.top - margin.bottom - theight,
       transitioning;
 
-  //var greenToRedScale = [ 16761035, 16761035, 16723035, 16541035, 16754035, 16341035, 16701035, 16764335, 16769135, 16766035, 16754035, 16743035, 15361035, 16763235, 16721035, 16761065, 16761039, 16764035, 16261035, 19761035 ].map(xn);
-
-  var color = d3.scale.category20c();
-  //console.log(Cl);
-  //var color = oa.scale.ordinal().range([rgb(255, 255, 255)]);
+  // Uses a range of 100 values between green and red
+  // The closer the value is to 0, the more green it will use
+  // The closer the value is to 100, the more red it will use
+  var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
   
   var x = d3.scale.linear()
       .domain([0, width])
@@ -245,7 +235,7 @@ function main(o, data) {
         .attr("class", "child")
         .call(rect)
       .append("title")
-        .text(function(d) { return d.key + " (" + formatNumber(d.bugs) + ")"; });
+        .text(function(d) { return d.key + " (" + formatNumber(d.value) + ")"; });
     children.append("text")
         .attr("class", "ctext")
         .text(function(d) { return d.key; })
@@ -331,7 +321,7 @@ function main(o, data) {
 
   function name(d) {
     return d.parent
-        ? name(d.parent) + " / " + d.key + " (" + formatNumber(d.bugs) + ")"
+        ? name(d.parent) + " / " + d.key + " (" + formatNumber(d.value) + ")"
         : d.key + " (" + formatNumber(d.value) + ")";
   }
 }
