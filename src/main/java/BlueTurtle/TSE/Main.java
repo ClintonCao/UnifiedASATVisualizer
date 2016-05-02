@@ -1,30 +1,29 @@
 package BlueTurtle.TSE;
 
+import java.io.IOException;
+
 /**
  * Hello world!
  */
 public class Main {
+
 	
 	enum mode {
 		JAVA
 	}
 	
-	static Controller controller = new Controller();
+	static Controller controller;
 	static mode currentMode = mode.JAVA;
 	
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
     	switch (currentMode) {
     		case JAVA: 
-    			javaMode(); 
+    			controller = new JavaController();
     			break;
     		default:
     			break;
     	}
     	controller.execute();
     	System.out.println("Done.");
-    }
-    
-    public static void javaMode() {
-    	controller.setAnalyser(new JavaAnalyser());
     }
 }
