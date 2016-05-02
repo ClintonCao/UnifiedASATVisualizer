@@ -13,11 +13,15 @@ public class Main {
 	static mode currentMode = mode.JAVA;
 	
     public static void main(String[] args) {
-    	switch(currentMode) {
-    		case JAVA: javaMode(); 
-    		break;
+    	switch (currentMode) {
+    		case JAVA: 
+    			javaMode(); 
+    			break;
+    		default:
+    			break;
     	}
     	controller.execute();
+    	System.out.println("Done.");
     }
     
     public static void javaMode() {
