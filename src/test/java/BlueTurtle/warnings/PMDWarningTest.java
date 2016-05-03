@@ -39,6 +39,91 @@ public class PMDWarningTest {
 		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
 		assertNotEquals(expected, actual);
 	}
+	
+	/**
+	 * Test equal method where objects have different file names.
+	 */
+	@Test
+	public void testEqualsFalseWithDifferentFileName() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		expected.setFileName("okay.java");
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		assertNotEquals(expected, actual);
+	}	
 
+	/**
+	 * Test equal method where objects have different line numbers.
+	 */
+	@Test
+	public void testEqualsFalseWithDifferentLines() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		assertNotEquals(expected, actual);
+	}	
+	
+	/**
+	 * Test equal method where objects have different rules.
+	 */
+	@Test
+	public void testEqualsFalseWithDifferentRules() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName);
+		expected.setRuleName("OverrideBothEqualsAndHashcode");
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		assertNotEquals(expected, actual);
+	}
+	
+	/**
+	 * Test equal method where objects have different packages.
+	 */
+	@Test
+	public void testEqualsFalseWithDifferentPackages() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName);
+		expected.setPackageName("BlueTurtle.warnings");
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		assertNotEquals(expected, actual);
+	}
+	
+	/**
+	 * Test equal method where objects have different types.
+	 */
+	@Test
+	public void testEqualsFalseWithDifferentTypes() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName);
+		expected.setType("warning1");
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		actual.setType("warning2");
+		assertNotEquals(expected, actual);
+	}		
+	
+	/**
+	 * Test equal method where objects have different ruleSets.
+	 */
+	@Test
+	public void testEqualsFalseWithDifferentRuleSets() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName);
+		expected.setRuleSet("Basic");
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		assertNotEquals(expected, actual);
+	}		
 
+	/**
+	 * Test equal method where objects have different methods.
+	 */
+	@Test
+	public void testEqualsFalseWithDifferentMethods() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName);
+		expected.setMethod("foo");
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		assertNotEquals(expected, actual);
+	}
+	
+	/**
+	 * Test equal method where one object has PMDWarning, the other one has CheckStyleWarning.
+	 */
+	@Test
+	public void testEqualsFalsePMDandCheckStyle() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName);
+		assertNotEquals(expected, actual);
+	}	
 }

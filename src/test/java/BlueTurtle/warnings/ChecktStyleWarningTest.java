@@ -79,5 +79,15 @@ public class ChecktStyleWarningTest {
 		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, message, ruleName);
 		assertNotEquals(expected, actual);
 	}
+	
+	/**
+	 * Test equal method where one object has PMDWarning, the other one has CheckStyleWarning.
+	 */
+	@Test
+	public void testEqualsFalsePMDandCheckStyle() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, "", "", "", ruleName);
+		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName);
+		assertNotEquals(expected, actual);
+	}		
 
 }

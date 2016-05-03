@@ -32,13 +32,11 @@ public class PMDWarning extends Warning {
 	public PMDWarning(String filePath, String filename, int line, String packageName, String ruleSet, String method,  String ruleName) {
 		super(filePath, filename, "PMD", ruleName);
 		setLine(line);
-		setRule(ruleName);
 		setPackageName(packageName);
 		setRuleSet(ruleSet);
 		setMethod(method);
 	}
-
-	private String rule;
+	
 	private String ruleSet;
 	private String method;
 	private String packageName;
@@ -59,7 +57,8 @@ public class PMDWarning extends Warning {
 
 		PMDWarning that = (PMDWarning) other;
 		if (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
-				&& rule.equals(that.rule) && ruleName.equals(that.ruleName) && type.equals(that.type)) {
+				&& ruleName.equals(that.ruleName) && packageName.equals(that.packageName) && type.equals(that.type) 
+				&& ruleSet.equals(that.ruleSet) && method.equals(that.method)) {
 			return true;
 		} else {
 			return false;
@@ -101,26 +100,6 @@ public class PMDWarning extends Warning {
 	public void setLine(int line) {
 		this.line = line;
 	}
-
-	/**
-	 * Get the rule from the PMD warning.
-	 * 
-	 * @return the rule from the PMD warning.
-	 */
-	public String getRule() {
-		return rule;
-	}
-	
-	/**
-	 * Set the rule for the PMD warning.
-	 * 
-	 * @param rule
-	 *            the rule of the warning (i.e. description of what caused
-	 *            the warning.)
-	 */
-	public void setRule(String rule) {
-		this.rule = rule;
-	}	
 
 	/**
 	 * Set the package for the PMD warning.
