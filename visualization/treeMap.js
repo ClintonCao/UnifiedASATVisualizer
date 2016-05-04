@@ -16,7 +16,7 @@ var defaults = {
     rootname: "TOP",
     format: ",d",
     title: "",
-    width: window.innerWidth - 50,
+    width: window.innerWidth - 250,
     height: window.innerHeight - 30
 };
 
