@@ -2,6 +2,8 @@ package BlueTurtle.warnings;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotSame;
+
 import org.junit.Test;
 
 /**
@@ -126,4 +128,52 @@ public class PMDWarningTest {
 		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName);
 		assertNotEquals(expected, actual);
 	}	
+	
+	/**
+	 * Test the change of the line of a PMD warning.
+	 */
+	@Test
+	public void testChangeOfLine() {
+		int expected = 5;
+		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		int actual = pmd.getLine();
+		pmd.setLine(expected);
+		assertNotSame(expected, actual);
+	}	
+	
+	/**
+	 * Test the change of the package name of a FingBugs warning.
+	 */
+	@Test
+	public void testChangeOfPackageName() {
+		String expected = "BlueTurtle.parsers";
+		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		String actual = pmd.getPackageName();
+		pmd.setPackageName(expected);
+		assertNotEquals(expected, actual);
+	}		
+	
+	/**
+	 * Test the change of the rule set of a FingBugs warning.
+	 */
+	@Test
+	public void testChangeOfRuleSet() {
+		String expected = "Basic1";
+		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		String actual = pmd.getRuleSet();
+		pmd.setRuleSet(expected);
+		assertNotEquals(expected, actual);
+	}
+	
+	/**
+	 * Test the change of the method of a FingBugs warning.
+	 */
+	@Test
+	public void testChangeOfMethod() {
+		String expected = "func";
+		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
+		String actual = pmd.getMethod();
+		pmd.setMethod(expected);
+		assertNotEquals(expected, actual);
+	}		
 }
