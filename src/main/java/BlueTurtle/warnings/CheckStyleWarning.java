@@ -29,7 +29,7 @@ public class CheckStyleWarning extends Warning {
 	public CheckStyleWarning(String filePath, String filename, int line, String message, String ruleName) {
 		super(filePath, filename, "CheckStyle", ruleName);
 		setLine(line);
-		setMessage(message);
+		setMessage(message.replaceAll("'", ""));
 	}
 
 	/**

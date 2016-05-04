@@ -1,11 +1,18 @@
 package BlueTurtle.TSE;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.Scanner;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import BlueTurtle.parsers.CheckStyleXMLParser;
 import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
+import BlueTurtle.summarizers.ComponentSummarizer;
 import BlueTurtle.warnings.Warning;
 
 /**
@@ -45,11 +52,37 @@ public class App {
 			System.out.println("Please enter a valid name for ASAT");
 			break;
 		}
-		
-		
-		
-		
-	
 
+	}
+	
+	
+	public static void jsonTest() throws IOException {
+		XMLParser parser = new CheckStyleXMLParser();
+		List<Warning> checkStyleWarnings = parser.parseFile("./resources/exampleCheckstyle1.xml");
+		
+		System.out.println("amount of CheckStyle Warnings:" + " " + checkStyleWarnings.size());
+		
+		for (Warning w : checkStyleWarnings) {
+			System.out.println("Violated Rule Name: " + w.getRuleName());
+		}
+		
+		Warning w = checkStyleWarnings.get(0);
+		
+		ComponentSummarizer cs = new ComponentSummarizer(w.getFileName(), w.getFilePath());
+		
+		cs.summarize(checkStyleWarnings);
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		
+		String json = gson.toJson(cs);
+		
+		File myFile = new File("./resources/component.json");
+		FileOutputStream fOut = new FileOutputStream(myFile);
+		OutputStreamWriter writer = new OutputStreamWriter(fOut);
+		writer.append(json);
+		writer.close();
+		fOut.close();
+		
+		System.out.println(json);
 	}
 }
