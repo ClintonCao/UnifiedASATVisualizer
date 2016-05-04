@@ -123,7 +123,7 @@ public class ChecktStyleWarningTest {
 	 * Test equals between an Integer object and a CheckStyleWarning.
 	 */
 	@Test
-	public void testEqualsFalseWithTwoDifferentInteger() {
+	public void testEqualsFalseWithIntegerObject() {
 		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName);
 		boolean actual = cw.equals(new Integer(1));
 		assertSame(false, actual);
