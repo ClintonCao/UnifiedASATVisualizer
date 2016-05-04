@@ -10,6 +10,7 @@ import java.util.Scanner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import BlueTurtle.parsers.CheckStyleXMLParser;
+import BlueTurtle.parsers.FindBugsXMLParser;
 import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.summarizers.ComponentSummarizer;
@@ -25,7 +26,7 @@ public class App {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Which ASAT do you wish to run? (CheckStyle, PMD)");
+		System.out.println("Which ASAT do you wish to run? (CheckStyle, PMD, FindBugs)");
 		String asat = sc.next();
 		switch(asat) {
 		case "CheckStyle":
@@ -48,9 +49,19 @@ public class App {
 				System.out.println("Violated Rule Name: " + w.getRuleName());
 			}
 			break;
+		case "FindBugs":
+			XMLParser parser3 = new FindBugsXMLParser();
+			List<Warning> FindBugsWarnings = parser3.parseFile("./resources/exampleFindbugs1.xml");
+			
+			System.out.println("amount of FindBugs Warnings:" + " " + FindBugsWarnings.size());
+			
+			for (Warning w : FindBugsWarnings) {
+				System.out.println("Violated Rule Name: " + w.getRuleName());
+				System.out.println("file path: " + w.getFilePath());
+			}
+			break;			
 		default:
 			System.out.println("Please enter a valid name for ASAT");
-			break;
 		}
 
 	}

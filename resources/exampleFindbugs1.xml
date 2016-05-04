@@ -1,12 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <BugCollection version='3.0.1' threshold='medium' effort='min'>
-<file classname='BlueTurtle.parsers.CheckStyleXMLParser'>
-<BugInstance type='NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE' priority='Normal' category='STYLE' message='Possible null pointer dereference in BlueTurtle.parsers.CheckStyleXMLParser.parseFile(String) due to return value of called method' lineNumber='67'/>
+<file classname='BlueTurtle.warnings.FindBugsWarning'>
+<BugInstance type='HE_EQUALS_USE_HASHCODE' priority='High' category='BAD_PRACTICE' message='BlueTurtle.warnings.FindBugsWarning defines equals and uses Object.hashCode()' lineNumber='47'/>
+<BugInstance type='UUF_UNUSED_FIELD' priority='Normal' category='PERFORMANCE' message='Unused field: BlueTurtle.warnings.FindBugsWarning.category' lineNumber='-1'/>
 </file>
-<file classname='BlueTurtle.warnings.CheckStyleWarning'>
-<BugInstance type='HE_EQUALS_USE_HASHCODE' priority='High' category='BAD_PRACTICE' message='BlueTurtle.warnings.CheckStyleWarning defines equals and uses Object.hashCode()' lineNumber='45'/></file>
-<Error>
-</Error>
+<Error></Error>
 <Project>
 <SrcDir>C:\Users\wangs\Documents\GitHub\Contextproject-TSE\src\main\java</SrcDir>
 <SrcDir>C:\Users\wangs\Documents\GitHub\Contextproject-TSE\src\test\java</SrcDir>
