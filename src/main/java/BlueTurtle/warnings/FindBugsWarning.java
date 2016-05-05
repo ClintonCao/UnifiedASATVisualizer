@@ -145,7 +145,7 @@ public class FindBugsWarning extends Warning {
 	 * @return the priority of the FindBugs warning.
 	 */
 	public String getPriority() {
-		return message;
+		return priority;
 	}
 
 	/**
