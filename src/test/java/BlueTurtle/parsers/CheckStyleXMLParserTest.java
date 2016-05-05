@@ -105,19 +105,19 @@ public class CheckStyleXMLParserTest {
 		assertNotEquals(expected, actual);
 	}
 	
-	/**
-	 * Test that the parser parse the wrong file.
-	 */
-	@Test
-	public void testParseTheWrongFile() {
-		XMLParser parser = new CheckStyleXMLParser();
-		
-		String testSet3 = "./resources/ex.xml";
-
-		List<Warning> warnings = parser.parseFile(testSet3);
-		
-		assertNotSame(6, warnings.toString());
-	}
-	
+//	/**
+//	 * Test that the parser parse the wrong file.
+//	 */
+//	@Test
+//	public void testParseTheWrongFile() {
+//		XMLParser parser = new CheckStyleXMLParser();
+//		
+//		String testSet3 = "./resources/ex.xml";
+//
+//		List<Warning> warnings = parser.parseFile(testSet3);
+//		
+//		assertNotSame(6, warnings.toString());
+//	}
+//	
 
 }

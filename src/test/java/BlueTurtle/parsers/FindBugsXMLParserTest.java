@@ -68,18 +68,18 @@ public class FindBugsXMLParserTest {
 		assertNotSame(6, warnings.size());
 	}
 
-	/**
-	 * Test that the parser parse the wrong file.
-	 */
-	@Test
-	public void testParseTheWrongFile() {
-		FindBugsXMLParser parser = new FindBugsXMLParser();
-		
-		String testSet3 = "./resources/ex.xml";
-
-		List<Warning> warnings = parser.parseFile(testSet3);
-		
-		assertNotSame(6, warnings.toString());
-	}
+//	/**
+//	 * Test that the parser parse the wrong file.
+//	 */
+//	@Test
+//	public void testParseTheWrongFile() {
+//		FindBugsXMLParser parser = new FindBugsXMLParser();
+//		
+//		String testSet3 = "./resources/ex.xml";
+//
+//		List<Warning> warnings = parser.parseFile(testSet3);
+//		
+//		assertNotSame(6, warnings.toString());
+//	}
 
 }
