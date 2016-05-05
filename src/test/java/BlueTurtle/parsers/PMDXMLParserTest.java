@@ -12,7 +12,7 @@ import BlueTurtle.warnings.PMDWarning;
 import BlueTurtle.warnings.Warning;
 
 /**
- * Test class for PPMDXMLParser.
+ * Test class for PMDXMLParser.
  * 
  * @author BlueTurtle.
  *
@@ -68,6 +68,18 @@ public class PMDXMLParserTest {
 		assertNotSame(6, warnings.size());
 	}
 
+	/**
+	 * Test that the parser parse the wrong file.
+	 */
+	@Test
+	public void testParseTheWrongFile() {
+		XMLParser parser = new PMDXMLParser();
+		
+		String testSet3 = "./resources/ex.xml";
 
+		List<Warning> warnings = parser.parseFile(testSet3);
+		
+		assertNotSame(6, warnings.toString());
+	}
 
 }
