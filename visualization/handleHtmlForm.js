@@ -1,11 +1,14 @@
 var acceptedTypes =["CheckStyle"];
 var acceptedRuleNames =["PackageName","JavadocMethod"];
-var classes = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-console.log(createJson(classes));
-var inputData = createJson(classes);	
+var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+console.log(packages);
+console.log("create:");
+var inputData = createJson(packages);	
 
+var inputDataJSON = JSON.stringify(inputData, null, 2);
 
-
+console.log("inputDataJSON ");
+console.log(inputDataJSON);
 // call method main with title and input data	
 main({
     title: "Amount of warnings"
@@ -14,14 +17,11 @@ main({
     values: getInputData()
 });
 
-
 function getInputData(){
 	var checkStyleData = inputData;
 	return inputData;	
 }
 
-
-	
 function handleClick(cb) {
   if(cb.name == "sat"){
   	console.log(cb.value);

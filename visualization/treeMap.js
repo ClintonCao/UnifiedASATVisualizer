@@ -5,7 +5,7 @@ window.addEventListener('message', function(e) {
     return main(opts, data);
 });
 // hard coded the depth where the click should go to source code (no zoom)
-var maxDepth = 1
+var maxDepth = 2
 var defaults = {
     margin: {
         top: 30,
@@ -19,8 +19,6 @@ var defaults = {
     width: window.innerWidth - 250,
     height: window.innerHeight - 30
 };
-
-console.log("main");
 
 // the main loop
 function main(o, data) {
