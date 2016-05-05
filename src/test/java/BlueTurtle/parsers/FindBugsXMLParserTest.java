@@ -1,0 +1,85 @@
+package BlueTurtle.parsers;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
+
+import org.junit.Test;
+
+import BlueTurtle.warnings.FindBugsWarning;
+import BlueTurtle.warnings.Warning;
+
+/**
+ * Test class for FindBugsXMLParser.
+ * 
+ * @author BlueTurtle.
+ *
+ */
+public class FindBugsXMLParserTest {
+
+	private static String testSet = "./resources/exampleFindbugs2.xml";
+	private static String testSet2 = "./resources/exampleFindbugs1.xml";
+	private static String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java";
+	private static String testSet2FileName = "FindBugsWarning.java";
+	private static String testSet2RuleName = "HE_EQUALS_USE_HASHCODE";
+	private static String testSet2Message = "BlueTurtle.warnings.FindBugsWarning defines equals and uses Object.hashCode()";
+	private static String testSet2Category = "BAD_PRACTICE";
+	private static String testSet2Priority = "High";
+
+
+	/**
+	 * Test that the parser can parse a valid FindBugs output file.
+	 */
+	@Test
+	public void testParseCorrectBehaviour() {
+		FindBugsXMLParser parser = new FindBugsXMLParser();
+
+		List<Warning> warnings = parser.parseFile(testSet2);
+
+		assertSame(2, warnings.size());
+	}
+
+	/**
+	 * Test whether the parser creates the right object.
+	 */
+	@Test
+	public void testParsingOneWarning() {
+		FindBugsXMLParser parser = new FindBugsXMLParser();
+
+		FindBugsWarning expected = new FindBugsWarning(testSet2FilePath, testSet2FileName, 47,
+				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName);
+
+		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2).get(0);
+
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test that the parser created the right amount of warnings.
+	 */
+	@Test
+	public void testCreateRightAmountOfWarnings() {
+		FindBugsXMLParser parser = new FindBugsXMLParser();
+
+		List<Warning> warnings = parser.parseFile(testSet);
+
+		assertNotSame(6, warnings.size());
+	}
+
+	/**
+	 * Test that the parser parse the wrong file.
+	 */
+	@Test
+	public void testParseTheWrongFile() {
+		FindBugsXMLParser parser = new FindBugsXMLParser();
+		
+		String testSet3 = "./resources/ex.xml";
+
+		List<Warning> warnings = parser.parseFile(testSet3);
+		
+		assertNotSame(6, warnings.toString());
+	}
+
+}
