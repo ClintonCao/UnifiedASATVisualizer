@@ -11,7 +11,6 @@ import BlueTurtle.warnings.Warning;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -64,7 +63,7 @@ public class CheckStyleXMLParser extends XMLParser {
 					String filePath = fileElement.getAttribute("name");
 
 					// Get the name of the file where the warning is from.
-					String fileName = Paths.get(filePath).getFileName().toString();
+					String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1, filePath.length());
 
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("error");

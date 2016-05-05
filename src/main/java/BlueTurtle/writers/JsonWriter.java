@@ -51,8 +51,6 @@ public class JsonWriter {
 		writer.append(json);
 		writer.close();
 		fOut.close();
-
-		System.out.println(json);
 	}
 
 	/**
