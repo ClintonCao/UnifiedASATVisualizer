@@ -1,6 +1,6 @@
-var acceptedTypes =["PMD"];
+var acceptedTypes =["CheckStyle"];
 var acceptedRuleNames =["PackageName","JavadocMethod"];
-var classes = filterRuleName(acceptedRuleNames);
+var classes = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 console.log(createJson(classes));
 var inputData = createJson(classes);	
 

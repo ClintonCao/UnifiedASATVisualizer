@@ -102,41 +102,43 @@ var inputData2 = [
 ];
 
 
-// replace \ fpr / in path for usages
+/*
+*
+* Replace \ for / in path for usages
+*
+*/ 
 function replaceAll(stringObject, target, replacement){
 	return stringObject.split(target).join(replacement);
 }
 
-function filterType(acceptedTypes){
-	for (i = 0; i < inputData2.length; i++) {
-		var classObject = inputData2[i];
-		for (j = 0; j < classObject.warningList.length; j++) { 
-			var warning = classObject.warningList[j]
-			if($.inArray(warning.type, acceptedTypes) > -1){
-				console.log(warning.line);
-			}
-		}
-	}
+/*
+*
+* Filter on type of tool and/or warnings
+*
+*/
+function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
+var classArray = []
+  for (i = 0; i < inputData2.length; i++) {
+    var classObject = new Object();
+    classObjectJson = inputData2[i];
+    classObject.amountOfWarnings = 0;
+    classObject.fileName = classObjectJson.fileName;
+    for (j = 0; j < classObjectJson.warningList.length; j++) { 
+      var warningJson = classObjectJson.warningList[j]
+      if($.inArray(warningJson.type, acceptedTypes) > -1 && $.inArray(warningJson.ruleName, acceptedRuleNames) > -1) {
+        classObject.amountOfWarnings++;
+      }
+    }
+    classArray.push(classObject)
+  }
+  return classArray;
 }
 
-function filterRuleName(acceptedRuleNames){
-	var classArray = []
-	for (i = 0; i < inputData2.length; i++) {
-		var classObject = new Object();
-		classObjectJson = inputData2[i];
-		classObject.amountOfWarnings = 0;
-		classObject.fileName = classObjectJson.fileName;
-		for (j = 0; j < classObjectJson.warningList.length; j++) { 
-			var warningJson = classObjectJson.warningList[j]
-			if($.inArray(warningJson.ruleName, acceptedRuleNames) > -1){
-				classObject.amountOfWarnings++;
-			}
-		}
-		classArray.push(classObject)
-	}
-	return classArray;
-}
-
+/*
+*
+* Creates a JSON file that could be used by the visualizer
+*
+*/
 function createJson(classes){
 	var jsonArr = [];
 	for (var i = 0; i < classes.length; i++) {
@@ -156,6 +158,17 @@ function createJson(classes){
 	
 }
 
+// Decide which tools you will be using
+var acceptedTypes =["CheckStyle"];
+// Decide which type of warnings will be using
+var acceptedRuleNames =["VisibilityModifier"];
+
+// Filter the warnings of all classes
+var classes = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+
+//console.log(createJson(classes));
+var inputData = createJson(classes);
+//filterType(acceptedTypes);
 
 
 
