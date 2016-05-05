@@ -1,24 +1,21 @@
 package BlueTurtle.summarizers;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
-import BlueTurtle.interfaces.Summarizer;
+import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.warnings.Warning;
 
 /**
- * This class can be used to summarize the warnings for a specific component.
+ * This class can be used to summarise the warnings for a specific component.
  * 
  * @author BlueTurtle.
  *
  */
-public class ComponentSummarizer implements Summarizer {
+public class ComponentSummarizer extends Summarizer {
 
 	private String fileName;
-	private int amountOfWarnings;
 	private String filePath;
-	private HashSet<String> warningTypes;
 	private List<Warning> warningList;
 
 	/**
@@ -28,11 +25,13 @@ public class ComponentSummarizer implements Summarizer {
 	 *            the name of the component.
 	 * @param filePath
 	 *            the path to the component.
+	 * @param packageName
+	 *            the name of the package where the component is from.
 	 */
-	public ComponentSummarizer(String fileName, String filePath) {
+	public ComponentSummarizer(String fileName, String filePath, String packageName) {
+		super(packageName);
 		setFileName(fileName);
-		setAmountOfWarnings(0);
-		setWarningTypes(new HashSet<String>());
+		setFilePath(filePath);
 		setWarningList(new ArrayList<Warning>());
 	}
 
@@ -43,16 +42,21 @@ public class ComponentSummarizer implements Summarizer {
 	 *            the list of warnings to be summarized.
 	 */
 	@Override
-	public void summarize(List<Warning> warnings) {
+	public void summarise(List<Warning> warnings) {
 		for (Warning w : warnings) {
-			if (w.getFileName().equals(getFileName())) {
+
+			String pn = WarningGrouper.findPackageName(w.getFilePath());
+			if (w.getFileName().equals(getFileName()) && pn.equals(getPackageName())) {
+
 				if (!warningTypes.contains(w.getType())) {
 					warningTypes.add(w.getType());
 				}
 				warningList.add(w);
-				amountOfWarnings++;
+				numberOfWarnings++;
 			}
+
 		}
+
 	}
 
 	/**************************************/
@@ -71,29 +75,11 @@ public class ComponentSummarizer implements Summarizer {
 	/**
 	 * Set the name of the component.
 	 * 
-	 * @param component
-	 *            the new name of the component.
+	 * @param fileName
+	 *            the name of the component.
 	 */
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
-	}
-
-	/**
-	 * Get the amount of warning that this component has.
-	 * 
-	 * @return the amount of warnings of this component.
-	 */
-	public int getAmountOfWarnings() {
-		return amountOfWarnings;
-	}
-
-	/**
-	 * Set the amount of warnings
-	 * 
-	 * @param amountOfWarnings
-	 */
-	public void setAmountOfWarnings(int amountOfWarnings) {
-		this.amountOfWarnings = amountOfWarnings;
 	}
 
 	/**
@@ -116,25 +102,6 @@ public class ComponentSummarizer implements Summarizer {
 	}
 
 	/**
-	 * Get the types of warning in this component.
-	 * 
-	 * @return types of warning in this component.
-	 */
-	public HashSet<String> getWarningTypes() {
-		return warningTypes;
-	}
-
-	/**
-	 * Set the types of warning in this component.
-	 * 
-	 * @param warningTypes
-	 *            list of warning types.
-	 */
-	public void setWarningTypes(HashSet<String> warningTypes) {
-		this.warningTypes = warningTypes;
-	}
-
-	/**
 	 * Get the list of warning in this component.
 	 * 
 	 * @return list of warning in this component.
@@ -146,7 +113,7 @@ public class ComponentSummarizer implements Summarizer {
 	/**
 	 * Set the list of warnings in this component.
 	 * 
-	 * @param warningList
+	 * @param warnings
 	 *            list of warning.
 	 */
 	public void setWarningList(List<Warning> warnings) {

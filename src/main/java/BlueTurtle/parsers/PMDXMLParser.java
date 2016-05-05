@@ -13,7 +13,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import BlueTurtle.warnings.CheckStyleWarning;
 import BlueTurtle.warnings.PMDWarning;
 import BlueTurtle.warnings.Warning;
 
@@ -35,7 +34,7 @@ public class PMDXMLParser extends XMLParser {
 	@Override
 	public List<Warning> parseFile(String xmlFilePath) {
 		// List to store the warnings.
-		List<Warning> PMDWarnings = new LinkedList<Warning>();
+		List<Warning> pmdWarnings = new LinkedList<Warning>();
 		
 		try {
 
@@ -94,7 +93,7 @@ public class PMDXMLParser extends XMLParser {
 							String ruleName = warningElement.getAttribute("rule");
 
 							// Add warning to the list of warnings.
-							PMDWarnings.add(new PMDWarning(filePath, fileName, line, packageName, ruleSet, method, ruleName));
+							pmdWarnings.add(new PMDWarning(filePath, fileName, line, packageName, ruleSet, method, ruleName));
 						}
 					}
 				}
@@ -102,7 +101,7 @@ public class PMDXMLParser extends XMLParser {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return PMDWarnings;
+		return pmdWarnings;
 	}
 
 }

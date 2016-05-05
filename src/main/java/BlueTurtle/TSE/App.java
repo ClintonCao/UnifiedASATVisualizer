@@ -4,15 +4,20 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.parsers.CheckStyleXMLParser;
 import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
-import BlueTurtle.summarizers.ComponentSummarizer;
+import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
 
 /**
@@ -23,7 +28,8 @@ import BlueTurtle.warnings.Warning;
  */
 public class App {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		jsonTest();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Which ASAT do you wish to run? (CheckStyle, PMD)");
 		String asat = sc.next();
@@ -66,17 +72,22 @@ public class App {
 			System.out.println("Violated Rule Name: " + w.getRuleName());
 		}
 		
-		Warning w = checkStyleWarnings.get(0);
+		HashMap<String, String> classInfo = new HashMap<String, String>();
+		Set<String> packagesNames = new HashSet<String>();
 		
-		ComponentSummarizer cs = new ComponentSummarizer(w.getFileName(), w.getFilePath());
+		for(Warning w : checkStyleWarnings) {
+			classInfo.put(w.getFileName(), w.getFilePath());
+			packagesNames.add(WarningGrouper.findPackageName(w.getFilePath()));
+		}
 		
-		cs.summarize(checkStyleWarnings);
+		WarningGrouper wg = new WarningGrouper(classInfo, packagesNames, checkStyleWarnings);
+		List<Summarizer> list =  wg.groupBy("packages");
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		
-		String json = gson.toJson(cs);
+		String json = gson.toJson(list);
 		
-		File myFile = new File("./resources/component.json");
+		File myFile = new File("./resources/package.json");
 		FileOutputStream fOut = new FileOutputStream(myFile);
 		OutputStreamWriter writer = new OutputStreamWriter(fOut);
 		writer.append(json);

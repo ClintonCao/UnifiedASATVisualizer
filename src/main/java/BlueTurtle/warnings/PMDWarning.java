@@ -18,8 +18,6 @@ public class PMDWarning extends Warning {
 	 *            the name of the file where the warning is located.
 	 * @param line
 	 *            the line number where the warning is located.
-	 * @param className
-	 *            the class of the warning.
 	 * @param packageName
 	 *            the package of the warning.
 	 * @param ruleName
@@ -63,18 +61,6 @@ public class PMDWarning extends Warning {
 		} else {
 			return false;
 		}
-
-	}
-
-	/**
-	 * Write the values of the attributes to a file (in JSON format).
-	 * 
-	 * @param outputFilePath
-	 *            the path of the output file.
-	 */
-	@Override
-	public void toJson(String outputFilePath) {
-		// TODO Auto-generated method stub
 
 	}
 
