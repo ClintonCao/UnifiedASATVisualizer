@@ -8,7 +8,7 @@ window.addEventListener('message', function(e) {
 var maxDepth = 1
 var defaults = {
     margin: {
-        top: 24,
+        top: 30,
         right: 0,
         bottom: 0,
         left: 0
@@ -337,41 +337,3 @@ function main(o, data) {
 }
 
 	
-// call method main with title and input data	
-main({
-    title: "Amount of warnings"
-}, {
-    fileName: "Test Project",
-    values: getInputData()
-});
-
-
-function getInputData(){
-	var checkStyleData = inputData;
-	/*
-	var returnedData = $.grep(checkStyleData.items, function (element, index) {
-    return element.fileName == "Character";
-	});
-	console.log(returnedData); 
-	
-	
-	var someObj = {
-    "one": 123,
-    "two": 345
-};
-
-for (var key in json_obj) {
-    if (json_obj.hasOwnProperty(key)) {
-        // do something with `key'
-    }
-}
-
-var key = "one";
-delete someObj[key];
-*/
-	
-
-	console.log("test");
-	
-	return inputData;	
-}

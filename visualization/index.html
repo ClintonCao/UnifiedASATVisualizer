@@ -9,13 +9,26 @@
 
 <body>
 <div id="wrapper">
-    <div id="chart"></div>
-    <div id="optionsMenu"></div>
+    <div id="chart">
+    </div>
+    <div id="optionsMenu">
+    	<h3>SATS's</h3>
+        
+<form action="">
+<label><input type="checkbox" onclick="handleClick(this);" name="sat" value="CheckStyle"> CheckStyle</label><br>
+<label><input type="checkbox" onclick="handleClick(this);" name="sat" value="PMD"> PMD</label><br>
+<label><input type="checkbox" onclick="handleClick(this);" name="sat" value="FindBugs"> FindBugs</label><br>
+</form>
+    </div>
 </div>
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="jsontest.js"></script>
+    <script src="json.js"></script>
     <script src="treeMap.js"></script>
+    <script src="handleHtmlForm.js"></script>
+    
+    
+    
 </body>
 
 </html>
