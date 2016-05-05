@@ -51,16 +51,13 @@ public class FindBugsXMLParser extends XMLParser {
 			
 			// Get the list of file pathes of the project.
 			NodeList pathsList = doc.getElementsByTagName("Project");
-			/**
-			 * This will need to be edited later, see exampleFindbugs in resources
-			 * There is always two SrcDirs in Project, 1 main, 1 test.
-			 * for now, we hard coded to get the 1st, but this need to discussed later
-			 **/
+			
+			NodeList srcList = doc.getElementsByTagName("SrcDir");
+
 			String pathFront = "";
 			if (pathsList != null && pathsList.getLength() > 0) {
 				Element pathElement = (Element) pathsList.item(0);
-				NodeList srcList = pathElement.getElementsByTagName("SrcDir");
-				pathFront = srcList.item(0).getTextContent(); 
+				srcList = pathElement.getElementsByTagName("SrcDir");
 			}			
 
 			// Get all list of files where there are warnings.
@@ -77,10 +74,27 @@ public class FindBugsXMLParser extends XMLParser {
 					// Get the class name where the warning is from.
 					String className = fileElement.getAttribute("classname");
 					
-					// this is the problem!!!
+					// replace the . with \\ in the file name.
 					className = className.replaceAll("\\.", "\\\\");
 					
-					String filePath = pathFront + "\\" + className + ".java";
+					// initially start with 0
+					int k = 0;
+					// With an empty file path
+					String filePath = "";
+					
+					// continue go down the list of source path if the file does not exist.
+					do {
+						// get the source path from the node.
+						pathFront = srcList.item(k).getTextContent(); 
+						
+						// concatenate the source path with the class name.
+						filePath = pathFront + "\\" + className + ".java";
+						
+						// increment the counter
+						k++;
+						// check if the file exits or not.
+					} while(!new File(filePath).exists());
+					
 
 					// Get the name of the file where the warning is from.
 					String fileName = Paths.get(filePath).getFileName().toString();
