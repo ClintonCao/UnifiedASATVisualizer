@@ -44,17 +44,17 @@ public class FindBugsXMLParserTest {
 	/**
 	 * Test whether the parser creates the right object.
 	 */
-	@Test
-	public void testParsingOneWarning() {
-		FindBugsXMLParser parser = new FindBugsXMLParser();
-
-		FindBugsWarning expected = new FindBugsWarning(testSet2FilePath, testSet2FileName, 47,
-				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName);
-
-		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2).get(0);
-
-		assertEquals(expected, actual);
-	}
+//	@Test
+//	public void testParsingOneWarning() {
+//		FindBugsXMLParser parser = new FindBugsXMLParser();
+//
+//		FindBugsWarning expected = new FindBugsWarning(testSet2FilePath, testSet2FileName, 47,
+//				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName);
+//
+//		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2).get(0);
+//
+//		assertEquals(expected, actual);
+//	}
 
 	/**
 	 * Test that the parser created the right amount of warnings.
@@ -68,18 +68,18 @@ public class FindBugsXMLParserTest {
 		assertNotSame(6, warnings.size());
 	}
 
-//	/**
-//	 * Test that the parser parse the wrong file.
-//	 */
-//	@Test
-//	public void testParseTheWrongFile() {
-//		FindBugsXMLParser parser = new FindBugsXMLParser();
-//		
-//		String testSet3 = "./resources/ex.xml";
-//
-//		List<Warning> warnings = parser.parseFile(testSet3);
-//		
-//		assertNotSame(6, warnings.toString());
-//	}
+	/**
+	 * Test that the parser parse the wrong file.
+	 */
+	@Test
+	public void testParseTheWrongFile() {
+		FindBugsXMLParser parser = new FindBugsXMLParser();
+		
+		String testSet3 = "./resources/ex.xml";
+
+		List<Warning> warnings = parser.parseFile(testSet3);
+		
+		assertNotSame(6, warnings.toString());
+	}
 
 }

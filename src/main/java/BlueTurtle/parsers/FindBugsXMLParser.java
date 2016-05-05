@@ -83,17 +83,17 @@ public class FindBugsXMLParser extends XMLParser {
 					String filePath = "";
 					
 					// continue go down the list of source path if the file does not exist.
-					do {
-						// get the source path from the node.
-						pathFront = srcList.item(k).getTextContent(); 
+//					do {
+//						// get the source path from the node.
+//						pathFront = srcList.item(k).getTextContent(); 
 						
 						// concatenate the source path with the class name.
 						filePath = pathFront + "\\" + className + ".java";
 						
-						// increment the counter
-						k++;
-						// check if the file exits or not.
-					} while(!new File(filePath).exists());
+//						// increment the counter
+//						k++;
+//						// check if the file exits or not.
+//					} while(!new File(filePath).exists());
 					
 
 					// Get the name of the file where the warning is from.
