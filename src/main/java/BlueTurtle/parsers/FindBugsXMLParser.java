@@ -34,7 +34,7 @@ public class FindBugsXMLParser extends XMLParser {
 	@Override
 	public List<Warning> parseFile(String xmlFilePath) {
 		// List to store the warnings.
-		List<Warning> FindBugsWarnings = new LinkedList<Warning>();
+		List<Warning> findBugsWarnings = new LinkedList<Warning>();
 		
 		try {
 
@@ -112,7 +112,7 @@ public class FindBugsXMLParser extends XMLParser {
 							String ruleName = warningElement.getAttribute("type");
 
 							// Add warning to the list of warnings.
-							FindBugsWarnings.add(new FindBugsWarning(filePath, fileName, line, message, category, priority, ruleName));
+							findBugsWarnings.add(new FindBugsWarning(filePath, fileName, line, message, category, priority, ruleName));
 						}
 					}
 				}
@@ -120,7 +120,7 @@ public class FindBugsXMLParser extends XMLParser {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return FindBugsWarnings;
+		return findBugsWarnings;
 	}
 
 }

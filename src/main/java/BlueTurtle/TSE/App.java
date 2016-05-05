@@ -13,6 +13,7 @@ import java.util.Set;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.parsers.CheckStyleXMLParser;
 import BlueTurtle.parsers.FindBugsXMLParser;
@@ -30,7 +31,7 @@ import BlueTurtle.warnings.Warning;
 public class App {
 	
 	public static void main(String[] args) throws IOException {
-		jsonTest();
+		//jsonTest();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Which ASAT do you wish to run? (CheckStyle, PMD, FindBugs)");
 		String asat = sc.next();
@@ -47,21 +48,21 @@ public class App {
 			break;
 		case "PMD":
 			XMLParser parser2 = new PMDXMLParser();
-			List<Warning> PMDWarnings = parser2.parseFile("./resources/examplePmd2.xml");
+			List<Warning> pmdWarnings = parser2.parseFile("./resources/examplePmd2.xml");
 			
-			System.out.println("amount of PMD Warnings:" + " " + PMDWarnings.size());
+			System.out.println("amount of PMD Warnings:" + " " + pmdWarnings.size());
 			
-			for (Warning w : PMDWarnings) {
+			for (Warning w : pmdWarnings) {
 				System.out.println("Violated Rule Name: " + w.getRuleName());
 			}
 			break;
 		case "FindBugs":
 			XMLParser parser3 = new FindBugsXMLParser();
-			List<Warning> FindBugsWarnings = parser3.parseFile("./resources/exampleFindbugs1.xml");
+			List<Warning> findBugsWarnings = parser3.parseFile("./resources/exampleFindbugs1.xml");
 			
-			System.out.println("amount of FindBugs Warnings:" + " " + FindBugsWarnings.size());
+			System.out.println("amount of FindBugs Warnings:" + " " + findBugsWarnings.size());
 			
-			for (Warning w : FindBugsWarnings) {
+			for (Warning w : findBugsWarnings) {
 				System.out.println("Violated Rule Name: " + w.getRuleName());
 				System.out.println("file path: " + w.getFilePath());
 			}
@@ -83,15 +84,15 @@ public class App {
 			System.out.println("Violated Rule Name: " + w.getRuleName());
 		}
 		
-		HashMap<String, String> classInfo = new HashMap<String, String>();
+		HashMap<String, String> componentsInfo = new HashMap<String, String>();
 		Set<String> packagesNames = new HashSet<String>();
 		
-		for(Warning w : checkStyleWarnings) {
-			classInfo.put(w.getFileName(), w.getFilePath());
-			packagesNames.add(WarningGrouper.findPackageName(w.getFilePath()));
+		for (Warning w : checkStyleWarnings) {
+			componentsInfo.put(w.getFileName(), w.getFilePath());
+			packagesNames.add(PackageNameFinder.findPackageName(w.getFilePath()));
 		}
 		
-		WarningGrouper wg = new WarningGrouper(classInfo, packagesNames, checkStyleWarnings);
+		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, checkStyleWarnings);
 		List<Summarizer> list =  wg.groupBy("packages");
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();

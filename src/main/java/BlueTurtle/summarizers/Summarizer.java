@@ -39,6 +39,14 @@ public abstract class Summarizer {
 	 */
 	public abstract void summarise(List<Warning> warnings);
 
+	/**
+	 * Check whether two summarizer are the same.
+	 * 
+	 * @param other
+	 *            the other summarizer.
+	 */
+	public abstract boolean equals(Object other);
+
 	/**************************************/
 	/****** Getters and Setters **********/
 	/************************************/

@@ -101,7 +101,7 @@ public class ChecktStyleWarningTest {
 	@Test
 	public void testChangeOfMessage() {
 		String expected = "cool";
-		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName);
+		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, "test", ruleName);
 		String actual = cw.getMessage();
 		cw.setMessage(expected);
 		assertNotEquals(expected, actual);
@@ -113,7 +113,7 @@ public class ChecktStyleWarningTest {
 	@Test
 	public void testChangeOfLine() {
 		int expected = 5;
-		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName);
+		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, message, ruleName);
 		int actual = cw.getLine();
 		cw.setLine(expected);
 		assertNotSame(expected, actual);
@@ -124,8 +124,8 @@ public class ChecktStyleWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithIntegerObject() {
-		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName);
-		boolean actual = cw.equals(new Integer(1));
+		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, message, ruleName);
+		boolean actual = cw.equals(Integer.valueOf(1));
 		assertSame(false, actual);
 	}
 
@@ -135,7 +135,7 @@ public class ChecktStyleWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentRuleAndMessage() {
-		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName);
+		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, "random", ruleName);
 		CheckStyleWarning diff = new CheckStyleWarning(filePath, fileName, 1, message, "unknown rule");
 		assertNotEquals(cw, diff);
 	}
@@ -147,7 +147,7 @@ public class ChecktStyleWarningTest {
 	@Test
 	public void testEqualsFalseWithDifferentRuleAndLine() {
 		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, message, ruleName);
-		CheckStyleWarning diff = new CheckStyleWarning(filePath, fileName, 5, message, "rule");
+		CheckStyleWarning diff = new CheckStyleWarning(filePath, fileName, 5, message, "test");
 		assertNotEquals(cw, diff);
 	}
 	

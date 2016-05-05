@@ -1,13 +1,12 @@
 package BlueTurtle.groupers;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.interfaces.Grouper;
 import BlueTurtle.summarizers.ComponentSummarizer;
 import BlueTurtle.summarizers.PackageSummarizer;
@@ -39,7 +38,7 @@ public class WarningGrouper implements Grouper {
 	 */
 	public WarningGrouper(HashMap<String, String> componentsInfo, Set<String> packagesNames, List<Warning> wList) {
 		setComponentsInfo(componentsInfo);
-		setPackagesName(packagesNames);
+		setPackagesNames(packagesNames);
 		setWarningList(wList);
 	}
 
@@ -50,7 +49,7 @@ public class WarningGrouper implements Grouper {
 	 *            the criteria for grouping things together.
 	 */
 	@Override
-	public List<Summarizer>groupBy(String criteria) {
+	public List<Summarizer> groupBy(String criteria) {
 		switch (criteria) {
 		case "components":
 			return groupByComponent();
@@ -72,7 +71,7 @@ public class WarningGrouper implements Grouper {
 		for (Entry<String, String> ci : getComponentsInfo().entrySet()) {
 			String fileName = ci.getKey();
 			String filePath = ci.getValue();
-			String packageName = findPackageName(filePath);
+			String packageName = PackageNameFinder.findPackageName(filePath);
 			ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 			cs.summarise(getWarningList());
 			csList.add(cs);
@@ -90,7 +89,7 @@ public class WarningGrouper implements Grouper {
 		List<Summarizer> result = new ArrayList<Summarizer>();
 
 		for (String p : packagesNames) {
-			PackageSummarizer ps = new PackageSummarizer(p, componentsInfo);
+			PackageSummarizer ps = new PackageSummarizer(p);
 			ps.summarise(warningList);
 			result.add(ps);
 		}
@@ -99,26 +98,25 @@ public class WarningGrouper implements Grouper {
 	}
 
 	/**
-	 * Find the name of the package from a path.
+	 * Check whether two Warning grouper are equal.
 	 * 
-	 * @param filePath
-	 *            the file path.
-	 * @return the name of the package.
+	 * @param other
+	 *            the other WarningGrouper object
 	 */
-	public static String findPackageName(String filePath) {
-		String packageName = "default";
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader(filePath));
-			String line = reader.readLine();
-			String[] packageInfo = line.split(" ");
-			if (packageInfo[0].equals("package")) {
-				packageName = packageInfo[1].split(";")[0];
-			}
-			reader.close();
-		} catch (Exception e) {
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object other) {
+		if (!(other instanceof WarningGrouper)) {
+			return false;
 		}
-		return packageName;
+
+		WarningGrouper that = (WarningGrouper) other;
+
+		if (componentsInfo.equals(that.getComponentsInfo()) && packagesNames.equals(that.getPackagesNames())
+				&& warningList.equals(that.getWarningList())) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**************************************/
@@ -149,7 +147,7 @@ public class WarningGrouper implements Grouper {
 	 * 
 	 * @return list containing the names of the packages.
 	 */
-	public Set<String> getPackagesName() {
+	public Set<String> getPackagesNames() {
 		return packagesNames;
 	}
 
@@ -159,7 +157,7 @@ public class WarningGrouper implements Grouper {
 	 * @param packagesName
 	 *            list containing the names of the packages.
 	 */
-	public void setPackagesName(Set<String> packagesName) {
+	public void setPackagesNames(Set<String> packagesName) {
 		this.packagesNames = packagesName;
 	}
 

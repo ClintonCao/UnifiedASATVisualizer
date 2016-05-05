@@ -3,7 +3,7 @@ package BlueTurtle.summarizers;
 import java.util.ArrayList;
 import java.util.List;
 
-import BlueTurtle.groupers.WarningGrouper;
+import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.warnings.Warning;
 
 /**
@@ -45,9 +45,8 @@ public class ComponentSummarizer extends Summarizer {
 	public void summarise(List<Warning> warnings) {
 		for (Warning w : warnings) {
 
-			String pn = WarningGrouper.findPackageName(w.getFilePath());
+			String pn = PackageNameFinder.findPackageName(w.getFilePath());
 			if (w.getFileName().equals(getFileName()) && pn.equals(getPackageName())) {
-
 				if (!warningTypes.contains(w.getType())) {
 					warningTypes.add(w.getType());
 				}
@@ -55,6 +54,31 @@ public class ComponentSummarizer extends Summarizer {
 				numberOfWarnings++;
 			}
 
+		}
+
+	}
+
+	/**
+	 * Check whether two ComponentSummarizer are equal.
+	 * 
+	 * @param other
+	 *            the other ComponentSummarizer.
+	 */
+	@Override
+	public boolean equals(Object other) {
+
+		if (!(other instanceof ComponentSummarizer)) {
+			return false;
+		}
+
+		ComponentSummarizer that = (ComponentSummarizer) other;
+
+		if (packageName.equals(that.packageName) && fileName.equals(that.fileName) && filePath.equals(that.filePath)
+				&& warningList.equals(that.warningList) && numberOfWarnings == that.numberOfWarnings
+				&& warningTypes.equals(that.warningTypes)) {
+			return true;
+		} else {
+			return false;
 		}
 
 	}
