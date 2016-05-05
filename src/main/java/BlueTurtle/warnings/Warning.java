@@ -1,14 +1,13 @@
 package BlueTurtle.warnings;
 
-import BlueTurtle.interfaces.Violation;
-
 /**
  * This class is used to represent a warning.
  * 
  * @author BlueTurtle.
  *
  */
-public abstract class Warning implements Violation {
+@SuppressWarnings("checkstyle:visibilitymodifier")
+public abstract class Warning {
 
 	protected String ruleName;
 	protected String fileName;
@@ -41,12 +40,6 @@ public abstract class Warning implements Violation {
 	 */
 	@Override
 	public abstract boolean equals(Object other);
-
-	/**
-	 * Write the values of the attribute to a file, in JSON format.
-	 * 
-	 */
-	public abstract void toJson(String outputFilePath);
 
 	/*************************************/
 	/*** Getters and setters ************/

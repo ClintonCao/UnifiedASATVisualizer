@@ -56,18 +56,7 @@ public class CheckStyleWarning extends Warning {
 
 	}
 
-	/**
-	 * Write the values of the attributes to a file (in JSON format).
-	 * 
-	 * @param outputFilePath
-	 *            the path of the output file.
-	 */
-	@Override
-	public void toJson(String outputFilePath) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	/*************************************/
 	/*** Getters and setters ************/
 	/***********************************/
