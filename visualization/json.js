@@ -57,6 +57,96 @@ var inputData2 = [
         ]
       },
 	  {
+        "fileName": "Warning3.java",
+        "amountOfWarnings": 5,
+        "package_Name": "BlueTurtle.warnings",
+        "warningTypes": [
+          "CheckStyle"
+        ],
+        "warningList": [
+          {
+            "line": 1,
+            "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "ruleName": "PackageName",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          }
+        ]
+      },
+	  {
+        "fileName": "Warning7.java",
+        "amountOfWarnings": 5,
+        "package_Name": "BlueTurtle.warnings",
+        "warningTypes": [
+          "CheckStyle"
+        ],
+        "warningList": [
+          {
+            "line": 1,
+            "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "ruleName": "PackageName",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          }
+        ]
+      },
+	  {
+        "fileName": "Warning4.java",
+        "amountOfWarnings": 5,
+        "package_Name": "BlueTurtle.warnings",
+        "warningTypes": [
+          "CheckStyle"
+        ],
+        "warningList": [
+          {
+            "line": 1,
+            "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "ruleName": "PackageName",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          }
+        ]
+      },
+	  {
+        "fileName": "Warning5.java",
+        "amountOfWarnings": 5,
+        "package_Name": "BlueTurtle.warnings",
+        "warningTypes": [
+          "CheckStyle"
+        ],
+        "warningList": [
+          {
+            "line": 1,
+            "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "ruleName": "PackageName",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          }
+        ]
+      },
+	  {
+        "fileName": "Warning6.java",
+        "amountOfWarnings": 5,
+        "package_Name": "BlueTurtle.warnings",
+        "warningTypes": [
+          "CheckStyle"
+        ],
+        "warningList": [
+          {
+            "line": 1,
+            "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "ruleName": "PackageName",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          }
+        ]
+      },
+	  {
         "fileName": "Warning2.java",
         "amountOfWarnings": 5,
         "package_Name": "BlueTurtle.warnings",
