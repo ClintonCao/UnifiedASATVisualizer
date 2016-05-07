@@ -14,7 +14,7 @@ public class JavaController implements Controller {
 	public void execute() throws IOException {
     	ArrayList<CommandUnit> commands = new ArrayList<CommandUnit>();
 		
-    	String[] pmdCommands = {"java", "-jar", userDir + "/Runnables/pmd-bin-4.2.6/lib/pmd-4.2.6.jar", userDir + "/Runnables/Testcode/ClintonCode.java", "xml", "basic"};
+    	String[] pmdCommands = {"java", "-jar", userDir + "/Runnables/pmd-bin-4.2.6/lib/pmd-4.2.6.jar", userDir + "/Runnables/Testcode/", "xml", "basic"};
     	PMDSettings pmdSettings = new PMDSettings();
     	CommandUnit c1 = new CommandUnit(pmdSettings, pmdCommands);
     	commands.add(c1);
