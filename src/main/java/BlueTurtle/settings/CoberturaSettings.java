@@ -6,7 +6,7 @@ import java.io.IOException;
 import BlueTurtle.interfaces.Settings;
 
 public class CoberturaSettings implements Settings {
-	private String outputFilePath = "./Runnables/Testcode/cobertura/coverage.xml";
+	private String defaultOutputFilePath = "./Runnables/Testcode/cobertura.xml";
 
 	@Override
 	public void readSettings() throws FileNotFoundException, IOException {
@@ -20,14 +20,12 @@ public class CoberturaSettings implements Settings {
 		
 	}
 
-	@Override
-	public String getOutputFilePath() {
-		return outputFilePath;
+	public String getDefaultOutputFilePath() {
+		return defaultOutputFilePath;
 	}
 
-	@Override
-	public void setOutputFilePath(String outputFilePath) {
-		this.outputFilePath = outputFilePath;
+	public void setDefaultOutputFilePath(String defaultOutputFilePath) {
+		this.defaultOutputFilePath = defaultOutputFilePath;
 	}
 
 	@Override

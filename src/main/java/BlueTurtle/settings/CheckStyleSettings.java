@@ -6,7 +6,7 @@ import java.io.IOException;
 import BlueTurtle.interfaces.Settings;
 
 public class CheckStyleSettings implements Settings {
-	private String outputFilePath = "./Runnables/Testcode/checkstyle.xml";
+	private String defaultOutputFilePath = "./Runnables/Testcode/checkstyle.xml";
 
 	public void readSettings() throws FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
@@ -18,23 +18,23 @@ public class CheckStyleSettings implements Settings {
 		
 	}
 
-	public String getOutputFilePath() {
-		// TODO Auto-generated method stub
-		return outputFilePath;
+	public String getDefaultOutputFilePath() {
+		return defaultOutputFilePath;
 	}
 
-	public void setOutputFilePath(String outputFilePath) {
-		this.outputFilePath = outputFilePath;	
+	public void setDefaultOutputFilePath(String defaultOutputFilePath) {
+		this.defaultOutputFilePath = defaultOutputFilePath;
 	}
 
+	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	@Override
 	public void setEnabled(boolean enabled) {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

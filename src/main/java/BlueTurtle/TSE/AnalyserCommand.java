@@ -1,13 +1,11 @@
 package BlueTurtle.TSE;
 
-import BlueTurtle.interfaces.Settings;
-
 public class AnalyserCommand {
-	private Settings settings;
+	private String defaultOutputFilePath;
 	private String[] args;
 	
-	public AnalyserCommand(Settings settings, String[] args) {
-		this.setSettings(settings);
+	public AnalyserCommand(String defaultOutputFilePath, String[] args) {
+		this.setDefaultOutputFilePath(defaultOutputFilePath);
 		this.setArgs(args);
 	}
 
@@ -19,21 +17,11 @@ public class AnalyserCommand {
 		this.args = args;
 	}
 
-
-	public Settings getSettings() {
-		return settings;
+	public String getDefaultOutputFilePath() {
+		return defaultOutputFilePath;
 	}
 
-
-	public void setSettings(Settings settings) {
-		this.settings = settings;
-	}
-	
-	public String getOutputFilePath() {
-		return settings.getOutputFilePath();
-	}
-
-	public void setOutputFilePath(String outputFilePath) {
-		settings.setOutputFilePath(outputFilePath);
+	public void setDefaultOutputFilePath(String defaultOutputFilePath) {
+		this.defaultOutputFilePath = defaultOutputFilePath;
 	}
 }

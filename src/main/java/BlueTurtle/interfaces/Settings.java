@@ -9,9 +9,9 @@ public interface Settings {
 	
 	public void writeSettings();
 	
-	public String getOutputFilePath();
+	public String getDefaultOutputFilePath();
 	
-	public void setOutputFilePath(String outputFilePath);
+	public void setDefaultOutputFilePath(String defaultOutputFilePath);
 	
 	public boolean isEnabled();
 	
