@@ -1,8 +1,10 @@
-package BlueTurtle.TSE;
+package BlueTurtle.settings;
+
+import BlueTurtle.interfaces.Settings;
 
 public class PMDSettings implements Settings {
 	boolean enabled;
-	private static String outputFilePath = "./Runnables/Testcode/output.xml";
+	private String outputFilePath = "./Runnables/Testcode/output.xml";
 
 	public void readSettings() {
 			
@@ -17,7 +19,7 @@ public class PMDSettings implements Settings {
 	}
 
 	public void setOutputFilePath(String outputFilePath) {
-		PMDSettings.outputFilePath = outputFilePath;
+		this.outputFilePath = outputFilePath;
 	}
 	
 	public boolean isEnabled() {

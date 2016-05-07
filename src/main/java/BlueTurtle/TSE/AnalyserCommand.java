@@ -1,10 +1,12 @@
 package BlueTurtle.TSE;
 
-public class CommandUnit {
+import BlueTurtle.interfaces.Settings;
+
+public class AnalyserCommand {
 	private Settings settings;
 	private String[] args;
 	
-	public CommandUnit(Settings settings, String[] args) {
+	public AnalyserCommand(Settings settings, String[] args) {
 		this.setSettings(settings);
 		this.setArgs(args);
 	}

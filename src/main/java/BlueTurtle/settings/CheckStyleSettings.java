@@ -1,10 +1,12 @@
-package BlueTurtle.TSE;
+package BlueTurtle.settings;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import BlueTurtle.interfaces.Settings;
+
 public class CheckStyleSettings implements Settings {
-	private static String outputFilePath = "./Runnables/Testcode/checkstyle.xml";
+	private String outputFilePath = "./Runnables/Testcode/checkstyle.xml";
 
 	public void readSettings() throws FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
@@ -22,8 +24,7 @@ public class CheckStyleSettings implements Settings {
 	}
 
 	public void setOutputFilePath(String outputFilePath) {
-		// TODO Auto-generated method stub
-		
+		this.outputFilePath = outputFilePath;	
 	}
 
 	public boolean isEnabled() {

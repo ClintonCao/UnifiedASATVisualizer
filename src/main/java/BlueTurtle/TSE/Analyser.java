@@ -10,13 +10,13 @@ import java.util.ArrayList;
  * @author michiel
  */
 public class Analyser {
-	private ArrayList<CommandUnit> commands; 
+	private ArrayList<AnalyserCommand> commands; 
 	
 	/**
 	 * Constructor.
 	 * @param commands
 	 */
-	public Analyser(ArrayList<CommandUnit> commands) {
+	public Analyser(ArrayList<AnalyserCommand> commands) {
 		this.commands = commands;
 	}
 	
@@ -26,7 +26,7 @@ public class Analyser {
 	 */
 	public void analyse() throws IOException {
 		
-		for(CommandUnit command: commands) {
+		for(AnalyserCommand command: commands) {
 			ProcessBuilder pb = new ProcessBuilder(command.getArgs());
 			pb.redirectOutput(Redirect.to(new File(command.getOutputFilePath())));
 	        pb.redirectError(Redirect.INHERIT);
