@@ -1,5 +1,6 @@
 package BlueTurtle.TSE;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ public class JavaController implements Controller {
 	private static String userDir = System.getProperty("user.dir");
 	private CommandBuilder commandBuilder;
 	private PMDSettings pmdSettings = new PMDSettings();
-	private CheckStyleSettings checkStyleSettings = new CheckStyleSettings();
+	private CheckStyleSettings checkStyleSettings = new CheckStyleSettings(new File("CheckStyle_Settings.xml"));
 	private CoberturaSettings coberturaSettings = new CoberturaSettings();
 	
 	/**

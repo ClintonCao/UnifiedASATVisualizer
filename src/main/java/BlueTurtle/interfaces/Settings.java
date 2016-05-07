@@ -3,17 +3,11 @@ package BlueTurtle.interfaces;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.xml.sax.SAXException;
+
 public interface Settings {
+
+	String getDefaultOutputFilePath();
 	
-	public void readSettings() throws FileNotFoundException, IOException;
-	
-	public void writeSettings();
-	
-	public String getDefaultOutputFilePath();
-	
-	public void setDefaultOutputFilePath(String defaultOutputFilePath);
-	
-	public boolean isEnabled();
-	
-	public void setEnabled(boolean enabled);
+	void setDefaultOutputFilePath(String defaultOutputFilePath);
 }

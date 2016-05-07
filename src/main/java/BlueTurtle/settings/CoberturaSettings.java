@@ -8,16 +8,12 @@ import BlueTurtle.interfaces.Settings;
 public class CoberturaSettings implements Settings {
 	private String defaultOutputFilePath = "./Runnables/Testcode/cobertura.xml";
 
-	@Override
 	public void readSettings() throws FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		
 	}
 
-	@Override
 	public void writeSettings() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	public String getDefaultOutputFilePath() {
@@ -27,17 +23,4 @@ public class CoberturaSettings implements Settings {
 	public void setDefaultOutputFilePath(String defaultOutputFilePath) {
 		this.defaultOutputFilePath = defaultOutputFilePath;
 	}
-
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void setEnabled(boolean enabled) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

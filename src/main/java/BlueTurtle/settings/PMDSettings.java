@@ -3,24 +3,14 @@ package BlueTurtle.settings;
 import BlueTurtle.interfaces.Settings;
 
 public class PMDSettings implements Settings {
-	boolean enabled;
 	private String defaultOutputFilePath = "./Runnables/Testcode/PMD.xml";
 
 	public void readSettings() {
-			
+		// TODO Auto-generated method stub			
 	}
 
 	public void writeSettings() {
-		
-	}
-	
-	
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+		// TODO Auto-generated method stub		
 	}
 
 	public String getDefaultOutputFilePath() {

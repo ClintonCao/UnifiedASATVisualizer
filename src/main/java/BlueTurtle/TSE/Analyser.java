@@ -21,7 +21,7 @@ public class Analyser {
 	}
 	
 	/**
-	 * Analyse creates a ProcessBuilder for each command. The output is redirected to the output file specified in Command.
+	 * Analyse creates a ProcessBuilder for each command. The output is redirected to the output file specified in the AnalyserCommand.
 	 * @throws IOException
 	 */
 	public void analyse() throws IOException {
@@ -32,7 +32,6 @@ public class Analyser {
 	        pb.redirectError(Redirect.INHERIT);
 	        pb.start();
 		}
-		
 	}
 	
 	public ArrayList<AnalyserCommand> getCommands() {

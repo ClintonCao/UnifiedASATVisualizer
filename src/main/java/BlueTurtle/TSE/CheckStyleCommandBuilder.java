@@ -18,7 +18,8 @@ public class CheckStyleCommandBuilder extends CommandBuilder {
 		commands.add("-jar");
 		commands.add(JavaController.getUserDir() + "/Runnables/checkstyle-6.18-all.jar");
 		commands.add("-c");
-		commands.add("/sun_checks.xml");
+		commands.add(checkStyleSettings.getConfigFile());
+		//commands.add("/sun_checks.xml");
 		commands.add("-f");
 		commands.add("xml");
 		commands.add(JavaController.getUserDir() + "/Runnables/Testcode/");
