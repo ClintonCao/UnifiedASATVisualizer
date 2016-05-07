@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import BlueTurtle.interfaces.CommandBuilder;
 import BlueTurtle.settings.CheckStyleSettings;
 
-public class CheckStyleCommandBuilder implements CommandBuilder {
+public class CheckStyleCommandBuilder extends CommandBuilder {
 	private ArrayList<String> commands = new ArrayList<String>();
 	private CheckStyleSettings checkStyleSettings;
 	
@@ -13,6 +13,7 @@ public class CheckStyleCommandBuilder implements CommandBuilder {
 		this.setSettings(checkStyleSettings);
 	}
 	
+	@Override
 	public String[] buildCommand() {
 		commands.add("java");
 		commands.add("-jar");
@@ -25,7 +26,8 @@ public class CheckStyleCommandBuilder implements CommandBuilder {
 		String[] retCommands = commands.toArray(new String[commands.size()]);
 		return retCommands;
 	}
-
+	
+	@Override
 	public CheckStyleSettings getSettings() {
 		return checkStyleSettings;
 	}

@@ -2,16 +2,18 @@ package BlueTurtle.TSE;
 
 import java.util.ArrayList;
 
+import BlueTurtle.interfaces.CommandBuilder;
 import BlueTurtle.settings.PMDSettings;
 
-public class PMDCommandBuilder {
+public class PMDCommandBuilder extends CommandBuilder {
 	private ArrayList<String> commands = new ArrayList<String>();
 	private PMDSettings pmdSettings;
 	
 	public PMDCommandBuilder(PMDSettings pmdSettings) {
-		this.setPmdSettings(pmdSettings);
+		this.setSettings(pmdSettings);
 	}
 	
+	@Override
 	public String[] buildCommand() {
 		commands.add("java");
 		commands.add("-jar");
@@ -22,12 +24,13 @@ public class PMDCommandBuilder {
 		String[] retCommands = commands.toArray(new String[commands.size()]);
 		return retCommands;
 	}
-
-	public PMDSettings getPmdSettings() {
+	
+	@Override
+	public PMDSettings getSettings() {
 		return pmdSettings;
 	}
 
-	public void setPmdSettings(PMDSettings pmdSettings) {
+	public void setSettings(PMDSettings pmdSettings) {
 		this.pmdSettings = pmdSettings;
 	}
 }

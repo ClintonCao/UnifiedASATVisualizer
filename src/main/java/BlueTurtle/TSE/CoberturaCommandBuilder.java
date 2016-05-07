@@ -6,7 +6,7 @@ import BlueTurtle.interfaces.CommandBuilder;
 import BlueTurtle.interfaces.Settings;
 import BlueTurtle.settings.CoberturaSettings;
 
-public class CoberturaCommandBuilder implements CommandBuilder {
+public class CoberturaCommandBuilder extends CommandBuilder {
 	private ArrayList<String> commands = new ArrayList<String>();
 	private CoberturaSettings coberturaSettings;
 	
@@ -14,9 +14,8 @@ public class CoberturaCommandBuilder implements CommandBuilder {
 		this.coberturaSettings = coberturaSettings;
 	}
 	
+	@Override
 	public String[] buildCommand() {
-		//String[] coberturaCommands = {"C:/Users/michiel/workspace/Contextproject-TSE/Runnables/cobertura-2.1.1/cobertura-report.bat", "--format", "xml", 
-			//	"--destination", userDir + "/Runnables/Testcode/cobertura", userDir + "/Runnables/Testcode/"};
 		commands.add("C:/Users/michiel/workspace/Contextproject-TSE/Runnables/cobertura-2.1.1/cobertura-report.bat");
 		commands.add("--format");
 		commands.add("xml");
@@ -27,6 +26,7 @@ public class CoberturaCommandBuilder implements CommandBuilder {
 		return retCommands;
 	}
 	
+	@Override
 	public Settings getSettings() {
 		return coberturaSettings;
 	}

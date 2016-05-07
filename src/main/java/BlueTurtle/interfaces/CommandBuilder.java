@@ -1,7 +1,7 @@
 package BlueTurtle.interfaces;
 
-public interface CommandBuilder {
-	public String[] buildCommand();
+public abstract class CommandBuilder {
+	public abstract String[] buildCommand();
 	
-	public Settings getSettings();
+	public abstract Settings getSettings();
 }
