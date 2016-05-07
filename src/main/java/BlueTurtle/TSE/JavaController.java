@@ -15,6 +15,8 @@ public class JavaController implements Controller {
 	private PMDCommandBuilder pmdCommandBuilder = new PMDCommandBuilder(pmdSettings);
 	private CheckStyleSettings checkStyleSettings = new CheckStyleSettings();
 	private CheckStyleCommandBuilder checkStyleCommandBuilder = new CheckStyleCommandBuilder(checkStyleSettings);
+	private CoberturaSettings coberturaSettings = new CoberturaSettings();
+	private CoberturaCommandBuilder coberturaCommandBuilder = new CoberturaCommandBuilder(coberturaSettings);
 
 	/**
 	 * Execute controller.
@@ -31,14 +33,11 @@ public class JavaController implements Controller {
 		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings, checkStyleCommands);
 		commands.add(c2);
 
-		String[] coberturaCommands = {"C:/Users/michiel/workspace/Contextproject-TSE/Runnables/cobertura-2.1.1/cobertura-report.bat", "--format", "xml", "--destination", userDir + "/Runnables/Testcode/cobertura", userDir + "/Runnables/Testcode/"};
+		String[] coberturaCommands = coberturaCommandBuilder.buildCommand();
 		CoberturaSettings coberturaSettings = new CoberturaSettings();
 		AnalyserCommand c3 = new AnalyserCommand(coberturaSettings, coberturaCommands);
 		commands.add(c3);
 		
-//		ProcessBuilder pb = new ProcessBuilder(coberturaCommands);
-//		pb.start();
-
 		setAnalyser(new Analyser(commands));
 
 		analyser.analyse();

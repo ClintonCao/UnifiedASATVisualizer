@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author michiel
  */
 public class Analyser {
-	private ArrayList<AnalyserCommand> commands; 
+	private ArrayList<AnalyserCommand> commands;
 	
 	/**
 	 * Constructor.
@@ -34,4 +34,12 @@ public class Analyser {
 		}
 		
 	}
+	
+	public ArrayList<AnalyserCommand> getCommands() {
+		return commands;
+	}
+
+	public void setCommands(ArrayList<AnalyserCommand> commands) {
+		this.commands = commands;
+	} 
 }
