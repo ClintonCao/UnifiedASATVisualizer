@@ -15,7 +15,7 @@ public class CoberturaCommandBuilder extends CommandBuilder {
 	
 	@Override
 	public String[] buildCommand() {
-		commands.add("C:/Users/michiel/workspace/Contextproject-TSE/Runnables/cobertura-2.1.1/cobertura-report.bat");
+		commands.add(JavaController.getUserDir() + "/Runnables/cobertura-2.1.1/cobertura-report.bat");
 		commands.add("--format");
 		commands.add("xml");
 		commands.add("--destination");
