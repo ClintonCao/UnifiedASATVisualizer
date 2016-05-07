@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.6" timestamp="2016-05-07T18:01:24.532">
+<pmd version="4.2.6" timestamp="2016-05-07T18:58:21.626">
 <file name="C:\Users\michiel\workspace\Contextproject-TSE\Runnables\Testcode\AllClosestPoints.java">
 <violation beginline="95" endline="101" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" class="AllClosestPoints$Point" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
 These nested if statements could be combined
