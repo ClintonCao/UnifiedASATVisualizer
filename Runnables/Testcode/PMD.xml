@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.6" timestamp="2016-05-07T18:01:24.532">
+<file name="C:\Users\michiel\workspace\Contextproject-TSE\Runnables\Testcode\AllClosestPoints.java">
+<violation beginline="95" endline="101" begincolumn="33" endcolumn="33" rule="CollapsibleIfStatements" ruleset="Basic Rules" class="AllClosestPoints$Point" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="96" endline="100" begincolumn="41" endcolumn="41" rule="CollapsibleIfStatements" ruleset="Basic Rules" class="AllClosestPoints$Point" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="97" endline="99" begincolumn="49" endcolumn="49" rule="CollapsibleIfStatements" ruleset="Basic Rules" class="AllClosestPoints$Point" method="equals" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="153" endline="153" begincolumn="19" endcolumn="39" rule="EmptyCatchBlock" ruleset="Basic Rules" class="AllClosestPoints" method="run" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>
