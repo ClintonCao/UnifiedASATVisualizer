@@ -2,7 +2,6 @@ package BlueTurtle.TSE;
 
 import java.util.ArrayList;
 
-import BlueTurtle.interfaces.CommandBuilder;
 import BlueTurtle.interfaces.Settings;
 import BlueTurtle.settings.CoberturaSettings;
 

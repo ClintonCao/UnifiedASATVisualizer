@@ -11,13 +11,11 @@ import BlueTurtle.settings.PMDSettings;
 public class JavaController implements Controller {
 	private Analyser analyser;
 	private static String userDir = System.getProperty("user.dir");
+	private CommandBuilder commandBuilder;
 	private PMDSettings pmdSettings = new PMDSettings();
-	private PMDCommandBuilder pmdCommandBuilder = new PMDCommandBuilder(pmdSettings);
 	private CheckStyleSettings checkStyleSettings = new CheckStyleSettings();
-	private CheckStyleCommandBuilder checkStyleCommandBuilder = new CheckStyleCommandBuilder(checkStyleSettings);
 	private CoberturaSettings coberturaSettings = new CoberturaSettings();
-	private CoberturaCommandBuilder coberturaCommandBuilder = new CoberturaCommandBuilder(coberturaSettings);
-
+	
 	/**
 	 * Execute controller.
 	 * @throws IOException 
@@ -25,16 +23,18 @@ public class JavaController implements Controller {
 	public void execute() throws IOException {
 		ArrayList<AnalyserCommand> commands = new ArrayList<AnalyserCommand>();
 		
-		String[] pmdCommands = pmdCommandBuilder.buildCommand();
+		commandBuilder = new PMDCommandBuilder(pmdSettings);
+		String[] pmdCommands = commandBuilder.buildCommand();
 		AnalyserCommand c1 = new AnalyserCommand(pmdSettings, pmdCommands);
 		commands.add(c1);
 
-		String[] checkStyleCommands = checkStyleCommandBuilder.buildCommand();
+		commandBuilder = new CheckStyleCommandBuilder(checkStyleSettings);
+		String[] checkStyleCommands = commandBuilder.buildCommand();
 		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings, checkStyleCommands);
 		commands.add(c2);
-
-		String[] coberturaCommands = coberturaCommandBuilder.buildCommand();
-		CoberturaSettings coberturaSettings = new CoberturaSettings();
+		
+		commandBuilder = new CoberturaCommandBuilder(coberturaSettings);
+		String[] coberturaCommands = commandBuilder.buildCommand();
 		AnalyserCommand c3 = new AnalyserCommand(coberturaSettings, coberturaCommands);
 		commands.add(c3);
 		

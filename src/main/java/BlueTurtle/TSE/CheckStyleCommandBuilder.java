@@ -2,7 +2,6 @@ package BlueTurtle.TSE;
 
 import java.util.ArrayList;
 
-import BlueTurtle.interfaces.CommandBuilder;
 import BlueTurtle.settings.CheckStyleSettings;
 
 public class CheckStyleCommandBuilder extends CommandBuilder {
