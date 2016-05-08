@@ -1,5 +1,5 @@
 var width = window.innerWidth - 30,
-    height = window.innerHeight - 30
+    height = window.innerHeight - 50
 
 //var color = d3.scale.category20();
 
@@ -16,6 +16,10 @@ var force = d3.layout.force()
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
+
+function goBack() {
+    window.history.back();
+}
 
 function main(graph) {
 
@@ -61,8 +65,9 @@ function main(graph) {
   });
 };
 
+document.getElementById("package-number").innerHTML = sessionStorage.getItem('packageNumber');
 //var curPackage = sessionStorage.getItem('relevantPackageJSON');
 console.log(sessionStorage.getItem('relevantPackageJSON'));
 
 // Calling the main function
-main(graphJSON);
+main(window[sessionStorage.getItem('relevantPackageJSON')]);

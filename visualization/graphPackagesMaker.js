@@ -1,5 +1,5 @@
 var width = window.innerWidth - 30,
-    height = window.innerHeight - 30
+    height = window.innerHeight - 100
 
 //var color = d3.scale.category20();
 
@@ -43,7 +43,7 @@ function main(graph) {
       .style("fill", function(d) {  var ratio = 200 * d.warnings / d.loc;
                                     // if statement for when there are more warnings then lines
                                     return (ratio > 100) ? color(100) : color(ratio);})
-      .on('dblclick', function(d, i) { sessionStorage.setItem('relevantPackageJSON', d.json); window.location.href = d.url; })
+      .on('dblclick', function(d, i) { sessionStorage.setItem('relevantPackageJSON', d.name); sessionStorage.setItem('packageNumber', (d.num + 1)); window.location.href = d.url; })
       .on("mouseover", function(d){tooltip.text(d.name + ": " + + d.classes + " classes || " + d.loc + " lines" + " || " + d.warnings + " warnings"); return tooltip.style("visibility", "visible");})
 	    .on("mousemove", function(d){return tooltip.style("top",(d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
 	    .on("mouseout", function(d){return tooltip.style("visibility", "hidden");})
@@ -59,7 +59,5 @@ function main(graph) {
         .attr("cy", function(d) { return d.y; });
   });
 };
-
-//$("head").append('<script type="text/javascript" src="' + "graphPackagesJSON.js" + '"></script>');
 
 main(graphJSON);
