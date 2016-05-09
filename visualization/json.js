@@ -352,7 +352,8 @@ var packageArray = []
 	  classObject.fileName = classObjectJson.fileName;
 	  for (j = 0; j < classObjectJson.warningList.length; j++) { 
 		var warningJson = classObjectJson.warningList[j]
-		if($.inArray(warningJson.type, acceptedTypes) > -1 && $.inArray(warningJson.ruleName, acceptedRuleNames) > -1) {
+		//tmp disabled the accptedrule filter
+		if($.inArray(warningJson.type, acceptedTypes) > -1 && ($.inArray(warningJson.ruleName, acceptedRuleNames) > -1 || true)) {
 		  classObject.amountOfWarnings++;
 		}
 	  }
@@ -370,16 +371,10 @@ return packageArray;
 *
 */
 function createJson(packages){
-console.log("ppppppppp");
-console.log(packages);
-console.log("ppppppppppp");
 var jsonArrPackage = [];
 	for(var p =0; p < packages.length; p++){
 		var jsonArrClass = [];
 		var classes = packages[p];
-		console.log("p" + p);
-		console.log(classes);
-		console.log("test");
 		for (var i = 0; i < classes.length; i++) {
 			var fileName = classes[i].fileName;
 			var amountOfWarnings = classes[i].amountOfWarnings;

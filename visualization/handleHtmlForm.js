@@ -1,41 +1,42 @@
-var acceptedTypes =["CheckStyle"];
+var acceptedTypes =[];
 var acceptedRuleNames =["PackageName","JavadocMethod"];
-var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-console.log(packages);
-console.log("create:");
-var inputData = createJson(packages);	
-
-var inputDataJSON = JSON.stringify(inputData, null, 2);
-
-console.log("inputDataJSON ");
-console.log(inputDataJSON);
-// call method main with title and input data	
+//run first time
 main({
     title: "Amount of warnings"
-}, {
+	}, {
     fileName: "Test Project",
-    values: getInputData()
-});
-
-function getInputData(){
-	var checkStyleData = inputData;
-	return inputData;	
-}
-
-function handleClick(cb) {
+    values: loadJson()
+	});	
+	
+	
+// on click checkbox
+// sat type list changed and chart updated	
+function handleClickTypeSat(cb) {
   if(cb.name == "sat"){
   	console.log(cb.value);
 	var value = cb.value;
 	var booleanChecked = cb.checked;  
 	if(booleanChecked){
-		acceptedTypes = [cb.value];
+		acceptedTypes.push(cb.value)
+	}else{
+		var index = acceptedTypes.indexOf(cb.value);
+  		console.log(index);
+		if (index > -1) {
+    		acceptedTypes.splice(index, 1);
+		}
 	}
-	inputData = createJson(classes);
+  	console.log(acceptedTypes);
 	main({
     title: "Amount of warnings"
 	}, {
     fileName: "Test Project",
-    values: inputData
+    values: loadJson()
 	});	
   }
+}
+
+function loadJson(){
+	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+	var inputData = createJson(packages);	
+	return inputData
 }

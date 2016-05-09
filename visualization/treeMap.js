@@ -19,9 +19,15 @@ var defaults = {
     width: window.innerWidth - 250,
     height: window.innerHeight - 30
 };
-
+function removeChart(){
+	var chartNode = document.getElementById("chart");
+	while (chartNode.firstChild) {
+		chartNode.removeChild(chartNode.firstChild);
+	}
+}
 // the main loop
 function main(o, data) {
+	removeChart();
     // Setting up some values about number format(rounding) and marigns
     var root,
         opts = $.extend(true, {}, defaults, o),
@@ -97,7 +103,6 @@ function main(o, data) {
     accumulateValue(root);
     accumulateWarnings(root);
     layout(root);
-    console.log(root);
     display(root);
 
     if (window.parent !== window) {
