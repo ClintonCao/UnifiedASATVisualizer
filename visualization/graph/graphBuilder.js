@@ -41,9 +41,15 @@ function nodeRadius(d) {
  * The closer the value is to 100, the more red it will use
  */
 function nodeColour(d) {
-  var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-  var ratio = 200 * d.warnings / d.loc;
-  return (ratio > 100) ? color(100) : color(ratio);
+	if(packagesLevel) {
+		var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
+  		var ratio = 200 * (getWarningTools(d)) / d.loc;
+  		return (ratio > 100) ? color(100) : color(ratio);
+	} else {
+		var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
+  		var ratio = 200 * d.warnings / d.loc;
+  		return (ratio > 100) ? color(100) : color(ratio);
+	}
 }
 /*
  * Returns what should happen on a double click
@@ -56,12 +62,14 @@ function nodeDoubleClick(d, i) {
 		runGraph(window[d.var]); 
   		//window.location.href = "graphClassesView.html";
 	} else {
-		window.location.href = d.path;
+		//TODO: Open right class with source code editor
+		window.open("http://9gag.com/","_self")
+		// window.location.href = d.path;
 	}
 }
 
 /*
- * set Title chart
+ * Set the title of the graph
  */
 function setTitle(){
 	var element = document.getElementById("main-title");
@@ -70,6 +78,23 @@ function setTitle(){
 	} else {
 	    element.innerHTML = "Graph view of package '" + sessionStorage.getItem('packageName') + "'";
 	}
+}
+
+/*
+ * Returns only the warnings of the selected tools
+ */
+function getWarningTools(d) {
+	var totalWarnings = 0;
+	if($.inArray("CheckStyle", acceptedTypes) > -1 ) {
+		totalWarnings += d.warnings.CheckStyle;
+	}
+	if($.inArray("PMD", acceptedTypes) > -1 ) {
+		totalWarnings += d.warnings.PMD;
+	}
+	if($.inArray("FindBugs", acceptedTypes) > -1 ) {
+		totalWarnings += d.warnings.FindBugs;
+	}
+	return totalWarnings;
 }
 
 /*
@@ -133,9 +158,20 @@ function runGraph(graph) {
 	  .attr("r", nodeRadius)
 	  .style("fill", nodeColour)
 	  .on('dblclick', nodeDoubleClick)
-	  .on("mouseover", function(d){tooltip.text(d.name + ": " + + d.classes + " classes || " + d.loc + " lines" + " || " + d.warnings + " warnings"); return tooltip.style("visibility", "visible");})
-	    .on("mousemove", function(d){return tooltip.style("top",(d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
-	    .on("mouseout", function(d){return tooltip.style("visibility", "hidden");})
+	  .on("mouseover", function(d) { 
+	  								var totalWarnings = getWarningTools(d);
+	  								tooltip.text(d.name + ": " + + d.classes + " classes || " + d.loc + " lines" + " || " + totalWarnings + " warnings");
+	  								return tooltip.style("visibility", "visible");
+	  							   }
+	  	)
+	  .on("mousemove", function(d) {
+	   								return tooltip.style("top",(d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+	   							   }
+	   	)
+	  .on("mouseout", function(d) {
+	    							return tooltip.style("visibility", "hidden");
+	    						  }
+	    )
 	  .call(force.drag);
 	} else {
 	  /*
@@ -150,8 +186,11 @@ function runGraph(graph) {
 	      .attr("r", nodeRadius)
 	      .style("fill", nodeColour)
 	      .on('dblclick', nodeDoubleClick)
-	      .on("mouseover", function(d){ tooltip.text(d.name + ": " + d.loc + " lines" + " || " + d.warnings + " warnings"); 
-	                                    return tooltip.style("visibility", "visible");})
+	      .on("mouseover", function(d) { 
+	      								tooltip.text(d.name + ": " + d.loc + " lines" + " || " + d.warnings + " warnings"); 
+	                                    return tooltip.style("visibility", "visible");
+	                                   }
+	        )
 		    .on("mousemove", function(d){return tooltip.style("top",(d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
 		    .on("mouseout", function(d){return tooltip.style("visibility", "hidden");})
 	      .call(force.drag);

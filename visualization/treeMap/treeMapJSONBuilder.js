@@ -201,7 +201,6 @@ var inputData2 = [
       "Warning.java": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
     }
   },
-  
    {
     "packageName": "BlueTurtle.errors",
     "amountOfWarnings": 5,
@@ -339,7 +338,7 @@ function replaceAll(stringObject, target, replacement){
 * Filter on type of tool and/or warnings
 *
 */
-function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
+function filterTypeRuleNameTreeMap(acceptedTypes, acceptedRuleNames){
 var packageArray = []
   for (p = 0; p < inputData2.length; p++) {
   	var package = inputData2[p];
