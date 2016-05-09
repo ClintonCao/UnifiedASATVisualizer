@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.3433583959899749" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlueTurtle.gui.GUIController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="500.0" prefWidth="261.0">
+               <children>
+                  <ImageView fitHeight="376.0" fitWidth="347.0" layoutX="-35.0" layoutY="62.0">
+                     <image>
+                        <Image url="@awesometurtle.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#2b24f2" layoutX="68.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BlueTurtle  ">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
+         <children>
+            <Text layoutX="18.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to BlueTurtle's software tool for visualizing the result of ASATs (Automated Static Analysis Tools). Select your project and click on &quot;Visualize&quot; to get the visualization. " wrappingWidth="483.01220703125">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ecf1f5" height="33.0" layoutX="134.0" layoutY="216.0" stroke="BLACK" strokeType="INSIDE" width="367.0" />
+            <Button fx:id="LoadButton" layoutX="18.0" layoutY="214.0" mnemonicParsing="false" onMouseClicked="#LoadButtonEvent" prefHeight="33.0" prefWidth="100.0" text="Load">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Text fx:id="projectPathText" layoutX="134.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select your project" textAlignment="CENTER" wrappingWidth="367.0" />
+            <Button fx:id="VisualizeButton" layoutX="134.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#VisualizeButtonEvent" prefHeight="38.0" prefWidth="261.0" text="Visualize">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>
