@@ -7,6 +7,12 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * This class the GUI component of the system.
+ * 
+ * @author BlueTurtle.
+ *
+ */
 public class GUI extends Application {
 
 	/**
@@ -18,6 +24,9 @@ public class GUI extends Application {
 
 	/**
 	 * Start the scene.
+	 * 
+	 * @param stage
+	 *            the stage.
 	 */
 	@Override
 	public void start(Stage stage) {
@@ -30,7 +39,7 @@ public class GUI extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu.fxml"));
 
 			SplitPane splitPane = (SplitPane) loader.load();
-			
+
 			Scene scene = new Scene(splitPane);
 
 			stage.setHeight(500);

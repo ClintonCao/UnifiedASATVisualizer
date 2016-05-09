@@ -4,14 +4,12 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import BlueTurtle.TSE.App;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
