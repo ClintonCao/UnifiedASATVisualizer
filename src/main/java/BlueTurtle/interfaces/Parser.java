@@ -16,11 +16,11 @@ public interface Parser {
 	/**
 	 * Parse the file.
 	 * 
-	 * @param xmlFilePath
+	 * @param filePath
 	 *            the location of the file.
 	 *            
 	 * @return a list containing warning objects.
 	 */
-	List<Warning> parseFile(String xmlFilePath);
+	List<Warning> parseFile(String filePath);
 
 }
