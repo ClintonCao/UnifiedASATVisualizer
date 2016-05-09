@@ -1,5 +1,6 @@
 package BlueTurtle.gui;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,6 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  * Controller class for the GUI.
@@ -24,14 +28,14 @@ public class GUIController {
 	@FXML // URL location of the FXML file that was given to the FXMLLoader
 	private URL location;
 
-	@FXML // fx:id="LoadButton"
-	private Button LoadButton; // Value injected by FXMLLoader
+	@FXML // fx:id="selectButton"
+	private Button selectButton; // Value injected by FXMLLoader
 
-	@FXML // fx:id="projectPathText"
-	private Text projectPathText; // Value injected by FXMLLoader
+	@FXML // fx:id="projectSourcePathText"
+	private Text projectSourcePathText; // Value injected by FXMLLoader
 
-	@FXML // fx:id="VisualizeButton"
-	private Button VisualizeButton; // Value injected by FXMLLoader
+	@FXML // fx:id="visualizeButton"
+	private Button visualizeButton; // Value injected by FXMLLoader
 
 	/**
 	 * Events for the LoadButton.
@@ -40,7 +44,7 @@ public class GUIController {
 	 *            the event.
 	 */
 	@FXML
-	void LoadButtonEvent(MouseEvent event) {
+	void selectButtonEvent(MouseEvent event) {
 
 	}
 
@@ -51,7 +55,7 @@ public class GUIController {
 	 *            the event.
 	 */
 	@FXML
-	void VisualizeButtonEvent(MouseEvent event) {
+	void visualizeButtonEvent(MouseEvent event) {
 
 	}
 
@@ -60,11 +64,11 @@ public class GUIController {
 	 */
 	@FXML
 	void initialize() {
-		assert LoadButton != null : "fx:id=\"LoadButton\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert projectPathText != null : "fx:id=\"projectPathText\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert VisualizeButton != null : "fx:id=\"VisualizeButton\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert selectButton != null : "fx:id=\"LoadButton\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert projectSourcePathText != null : "fx:id=\"projectPathText\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert visualizeButton != null : "fx:id=\"VisualizeButton\" was not injected: check your FXML file 'Menu.fxml'.";
 
-		LoadButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		selectButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			/**
 			 * Event handler for the button.
@@ -74,12 +78,19 @@ public class GUIController {
 			 */
 			@Override
 			public void handle(MouseEvent event) {
-				// projectPathText.setText("TestPoject");
-				System.out.println("Hello World");
+
+				DirectoryChooser directoryChooser = new DirectoryChooser();
+				File selectedDirectory = directoryChooser.showDialog(new Stage());
+
+				if (selectedDirectory == null) {
+					projectSourcePathText.setText("No Directory selected");
+				} else {
+					projectSourcePathText.setText(selectedDirectory.getAbsolutePath());
+				}
 			}
 		});
 
-		VisualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		visualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			/**
 			 * Event handler for the button.

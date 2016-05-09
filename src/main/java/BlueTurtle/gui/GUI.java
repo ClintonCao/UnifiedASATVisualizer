@@ -30,13 +30,11 @@ public class GUI extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu.fxml"));
 
 			SplitPane splitPane = (SplitPane) loader.load();
-
-			splitPane.lookupAll(".split-pane-divider").stream().forEach(div -> div.setDisable(true));
-
+			
 			Scene scene = new Scene(splitPane);
 
 			stage.setHeight(500);
-			stage.setWidth(800);
+			stage.setWidth(1000);
 			stage.setResizable(false);
 			stage.setScene(scene);
 
