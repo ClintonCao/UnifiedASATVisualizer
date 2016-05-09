@@ -35,10 +35,10 @@ public class ComponentSummarizerTest {
 	@Before
 	public void initialize() {
 		filePath = "./src/test/resources/ExampleClass.txt";
-		fileName = "./src/test/resourcesExampleClass.java";
+		fileName = "ExampleClass.java";
 		packageName = "SomePackage.subpackage";
 		w = new CheckStyleWarning(filePath, fileName, 3, "Test", "TestRule");
-		w2 = new CheckStyleWarning("/ExampleTestClass.txt", fileName, 3, "Test", "TestRule");
+		w2 = new CheckStyleWarning("./src/test/resources/ExampleTestClass.txt", fileName, 3, "Test", "TestRule");
 		warningList = new ArrayList<Warning>();
 		warningList2 = new ArrayList<Warning>();
 		warningList2.add(w2);
