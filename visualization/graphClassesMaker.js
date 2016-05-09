@@ -1,14 +1,14 @@
 /*
-* Defines the height and width of the graph
-*/
+ * Defines the height and width of the graph
+ */
 var width = window.innerWidth - 30,
     height = window.innerHeight - 50
 
 /*
-* Uses a range of 100 values between green and red
-* The closer the value is to 0, the more green it will use
-* The closer the value is to 100, the more red it will use
-*/
+ * Uses a range of 100 values between green and red
+ * The closer the value is to 0, the more green it will use
+ * The closer the value is to 100, the more red it will use
+ */
 var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
 
 var force = d3.layout.force()
@@ -21,31 +21,48 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 /*
-* Go back to the screen of where you came from
-*/
+ * Go back to the screen of where you came from
+ */
 function goBack() {
   window.history.back();
 }
+
 /*
-* Returns the length of a link
-*/
+ * Returns the length of a link
+ */
 function linkDistance(d) {
   return 10 * d.value;
 }
 /*
-* Returns the width of a stroke
-*/
+ * Returns the width of a stroke
+ */
 function strokeWidth(d) {
   return 2;
   //return Math.sqrt(d.value);
 }
 /*
-* Returns the radius of a node
-*/
+ * Returns the radius of a node
+ */
 function nodeRadius(d) {
   return Math.sqrt(d.loc) * 1.25;
 }
+/*
+ * Returns the colour of a node
+ */
+function nodeColour(d) {
+  var ratio = 200 * d.warnings / d.loc;
+  return (ratio > 100) ? color(100) : color(ratio);
+}
+/*
+ * Returns what should happen on a double click
+ */
+function nodeDoubleClick(d, i) {
+  window.location.href = d.path;
+}
 
+/*
+ * Main function for drawing the graph with its components
+ */
 function main(graph) {
 
   force
@@ -53,27 +70,37 @@ function main(graph) {
       .links(graph.links)
       .start();
 
+  /*
+   * Creates link elements with
+   * Specific length and stroke width based on the corresponding functions
+   */   
   var link = svg.selectAll(".link")
       .data(graph.links)
       .enter().append("line")
       .attr("class", "link")
       .style("stroke-width", strokeWidth);
 
+  /*
+   * Creates a tooltip that will be shown on hover over a node
+   */
   var tooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden");
 
+  /*
+   * Creates node elements with
+   * Specific radius, colours and double click actions based on the corresponding functions
+   * On hover over a node it will show statistics of the class (name, loc and warnings)
+   */
   var node = svg.selectAll(".node")
       .data(graph.nodes)
       .enter().append("circle")
       .attr("class", "node")
       .attr("r", nodeRadius)
-      .style("fill", function(d) {  var ratio = 200 * d.warnings / d.loc;
-                                    // if statement for when there are more warnings then lines
-                                    return (ratio > 100) ? color(100) : color(ratio);})
-      .on('dblclick', function(d, i) { window.location.href = d.url; })
+      .style("fill", nodeColour)
+      .on('dblclick', nodeDoubleClick)
       .on("mouseover", function(d){ tooltip.text(d.name + ": " + d.loc + " lines" + " || " + d.warnings + " warnings"); 
                                     return tooltip.style("visibility", "visible");})
 	    .on("mousemove", function(d){return tooltip.style("top",(d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})

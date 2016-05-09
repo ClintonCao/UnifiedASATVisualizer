@@ -1,16 +1,16 @@
 /*
-*
-* Dependencies of classes within different packages
-* These are Javascript variables with JSON in them
-* 
-* Array of nodes: Each node represents a class with some statistics in them
-* Array of links: Each link represents the dependency between two classes (numbers for source and target are indices of 'nodes')
-*
-*/
+ *
+ * Dependencies of classes within different packages
+ * These are Javascript variables with JSON in them
+ * 
+ * Array of nodes: Each node represents a class with some statistics in them
+ * Array of links: Each link represents the dependency between two classes (numbers for source and target are indices of 'nodes')
+ *
+ */
 var package1 = 
 {
   "nodes":[
-    {"name":"SpeedBoat","package":1, "loc":50, "warnings":20, "path":"path to SpeedBoat.java"},
+    {"name":"SpeedBoat","package":1, "loc":50, "warnings":20, "path":"index.html"},
     {"name":"Factory","package":1, "loc":80, "warnings":2, "path":"path to Factory.java"},
     {"name":"Water","package":1, "loc":20, "warnings":4, "path":"path to Water.java"},
     {"name":"Boat","package":1, "loc":25, "warnings":1, "path":"path to Boat.java"},
