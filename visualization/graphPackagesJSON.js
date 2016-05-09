@@ -1,14 +1,22 @@
+/*
+*
+* Dependencies of packages within a Java project
+* These are Javascript variables with JSON in them
+* 
+* Array of nodes: Each node represents a package with some statistics in them
+* Array of links: Each link represents the dependency between two packages (numbers for source and target are indices of 'nodes')
+*
+*/
 var graphJSON = {
   "nodes":[
-    {"num":0, "name":"package1", "classes":14, "loc":900, "warnings":200, "url":"graphClassesView.html", "json":"graphClassesJSON1.js"},
-    {"num":1, "name":"package2", "classes":8, "loc":655, "warnings":100, "url":"graphClassesView.html", "json":"graphClassesJSON2.js"},
-    {"num":2, "name":"package3", "classes":12, "loc":1200, "warnings":1300, "url":"graphClassesView.html", "json":"graphClassesJSON3.js"},
-    {"num":3, "name":"package4", "classes":6, "loc":500, "warnings":15, "url":"graphClassesView.html", "json":"graphClassesJSON4.js"},
+    {"num":0, "name":"package1", "classes":6, "loc":290, "warnings":37},
+    {"num":1, "name":"package2", "classes":2, "loc":65, "warnings":22},
+    {"num":2, "name":"package3", "classes":4, "loc":1895, "warnings":80},
+    {"num":3, "name":"package4", "classes":4, "loc":95, "warnings":27}
   ],
   "links":[
-    {"source":0, "target":1, "value":1},
+    {"source":0, "target":1, "value":3},
     {"source":0, "target":2, "value":8},
-    {"source":1, "target":2, "value":16},
-    {"source":2, "target":3, "value":6}
+    {"source":1, "target":3, "value":16}
   ]
 };

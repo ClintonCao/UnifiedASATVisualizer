@@ -1,21 +1,44 @@
+/*
+* Defines the height and width of the graph
+*/
 var width = window.innerWidth - 30,
     height = window.innerHeight - 100
 
-//var color = d3.scale.category20();
-
-// Uses a range of 100 values between green and red
-// The closer the value is to 0, the more green it will use
-// The closer the value is to 100, the more red it will use
+/*
+* Uses a range of 100 values between green and red
+* The closer the value is to 0, the more green it will use
+* The closer the value is to 100, the more red it will use
+*/
 var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
 
 var force = d3.layout.force()
     .charge(-120)
-    .linkDistance(125)
+    .linkDistance(linkDistance)
     .size([width, height]);
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
+
+/*
+* Returns the length of a link
+*/
+function linkDistance(d) {
+    return 10 * d.value;
+}
+/*
+* Returns the width of a stroke
+*/
+function strokeWidth(d) {
+    return 2;
+  //return Math.sqrt(d.value);
+}
+/*
+* Returns the radius of a node
+*/
+function nodeRadius(d) {
+  return Math.sqrt(d.classes) * 4;
+}
 
 function main(graph) {
   force
@@ -27,7 +50,7 @@ function main(graph) {
       .data(graph.links)
       .enter().append("line")
       .attr("class", "link")
-      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+      .style("stroke-width", strokeWidth);
 
   var tooltip = d3.select("body")
     .append("div")
@@ -39,11 +62,11 @@ function main(graph) {
       .data(graph.nodes)
       .enter().append("circle")
       .attr("class", "node")
-      .attr("r", function(d) { return Math.sqrt(d.classes) * 4; })
+      .attr("r", nodeRadius)
       .style("fill", function(d) {  var ratio = 200 * d.warnings / d.loc;
                                     // if statement for when there are more warnings then lines
                                     return (ratio > 100) ? color(100) : color(ratio);})
-      .on('dblclick', function(d, i) { sessionStorage.setItem('relevantPackageJSON', d.name); sessionStorage.setItem('packageNumber', (d.num + 1)); window.location.href = d.url; })
+      .on('dblclick', function(d, i) { sessionStorage.setItem('relevantPackageJSON', d.name); sessionStorage.setItem('packageNumber', (d.num + 1)); window.location.href = "graphClassesView.html"; })
       .on("mouseover", function(d){tooltip.text(d.name + ": " + + d.classes + " classes || " + d.loc + " lines" + " || " + d.warnings + " warnings"); return tooltip.style("visibility", "visible");})
 	    .on("mousemove", function(d){return tooltip.style("top",(d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
 	    .on("mouseout", function(d){return tooltip.style("visibility", "hidden");})
@@ -60,4 +83,5 @@ function main(graph) {
   });
 };
 
+// Calling the main function to show all packages in a graph
 main(graphJSON);
