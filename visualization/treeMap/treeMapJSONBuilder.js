@@ -260,7 +260,7 @@ var inputData2 = [
       },
 	  {
         "fileName": "Error2.java",
-        "amountOfWarnings": 5,
+        "amountOfWarnings": 6,
         "package_Name": "BlueTurtle.warnings",
         "warningTypes": [
           "CheckStyle"
@@ -307,7 +307,7 @@ var inputData2 = [
             "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
           },
           {
-            "line": 20,
+            "line": 25,
             "message": "Unused @param tag for filePath.",
             "ruleName": "JavadocMethod",
             "fileName": "Warning.java",

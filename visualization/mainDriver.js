@@ -30,25 +30,30 @@ function handleClickTypeSat(cb) {
 				acceptedTypes.push(cb.value)
 			} else{
 				var index = acceptedTypes.indexOf(cb.value);
-		  		console.log(index);
 				if (index > -1) {
 		    		acceptedTypes.splice(index, 1);
 				}
 			}
 			removeChart();
-			runGraph(graphJSON);
+			if(packagesLevel) {
+				runGraph(graphJSON);
+			} else {
+				console.log(window['packageVariable'])
+				runGraph(window[sessionStorage.getItem('packageVariable')]);
+			}
 		}
 	}
 }
 
 function handleClickVisualiser(radioButton){
-		if(radioButton.value=="graph"){
-			removeChart();
-			runGraph(graphJSON);
-		} else if (radioButton.value=="treemap"){
-			removeChart();
-			runTreeMap();
-		}
+	if(radioButton.value=="graph"){
+		removeChart();
+		packagesLevel = true;
+		runGraph(graphJSON);
+	} else if (radioButton.value=="treemap"){
+		removeChart();
+		runTreeMap();
+	}
 }
 
 function runTreeMap(){

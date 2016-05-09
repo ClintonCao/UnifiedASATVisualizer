@@ -8,9 +8,9 @@ var packagesLevel = true;
  */
 function linkDistance(d) {
 	if(packagesLevel) {
-		return 10 * d.value;
+		return 25 * d.value;
 	} else {
-		return 10 * d.value;
+		return 25 * d.value;
 	}
 }
 /*
@@ -47,7 +47,7 @@ function nodeColour(d) {
   		return (ratio > 100) ? color(100) : color(ratio);
 	} else {
 		var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-  		var ratio = 200 * d.warnings / d.loc;
+  		var ratio = 200 * (getWarningTools(d)) / d.loc;
   		return (ratio > 100) ? color(100) : color(ratio);
 	}
 }
@@ -56,7 +56,9 @@ function nodeColour(d) {
  */
 function nodeDoubleClick(d, i) {
 	if(packagesLevel) { 
+		console.log(d.package_Name);
   		sessionStorage.setItem('packageName', d.name);
+  		sessionStorage.setItem('packageVariable', d.var);
   		packagesLevel = false
   		removeChart();
 		runGraph(window[d.var]); 
@@ -76,23 +78,45 @@ function setTitle(){
 	if(packagesLevel) {
     	element.innerHTML = "Graph view of all packages";
 	} else {
+		console.log(sessionStorage.getItem('packageName'));
 	    element.innerHTML = "Graph view of package '" + sessionStorage.getItem('packageName') + "'";
+	    //element = document.getElementById('sub-title');
+	    //element.innerHTML = element.innerHTML + '<button class="back-button" id="back-button" onclick="goBack()">Go back to package view</button>';
 	}
 }
+
+/*
+ * Go one view back if possible
+ */
+function goBack() {
+    removeChart();
+	packagesLevel = true;
+	var element = document.getElementById("back-button");
+	element.parentNode.removeChild(element);
+	runGraph(graphJSON);
+ }
 
 /*
  * Returns only the warnings of the selected tools
  */
 function getWarningTools(d) {
 	var totalWarnings = 0;
-	if($.inArray("CheckStyle", acceptedTypes) > -1 ) {
-		totalWarnings += d.warnings.CheckStyle;
-	}
-	if($.inArray("PMD", acceptedTypes) > -1 ) {
-		totalWarnings += d.warnings.PMD;
-	}
-	if($.inArray("FindBugs", acceptedTypes) > -1 ) {
-		totalWarnings += d.warnings.FindBugs;
+	if(packagesLevel) {
+		if($.inArray("CheckStyle", acceptedTypes) > -1 ) {
+			totalWarnings += d.warnings.CheckStyle;
+		}
+		if($.inArray("PMD", acceptedTypes) > -1 ) {
+			totalWarnings += d.warnings.PMD;
+		}
+		if($.inArray("FindBugs", acceptedTypes) > -1 ) {
+			totalWarnings += d.warnings.FindBugs;
+		}
+	} else {
+		for(var i = 0; i < d.warningList.length; i++) {
+			if($.inArray(d.warningList[i].type, acceptedTypes) > -1 ) {
+				totalWarnings += 1;
+			}
+		}
 	}
 	return totalWarnings;
 }
@@ -187,7 +211,8 @@ function runGraph(graph) {
 	      .style("fill", nodeColour)
 	      .on('dblclick', nodeDoubleClick)
 	      .on("mouseover", function(d) { 
-	      								tooltip.text(d.name + ": " + d.loc + " lines" + " || " + d.warnings + " warnings"); 
+	      								var totalWarnings = getWarningTools(d)
+	      								tooltip.text(d.fileName + ": " + d.loc + " lines" + " || " + totalWarnings + " warnings"); 
 	                                    return tooltip.style("visibility", "visible");
 	                                   }
 	        )

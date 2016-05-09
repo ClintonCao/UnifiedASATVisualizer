@@ -11,14 +11,10 @@
  */
 var graphJSON = {
   "nodes":[
-    {"name":"Writers", "num":0, "var":"package1", "classes":6, "loc":290, "warnings": {"CheckStyle":10, "PMD":15, "FindBugs":120}},
-    {"name":"Drivers", "num":1,"var":"package2", "classes":2, "loc":65, "warnings": {"CheckStyle":8, "PMD":8, "FindBugs":69}},
-    {"name":"GUI", "num":2, "var":"package3", "classes":4, "loc":1895, "warnings": {"CheckStyle": 20, "PMD": 15, "FindBugs": 450}},
-    {"name":"Tests", "num":3, "var":"package4", "classes":4, "loc":95, "warnings": {"CheckStyle": 4, "PMD": 15, "FindBugs": 8}}
+    {"name":"BlueTurtle.warnings", "num":0, "var":"package1", "classes":7, "loc":290, "warnings": {"CheckStyle":15, "PMD":0, "FindBugs":0}},
+    {"name":"BlueTurtle.errors", "num":1,"var":"package2", "classes":2, "loc":65, "warnings": {"CheckStyle":11, "PMD":0, "FindBugs":0}}
   ],
   "links":[
-    {"source":0, "target":1, "value":3},
-    {"source":0, "target":2, "value":8},
-    {"source":1, "target":3, "value":16}
+    {"source":0, "target":1, "value":3}
   ]
 };

@@ -11,54 +11,206 @@ var package1 =
 {
   "nodes":[
     {
-      "name":"SpeedBoat",
-      "package":1, "loc":50, 
-      "warnings":20, 
-      "path":"index.html"
+      "fileName": "Warning.java",
+      "amountOfWarnings": 5,
+      "package_Name": "BlueTurtle.warnings",
+      "loc":50,
+      "warningTypes": [
+        "CheckStyle"
+      ],
+      "warningList": [
+        {
+          "line": 1,
+          "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+          "ruleName": "PackageName",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        },
+        {
+          "line": 13,
+          "message": "Variable category must be private and have accessor methods.",
+          "ruleName": "VisibilityModifier",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        },
+        {
+          "line": 14,
+          "message": "Variable filename must be private and have accessor methods.",
+          "ruleName": "VisibilityModifier",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        },
+        {
+          "line": 15,
+          "message": "Variable type must be private and have accessor methods.",
+          "ruleName": "VisibilityModifier",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        },
+        {
+          "line": 20,
+          "message": "Unused @param tag for filePath.",
+          "ruleName": "JavadocMethod",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        }
+      ]
     },
     {
-      "name":"Factory",
-      "package":1, 
-      "loc":80, 
-      "warnings":2, 
-      "path":"path to Factory.java"
+      "fileName": "Warning3.java",
+      "amountOfWarnings": 5,
+      "package_Name": "BlueTurtle.warnings",
+      "loc":50,
+      "warningTypes": [
+        "CheckStyle"
+      ],
+      "warningList": [
+        {
+          "line": 1,
+          "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+          "ruleName": "PackageName",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        }
+      ]
     },
     {
-      "name":"Water",
-      "package":1, 
-      "loc":20, 
-      "warnings":4, 
-      "path":"path to Water.java"
+      "fileName": "Warning7.java",
+      "amountOfWarnings": 5,
+      "package_Name": "BlueTurtle.warnings",
+      "loc":50,
+      "warningTypes": [
+        "CheckStyle"
+      ],
+      "warningList": [
+        {
+          "line": 1,
+          "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+          "ruleName": "PackageName",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        }
+      ]
     },
     {
-      "name":"Boat",
-      "package":1, 
-      "loc":25, 
-      "warnings":1, 
-      "path":"path to Boat.java"
+      "fileName": "Warning4.java",
+      "amountOfWarnings": 5,
+      "package_Name": "BlueTurtle.warnings",
+      "loc":50,
+      "warningTypes": [
+        "CheckStyle"
+      ],
+      "warningList": [
+        {
+          "line": 1,
+          "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+          "ruleName": "PackageName",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        }
+      ]
     },
     {
-      "name":"Speed",
-      "package":1, 
-      "loc":110, 
-      "warnings":0, 
-      "path":"path to Speed.java"
+      "fileName": "Warning5.java",
+      "amountOfWarnings": 5,
+      "package_Name": "BlueTurtle.warnings",
+      "loc":50,
+      "warningTypes": [
+        "CheckStyle"
+      ],
+      "warningList": [
+        {
+          "line": 1,
+          "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+          "ruleName": "PackageName",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        }
+      ]
     },
     {
-      "name":"Random",
-      "package":1, 
-      "loc":25, 
-      "warnings":10, 
-      "path":"path to Random.java"
+      "fileName": "Warning6.java",
+      "amountOfWarnings": 5,
+      "package_Name": "BlueTurtle.warnings",
+      "loc":50,
+      "warningTypes": [
+        "CheckStyle"
+      ],
+      "warningList": [
+        {
+          "line": 1,
+          "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+          "ruleName": "PackageName",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        }
+      ]
+    },
+    {
+      "fileName": "Warning2.java",
+      "amountOfWarnings": 5,
+      "package_Name": "BlueTurtle.warnings",
+      "loc":50,
+      "warningTypes": [
+        "CheckStyle"
+      ],
+      "warningList": [
+        {
+          "line": 1,
+          "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+          "ruleName": "PackageName",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        },
+        {
+          "line": 13,
+          "message": "Variable category must be private and have accessor methods.",
+          "ruleName": "VisibilityModifier",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        },
+        {
+          "line": 14,
+          "message": "Variable filename must be private and have accessor methods.",
+          "ruleName": "VisibilityModifier",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        },
+        {
+          "line": 15,
+          "message": "Variable type must be private and have accessor methods.",
+          "ruleName": "VisibilityModifier",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        },
+        {
+          "line": 20,
+          "message": "Unused @param tag for filePath.",
+          "ruleName": "JavadocMethod",
+          "fileName": "Warning.java",
+          "type": "CheckStyle",
+          "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+        }
+      ]
     }
   ],
   "links":[
     {"source":1,"target":0,"value":1},
-    {"source":2,"target":0,"value":8},
-    {"source":3,"target":0,"value":16},
-    {"source":3,"target":2,"value":6},
-    {"source":4,"target":5,"value":6},
-    {"source":5,"target":1,"value":10}
+    {"source":2,"target":0,"value":8}
   ]
 };
 
@@ -66,99 +218,117 @@ var package2 =
 {
   "nodes":[
     {
-      "name":"KFC",
-      "package":2, 
-      "loc":50, 
-      "warnings":20, 
-      "path":"path to KFC.java"
+        "fileName": "Error1.java",
+        "amountOfWarnings": 5,
+        "package_Name": "BlueTurtle.warnings",
+        "loc":50,
+        "warningTypes": [
+          "CheckStyle"
+        ],
+        "warningList": [
+          {
+            "line": 1,
+            "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "ruleName": "PackageName",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          },
+          {
+            "line": 13,
+            "message": "Variable category must be private and have accessor methods.",
+            "ruleName": "VisibilityModifier",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          },
+          {
+            "line": 14,
+            "message": "Variable filename must be private and have accessor methods.",
+            "ruleName": "VisibilityModifier",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          },
+          {
+            "line": 15,
+            "message": "Variable type must be private and have accessor methods.",
+            "ruleName": "VisibilityModifier",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          },
+          {
+            "line": 20,
+            "message": "Unused @param tag for filePath.",
+            "ruleName": "JavadocMethod",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          }
+        ]
     },
     {
-      "name":"Chicken",
-      "package":2, 
-      "loc":15, 
-      "warnings":2, 
-      "path":"path to Chicken.java"
-    }
+        "fileName": "Error2.java",
+        "amountOfWarnings": 6,
+        "package_Name": "BlueTurtle.warnings",
+        "loc":50,
+        "warningTypes": [
+          "CheckStyle"
+        ],
+        "warningList": [
+          {
+            "line": 1,
+            "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "ruleName": "PackageName",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          },
+          {
+            "line": 13,
+            "message": "Variable category must be private and have accessor methods.",
+            "ruleName": "VisibilityModifier",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          },
+          {
+            "line": 14,
+            "message": "Variable filename must be private and have accessor methods.",
+            "ruleName": "VisibilityModifier",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          },
+          {
+            "line": 15,
+            "message": "Variable type must be private and have accessor methods.",
+            "ruleName": "VisibilityModifier",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          },
+          {
+            "line": 20,
+            "message": "Unused @param tag for filePath.",
+            "ruleName": "JavadocMethod",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          },
+          {
+            "line": 25,
+            "message": "Unused @param tag for filePath.",
+            "ruleName": "JavadocMethod",
+            "fileName": "Warning.java",
+            "type": "CheckStyle",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+          }
+        ]
+  }
   ],
   "links":[
     {"source":1,"target":0,"value":21}
-  ]
-};
-
-var package3 = 
-{
-  "nodes":[
-    {
-      "name":"KFC",
-      "package":3, 
-      "loc":505, 
-      "warnings":20, 
-      "path":"path to KFC.java"
-    },
-    {
-      "name":"Chicken",
-      "package":3, 
-      "loc":800, 
-      "warnings":25, 
-      "path":"path to Chicken.java"
-    },
-    {
-      "name":"Restaurant",
-      "package":3, 
-      "loc":500, 
-      "warnings":20, 
-      "path":"path to Restaurant.java"
-    },
-    {
-      "name":"Animal",
-      "package":3, 
-      "loc":90, 
-      "warnings":15, 
-      "path":"path to Animal.java"
-    }
-  ],
-  "links":[
-    {"source":0,"target":2,"value":15},
-    {"source":0,"target":1,"value":10},
-    {"source":1,"target":3,"value":15}
-  ]
-};
-
-var package4 = 
-{
-  "nodes":[
-    {
-      "name":"SpeedBoat",
-      "package":4, 
-      "loc":50, 
-      "warnings":20, 
-      "path":"path to SpeedBoat.java"
-    },
-    {
-      "name":"Factory",
-      "package":4, 
-      "loc":8, 
-      "warnings":2, 
-      "path":"path to Factory.java"
-    },
-    {
-      "name":"Water",
-      "package":4, 
-      "loc":12, 
-      "warnings":4, 
-      "path":"path to Water.java"
-    },
-    {
-      "name":"Boat",
-      "package":4, 
-      "loc":25, 
-      "warnings":1, 
-      "path":"path to Boat.java"
-    }
-  ],
-  "links":[
-    {"source":1,"target":0,"value":1},
-    {"source":2,"target":0,"value":8},
-    {"source":3,"target":0,"value":6}
   ]
 };
