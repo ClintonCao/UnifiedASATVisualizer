@@ -6,7 +6,6 @@ import BlueTurtle.settings.PMDSettings;
 
 public class PMDCommandBuilder extends CommandBuilder {
 	private ArrayList<String> commands = new ArrayList<String>();
-	private PMDSettings pmdSettings;
 	
 	public PMDCommandBuilder(PMDSettings pmdSettings) {
 		this.setSettings(pmdSettings);
@@ -23,13 +22,5 @@ public class PMDCommandBuilder extends CommandBuilder {
 		String[] retCommands = commands.toArray(new String[commands.size()]);
 		return retCommands;
 	}
-	
-	@Override
-	public PMDSettings getSettings() {
-		return pmdSettings;
-	}
 
-	public void setSettings(PMDSettings pmdSettings) {
-		this.pmdSettings = pmdSettings;
-	}
 }

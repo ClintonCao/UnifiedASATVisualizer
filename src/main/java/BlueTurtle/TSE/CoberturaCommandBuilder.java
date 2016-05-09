@@ -7,10 +7,9 @@ import BlueTurtle.settings.CoberturaSettings;
 
 public class CoberturaCommandBuilder extends CommandBuilder {
 	private ArrayList<String> commands = new ArrayList<String>();
-	private CoberturaSettings coberturaSettings;
 	
 	public CoberturaCommandBuilder(CoberturaSettings coberturaSettings) {
-		this.coberturaSettings = coberturaSettings;
+		this.setSettings(coberturaSettings);
 	}
 	
 	@Override
@@ -25,13 +24,4 @@ public class CoberturaCommandBuilder extends CommandBuilder {
 		return retCommands;
 	}
 	
-	@Override
-	public Settings getSettings() {
-		return coberturaSettings;
-	}
-	
-	public void setSettings(CoberturaSettings coberturaSettings) {
-		this.coberturaSettings = coberturaSettings;
-	}
-
 }
