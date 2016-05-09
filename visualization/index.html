@@ -3,6 +3,7 @@
 
 <head>
 <link rel="stylesheet" type="text/css" href="treeMapStyle.css">
+<link rel="stylesheet" type="text/css" href="graphStyle.css">
     <meta charset="utf-8">
     <title>Zoomable treemap template</title>
 </head>
@@ -18,6 +19,9 @@
 <label><input type="checkbox" onclick="handleClickTypeSat(this);" name="sat" value="CheckStyle"> CheckStyle</label><br>
 <label><input type="checkbox" onclick="handleClickTypeSat(this);" name="sat" value="PMD"> PMD</label><br>
 <label><input type="checkbox" onclick="handleClickTypeSat(this);" name="sat" value="FindBugs"> FindBugs</label><br>
+<h3>Visualizer </h3>
+<input type="radio" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap"> Treemap<br>
+  <input type="radio" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>
 </form>
     </div>
 </div>
@@ -25,6 +29,10 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="json.js"></script>
     <script src="treeMap.js"></script>
+	<script src="graphPackagesJSON.js"></script>
+	<script src="graphPackagesMaker.js"></script>
+	<script src="graphClassesJSON.js"></script>
+	<script src="graphClassesMaker.js"></script>
     <script src="handleHtmlForm.js"></script>
     
     

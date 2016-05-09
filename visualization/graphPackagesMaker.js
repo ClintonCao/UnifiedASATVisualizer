@@ -1,25 +1,6 @@
-/*
- * Defines the height and width of the graph
- */
-var width = window.innerWidth - 30,
-    height = window.innerHeight - 100
 
-/*
- * Uses a range of 100 values between green and red
- * The closer the value is to 0, the more green it will use
- * The closer the value is to 100, the more red it will use
- */
-var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-
-var force = d3.layout.force()
-    .charge(-120)
-    .linkDistance(linkDistance)
-    .size([width, height]);
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-
+	
+	
 /*
  * Returns the length of a link
  */
@@ -44,6 +25,12 @@ function nodeRadius(d) {
  * Returns the colour of a node
  */
 function nodeColour(d) {
+	/*
+	 * Uses a range of 100 values between green and red
+	 * The closer the value is to 0, the more green it will use
+	 * The closer the value is to 100, the more red it will use
+	 */
+  var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
   var ratio = 200 * d.warnings / d.loc;
   return (ratio > 100) ? color(100) : color(ratio);
 }
@@ -57,14 +44,38 @@ function nodeDoubleClick(d, i) {
 }
 
 /*
+ * set Title chart
+ */
+function setTitle(){
+	//d3.select("body").append("svg")
+}
+
+/*
  * Main function for drawing the graph with its components
  */
-function main(graph) {
+function runGraph(graph) {
+	/*
+	 * Defines the height and width of the graph
+	 */
+	var width = window.innerWidth - 30,
+		height = window.innerHeight - 100
+	
+	
+	var force = d3.layout.force()
+		.charge(-120)
+		.linkDistance(linkDistance)
+		.size([width, height]);
+	
+	var svg = d3.select("#chart").append("svg")
+		.attr("width", width)
+		.attr("height", height);
+	
+
 	force
 	  .nodes(graph.nodes)
 	  .links(graph.links)
 	  .start();
-
+	
 	 /*
 	  * Creates link elements with
 	  * Specific length and stroke width based on the corresponding functions
@@ -78,7 +89,7 @@ function main(graph) {
 	/*
 	 * Creates a tooltip that will be shown on hover over a node
 	 */
-	var tooltip = d3.select("body")
+	var tooltip = d3.select("#chart")
 	.append("div")
 	.style("position", "absolute")
 	.style("z-index", "10")
@@ -111,6 +122,3 @@ function main(graph) {
 	    .attr("cy", function(d) { return d.y; });
 	});
 };
-
-// Calling the main function to show all packages in a graph
-main(graphJSON);

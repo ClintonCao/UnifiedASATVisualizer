@@ -63,7 +63,7 @@ function nodeDoubleClick(d, i) {
 /*
  * Main function for drawing the graph with its components
  */
-function main(graph) {
+function runGraphClasses(graph) {
 
   force
       .nodes(graph.nodes)

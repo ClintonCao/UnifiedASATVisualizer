@@ -1,12 +1,7 @@
 var acceptedTypes =[];
 var acceptedRuleNames =["PackageName","JavadocMethod"];
 //run first time
-main({
-    title: "Amount of warnings"
-	}, {
-    fileName: "Test Project",
-    values: loadJson()
-	});	
+runTreeMap();
 	
 	
 // on click checkbox
@@ -25,18 +20,30 @@ function handleClickTypeSat(cb) {
     		acceptedTypes.splice(index, 1);
 		}
 	}
-  	console.log(acceptedTypes);
+	runTreeMap();
+	
+  }
+}
+
+function handleClickVisualiser(radioButton){
+		if(radioButton.value=="graph"){
+  			console.log("graph");
+			removeChart();
+			runGraph(graphJSON);
+		}else if (radioButton.value=="treemap"){
+			removeChart();
+			runTreeMap();
+		}
+}
+
+function runTreeMap(){
+	
+	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+	var inputData = createJson(packages);	
 	main({
     title: "Amount of warnings"
 	}, {
     fileName: "Test Project",
-    values: loadJson()
+    values: inputData
 	});	
-  }
-}
-
-function loadJson(){
-	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-	var inputData = createJson(packages);	
-	return inputData
 }
