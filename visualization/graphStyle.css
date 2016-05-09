@@ -1,0 +1,27 @@
+.main-title {
+	font-weight: bold;
+    font-size: 26px;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+.wrapper {
+    text-align: center;
+}
+.back-button {
+	width: 15%; 
+	background-color: #777; 
+	color:white;
+}
+
+/*
+* Styling elements in the graph
+*/
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+.link {
+  stroke: #000;
+  stroke-opacity: .25;
+}
