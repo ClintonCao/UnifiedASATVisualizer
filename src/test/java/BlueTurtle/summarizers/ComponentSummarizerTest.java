@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import BlueTurtle.warnings.CheckStyleWarning;
+import BlueTurtle.warnings.FindBugsWarning;
+import BlueTurtle.warnings.PMDWarning;
 import BlueTurtle.warnings.Warning;
 
 /**
@@ -156,12 +158,36 @@ public class ComponentSummarizerTest {
 	}
 
 	/**
-	 * Test equal with differnt object.
+	 * Test equal with different object.
 	 */
 	@Test
 	public void testEqualsFalseWithDiffernetObject() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		assertNotEquals(cs, Integer.valueOf(1));
+	}
+	
+	/**
+	 * Test that the number of PMD warnings is not zero after summarise has been
+	 * called.
+	 */
+	@Test
+	public void testNumPMDWarningsIsNotZeroAfterSummarise() {
+		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
+		warningList.add(new PMDWarning(filePath, fileName, 3, packageName, "test", "test2", "test3"));
+		cs.summarise(warningList);
+		assertSame(1, cs.numberOfPMDWarnings);
+	}
+	
+	/**
+	 * Test that the number of FindBugs warnings is not zero after summarise has been
+	 * called.
+	 */
+	@Test
+	public void testNumFindBugsWarningsIsNotZeroAfterSummarise() {
+		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
+		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3"));
+		cs.summarise(warningList);
+		assertSame(1, cs.numberOfFindBugsWarnings);
 	}
 
 }

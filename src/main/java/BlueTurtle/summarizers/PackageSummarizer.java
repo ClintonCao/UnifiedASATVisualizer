@@ -16,6 +16,7 @@ import BlueTurtle.warnings.Warning;
 public class PackageSummarizer extends Summarizer {
 
 	private List<ComponentSummarizer> classes;
+	private int numberOfClasses;
 
 	/**
 	 * Contructor.
@@ -26,13 +27,14 @@ public class PackageSummarizer extends Summarizer {
 	public PackageSummarizer(String packageName) {
 		super(packageName);
 		setClasses(new ArrayList<ComponentSummarizer>());
+		setNumberOfClasses(0);
 	}
 
 	/**
 	 * Summarise the warnings for this package.
 	 * 
 	 * @param warnings
-	 *            list of warnings
+	 *            list of warnings.
 	 */
 	@Override
 	public void summarise(List<Warning> warnings) {
@@ -44,6 +46,10 @@ public class PackageSummarizer extends Summarizer {
 			classes.add(cs);
 			warningTypes.addAll(cs.getWarningTypes());
 			numberOfWarnings += cs.getNumberOfWarnings();
+			numberOfCheckStyleWarnings += cs.getNumberOfCheckStyleWarnings();
+			numberOfPMDWarnings += cs.getNumberOfPMDWarnings();
+			numberOfFindBugsWarnings += cs.getNumberOfFindBugsWarnings();
+			numberOfClasses++;
 		}
 	}
 
@@ -118,5 +124,23 @@ public class PackageSummarizer extends Summarizer {
 		this.classes = cs;
 	}
 
+	/**
+	 * Get the number of classes.
+	 * 
+	 * @return the number of classes.
+	 */
+	public int getNumberOfClasses() {
+		return numberOfClasses;
+	}
+
+	/**
+	 * Set the number of classes.
+	 * 
+	 * @param numberOfClasses
+	 *            the number of classes.
+	 */
+	public void setNumberOfClasses(int numberOfClasses) {
+		this.numberOfClasses = numberOfClasses;
+	}
 
 }
