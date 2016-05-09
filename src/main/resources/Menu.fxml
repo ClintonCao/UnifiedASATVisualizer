@@ -15,7 +15,7 @@
                <children>
                   <ImageView fitHeight="376.0" fitWidth="347.0" layoutX="-35.0" layoutY="62.0">
                      <image>
-                        <Image url="@awesometurtle.png" />
+                        <Image url="@blueturtlelogo.png" />
                      </image>
                   </ImageView>
                   <Text fill="#2b24f2" layoutX="68.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BlueTurtle  ">
