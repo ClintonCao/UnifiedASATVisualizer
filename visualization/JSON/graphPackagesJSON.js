@@ -5,14 +5,15 @@
  * 
  * Array of nodes: Each node represents a package with some statistics in them
  * Array of links: Each link represents the dependency between two packages (numbers for source and target are indices of 'nodes')
+ * Var stands for the corresponding variable names defined in graphClassesJSON.js
  *
  */
 var graphJSON = {
   "nodes":[
-    {"name":"package1", "classes":6, "loc":290, "warnings":37, "num":0},
-    {"name":"package2", "classes":2, "loc":65, "warnings":22, "num":1},
-    {"name":"package3", "classes":4, "loc":1895, "warnings":80, "num":2},
-    {"name":"package4", "classes":4, "loc":95, "warnings":27, "num":3}
+    {"name":"Writers", "var":"package1", "classes":6, "loc":290, "warnings":37, "num":0},
+    {"name":"Drivers", "var":"package2", "classes":2, "loc":65, "warnings":22, "num":1},
+    {"name":"GUI", "var":"package3", "classes":4, "loc":1895, "warnings":80, "num":2},
+    {"name":"Tests", "var":"package4", "classes":4, "loc":95, "warnings":27, "num":3}
   ],
   "links":[
     {"source":0, "target":1, "value":3},

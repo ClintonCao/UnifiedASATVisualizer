@@ -16,8 +16,8 @@ var defaults = {
     rootname: "TOP",
     format: ",d",
     title: "",
-    width: window.innerWidth - 250,
-    height: window.innerHeight - 30
+    width: window.innerWidth - 225,
+    height: window.innerHeight - 175
 };
 function removeChart(){
 	var chartNode = document.getElementById("chart");
@@ -39,7 +39,7 @@ function main(o, data) {
     // size of the chart 
     $('#chart').width(opts.width).height(opts.height);
     var width = opts.width - margin.left - margin.right,
-        height = opts.height - margin.top - margin.bottom - theight,
+        height = opts.height - margin.top - margin.bottom,
         transitioning;
 
     // Uses a range of 100 values between green and red

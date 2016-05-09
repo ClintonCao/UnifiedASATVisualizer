@@ -1,0 +1,93 @@
+/* Option menu*/
+#optionsMenu{
+  float:right;
+  display:block;
+  background-color:#7a92ff;
+  height:400px;
+  width:150px;
+  margin:100px 10px 0 10px;
+  padding: 10px;
+}
+/* Title */
+.main-title {
+  font-weight: bold;
+  font-size: 26px;
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+body {
+    background-color: #E0E0E0;
+}
+.wrapper {
+    text-align: center;
+}
+.back-button {
+  width: 15%; 
+  background-color: #777; 
+  color:white;
+}
+
+/* Chart div*/
+#chart {
+  float:left;
+  background: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-style: ridge;
+}
+.title {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+text {
+  pointer-events: none;
+}
+.grandparent text {
+  font-weight: bold;
+}
+rect {
+  fill: none;
+  stroke: #fff;
+}
+rect.parent,
+.grandparent rect {
+  stroke-width: 2px;
+}
+rect.parent {
+  pointer-events: none;
+}
+.grandparent rect {
+  fill: #7a92ff;
+}
+.grandparent:hover rect {
+  fill: #b3c1fe;
+}
+.children rect.parent,
+.grandparent rect {
+  cursor: pointer;
+}
+.children rect.parent {
+  fill: #bbb;
+  fill-opacity: .5;
+}
+.children:hover rect.child {
+  fill: #bbb;
+}
+
+/*
+ * Styling elements in the graph
+ */
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+.link {
+  stroke: #000;
+  stroke-opacity: .25;
+}

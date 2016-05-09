@@ -1,8 +1,8 @@
 var acceptedTypes =[];
 var acceptedRuleNames =["PackageName","JavadocMethod"];
-//run first time
+
+// Run first time
 runTreeMap();
-	
 	
 // on click checkbox
 // sat type list changed and chart updated	
@@ -21,27 +21,36 @@ function handleClickTypeSat(cb) {
 		}
 	}
 	runTreeMap();
-	
   }
 }
 
 function handleClickVisualiser(radioButton){
 		if(radioButton.value=="graph"){
-  			console.log("graph");
 			removeChart();
 			runGraph(graphJSON);
-		}else if (radioButton.value=="treemap"){
+			document.getElementById("checkstyleButton").disabled = true; 
+			document.getElementById("pmdButton").disabled = true; 
+			document.getElementById("findBugsButton").disabled = true;
+			document.getElementById("checkstyleButton").checked = false;
+			document.getElementById("pmdButton").checked = false;
+			document.getElementById("findBugsButton").checked = false;
+		} else if (radioButton.value=="treemap"){
 			removeChart();
 			runTreeMap();
+			document.getElementById("checkstyleButton").disabled = false; 
+			document.getElementById("pmdButton").disabled = false; 
+			document.getElementById("findBugsButton").disabled = false; 
 		}
 }
 
 function runTreeMap(){
-	
+	var element = document.getElementById("main-title");
+    element.innerHTML = "Amount of warnings";
+
 	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 	var inputData = createJson(packages);	
 	main({
-    title: "Amount of warnings"
+    title: ""
 	}, {
     fileName: "Test Project",
     values: inputData
