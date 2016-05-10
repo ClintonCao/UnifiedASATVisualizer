@@ -57,18 +57,45 @@ function nodeColour(d) {
  */
 function nodeDoubleClick(d, i) {
 	if(packagesLevel) { 
-		console.log(d.name);
   		sessionStorage.setItem('packageName', d.fileName);
   		packagesLevel = false
   		removeChart();
+
+  		graphTraceIndex++;
+
   		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 		var inputData = createJsonGraphClasses(packages, d.fileName);
-		console.log(inputData);
-		runGraph(inputData);
+
+		if(graphTrace.indexOf(graphTraceIndex) == -1) {
+			console.log("TESTING");
+			graphTrace.push(inputData);
+		} else if(graphTrace.indexOf(graphTraceIndex) == 0) {
+			graphTrace[graphTraceIndex] = inputData;
+		}
+
+		var graphButton = document.getElementById('back-button');
+		graphButton.firstChild.data = "Go one level back";
+		graphButton.disabled = false;
+
+		createGraph(graphTrace[graphTraceIndex]);
 	} else {
-		//TODO: Open right class with source code editor
+		// For later: click multiple levels deep and keep track of where you are
+		/*
+		graphTraceIndex++;
+
+		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+		var inputData = createJsonGraphClasses(packages, d.fileName);
+
+		if(graphTrace.indexOf(graphTraceIndex) == -1) {
+			graphTrace.push(inputData);
+		} else if(graphTrace.indexOf(graphTraceIndex) == 0) {
+			graphTrace[graphTraceIndex] = inputData;
+		}
+
+		runGraph(graphTrace[graphTraceIndex]);
+		*/
+
 		window.open("http://9gag.com/","_self")
-		// window.location.href = d.path;
 	}
 }
 
@@ -82,7 +109,7 @@ function setTitle(){
 	} else {
 	    element.innerHTML = "Graph view of package '" + sessionStorage.getItem('packageName') + "'";
 	    //element = document.getElementById('sub-title');
-	    //element.innerHTML = element.innerHTML + '<button class="back-button" id="back-button" onclick="goBack()">Go back to package view</button>';
+	    //element.innerHTML = element.innerHTML + '';
 	}
 }
 
@@ -92,9 +119,13 @@ function setTitle(){
 function goBack() {
     removeChart();
 	packagesLevel = true;
-	var element = document.getElementById("back-button");
-	element.parentNode.removeChild(element);
-	runGraph(graphJSON);
+	var graphButtonDiv = document.getElementById("sub-title");
+	graphButtonDiv.style.display = 'inline';
+	var graphButton = document.getElementById('back-button');
+	graphButton.firstChild.data = "This is the upperview";
+	graphButton.disabled = true;
+	graphTraceIndex--;
+	createGraph(graphTrace[graphTraceIndex])
  }
 
 /*
@@ -108,7 +139,7 @@ function createGraph(graph) {
 	 * Defines the height and width of the graph
 	 */
 	var width = window.innerWidth - 225,
-		height = window.innerHeight - 175
+		height = window.innerHeight - 200
 	
 	
 	var force = d3.layout.force()

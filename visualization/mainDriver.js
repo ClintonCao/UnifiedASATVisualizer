@@ -44,12 +44,25 @@ function handleClickTypeSat(cb) {
 			if(packagesLevel) {
 				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 				var inputData = createJsonGraphPackages(packages);
-				runGraph(inputData);
+
+				if(graphTrace.indexOf(graphTraceIndex) == -1) {
+					graphTrace.push(inputData);
+				} else if(graphTrace.indexOf(graphTraceIndex) == 0) {
+					graphTrace[graphTraceIndex] = inputData;
+				}
+
+				createGraph(graphTrace[graphTraceIndex]);
 			} else {
 				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-				console.log()
 				var inputData = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
-				runGraph(inputData);
+
+				if(graphTrace.indexOf(graphTraceIndex) == -1) {
+					graphTrace.push(inputData);
+				} else if(graphTrace.indexOf(graphTraceIndex) == 0) {
+					graphTrace[graphTraceIndex] = inputData;
+				}
+
+				createGraph(graphTrace[graphTraceIndex]);
 			}
 		}
 	}
@@ -71,8 +84,10 @@ function handleClickVisualiser(radioButton){
  */
 function runTreeMap(){
 	removeChart();
-	var element = document.getElementById("main-title");
-    element.innerHTML = "Amount of warnings";
+	var title = document.getElementById("main-title");
+	title.innerHTML = "Amount of warnings";
+	var graphButtonDiv = document.getElementById("sub-title");
+	graphButtonDiv.style.display = 'none';
 
 	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 	var inputData = createJsonTreeMap(packages);	
@@ -91,9 +106,21 @@ function runGraph(){
 	removeChart();
 	packagesLevel = true;
 	graphTraceIndex = 0;
+	var graphButtonDiv = document.getElementById("sub-title");
+	graphButtonDiv.style.display = 'inline';
+	var graphButton = document.getElementById('back-button');
+	graphButton.firstChild.data = "This is the upperview";
+	graphButton.disabled = true;
 
 	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 	var inputData = createJsonGraphPackages(packages);
+
+	if(graphTrace.indexOf(graphTraceIndex) == -1) {
+		graphTrace.push(inputData);
+	} else if(graphTrace.indexOf(graphTraceIndex) == 0) {
+		graphTrace[graphTraceIndex] = inputData;
+	}
+
 	console.log(inputData);
 	createGraph(inputData);
 }
