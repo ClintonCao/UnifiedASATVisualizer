@@ -189,5 +189,17 @@ public class ComponentSummarizerTest {
 		cs.summarise(warningList);
 		assertSame(1, cs.numberOfFindBugsWarnings);
 	}
+	
+	/**
+	 * Test that a IllegalArgumentException is thrown for incrementNumWarnings.
+	 * called.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testIllegalArgumentExceptionIncrementNumWarnings() {
+		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
+		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3"));
+		cs.summarise(warningList);
+		cs.incrementNumberOfWarnings("Not a right type of ASAT");
+	}
 
 }

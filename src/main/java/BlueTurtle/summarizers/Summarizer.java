@@ -58,7 +58,7 @@ public abstract class Summarizer {
 			numberOfWarnings++;
 			break;
 		default:
-			numberOfWarnings += 0; // nothing should be added.
+			throw new IllegalArgumentException("This is not a right type of warning");
 		}
 	}
 
