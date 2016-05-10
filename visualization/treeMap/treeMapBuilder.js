@@ -27,7 +27,6 @@ function removeChart(){
 }
 // the main loop
 function main(o, data) {
-	removeChart();
     // Setting up some values about number format(rounding) and marigns
     var root,
         opts = $.extend(true, {}, defaults, o),
@@ -186,6 +185,43 @@ function main(o, data) {
             .classed("children", true)
             .on("click", transition);
 		}
+		//console.log(g);
+		$(".updateContent").off("click");
+		$(".updateContent").click(function(){
+			console.log(d);
+			var array = root.values;
+			console.log(root);
+			if(root.fileName==d.fileName){	
+				console.log("root equal");		
+				reloadContent(root)
+			}else{
+				for (var i =0; i < array.length ; i++){
+					if(array[i].fileName==d.fileName){					
+						console.log("true");
+						reloadContent(array[i])
+					}
+				}
+			}
+			
+		} );
+		function reloadContent(newNode){
+					root.values = getFilteredJSON();
+			
+					initialize(root);
+					accumulateValue(root);
+					accumulateWarnings(root);
+					layout(root);
+					display(root);
+					g.filter(function(newNode) {
+						return d._children;
+					});
+					transition(newNode);
+				   // transition(d);	
+		}
+		//function (){console.log("updateContent")}
+				//root.values = getFilteredJSON()
+				//display(d)
+		//}
 		
 		// on click child to go to source code
 		if ( d.depth == maxDepth ){

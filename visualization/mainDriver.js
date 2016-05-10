@@ -15,12 +15,11 @@ function handleClickTypeSat(cb) {
 				acceptedTypes.push(cb.value)
 			} else{
 				var index = acceptedTypes.indexOf(cb.value);
-		  		console.log(index);
 				if (index > -1) {
 		    		acceptedTypes.splice(index, 1);
 				}
 			}
-			runTreeMap();
+			//runTreeMap();
 		}
 	} else if (document.getElementById('graphButton').checked) {
 		if(cb.name == "sat"){
@@ -38,7 +37,6 @@ function handleClickTypeSat(cb) {
 			if(packagesLevel) {
 				runGraph(graphJSON);
 			} else {
-				console.log(window['packageVariable'])
 				runGraph(window[sessionStorage.getItem('packageVariable')]);
 			}
 		}
@@ -56,16 +54,20 @@ function handleClickVisualiser(radioButton){
 	}
 }
 
+function getFilteredJSON(){
+	var packages = filterTypeRuleNameTreeMap(acceptedTypes, acceptedRuleNames);
+	return createJson(packages);	
+}
+
 function runTreeMap(){
 	var element = document.getElementById("main-title");
     element.innerHTML = "Amount of warnings";
-
-	var packages = filterTypeRuleNameTreeMap(acceptedTypes, acceptedRuleNames);
-	var inputData = createJson(packages);	
+		
 	main({
     title: ""
 	}, {
     fileName: "Test Project",
-    values: inputData
+    values: getFilteredJSON()
 	});	
 }
+
