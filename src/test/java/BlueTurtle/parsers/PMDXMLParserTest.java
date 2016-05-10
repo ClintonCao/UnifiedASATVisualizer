@@ -19,8 +19,8 @@ import BlueTurtle.warnings.Warning;
  */
 public class PMDXMLParserTest {
 
-	private static String testSet = "./resources/examplePmd1.xml";
-	private static String testSet2 = "./resources/examplePmd2.xml";
+	private static String testSet = "./src/test/resources/examplePmd1.xml";
+	private static String testSet2 = "./src/test/resources/examplePmd2.xml";
 	private static String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\CheckStyleWarning.java";
 	private static String testSet2FileName = "CheckStyleWarning.java";
 	private static String testSet2RuleName = "OverrideBothEqualsAndHashcode";
@@ -75,7 +75,7 @@ public class PMDXMLParserTest {
 	public void testParseTheWrongFile() {
 		XMLParser parser = new PMDXMLParser();
 		
-		String testSet3 = "./resources/ex.xml";
+		String testSet3 = "/ex.xml";
 
 		List<Warning> warnings = parser.parseFile(testSet3);
 		
