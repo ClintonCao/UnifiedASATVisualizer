@@ -15,7 +15,7 @@ import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
-import BlueTurtle.writers.JsonWriter;
+import BlueTurtle.writers.JSWriter;
 
 /**
  * This class is the main driver of the whole system.
@@ -35,8 +35,7 @@ public class App {
 	 *             throws an exception if there was a problem reading a file.
 	 */
 	public static void main(String[] args) throws IOException {
-
-		// jsonTest();
+		jsonTest();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Which ASAT do you wish to run? (CheckStyle, PMD, FindBugs)");
 		String asat = sc.next();
@@ -107,8 +106,8 @@ public class App {
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, checkStyleWarnings);
 		List<Summarizer> list = wg.groupBy("packages");
 
-		JsonWriter jwriter = new JsonWriter(list);
-		jwriter.writeToJsonFormat("./src/main/resources/SummarizedOuput.json");
+		JSWriter jwriter = new JSWriter(list);
+		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.json");
 		System.out.println("Done");
 	}
 }
