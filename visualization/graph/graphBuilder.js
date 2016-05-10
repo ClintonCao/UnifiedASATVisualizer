@@ -31,7 +31,6 @@ function nodeRadius(d) {
 	if(packagesLevel) {
 		return Math.sqrt(d.numberOfClasses) * 4;
 	} else {
-		console.log("Second");
 		return Math.sqrt(d.loc) * 1.25;
 	}
 }
@@ -64,13 +63,12 @@ function nodeDoubleClick(d, i) {
   		graphTraceIndex++;
 
   		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-		var inputData = createJsonGraphClasses(packages, d.fileName);
+		var input = createJsonGraphClasses(packages, d.fileName);
 
-		if(graphTrace.indexOf(graphTraceIndex) == -1) {
-			console.log("TESTING");
-			graphTrace.push(inputData);
-		} else if(graphTrace.indexOf(graphTraceIndex) == 0) {
-			graphTrace[graphTraceIndex] = inputData;
+		if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+			graphTrace.push(input);
+		} else {
+			graphTrace[graphTraceIndex] = input;
 		}
 
 		var graphButton = document.getElementById('back-button');
@@ -84,12 +82,12 @@ function nodeDoubleClick(d, i) {
 		graphTraceIndex++;
 
 		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-		var inputData = createJsonGraphClasses(packages, d.fileName);
+		var input = createJsonGraphClasses(packages, d.fileName);
 
-		if(graphTrace.indexOf(graphTraceIndex) == -1) {
-			graphTrace.push(inputData);
-		} else if(graphTrace.indexOf(graphTraceIndex) == 0) {
-			graphTrace[graphTraceIndex] = inputData;
+		if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+			graphTrace.push(input);
+		} else {
+			graphTrace[graphTraceIndex] = input;
 		}
 
 		runGraph(graphTrace[graphTraceIndex]);
@@ -125,7 +123,14 @@ function goBack() {
 	graphButton.firstChild.data = "This is the upperview";
 	graphButton.disabled = true;
 	graphTraceIndex--;
-	createGraph(graphTrace[graphTraceIndex])
+	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+	var input = createJsonGraphPackages(packages);
+	if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+		graphTrace.push(input);
+	} else {
+		graphTrace[graphTraceIndex] = input;
+	}
+	createGraph(graphTrace[graphTraceIndex]);
  }
 
 /*
@@ -139,7 +144,7 @@ function createGraph(graph) {
 	 * Defines the height and width of the graph
 	 */
 	var width = window.innerWidth - 225,
-		height = window.innerHeight - 200
+		height = window.innerHeight - 175
 	
 	
 	var force = d3.layout.force()

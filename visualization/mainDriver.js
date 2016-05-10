@@ -21,7 +21,6 @@ function handleClickTypeSat(cb) {
 				acceptedTypes.push(cb.value)
 			} else{
 				var index = acceptedTypes.indexOf(cb.value);
-		  		console.log(index);
 				if (index > -1) {
 		    		acceptedTypes.splice(index, 1);
 				}
@@ -43,25 +42,23 @@ function handleClickTypeSat(cb) {
 			removeChart();
 			if(packagesLevel) {
 				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-				var inputData = createJsonGraphPackages(packages);
+				var input = createJsonGraphPackages(packages);
 
-				if(graphTrace.indexOf(graphTraceIndex) == -1) {
-					graphTrace.push(inputData);
-				} else if(graphTrace.indexOf(graphTraceIndex) == 0) {
-					graphTrace[graphTraceIndex] = inputData;
+				if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+					graphTrace.push(input);
+				} else {
+					graphTrace[graphTraceIndex] = input;
 				}
-
 				createGraph(graphTrace[graphTraceIndex]);
 			} else {
 				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-				var inputData = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+				var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
 
-				if(graphTrace.indexOf(graphTraceIndex) == -1) {
-					graphTrace.push(inputData);
-				} else if(graphTrace.indexOf(graphTraceIndex) == 0) {
-					graphTrace[graphTraceIndex] = inputData;
+				if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+					graphTrace.push(input);
+				} else {
+					graphTrace[graphTraceIndex] = input;
 				}
-
 				createGraph(graphTrace[graphTraceIndex]);
 			}
 		}
@@ -85,18 +82,18 @@ function handleClickVisualiser(radioButton){
 function runTreeMap(){
 	removeChart();
 	var title = document.getElementById("main-title");
-	title.innerHTML = "Amount of warnings";
+	title.innerHTML = "Treemap view of project";
 	var graphButtonDiv = document.getElementById("sub-title");
 	graphButtonDiv.style.display = 'none';
 
 	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-	var inputData = createJsonTreeMap(packages);	
+	var input = createJsonTreeMap(packages);	
 	createTreeMap({
     title: ""
 	}, {
     fileName: "Test Project",
-    values: inputData
-	});	
+    values: input
+	});
 }
 
 /*
@@ -113,14 +110,12 @@ function runGraph(){
 	graphButton.disabled = true;
 
 	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-	var inputData = createJsonGraphPackages(packages);
+	var input = createJsonGraphPackages(packages);
 
-	if(graphTrace.indexOf(graphTraceIndex) == -1) {
-		graphTrace.push(inputData);
-	} else if(graphTrace.indexOf(graphTraceIndex) == 0) {
-		graphTrace[graphTraceIndex] = inputData;
+	if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+		graphTrace.push(input);
+	} else {
+		graphTrace[graphTraceIndex] = input;
 	}
-
-	console.log(inputData);
-	createGraph(inputData);
+	createGraph(graphTrace[graphTraceIndex]);
 }
