@@ -25,8 +25,8 @@ function removeChart(){
 		chartNode.removeChild(chartNode.firstChild);
 	}
 }
-// the main loop
-function main(o, data) {
+function createTreeMap(o, data) {
+	removeChart();
     // Setting up some values about number format(rounding) and marigns
     var root,
         opts = $.extend(true, {}, defaults, o),
@@ -180,6 +180,7 @@ function main(o, data) {
 		//on click square to go more in depth
 		if ( d.depth < maxDepth ){
         g.filter(function(d) {
+				console.log(d);
                 return d._children;
             })
             .classed("children", true)
@@ -187,26 +188,27 @@ function main(o, data) {
 		}
 		//console.log(g);
 		$(".updateContent").off("click");
-		$(".updateContent").click(function(){
-			console.log(d);
-			var array = root.values;
-			console.log(root);
-			if(root.fileName==d.fileName){	
-				console.log("root equal");		
-				reloadContent(root)
-			}else{
-				for (var i =0; i < array.length ; i++){
-					if(array[i].fileName==d.fileName){					
-						console.log("true");
-						reloadContent(array[i])
+		$(".updateContent").click(function(view){
+			handleClickTreeMapTypeSat(view.toElement.value)
+			console.log(findNode(d,root))
+			reloadContent(findNode(d,root))
+			
+		} );
+		function findNode(d,root){			
+			if (root.fileName != null && root.values != null) {
+				if(root.fileName == d.fileName){
+					return(root);
+				}else{
+					var array = root.values;
+					for (var i =0; i < array.length; i++){
+						return findNode(d,array[i]);						
 					}
 				}
 			}
-			
-		} );
+		}
+	
 		function reloadContent(newNode){
 					root.values = getFilteredJSON();
-			
 					initialize(root);
 					accumulateValue(root);
 					accumulateWarnings(root);

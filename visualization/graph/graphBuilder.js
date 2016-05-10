@@ -10,7 +10,7 @@ function linkDistance(d) {
 	if(packagesLevel) {
 		return 25 * d.value;
 	} else {
-		return 25 * d.value;
+		return 10 * d.value;
 	}
 }
 /*
@@ -29,8 +29,9 @@ function linkStrokeWidth(d) {
  */
 function nodeRadius(d) {
 	if(packagesLevel) {
-		return Math.sqrt(d.classes) * 4;
+		return Math.sqrt(d.numberOfClasses) * 4;
 	} else {
+		console.log("Second");
 		return Math.sqrt(d.loc) * 1.25;
 	}
 }
@@ -43,11 +44,11 @@ function nodeRadius(d) {
 function nodeColour(d) {
 	if(packagesLevel) {
 		var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-  		var ratio = 200 * (getWarningTools(d)) / d.loc;
+  		var ratio = 200 * (d.totalWarnings) / d.loc;
   		return (ratio > 100) ? color(100) : color(ratio);
 	} else {
 		var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-  		var ratio = 200 * (getWarningTools(d)) / d.loc;
+  		var ratio = 200 * (d.warnings) / d.loc;
   		return (ratio > 100) ? color(100) : color(ratio);
 	}
 }
@@ -56,13 +57,14 @@ function nodeColour(d) {
  */
 function nodeDoubleClick(d, i) {
 	if(packagesLevel) { 
-		console.log(d.package_Name);
-  		sessionStorage.setItem('packageName', d.name);
-  		sessionStorage.setItem('packageVariable', d.var);
+		console.log(d.name);
+  		sessionStorage.setItem('packageName', d.fileName);
   		packagesLevel = false
   		removeChart();
-		runGraph(window[d.var]); 
-  		//window.location.href = "graphClassesView.html";
+  		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+		var inputData = createJsonGraphClasses(packages, d.fileName);
+		console.log(inputData);
+		runGraph(inputData);
 	} else {
 		//TODO: Open right class with source code editor
 		window.open("http://9gag.com/","_self")
@@ -78,7 +80,6 @@ function setTitle(){
 	if(packagesLevel) {
     	element.innerHTML = "Graph view of all packages";
 	} else {
-		console.log(sessionStorage.getItem('packageName'));
 	    element.innerHTML = "Graph view of package '" + sessionStorage.getItem('packageName') + "'";
 	    //element = document.getElementById('sub-title');
 	    //element.innerHTML = element.innerHTML + '<button class="back-button" id="back-button" onclick="goBack()">Go back to package view</button>';
@@ -97,34 +98,9 @@ function goBack() {
  }
 
 /*
- * Returns only the warnings of the selected tools
- */
-function getWarningTools(d) {
-	var totalWarnings = 0;
-	if(packagesLevel) {
-		if($.inArray("CheckStyle", acceptedTypes) > -1 ) {
-			totalWarnings += d.warnings.CheckStyle;
-		}
-		if($.inArray("PMD", acceptedTypes) > -1 ) {
-			totalWarnings += d.warnings.PMD;
-		}
-		if($.inArray("FindBugs", acceptedTypes) > -1 ) {
-			totalWarnings += d.warnings.FindBugs;
-		}
-	} else {
-		for(var i = 0; i < d.warningList.length; i++) {
-			if($.inArray(d.warningList[i].type, acceptedTypes) > -1 ) {
-				totalWarnings += 1;
-			}
-		}
-	}
-	return totalWarnings;
-}
-
-/*
  * Main function for drawing the graph with its components
  */
-function runGraph(graph) {
+function createGraph(graph) {
 
 	setTitle();
 
@@ -183,8 +159,7 @@ function runGraph(graph) {
 	  .style("fill", nodeColour)
 	  .on('dblclick', nodeDoubleClick)
 	  .on("mouseover", function(d) { 
-	  								var totalWarnings = getWarningTools(d);
-	  								tooltip.text(d.name + ": " + + d.classes + " classes || " + d.loc + " lines" + " || " + totalWarnings + " warnings");
+	  								tooltip.text(d.fileName + ": " + + d.numberOfClasses + " classes || " + d.loc + " lines" + " || " + d.totalWarnings + " warnings");
 	  								return tooltip.style("visibility", "visible");
 	  							   }
 	  	)
@@ -211,8 +186,7 @@ function runGraph(graph) {
 	      .style("fill", nodeColour)
 	      .on('dblclick', nodeDoubleClick)
 	      .on("mouseover", function(d) { 
-	      								var totalWarnings = getWarningTools(d)
-	      								tooltip.text(d.fileName + ": " + d.loc + " lines" + " || " + totalWarnings + " warnings"); 
+	      								tooltip.text(d.fileName + ": " + d.loc + " lines" + " || " + d.warnings + " warnings"); 
 	                                    return tooltip.style("visibility", "visible");
 	                                   }
 	        )
