@@ -39,8 +39,8 @@ public class PackageSummarizerTest {
 	 */
 	@Before
 	public void initialize() {
-		filePath = "./resources/ExampleClass.txt";
-		filePath2 = "./resources/ExampleTestClass.txt";
+		filePath = "./src/test/resources/ExampleClass.txt";
+		filePath2 = "./src/test/resources/ExampleTestClass.txt";
 		packageName = "SomePackage.subpackage";
 		w = new CheckStyleWarning(filePath, "ExampleClass.java", 3, "Test", "TestRule");
 		w2 = new CheckStyleWarning(filePath2, "ExampleTestClass.java", 3, "Test", "TestRule");
@@ -68,6 +68,26 @@ public class PackageSummarizerTest {
 		PackageSummarizer ps = new PackageSummarizer(packageName);
 		ps.summarise(warningList);
 		assertNotSame(0, ps.numberOfWarnings);
+	}
+	
+	/**
+	 * Test that the number of CheckStyle warnings is not zero after summarise.
+	 */
+	@Test
+	public void testCheckStyleWarningsIsNotZero() {
+		PackageSummarizer ps = new PackageSummarizer(packageName);
+		ps.summarise(warningList);
+		assertNotSame(0, ps.numberOfCheckStyleWarnings);
+	}
+	
+	/**
+	 * Test that the number of classes is not zero after summarise.
+	 */
+	@Test
+	public void testNumClassesIsNotZero() {
+		PackageSummarizer ps = new PackageSummarizer(packageName);
+		ps.summarise(warningList);
+		assertSame(1, ps.getNumberOfClasses());
 	}
 
 	/**
