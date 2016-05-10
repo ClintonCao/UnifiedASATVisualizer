@@ -3,13 +3,10 @@ package BlueTurtle.parsers;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
-import BlueTurtle.warnings.Warning;
 
 /**
  * Test class for GDCParser.
@@ -36,6 +33,18 @@ public class GDCParserTest {
 	}
 
 	/**
+	 * Test that the parser created the right number of categories.
+	 */
+	@Test
+	public void testCreateRightNumberOfCategories() {
+		GDCParser parser = new GDCParser();
+
+		HashMap<String, List<String>> categoryInfo = parser.parseFile(testSet);
+
+		assertSame(1, categoryInfo.size());
+	}
+	
+	/**
 	 * Test that the parser created the right amount of warnings.
 	 */
 	@Test
@@ -44,8 +53,8 @@ public class GDCParserTest {
 
 		HashMap<String, List<String>> categoryInfo = parser.parseFile(testSet);
 
-		assertSame(1, categoryInfo.size());
-	}
+		assertSame(2, categoryInfo.get("Naming Conventions").size());
+	}	
 
 //	/**
 //	 * Test that the parser parse the wrong file.
