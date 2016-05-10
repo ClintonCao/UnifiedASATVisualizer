@@ -2,28 +2,32 @@ package BlueTurtle.commandbuilders;
 
 import java.util.ArrayList;
 
-import BlueTurtle.TSE.CommandBuilder;
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.settings.CoberturaSettings;
 
 /**
- * @author Michiel
+ * Class to build commands for Cobertura.
+ * 
+ * @author BlueTurtle.
  */
 public class CoberturaCommandBuilder extends CommandBuilder {
-	
+
 	/**
 	 * Constructor.
+	 * 
 	 * @param coberturaSettings
+	 *            the settings for cobetura.
 	 */
 	public CoberturaCommandBuilder(CoberturaSettings coberturaSettings) {
 		commands = new ArrayList<String>();
 		this.setSettings(coberturaSettings);
 	}
-	
+
 	/**
-	 * {@inheritDoc}
-	 * Cobertura is run as a .bat file. Output is to Runnables/Testcode/cobertura for now.
-	 * @return
+	 * {@inheritDoc} Cobertura is run as a .bat file. Output is to
+	 * Runnables/Testcode/cobertura for now.
+	 * 
+	 * @return return a string array that represents the command.
 	 */
 	@Override
 	public String[] buildCommand() {
@@ -36,5 +40,5 @@ public class CoberturaCommandBuilder extends CommandBuilder {
 		String[] retCommands = commands.toArray(new String[commands.size()]);
 		return retCommands;
 	}
-	
+
 }

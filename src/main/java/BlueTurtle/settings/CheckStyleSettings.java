@@ -19,11 +19,23 @@ import org.xml.sax.SAXException;
 
 import BlueTurtle.interfaces.Settings;
 
+/**
+ * Class that represents the settings for CheckStyle.
+ * 
+ * @author BlueTurtle.
+ *
+ */
 public class CheckStyleSettings implements Settings {
 	private File sourceFile;
 	private String configFile;
 	private String defaultOutputFilePath = "./Runnables/Testcode/checkstyle.xml";
-	
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param sourceFile
+	 *            the file of the setting.
+	 */
 	public CheckStyleSettings(File sourceFile) {
 		setSourceFile(sourceFile);
 		try {
@@ -31,7 +43,7 @@ public class CheckStyleSettings implements Settings {
 		} catch (IOException | SAXException | ParserConfigurationException e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			writeSettings();
 		} catch (ParserConfigurationException | TransformerException e) {
@@ -39,29 +51,53 @@ public class CheckStyleSettings implements Settings {
 		}
 	}
 
+	/**
+	 * Read the setting from the source file.
+	 * 
+	 * @throws FileNotFoundException
+	 *             throws an exception if the file cannot be found.
+	 * @throws IOException
+	 *             throws an exception if there is a problem encountered while
+	 *             parsing the file.
+	 * @throws SAXException
+	 *             builder throws an exception if problem is encountered.
+	 * @throws ParserConfigurationException
+	 *             throws an exception if a problem is encountered for the parse
+	 *             configuration.
+	 */
 	private void readSettings() throws FileNotFoundException, IOException, SAXException, ParserConfigurationException {
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(sourceFile);
-        doc.getDocumentElement().normalize();
-    
-        setConfigFile(doc.getElementsByTagName("config").item(0).getTextContent());
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(sourceFile);
+		doc.getDocumentElement().normalize();
+
+		setConfigFile(doc.getElementsByTagName("config").item(0).getTextContent());
 	}
 
+	/**
+	 * Write the settings so a file.
+	 * 
+	 * @throws ParserConfigurationException
+	 *             throws an exception if a problem is encountered for the parse
+	 *             configuration.
+	 * @throws TransformerException
+	 *             throws an exception if the transformer has encountered a
+	 *             problem.
+	 */
 	private void writeSettings() throws ParserConfigurationException, TransformerException {
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-	
+
 		Document doc = docBuilder.newDocument();
 		Element rootElement = doc.createElement("config");
 		rootElement.appendChild(doc.createTextNode(configFile));
 		doc.appendChild(rootElement);
-		
+
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(doc);
 		StreamResult result = new StreamResult(sourceFile);
-		
+
 		transformer.transform(source, result);
 	}
 
