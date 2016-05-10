@@ -9,10 +9,11 @@ package BlueTurtle.warnings;
 @SuppressWarnings("checkstyle:visibilitymodifier")
 public abstract class Warning {
 
-	protected String ruleName;
+	protected String classification;
 	protected String fileName;
 	protected String type;
 	protected String filePath;
+	protected String ruleName;
 
 	/**
 	 * Constructor.
@@ -23,14 +24,14 @@ public abstract class Warning {
 	 *            the name of the file where the warning is located.
 	 * @param type
 	 *            the type of the warning e.g. PMD.
-	 * @param ruleName
-	 *            the violated rule name of the warning.
+	 * @param Classification
+	 *            of the violated rule of the warning.
 	 */
-	public Warning(String filePath, String filename, String type, String ruleName) {
+	public Warning(String filePath, String filename, String type, String classification) {
 		setFileName(filename);
 		setFilePath(filePath);
 		setType(type);
-		setRuleName(ruleName); // Need the GDC to set the category.
+		setClassification(classification); 
 	}
 	
 	/**
@@ -46,24 +47,43 @@ public abstract class Warning {
 	/***********************************/
 
 	/**
-	 * Get the violated rule name.
+	 * Get the classification of the violated rule.
 	 * 
-	 * @return the name of the violated rule.
+	 * @return the classification of the violated rule.
+	 */
+	public String getClassification() {
+		return classification;
+	}
+
+	/**
+	 * Set the classification of the violated rule.
+	 * 
+	 * @param classification
+	 *            the of the violated rule.
+	 */
+	public void setClassification(String Classification) {
+		this.classification = Classification;
+	}
+
+	/**
+	 * Get the rule name of the violated rule.
+	 * 
+	 * @return the rule name of the violated rule.
 	 */
 	public String getRuleName() {
 		return ruleName;
 	}
 
 	/**
-	 * Set the name of the violated rule.
+	 * Set the rule name of the violated rule.
 	 * 
 	 * @param ruleName
 	 *            the of the violated rule.
 	 */
-	public void setRuleName(String ruleName) {
+	public void setRuleName(String ruleNae) {
 		this.ruleName = ruleName;
-	}
-
+	}	
+	
 	/**
 	 * Get the file name where the warning is from.
 	 * 

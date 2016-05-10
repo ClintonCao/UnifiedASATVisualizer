@@ -23,7 +23,7 @@ import org.jsoup.select.Elements;
  */
 public class GDCParser extends MarkdownParser {
 	
-	private HashMap<String, List<String>> categoryInfo;
+	private HashMap<String, String> categoryInfo;
 	
 
 	/**
@@ -34,9 +34,9 @@ public class GDCParser extends MarkdownParser {
 	 * @return a Hashmap of category informations.
 	 */
 	@Override
-	public HashMap<String, List<String>> parseFile(String mdFilePath) {
+	public HashMap<String, String> parseFile(String mdFilePath) {
 		// the hashmap to store the category informations.
-		categoryInfo = new HashMap<String, List<String>>();
+		categoryInfo = new HashMap<String, String>();
 		
 		try{
 			// Instantiate things that are necessary for the parser.
@@ -55,21 +55,9 @@ public class GDCParser extends MarkdownParser {
 				String warning = cols.get(0).text();
 				// second column is the category of warning.
 				String category = cols.get(1).text();
-				// initialize an empty warningList.
-				List<String> warningList = new ArrayList<String>();
 
-				// if the categoryInfo already has that category.
-				if(categoryInfo.containsKey(category)){
-				 // get the the current warningList
-				 warningList = categoryInfo.get(category);
-				 // add the new warning
-				 warningList.add(warning);
-				 // if the categoryInfo does not contain the current category
-				}else {
-					warningList.add(warning);
-				}
 				// update the warningList of the category.
-				categoryInfo.put(category, warningList);
+				categoryInfo.put(warning, category);
 			}
 						
 		} catch (Exception e) {

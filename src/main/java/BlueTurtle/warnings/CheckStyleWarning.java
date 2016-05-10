@@ -48,7 +48,7 @@ public class CheckStyleWarning extends Warning {
 
 		CheckStyleWarning that = (CheckStyleWarning) other;
 		if (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
-				&& message.equals(that.message) && ruleName.equals(that.ruleName) && type.equals(that.type)) {
+				&& message.equals(that.message) && classification.equals(that.classification) && type.equals(that.type)) {
 			return true;
 		} else {
 			return false;

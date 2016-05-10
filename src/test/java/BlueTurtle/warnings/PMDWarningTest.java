@@ -69,7 +69,7 @@ public class PMDWarningTest {
 	@Test
 	public void testEqualsFalseWithDifferentRules() {
 		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName);
-		expected.setRuleName("OverrideBothEqualsAndHashcode");
+		expected.setClassification("OverrideBothEqualsAndHashcode");
 		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName);
 		assertNotEquals(expected, actual);
 	}

@@ -27,21 +27,9 @@ public class GDCParserTest {
 	public void testParseCorrectBehaviour() {
 		GDCParser parser = new GDCParser();
 
-		HashMap<String, List<String>> categoryInfo = parser.parseFile(testSet);
+		HashMap<String, String> categoryInfo = parser.parseFile(testSet);
 
-		assertTrue(categoryInfo.containsKey("Naming Conventions"));
-	}
-
-	/**
-	 * Test that the parser created the right number of categories.
-	 */
-	@Test
-	public void testCreateRightNumberOfCategories() {
-		GDCParser parser = new GDCParser();
-
-		HashMap<String, List<String>> categoryInfo = parser.parseFile(testSet);
-
-		assertSame(1, categoryInfo.size());
+		assertTrue(categoryInfo.containsValue("Naming Conventions"));
 	}
 	
 	/**
@@ -51,9 +39,9 @@ public class GDCParserTest {
 	public void testCreateRightAmountOfWarnings() {
 		GDCParser parser = new GDCParser();
 
-		HashMap<String, List<String>> categoryInfo = parser.parseFile(testSet);
+		HashMap<String, String> categoryInfo = parser.parseFile(testSet);
 
-		assertSame(2, categoryInfo.get("Naming Conventions").size());
+		assertSame(2, categoryInfo.size());
 	}	
 
 //	/**

@@ -84,6 +84,10 @@ public class CheckStyleXMLParser extends XMLParser {
 
 							// Get the category of the warning.
 							String ruleName = getRuleName(warningElement.getAttribute("source"));
+							
+//							categpry = catgeoryinfo.get(ruleName)
+							
+							
 
 							// Add warning to the list of warnings.
 							checkStyleWarnings.add(new CheckStyleWarning(filePath, fileName, line, message, ruleName));

@@ -69,7 +69,7 @@ public class FindBugsWarningTest {
 	@Test
 	public void testEqualsFalseWithDifferentRules() {
 		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
-		expected.setRuleName("UUF_UNUSED_FIELD");
+		expected.setClassification("UUF_UNUSED_FIELD");
 		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
 		assertNotEquals(expected, actual);
 	}
@@ -162,7 +162,7 @@ public class FindBugsWarningTest {
 	public void testChangeOfRuleName() {
 		String expected = "DM_DEFAULT_ENCODING";
 		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
-		String actual = fb.getRuleName();
+		String actual = fb.getClassification();
 		fb.setMessage(expected);
 		assertNotEquals(expected, actual);
 	}		

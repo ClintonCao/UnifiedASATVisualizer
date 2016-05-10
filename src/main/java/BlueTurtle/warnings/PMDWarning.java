@@ -55,7 +55,7 @@ public class PMDWarning extends Warning {
 
 		PMDWarning that = (PMDWarning) other;
 		if (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
-				&& ruleName.equals(that.ruleName) && packageName.equals(that.packageName) && type.equals(that.type) 
+				&& classification.equals(that.classification) && packageName.equals(that.packageName) && type.equals(that.type) 
 				&& ruleSet.equals(that.ruleSet) && method.equals(that.method)) {
 			return true;
 		} else {

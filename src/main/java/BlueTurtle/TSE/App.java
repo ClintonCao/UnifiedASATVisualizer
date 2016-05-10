@@ -48,7 +48,7 @@ public class App {
 			System.out.println("amount of CheckStyle Warnings:" + " " + checkStyleWarnings.size());
 
 			for (Warning w : checkStyleWarnings) {
-				System.out.println("Violated Rule Name: " + w.getRuleName());
+				System.out.println("Classification of the violated Rule: " + w.getClassification());
 			}
 			break;
 		case "PMD":
@@ -58,7 +58,7 @@ public class App {
 			System.out.println("amount of PMD Warnings:" + " " + pmdWarnings.size());
 
 			for (Warning w : pmdWarnings) {
-				System.out.println("Violated Rule Name: " + w.getRuleName());
+				System.out.println("Classification of the violated Rule: " + w.getClassification());
 			}
 			break;
 		case "FindBugs":
@@ -68,7 +68,7 @@ public class App {
 			System.out.println("amount of FindBugs Warnings:" + " " + findBugsWarnings.size());
 
 			for (Warning w : findBugsWarnings) {
-				System.out.println("Violated Rule Name: " + w.getRuleName());
+				System.out.println("Classification of the violated Rule: " + w.getClassification());
 				System.out.println("file path: " + w.getFilePath());
 			}
 			break;
@@ -93,7 +93,7 @@ public class App {
 		System.out.println("amount of CheckStyle Warnings:" + " " + checkStyleWarnings.size());
 
 		for (Warning w : checkStyleWarnings) {
-			System.out.println("Violated Rule Name: " + w.getRuleName());
+			System.out.println("Classification of the violated Rule: " + w.getClassification());
 		}
 
 		HashMap<String, String> componentsInfo = new HashMap<String, String>();

@@ -79,7 +79,7 @@ public class ChecktStyleWarningTest {
 	@Test
 	public void testEqualsFalseWithDifferentRule() {
 		CheckStyleWarning expected = new CheckStyleWarning("\\Another\\Awesome.java", fileName, 1, message, ruleName);
-		expected.setRuleName("This is not a rule");
+		expected.setClassification("This is not a rule");
 		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, message, ruleName);
 		assertNotEquals(expected, actual);
 	}
