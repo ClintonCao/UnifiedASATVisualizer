@@ -35,6 +35,7 @@ public class App {
 	 *             throws an exception if there was a problem reading a file.
 	 */
 	public static void main(String[] args) throws IOException {
+
 		// jsonTest();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Which ASAT do you wish to run? (CheckStyle, PMD, FindBugs)");
@@ -42,7 +43,7 @@ public class App {
 		switch (asat) {
 		case "CheckStyle":
 			XMLParser parser1 = new CheckStyleXMLParser();
-			List<Warning> checkStyleWarnings = parser1.parseFile("./resources/exampleCheckstyle1.xml");
+			List<Warning> checkStyleWarnings = parser1.parseFile("./src/main/resources/exampleCheckstyle1.xml");
 
 			System.out.println("amount of CheckStyle Warnings:" + " " + checkStyleWarnings.size());
 
@@ -52,7 +53,7 @@ public class App {
 			break;
 		case "PMD":
 			XMLParser parser2 = new PMDXMLParser();
-			List<Warning> pmdWarnings = parser2.parseFile("./resources/examplePmd2.xml");
+			List<Warning> pmdWarnings = parser2.parseFile("./src/main/resources/examplePmd2.xml");
 
 			System.out.println("amount of PMD Warnings:" + " " + pmdWarnings.size());
 
@@ -62,7 +63,7 @@ public class App {
 			break;
 		case "FindBugs":
 			XMLParser parser3 = new FindBugsXMLParser();
-			List<Warning> findBugsWarnings = parser3.parseFile("./resources/exampleFindbugs1.xml");
+			List<Warning> findBugsWarnings = parser3.parseFile("./src/main/resources/exampleFindbugs1.xml");
 
 			System.out.println("amount of FindBugs Warnings:" + " " + findBugsWarnings.size());
 
@@ -87,7 +88,7 @@ public class App {
 	 */
 	public static void jsonTest() throws IOException {
 		XMLParser parser = new CheckStyleXMLParser();
-		List<Warning> checkStyleWarnings = parser.parseFile("./resources/exampleCheckstyle1.xml");
+		List<Warning> checkStyleWarnings = parser.parseFile("./src/main/resources/exampleCheckstyle1.xml");
 
 		System.out.println("amount of CheckStyle Warnings:" + " " + checkStyleWarnings.size());
 
@@ -107,6 +108,7 @@ public class App {
 		List<Summarizer> list = wg.groupBy("packages");
 
 		JsonWriter jwriter = new JsonWriter(list);
-		jwriter.writeToJsonFormat("./resources/SummarizedOuput.json");
+		jwriter.writeToJsonFormat("./src/main/resources/SummarizedOuput.json");
+		System.out.println("Done");
 	}
 }

@@ -39,8 +39,8 @@ public class PackageSummarizerTest {
 	 */
 	@Before
 	public void initialize() {
-		filePath = "./resources/ExampleClass.txt";
-		filePath2 = "./resources/ExampleTestClass.txt";
+		filePath = "./src/test/resources/ExampleClass.txt";
+		filePath2 = "./src/test/resources/ExampleTestClass.txt";
 		packageName = "SomePackage.subpackage";
 		w = new CheckStyleWarning(filePath, "ExampleClass.java", 3, "Test", "TestRule");
 		w2 = new CheckStyleWarning(filePath2, "ExampleTestClass.java", 3, "Test", "TestRule");

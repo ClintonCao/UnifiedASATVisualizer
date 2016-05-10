@@ -17,8 +17,8 @@ import BlueTurtle.warnings.Warning;
  */
 public class FindBugsXMLParserTest {
 
-	private static String testSet = "./resources/exampleFindbugs2.xml";
-	private static String testSet2 = "./resources/exampleFindbugs1.xml";
+	private static String testSet = "./src/test/resources/exampleFindbugs2.xml";
+	private static String testSet2 = "./src/test/resources/exampleFindbugs1.xml";
 	private static String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java";
 	private static String testSet2FileName = "FindBugsWarning.java";
 	private static String testSet2RuleName = "HE_EQUALS_USE_HASHCODE";
@@ -73,7 +73,7 @@ public class FindBugsXMLParserTest {
 	public void testParseTheWrongFile() {
 		FindBugsXMLParser parser = new FindBugsXMLParser();
 		
-		String testSet3 = "./resources/ex.xml";
+		String testSet3 = "/ex.xml";
 
 		List<Warning> warnings = parser.parseFile(testSet3);
 		
