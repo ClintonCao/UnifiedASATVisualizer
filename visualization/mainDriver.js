@@ -3,18 +3,10 @@ var acceptedRuleNames =["PackageName","JavadocMethod"];
 
 // Run first time
 runTreeMap();
-var graphJSON;
-
-loadJSON(function(response) {
-  // Parse JSON string into object
-    var actual_JSON = JSON.parse(response);
-    graphJSON = actual_JSON
-});
-
-
 	
-// on click checkbox
-// sat type list changed and chart updated	
+/*
+ * Handles click on checkboxes for showing results of different tools
+ */
 function handleClickTypeSat(cb) {
 	if(document.getElementById('treemapButton').checked){
 		if(cb.name == "sat"){
@@ -47,27 +39,18 @@ function handleClickTypeSat(cb) {
 			if(packagesLevel) {
 				runGraph(graphJSON);
 			} else {
-				console.log(window['packageVariable'])
-				runGraph(window[sessionStorage.getItem('packageVariable')]);
+				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+				console.log()
+				var inputData = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+				runGraph(inputData);
 			}
 		}
 	}
 }
 
-function loadJSON(callback) {   
-
-    var xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'test.json', true); // Replace 'my_data' with the path to your file
-    xobj.onreadystatechange = function () {
-									          if (xobj.readyState == 4 && xobj.status == "200") {
-									            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-									            callback(xobj.responseText);
-									          }
-    									  };
-    xobj.send(null);  
- }
-
+/*
+ * Toggles between the graph and tree map visualization
+ */
 function handleClickVisualiser(radioButton){
 	if(radioButton.value=="graph"){
 		removeChart();
@@ -79,12 +62,15 @@ function handleClickVisualiser(radioButton){
 	}
 }
 
+/*
+ * Does the tree map setup and shows it
+ */
 function runTreeMap(){
 	var element = document.getElementById("main-title");
     element.innerHTML = "Amount of warnings";
 
-	var packages = filterTypeRuleNameTreeMap(acceptedTypes, acceptedRuleNames);
-	var inputData = createJson(packages);	
+	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+	var inputData = createJsonTreeMap(packages);	
 	main({
     title: ""
 	}, {

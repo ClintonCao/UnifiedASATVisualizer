@@ -47,7 +47,7 @@ function nodeColour(d) {
   		return (ratio > 100) ? color(100) : color(ratio);
 	} else {
 		var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-  		var ratio = 200 * (getWarningTools(d)) / d.loc;
+  		var ratio = 200 * (d.warnings) / d.loc;
   		return (ratio > 100) ? color(100) : color(ratio);
 	}
 }
@@ -56,12 +56,16 @@ function nodeColour(d) {
  */
 function nodeDoubleClick(d, i) {
 	if(packagesLevel) { 
-		console.log(d.package_Name);
+		console.log(d.name);
   		sessionStorage.setItem('packageName', d.name);
   		sessionStorage.setItem('packageVariable', d.var);
   		packagesLevel = false
   		removeChart();
-		runGraph(window[d.var]); 
+  		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+  		//console.log(packages);
+		var inputData = createJsonGraphClasses(packages, d.name);
+		console.log(inputData);
+		runGraph(inputData); 
   		//window.location.href = "graphClassesView.html";
 	} else {
 		//TODO: Open right class with source code editor
@@ -78,7 +82,6 @@ function setTitle(){
 	if(packagesLevel) {
     	element.innerHTML = "Graph view of all packages";
 	} else {
-		console.log(sessionStorage.getItem('packageName'));
 	    element.innerHTML = "Graph view of package '" + sessionStorage.getItem('packageName') + "'";
 	    //element = document.getElementById('sub-title');
 	    //element.innerHTML = element.innerHTML + '<button class="back-button" id="back-button" onclick="goBack()">Go back to package view</button>';
@@ -211,8 +214,7 @@ function runGraph(graph) {
 	      .style("fill", nodeColour)
 	      .on('dblclick', nodeDoubleClick)
 	      .on("mouseover", function(d) { 
-	      								var totalWarnings = getWarningTools(d)
-	      								tooltip.text(d.fileName + ": " + d.loc + " lines" + " || " + totalWarnings + " warnings"); 
+	      								tooltip.text(d.fileName + ": " + d.loc + " lines" + " || " + d.warnings + " warnings"); 
 	                                    return tooltip.style("visibility", "visible");
 	                                   }
 	        )
