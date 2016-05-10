@@ -11,7 +11,11 @@ import BlueTurtle.settings.CheckStyleSettings;
  *
  */
 public class CheckStyleCommandBuilder extends CommandBuilder {
-		
+	
+	/**
+	 * Constructor.
+	 * @param checkStyleSettings
+	 */
 	public CheckStyleCommandBuilder(CheckStyleSettings checkStyleSettings) {
 		this.commands = new ArrayList<String>();
 		this.setSettings(checkStyleSettings);

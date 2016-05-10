@@ -11,6 +11,10 @@ import BlueTurtle.settings.CoberturaSettings;
  */
 public class CoberturaCommandBuilder extends CommandBuilder {
 	
+	/**
+	 * Constructor.
+	 * @param coberturaSettings
+	 */
 	public CoberturaCommandBuilder(CoberturaSettings coberturaSettings) {
 		commands = new ArrayList<String>();
 		this.setSettings(coberturaSettings);

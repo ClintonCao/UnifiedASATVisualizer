@@ -9,6 +9,11 @@ public class AnalyserCommand {
 	private String defaultOutputFilePath;
 	private String[] args;
 	
+	/**
+	 * Constructor.
+	 * @param defaultOutputFilePath 
+	 * @param args - command line arguments.
+	 */
 	public AnalyserCommand(String defaultOutputFilePath, String[] args) {
 		this.setDefaultOutputFilePath(defaultOutputFilePath);
 		this.setArgs(args);

@@ -17,7 +17,7 @@ public abstract class CommandBuilder {
 	 */
 	public abstract String[] buildCommand();
 	
-	public Settings getSettings(){
+	public Settings getSettings() {
 		return settings;
 	}
 	

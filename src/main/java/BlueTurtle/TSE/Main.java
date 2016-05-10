@@ -8,7 +8,6 @@ import BlueTurtle.interfaces.Controller;
  * Hello world!
  */
 public class Main {
-
 	
 	enum mode {
 		JAVA

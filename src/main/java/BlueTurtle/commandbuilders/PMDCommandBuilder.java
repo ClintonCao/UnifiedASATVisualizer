@@ -12,9 +12,13 @@ import BlueTurtle.settings.PMDSettings;
  *
  */
 public class PMDCommandBuilder extends CommandBuilder {
-	private ArrayList<String> commands = new ArrayList<String>();
 	
+	/**
+	 * Constructor.
+	 * @param pmdSettings
+	 */
 	public PMDCommandBuilder(PMDSettings pmdSettings) {
+		commands = new ArrayList<String>();
 		this.setSettings(pmdSettings);
 	}
 	
