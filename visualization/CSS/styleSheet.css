@@ -36,7 +36,9 @@ body {
   float:left;
   background: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border-style: ridge;
+  border-style:solid;
+  border-color:#FFFFFF;
+  border-width:thin;
 }
 .title {
   font-weight: bold;
