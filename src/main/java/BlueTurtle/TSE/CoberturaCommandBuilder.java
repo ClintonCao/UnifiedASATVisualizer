@@ -2,16 +2,23 @@ package BlueTurtle.TSE;
 
 import java.util.ArrayList;
 
-import BlueTurtle.interfaces.Settings;
 import BlueTurtle.settings.CoberturaSettings;
 
+/**
+ * @author Michiel
+ */
 public class CoberturaCommandBuilder extends CommandBuilder {
-	private ArrayList<String> commands = new ArrayList<String>();
 	
 	public CoberturaCommandBuilder(CoberturaSettings coberturaSettings) {
+		commands = new ArrayList<String>();
 		this.setSettings(coberturaSettings);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * Cobertura is run as a .bat file. Output is to Runnables/Testcode/cobertura for now.
+	 * @return
+	 */
 	@Override
 	public String[] buildCommand() {
 		commands.add(JavaController.getUserDir() + "/Runnables/cobertura-2.1.1/cobertura-report.bat");

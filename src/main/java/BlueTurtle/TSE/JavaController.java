@@ -9,6 +9,12 @@ import BlueTurtle.settings.CheckStyleSettings;
 import BlueTurtle.settings.CoberturaSettings;
 import BlueTurtle.settings.PMDSettings;
 
+/**
+ * JavaController controls the analyser to make it analyse java code. 
+ * It constructs an AnalyserCommand for every ASAT which has to be run and passes this to the analyser.
+ * @author Michiel
+ *
+ */
 public class JavaController implements Controller {
 	private Analyser analyser;
 	private static String userDir = System.getProperty("user.dir");

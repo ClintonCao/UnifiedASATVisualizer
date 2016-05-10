@@ -1,5 +1,10 @@
 package BlueTurtle.TSE;
 
+/**
+ * Represents a basic unit of work for the analyser to process.
+ * @author Michiel
+ *
+ */
 public class AnalyserCommand {
 	private String defaultOutputFilePath;
 	private String[] args;

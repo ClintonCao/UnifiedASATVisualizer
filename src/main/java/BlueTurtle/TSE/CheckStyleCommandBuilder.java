@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import BlueTurtle.settings.CheckStyleSettings;
 
+/**
+ * @author Michiel
+ *
+ */
 public class CheckStyleCommandBuilder extends CommandBuilder {
 		
 	public CheckStyleCommandBuilder(CheckStyleSettings checkStyleSettings) {
@@ -11,6 +15,9 @@ public class CheckStyleCommandBuilder extends CommandBuilder {
 		this.setSettings(checkStyleSettings);
 	}
 	
+	/**
+	 * Checkstyle is run as a .jar. So the command always starts with java -jar.
+	 */
 	@Override
 	public String[] buildCommand() {
 		commands.add("java");
@@ -18,7 +25,6 @@ public class CheckStyleCommandBuilder extends CommandBuilder {
 		commands.add(JavaController.getUserDir() + "/Runnables/checkstyle-6.18-all.jar");
 		commands.add("-c");
 		commands.add(((CheckStyleSettings) getSettings()).getConfigFile());
-		//commands.add("/sun_checks.xml");
 		commands.add("-f");
 		commands.add("xml");
 		commands.add(JavaController.getUserDir() + "/Runnables/Testcode/");

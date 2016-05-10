@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import BlueTurtle.settings.PMDSettings;
 
+/**
+ *
+ * @author Michiel
+ *
+ */
 public class PMDCommandBuilder extends CommandBuilder {
 	private ArrayList<String> commands = new ArrayList<String>();
 	
