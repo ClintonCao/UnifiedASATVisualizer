@@ -1,0 +1,30 @@
+[
+  {
+    "classes": [
+      {
+        "fileName": "ExampleClass.java",
+        "filePath": "./resources/ExampleClass.txt",
+        "warningList": [
+          {
+            "line": 5,
+            "message": "test",
+            "ruleName": "test",
+            "fileName": "ExampleClass.java",
+            "type": "CheckStyle",
+            "filePath": "./resources/ExampleClass.txt"
+          }
+        ],
+        "packageName": "SomePackage.subpackage",
+        "numberOfWarnings": 1,
+        "warningTypes": [
+          "CheckStyle"
+        ]
+      }
+    ],
+    "packageName": "SomePackage.subpackage",
+    "numberOfWarnings": 1,
+    "warningTypes": [
+      "CheckStyle"
+    ]
+  }
+]

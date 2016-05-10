@@ -17,7 +17,7 @@ public class PackageNameFinderTest {
 	 */
 	@Test
 	public void testRightPackageNameFound() {
-		String packageName  = PackageNameFinder.findPackageName("./resources/ExampleClass.txt");
+		String packageName  = PackageNameFinder.findPackageName("./src/test/resources/ExampleClass.txt");
 		assertEquals("SomePackage.subpackage", packageName);
 	}
 	
@@ -26,7 +26,7 @@ public class PackageNameFinderTest {
 	 */
 	@Test
 	public void testFindingPackageNameOnDifferentFile() {
-		String packageName  = PackageNameFinder.findPackageName("./resources/ExampleTestClass.txt");
+		String packageName  = PackageNameFinder.findPackageName("./src/test/resources/ExampleTestClass.txt");
 		assertNotEquals("SomePackage.subpackage", packageName);
 	}
 	
@@ -35,7 +35,7 @@ public class PackageNameFinderTest {
 	 */
 	@Test
 	public void testClassInDefaultPackage() {
-		String packageName  = PackageNameFinder.findPackageName("./resources/DefaultClass.txt");
+		String packageName  = PackageNameFinder.findPackageName("./src/test/resources/DefaultClass.txt");
 		assertEquals("default", packageName);
 	}
 	
