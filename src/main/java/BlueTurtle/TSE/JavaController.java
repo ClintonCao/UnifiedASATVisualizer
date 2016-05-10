@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
+import BlueTurtle.commandbuilders.CoberturaCommandBuilder;
+import BlueTurtle.commandbuilders.PMDCommandBuilder;
 import BlueTurtle.interfaces.Controller;
 import BlueTurtle.settings.CheckStyleSettings;
 import BlueTurtle.settings.CoberturaSettings;

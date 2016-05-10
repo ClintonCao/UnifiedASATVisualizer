@@ -1,7 +1,9 @@
-package BlueTurtle.TSE;
+package BlueTurtle.commandbuilders;
 
 import java.util.ArrayList;
 
+import BlueTurtle.TSE.CommandBuilder;
+import BlueTurtle.TSE.JavaController;
 import BlueTurtle.settings.PMDSettings;
 
 /**
