@@ -162,7 +162,7 @@ function createTreeMap(o, data) {
 	
 	// render the chart with given depth and children
     function display(d) {
-		// On click top bar to go vack
+		// On click top bar to go back
         grandparent
             .datum(d.parent)
             .on("click", transition)
@@ -180,50 +180,49 @@ function createTreeMap(o, data) {
 		//on click square to go more in depth
 		if ( d.depth < maxDepth ){
         g.filter(function(d) {
-				console.log(d);
                 return d._children;
             })
             .classed("children", true)
             .on("click", transition);
 		}
-		//console.log(g);
 		$(".updateContent").off("click");
 		$(".updateContent").click(function(view){
 			handleClickTreeMapTypeSat(view.toElement.value)
-			console.log(findNode(d,root))
-			reloadContent(findNode(d,root))
-			
+			reloadContent();
+            var newNode = findNode(d,root);
+            g.filter(function(newNode) {
+                    return newNode;
+            });
+            transition(newNode);
 		} );
+
 		function findNode(d,root){			
 			if (root.fileName != null && root.values != null) {
 				if(root.fileName == d.fileName){
 					return(root);
-				}else{
-					var array = root.values;
-					for (var i =0; i < array.length; i++){
-						return findNode(d,array[i]);						
+				} else{
+					var arr = root.values;
+					for (var i =0; i < arr.length; i++){
+                        var finalNode = findNode(d,arr[i]);
+						if(finalNode != null) {
+                            return finalNode;
+                        }				
 					}
 				}
-			}
+			} else {
+                var err = null
+                return err;
+            }
 		}
 	
-		function reloadContent(newNode){
-					root.values = getFilteredJSON();
-					initialize(root);
-					accumulateValue(root);
-					accumulateWarnings(root);
-					layout(root);
-					display(root);
-					g.filter(function(newNode) {
-						return d._children;
-					});
-					transition(newNode);
-				   // transition(d);	
+		function reloadContent(){
+			root.values = getFilteredJSON();
+			initialize(root);
+			accumulateValue(root);
+			accumulateWarnings(root);
+			layout(root);
+			display(root);	
 		}
-		//function (){console.log("updateContent")}
-				//root.values = getFilteredJSON()
-				//display(d)
-		//}
 		
 		// on click child to go to source code
 		if ( d.depth == maxDepth ){
@@ -291,8 +290,8 @@ function createTreeMap(o, data) {
             transitioning = true;
 		
             var g2 = display(d),
-                t1 = g1.transition().duration(750),
-                t2 = g2.transition().duration(750);
+                t1 = g1.transition().duration(100),
+                t2 = g2.transition().duration(100);
 
             // Update the domain only after entering new elements.
             x.domain([d.x, d.x + d.dx]);

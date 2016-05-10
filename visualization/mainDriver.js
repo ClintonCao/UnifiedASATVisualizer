@@ -13,14 +13,15 @@ runTreeMap();
  * Handles click on checkboxes for showing results of different tools
  */
 function handleClickTreeMapTypeSat(value){
-			if(acceptedTypes.indexOf(value)<0) {
-				acceptedTypes.push(value);
-			} else{
-				var index = acceptedTypes.indexOf(value);
-				if (index > -1) {
-		    		acceptedTypes.splice(index, 1);
-				}
-			}
+	if(acceptedTypes.indexOf(value)<0) {
+		acceptedTypes.push(value);
+	} else{
+		var index = acceptedTypes.indexOf(value);
+		if (index > -1) {
+    		acceptedTypes.splice(index, 1);
+		}
+	}
+	console.log(acceptedTypes);
 }
 function handleClickTypeSat(cb) {
 	if(document.getElementById('treemapButton').checked){
