@@ -26,7 +26,7 @@ function removeChart(){
 	}
 }
 // the main loop
-function main(o, data) {
+function createTreeMap(o, data) {
 	removeChart();
     // Setting up some values about number format(rounding) and marigns
     var root,

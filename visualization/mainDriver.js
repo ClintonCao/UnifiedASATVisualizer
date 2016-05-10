@@ -1,3 +1,8 @@
+/*
+ * Global variabeles that are used across multiple classes
+ */
+var graphTrace = [];
+var graphTraceIndex = 0;
 var acceptedTypes =[];
 var acceptedRuleNames =["PackageName","JavadocMethod"];
 
@@ -55,19 +60,14 @@ function handleClickTypeSat(cb) {
  */
 function handleClickVisualiser(radioButton){
 	if(radioButton.value=="graph"){
-		removeChart();
-		packagesLevel = true;
-		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-		var inputData = createJsonGraphPackages(packages);
-		console.log(inputData);
-		runGraph(inputData);
+		runGraph();
 	} else if (radioButton.value=="treemap"){
 		runTreeMap();
 	}
 }
 
 /*
- * Does the tree map setup and shows it
+ * Setup tree map and shows it
  */
 function runTreeMap(){
 	removeChart();
@@ -76,10 +76,24 @@ function runTreeMap(){
 
 	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 	var inputData = createJsonTreeMap(packages);	
-	main({
+	createTreeMap({
     title: ""
 	}, {
     fileName: "Test Project",
     values: inputData
 	});	
+}
+
+/*
+ * Setup graph and shows it
+ */
+function runGraph(){
+	removeChart();
+	packagesLevel = true;
+	graphTraceIndex = 0;
+
+	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+	var inputData = createJsonGraphPackages(packages);
+	console.log(inputData);
+	createGraph(inputData);
 }

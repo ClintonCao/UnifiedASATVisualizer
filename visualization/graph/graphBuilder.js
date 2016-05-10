@@ -59,14 +59,12 @@ function nodeDoubleClick(d, i) {
 	if(packagesLevel) { 
 		console.log(d.name);
   		sessionStorage.setItem('packageName', d.fileName);
-  		sessionStorage.setItem('packageVariable', d.var);
   		packagesLevel = false
   		removeChart();
   		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 		var inputData = createJsonGraphClasses(packages, d.fileName);
 		console.log(inputData);
-		runGraph(inputData); 
-  		//window.location.href = "graphClassesView.html";
+		runGraph(inputData);
 	} else {
 		//TODO: Open right class with source code editor
 		window.open("http://9gag.com/","_self")
@@ -102,7 +100,7 @@ function goBack() {
 /*
  * Main function for drawing the graph with its components
  */
-function runGraph(graph) {
+function createGraph(graph) {
 
 	setTitle();
 

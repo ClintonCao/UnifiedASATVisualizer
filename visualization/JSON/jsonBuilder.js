@@ -58,7 +58,7 @@ function createJsonTreeMap(packages){
 				jsonArrClass.push({
 					fileName: fileName,
 					warnings: amountOfWarnings,
-					value: Math.floor(Math.random() * 20)	
+					value: Math.floor((1 + Math.random()) * 20)	
 				});
 			}
 			jsonArrPackage.push({fileName: classes.packageName,values: jsonArrClass});
@@ -81,7 +81,7 @@ function createJsonGraphPackages(packages){
 	  	var totalLines = 0;
       	for (var i = 0; i < classes.length; i++) {
         	var fileName = classes[i].fileName;
-        	var generatedLoc = Math.floor(Math.random() * 20);
+        	var generatedLoc = Math.floor( (1 + Math.random()) * 20);
         	var amountOfWarnings = classes[i].amountOfWarnings;
         	totalWarningsPackage += amountOfWarnings;
         	totalLines += generatedLoc;
@@ -112,7 +112,7 @@ function createJsonGraphClasses(packages, packageName){
 	        	var amountOfWarnings = classes[i].amountOfWarnings;
 	        	jsonArrClass.push({
 	          	fileName: fileName,
-	          	loc: Math.floor(Math.random() * 20),
+	          	loc: Math.floor((1 + Math.random()) * 20),
 	          	warnings: amountOfWarnings
 	        	});
 	      	}
