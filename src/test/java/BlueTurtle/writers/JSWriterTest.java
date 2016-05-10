@@ -36,7 +36,7 @@ public class JSWriterTest {
 	 */
 	@Before
 	public void initialize() {
-		outputPath = "./src/test/resources/testOutput.json";
+		outputPath = "./src/test/resources/testOutput.js";
 		HashMap<String, String> componentsInfo = new HashMap<String, String>();
 		componentsInfo.put("ExampleClass.java", "./src/test/resources/ExampleClass.txt");
 		Set<String> packagesNames = new HashSet<String>();

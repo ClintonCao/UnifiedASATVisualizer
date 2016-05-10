@@ -35,7 +35,7 @@ public class App {
 	 *             throws an exception if there was a problem reading a file.
 	 */
 	public static void main(String[] args) throws IOException {
-		jsonTest();
+		//jsonTest();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Which ASAT do you wish to run? (CheckStyle, PMD, FindBugs)");
 		String asat = sc.next();
@@ -107,7 +107,7 @@ public class App {
 		List<Summarizer> list = wg.groupBy("packages");
 
 		JSWriter jwriter = new JSWriter(list);
-		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.json");
+		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.js");
 		System.out.println("Done");
 	}
 }

@@ -1,11 +1,8 @@
 package BlueTurtle.writers;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -47,10 +44,11 @@ public class JSWriter {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(summarizedWarnings);
+		json += ';';
 		
 		writer.write("var inputData = ");
 		writer.newLine();
-		writer.write(json += ';');
+		writer.write(json);
 		writer.flush();
 		writer.close();
 	}

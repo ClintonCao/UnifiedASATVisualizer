@@ -2,13 +2,11 @@ package BlueTurtle.gui;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 /**
  * This class the GUI component of the system.
@@ -49,20 +47,18 @@ public class GUI extends Application {
 			stage.setWidth(1000);
 			stage.setResizable(false);
 			stage.setScene(scene);
-			
-			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-				@Override
-				public void handle(WindowEvent t) {
-					Platform.exit();
-					System.exit(0);
-				}
-			});
-			
 			stage.show();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Stop the application / GUI.
+	 */
+	public void stop() {
+		Platform.exit();
 	}
 
 }
