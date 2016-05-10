@@ -1,7 +1,13 @@
-var inputData2 = [
+/*
+ *
+ * Example input file that the visualizer should be able to read and use
+ *
+ */
+var inputData = [
   {
     "packageName": "BlueTurtle.warnings",
     "amountOfWarnings": 5,
+    "numberOfClasses": 7,
     "warningTypes": [
       "CheckStyle"
     ],
@@ -204,6 +210,7 @@ var inputData2 = [
    {
     "packageName": "BlueTurtle.errors",
     "amountOfWarnings": 5,
+    "numberOfClasses": 2,
     "warningTypes": [
       "CheckStyle"
     ],

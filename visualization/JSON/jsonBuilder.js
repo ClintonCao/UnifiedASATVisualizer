@@ -18,8 +18,8 @@ function replaceAll(stringObject, target, replacement){
  */
 function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
 	var packageArray = []
-  	for (p = 0; p < inputData2.length; p++) {
-  		var package = inputData2[p];
+  	for (p = 0; p < inputData.length; p++) {
+  		var package = inputData[p];
 		var classesArray = package.classes;
 		var classArray = []
 		for (i = 0; i < classesArray.length; i++) {
@@ -64,6 +64,37 @@ function createJsonTreeMap(packages){
 			jsonArrPackage.push({fileName: classes.packageName,values: jsonArrClass});
 		}
 	return [{fileName: "Project",values: jsonArrPackage}]
+}
+
+/*
+ *
+ * Creates a JSON file that could be used by the graph for package level
+ *
+ */
+function createJsonGraphPackages(packages){
+	var jsonArrPackage = [];
+ 	for(var p =0; p < packages.length; p++){
+	  	var jsonArrClass = [];
+	  	var classes = packages[p];
+	  	var totalWarningsPackage = 0;
+	  	var numberOfClasses = 0;
+	  	var totalLines = 0;
+      	for (var i = 0; i < classes.length; i++) {
+        	var fileName = classes[i].fileName;
+        	var generatedLoc = Math.floor(Math.random() * 20);
+        	var amountOfWarnings = classes[i].amountOfWarnings;
+        	totalWarningsPackage += amountOfWarnings;
+        	totalLines += generatedLoc;
+        	numberOfClasses++;
+        	jsonArrClass.push({
+          	fileName: fileName,
+          	loc: generatedLoc,
+          	warnings: amountOfWarnings
+        	});
+      	}
+      	jsonArrPackage.push({fileName: classes.packageName, numberOfClasses: numberOfClasses, totalWarnings:totalWarningsPackage, loc:totalLines, classes: jsonArrClass});
+  	}
+	return {nodes: jsonArrPackage, links: [{"source":0, "target":1, "value":11}] }
 }
 
 /*

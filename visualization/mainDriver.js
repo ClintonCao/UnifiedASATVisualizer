@@ -37,7 +37,9 @@ function handleClickTypeSat(cb) {
 			}
 			removeChart();
 			if(packagesLevel) {
-				runGraph(graphJSON);
+				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+				var inputData = createJsonGraphPackages(packages);
+				runGraph(inputData);
 			} else {
 				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 				console.log()
@@ -55,9 +57,11 @@ function handleClickVisualiser(radioButton){
 	if(radioButton.value=="graph"){
 		removeChart();
 		packagesLevel = true;
-		runGraph(graphJSON);
+		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+		var inputData = createJsonGraphPackages(packages);
+		console.log(inputData);
+		runGraph(inputData);
 	} else if (radioButton.value=="treemap"){
-		removeChart();
 		runTreeMap();
 	}
 }
@@ -66,6 +70,7 @@ function handleClickVisualiser(radioButton){
  * Does the tree map setup and shows it
  */
 function runTreeMap(){
+	removeChart();
 	var element = document.getElementById("main-title");
     element.innerHTML = "Amount of warnings";
 
