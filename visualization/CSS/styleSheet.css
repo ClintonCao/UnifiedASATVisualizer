@@ -7,6 +7,7 @@
   width:150px;
   margin:100px 10px 0 10px;
   padding: 10px;
+  border-style: ridge;
 }
 /* Title */
 .main-title {
@@ -17,18 +18,32 @@
   margin-bottom: 6px;
   padding-top: 20px;
   padding-bottom: 20px;
+  border-style: ridge;
 }
 
 body {
     background-color: #E0E0E0;
 }
 .wrapper {
-    text-align: center;
+    
 }
-.back-button {
-  width: 15%; 
-  background-color: #777; 
-  color:white;
+
+.back-button{
+  width: -moz-calc(100% - 200px);
+  width: -webkit-calc(100% - 200px);
+  width: calc(100% - 200px);
+  background: #7a92ff;
+  color: #000;
+  border: 1px solid #1982C4;
+  height: 25px;
+  font-size: 15px;
+  font-family: Helvetica;
+  font-weight: bold;
+  border-style: ridge;
+}
+
+.back-button:hover {
+  background: #b3c1fe;
 }
 
 /* Chart div*/

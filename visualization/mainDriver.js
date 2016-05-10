@@ -53,13 +53,24 @@ function handleClickTypeSat(cb) {
 			removeChart();
 			if(packagesLevel) {
 				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-				var inputData = createJsonGraphPackages(packages);
-				runGraph(inputData);
+				var input = createJsonGraphPackages(packages);
+
+				if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+					graphTrace.push(input);
+				} else {
+					graphTrace[graphTraceIndex] = input;
+				}
+				createGraph(graphTrace[graphTraceIndex]);
 			} else {
 				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-				console.log()
-				var inputData = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
-				runGraph(inputData);
+				var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+
+				if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+					graphTrace.push(input);
+				} else {
+					graphTrace[graphTraceIndex] = input;
+				}
+				createGraph(graphTrace[graphTraceIndex]);
 			}
 		}
 	}
@@ -85,10 +96,13 @@ function getFilteredJSON(){
  */
 function runTreeMap(){
 	removeChart();
-	var element = document.getElementById("main-title");
-    element.innerHTML = "Amount of warnings";
+	var title = document.getElementById("main-title");
+	title.innerHTML = "Treemap view of project";
+	var graphButtonDiv = document.getElementById("sub-title");
+	graphButtonDiv.style.display = 'none';
+
 	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-	var inputData = createJsonTreeMap(packages);	
+	
 	createTreeMap({title: ""}, {fileName: "Test Project", values: getFilteredJSON()});	
 }
 
@@ -99,9 +113,20 @@ function runGraph(){
 	removeChart();
 	packagesLevel = true;
 	graphTraceIndex = 0;
+	var graphButtonDiv = document.getElementById("sub-title");
+	graphButtonDiv.style.display = 'inline';
+	var graphButton = document.getElementById('back-button');
+	graphButton.firstChild.data = "This is the upperview";
+	graphButton.disabled = true;
 
 	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-	var inputData = createJsonGraphPackages(packages);
-	console.log(inputData);
-	createGraph(inputData);
+
+	var input = createJsonGraphPackages(packages);
+
+	if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+		graphTrace.push(input);
+	} else {
+		graphTrace[graphTraceIndex] = input;
+	}
+	createGraph(graphTrace[graphTraceIndex]);
 }

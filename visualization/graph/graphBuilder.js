@@ -31,7 +31,6 @@ function nodeRadius(d) {
 	if(packagesLevel) {
 		return Math.sqrt(d.numberOfClasses) * 4;
 	} else {
-		console.log("Second");
 		return Math.sqrt(d.loc) * 1.25;
 	}
 }
@@ -57,18 +56,44 @@ function nodeColour(d) {
  */
 function nodeDoubleClick(d, i) {
 	if(packagesLevel) { 
-		console.log(d.name);
   		sessionStorage.setItem('packageName', d.fileName);
   		packagesLevel = false
   		removeChart();
+
+  		graphTraceIndex++;
+
   		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-		var inputData = createJsonGraphClasses(packages, d.fileName);
-		console.log(inputData);
-		runGraph(inputData);
+		var input = createJsonGraphClasses(packages, d.fileName);
+
+		if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+			graphTrace.push(input);
+		} else {
+			graphTrace[graphTraceIndex] = input;
+		}
+
+		var graphButton = document.getElementById('back-button');
+		graphButton.firstChild.data = "Go one level back";
+		graphButton.disabled = false;
+
+		createGraph(graphTrace[graphTraceIndex]);
 	} else {
-		//TODO: Open right class with source code editor
+		// For later: click multiple levels deep and keep track of where you are
+		/*
+		graphTraceIndex++;
+
+		var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+		var input = createJsonGraphClasses(packages, d.fileName);
+
+		if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+			graphTrace.push(input);
+		} else {
+			graphTrace[graphTraceIndex] = input;
+		}
+
+		runGraph(graphTrace[graphTraceIndex]);
+		*/
+
 		window.open("http://9gag.com/","_self")
-		// window.location.href = d.path;
 	}
 }
 
@@ -82,7 +107,7 @@ function setTitle(){
 	} else {
 	    element.innerHTML = "Graph view of package '" + sessionStorage.getItem('packageName') + "'";
 	    //element = document.getElementById('sub-title');
-	    //element.innerHTML = element.innerHTML + '<button class="back-button" id="back-button" onclick="goBack()">Go back to package view</button>';
+	    //element.innerHTML = element.innerHTML + '';
 	}
 }
 
@@ -92,9 +117,20 @@ function setTitle(){
 function goBack() {
     removeChart();
 	packagesLevel = true;
-	var element = document.getElementById("back-button");
-	element.parentNode.removeChild(element);
-	runGraph(graphJSON);
+	var graphButtonDiv = document.getElementById("sub-title");
+	graphButtonDiv.style.display = 'inline';
+	var graphButton = document.getElementById('back-button');
+	graphButton.firstChild.data = "This is the upperview";
+	graphButton.disabled = true;
+	graphTraceIndex--;
+	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+	var input = createJsonGraphPackages(packages);
+	if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+		graphTrace.push(input);
+	} else {
+		graphTrace[graphTraceIndex] = input;
+	}
+	createGraph(graphTrace[graphTraceIndex]);
  }
 
 /*
