@@ -32,7 +32,7 @@ public class JSWriter {
 	}
 
 	/**
-	 * Write the summarized warnings to a file in JSON format.
+	 * Write the summarized warnings to a file in JavaScript format.
 	 * 
 	 * @param outputFilePath
 	 *            path to write the output to.
