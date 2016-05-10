@@ -1,0 +1,9 @@
+{
+  "nodes":[
+    {"name":"BlueTurtle.warnings", "num":0, "var":"package1", "classes":7, "loc":290, "warnings": {"CheckStyle":15, "PMD":0, "FindBugs":0}},
+    {"name":"BlueTurtle.errors", "num":1,"var":"package2", "classes":2, "loc":65, "warnings": {"CheckStyle":11, "PMD":0, "FindBugs":0}}
+  ],
+  "links":[
+    {"source":0, "target":1, "value":3}
+  ]
+}

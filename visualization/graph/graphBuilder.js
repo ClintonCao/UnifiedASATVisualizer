@@ -10,7 +10,7 @@ function linkDistance(d) {
 	if(packagesLevel) {
 		return 25 * d.value;
 	} else {
-		return 25 * d.value;
+		return 10 * d.value;
 	}
 }
 /*
