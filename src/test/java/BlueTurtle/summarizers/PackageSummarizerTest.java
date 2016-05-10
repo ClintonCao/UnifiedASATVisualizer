@@ -69,6 +69,26 @@ public class PackageSummarizerTest {
 		ps.summarise(warningList);
 		assertNotSame(0, ps.numberOfWarnings);
 	}
+	
+	/**
+	 * Test that the number of CheckStyle warnings is not zero after summarise.
+	 */
+	@Test
+	public void testCheckStyleWarningsIsNotZero() {
+		PackageSummarizer ps = new PackageSummarizer(packageName);
+		ps.summarise(warningList);
+		assertNotSame(0, ps.numberOfCheckStyleWarnings);
+	}
+	
+	/**
+	 * Test that the number of classes is not zero after summarise.
+	 */
+	@Test
+	public void testNumClassesIsNotZero() {
+		PackageSummarizer ps = new PackageSummarizer(packageName);
+		ps.summarise(warningList);
+		assertSame(1, ps.getNumberOfClasses());
+	}
 
 	/**
 	 * Test that warning types is not empty after summarise.
