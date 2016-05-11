@@ -24,13 +24,16 @@ public abstract class Warning {
 	 *            the name of the file where the warning is located.
 	 * @param type
 	 *            the type of the warning e.g. PMD.
+	 * @param ruleName
+	 *            the violated rule name of the warning.
 	 * @param Classification
 	 *            of the violated rule of the warning.
 	 */
-	public Warning(String filePath, String filename, String type, String classification) {
+	public Warning(String filePath, String filename, String type, String ruleName, String classification) {
 		setFileName(filename);
 		setFilePath(filePath);
 		setType(type);
+		setRuleName(ruleName);
 		setClassification(classification); 
 	}
 	
@@ -80,7 +83,7 @@ public abstract class Warning {
 	 * @param ruleName
 	 *            the of the violated rule.
 	 */
-	public void setRuleName(String ruleNae) {
+	public void setRuleName(String ruleName) {
 		this.ruleName = ruleName;
 	}	
 	

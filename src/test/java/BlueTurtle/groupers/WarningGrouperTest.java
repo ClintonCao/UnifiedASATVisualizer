@@ -54,8 +54,8 @@ public class WarningGrouperTest {
 		packagesNames = new HashSet<String>();
 		packagesNames.add("SomePackage.subpackage");
 		packagesNames.add("SomePackage.different");
-		w = new CheckStyleWarning(filePath, "ExampleClass.java", 3, "Test", "TestRule");
-		w2 = new CheckStyleWarning(filePath2, "ExampleTestClass.java", 3, "Test", "TestRule");
+		w = new CheckStyleWarning(filePath, "ExampleClass.java", 3, "Test", "TestRule", "Class");
+		w2 = new CheckStyleWarning(filePath2, "ExampleTestClass.java", 3, "Test", "TestRule", "Class");
 		cs = new ComponentSummarizer("ExampleClass.java", filePath, "SomePackage.subpackage");
 		cs2 = new ComponentSummarizer("ExampleTestClass.java", filePath2, "SomePackage.different");
 		ps = new PackageSummarizer("SomePackage.subpackage");

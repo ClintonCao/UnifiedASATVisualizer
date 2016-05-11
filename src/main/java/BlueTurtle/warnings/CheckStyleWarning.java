@@ -25,9 +25,11 @@ public class CheckStyleWarning extends Warning {
 	 * 
 	 * @param ruleName
 	 *            the rule name of the warning.
+	 * @param Classification
+	 *            of the violated rule of the warning.
 	 */
-	public CheckStyleWarning(String filePath, String filename, int line, String message, String ruleName) {
-		super(filePath, filename, "CheckStyle", ruleName);
+	public CheckStyleWarning(String filePath, String filename, int line, String message, String ruleName, String classification) {
+		super(filePath, filename, "CheckStyle", ruleName, classification);
 		setLine(line);
 		setMessage(message.replaceAll("'", ""));
 	}

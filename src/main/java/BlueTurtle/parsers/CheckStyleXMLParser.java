@@ -12,6 +12,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,10 +29,12 @@ public class CheckStyleXMLParser extends XMLParser {
 	 * 
 	 * @param xmlFilePath
 	 *            the location of the CheckStyle report.
+	 * @param categoryInfo
+	 * 			  the category information from GDC.            
 	 * @return a list of CheckStyle warnings.
 	 */
 	@Override
-	public List<Warning> parseFile(String xmlFilePath) {
+	public List<Warning> parseFile(String xmlFilePath, HashMap<String, String> categoryInfo) {
 		// List to store the warnings.
 		List<Warning> checkStyleWarnings = new LinkedList<Warning>();
 
@@ -85,12 +88,10 @@ public class CheckStyleXMLParser extends XMLParser {
 							// Get the category of the warning.
 							String ruleName = getRuleName(warningElement.getAttribute("source"));
 							
-//							categpry = catgeoryinfo.get(ruleName)
+							String classification = categoryInfo.get(ruleName);
 							
-							
-
 							// Add warning to the list of warnings.
-							checkStyleWarnings.add(new CheckStyleWarning(filePath, fileName, line, message, ruleName));
+							checkStyleWarnings.add(new CheckStyleWarning(filePath, fileName, line, message, ruleName, classification));
 						}
 					}
 				}
@@ -119,5 +120,9 @@ public class CheckStyleXMLParser extends XMLParser {
 		// Return only the name of the check.
 		return source.substring(source.lastIndexOf('.') + 1, source.length() - 1);
 	}
+
+
+
+
 
 }

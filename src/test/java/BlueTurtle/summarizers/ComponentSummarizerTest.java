@@ -39,8 +39,8 @@ public class ComponentSummarizerTest {
 		filePath = "./src/test/resources/ExampleClass.txt";
 		fileName = "ExampleClass.java";
 		packageName = "SomePackage.subpackage";
-		w = new CheckStyleWarning(filePath, fileName, 3, "Test", "TestRule");
-		w2 = new CheckStyleWarning("./src/test/resources/ExampleTestClass.txt", fileName, 3, "Test", "TestRule");
+		w = new CheckStyleWarning(filePath, fileName, 3, "Test", "TestRule", "Class");
+		w2 = new CheckStyleWarning("./src/test/resources/ExampleTestClass.txt", fileName, 3, "Test", "TestRule", "Class");
 		warningList = new ArrayList<Warning>();
 		warningList2 = new ArrayList<Warning>();
 		warningList2.add(w2);
@@ -173,7 +173,7 @@ public class ComponentSummarizerTest {
 	@Test
 	public void testNumPMDWarningsIsNotZeroAfterSummarise() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		warningList.add(new PMDWarning(filePath, fileName, 3, packageName, "test", "test2", "test3"));
+		warningList.add(new PMDWarning(filePath, fileName, 3, packageName, "test", "test2", "test3", "Class"));
 		cs.summarise(warningList);
 		assertSame(1, cs.numberOfPMDWarnings);
 	}
@@ -185,7 +185,7 @@ public class ComponentSummarizerTest {
 	@Test
 	public void testNumFindBugsWarningsIsNotZeroAfterSummarise() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3"));
+		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3", "test4"));
 		cs.summarise(warningList);
 		assertSame(1, cs.numberOfFindBugsWarnings);
 	}
@@ -197,7 +197,7 @@ public class ComponentSummarizerTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testIllegalArgumentExceptionIncrementNumWarnings() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3"));
+		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3", "test4"));
 		cs.summarise(warningList);
 		cs.incrementNumberOfWarnings("Not a right type of ASAT");
 	}

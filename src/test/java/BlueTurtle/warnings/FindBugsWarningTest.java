@@ -4,7 +4,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotSame;
 
+import java.util.HashMap;
+
+import org.junit.Before;
 import org.junit.Test;
+
+import BlueTurtle.parsers.GDCParser;
 
 /**
  * Test for FindBugsWarning class.
@@ -14,20 +19,29 @@ import org.junit.Test;
 public class FindBugsWarningTest {
 	
 	private static String filePath = "\\src\\test\\TestPMD.java";
+	private static String testSet3 = "./src/test/resources/asat-gdc-mapping.html";
+
 	private static String fileName = "FindBugs.java";
 	private static String message = "BlueTurtle.warnings.PMDWarning defines equals and uses Object.hashCode()";
 	private static String ruleName = "HE_EQUALS_USE_HASHCODE";
 	private static String category = "BAD_PRACTICE";
 	private static String priority = "High";
+	private static String classification ="Interface";
+	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
 
+	@Before
+	public void setUp() {
+		GDCParser gP = new GDCParser();
+		categoryInfo = gP.parseFile(testSet3);
+	}
 
 	/**
 	 * Test equal method where both objects represent the same warning.
 	 */
 	@Test
 	public void testEqualsTrue() {
-		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
-		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		assertEquals(expected, actual);
 	}
 
@@ -36,9 +50,9 @@ public class FindBugsWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentPath() {
-		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		expected.setFilePath("\\src\\temp\\");
-		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		assertNotEquals(expected, actual);
 	}
 	
@@ -47,9 +61,9 @@ public class FindBugsWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentFileName() {
-		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		expected.setFileName("okay.java");
-		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		assertNotEquals(expected, actual);
 	}	
 
@@ -58,8 +72,8 @@ public class FindBugsWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentLines() {
-		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
-		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 2, message, category, priority, ruleName);
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 2, message, category, priority, ruleName, classification);
 		assertNotEquals(expected, actual);
 	}	
 	
@@ -68,9 +82,9 @@ public class FindBugsWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentRules() {
-		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		expected.setClassification("UUF_UNUSED_FIELD");
-		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		assertNotEquals(expected, actual);
 	}
 	
@@ -79,9 +93,9 @@ public class FindBugsWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentCategories() {
-		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		expected.setCategory("STYLE");
-		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		assertNotEquals(expected, actual);
 	}
 	
@@ -90,9 +104,9 @@ public class FindBugsWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentPriority() {
-		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		expected.setPriority("Normal");
-		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		assertNotEquals(expected, actual);
 	}		
 	
@@ -102,8 +116,8 @@ public class FindBugsWarningTest {
 	 */
 	@Test
 	public void testEqualsFalsePMDandCheckStyle() {
-		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
-		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName);
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName, classification);
 		assertNotEquals(expected, actual);
 	}
 	
@@ -113,7 +127,7 @@ public class FindBugsWarningTest {
 	@Test
 	public void testChangeOfLine() {
 		int expected = 5;
-		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		int actual = fb.getLine();
 		fb.setLine(expected);
 		assertNotSame(expected, actual);
@@ -125,7 +139,7 @@ public class FindBugsWarningTest {
 	@Test
 	public void testChangeOfMessage() {
 		String expected = "cool";
-		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		String actual = fb.getMessage();
 		fb.setMessage(expected);
 		assertNotEquals(expected, actual);
@@ -137,7 +151,7 @@ public class FindBugsWarningTest {
 	@Test
 	public void testChangeOfCategory() {
 		String expected = "I18N";
-		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		String actual = fb.getCategory();
 		fb.setMessage(expected);
 		assertNotEquals(expected, actual);
@@ -149,7 +163,7 @@ public class FindBugsWarningTest {
 	@Test
 	public void testChangeOfPriority() {
 		String expected = "Low";
-		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		String actual = fb.getPriority();
 		fb.setMessage(expected);
 		assertNotEquals(expected, actual);
@@ -161,7 +175,7 @@ public class FindBugsWarningTest {
 	@Test
 	public void testChangeOfRuleName() {
 		String expected = "DM_DEFAULT_ENCODING";
-		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		String actual = fb.getClassification();
 		fb.setMessage(expected);
 		assertNotEquals(expected, actual);
@@ -173,7 +187,7 @@ public class FindBugsWarningTest {
 	@Test
 	public void testChangeOfFileName() {
 		String expected = "this.java";
-		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		String actual = fb.getFileName();
 		fb.setMessage(expected);
 		assertNotEquals(expected, actual);
@@ -185,7 +199,7 @@ public class FindBugsWarningTest {
 	@Test
 	public void testChangeOfType() {
 		String expected = "PMD";
-		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		String actual = fb.getType();
 		fb.setMessage(expected);
 		assertNotEquals(expected, actual);
@@ -197,7 +211,7 @@ public class FindBugsWarningTest {
 	@Test
 	public void testChangeOfFilePath() {
 		String expected = "\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java";
-		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName);
+		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		String actual = fb.getFilePath();
 		fb.setMessage(expected);
 		assertNotEquals(expected, actual);

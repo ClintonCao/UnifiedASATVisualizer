@@ -2,6 +2,7 @@ package BlueTurtle.parsers;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class FindBugsXMLParser extends XMLParser {
 	 * @return a list of FindBugs warnings.
 	 */
 	@Override
-	public List<Warning> parseFile(String xmlFilePath) {
+	public List<Warning> parseFile(String xmlFilePath, HashMap<String, String> categoryInfo) {
 		// List to store the warnings.
 		List<Warning> findBugsWarnings = new LinkedList<Warning>();
 		
@@ -124,9 +125,11 @@ public class FindBugsXMLParser extends XMLParser {
 
 							// Get the category of the warning.
 							String ruleName = warningElement.getAttribute("type");
+							
+							String classification = categoryInfo.get(ruleName);
 
 							// Add warning to the list of warnings.
-							findBugsWarnings.add(new FindBugsWarning(filePath, fileName, line, message, category, priority, ruleName));
+							findBugsWarnings.add(new FindBugsWarning(filePath, fileName, line, message, category, priority, ruleName, classification));
 						}
 					}
 				}
@@ -136,5 +139,6 @@ public class FindBugsXMLParser extends XMLParser {
 		}
 		return findBugsWarnings;
 	}
+	
 
 }

@@ -42,7 +42,7 @@ public class JsonWriterTest {
 		packagesNames.add("SomePackage.subpackage");
 		List<Warning> list = new ArrayList<Warning>();
 		list.add(
-				new CheckStyleWarning("./src/test/resources/ExampleClass.txt", "ExampleClass.java", 5, "test", "test"));
+				new CheckStyleWarning("./src/test/resources/ExampleClass.txt", "ExampleClass.java", 5, "test", "test", "Class"));
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, list);
 		summarizedWarnings = wg.groupBy("packages");
 

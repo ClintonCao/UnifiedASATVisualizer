@@ -30,9 +30,11 @@ public class FindBugsWarning extends Warning {
 	 *            the priority of the warning.            
 	 * @param ruleName
 	 *            the rule name of the warning.
+	 * @param Classification
+	 *            of the violated rule of the warning.
 	 */
-	public FindBugsWarning(String filePath, String filename, int line, String message, String category, String priority, String ruleName) {
-		super(filePath, filename, "FindBugs", ruleName);
+	public FindBugsWarning(String filePath, String filename, int line, String message, String category, String priority, String ruleName, String classification) {
+		super(filePath, filename, "FindBugs", ruleName, classification);
 		setLine(line);
 		setMessage(message);
 		setCategory(category);
