@@ -139,6 +139,7 @@ var inputData = [
       {
         "fileName": "Error1.java",
         "amountOfWarnings": 5,
+        "loc": 80,
         "package_Name": "BlueTurtle.warnings",
         "warningTypes": [
           "CheckStyle"
@@ -189,6 +190,7 @@ var inputData = [
 	  {
         "fileName": "Error2.java",
         "amountOfWarnings": 6,
+        "loc": 90,
         "package_Name": "BlueTurtle.warnings",
         "warningTypes": [
           "CheckStyle"
