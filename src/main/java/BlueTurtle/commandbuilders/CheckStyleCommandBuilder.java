@@ -34,6 +34,8 @@ public class CheckStyleCommandBuilder extends CommandBuilder {
 		commands.add("java");
 		commands.add("-jar");
 		commands.add(JavaController.getUserDir() + "/Runnables/checkstyle-6.18-all.jar");
+		commands.add("-o");
+		commands.add(JavaController.getUserDir() + "/Runnables/Testcode/checkstyle.xml");
 		commands.add("-c");
 		commands.add(((CheckStyleSettings) getSettings()).getConfigFile());
 		commands.add("-f");
