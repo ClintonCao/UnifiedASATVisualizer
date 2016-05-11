@@ -1,5 +1,6 @@
 package BlueTurtle.writers;
 
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -10,6 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,7 +26,7 @@ import BlueTurtle.warnings.Warning;
  * @author BlueTurtle.
  *
  */
-public class JsonWriterTest {
+public class JSWriterTest {
 
 	private String outputPath;
 	private List<Summarizer> summarizedWarnings;
@@ -34,22 +36,32 @@ public class JsonWriterTest {
 	 */
 	@Before
 	public void initialize() {
-		outputPath = "./resources/testOutput.json";
+		outputPath = "./src/test/resources/testOutput.js";
 		HashMap<String, String> componentsInfo = new HashMap<String, String>();
-		componentsInfo.put("ExampleClass.java", "./resources/ExampleClass.txt");
+		componentsInfo.put("ExampleClass.java", "./src/test/resources/ExampleClass.txt");
 		Set<String> packagesNames = new HashSet<String>();
 		packagesNames.add("SomePackage.subpackage");
 		List<Warning> list = new ArrayList<Warning>();
-		list.add(new CheckStyleWarning("./resources/ExampleClass.txt", "ExampleClass.java", 5, "test", "test"));
+		list.add(
+				new CheckStyleWarning("./src/test/resources/ExampleClass.txt", "ExampleClass.java", 5, "test", "test"));
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, list);
 		summarizedWarnings = wg.groupBy("packages");
-		
+
 		// make sure that the file does not already exist by coincidence.
 		File file = new File(outputPath);
 		if (file.exists()) {
 			file.delete();
 		}
-		
+
+	}
+
+	/**
+	 * Cleanup the files that were created.
+	 */
+	@After
+	public void cleanup() {
+		File file = new File(outputPath);
+		file.delete();
 	}
 
 	/**
@@ -61,12 +73,22 @@ public class JsonWriterTest {
 	 */
 	@Test
 	public void testWriteToJsonFormat() throws IOException {
-		JsonWriter jwriter = new JsonWriter(summarizedWarnings);
-		jwriter.writeToJsonFormat(outputPath);
+		JSWriter jwriter = new JSWriter(summarizedWarnings);
+		jwriter.writeToJSFormat(outputPath);
 
 		File file = new File(outputPath);
 		boolean fileWritten = file.exists();
 		assertTrue(fileWritten);
+	}
+	
+	/**
+	 * Test changing the summarizedWarnings.
+	 */
+	@Test
+	public void testChangingSummarizedWarnings() {
+		JSWriter jwriter = new JSWriter(summarizedWarnings);
+		jwriter.setSummarizedWarnings(new ArrayList<Summarizer>());
+		assertSame(0, jwriter.getSummarizedWarnings().size());
 	}
 
 }

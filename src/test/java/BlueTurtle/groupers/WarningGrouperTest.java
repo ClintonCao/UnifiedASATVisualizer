@@ -46,8 +46,8 @@ public class WarningGrouperTest {
 	 */
 	@Before
 	public void initialize() {
-		filePath = "./resources/ExampleClass.txt";
-		filePath2 = "./resources/ExampleTestClass.txt";
+		filePath = "./src/test/resources/ExampleClass.txt";
+		filePath2 = "./src/test/resources/ExampleTestClass.txt";
 		componentsInfo = new HashMap<String, String>();
 		componentsInfo.put("ExampleClass.java", filePath);
 		componentsInfo.put("ExampleTestClass.java", filePath2);

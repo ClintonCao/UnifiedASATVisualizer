@@ -47,17 +47,20 @@ public class ComponentSummarizer extends Summarizer {
 
 			String pn = PackageNameFinder.findPackageName(w.getFilePath());
 			if (w.getFileName().equals(getFileName()) && pn.equals(getPackageName())) {
-				if (!warningTypes.contains(w.getType())) {
+				String warningType = w.getType();
+
+				if (!warningTypes.contains(warningType)) {
 					warningTypes.add(w.getType());
 				}
 				warningList.add(w);
-				numberOfWarnings++;
+				incrementNumberOfWarnings(warningType);
 			}
 
 		}
 
 	}
 
+	
 	/**
 	 * Check whether two ComponentSummarizer are equal.
 	 * 
