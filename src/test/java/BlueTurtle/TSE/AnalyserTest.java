@@ -65,7 +65,7 @@ public class AnalyserTest {
 	 */
 	@Test
 	public void testPMDOutput() throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader(JavaController.getUserDir() + "/Runnables/Testcode/pmd.xml"));
+		BufferedReader br = new BufferedReader(new FileReader(JavaController.getUserDir() + "/Runnables/Testcode/PMD.xml"));
 		assert(br.readLine() != null);
 	}
 }
