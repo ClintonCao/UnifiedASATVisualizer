@@ -13,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
-import BlueTurtle.commandbuilders.CoberturaCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
 import BlueTurtle.commandbuilders.PMDCommandBuilder;
 import BlueTurtle.settings.CheckStyleSettings;
@@ -23,14 +22,14 @@ import BlueTurtle.settings.PMDSettings;
  * Unit test for simple Analyser.
  */
 public class AnalyserTest {
-	
+	ArrayList<AnalyserCommand> commands = new ArrayList<AnalyserCommand>();
+
 	@Before
 	/**
 	 * Set up a command to run PMD and run CheckStyle. These commands are handed to the analyser which runs them.
 	 * @throws IOException
 	 */
 	public void initialize() throws IOException {
-		ArrayList<AnalyserCommand> commands = new ArrayList<AnalyserCommand>();
 		CommandBuilder commandBuilder;
 		PMDSettings pmdSettings = new PMDSettings();
 		commandBuilder = new PMDCommandBuilder(pmdSettings);
@@ -44,9 +43,7 @@ public class AnalyserTest {
 		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings.getDefaultOutputFilePath(), checkStyleCommands);
 		commands.add(c2);
 
-		Analyser analyser = new Analyser(commands);
-
-		analyser.analyse();
+		
 	}
 
 	/**
@@ -55,6 +52,8 @@ public class AnalyserTest {
 	 */
 	@Test
 	public void testCheckStyleOutput() throws IOException {
+		Analyser analyser = new Analyser(commands);
+		analyser.analyse();
 		BufferedReader br = new BufferedReader(new FileReader(JavaController.getUserDir() + "/Runnables/Testcode/checkstyle.xml"));
 		assert(br.readLine() != null);
 	}
@@ -65,6 +64,8 @@ public class AnalyserTest {
 	 */
 	@Test
 	public void testPMDOutput() throws IOException {
+		Analyser analyser = new Analyser(commands);
+		analyser.analyse();
 		BufferedReader br = new BufferedReader(new FileReader(JavaController.getUserDir() + "/Runnables/Testcode/PMD.xml"));
 		assert(br.readLine() != null);
 	}
