@@ -29,9 +29,9 @@ function linkStrokeWidth(d) {
  */
 function nodeRadius(d) {
 	if(packagesLevel) {
-		return Math.sqrt(d.numberOfClasses) * 4;
+		return Math.sqrt(d.numberOfClasses) * 5;
 	} else {
-		return Math.sqrt(d.loc) * 1.25;
+		return Math.sqrt(d.loc) * 2.25;
 	}
 }
 /*
