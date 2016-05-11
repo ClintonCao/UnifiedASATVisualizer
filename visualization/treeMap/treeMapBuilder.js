@@ -185,15 +185,18 @@ function createTreeMap(o, data) {
             .classed("children", true)
             .on("click", transition);
 		}
+		
 		$(".updateContent").off("click");
 		$(".updateContent").click(function(view){
-			handleClickTreeMapTypeSat(view.toElement.value)
-			reloadContent();
-            var newNode = findNode(d,root);
-            g.filter(function(newNode) {
-                    return newNode;
-            });
-            transition(newNode);
+			if(document.getElementById('treemapButton').checked){
+				handleClickTreeMapTypeSat(view.toElement.value)
+				reloadContent();
+				var newNode = findNode(d,root);
+				g.filter(function(newNode) {
+						return newNode;
+				});
+				transition(newNode);
+			}
 		} );
 
 		function findNode(d,root){			

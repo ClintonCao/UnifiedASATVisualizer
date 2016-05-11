@@ -25,34 +25,12 @@ function handleClickTreeMapTypeSat(value){
 }
 function handleClickTypeSat(cb) {
 	if(document.getElementById('treemapButton').checked){
-		/*
-		if(cb.name == "sat"){
-			var value = cb.value;
-			var booleanChecked = cb.checked;  
-			if(booleanChecked) {
-				acceptedTypes.push(cb.value)
-			} else{
-				var index = acceptedTypes.indexOf(cb.value);
-				if (index > -1) {
-		    		acceptedTypes.splice(index, 1);
-				}
-			}
-			//runTreeMap();
-		}*/
+		// Is taken care off in the treemap self
+		// this way the treemap can refresh at current level.
 	} else if (document.getElementById('graphButton').checked) {
 		if(cb.name == "sat"){
 			var value = cb.value;
-			var booleanChecked = cb.checked;  
-			if(booleanChecked) {
-				acceptedTypes.push(cb.value)
-			} else{
-				console.log(cb.value);
-				var index = acceptedTypes.indexOf(cb.value);
-				if (index > -1) {
-					console.log(index);
-		    		acceptedTypes.splice(index, 1);
-				}
-			}
+			handleClickTreeMapTypeSat(value);
 			removeChart();
 			if(packagesLevel) {
 				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
