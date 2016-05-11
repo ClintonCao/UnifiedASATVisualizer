@@ -3,15 +3,23 @@ package BlueTurtle.TSE;
 import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Unit test for simple Analyser.
  */
 public class AnalyserTest {
+	
+	@Before
+	public void initialize() throws IOException {
+		JavaController javacontroller = new JavaController();
+		javacontroller.execute();
+	}
 
 	/**
 	 * Simple test to check if running the analyser actually produces output for checkstyle.
@@ -19,8 +27,6 @@ public class AnalyserTest {
 	 */
 	@Test
 	public void testCheckStyleOutput() throws IOException {
-		JavaController javacontroller = new JavaController();
-		javacontroller.execute();
 		BufferedReader br = new BufferedReader(new FileReader(JavaController.getUserDir() + "/Runnables/Testcode/checkstyle.xml"));
 		assert(br.readLine() != null);
 	}
@@ -31,8 +37,6 @@ public class AnalyserTest {
 	 */
 	@Test
 	public void testPMDOutput() throws IOException {
-		JavaController javacontroller = new JavaController();
-		javacontroller.execute();
 		BufferedReader br = new BufferedReader(new FileReader(JavaController.getUserDir() + "/Runnables/Testcode/pmd.xml"));
 		assert(br.readLine() != null);
 	}
