@@ -1,6 +1,5 @@
 package BlueTurtle.summarizers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,15 +34,7 @@ public class ComponentSummarizer extends Summarizer {
 		super(packageName);
 		setFileName(fileName);
 		setFilePath(filePath);
-		int loc = 0;
-
-		try {
-			loc = LOCFinder.findLOC(filePath);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		int loc = LOCFinder.findLOC(filePath);
 		setLoc(loc);
 		setWarningList(new ArrayList<Warning>());
 	}
