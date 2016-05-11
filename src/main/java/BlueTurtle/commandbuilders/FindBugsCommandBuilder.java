@@ -26,11 +26,11 @@ public class FindBugsCommandBuilder extends CommandBuilder {
 		commands.add("256");
 		commands.add("-nested:false");
 		commands.add("-output");
-		commands.add(JavaController.getUserDir() + "/Runnables/Testcode/findbugs.html");
+		commands.add(JavaController.getUserDir() + "/Runnables/Testcode/findbugs.xml");
 		commands.add("-effort:min");
 		commands.add("-low");
 		commands.add("-sortByClass");
-		commands.add("-html:fancy.xsl");
+		commands.add("-xml:withMessages");
 		commands.add(JavaController.getUserDir() + "/Runnables/context_findbugs.jar");
 				//C:\Program Files (x86)\findbugs-3.0.1\bin>findbugs -textui -maxHeap 200 -nested:false -output C:\Users\michiel\workspace\Contextproject-TSE\Runnables\Testcode\f
 				//indbugs.html -effort:min -low -sortByClass -html:fancy.xsl C:\Users\michiel\workspace\Contextproject-TSE\Runnables\context_findbugs.jar
