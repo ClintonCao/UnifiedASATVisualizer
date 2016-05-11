@@ -1,20 +1,7 @@
 package BlueTurtle.TSE;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import BlueTurtle.finders.PackageNameFinder;
-import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.interfaces.Controller;
-import BlueTurtle.parsers.CheckStyleXMLParser;
-import BlueTurtle.parsers.PMDXMLParser;
-import BlueTurtle.parsers.XMLParser;
-import BlueTurtle.summarizers.Summarizer;
-import BlueTurtle.warnings.Warning;
-import BlueTurtle.writers.JSWriter;
 
 /**
  * Temporary main class to run the commands.
