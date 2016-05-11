@@ -3,15 +3,27 @@ package BlueTurtle.TSE;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
 import BlueTurtle.commandbuilders.CoberturaCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
 import BlueTurtle.commandbuilders.PMDCommandBuilder;
+import BlueTurtle.finders.PackageNameFinder;
+import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.interfaces.Controller;
+import BlueTurtle.parsers.CheckStyleXMLParser;
+import BlueTurtle.parsers.PMDXMLParser;
+import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.settings.CheckStyleSettings;
 import BlueTurtle.settings.CoberturaSettings;
 import BlueTurtle.settings.PMDSettings;
+import BlueTurtle.summarizers.Summarizer;
+import BlueTurtle.warnings.Warning;
+import BlueTurtle.writers.JSWriter;
 
 /**
  * JavaController controls the analyser to make it analyse java code. It
@@ -28,6 +40,7 @@ public class JavaController implements Controller {
 	private PMDSettings pmdSettings = new PMDSettings();
 	private CheckStyleSettings checkStyleSettings = new CheckStyleSettings(new File("CheckStyle_Settings.xml"));
 	private CoberturaSettings coberturaSettings = new CoberturaSettings();
+	private JSONFormatter jsonFormatter = new JSONFormatter();
 
 	/**
 	 * Execute controller.
@@ -57,6 +70,8 @@ public class JavaController implements Controller {
 		setAnalyser(new Analyser(commands));
 
 		analyser.analyse();
+		
+		jsonFormatter.format();
 	}
 
 	public void setAnalyser(Analyser analyser) {

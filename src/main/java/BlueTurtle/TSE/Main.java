@@ -55,31 +55,7 @@ public class Main {
 			break;
 		}
 		controller.execute();
-		
-		XMLParser parser = new CheckStyleXMLParser();
-			
-		List<Warning> checkStyleWarnings = parser.parseFile(JavaController.getUserDir() + "/Runnables/Testcode/checkstyle.xml");
 
-		System.out.println("amount of CheckStyle Warnings:" + " " + checkStyleWarnings.size());
-
-		for (Warning w : checkStyleWarnings) {
-			System.out.println("Violated Rule Name: " + w.getRuleName());
-		}
-
-		HashMap<String, String> componentsInfo = new HashMap<String, String>();
-		Set<String> packagesNames = new HashSet<String>();
-
-		for (Warning w : checkStyleWarnings) {
-			componentsInfo.put(w.getFileName(), w.getFilePath());
-			packagesNames.add(PackageNameFinder.findPackageName(w.getFilePath()));
-		}
-
-		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, checkStyleWarnings);
-		List<Summarizer> list = wg.groupBy("packages");
-
-		JSWriter jwriter = new JSWriter(list);
-		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.js");
-		
 		System.out.println("Done.");
 	}
 }
