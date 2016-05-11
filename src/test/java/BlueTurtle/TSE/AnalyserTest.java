@@ -14,6 +14,7 @@ import org.junit.Test;
 public class AnalyserTest {
 
 	/**
+	 * Simple test to check if running the analyser actually produces output for checkstyle.
 	 * @throws IOException 
 	 */
 	@Test
@@ -24,5 +25,15 @@ public class AnalyserTest {
 		assert(br.readLine() != null);
 	}
 	
-
+	/**
+	 * Simple test to check if running the analyser actually produces output for PMD.
+	 * @throws IOException 
+	 */
+	@Test
+	public void testPMDOutput() throws IOException {
+		JavaController javacontroller = new JavaController();
+		javacontroller.execute();
+		BufferedReader br = new BufferedReader(new FileReader(JavaController.getUserDir() + "/Runnables/Testcode/pmd.xml"));
+		assert(br.readLine() != null);
+	}
 }
