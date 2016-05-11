@@ -56,20 +56,20 @@ public class PMDXMLParserTest {
 	}
 
 	// The PMD parser need to be fixed, the rule name need to be combined with ruleset and rulename, basic.xml/OverrideBoth.
-//	/**
-//	 * Test whether the parser creates the right object.
-//	 */
-//	@Test
-//	public void testParsingOneWarning() {
-//		XMLParser parser = new PMDXMLParser();
-//
-//		PMDWarning expected = new PMDWarning(testSet2FilePath, testSet2FileName, 43,
-//				testSet2PackageName, testSet2RuleSet, testSet2Method, testSet2RuleName, testSet2Classification);
-//
-//		PMDWarning actual = (PMDWarning) parser.parseFile(testSet2, categoryInfo).get(0);
-//
-//		assertEquals(expected, actual);
-//	}
+	/**
+	 * Test whether the parser creates the right object.
+	 */
+	@Test
+	public void testParsingOneWarning() {
+		XMLParser parser = new PMDXMLParser();
+
+		PMDWarning expected = new PMDWarning(testSet2FilePath, testSet2FileName, 43,
+				testSet2PackageName, testSet2RuleSet, testSet2Method, testSet2RuleName, testSet2Classification);
+
+		PMDWarning actual = (PMDWarning) parser.parseFile(testSet2, categoryInfo).get(0);
+
+		assertEquals(expected, actual);
+	}
 
 	/**
 	 * Test that the parser created the right amount of warnings.

@@ -92,7 +92,11 @@ public class PMDXMLParser extends XMLParser {
 							// Get the category of the warning.
 							String ruleName = warningElement.getAttribute("rule");
 							
-							String classification = categoryInfo.get(ruleName);
+							// PMD rule name is a special concatenation of rule set and rule name
+							String pmdRN = ruleSet.toLowerCase() + ".xml/"+ruleName; 
+							
+							
+							String classification = categoryInfo.get(pmdRN);
 
 							// Add warning to the list of warnings.
 							pmdWarnings.add(new PMDWarning(filePath, fileName, line, packageName, ruleSet, method, ruleName, classification));
