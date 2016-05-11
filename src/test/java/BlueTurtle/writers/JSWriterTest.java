@@ -1,5 +1,6 @@
 package BlueTurtle.writers;
 
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -25,7 +26,7 @@ import BlueTurtle.warnings.Warning;
  * @author BlueTurtle.
  *
  */
-public class JsonWriterTest {
+public class JSWriterTest {
 
 	private String outputPath;
 	private List<Summarizer> summarizedWarnings;
@@ -35,7 +36,7 @@ public class JsonWriterTest {
 	 */
 	@Before
 	public void initialize() {
-		outputPath = "./src/test/resources/testOutput.json";
+		outputPath = "./src/test/resources/testOutput.js";
 		HashMap<String, String> componentsInfo = new HashMap<String, String>();
 		componentsInfo.put("ExampleClass.java", "./src/test/resources/ExampleClass.txt");
 		Set<String> packagesNames = new HashSet<String>();
@@ -72,12 +73,22 @@ public class JsonWriterTest {
 	 */
 	@Test
 	public void testWriteToJsonFormat() throws IOException {
-		JsonWriter jwriter = new JsonWriter(summarizedWarnings);
-		jwriter.writeToJsonFormat(outputPath);
+		JSWriter jwriter = new JSWriter(summarizedWarnings);
+		jwriter.writeToJSFormat(outputPath);
 
 		File file = new File(outputPath);
 		boolean fileWritten = file.exists();
 		assertTrue(fileWritten);
+	}
+	
+	/**
+	 * Test changing the summarizedWarnings.
+	 */
+	@Test
+	public void testChangingSummarizedWarnings() {
+		JSWriter jwriter = new JSWriter(summarizedWarnings);
+		jwriter.setSummarizedWarnings(new ArrayList<Summarizer>());
+		assertSame(0, jwriter.getSummarizedWarnings().size());
 	}
 
 }

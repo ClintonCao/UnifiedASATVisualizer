@@ -1,9 +1,8 @@
 package BlueTurtle.writers;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -12,12 +11,13 @@ import com.google.gson.GsonBuilder;
 import BlueTurtle.summarizers.Summarizer;
 
 /**
- * This class can be used to write the output of the analyzer to json format.
+ * This class can be used to write the output of the analyzer to JavaScript
+ * format.
  * 
  * @author BlueTurtle.
  *
  */
-public class JsonWriter {
+public class JSWriter {
 
 	private List<Summarizer> summarizedWarnings;
 
@@ -27,12 +27,12 @@ public class JsonWriter {
 	 * @param summarizedWarnings
 	 *            the list of summarizer(where the warnings are summarized).
 	 */
-	public JsonWriter(List<Summarizer> summarizedWarnings) {
+	public JSWriter(List<Summarizer> summarizedWarnings) {
 		setSummarizedWarnings(summarizedWarnings);
 	}
 
 	/**
-	 * Write the summarized warnings to a file in JSON format.
+	 * Write the summarized warnings to a file in JavaScript format.
 	 * 
 	 * @param outputFilePath
 	 *            path to write the output to.
@@ -40,17 +40,17 @@ public class JsonWriter {
 	 *             throws an exception if something went wrong in the process of
 	 *             writing to file.
 	 */
-	public void writeToJsonFormat(String outputFilePath) throws IOException {
+	public void writeToJSFormat(String outputFilePath) throws IOException {
+		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
 		String json = gson.toJson(summarizedWarnings);
-
-		File file = new File(outputFilePath);
-		FileOutputStream fOut = new FileOutputStream(file);
-		OutputStreamWriter writer = new OutputStreamWriter(fOut);
-		writer.append(json);
+		json += ';';
+		
+		writer.write("var inputData = ");
+		writer.newLine();
+		writer.write(json);
+		writer.flush();
 		writer.close();
-		fOut.close();
 	}
 
 	/**
