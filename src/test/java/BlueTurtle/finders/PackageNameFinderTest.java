@@ -39,5 +39,14 @@ public class PackageNameFinderTest {
 		assertEquals("default", packageName);
 	}
 	
+	/**
+	 * Test finding package name in a non-existing file.
+	 */
+	@Test
+	public void testFindingNameInNonExistingFile() {
+		String packageName  = PackageNameFinder.findPackageName("./NonExstingFile.java");
+		assertEquals("Error", packageName);
+	}
+	
 
 }

@@ -19,7 +19,7 @@ public class PackageSummarizer extends Summarizer {
 	private int numberOfClasses;
 
 	/**
-	 * Contructor.
+	 * Constructor.
 	 * 
 	 * @param packageName
 	 *            the name of the package.

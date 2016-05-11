@@ -3,6 +3,7 @@ package BlueTurtle.summarizers;
 import java.util.ArrayList;
 import java.util.List;
 
+import BlueTurtle.finders.LOCFinder;
 import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.warnings.Warning;
 
@@ -17,6 +18,7 @@ public class ComponentSummarizer extends Summarizer {
 	private String fileName;
 	private String filePath;
 	private List<Warning> warningList;
+	private int loc;
 
 	/**
 	 * Constructor.
@@ -32,6 +34,8 @@ public class ComponentSummarizer extends Summarizer {
 		super(packageName);
 		setFileName(fileName);
 		setFilePath(filePath);
+		int loc = LOCFinder.findLOC(filePath);
+		setLoc(loc);
 		setWarningList(new ArrayList<Warning>());
 	}
 
@@ -60,7 +64,6 @@ public class ComponentSummarizer extends Summarizer {
 
 	}
 
-	
 	/**
 	 * Check whether two ComponentSummarizer are equal.
 	 * 
@@ -145,6 +148,25 @@ public class ComponentSummarizer extends Summarizer {
 	 */
 	public void setWarningList(List<Warning> warnings) {
 		this.warningList = warnings;
+	}
+
+	/**
+	 * Get the number of (physical) lines that the component has.
+	 * 
+	 * @return the number of (physical) lines that the component has.
+	 */
+	public int getLoc() {
+		return loc;
+	}
+
+	/**
+	 * Set the number of (physical) lines that the component has.
+	 * 
+	 * @param loc
+	 *            the number of (physical) lines.
+	 */
+	public void setLoc(int loc) {
+		this.loc = loc;
 	}
 
 }
