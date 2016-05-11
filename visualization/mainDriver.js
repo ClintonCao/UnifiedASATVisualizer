@@ -46,8 +46,10 @@ function handleClickTypeSat(cb) {
 			if(booleanChecked) {
 				acceptedTypes.push(cb.value)
 			} else{
+				console.log(cb.value);
 				var index = acceptedTypes.indexOf(cb.value);
 				if (index > -1) {
+					console.log(index);
 		    		acceptedTypes.splice(index, 1);
 				}
 			}
