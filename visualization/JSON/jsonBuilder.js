@@ -93,7 +93,8 @@ function createJsonGraphPackages(packages){
         	});
       	}
       	jsonArrPackage.push({fileName: classes.packageName, numberOfClasses: numberOfClasses, totalWarnings:totalWarningsPackage, loc:totalLines, classes: jsonArrClass});
-  	}
+  		console.log(jsonArrPackage);
+	}
 	return {nodes: jsonArrPackage, links: [{"source":0, "target":1, "value":11}] }
 }
 
