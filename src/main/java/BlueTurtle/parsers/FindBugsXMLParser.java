@@ -83,7 +83,8 @@ public class FindBugsXMLParser extends XMLParser {
 					// concatenate the source path with the class name.
 					String fileN = className + ".java";
 									
-					String filePath = new File(fileN).getAbsolutePath();
+					String filePath = new File(fileN).getCanonicalPath();
+					System.out.println(filePath);
 					
 					System.out.println(filePath);
 					
