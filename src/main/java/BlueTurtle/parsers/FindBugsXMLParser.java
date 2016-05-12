@@ -85,9 +85,7 @@ public class FindBugsXMLParser extends XMLParser {
 									
 					String filePath = new File(fileN).getCanonicalPath();
 					System.out.println(filePath);
-					
-					System.out.println(filePath);
-					
+										
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1, filePath.length());
 
