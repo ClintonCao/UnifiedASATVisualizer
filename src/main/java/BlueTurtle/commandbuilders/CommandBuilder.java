@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * @author BlueTurtle.
  *
  */
+@SuppressWarnings("checkstyle:visibilitymodifier")
 public abstract class CommandBuilder {
 	protected ArrayList<String> commands;
 	private Settings settings;

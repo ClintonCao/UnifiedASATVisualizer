@@ -18,10 +18,13 @@ import BlueTurtle.settings.PMDSettings;
  */
 public class AnalyserTest {
 
-	
 	/**
-	 * Set up a command to run PMD and run CheckStyle. These commands are handed to the analyser which runs them.
+	 * Set up a command to run PMD and run CheckStyle. These commands are handed
+	 * to the analyser which runs them.
+	 * 
 	 * @throws IOException
+	 *             throws an exception if problem is encounter while building
+	 *             and analysing the commands.
 	 */
 	@Before
 	public void setUp() throws IOException {
@@ -29,7 +32,7 @@ public class AnalyserTest {
 		CommandBuilder commandBuilder;
 		PMDSettings pmdSettings = new PMDSettings();
 		CheckStyleSettings checkStyleSettings = new CheckStyleSettings(new File("CheckStyle_Settings.xml"));
-		
+
 		commandBuilder = new PMDCommandBuilder(pmdSettings);
 		String[] pmdCommands = commandBuilder.buildCommand();
 		AnalyserCommand c1 = new AnalyserCommand(pmdSettings.getDefaultOutputFilePath(), pmdCommands);
@@ -46,18 +49,26 @@ public class AnalyserTest {
 	}
 
 	/**
-	 * Simple test to check if running the analyser actually produces output for checkstyle.
-	 * @throws IOException 
+	 * Simple test to check if running the analyser actually produces output for
+	 * checkstyle.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if problem is encountered while reading
+	 *             the file.
 	 */
 	@Test
 	public void testCheckStyleOutput() throws IOException {
 		File file = new File(JavaController.getUserDir() + "/Runnables/Testcode/checkstyle.xml");
 		assertTrue(file.length() > 0);
 	}
-	
+
 	/**
-	 * Simple test to check if running the analyser actually produces output for PMD.
-	 * @throws IOException 
+	 * Simple test to check if running the analyser actually produces output for
+	 * PMD.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if problem is encountered while reading
+	 *             the file.
 	 */
 	@Test
 	public void testPMDOutput() throws IOException {
