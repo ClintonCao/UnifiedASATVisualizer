@@ -31,8 +31,7 @@ public class FindBugsXMLParserTest {
 	private static String testSet2Category = "BAD_PRACTICE";
 	private static String testSet2Priority = "High";
 	private static String testSet2Classification = "Interface";
-	// This is what the the parser will read.
-	private static String testSet3FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\BlueTurtle\\warnings\\FindBugsWarning.java";
+	private static String testSet3FilePath = System.getProperty("user.dir") + "\\BlueTurtle\\warnings\\FindBugsWarning.java";
 
 	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
 
@@ -62,21 +61,23 @@ public class FindBugsXMLParserTest {
 	@Test
 	public void testParsingOneWarning() {
 		FindBugsXMLParser parser = new FindBugsXMLParser();
-		
-//		// This is what gives in the document.
-//		String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java";
-
 
 		FindBugsWarning expected = new FindBugsWarning(testSet3FilePath, testSet2FileName, 47,
 				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName, testSet2Classification);
 
-//		System.out.println("expected:");
-		System.out.println(expected.getFileName());
 		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2,categoryInfo).get(0);
-
-//		System.out.println("actual");++
-		System.out.println(actual.getFileName());
+		
+		System.out.println(expected.getFileName() + " |  | " + actual.getFileName());
+		System.out.println(expected.getCategory() + " |  | " + actual.getCategory());
+		System.out.println(expected.getFilePath() + " |  | " + actual.getFilePath());
+		System.out.println(expected.getLine() + " |  | " + actual.getLine());
+		System.out.println(expected.getMessage() + " |  | " + actual.getMessage());
+		System.out.println(expected.getPriority() + " |  | " + actual.getPriority());
+		System.out.println(expected.getRuleName() + " |  | " + actual.getRuleName());
+		System.out.println(expected.getType() + " |  | " + actual.getType());
+		System.out.println(expected.getClassification() + " |  | " + actual.getClassification());
 		System.out.println(""+ expected.equals(actual));
+
 		assertEquals(expected, actual);
 	}
 
