@@ -122,8 +122,7 @@ public class FindBugsXMLParser extends XMLParser {
 				}
 			}
 		} catch (Exception e) {
-//			e.printStackTrace();
-			System.out.println("Wrong");
+			e.printStackTrace();
 		}
 		return findBugsWarnings;
 	}
