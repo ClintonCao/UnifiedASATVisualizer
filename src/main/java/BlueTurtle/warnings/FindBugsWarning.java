@@ -57,7 +57,8 @@ public class FindBugsWarning extends Warning {
 		}
 
 		FindBugsWarning that = (FindBugsWarning) other;
-		if (filePath.equals(that.filePath) && fileName.equals(that.fileName) && lineNumber == that.lineNumber
+		//fileName.equals(that.fileName) && 
+		if (lineNumber == that.lineNumber
 				&& message.equals(that.message) && category.equals(that.category) && classification.equals(that.classification)
 				&& priority.equals(that.priority) && type.equals(that.type)) {
 			return true;
