@@ -66,6 +66,17 @@ public class FindBugsXMLParserTest {
 				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName, testSet2Classification);
 
 		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2,categoryInfo).get(0);
+		
+		System.out.println(expected.getFileName() + " |  | " + actual.getFileName());
+		System.out.println(expected.getCategory() + " |  | " + actual.getCategory());
+		System.out.println(expected.getFilePath() + " |  | " + actual.getFilePath());
+		System.out.println(expected.getLine() + " |  | " + actual.getLine());
+		System.out.println(expected.getMessage() + " |  | " + actual.getMessage());
+		System.out.println(expected.getPriority() + " |  | " + actual.getPriority());
+		System.out.println(expected.getRuleName() + " |  | " + actual.getRuleName());
+		System.out.println(expected.getType() + " |  | " + actual.getType());
+		System.out.println(expected.getClassification() + " |  | " + actual.getClassification());
+		
 
 		assertEquals(expected, actual);
 	}
