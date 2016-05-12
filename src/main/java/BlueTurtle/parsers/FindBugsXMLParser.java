@@ -85,7 +85,7 @@ public class FindBugsXMLParser extends XMLParser {
 					String filePath = new File(fileN).getAbsolutePath();
 					
 					// Get the name of the file where the warning is from.
-					String fileName = Paths.get(filePath).getFileName().toString();
+					String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1, filePath.length());
 
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("BugInstance");

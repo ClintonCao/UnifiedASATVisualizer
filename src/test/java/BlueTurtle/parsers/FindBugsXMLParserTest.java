@@ -71,11 +71,12 @@ public class FindBugsXMLParserTest {
 				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName, testSet2Classification);
 
 //		System.out.println("expected:");
-//		System.out.println(expected.getFilePath());
+		System.out.println(expected.getFileName());
 		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2,categoryInfo).get(0);
 
-//		System.out.println("actual");
-//		System.out.println(actual.getFilePath());
+//		System.out.println("actual");++
+		System.out.println(actual.getFileName());
+		System.out.println(""+ expected.equals(actual));
 		assertEquals(expected, actual);
 	}
 
