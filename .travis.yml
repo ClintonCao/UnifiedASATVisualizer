@@ -5,7 +5,6 @@ jdk:
 sudo: false
 
 script:
-  - mvn test
   - mvn site
 notifications:
   webhooks:
