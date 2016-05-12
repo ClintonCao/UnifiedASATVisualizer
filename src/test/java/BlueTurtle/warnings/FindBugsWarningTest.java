@@ -52,7 +52,8 @@ public class FindBugsWarningTest {
 	public void testEqualsFalseWithDifferentPath() {
 		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		expected.setFilePath("\\src\\temp\\");
-		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName,
+1, message, category, priority, ruleName, classification);
 		assertNotEquals(expected, actual);
 	}
 	
