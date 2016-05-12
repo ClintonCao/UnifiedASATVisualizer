@@ -2,6 +2,7 @@ package BlueTurtle.summarizers;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
 import java.util.ArrayList;
@@ -165,7 +166,7 @@ public class ComponentSummarizerTest {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		assertNotEquals(cs, Integer.valueOf(1));
 	}
-	
+
 	/**
 	 * Test that the number of PMD warnings is not zero after summarise has been
 	 * called.
@@ -177,10 +178,10 @@ public class ComponentSummarizerTest {
 		cs.summarise(warningList);
 		assertSame(1, cs.numberOfPMDWarnings);
 	}
-	
+
 	/**
-	 * Test that the number of FindBugs warnings is not zero after summarise has been
-	 * called.
+	 * Test that the number of FindBugs warnings is not zero after summarise has
+	 * been called.
 	 */
 	@Test
 	public void testNumFindBugsWarningsIsNotZeroAfterSummarise() {
@@ -189,7 +190,7 @@ public class ComponentSummarizerTest {
 		cs.summarise(warningList);
 		assertSame(1, cs.numberOfFindBugsWarnings);
 	}
-	
+
 	/**
 	 * Test that a IllegalArgumentException is thrown for incrementNumWarnings.
 	 * called.
@@ -200,6 +201,16 @@ public class ComponentSummarizerTest {
 		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3", "test4"));
 		cs.summarise(warningList);
 		cs.incrementNumberOfWarnings("Not a right type of ASAT");
+	}
+
+	/**
+	 * Test that the loc is not zero after summarise has been called.
+	 */
+	@Test
+	public void testLOCIsNotZeroAfterSummarise() {
+		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
+		cs.summarise(warningList);
+		assertNotSame(0, cs.getLoc());
 	}
 
 }
