@@ -12,7 +12,7 @@ public class FindBugsWarning extends Warning {
 	private String message;
 	private String category;
 	private String priority;
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -27,7 +27,7 @@ public class FindBugsWarning extends Warning {
 	 * @param category
 	 *            the category of the warning.
 	 * @param priority
-	 *            the priority of the warning.            
+	 *            the priority of the warning.
 	 * @param ruleName
 	 *            the rule name of the warning.
 	 * @param classification
@@ -40,7 +40,6 @@ public class FindBugsWarning extends Warning {
 		setCategory(category);
 		setPriority(priority);
 	}
-	
 
 	/**
 	 * Check whether two FindBugs warnings are the same.
@@ -57,17 +56,17 @@ public class FindBugsWarning extends Warning {
 		}
 
 		FindBugsWarning that = (FindBugsWarning) other;
-		//fileName.equals(that.fileName) && 
-		if (lineNumber == that.lineNumber && fileName.equals(that.fileName) && filePath.equals(that.filePath) 
-				&& message.equals(that.message) && category.equals(that.category) && classification.equals(that.classification)
-				&& priority.equals(that.priority) && type.equals(that.type)) {
+
+		if (lineNumber == that.lineNumber && fileName.equals(that.fileName) && filePath.equals(that.filePath)
+				&& message.equals(that.message) && category.equals(that.category)
+				&& classification.equals(that.classification) && priority.equals(that.priority)
+				&& type.equals(that.type)) {
 			return true;
 		} else {
 			return false;
 		}
 
 	}
-
 
 	/*************************************/
 	/*** Getters and setters ************/
@@ -129,7 +128,7 @@ public class FindBugsWarning extends Warning {
 	 */
 	public void setCategory(String category) {
 		this.category = category;
-	}	
+	}
 
 	/**
 	 * Get the priority of the FindBugs warning.
@@ -148,6 +147,6 @@ public class FindBugsWarning extends Warning {
 	 */
 	public void setPriority(String priority) {
 		this.priority = priority;
-	}	
-	
+	}
+
 }
