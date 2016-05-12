@@ -31,6 +31,8 @@ public class FindBugsXMLParserTest {
 	private static String testSet2Category = "BAD_PRACTICE";
 	private static String testSet2Priority = "High";
 	private static String testSet2Classification = "Interface";
+	// This is what the the parser will read.
+	private static String testSet3FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\BlueTurtle\\warnings\\FindBugsWarning.java";
 
 	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
 
@@ -61,20 +63,19 @@ public class FindBugsXMLParserTest {
 	public void testParsingOneWarning() {
 		FindBugsXMLParser parser = new FindBugsXMLParser();
 		
-		// This is what gives in the document.
-		String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java";
-		// This is what the the parser will read.
-		String testSet3FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\BlueTurtle\\warnings\\FindBugsWarning.java";
+//		// This is what gives in the document.
+//		String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java";
+
 
 		FindBugsWarning expected = new FindBugsWarning(testSet3FilePath, testSet2FileName, 47,
 				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName, testSet2Classification);
 
-		System.out.println("expected:");
-		System.out.println(expected.getFilePath());
+//		System.out.println("expected:");
+//		System.out.println(expected.getFilePath());
 		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2,categoryInfo).get(0);
 
-		System.out.println("actual");
-		System.out.println(actual.getFilePath());
+//		System.out.println("actual");
+//		System.out.println(actual.getFilePath());
 		assertEquals(expected, actual);
 	}
 
