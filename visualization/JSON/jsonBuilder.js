@@ -26,6 +26,7 @@ function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
 	  		var classObject = new Object();
 	  		classObjectJson = classesArray[i];
 	  		classObject.amountOfWarnings = 0;
+	  		classObject.loc = classObjectJson.loc;
 	  		classObject.fileName = classObjectJson.fileName;
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j]
@@ -54,11 +55,12 @@ function createJsonTreeMap(packages){
 			var classes = packages[p];
 			for (var i = 0; i < classes.length; i++) {
 				var fileName = classes[i].fileName;
+				var linesOfCode = classes[i].loc;
 				var amountOfWarnings = classes[i].amountOfWarnings;
 				jsonArrClass.push({
 					fileName: fileName,
 					warnings: amountOfWarnings,
-					value: classes[i].loc	
+					value: linesOfCode
 				});
 			}
 			jsonArrPackage.push({fileName: classes.packageName,values: jsonArrClass});
@@ -81,14 +83,14 @@ function createJsonGraphPackages(packages){
 	  	var totalLines = 0;
       	for (var i = 0; i < classes.length; i++) {
         	var fileName = classes[i].fileName;
-        	var generatedLoc = Math.floor( (1 + Math.random()) * 20);
+        	var linesOfCode = classes[i].loc;
         	var amountOfWarnings = classes[i].amountOfWarnings;
         	totalWarningsPackage += amountOfWarnings;
         	totalLines += classes[i].loc;
         	numberOfClasses++;
         	jsonArrClass.push({
           	fileName: fileName,
-          	loc: generatedLoc,
+          	loc: linesOfCode,
           	warnings: amountOfWarnings
         	});
       	}
@@ -110,10 +112,12 @@ function createJsonGraphClasses(packages, packageName){
       	var classes = packages[p];
 	      	for (var i = 0; i < classes.length; i++) {
 	        	var fileName = classes[i].fileName;
+	        	var linesOfCode = classes[i].loc;
 	        	var amountOfWarnings = classes[i].amountOfWarnings;
+	        	console.log(classes[i].loc);
 	        	jsonArrClass.push({
 	          	fileName: fileName,
-	          	loc: classes[i].loc,
+	          	loc: linesOfCode,
 	          	warnings: amountOfWarnings
 	        	});
 	      	}
