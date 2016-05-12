@@ -1,24 +1,21 @@
+
+//BOning what's this??
+
+/*
 window.addEventListener('message', function(e) {
     var opts = e.data.opts,
         data = e.data.data;
 
     return main(opts, data);
-});
-// hard coded the depth where the click should go to source code (no zoom)
-var maxDepth = 2
-var defaults = {
-    margin: {
-        top: 30,
-        right: 0,
-        bottom: 0,
-        left: 0
-    },
-    rootname: "TOP",
-    format: ",d",
-    title: "",
-    width: window.innerWidth - 225,
-    height: window.innerHeight - 175
-};
+});*/
+
+// till here :)
+
+
+
+// initialize all variables
+var root,formatNumber,rname,margin,theight,width,height,transitioning,color,x,y,treemap,svg,grandparent,maxDepth,defaults
+
 
 // Delete the entire chart from the page.
 function removeChart() {
@@ -28,6 +25,7 @@ function removeChart() {
     }
 }
 
+// initialize the entire treemap up till displaying
 function initializeTheTree(treemap, root, width, height){
 	initialize(root, width, height);
     accumulateValue(root);
@@ -84,96 +82,7 @@ function layout(d, treemap) {
         });
     }
 }
-
-
-// The main method which is called to create the treeMap.
-// This calls all the methods needed like initialize.
-function createTreeMap(o, data) {
-	
-/**
-	First we create all variables that are needed for this treemap.
-**/	
-
-	// Remove the chart if there is already one.
-    removeChart();
-    // Setting up some values about number format(rounding) and marigns
-    var root,
-        opts = $.extend(true, {}, defaults, o),
-        formatNumber = d3.format(opts.format),
-        rname = opts.rootname,
-        margin = opts.margin,
-        theight = 36 + 16;
-
-    // size of the chart 
-    $('#chart').width(opts.width).height(opts.height);
-    var width = opts.width - margin.left - margin.right,
-        height = opts.height - margin.top - margin.bottom,
-        transitioning;
-
-    // Uses a range of 100 values between green and red
-    // The closer the value is to 0, the more green it will use
-    // The closer the value is to 100, the more red it will use
-    var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-
-    var x = d3.scale.linear()
-        .domain([0, width])
-        .range([0, width]);
-
-    var y = d3.scale.linear()
-        .domain([0, height])
-        .range([0, height]);
-	
-	// Create the d3 treemap from the library
-    var treemap = d3.layout.treemap()
-        .children(function(d, depth) {
-            return depth ? null : d._children;
-        })
-        .sort(function(a, b) {
-            return a.value - b.value;
-        })
-        .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
-        .round(false);
-		
-    // creating the chart and appending it to views
-    var svg = d3.select("#chart").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.bottom + margin.top)
-        .style("margin-left", -margin.left + "px")
-        .style("margin.right", -margin.right + "px")
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .style("shape-rendering", "crispEdges");
-	
-    var grandparent = svg.append("g")
-        .attr("class", "grandparent");
-
-    grandparent.append("rect")
-        .attr("y", -margin.top)
-        .attr("width", width)
-        .attr("height", margin.top);
-
-    grandparent.append("text")
-        .attr("x", 6)
-        .attr("y", 6 - margin.top)
-        .attr("dy", ".75em")
-		
-    if (data instanceof Array) {
-        root = {
-            fileName: rname,
-            values: data
-        };
-    } else {
-        root = data;
-    }
-
-/**
-	After cresating the variables we can start initializing and displaying the tree.
-**/	
-
-	initializeTheTree(treemap, root, width, height);
-    display(root);
-
-    // render the chart with given depth and children
+//render the chart with given depth and children
     function display(d) {
         // On click top bar to go back
         grandparent
@@ -390,4 +299,106 @@ function createTreeMap(o, data) {
             name(d.parent) + " / " + d.fileName + " (" + formatNumber(d.warnings) + ")" :
             d.fileName + " (" + formatNumber(d.warnings) + ")";
     }
+	
+
+// The main method which is called to create the treeMap.
+// This calls all the methods needed like initialize.
+function createTreeMap(o, data) {
+	
+/**
+	First we create all variables that are needed for this treemap.
+**/	
+	// hard coded the depth where the click should go to source code (no zoom)
+	maxDepth = 2
+	defaults = {
+		margin: {
+			top: 30,
+			right: 0,
+			bottom: 0,
+			left: 0
+		},
+		rootname: "TOP",
+		format: ",d",
+		title: "",
+		width: window.innerWidth - 225,
+		height: window.innerHeight - 175
+	};
+	// Remove the chart if there is already one.
+    removeChart();
+    // Setting up some values about number format(rounding) and marigns
+    opts = $.extend(true, {}, defaults, o);
+        formatNumber = d3.format(opts.format);
+        rname = opts.rootname;
+        margin = opts.margin;
+        theight = 36 + 16;
+
+    // size of the chart 
+    $('#chart').width(opts.width).height(opts.height);
+    width = opts.width - margin.left - margin.right;
+    height = opts.height - margin.top - margin.bottom;
+
+    // Uses a range of 100 values between green and red
+    // The closer the value is to 0, the more green it will use
+    // The closer the value is to 100, the more red it will use
+    color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
+
+    x = d3.scale.linear()
+        .domain([0, width])
+        .range([0, width]);
+
+    y = d3.scale.linear()
+        .domain([0, height])
+        .range([0, height]);
+	
+	// Create the d3 treemap from the library
+    treemap = d3.layout.treemap()
+        .children(function(d, depth) {
+            return depth ? null : d._children;
+        })
+        .sort(function(a, b) {
+            return a.value - b.value;
+        })
+        .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
+        .round(false);
+		
+    // creating the chart and appending it to views
+    svg = d3.select("#chart").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.bottom + margin.top)
+        .style("margin-left", -margin.left + "px")
+        .style("margin.right", -margin.right + "px")
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        .style("shape-rendering", "crispEdges");
+	
+    grandparent = svg.append("g")
+        .attr("class", "grandparent");
+
+    grandparent.append("rect")
+        .attr("y", -margin.top)
+        .attr("width", width)
+        .attr("height", margin.top);
+
+    grandparent.append("text")
+        .attr("x", 6)
+        .attr("y", 6 - margin.top)
+        .attr("dy", ".75em")
+		
+    if (data instanceof Array) {
+        root = {
+            fileName: rname,
+            values: data
+        };
+    } else {
+        root = data;
+    }
+
+/**
+	After cresating the variables we can start initializing and displaying the tree.
+**/	
+
+	initializeTheTree(treemap, root, width, height);
+    display(root);
+
+   
 }
