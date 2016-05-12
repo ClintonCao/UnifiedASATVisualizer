@@ -19,14 +19,83 @@ var defaults = {
     width: window.innerWidth - 225,
     height: window.innerHeight - 175
 };
-function removeChart(){
-	var chartNode = document.getElementById("chart");
-	while (chartNode.firstChild) {
-		chartNode.removeChild(chartNode.firstChild);
-	}
+
+// Delete the entire chart from the page.
+function removeChart() {
+    var chartNode = document.getElementById("chart");
+    while (chartNode.firstChild) {
+        chartNode.removeChild(chartNode.firstChild);
+    }
 }
+
+function initializeTheTree(treemap, root, width, height){
+	initialize(root, width, height);
+    accumulateValue(root);
+    accumulateWarnings(root);
+    layout(root, treemap);
+}
+	
+// initialize the root of the treemap
+function initialize(root, width, height) {
+    root.x = root.y = 0;
+    root.dx = width;
+    root.dy = height;
+    root.depth = 0;
+}
+// Aggregate the values for internal nodes. This is normally done by the
+// treemap layout, but not here because of our custom implementation.
+// We also take a snapshot of the original children (_children) to avoid
+// the children being overwritten when when layout is computed.
+function accumulateValue(d) {
+    return (d._children = d.values) ?
+        d.value = d.values.reduce(function(p, v) {
+            return p + accumulateValue(v);
+        }, 0) :
+        d.value;
+}
+function accumulateWarnings(d) {
+    return (d._children = d.values) ?
+        d.warnings = d.values.reduce(function(p, v) {
+            return p + accumulateWarnings(v);
+        }, 0) :
+        d.warnings;
+}
+
+
+// Compute the treemap layout recursively such that each group of siblings
+// uses the same size (1×1) rather than the dimensions of the parent cell.
+// This optimizes the layout for the current zoom state. Note that a wrapper
+// object is created for the parent node for each group of siblings so that
+// the parent’s dimensions are not discarded as we recurse. Since each group
+// of sibling was laid out in 1×1, we must rescale to fit using absolute
+// coordinates. This lets us use a viewport to zoom.
+function layout(d, treemap) {
+    if (d._children) {
+        treemap.nodes({
+            _children: d._children
+        });
+        d._children.forEach(function(c) {
+            c.x = d.x + c.x * d.dx;
+            c.y = d.y + c.y * d.dy;
+            c.dx *= d.dx;
+            c.dy *= d.dy;
+            c.parent = d;
+            layout(c, treemap);
+        });
+    }
+}
+
+
+// The main method which is called to create the treeMap.
+// This calls all the methods needed like initialize.
 function createTreeMap(o, data) {
-	removeChart();
+	
+/**
+	First we create all variables that are needed for this treemap.
+**/	
+
+	// Remove the chart if there is already one.
+    removeChart();
     // Setting up some values about number format(rounding) and marigns
     var root,
         opts = $.extend(true, {}, defaults, o),
@@ -54,6 +123,7 @@ function createTreeMap(o, data) {
         .domain([0, height])
         .range([0, height]);
 	
+	// Create the d3 treemap from the library
     var treemap = d3.layout.treemap()
         .children(function(d, depth) {
             return depth ? null : d._children;
@@ -63,6 +133,7 @@ function createTreeMap(o, data) {
         })
         .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
         .round(false);
+		
     // creating the chart and appending it to views
     var svg = d3.select("#chart").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -72,7 +143,7 @@ function createTreeMap(o, data) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .style("shape-rendering", "crispEdges");
-
+	
     var grandparent = svg.append("g")
         .attr("class", "grandparent");
 
@@ -84,11 +155,8 @@ function createTreeMap(o, data) {
     grandparent.append("text")
         .attr("x", 6)
         .attr("y", 6 - margin.top)
-        .attr("dy", ".75em");
-
-    if (opts.title) {
-        $("#chart").prepend("<p class='title'>" + opts.title + "</p>");
-    }
+        .attr("dy", ".75em")
+		
     if (data instanceof Array) {
         root = {
             fileName: rname,
@@ -98,71 +166,16 @@ function createTreeMap(o, data) {
         root = data;
     }
 
-    initialize(root);
-    accumulateValue(root);
-    accumulateWarnings(root);
-    layout(root);
+/**
+	After cresating the variables we can start initializing and displaying the tree.
+**/	
+
+	initializeTheTree(treemap, root, width, height);
     display(root);
 
-    if (window.parent !== window) {
-        var myheight = document.documentElement.scrollHeight || document.body.scrollHeight;
-        window.parent.postMessage({
-            height: myheight
-        }, '*');
-    }
-
-    function initialize(root) {
-        root.x = root.y = 0;
-        root.dx = width;
-        root.dy = height;
-        root.depth = 0;
-    }
-
-    // Aggregate the values for internal nodes. This is normally done by the
-    // treemap layout, but not here because of our custom implementation.
-    // We also take a snapshot of the original children (_children) to avoid
-    // the children being overwritten when when layout is computed.
-    function accumulateValue(d) {
-        return (d._children = d.values) ?
-            d.value = d.values.reduce(function(p, v) {
-                return p + accumulateValue(v);
-            }, 0) :
-            d.value;
-    }
-
-    function accumulateWarnings(d) {
-        return (d._children = d.values) ?
-            d.warnings = d.values.reduce(function(p, v) {
-                return p + accumulateWarnings(v);
-            }, 0) :
-            d.warnings;
-    }
-    // Compute the treemap layout recursively such that each group of siblings
-    // uses the same size (1×1) rather than the dimensions of the parent cell.
-    // This optimizes the layout for the current zoom state. Note that a wrapper
-    // object is created for the parent node for each group of siblings so that
-    // the parent’s dimensions are not discarded as we recurse. Since each group
-    // of sibling was laid out in 1×1, we must rescale to fit using absolute
-    // coordinates. This lets us use a viewport to zoom.
-    function layout(d) {
-        if (d._children) {
-            treemap.nodes({
-                _children: d._children
-            });
-            d._children.forEach(function(c) {
-                c.x = d.x + c.x * d.dx;
-                c.y = d.y + c.y * d.dy;
-                c.dx *= d.dx;
-                c.dy *= d.dy;
-                c.parent = d;
-                layout(c);
-            });
-        }
-    }
-	
-	// render the chart with given depth and children
+    // render the chart with given depth and children
     function display(d) {
-		// On click top bar to go back
+        // On click top bar to go back
         grandparent
             .datum(d.parent)
             .on("click", transition)
@@ -177,65 +190,65 @@ function createTreeMap(o, data) {
             .data(d._children)
             .enter().append("g");
 
-		//on click square to go more in depth
-		if ( d.depth < maxDepth ){
-        g.filter(function(d) {
-                return d._children;
-            })
-            .classed("children", true)
-            .on("click", transition);
-		}
-		
-		$(".updateContent").off("click");
-		$(".updateContent").click(function(view){
-			if(document.getElementById('treemapButton').checked){
-				handleClickTreeMapTypeSat(view.toElement.value)
-				reloadContent();
-				var newNode = findNode(d,root);
-				g.filter(function(newNode) {
-						return newNode;
-				});
-				transition(newNode);
-			}
-		} );
+        //on click square to go more in depth
+        if (d.depth < maxDepth) {
+            g.filter(function(d) {
+                    return d._children;
+                })
+                .classed("children", true)
+                .on("click", transition);
+        }
 
-		function findNode(d,root){			
-			if (root.fileName != null && root.values != null) {
-				if(root.fileName == d.fileName){
-					return(root);
-				} else{
-					var arr = root.values;
-					for (var i =0; i < arr.length; i++){
-                        var finalNode = findNode(d,arr[i]);
-						if(finalNode != null) {
+        $(".updateContent").off("click");
+        $(".updateContent").click(function(view) {
+            if (document.getElementById('treemapButton').checked) {
+                handleClickTreeMapTypeSat(view.toElement.value)
+                reloadContent();
+                var newNode = findNode(d, root);
+                g.filter(function(newNode) {
+                    return newNode;
+                });
+                transition(newNode);
+            }
+        });
+
+        function findNode(d, root) {
+            if (root.fileName != null && root.values != null) {
+                if (root.fileName == d.fileName) {
+                    return (root);
+                } else {
+                    var arr = root.values;
+                    for (var i = 0; i < arr.length; i++) {
+                        var finalNode = findNode(d, arr[i]);
+                        if (finalNode != null) {
                             return finalNode;
-                        }				
-					}
-				}
-			} else {
+                        }
+                    }
+                }
+            } else {
                 var err = null
                 return err;
             }
-		}
-	
-		function reloadContent(){
-			root.values = getFilteredJSON();
-			initialize(root);
-			accumulateValue(root);
-			accumulateWarnings(root);
-			layout(root);
-			display(root);	
-		}
-		
-		// on click child to go to source code
-		if ( d.depth == maxDepth ){
-			g.filter(function(d) {
-					return d;
-				})
-				.classed("child", true)
-				.on("click", toSourceCode);
-		}
-		
+        }
+
+        function reloadContent() {
+            root.values = getFilteredJSON();
+            initialize(root, width, height);
+            accumulateValue(root);
+            accumulateWarnings(root);
+            layout(root, treemap);
+            display(root);
+        }
+
+        // on click child to go to source code
+        if (d.depth == maxDepth) {
+            g.filter(function(d) {
+                    return d;
+                })
+                .classed("child", true)
+                .on("click", toSourceCode);
+        }
+
         var children = g.selectAll(".child")
             .data(function(d) {
                 return d._children || [d];
@@ -259,11 +272,11 @@ function createTreeMap(o, data) {
         g.append("rect")
             .attr("class", "parent")
             .call(rect);
-		
+
         var t = g.append("text")
             .attr("class", "ptext")
             .attr("dy", ".75em")
-		
+
         t.append("tspan")
             .text(function(d) {
                 return d.fileName;
@@ -275,7 +288,7 @@ function createTreeMap(o, data) {
                 return formatNumber(d.warnings);
             });
         t.call(text);
-		
+
         // set the color of the squares based on warnings / line
         g.selectAll("rect")
             .style("fill", function(d) {
@@ -283,15 +296,15 @@ function createTreeMap(o, data) {
                 // if statement for when there are more warnings then lines
                 return (ratio > 100) ? color(100) : color(ratio);
             });
-			
-		function toSourceCode(d){
-			console.log(d.filePath)	
-		}
-	
+
+        function toSourceCode(d) {
+            console.log(d.filePath)
+        }
+
         function transition(d) {
             if (transitioning || !d) return;
             transitioning = true;
-		
+
             var g2 = display(d),
                 t1 = g1.transition().duration(100),
                 t2 = g2.transition().duration(100);
@@ -378,5 +391,3 @@ function createTreeMap(o, data) {
             d.fileName + " (" + formatNumber(d.warnings) + ")";
     }
 }
-
-	
