@@ -25,12 +25,13 @@ import BlueTurtle.warnings.Warning;
  */
 public class AnalyserTest {
 
-	@Before
+	
 	/**
 	 * Set up a command to run PMD and run CheckStyle. These commands are handed to the analyser which runs them.
 	 * @throws IOException
 	 */
-	public void initialize() throws IOException {
+	@Before
+	public void setUp() throws IOException {
 		ArrayList<AnalyserCommand> commands = new ArrayList<AnalyserCommand>();
 		CommandBuilder commandBuilder;
 		PMDSettings pmdSettings = new PMDSettings();
@@ -57,7 +58,6 @@ public class AnalyserTest {
 	 */
 	@Test
 	public void testCheckStyleOutput() throws IOException {
-
 		File file = new File(JavaController.getUserDir() + "/Runnables/Testcode/checkstyle.xml");
 		assertTrue(file.length() > 0);
 	}
