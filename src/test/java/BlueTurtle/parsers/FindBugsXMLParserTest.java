@@ -91,7 +91,7 @@ public class FindBugsXMLParserTest {
 
 		List<Warning> warnings = parser.parseFile(testSet3, categoryInfo);
 		
-		assertNotSame(6, warnings.toString());
+		assertSame(0, warnings.size());
 	}
 
 }
