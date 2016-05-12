@@ -30,7 +30,7 @@ public class FindBugsWarning extends Warning {
 	 *            the priority of the warning.            
 	 * @param ruleName
 	 *            the rule name of the warning.
-	 * @param Classification
+	 * @param classification
 	 *            of the violated rule of the warning.
 	 */
 	public FindBugsWarning(String filePath, String filename, int line, String message, String category, String priority, String ruleName, String classification) {
@@ -58,7 +58,7 @@ public class FindBugsWarning extends Warning {
 
 		FindBugsWarning that = (FindBugsWarning) other;
 		//fileName.equals(that.fileName) && 
-		if (lineNumber == that.lineNumber
+		if (lineNumber == that.lineNumber && fileName.equals(that.fileName) && filePath.equals(that.filePath) 
 				&& message.equals(that.message) && category.equals(that.category) && classification.equals(that.classification)
 				&& priority.equals(that.priority) && type.equals(that.type)) {
 			return true;
