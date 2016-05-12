@@ -4,21 +4,14 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
-import BlueTurtle.commandbuilders.CoberturaCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
 import BlueTurtle.commandbuilders.PMDCommandBuilder;
-import BlueTurtle.parsers.CheckStyleXMLParser;
-import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.settings.CheckStyleSettings;
-import BlueTurtle.settings.CoberturaSettings;
 import BlueTurtle.settings.PMDSettings;
-import BlueTurtle.warnings.Warning;
 
 /**
  * Unit test for simple Analyser.
