@@ -6,6 +6,7 @@ sudo: false
 
 script:
   - mvn test
+  - mvn site
 notifications:
   webhooks:
     - http://octopull.rmhartog.me/api/travis/webhook
