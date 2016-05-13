@@ -25,7 +25,7 @@ public class CheckStyleWarning extends Warning {
 	 * 
 	 * @param ruleName
 	 *            the rule name of the warning.
-	 * @param Classification
+	 * @param classification
 	 *            of the violated rule of the warning.
 	 */
 	public CheckStyleWarning(String filePath, String filename, int line, String message, String ruleName, String classification) {
@@ -49,12 +49,10 @@ public class CheckStyleWarning extends Warning {
 		}
 
 		CheckStyleWarning that = (CheckStyleWarning) other;
-		if (ruleName.equals(that.ruleName) && filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
-				&& message.equals(that.message) && classification.equals(that.classification) && type.equals(that.type)) {
-			return true;
-		} else {
-			return false;
-		}
+
+		// fix SimplifyBooleanReturn, Conditional logic can be removed.
+		return (ruleName.equals(that.ruleName) && filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
+				&& message.equals(that.message) && classification.equals(that.classification) && type.equals(that.type));
 
 	}
 
