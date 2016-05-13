@@ -24,7 +24,7 @@ public class JavaController implements Controller {
 	private Analyser analyser;
 	private static String userDir = System.getProperty("user.dir");
 	private CommandBuilder commandBuilder;
-	private PMDSettings pmdSettings = new PMDSettings(Paths.get("resources", "asatSettings", "PMD_Settings.xml").toFile());
+	private PMDSettings pmdSettings = PMDSettings.getInstance();
 	private CheckStyleSettings checkStyleSettings = new CheckStyleSettings(Paths.get("resources", "asatSettings", "CheckStyle_Settings.xml").toFile());
 	private CoberturaSettings coberturaSettings = new CoberturaSettings();
 

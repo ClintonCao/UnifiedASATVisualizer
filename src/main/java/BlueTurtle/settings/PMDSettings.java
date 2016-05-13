@@ -27,7 +27,9 @@ import BlueTurtle.interfaces.Settings;
  *
  */
 public class PMDSettings implements Settings {
-	private File sourceFile;
+	private static PMDSettings instance = null;
+	
+	private File sourceFile = Paths.get("resources", "asatSettings", "PMD_Settings.xml").toFile();
 	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "PMD.xml").toString();
 
 	/**
@@ -36,8 +38,7 @@ public class PMDSettings implements Settings {
 	 * @param sourceFile
 	 *            the file of the setting.
 	 */
-	public PMDSettings(File sourceFile) {
-		setSourceFile(sourceFile);
+	private PMDSettings() {
 		try {
 			readSettings();
 		} catch (IOException | SAXException | ParserConfigurationException e) {
@@ -51,6 +52,17 @@ public class PMDSettings implements Settings {
 		}
 	}
 	
+	/**
+	 * @return
+	 * 			The singleton instance of PMDSettings.
+	 */
+	public static PMDSettings getInstance() {
+		if(instance == null) {
+			instance = new PMDSettings();
+		}
+		return instance;
+	}
+
 	/**
 	 * Read the setting from the source file.
 	 * 
@@ -71,7 +83,7 @@ public class PMDSettings implements Settings {
 		Document doc = dBuilder.parse(sourceFile);
 		doc.getDocumentElement().normalize();
 	}
-	
+
 	/**
 	 * Write the settings so a file.
 	 * 
@@ -90,7 +102,7 @@ public class PMDSettings implements Settings {
 		Element rootElement = doc.createElement("placeholder");
 		rootElement.appendChild(doc.createTextNode("placeholder"));
 		doc.appendChild(rootElement);
-		
+
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(doc);
