@@ -49,7 +49,7 @@ public class CheckStyleWarning extends Warning {
 		}
 
 		CheckStyleWarning that = (CheckStyleWarning) other;
-		if (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
+		if (ruleName.equals(that.ruleName) && filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
 				&& message.equals(that.message) && classification.equals(that.classification) && type.equals(that.type)) {
 			return true;
 		} else {
