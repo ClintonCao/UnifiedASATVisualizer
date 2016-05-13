@@ -31,7 +31,7 @@ public class AnalyserTest {
 		JavaController javaController = new JavaController();
 		ArrayList<AnalyserCommand> commands = new ArrayList<AnalyserCommand>();
 		CommandBuilder commandBuilder;
-		PMDSettings pmdSettings = new PMDSettings();
+		PMDSettings pmdSettings = javaController.getPMDSettings();
 		CheckStyleSettings checkStyleSettings = javaController.getCheckStyleSettings();
 
 		commandBuilder = new PMDCommandBuilder(pmdSettings);

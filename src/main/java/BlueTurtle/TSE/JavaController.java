@@ -1,6 +1,5 @@
 package BlueTurtle.TSE;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.nio.file.Paths; 
@@ -25,7 +24,7 @@ public class JavaController implements Controller {
 	private Analyser analyser;
 	private static String userDir = System.getProperty("user.dir");
 	private CommandBuilder commandBuilder;
-	private PMDSettings pmdSettings = new PMDSettings();
+	private PMDSettings pmdSettings = new PMDSettings(Paths.get("resources", "asatSettings", "PMD.xml").toFile());
 	private CheckStyleSettings checkStyleSettings = new CheckStyleSettings(Paths.get("resources", "asatSettings", "CheckStyle_Settings.xml").toFile());
 	private CoberturaSettings coberturaSettings = new CoberturaSettings();
 
@@ -62,7 +61,10 @@ public class JavaController implements Controller {
 	public CheckStyleSettings getCheckStyleSettings() {
 		return this.checkStyleSettings;
 	}
-
+	
+	public PMDSettings getPMDSettings() {
+		return this.pmdSettings;
+	}
 	public void setAnalyser(Analyser analyser) {
 		this.analyser = analyser;
 	}
