@@ -21,7 +21,6 @@ function handleClickTreeMapTypeSat(value){
     		acceptedTypes.splice(index, 1);
 		}
 	}
-	console.log(acceptedTypes);
 }
 function handleClickTypeSat(cb) {
 	if(document.getElementById('treemapButton').checked){
@@ -76,7 +75,7 @@ function getFilteredJSON(){
  * Setup tree map and shows it
  */
 function runTreeMap(){
-	removeChart();
+	treeMapBuilder.removeChart();
 	var title = document.getElementById("main-title");
 	title.innerHTML = "Treemap view of project";
 	var graphButtonDiv = document.getElementById("sub-title");
@@ -84,7 +83,7 @@ function runTreeMap(){
 
 	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 	
-	createTreeMap({title: ""}, {fileName: "Test Project", values: getFilteredJSON()});	
+	treeMapBuilder.createTreeMap({title: ""}, {fileName: "Test Project", values: getFilteredJSON()});	
 }
 
 /*
