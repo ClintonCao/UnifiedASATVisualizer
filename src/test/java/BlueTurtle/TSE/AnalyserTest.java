@@ -12,6 +12,7 @@ import BlueTurtle.commandbuilders.CommandBuilder;
 import BlueTurtle.commandbuilders.FindBugsCommandBuilder;
 import BlueTurtle.commandbuilders.PMDCommandBuilder;
 import BlueTurtle.settings.CheckStyleSettings;
+import BlueTurtle.settings.CoberturaSettings;
 import BlueTurtle.settings.FindBugsSettings;
 import BlueTurtle.settings.PMDSettings;
 
@@ -30,13 +31,11 @@ public class AnalyserTest {
 	 */
 	@Before
 	public void setUp() throws IOException {
-		JavaController javaController = new JavaController();
 		ArrayList<AnalyserCommand> commands = new ArrayList<AnalyserCommand>();
 		CommandBuilder commandBuilder;
-		PMDSettings pmdSettings = javaController.getPMDSettings();
-		CheckStyleSettings checkStyleSettings = javaController.getCheckStyleSettings();
-
-		FindBugsSettings findBugsSettings = new FindBugsSettings();
+		
+		PMDSettings pmdSettings = PMDSettings.getInstance();
+		CheckStyleSettings checkStyleSettings = CheckStyleSettings.getInstance();
 
 		commandBuilder = new PMDCommandBuilder(pmdSettings);
 		String[] pmdCommands = commandBuilder.buildCommand();

@@ -29,8 +29,8 @@ public class JavaController implements Controller {
 	private PMDSettings pmdSettings = PMDSettings.getInstance();
 	private CheckStyleSettings checkStyleSettings = CheckStyleSettings.getInstance();
 	private CoberturaSettings coberturaSettings = new CoberturaSettings();
-	private FindBugsSettings findBugsSettings = new FindBugsSettings();
-
+	private FindBugsSettings findBugsSettings = FindBugsSettings.getInstance();
+	
 	/**
 	 * Execute controller.
 	 * 
