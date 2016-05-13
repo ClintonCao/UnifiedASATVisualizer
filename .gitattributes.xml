@@ -1,4 +1,4 @@
 cat .gitattributes
 documentation/* linguist-documentation
-Runnables/* linguist-vendored
-jquery.js linguist-vendored=false
+Runnables/* linguist-vendored=false
+checkstyle-6.18-all.jar linguist-vendored=false
