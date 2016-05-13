@@ -1,7 +1,6 @@
 package BlueTurtle.parsers;
 
 import java.util.HashMap;
-import java.util.List;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
