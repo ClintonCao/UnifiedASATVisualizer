@@ -20,9 +20,15 @@ import org.xml.sax.SAXException;
 
 import BlueTurtle.interfaces.Settings;
 
+/**
+ * Class that represents the settings for FindBugs.
+ * 
+ * @author BlueTurtle.
+ *
+ */
 public class FindBugsSettings implements Settings {
 	private static FindBugsSettings instance = null;
-	
+
 	private File sourceFile = Paths.get("resources", "asatSettings", "FindBugs_Settings.xml").toFile();
 	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "findbugs.xml").toString();
 
@@ -47,11 +53,12 @@ public class FindBugsSettings implements Settings {
 	}
 
 	/**
-	 * @return 
-	 * 			The singleton instance of CheckstyleSettings.
+	 * Get the the instance of this class.
+	 * 
+	 * @return The singleton instance of CheckstyleSettings.
 	 */
 	public static FindBugsSettings getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new FindBugsSettings();
 		}
 		return instance;

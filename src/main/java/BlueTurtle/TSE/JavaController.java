@@ -2,12 +2,8 @@ package BlueTurtle.TSE;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.file.Paths; 
-import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
-import BlueTurtle.commandbuilders.CoberturaCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
 import BlueTurtle.commandbuilders.FindBugsCommandBuilder;
-import BlueTurtle.commandbuilders.PMDCommandBuilder;
 import BlueTurtle.interfaces.Controller;
 import BlueTurtle.settings.CheckStyleSettings;
 import BlueTurtle.settings.CoberturaSettings;

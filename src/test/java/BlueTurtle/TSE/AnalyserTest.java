@@ -9,11 +9,8 @@ import org.junit.Test;
 
 import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
-import BlueTurtle.commandbuilders.FindBugsCommandBuilder;
 import BlueTurtle.commandbuilders.PMDCommandBuilder;
 import BlueTurtle.settings.CheckStyleSettings;
-import BlueTurtle.settings.CoberturaSettings;
-import BlueTurtle.settings.FindBugsSettings;
 import BlueTurtle.settings.PMDSettings;
 
 /**
