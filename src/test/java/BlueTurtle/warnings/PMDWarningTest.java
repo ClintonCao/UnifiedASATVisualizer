@@ -28,9 +28,11 @@ public class PMDWarningTest {
 	private static String method = "equals";
 	private static String classification = "Refactorings - Redundancies";
 
-	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
+	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
-	
+	/**
+	 * Set up the GDP parser, parse the category information.
+	 */
 	@Before
 	public void setUp() {
 		GDCParser gP = new GDCParser();
