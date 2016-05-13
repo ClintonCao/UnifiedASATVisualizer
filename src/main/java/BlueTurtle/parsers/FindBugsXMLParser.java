@@ -1,7 +1,7 @@
 package BlueTurtle.parsers;
 
 import java.io.File;
-import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class FindBugsXMLParser extends XMLParser {
 	 * @return a list of FindBugs warnings.
 	 */
 	@Override
-	public List<Warning> parseFile(String xmlFilePath) {
+	public List<Warning> parseFile(String xmlFilePath, HashMap<String, String> categoryInfo) {
 		// List to store the warnings.
 		List<Warning> findBugsWarnings = new LinkedList<Warning>();
 		
@@ -49,7 +49,7 @@ public class FindBugsXMLParser extends XMLParser {
 			// Normalize the elements of the document.
 			doc.getDocumentElement().normalize();
 			
-			// Get the list of file pathes of the project.
+			// Get the list of file path of the project.
 			NodeList pathsList = doc.getElementsByTagName("Project");
 			
 			NodeList srcList = doc.getElementsByTagName("SrcDir");
@@ -74,31 +74,23 @@ public class FindBugsXMLParser extends XMLParser {
 					// Get the class name where the warning is from.
 					String className = fileElement.getAttribute("classname");
 					
-					// replace the . with \\ in the file name.
-					className = className.replaceAll("\\.", "\\\\");
+					// split the class name into a string array.
+					String [] classArray = className.split("\\.");
 					
-					// initially start with 0
-					int k = 0;
-					// With an empty file path
-					String filePath = "";
+					// the last one is the class name.
+					className = classArray[classArray.length - 1];
 					
-					// continue go down the list of source path if the file does not exist.
-//					do {
-//						// get the source path from the node.
-//						pathFront = srcList.item(k).getTextContent(); 
-						
-						// concatenate the source path with the class name.
-						filePath = pathFront + "\\" + className + ".java";
-						
-//						// increment the counter
-//						k++;
-//						// check if the file exits or not.
-//					} while(!new File(filePath).exists());
+					// concatenate the source path with the class name.
+					String fileN = className + ".java";
 					
+					fileN = fileN.substring(fileN.lastIndexOf(File.separatorChar) + 1, fileN.length());
+
+					// get the file path from the file name.
+					String filePath = new File(fileN).getCanonicalPath();
 
 					// Get the name of the file where the warning is from.
-					String fileName = Paths.get(filePath).getFileName().toString();
-
+					String fileName = filePath.substring(filePath.lastIndexOf(File.separatorChar) + 1, filePath.length());
+					
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("BugInstance");
 
@@ -124,9 +116,11 @@ public class FindBugsXMLParser extends XMLParser {
 
 							// Get the category of the warning.
 							String ruleName = warningElement.getAttribute("type");
+							
+							String classification = categoryInfo.get(ruleName);
 
 							// Add warning to the list of warnings.
-							findBugsWarnings.add(new FindBugsWarning(filePath, fileName, line, message, category, priority, ruleName));
+							findBugsWarnings.add(new FindBugsWarning(filePath, fileName, line, message, category, priority, ruleName, classification));
 						}
 					}
 				}
@@ -136,5 +130,6 @@ public class FindBugsXMLParser extends XMLParser {
 		}
 		return findBugsWarnings;
 	}
+	
 
 }

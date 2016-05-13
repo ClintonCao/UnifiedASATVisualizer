@@ -1,5 +1,6 @@
 package BlueTurtle.parsers;
 
+import java.util.HashMap;
 import java.util.List;
 
 import BlueTurtle.interfaces.Parser;
@@ -18,6 +19,19 @@ public abstract class XMLParser implements Parser {
 	 * 
 	 * @param filePath
 	 *            the path to the file that needs to be parsed.
+	 * @param categoryInfo
+	 * 			  the category information from GDC.           
 	 */
-	public abstract List<Warning> parseFile(String filePath);
+	public abstract List<Warning> parseFile(String filePath, HashMap<String, String> categoryInfo);
+	
+	/**
+	 * Classify the rule name to the correct classification according to categoryInfo.
+	 * 
+	 * @param ruleName
+	 * 			the violated rule name of the warning.
+	 */
+	public static String classify(String ruleName, HashMap<String, String> categoryInfo) {
+		String classification = categoryInfo.get(ruleName);
+		return classification;
+	}
 }

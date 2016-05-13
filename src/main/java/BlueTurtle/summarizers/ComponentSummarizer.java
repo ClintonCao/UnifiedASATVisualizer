@@ -79,13 +79,9 @@ public class ComponentSummarizer extends Summarizer {
 
 		ComponentSummarizer that = (ComponentSummarizer) other;
 
-		if (packageName.equals(that.packageName) && fileName.equals(that.fileName) && filePath.equals(that.filePath)
+		return (packageName.equals(that.packageName) && fileName.equals(that.fileName) && filePath.equals(that.filePath)
 				&& warningList.equals(that.warningList) && numberOfWarnings == that.numberOfWarnings
-				&& warningTypes.equals(that.warningTypes)) {
-			return true;
-		} else {
-			return false;
-		}
+				&& warningTypes.equals(that.warningTypes));
 
 	}
 

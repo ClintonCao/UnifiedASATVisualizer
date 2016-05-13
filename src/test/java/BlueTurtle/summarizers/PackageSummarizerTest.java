@@ -42,8 +42,8 @@ public class PackageSummarizerTest {
 		filePath = "./src/test/resources/ExampleClass.txt";
 		filePath2 = "./src/test/resources/ExampleTestClass.txt";
 		packageName = "SomePackage.subpackage";
-		w = new CheckStyleWarning(filePath, "ExampleClass.java", 3, "Test", "TestRule");
-		w2 = new CheckStyleWarning(filePath2, "ExampleTestClass.java", 3, "Test", "TestRule");
+		w = new CheckStyleWarning(filePath, "ExampleClass.java", 3, "Test", "TestRule", "Class");
+		w2 = new CheckStyleWarning(filePath2, "ExampleTestClass.java", 3, "Test", "TestRule", "Class");
 		warningList = new ArrayList<Warning>();
 		warningList2 = new ArrayList<Warning>();
 		warningList2.add(w2);
