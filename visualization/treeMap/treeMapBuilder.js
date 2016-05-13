@@ -93,7 +93,7 @@ var treeMapBuilder = (function() {
         $(".updateContent").off("click");
         $(".updateContent").click(function(view) {
             if (document.getElementById('treemapButton').checked) {
-                handleClickTreeMapTypeSat(view.toElement.value)
+                handleClickTreeMapTypeSat(view.target.value)
                 reloadContent();
                 var newNode = findNode(d, root);
                 g.filter(function(newNode) {
