@@ -26,7 +26,7 @@ import BlueTurtle.writers.JSWriter;
  */
 public class App {
 	
-	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
+	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
 
 	/**

@@ -26,7 +26,7 @@ public abstract class Warning {
 	 *            the type of the warning e.g. PMD.
 	 * @param ruleName
 	 *            the violated rule name of the warning.
-	 * @param Classification
+	 * @param classification
 	 *            of the violated rule of the warning.
 	 */
 	public Warning(String filePath, String filename, String type, String ruleName, String classification) {
@@ -64,8 +64,8 @@ public abstract class Warning {
 	 * @param classification
 	 *            the of the violated rule.
 	 */
-	public void setClassification(String Classification) {
-		this.classification = Classification;
+	public void setClassification(String classification) {
+		this.classification = classification;
 	}
 
 	/**
