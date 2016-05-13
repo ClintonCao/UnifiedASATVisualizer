@@ -31,7 +31,7 @@ public class FindBugsXMLParserTest {
 	private static String testSet2Category = "BAD_PRACTICE";
 	private static String testSet2Priority = "High";
 	private static String testSet2Classification = "Interface";
-	private static String testSet3FilePath = System.getProperty("user.dir") + "\\BlueTurtle\\warnings\\FindBugsWarning.java";
+	private static String testSet3FilePath = System.getProperty("user.dir") + "\\FindBugsWarning.java";
 
 	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
 
@@ -69,7 +69,8 @@ public class FindBugsXMLParserTest {
 		
 		System.out.println(expected.getFileName() + " |  | " + actual.getFileName());
 		System.out.println(expected.getCategory() + " |  | " + actual.getCategory());
-		System.out.println(expected.getFilePath() + " |  | " + actual.getFilePath());
+		System.out.println(expected.getFilePath()); 
+		System.out.println(actual.getFilePath());
 		System.out.println(expected.getLine() + " |  | " + actual.getLine());
 		System.out.println(expected.getMessage() + " |  | " + actual.getMessage());
 		System.out.println(expected.getPriority() + " |  | " + actual.getPriority());

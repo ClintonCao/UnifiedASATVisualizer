@@ -82,12 +82,16 @@ public class FindBugsXMLParser extends XMLParser {
 		
 					// concatenate the source path with the class name.
 					String fileN = className + ".java";
-									
+					
+					fileN = fileN.substring(fileN.lastIndexOf("\\")+1, fileN.length());
+
+					System.out.println("fileN: " + fileN);
+
 					String filePath = new File(fileN).getCanonicalPath();
-					System.out.println(filePath);
 										
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1, filePath.length());
+					System.out.println(fileName);
 
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("BugInstance");
