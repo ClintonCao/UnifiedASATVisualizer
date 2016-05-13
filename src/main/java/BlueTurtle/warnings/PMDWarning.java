@@ -9,6 +9,10 @@ package BlueTurtle.warnings;
 public class PMDWarning extends Warning {
 
 	private int line;
+	private String ruleSet;
+	private String method;
+	private String packageName;
+	
 	/**
 	 * Constructor.
 	 * 
@@ -26,7 +30,7 @@ public class PMDWarning extends Warning {
 	 *            the ruleSet of the warning.
 	 * @param method
 	 *            the method of the warning.
-	 * @param Classification
+	 * @param classification
 	 *            of the violated rule of the warning.
 	 */
 	public PMDWarning(String filePath, String filename, int line, String packageName, String ruleSet, String method,  String ruleName, String classification) {
@@ -36,10 +40,6 @@ public class PMDWarning extends Warning {
 		setRuleSet(ruleSet);
 		setMethod(method);
 	}
-	
-	private String ruleSet;
-	private String method;
-	private String packageName;
 
 	/**
 	 * Check whether two PMD warnings are the same.
@@ -56,13 +56,11 @@ public class PMDWarning extends Warning {
 		}
 
 		PMDWarning that = (PMDWarning) other;
-		if (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
+
+		// fixed SimplifyBooleanReturn, Conditional logic can be removed.
+		return (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
 				&& classification.equals(that.classification) && packageName.equals(that.packageName) && type.equals(that.type) 
-				&& ruleSet.equals(that.ruleSet) && method.equals(that.method)) {
-			return true;
-		} else {
-			return false;
-		}
+				&& ruleSet.equals(that.ruleSet) && method.equals(that.method) && ruleName.equals(that.ruleName));
 
 	}
 

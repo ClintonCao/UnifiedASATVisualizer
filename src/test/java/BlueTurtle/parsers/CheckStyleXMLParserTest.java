@@ -31,9 +31,11 @@ public class CheckStyleXMLParserTest {
 	private static String testSet2Message = "Unused @param tag for 'filePath'.";
 	private static String testSet2RuleName = "JavadocMethod";
 	private static String testSet2Classification = "Documentation Conventions";
-	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
+	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
-	
+	/**
+	 * Set up the GDP parser, parse the category information.
+	 */
 	@Before
 	public void setUp() {
 		GDCParser gP = new GDCParser();

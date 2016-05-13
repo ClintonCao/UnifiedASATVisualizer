@@ -34,9 +34,11 @@ public class PMDXMLParserTest {
 	private static String testSet2Classification = "Interface";
 
 
-	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
+	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
-	
+	/**
+	 * Set up the GDP parser, parse the category information.
+	 */
 	@Before
 	public void setUp() {
 		GDCParser gP = new GDCParser();

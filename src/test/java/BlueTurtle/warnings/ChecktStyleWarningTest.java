@@ -26,10 +26,13 @@ public class ChecktStyleWarningTest {
 	private static String fileName = "Cool.java";
 	private static String message = "Unused @param tag for 'filePath'.";
 	private static String ruleName = "JavadocMethod";
-	private static String classification =" Documentation Conventions";
-	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
+	private static String classification = " Documentation Conventions";
+	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
 
+	/**
+	 * Set up the GDP parser, parse the category information.
+	 */
 	@Before
 	public void setUp() {
 		GDCParser gP = new GDCParser();
@@ -173,7 +176,7 @@ public class ChecktStyleWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentMessageAndRule() {
-		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, message, "rule",classification);
+		CheckStyleWarning cw = new CheckStyleWarning(filePath, fileName, 1, message, "rule", classification);
 		CheckStyleWarning diff = new CheckStyleWarning(filePath, fileName, 1, "hey", ruleName, classification);
 		assertNotEquals(cw, diff);
 	}

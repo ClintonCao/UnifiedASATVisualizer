@@ -1,10 +1,6 @@
 package BlueTurtle.parsers;
 
 import java.util.HashMap;
-import java.util.List;
-
-import BlueTurtle.interfaces.Parser;
-import BlueTurtle.warnings.Warning;
 
 /**
  * This class can be used to parse a Markdown file.
