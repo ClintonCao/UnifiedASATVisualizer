@@ -1,14 +1,17 @@
 package BlueTurtle.parsers;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import BlueTurtle.warnings.FindBugsWarning;
 import BlueTurtle.warnings.Warning;
 
 /**
@@ -23,13 +26,14 @@ public class FindBugsXMLParserTest {
 	private static String testSet2 = "./src/test/resources/exampleFindbugs1.xml";
 	private static String testSet3 = "./src/test/resources/asat-gdc-mapping.html";
 
-	private static String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java";
+//	private static String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java";
 	private static String testSet2FileName = "FindBugsWarning.java";
 	private static String testSet2RuleName = "HE_EQUALS_USE_HASHCODE";
 	private static String testSet2Message = "BlueTurtle.warnings.FindBugsWarning defines equals and uses Object.hashCode()";
 	private static String testSet2Category = "BAD_PRACTICE";
 	private static String testSet2Priority = "High";
 	private static String testSet2Classification = "Interface";
+	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar+ "FindBugsWarning.java";
 
 	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
 
@@ -56,17 +60,17 @@ public class FindBugsXMLParserTest {
 	/**
 	 * Test whether the parser creates the right object.
 	 */
-//	@Test
-//	public void testParsingOneWarning() {
-//		FindBugsXMLParser parser = new FindBugsXMLParser();
-//
-//		FindBugsWarning expected = new FindBugsWarning(testSet2FilePath, testSet2FileName, 47,
-//				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName);
-//
-//		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2).get(0);
-//
-//		assertEquals(expected, actual);
-//	}
+	@Test
+	public void testParsingOneWarning() {
+		FindBugsXMLParser parser = new FindBugsXMLParser();
+
+		FindBugsWarning expected = new FindBugsWarning(testSet3FilePath, testSet2FileName, 47,
+				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName, testSet2Classification);
+
+		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2,categoryInfo).get(0);
+
+		assertEquals(expected, actual);
+	}
 
 	/**
 	 * Test that the parser created the right amount of warnings.
