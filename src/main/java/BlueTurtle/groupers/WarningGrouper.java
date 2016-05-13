@@ -111,12 +111,9 @@ public class WarningGrouper implements Grouper {
 
 		WarningGrouper that = (WarningGrouper) other;
 
-		if (componentsInfo.equals(that.getComponentsInfo()) && packagesNames.equals(that.getPackagesNames())
-				&& warningList.equals(that.getWarningList())) {
-			return true;
-		} else {
-			return false;
-		}
+		// fix SimplifyBooleanReturn, Conditional logic can be removed.
+		return (componentsInfo.equals(that.getComponentsInfo()) && packagesNames.equals(that.getPackagesNames())
+				&& warningList.equals(that.getWarningList()));
 	}
 
 	/**************************************/

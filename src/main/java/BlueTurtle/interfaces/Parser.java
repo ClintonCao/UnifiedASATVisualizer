@@ -1,5 +1,6 @@
 package BlueTurtle.interfaces;
 
+import java.util.HashMap;
 import java.util.List;
 
 import BlueTurtle.warnings.Warning;
@@ -16,11 +17,12 @@ public interface Parser {
 	/**
 	 * Parse the file.
 	 * 
-	 * @param xmlFilePath
+	 * @param filePath
 	 *            the location of the file.
-	 *            
+	 * @param categoryInfo
+	 * 			  the category information from GDC. 
 	 * @return a list containing warning objects.
 	 */
-	List<Warning> parseFile(String xmlFilePath);
+	List<Warning> parseFile(String filePath, HashMap<String, String> categoryInfo);
 
 }

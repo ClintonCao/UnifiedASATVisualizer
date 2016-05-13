@@ -30,9 +30,11 @@ public class FindBugsWarning extends Warning {
 	 *            the priority of the warning.            
 	 * @param ruleName
 	 *            the rule name of the warning.
+	 * @param classification
+	 *            of the violated rule of the warning.
 	 */
-	public FindBugsWarning(String filePath, String filename, int line, String message, String category, String priority, String ruleName) {
-		super(filePath, filename, "FindBugs", ruleName);
+	public FindBugsWarning(String filePath, String filename, int line, String message, String category, String priority, String ruleName, String classification) {
+		super(filePath, filename, "FindBugs", ruleName, classification);
 		setLine(line);
 		setMessage(message);
 		setCategory(category);
@@ -55,13 +57,11 @@ public class FindBugsWarning extends Warning {
 		}
 
 		FindBugsWarning that = (FindBugsWarning) other;
-		if (filePath.equals(that.filePath) && fileName.equals(that.fileName) && lineNumber == that.lineNumber
-				&& message.equals(that.message) && category.equals(that.category) && ruleName.equals(that.ruleName)
-				&& priority.equals(that.priority) && type.equals(that.type)) {
-			return true;
-		} else {
-			return false;
-		}
+
+		// fixed SimplifyBooleanReturn, Conditional logic can be removed.
+		return (filePath.equals(that.filePath) && fileName.equals(that.fileName) && lineNumber == that.lineNumber
+				&& message.equals(that.message) && category.equals(that.category) && classification.equals(that.classification)
+				&& priority.equals(that.priority) && type.equals(that.type) && ruleName.equals(that.ruleName));
 
 	}
 
