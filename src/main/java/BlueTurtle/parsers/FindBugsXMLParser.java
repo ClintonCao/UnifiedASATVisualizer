@@ -51,12 +51,11 @@ public class FindBugsXMLParser extends XMLParser {
 			// Normalize the elements of the document.
 			doc.getDocumentElement().normalize();
 			
-			// Get the list of file pathes of the project.
+			// Get the list of file path of the project.
 			NodeList pathsList = doc.getElementsByTagName("Project");
 			
 			NodeList srcList = doc.getElementsByTagName("SrcDir");
 
-			String pathFront = "";
 			if (pathsList != null && pathsList.getLength() > 0) {
 				Element pathElement = (Element) pathsList.item(0);
 				srcList = pathElement.getElementsByTagName("SrcDir");
@@ -75,27 +74,20 @@ public class FindBugsXMLParser extends XMLParser {
 
 					// Get the class name where the warning is from.
 					String className = fileElement.getAttribute("classname");
-					
-					System.out.println("1 " + className);
-					// replace the . with \\ in the file name.
-					//className = className.replaceAll("\\.", String.valueOf(File.separatorChar));
+					// split the class name into a string arry
 					String [] classArray = className.split("\\.");
-//					className = className.substring(className.lastIndexOf(File.separatorChar)+1, className.length());
+					// the last one is the class name
 					className = classArray[classArray.length-1];
-					System.out.println("2 " + className);
 					// concatenate the source path with the class name.
 					String fileN = className + ".java";
 					
 					fileN = fileN.substring(fileN.lastIndexOf(File.separatorChar)+1, fileN.length());
-
-					System.out.println("fileN: " + fileN);
 
 					String filePath = new File(fileN).getCanonicalPath();
 										
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf(File.separatorChar) + 1, filePath.length());
 					System.out.println("fileName "+ fileName);
-					
 
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("BugInstance");
