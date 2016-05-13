@@ -47,7 +47,7 @@ public class CategorySummarizer extends Summarizer {
 			
 			String rule = w.getRuleName();
 			String currentC = categoryInfo.get(rule);
-			if (currentC == category){
+			if (currentC == category) {
 				warningList.add(w);
 				numberOfWarnings++;
 			}
@@ -70,15 +70,11 @@ public class CategorySummarizer extends Summarizer {
 		}
 
 		CategorySummarizer that = (CategorySummarizer) other;
-
-		if (category.equals(that.getCategory()) 
+		
+		return (category.equals(that.getCategory()) 
 				&& warningList.equals(that.warningList) 
 				&& numberOfWarnings == that.numberOfWarnings
-				&& categoryInfo == that.categoryInfo) {
-			return true;
-		} else {
-			return false;
-		}
+				&& categoryInfo == that.categoryInfo);
 
 	}
 

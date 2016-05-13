@@ -93,7 +93,7 @@ public class PMDXMLParser extends XMLParser {
 							String ruleName = warningElement.getAttribute("rule");
 							
 							// PMD rule name is a special concatenation of rule set and rule name
-							String pmdRN = ruleSet.toLowerCase() + ".xml/"+ruleName; 
+							String pmdRN = ruleSet.toLowerCase() + ".xml/" + ruleName; 
 							
 							
 							String classification = categoryInfo.get(pmdRN);

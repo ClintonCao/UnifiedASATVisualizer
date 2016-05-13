@@ -92,12 +92,8 @@ public class PackageSummarizer extends Summarizer {
 
 		PackageSummarizer that = (PackageSummarizer) other;
 
-		if (packageName.equals(that.packageName) && numberOfWarnings == that.numberOfWarnings
-				&& classes.equals(that.classes) && warningTypes.equals(that.warningTypes)) {
-			return true;
-		} else {
-			return false;
-		}
+		return (packageName.equals(that.packageName) && numberOfWarnings == that.numberOfWarnings
+				&& classes.equals(that.classes) && warningTypes.equals(that.warningTypes));
 
 	}
 
