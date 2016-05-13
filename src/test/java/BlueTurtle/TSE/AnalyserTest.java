@@ -45,11 +45,6 @@ public class AnalyserTest {
 		String[] checkStyleCommands = commandBuilder.buildCommand();
 		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings.getDefaultOutputFilePath(), checkStyleCommands);
 		commands.add(c2);
-		
-		commandBuilder = new FindBugsCommandBuilder(findBugsSettings);
-		String[] findBugsCommands = commandBuilder.buildCommand();
-		AnalyserCommand c3 = new AnalyserCommand(findBugsSettings.getDefaultOutputFilePath(), findBugsCommands);
-		commands.add(c3);
 
 		Analyser analyser = new Analyser(commands);
 
@@ -81,19 +76,6 @@ public class AnalyserTest {
 	@Test
 	public void testPMDOutput() throws IOException {
 		File file = new File(JavaController.getUserDir() + "/Runnables/Testcode/PMD.xml");
-		assertTrue(file.length() > 0);
-	}
-	
-	/**
-	 * Simple test to check if running the analyser actually produces output for Findbugs.
-	 * 
-	 * @throws IOException
-	 * 			   throws an exception if problem is encountered while reading
-	 *             the file.
-	 */
-	@Test
-	public void testFindBugsOutput() throws IOException {
-		File file = new File(JavaController.getUserDir() + "/Runnables/Testcode/findbugs.xml");
 		assertTrue(file.length() > 0);
 	}
 }
