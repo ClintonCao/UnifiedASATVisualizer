@@ -37,7 +37,14 @@ public class Analyser {
 			ProcessBuilder pb = new ProcessBuilder(command.getArgs());
 			pb.redirectOutput(Redirect.INHERIT);
 			pb.redirectError(Redirect.INHERIT);
-			pb.start();
+			Process process = pb.start();
+			try {
+				process.waitFor();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			process.getOutputStream().flush();
+			process.destroy();
 		}
 	}
 

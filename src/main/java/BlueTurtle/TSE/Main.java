@@ -26,7 +26,7 @@ public class Main {
 	static mode currentMode = mode.JAVA;
 
 	/**
-	 * Maind method.
+	 * Main method.
 	 * 
 	 * @param args
 	 *            the arguments.
