@@ -74,8 +74,10 @@ public class CheckStyleXMLParserTest {
 
 		CheckStyleWarning expected = new CheckStyleWarning(testSet2FilePath, testSet2FileName, 20,
 				testSet2Message, testSet2RuleName, testSet2Classification);
+		System.out.println(expected);
 
 		CheckStyleWarning actual = (CheckStyleWarning) parser.parseFile(testSet2, categoryInfo).get(0);
+		System.out.println(actual);
 		String catagory = actual.getClassification();
 		System.out.println(catagory);
 
