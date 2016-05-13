@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="CSS/styleSheet.css">
+    <meta charset="utf-8">
+    <title>Visualization of different ASATs</title>
+</head>
+
+<body>
+    <div id="main-title" class="main-title"></div>
+    <div class="wrapper">
+        <div id="sub-title" class="sub-title">
+            <button class="back-button" id="back-button" onclick="goBack()">Go back to package view</button>
+        </div>
+    </div>
+    <div id="wrapper">
+        <div id="chart">
+        </div>
+        <div id="optionsMenu">
+        	<h3>SATs</h3>
+            <form name="button-options" action="">
+                <label><input type="checkbox" class="updateContent" id="checkstyleButton" onclick="handleClickTypeSat(this);" name="sat" value="CheckStyle"> CheckStyle</label><br>
+                <label><input type="checkbox" class="updateContent" id="pmdButton" onclick="handleClickTypeSat(this);" name="sat" value="PMD"> PMD</label><br>
+                <label><input type="checkbox" class="updateContent" id="findBugsButton" onclick="handleClickTypeSat(this);" name="sat" value="FindBugs"> FindBugs</label><br>
+            <h3>Visualizers </h3>
+                <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap" checked> Treemap<br>
+                <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>
+            </form>
+        </div>
+    </div>
+
+
+	<!--
+		All Javascript files
+        The order is important first included all libraries
+        Then the visualization methods
+        And finally the mainDriver which controlls erverything.
+	-->
+    <script src="jQuery/jquery-1.12.3.min.js"></script>
+    <script src="D3/d3.min.js"></script>
+    <script src="JSON/input.js"></script>
+    <script src="JSON/jsonBuilder.js"></script>
+    <script src="treemap/treeMapBuilder.js"></script>
+    <script src="graph/graphBuilder.js"></script>
+    <script src="mainDriver.js"></script>
+</body>
+
+</html>
