@@ -30,8 +30,9 @@ public class AnalyserTest {
 	public void setUp() throws IOException {
 		ArrayList<AnalyserCommand> commands = new ArrayList<AnalyserCommand>();
 		CommandBuilder commandBuilder;
-		PMDSettings pmdSettings = new PMDSettings();
-		CheckStyleSettings checkStyleSettings = new CheckStyleSettings(new File("CheckStyle_Settings.xml"));
+		
+		PMDSettings pmdSettings = PMDSettings.getInstance();
+		CheckStyleSettings checkStyleSettings = CheckStyleSettings.getInstance();
 
 		commandBuilder = new PMDCommandBuilder(pmdSettings);
 		String[] pmdCommands = commandBuilder.buildCommand();

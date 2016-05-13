@@ -3,6 +3,7 @@ package BlueTurtle.settings;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -26,9 +27,11 @@ import BlueTurtle.interfaces.Settings;
  *
  */
 public class CheckStyleSettings implements Settings {
-	private File sourceFile;
+	private static CheckStyleSettings instance = null;
+
+	private File sourceFile = Paths.get("resources", "asatSettings", "CheckStyle_Settings.xml").toFile();
 	private String configFile;
-	private String defaultOutputFilePath = "./Runnables/Testcode/checkstyle.xml";
+	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "checkstyle.xml").toString();
 
 	/**
 	 * Constructor.
@@ -36,8 +39,7 @@ public class CheckStyleSettings implements Settings {
 	 * @param sourceFile
 	 *            the file of the setting.
 	 */
-	public CheckStyleSettings(File sourceFile) {
-		setSourceFile(sourceFile);
+	private CheckStyleSettings() {
 		try {
 			readSettings();
 		} catch (IOException | SAXException | ParserConfigurationException e) {
@@ -49,6 +51,18 @@ public class CheckStyleSettings implements Settings {
 		} catch (ParserConfigurationException | TransformerException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Get the instance of this class.
+	 * 
+	 * @return The singleton instance of CheckstyleSettings.
+	 */
+	public static CheckStyleSettings getInstance() {
+		if (instance == null) {
+			instance = new CheckStyleSettings();
+		}
+		return instance;
 	}
 
 	/**

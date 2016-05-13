@@ -21,16 +21,16 @@ import org.xml.sax.SAXException;
 import BlueTurtle.interfaces.Settings;
 
 /**
- * Class that represents the settings for PMD.
+ * Class that represents the settings for FindBugs.
  * 
  * @author BlueTurtle.
  *
  */
-public class PMDSettings implements Settings {
-	private static PMDSettings instance = null;
+public class FindBugsSettings implements Settings {
+	private static FindBugsSettings instance = null;
 
-	private File sourceFile = Paths.get("resources", "asatSettings", "PMD_Settings.xml").toFile();
-	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "PMD.xml").toString();
+	private File sourceFile = Paths.get("resources", "asatSettings", "FindBugs_Settings.xml").toFile();
+	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "findbugs.xml").toString();
 
 	/**
 	 * Constructor.
@@ -38,7 +38,7 @@ public class PMDSettings implements Settings {
 	 * @param sourceFile
 	 *            the file of the setting.
 	 */
-	private PMDSettings() {
+	private FindBugsSettings() {
 		try {
 			readSettings();
 		} catch (IOException | SAXException | ParserConfigurationException e) {
@@ -53,13 +53,13 @@ public class PMDSettings implements Settings {
 	}
 
 	/**
-	 * Get the instance of this class.
+	 * Get the the instance of this class.
 	 * 
-	 * @return The singleton instance of PMDSettings.
+	 * @return The singleton instance of CheckstyleSettings.
 	 */
-	public static PMDSettings getInstance() {
+	public static FindBugsSettings getInstance() {
 		if (instance == null) {
-			instance = new PMDSettings();
+			instance = new FindBugsSettings();
 		}
 		return instance;
 	}
@@ -127,4 +127,5 @@ public class PMDSettings implements Settings {
 	public void setSourceFile(File sourceFile) {
 		this.sourceFile = sourceFile;
 	}
+
 }

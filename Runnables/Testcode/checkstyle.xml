@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="6.18">
-<file name="C:\Users\wangs\Documents\GitHub\Contextproject-TSE\Runnables\Testcode\AllClosestPoints.java">
+<file name="C:\Users\michiel\workspace\Contextproject-TSE\Runnables\Testcode\AllClosestPoints.java">
 <error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
 <error line="2" column="8" severity="error" message="Unused import - java.io.FileInputStream." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
 <error line="10" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
@@ -215,10 +215,10 @@
 <error line="328" column="43" severity="error" message="&apos;if&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
 <error line="329" severity="error" message="Line is longer than 80 characters (found 95)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
 </file>
-<file name="C:\Users\wangs\Documents\GitHub\Contextproject-TSE\Runnables\Testcode\checkstyle.xml">
+<file name="C:\Users\michiel\workspace\Contextproject-TSE\Runnables\Testcode\checkstyle.xml">
 <error line="0" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
 </file>
-<file name="C:\Users\wangs\Documents\GitHub\Contextproject-TSE\Runnables\Testcode\ClintonCode.java">
+<file name="C:\Users\michiel\workspace\Contextproject-TSE\Runnables\Testcode\ClintonCode.java">
 <error line="0" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
 <error line="6" column="8" severity="error" message="Unused import - java.io.InputStreamReader." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
 <error line="8" severity="error" message="Using the &apos;.*&apos; form of import should be avoided - java.util.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
@@ -325,12 +325,12 @@
 <error line="277" column="2" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
 <error line="281" column="2" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
 </file>
-<file name="C:\Users\wangs\Documents\GitHub\Contextproject-TSE\Runnables\Testcode\cobertura\coverage.xml">
+<file name="C:\Users\michiel\workspace\Contextproject-TSE\Runnables\Testcode\cobertura\coverage.xml">
 <error line="5" column="1" severity="error" message="File contains tab characters (this is the first instance)." source="com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"/>
 </file>
-<file name="C:\Users\wangs\Documents\GitHub\Contextproject-TSE\Runnables\Testcode\cobertura.xml">
+<file name="C:\Users\michiel\workspace\Contextproject-TSE\Runnables\Testcode\cobertura.xml">
 </file>
-<file name="C:\Users\wangs\Documents\GitHub\Contextproject-TSE\Runnables\Testcode\naiveNearestNeighbour.java">
+<file name="C:\Users\michiel\workspace\Contextproject-TSE\Runnables\Testcode\naiveNearestNeighbour.java">
 <error line="0" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
 <error line="1" column="8" severity="error" message="Unused import - java.io.BufferedReader." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
 <error line="3" column="8" severity="error" message="Unused import - java.io.InputStream." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
@@ -376,7 +376,6 @@
 <error line="61" column="43" severity="error" message="&apos;if&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
 <error line="70" column="20" severity="error" message="&apos;for&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
 </file>
-<file name="C:\Users\wangs\Documents\GitHub\Contextproject-TSE\Runnables\Testcode\PMD.xml">
+<file name="C:\Users\michiel\workspace\Contextproject-TSE\Runnables\Testcode\PMD.xml">
 </file>
 </checkstyle>
-Checkstyle ends with 364 errors.

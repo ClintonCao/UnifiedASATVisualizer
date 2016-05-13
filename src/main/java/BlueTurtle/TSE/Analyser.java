@@ -1,6 +1,5 @@
 package BlueTurtle.TSE;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public class Analyser {
 
 		for (AnalyserCommand command : commands) {
 			ProcessBuilder pb = new ProcessBuilder(command.getArgs());
-			pb.redirectOutput(Redirect.to(new File(command.getDefaultOutputFilePath())));
+			pb.redirectOutput(Redirect.INHERIT);
 			pb.redirectError(Redirect.INHERIT);
 			Process process = pb.start();
 			try {
