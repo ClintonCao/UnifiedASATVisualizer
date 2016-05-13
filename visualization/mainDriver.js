@@ -3,110 +3,125 @@
  */
 var graphTrace = [];
 var graphTraceIndex = 0;
-var acceptedTypes =[];
-var acceptedRuleNames =["PackageName","JavadocMethod"];
+var acceptedTypes = [];
+var acceptedRuleNames = ["PackageName", "JavadocMethod"];
 
 // Run first time
 runTreeMap();
-	
+
 /*
  * Handles click on checkboxes for showing results of different tools
  */
-function handleClickTreeMapTypeSat(value){
-	if(acceptedTypes.indexOf(value)<0) {
-		acceptedTypes.push(value);
-	} else{
-		var index = acceptedTypes.indexOf(value);
-		if (index > -1) {
-    		acceptedTypes.splice(index, 1);
-		}
-	}
+function handleClickTreeMapTypeSat(value) {
+    if (acceptedTypes.indexOf(value) < 0) {
+        acceptedTypes.push(value);
+    } else {
+        var index = acceptedTypes.indexOf(value);
+        if (index > -1) {
+            acceptedTypes.splice(index, 1);
+        }
+    }
 }
+// Delete the entire chart from the page.
+function removeChart() {
+    var chartNode = document.getElementById("chart");
+    while (chartNode.firstChild) {
+        chartNode.removeChild(chartNode.firstChild);
+    }
+}
+
+
 function handleClickTypeSat(cb) {
-	if(document.getElementById('treemapButton').checked){
-		// Is taken care off in the treemap self
-		// this way the treemap can refresh at current level.
-	} else if (document.getElementById('graphButton').checked) {
-		if(cb.name == "sat"){
-			var value = cb.value;
-			handleClickTreeMapTypeSat(value);
-			removeChart();
-			if(packagesLevel) {
-				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-				var input = createJsonGraphPackages(packages);
+    if (document.getElementById('treemapButton').checked) {
+        // Is taken care off in the treemap self
+        // this way the treemap can refresh at current level.
+    } else if (document.getElementById('graphButton').checked) {
+        if (cb.name == "sat") {
+            var value = cb.value;
+            handleClickTreeMapTypeSat(value);
+            removeChart();
+            if (packagesLevel) {
+                var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+                var input = createJsonGraphPackages(packages);
 
-				if(typeof graphTrace[graphTraceIndex] === 'undefined') {
-					graphTrace.push(input);
-				} else {
-					graphTrace[graphTraceIndex] = input;
-				}
-				createGraph(graphTrace[graphTraceIndex]);
-			} else {
-				var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-				var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+                if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+                    graphTrace.push(input);
+                } else {
+                    graphTrace[graphTraceIndex] = input;
+                }
+                createGraph(graphTrace[graphTraceIndex]);
+            } else {
+                var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+                var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
 
-				if(typeof graphTrace[graphTraceIndex] === 'undefined') {
-					graphTrace.push(input);
-				} else {
-					graphTrace[graphTraceIndex] = input;
-				}
-				createGraph(graphTrace[graphTraceIndex]);
-			}
-		}
-	}
+                if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+                    graphTrace.push(input);
+                } else {
+                    graphTrace[graphTraceIndex] = input;
+                }
+                createGraph(graphTrace[graphTraceIndex]);
+            }
+        }
+    }
 }
 
 /*
  * Toggles between the graph and tree map visualization
  */
-function handleClickVisualiser(radioButton){
-	if(radioButton.value=="graph"){
-		runGraph();
-	} else if (radioButton.value=="treemap"){
-		runTreeMap();
-	}
+function handleClickVisualiser(radioButton) {
+    if (radioButton.value == "graph") {
+        runGraph();
+    } else if (radioButton.value == "treemap") {
+        runTreeMap();
+    }
 }
-function getFilteredJSON(){
-	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-	return createJsonTreeMap(packages);	
+
+function getFilteredJSON() {
+    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    return createJsonTreeMap(packages);
 }
 
 /*
  * Setup tree map and shows it
  */
-function runTreeMap(){
-	treeMapBuilder.removeChart();
-	var title = document.getElementById("main-title");
-	title.innerHTML = "Treemap view of project";
-	var graphButtonDiv = document.getElementById("sub-title");
-	graphButtonDiv.style.display = 'none';
+function runTreeMap() {
+    removeChart();
+    var title = document.getElementById("main-title");
+    title.innerHTML = "Treemap view of project";
+    var graphButtonDiv = document.getElementById("sub-title");
+    graphButtonDiv.style.display = 'none';
 
-	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-	
-	treeMapBuilder.createTreeMap({title: ""}, {fileName: "Test Project", values: getFilteredJSON()});	
+    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+
+    treeMapBuilder.createTreeMap({
+        title: ""
+    }, {
+        fileName: "Test Project",
+        values: getFilteredJSON()
+    });
 }
 
 /*
  * Setup graph and shows it
  */
-function runGraph(){
-	removeChart();
-	packagesLevel = true;
-	graphTraceIndex = 0;
-	var graphButtonDiv = document.getElementById("sub-title");
-	graphButtonDiv.style.display = 'inline';
-	var graphButton = document.getElementById('back-button');
-	graphButton.firstChild.data = "This is the upperview";
-	graphButton.disabled = true;
+function runGraph() {
+    removeChart();
+    packagesLevel = true;
+    graphTraceIndex = 0;
+    var graphButtonDiv = document.getElementById("sub-title");
+    graphButtonDiv.style.display = 'inline';
+    var graphButton = document.getElementById('back-button');
+    graphButton.firstChild.data = "This is the upperview";
+    graphButton.disabled = true;
 
-	var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
 
-	var input = createJsonGraphPackages(packages);
+    var input = createJsonGraphPackages(packages);
 
-	if(typeof graphTrace[graphTraceIndex] === 'undefined') {
-		graphTrace.push(input);
-	} else {
-		graphTrace[graphTraceIndex] = input;
-	}
-	createGraph(graphTrace[graphTraceIndex]);
+    if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+        graphTrace.push(input);
+    } else {
+        graphTrace[graphTraceIndex] = input;
+    }
+    createGraph(graphTrace[graphTraceIndex]);
 }

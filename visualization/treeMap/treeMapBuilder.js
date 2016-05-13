@@ -1,83 +1,70 @@
-
-//BOning what's this??
-
-
-window.addEventListener('message', function(e) {
-    var opts = e.data.opts,
-        data = e.data.data;
-
-    return main(opts, data);
-});
-
-// till here :)
+var treeMapBuilder = (function() {
 
 
-var treeMapBuilder = (function () {
-	
-	
-// initialize all variables
-var treemap,root,formatNumber,rname,margin,theight,width,height,transitioning,color,x,y,svg,grandparent,maxDepth,defaults
+    // initialize all variables
+    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, color, x, y, svg, grandparent, maxDepth, defaults
 
 
 
-// initialize the entire treemap up till displaying
-function initializeTheTree(root){
-	initialize(root, width, height);
-    accumulateValue(root);
-    accumulateWarnings(root);
-    layout(root, treemap);
-}
-	
-// initialize the root of the treemap
-function initialize(root, width, height) {
-    root.x = root.y = 0;
-    root.dx = width;
-    root.dy = height;
-    root.depth = 0;
-}
-// Aggregate the values for internal nodes. This is normally done by the
-// treemap layout, but not here because of our custom implementation.
-// We also take a snapshot of the original children (_children) to avoid
-// the children being overwritten when when layout is computed.
-function accumulateValue(d) {
-    return (d._children = d.values) ?
-        d.value = d.values.reduce(function(p, v) {
-            return p + accumulateValue(v);
-        }, 0) :
-        d.value;
-}
-function accumulateWarnings(d) {
-    return (d._children = d.values) ?
-        d.warnings = d.values.reduce(function(p, v) {
-            return p + accumulateWarnings(v);
-        }, 0) :
-        d.warnings;
-}
-
-
-// Compute the treemap layout recursively such that each group of siblings
-// uses the same size (1×1) rather than the dimensions of the parent cell.
-// This optimizes the layout for the current zoom state. Note that a wrapper
-// object is created for the parent node for each group of siblings so that
-// the parent’s dimensions are not discarded as we recurse. Since each group
-// of sibling was laid out in 1×1, we must rescale to fit using absolute
-// coordinates. This lets us use a viewport to zoom.
-function layout(d, treemap) {
-    if (d._children) {
-        treemap.nodes({
-            _children: d._children
-        });
-        d._children.forEach(function(c) {
-            c.x = d.x + c.x * d.dx;
-            c.y = d.y + c.y * d.dy;
-            c.dx *= d.dx;
-            c.dy *= d.dy;
-            c.parent = d;
-            layout(c, treemap);
-        });
+    // initialize the entire treemap up till displaying
+    function initializeTheTree(root) {
+        initialize(root, width, height);
+        accumulateValue(root);
+        accumulateWarnings(root);
+        layout(root, treemap);
     }
-}
-//render the chart with given depth and children
+
+    // initialize the root of the treemap
+    function initialize(root, width, height) {
+        root.x = root.y = 0;
+        root.dx = width;
+        root.dy = height;
+        root.depth = 0;
+    }
+    // Aggregate the values for internal nodes. This is normally done by the
+    // treemap layout, but not here because of our custom implementation.
+    // We also take a snapshot of the original children (_children) to avoid
+    // the children being overwritten when when layout is computed.
+    function accumulateValue(d) {
+        return (d._children = d.values) ?
+            d.value = d.values.reduce(function(p, v) {
+                return p + accumulateValue(v);
+            }, 0) :
+            d.value;
+    }
+
+    function accumulateWarnings(d) {
+        return (d._children = d.values) ?
+            d.warnings = d.values.reduce(function(p, v) {
+                return p + accumulateWarnings(v);
+            }, 0) :
+            d.warnings;
+    }
+
+
+    // Compute the treemap layout recursively such that each group of siblings
+    // uses the same size (1×1) rather than the dimensions of the parent cell.
+    // This optimizes the layout for the current zoom state. Note that a wrapper
+    // object is created for the parent node for each group of siblings so that
+    // the parent’s dimensions are not discarded as we recurse. Since each group
+    // of sibling was laid out in 1×1, we must rescale to fit using absolute
+    // coordinates. This lets us use a viewport to zoom.
+    function layout(d, treemap) {
+        if (d._children) {
+            treemap.nodes({
+                _children: d._children
+            });
+            d._children.forEach(function(c) {
+                c.x = d.x + c.x * d.dx;
+                c.y = d.y + c.y * d.dy;
+                c.dx *= d.dx;
+                c.dy *= d.dy;
+                c.parent = d;
+                layout(c, treemap);
+            });
+        }
+    }
+    //render the chart with given depth and children
     function display(d) {
         // On click top bar to go back
         grandparent
@@ -294,114 +281,108 @@ function layout(d, treemap) {
             name(d.parent) + " / " + d.fileName + " (" + formatNumber(d.warnings) + ")" :
             d.fileName + " (" + formatNumber(d.warnings) + ")";
     }
-	
-	function setTheVariables(o, data){
-		// hard coded the depth where the click should go to source code (no zoom)
-		maxDepth = 2
-		defaults = {
-			margin: {
-				top: 30,
-				right: 0,
-				bottom: 0,
-				left: 0
-			},
-			rootname: "TOP",
-			format: ",d",
-			title: "",
-			width: window.innerWidth - 225,
-			height: window.innerHeight - 175
-		};
-		// Remove the chart if there is already one.
-		treeMapBuilder.removeChart();
-		// Setting up some values about number format(rounding) and marigns
-		opts = $.extend(true, {}, defaults, o);
-			formatNumber = d3.format(opts.format);
-			rname = opts.rootname;
-			margin = opts.margin;
-			theight = 36 + 16;
-	
-		// size of the chart 
-		$('#chart').width(opts.width).height(opts.height);
-		width = opts.width - margin.left - margin.right;
-		height = opts.height - margin.top - margin.bottom;
-	
-		// Uses a range of 100 values between green and red
-		// The closer the value is to 0, the more green it will use
-		// The closer the value is to 100, the more red it will use
-		color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-	
-		x = d3.scale.linear()
-			.domain([0, width])
-			.range([0, width]);
-	
-		y = d3.scale.linear()
-			.domain([0, height])
-			.range([0, height]);
-		
-		// Create the d3 treemap from the library
-		treemap = d3.layout.treemap()
-			.children(function(d, depth) {
-				return depth ? null : d._children;
-			})
-			.sort(function(a, b) {
-				return a.value - b.value;
-			})
-			.ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
-			.round(false);
-			
-		// creating the chart and appending it to views
-		svg = d3.select("#chart").append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.bottom + margin.top)
-			.style("margin-left", -margin.left + "px")
-			.style("margin.right", -margin.right + "px")
-			.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-			.style("shape-rendering", "crispEdges");
-		
-		grandparent = svg.append("g")
-			.attr("class", "grandparent");
-	
-		grandparent.append("rect")
-			.attr("y", -margin.top)
-			.attr("width", width)
-			.attr("height", margin.top);
-	
-		grandparent.append("text")
-			.attr("x", 6)
-			.attr("y", 6 - margin.top)
-			.attr("dy", ".75em")
-			
-		if (data instanceof Array) {
-			root = {
-				fileName: rname,
-				values: data
-			};
-		} else {
-			root = data;
-		}
-	}
-	
-	return {
-		
-		// Delete the entire chart from the page.
-		removeChart: function() {
-			var chartNode = document.getElementById("chart");
-			while (chartNode.firstChild) {
-				chartNode.removeChild(chartNode.firstChild);
-			}
-		},
-		
-		// The main method which is called to create the treeMap.
-		// This calls all the methods needed like initialize.
-		createTreeMap: function(o,data){
-			// First we create all variables that are needed for this treemap.
-			setTheVariables(o,data);
-			// After cresating the variables we can start initializing and displaying the tree.
-			initializeTheTree(root);
-			display(root);
-		}
 
-	  };
-  
+    function setTheVariables(o, data) {
+        // hard coded the depth where the click should go to source code (no zoom)
+        maxDepth = 2
+        defaults = {
+            margin: {
+                top: 30,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            rootname: "TOP",
+            format: ",d",
+            title: "",
+            width: window.innerWidth - 225,
+            height: window.innerHeight - 175
+        };
+        // Remove the chart if there is already one.
+        removeChart();
+        // Setting up some values about number format(rounding) and marigns
+        opts = $.extend(true, {}, defaults, o);
+        formatNumber = d3.format(opts.format);
+        rname = opts.rootname;
+        margin = opts.margin;
+        theight = 36 + 16;
+
+        // size of the chart 
+        $('#chart').width(opts.width).height(opts.height);
+        width = opts.width - margin.left - margin.right;
+        height = opts.height - margin.top - margin.bottom;
+
+        // Uses a range of 100 values between green and red
+        // The closer the value is to 0, the more green it will use
+        // The closer the value is to 100, the more red it will use
+        color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
+
+        x = d3.scale.linear()
+            .domain([0, width])
+            .range([0, width]);
+
+        y = d3.scale.linear()
+            .domain([0, height])
+            .range([0, height]);
+
+        // Create the d3 treemap from the library
+        treemap = d3.layout.treemap()
+            .children(function(d, depth) {
+                return depth ? null : d._children;
+            })
+            .sort(function(a, b) {
+                return a.value - b.value;
+            })
+            .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
+            .round(false);
+
+        // creating the chart and appending it to views
+        svg = d3.select("#chart").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.bottom + margin.top)
+            .style("margin-left", -margin.left + "px")
+            .style("margin.right", -margin.right + "px")
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .style("shape-rendering", "crispEdges");
+
+        grandparent = svg.append("g")
+            .attr("class", "grandparent");
+
+        grandparent.append("rect")
+            .attr("y", -margin.top)
+            .attr("width", width)
+            .attr("height", margin.top);
+
+
+        grandparent.append("text")
+            .attr("x", 6)
+            .attr("y", 6 - margin.top)
+            .attr("dy", ".75em")
+
+        if (data instanceof Array) {
+            root = {
+                fileName: rname,
+                values: data
+            };
+        } else {
+            root = data;
+        }
+    }
+
+    return {
+
+
+        // The main method which is called to create the treeMap.
+        // This calls all the methods needed like initialize.
+        createTreeMap: function(o, data) {
+            // First we create all variables that are needed for this treemap.
+            setTheVariables(o, data);
+            // After cresating the variables we can start initializing and displaying the tree.
+            initializeTheTree(root);
+            display(root);
+        }
+
+    };
+
 }());
