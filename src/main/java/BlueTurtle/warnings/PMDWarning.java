@@ -9,6 +9,10 @@ package BlueTurtle.warnings;
 public class PMDWarning extends Warning {
 
 	private int line;
+	private String ruleSet;
+	private String method;
+	private String packageName;
+	
 	/**
 	 * Constructor.
 	 * 
@@ -36,10 +40,6 @@ public class PMDWarning extends Warning {
 		setRuleSet(ruleSet);
 		setMethod(method);
 	}
-	
-	private String ruleSet;
-	private String method;
-	private String packageName;
 
 	/**
 	 * Check whether two PMD warnings are the same.
