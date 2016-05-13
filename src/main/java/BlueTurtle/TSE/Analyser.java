@@ -35,7 +35,7 @@ public class Analyser {
 
 		for (AnalyserCommand command : commands) {
 			ProcessBuilder pb = new ProcessBuilder(command.getArgs());
-			pb.redirectOutput(Redirect.to(new File(command.getDefaultOutputFilePath())));
+			pb.redirectOutput(Redirect.INHERIT);
 			pb.redirectError(Redirect.INHERIT);
 			Process process = pb.start();
 			try {

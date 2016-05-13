@@ -9,8 +9,10 @@ import org.junit.Test;
 
 import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
+import BlueTurtle.commandbuilders.FindBugsCommandBuilder;
 import BlueTurtle.commandbuilders.PMDCommandBuilder;
 import BlueTurtle.settings.CheckStyleSettings;
+import BlueTurtle.settings.FindBugsSettings;
 import BlueTurtle.settings.PMDSettings;
 
 /**
@@ -33,6 +35,8 @@ public class AnalyserTest {
 		CommandBuilder commandBuilder;
 		PMDSettings pmdSettings = javaController.getPMDSettings();
 		CheckStyleSettings checkStyleSettings = javaController.getCheckStyleSettings();
+
+		FindBugsSettings findBugsSettings = new FindBugsSettings();
 
 		commandBuilder = new PMDCommandBuilder(pmdSettings);
 		String[] pmdCommands = commandBuilder.buildCommand();

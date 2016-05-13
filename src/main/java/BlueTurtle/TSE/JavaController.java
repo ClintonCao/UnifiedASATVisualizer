@@ -6,10 +6,12 @@ import java.nio.file.Paths;
 import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
 import BlueTurtle.commandbuilders.CoberturaCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
+import BlueTurtle.commandbuilders.FindBugsCommandBuilder;
 import BlueTurtle.commandbuilders.PMDCommandBuilder;
 import BlueTurtle.interfaces.Controller;
 import BlueTurtle.settings.CheckStyleSettings;
 import BlueTurtle.settings.CoberturaSettings;
+import BlueTurtle.settings.FindBugsSettings;
 import BlueTurtle.settings.PMDSettings;
 
 /**
@@ -27,6 +29,7 @@ public class JavaController implements Controller {
 	private PMDSettings pmdSettings = PMDSettings.getInstance();
 	private CheckStyleSettings checkStyleSettings = CheckStyleSettings.getInstance();
 	private CoberturaSettings coberturaSettings = new CoberturaSettings();
+	private FindBugsSettings findBugsSettings = new FindBugsSettings();
 
 	/**
 	 * Execute controller.
@@ -38,20 +41,25 @@ public class JavaController implements Controller {
 	public void execute() throws IOException {
 		ArrayList<AnalyserCommand> commands = new ArrayList<AnalyserCommand>();
 
-		commandBuilder = new PMDCommandBuilder(pmdSettings);
-		String[] pmdCommands = commandBuilder.buildCommand();
-		AnalyserCommand c1 = new AnalyserCommand(pmdSettings.getDefaultOutputFilePath(), pmdCommands);
-		commands.add(c1);
-
-		commandBuilder = new CheckStyleCommandBuilder(checkStyleSettings);
-		String[] checkStyleCommands = commandBuilder.buildCommand();
-		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings.getDefaultOutputFilePath(), checkStyleCommands);
-		commands.add(c2);
-
-		commandBuilder = new CoberturaCommandBuilder(coberturaSettings);
-		String[] coberturaCommands = commandBuilder.buildCommand();
-		AnalyserCommand c3 = new AnalyserCommand(coberturaSettings.getDefaultOutputFilePath(), coberturaCommands);
-		commands.add(c3);
+//		commandBuilder = new PMDCommandBuilder(pmdSettings);
+//		String[] pmdCommands = commandBuilder.buildCommand();
+//		AnalyserCommand c1 = new AnalyserCommand(pmdSettings.getDefaultOutputFilePath(), pmdCommands);
+//		commands.add(c1);
+//
+//		commandBuilder = new CheckStyleCommandBuilder(checkStyleSettings);
+//		String[] checkStyleCommands = commandBuilder.buildCommand();
+//		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings.getDefaultOutputFilePath(), checkStyleCommands);
+//		commands.add(c2);
+//
+//		commandBuilder = new CoberturaCommandBuilder(coberturaSettings);
+//		String[] coberturaCommands = commandBuilder.buildCommand();
+//		AnalyserCommand c3 = new AnalyserCommand(coberturaSettings.getDefaultOutputFilePath(), coberturaCommands);
+//		commands.add(c3);
+//		
+		commandBuilder = new FindBugsCommandBuilder(findBugsSettings);
+		String[] findBugsCommands = commandBuilder.buildCommand();
+		AnalyserCommand c4 = new AnalyserCommand(findBugsSettings.getDefaultOutputFilePath(), findBugsCommands);
+		commands.add(c4);
 
 		setAnalyser(new Analyser(commands));
 
