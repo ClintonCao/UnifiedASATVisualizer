@@ -21,7 +21,6 @@ function handleClickTreeMapTypeSat(value){
     		acceptedTypes.splice(index, 1);
 		}
 	}
-	console.log(acceptedTypes);
 }
 function handleClickTypeSat(cb) {
 	if(document.getElementById('treemapButton').checked){
@@ -76,7 +75,6 @@ function getFilteredJSON(){
  * Setup tree map and shows it
  */
 function runTreeMap(){
-	console.log(treeMapBuilder);
 	treeMapBuilder.removeChart();
 	var title = document.getElementById("main-title");
 	title.innerHTML = "Treemap view of project";
