@@ -1,5 +1,6 @@
 package BlueTurtle.parsers;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class FindBugsXMLParserTest {
 	private static String testSet2Category = "BAD_PRACTICE";
 	private static String testSet2Priority = "High";
 	private static String testSet2Classification = "Interface";
-	private static String testSet3FilePath = System.getProperty("user.dir") + "\\FindBugsWarning.java";
+	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar+ "FindBugsWarning.java";
 
 	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
 
