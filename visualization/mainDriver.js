@@ -9,6 +9,11 @@ var acceptedRuleNames = ["PackageName", "JavadocMethod"];
 // Run first time
 runTreeMap();
 
+// For firefox remove the checkboxes from previous runs.
+
+$(".updateContent").prop('checked', false); 
+
+
 /*
  * Handles click on checkboxes for showing results of different tools
  */
