@@ -1,13 +1,13 @@
 
 //BOning what's this??
 
-/*
+
 window.addEventListener('message', function(e) {
     var opts = e.data.opts,
         data = e.data.data;
 
     return main(opts, data);
-});*/
+});
 
 // till here :)
 
