@@ -3,7 +3,7 @@ package BlueTurtle.TSE;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.nio.file.Paths; 
 import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
 import BlueTurtle.commandbuilders.CoberturaCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
@@ -26,7 +26,7 @@ public class JavaController implements Controller {
 	private static String userDir = System.getProperty("user.dir");
 	private CommandBuilder commandBuilder;
 	private PMDSettings pmdSettings = new PMDSettings();
-	private CheckStyleSettings checkStyleSettings = new CheckStyleSettings(new File("CheckStyle_Settings.xml"));
+	private CheckStyleSettings checkStyleSettings = new CheckStyleSettings(Paths.get("resources", "asatSettings", "CheckStyle_Settings.xml").toFile());
 	private CoberturaSettings coberturaSettings = new CoberturaSettings();
 
 	/**
@@ -57,6 +57,10 @@ public class JavaController implements Controller {
 		setAnalyser(new Analyser(commands));
 
 		analyser.analyse();
+	}
+	
+	public CheckStyleSettings getCheckStyleSettings() {
+		return this.checkStyleSettings;
 	}
 
 	public void setAnalyser(Analyser analyser) {

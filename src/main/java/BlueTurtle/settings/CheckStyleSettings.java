@@ -3,6 +3,7 @@ package BlueTurtle.settings;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -28,7 +29,7 @@ import BlueTurtle.interfaces.Settings;
 public class CheckStyleSettings implements Settings {
 	private File sourceFile;
 	private String configFile;
-	private String defaultOutputFilePath = "./Runnables/Testcode/checkstyle.xml";
+	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "checkstyle.xml").toString();
 
 	/**
 	 * Constructor.

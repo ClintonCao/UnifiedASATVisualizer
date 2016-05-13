@@ -28,10 +28,11 @@ public class AnalyserTest {
 	 */
 	@Before
 	public void setUp() throws IOException {
+		JavaController javaController = new JavaController();
 		ArrayList<AnalyserCommand> commands = new ArrayList<AnalyserCommand>();
 		CommandBuilder commandBuilder;
 		PMDSettings pmdSettings = new PMDSettings();
-		CheckStyleSettings checkStyleSettings = new CheckStyleSettings(new File("CheckStyle_Settings.xml"));
+		CheckStyleSettings checkStyleSettings = javaController.getCheckStyleSettings();
 
 		commandBuilder = new PMDCommandBuilder(pmdSettings);
 		String[] pmdCommands = commandBuilder.buildCommand();
