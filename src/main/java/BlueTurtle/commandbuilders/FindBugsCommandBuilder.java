@@ -17,6 +17,11 @@ public class FindBugsCommandBuilder extends CommandBuilder {
 		this.setSettings(findBugsSettings);
 	}
 
+	/**
+	 * Build the command.
+	 * 
+	 * @return a string array that represents the command.
+	 */
 	@Override
 	public String[] buildCommand() {
 
