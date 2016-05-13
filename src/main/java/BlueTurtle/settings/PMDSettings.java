@@ -87,6 +87,9 @@ public class PMDSettings implements Settings {
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
 		Document doc = docBuilder.newDocument();
+		Element rootElement = doc.createElement("placeholder");
+		rootElement.appendChild(doc.createTextNode("placeholder"));
+		doc.appendChild(rootElement);
 		
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
