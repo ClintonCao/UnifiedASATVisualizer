@@ -33,12 +33,13 @@ public class FindBugsXMLParserTest {
 	private static String testSet2Category = "BAD_PRACTICE";
 	private static String testSet2Priority = "High";
 	private static String testSet2Classification = "Interface";
-	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar+ "FindBugsWarning.java";
+	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar + "FindBugsWarning.java";
 
-	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
+	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
-
-
+	/**
+	 * Set up the GDP parser, parse the category information.
+	 */
 	@Before
 	public void setUp() {
 		GDCParser gP = new GDCParser();
@@ -67,7 +68,7 @@ public class FindBugsXMLParserTest {
 		FindBugsWarning expected = new FindBugsWarning(testSet3FilePath, testSet2FileName, 47,
 				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName, testSet2Classification);
 
-		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2,categoryInfo).get(0);
+		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2, categoryInfo).get(0);
 
 		assertEquals(expected, actual);
 	}

@@ -30,6 +30,9 @@ public class ChecktStyleWarningTest {
 	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
 
 
+	/**
+	 * Set up the GDP parser, parse the category information.
+	 */
 	@Before
 	public void setUp() {
 		GDCParser gP = new GDCParser();

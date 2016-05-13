@@ -1,7 +1,6 @@
 package BlueTurtle.parsers;
 
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -79,12 +78,12 @@ public class FindBugsXMLParser extends XMLParser {
 					String [] classArray = className.split("\\.");
 					
 					// the last one is the class name.
-					className = classArray[classArray.length-1];
+					className = classArray[classArray.length - 1];
 					
 					// concatenate the source path with the class name.
 					String fileN = className + ".java";
 					
-					fileN = fileN.substring(fileN.lastIndexOf(File.separatorChar)+1, fileN.length());
+					fileN = fileN.substring(fileN.lastIndexOf(File.separatorChar) + 1, fileN.length());
 
 					// get the file path from the file name.
 					String filePath = new File(fileN).getCanonicalPath();
