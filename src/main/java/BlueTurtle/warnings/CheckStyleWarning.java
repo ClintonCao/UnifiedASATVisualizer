@@ -50,7 +50,7 @@ public class CheckStyleWarning extends Warning {
 
 		CheckStyleWarning that = (CheckStyleWarning) other;
 
-		// fix SimplifyBooleanReturn, Conditional logic can be removed.
+		// fixed SimplifyBooleanReturn, Conditional logic can be removed.
 		return (ruleName.equals(that.ruleName) && filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
 				&& message.equals(that.message) && classification.equals(that.classification) && type.equals(that.type));
 

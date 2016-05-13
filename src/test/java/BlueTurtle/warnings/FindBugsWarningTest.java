@@ -26,9 +26,12 @@ public class FindBugsWarningTest {
 	private static String ruleName = "HE_EQUALS_USE_HASHCODE";
 	private static String category = "BAD_PRACTICE";
 	private static String priority = "High";
-	private static String classification ="Interface";
-	private static HashMap<String, String> categoryInfo = new HashMap<String,String>();
+	private static String classification = "Interface";
+	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
+	/**
+	 * Set up the GDP parser, parse the category information.
+	 */
 	@Before
 	public void setUp() {
 		GDCParser gP = new GDCParser();
