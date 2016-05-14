@@ -5,11 +5,15 @@ import BlueTurtle.settings.FindBugsSettings;
 
 /**
  * Builds command line command for running FindBugs.
- * @author michiel
+ * @author BlueTurtle.
  *
  */
 public class FindBugsCommandBuilder extends CommandBuilder {
-
+	
+	/**
+	 * Constructor.
+	 * @param findBugsSettings the settings for FindBugs
+	 */
 	public FindBugsCommandBuilder(FindBugsSettings findBugsSettings) {
 		super();
 		this.setSettings(findBugsSettings);

@@ -18,28 +18,26 @@ Tim Buckers
 
 ## Links to sprint related documents:
 
-Sprint backlog 1: [sprint backlog 1] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog1(BlueTurtle).pdf)
-
-Sprint Retrospective 1: [sprint retrospective 1] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective1(BlueTurtle).pdf)
-
-Sprint backlog 2: [sprint backlog 2] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog2(BlueTurtle).pdf)
-
-Sprint Retrospective 2: [sprint retrospective 2] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective2(BlueTurtle).pdf)
-
-Sprint Backlog 3: [sprint backlog 3] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog3(BlueTurtle).pdf)
+| Document name |   Link                         |
+|-------|--------------------------------------|
+| Sprint Backlog 1 | [sprint backlog 1] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog1(BlueTurtle).pdf) |
+| Sprint Retrospective 1 | [sprint retrospective 1] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective1(BlueTurtle).pdf)|
+| Sprint backlog 2 | [sprint backlog 2] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog2(BlueTurtle).pdf)|
+|Sprint Retrospective 2 | [sprint retrospective 2] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective2(BlueTurtle).pdf)|
+|Sprint Backlog 3 | [sprint backlog 3] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog3(BlueTurtle).pdf)|
+|Sprint Retrospective 3 | [sprint retrospective 3] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective3%28BlueTurtle%29.pdf)|
+|Sprint Backlog 4 | [sprint backlog 4] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog4%28BlueTurtle%29.pdf)|
 
 
 ## Links to product related documents:
 
-Product Planning: [product planning] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductPlanningBlueTurtle.pdf)
-
-Product Vision: [product vision] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductVisionBlueTurtle.pdf)
-
-Architecture Design: [architecture design] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ArchitectureDesign.pdf)
-
-Product Requirement: [product requirement] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Requirements/RequirementsSoftwareVisualizationToolBlueTurtle.pdf)
-
-First Concept: [first concept] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/First%20Concept/FirstConceptBlueTurtle.pdf)
+| Document name |   Link                       |
+|-------|--------------------------------------|
+|Product Planning | [product planning]  (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductPlanningBlueTurtle.pdf)|
+|Product Vision | [product vision] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductVisionBlueTurtle.pdf)|
+|Architecture Design  | [architecture design] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ArchitectureDesign.pdf)|
+|Product Requirement | [product requirement] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Requirements/RequirementsSoftwareVisualizationToolBlueTurtle.pdf)|
+|First Concept  | [first concept] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/First%20Concept/FirstConceptBlueTurtle.pdf) |
 
 ## Links to other documents:
 

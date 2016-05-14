@@ -28,7 +28,7 @@ import BlueTurtle.interfaces.Settings;
  */
 public class CheckStyleSettings implements Settings {
 	private static CheckStyleSettings instance = null;
-	
+
 	private File sourceFile = Paths.get("resources", "asatSettings", "CheckStyle_Settings.xml").toFile();
 	private String configFile;
 	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "checkstyle.xml").toString();
@@ -52,13 +52,14 @@ public class CheckStyleSettings implements Settings {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * @return 
-	 * 			The singleton instance of CheckstyleSettings.
+	 * Get the instance of this class.
+	 * 
+	 * @return The singleton instance of CheckstyleSettings.
 	 */
 	public static CheckStyleSettings getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new CheckStyleSettings();
 		}
 		return instance;

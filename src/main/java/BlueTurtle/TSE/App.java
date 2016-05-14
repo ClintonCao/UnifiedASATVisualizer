@@ -11,6 +11,7 @@ import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.parsers.CheckStyleXMLParser;
 import BlueTurtle.parsers.FindBugsXMLParser;
+import BlueTurtle.parsers.GDCParser;
 import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.summarizers.Summarizer;
@@ -24,6 +25,9 @@ import BlueTurtle.writers.JSWriter;
  *
  */
 public class App {
+	
+	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
+
 
 	/**
 	 * Main method. This is currently filled with code that used for testing
@@ -34,40 +38,43 @@ public class App {
 	 * @throws IOException
 	 *             throws an exception if there was a problem reading a file.
 	 */
-	public static void main(String[] args) throws IOException {
-		//jsonTest();
+	public static void main(String[] args) throws IOException {	
+		// set up the category information.
+		setUp();
+
+		// jsonTest();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Which ASAT do you wish to run? (CheckStyle, PMD, FindBugs)");
 		String asat = sc.next();
 		switch (asat) {
 		case "CheckStyle":
 			XMLParser parser1 = new CheckStyleXMLParser();
-			List<Warning> checkStyleWarnings = parser1.parseFile("./src/main/resources/exampleCheckstyle1.xml");
+			List<Warning> checkStyleWarnings = parser1.parseFile("./src/main/resources/exampleCheckstyle1.xml", categoryInfo);
 
 			System.out.println("amount of CheckStyle Warnings:" + " " + checkStyleWarnings.size());
 
 			for (Warning w : checkStyleWarnings) {
-				System.out.println("Violated Rule Name: " + w.getRuleName());
+				System.out.println("Classification of the violated Rule: " + w.getClassification());
 			}
 			break;
 		case "PMD":
 			XMLParser parser2 = new PMDXMLParser();
-			List<Warning> pmdWarnings = parser2.parseFile("./src/main/resources/examplePmd2.xml");
+			List<Warning> pmdWarnings = parser2.parseFile("./src/main/resources/examplePmd2.xml", categoryInfo);
 
 			System.out.println("amount of PMD Warnings:" + " " + pmdWarnings.size());
 
 			for (Warning w : pmdWarnings) {
-				System.out.println("Violated Rule Name: " + w.getRuleName());
+				System.out.println("Classification of the violated Rule: " + w.getClassification());
 			}
 			break;
 		case "FindBugs":
 			XMLParser parser3 = new FindBugsXMLParser();
-			List<Warning> findBugsWarnings = parser3.parseFile("./src/main/resources/exampleFindbugs1.xml");
+			List<Warning> findBugsWarnings = parser3.parseFile("./src/main/resources/exampleFindbugs1.xml", categoryInfo);
 
 			System.out.println("amount of FindBugs Warnings:" + " " + findBugsWarnings.size());
 
 			for (Warning w : findBugsWarnings) {
-				System.out.println("Violated Rule Name: " + w.getRuleName());
+				System.out.println("Classification of the violated Rule: " + w.getClassification());
 				System.out.println("file path: " + w.getFilePath());
 			}
 			break;
@@ -75,6 +82,14 @@ public class App {
 			System.out.println("Please enter a valid name for ASAT");
 		}
 
+	}
+	
+	/**
+	 * Th.is method is for setting up the category information, it starts the GDCParser.
+	 */
+	public static void setUp() {
+		GDCParser gP = new GDCParser();
+		categoryInfo = gP.parseFile("./src/main/resources/asat-gdc-mapping.html");
 	}
 
 	/**
@@ -87,12 +102,12 @@ public class App {
 	 */
 	public static void jsonTest() throws IOException {
 		XMLParser parser = new CheckStyleXMLParser();
-		List<Warning> checkStyleWarnings = parser.parseFile("./src/main/resources/exampleCheckstyle1.xml");
+		List<Warning> checkStyleWarnings = parser.parseFile("./src/main/resources/exampleCheckstyle1.xml", categoryInfo);
 
 		System.out.println("amount of CheckStyle Warnings:" + " " + checkStyleWarnings.size());
 
 		for (Warning w : checkStyleWarnings) {
-			System.out.println("Violated Rule Name: " + w.getRuleName());
+			System.out.println("Classification of the violated Rule: " + w.getClassification());
 		}
 
 		HashMap<String, String> componentsInfo = new HashMap<String, String>();

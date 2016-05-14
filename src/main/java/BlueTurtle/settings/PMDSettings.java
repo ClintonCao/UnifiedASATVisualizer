@@ -28,7 +28,7 @@ import BlueTurtle.interfaces.Settings;
  */
 public class PMDSettings implements Settings {
 	private static PMDSettings instance = null;
-	
+
 	private File sourceFile = Paths.get("resources", "asatSettings", "PMD_Settings.xml").toFile();
 	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "PMD.xml").toString();
 
@@ -51,13 +51,14 @@ public class PMDSettings implements Settings {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * @return
-	 * 			The singleton instance of PMDSettings.
+	 * Get the instance of this class.
+	 * 
+	 * @return The singleton instance of PMDSettings.
 	 */
 	public static PMDSettings getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new PMDSettings();
 		}
 		return instance;
