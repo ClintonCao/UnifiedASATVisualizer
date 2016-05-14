@@ -13,6 +13,8 @@ import BlueTurtle.settings.CheckStyleSettings;
 import BlueTurtle.settings.CoberturaSettings;
 import BlueTurtle.settings.FindBugsSettings;
 import BlueTurtle.settings.PMDSettings;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * JavaController controls the analyser to make it analyse java code. It
@@ -23,8 +25,8 @@ import BlueTurtle.settings.PMDSettings;
  *
  */
 public class JavaController implements Controller {
-	private Analyser analyser;
-	private static String userDir = System.getProperty("user.dir");
+	@Getter @Setter private Analyser analyser;
+	@Getter @Setter private static String userDir = System.getProperty("user.dir");
 	private CommandBuilder commandBuilder;
 	private PMDSettings pmdSettings = PMDSettings.getInstance();
 	private CheckStyleSettings checkStyleSettings = CheckStyleSettings.getInstance();
@@ -41,21 +43,21 @@ public class JavaController implements Controller {
 	public void execute() throws IOException {
 		ArrayList<AnalyserCommand> commands = new ArrayList<AnalyserCommand>();
 
-//		commandBuilder = new PMDCommandBuilder(pmdSettings);
-//		String[] pmdCommands = commandBuilder.buildCommand();
-//		AnalyserCommand c1 = new AnalyserCommand(pmdSettings.getDefaultOutputFilePath(), pmdCommands);
-//		commands.add(c1);
-//
-//		commandBuilder = new CheckStyleCommandBuilder(checkStyleSettings);
-//		String[] checkStyleCommands = commandBuilder.buildCommand();
-//		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings.getDefaultOutputFilePath(), checkStyleCommands);
-//		commands.add(c2);
-//
-//		commandBuilder = new CoberturaCommandBuilder(coberturaSettings);
-//		String[] coberturaCommands = commandBuilder.buildCommand();
-//		AnalyserCommand c3 = new AnalyserCommand(coberturaSettings.getDefaultOutputFilePath(), coberturaCommands);
-//		commands.add(c3);
-//		
+		commandBuilder = new PMDCommandBuilder(pmdSettings);
+		String[] pmdCommands = commandBuilder.buildCommand();
+		AnalyserCommand c1 = new AnalyserCommand(pmdSettings.getDefaultOutputFilePath(), pmdCommands);
+		commands.add(c1);
+
+		commandBuilder = new CheckStyleCommandBuilder(checkStyleSettings);
+		String[] checkStyleCommands = commandBuilder.buildCommand();
+		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings.getDefaultOutputFilePath(), checkStyleCommands);
+		commands.add(c2);
+
+		commandBuilder = new CoberturaCommandBuilder(coberturaSettings);
+		String[] coberturaCommands = commandBuilder.buildCommand();
+		AnalyserCommand c3 = new AnalyserCommand(coberturaSettings.getDefaultOutputFilePath(), coberturaCommands);
+		commands.add(c3);
+		
 		commandBuilder = new FindBugsCommandBuilder(findBugsSettings);
 		String[] findBugsCommands = commandBuilder.buildCommand();
 		AnalyserCommand c4 = new AnalyserCommand(findBugsSettings.getDefaultOutputFilePath(), findBugsCommands);
@@ -64,28 +66,5 @@ public class JavaController implements Controller {
 		setAnalyser(new Analyser(commands));
 
 		analyser.analyse();
-	}
-	
-	public CheckStyleSettings getCheckStyleSettings() {
-		return this.checkStyleSettings;
-	}
-	
-	public PMDSettings getPMDSettings() {
-		return this.pmdSettings;
-	}
-	public void setAnalyser(Analyser analyser) {
-		this.analyser = analyser;
-	}
-
-	public Analyser getAnalyser() {
-		return this.analyser;
-	}
-
-	public static String getUserDir() {
-		return userDir;
-	}
-
-	public static void setUserDir(String newUserDir) {
-		userDir = newUserDir;
 	}
 }
