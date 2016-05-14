@@ -19,6 +19,8 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import BlueTurtle.interfaces.Settings;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Class that represents the settings for PMD.
@@ -29,8 +31,8 @@ import BlueTurtle.interfaces.Settings;
 public class PMDSettings implements Settings {
 	private static PMDSettings instance = null;
 
-	private File sourceFile = Paths.get("resources", "asatSettings", "PMD_Settings.xml").toFile();
-	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "PMD.xml").toString();
+	@Getter @Setter private File sourceFile = Paths.get("resources", "asatSettings", "PMD_Settings.xml").toFile();
+	@Getter @Setter private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "PMD.xml").toString();
 
 	/**
 	 * Constructor.
@@ -110,21 +112,5 @@ public class PMDSettings implements Settings {
 		StreamResult result = new StreamResult(sourceFile);
 
 		transformer.transform(source, result);
-	}
-
-	public String getDefaultOutputFilePath() {
-		return defaultOutputFilePath;
-	}
-
-	public void setDefaultOutputFilePath(String defaultOutputFilePath) {
-		this.defaultOutputFilePath = defaultOutputFilePath;
-	}
-
-	public File getSourceFile() {
-		return sourceFile;
-	}
-
-	public void setSourceFile(File sourceFile) {
-		this.sourceFile = sourceFile;
 	}
 }

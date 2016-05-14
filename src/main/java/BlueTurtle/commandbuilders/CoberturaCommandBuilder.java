@@ -1,7 +1,5 @@
 package BlueTurtle.commandbuilders;
 
-import java.util.ArrayList;
-
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.settings.CoberturaSettings;
 
@@ -19,7 +17,7 @@ public class CoberturaCommandBuilder extends CommandBuilder {
 	 *            the settings for cobetura.
 	 */
 	public CoberturaCommandBuilder(CoberturaSettings coberturaSettings) {
-		commands = new ArrayList<String>();
+		super();
 		this.setSettings(coberturaSettings);
 	}
 

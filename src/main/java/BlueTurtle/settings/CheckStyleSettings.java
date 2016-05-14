@@ -19,6 +19,8 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import BlueTurtle.interfaces.Settings;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Class that represents the settings for CheckStyle.
@@ -29,9 +31,9 @@ import BlueTurtle.interfaces.Settings;
 public class CheckStyleSettings implements Settings {
 	private static CheckStyleSettings instance = null;
 
-	private File sourceFile = Paths.get("resources", "asatSettings", "CheckStyle_Settings.xml").toFile();
-	private String configFile;
-	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "checkstyle.xml").toString();
+	@Getter @Setter private File sourceFile = Paths.get("resources", "asatSettings", "CheckStyle_Settings.xml").toFile();
+	@Getter @Setter private String configFile;
+	@Getter @Setter private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "checkstyle.xml").toString();
 
 	/**
 	 * Constructor.
@@ -113,29 +115,5 @@ public class CheckStyleSettings implements Settings {
 		StreamResult result = new StreamResult(sourceFile);
 
 		transformer.transform(source, result);
-	}
-
-	public String getDefaultOutputFilePath() {
-		return defaultOutputFilePath;
-	}
-
-	public void setDefaultOutputFilePath(String defaultOutputFilePath) {
-		this.defaultOutputFilePath = defaultOutputFilePath;
-	}
-
-	public String getConfigFile() {
-		return configFile;
-	}
-
-	public void setConfigFile(String configFile) {
-		this.configFile = configFile;
-	}
-
-	public File getSourceFile() {
-		return sourceFile;
-	}
-
-	public void setSourceFile(File sourceFile) {
-		this.sourceFile = sourceFile;
 	}
 }

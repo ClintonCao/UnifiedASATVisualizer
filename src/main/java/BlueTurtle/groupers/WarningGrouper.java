@@ -12,6 +12,10 @@ import BlueTurtle.summarizers.ComponentSummarizer;
 import BlueTurtle.summarizers.PackageSummarizer;
 import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class is used to group warnings together (by their type or by
@@ -20,27 +24,12 @@ import BlueTurtle.warnings.Warning;
  * @author BlueTurtle.
  *
  */
+@AllArgsConstructor
 public class WarningGrouper implements Grouper {
 
-	private HashMap<String, String> componentsInfo;
-	private Set<String> packagesNames;
-	private List<Warning> warningList;
-
-	/**
-	 * Contructor.
-	 * 
-	 * @param componentsInfo
-	 *            HashMap containing information of the components.
-	 * @param packagesNames
-	 *            list containing the names of the packages.
-	 * @param wList
-	 *            list of warnings
-	 */
-	public WarningGrouper(HashMap<String, String> componentsInfo, Set<String> packagesNames, List<Warning> wList) {
-		setComponentsInfo(componentsInfo);
-		setPackagesNames(packagesNames);
-		setWarningList(wList);
-	}
+	@Getter @Setter private HashMap<String, String> componentsInfo;
+	@Getter @Setter private Set<String> packagesNames;
+	@Getter @Setter private List<Warning> warningList;
 
 	/**
 	 * Group things together, based on the criteria.
@@ -96,7 +85,7 @@ public class WarningGrouper implements Grouper {
 
 		return result;
 	}
-
+	
 	/**
 	 * Check whether two Warning grouper are equal.
 	 * 
@@ -115,66 +104,4 @@ public class WarningGrouper implements Grouper {
 		return (componentsInfo.equals(that.getComponentsInfo()) && packagesNames.equals(that.getPackagesNames())
 				&& warningList.equals(that.getWarningList()));
 	}
-
-	/**************************************/
-	/****** Getters and Setters **********/
-	/************************************/
-
-	/**
-	 * Get the information of the components.
-	 * 
-	 * @return a HashMap containing the information of the components.
-	 */
-	public HashMap<String, String> getComponentsInfo() {
-		return componentsInfo;
-	}
-
-	/**
-	 * Set the information of the components.
-	 * 
-	 * @param componentsInfo
-	 *            HashMap containing the information of the components.
-	 */
-	public void setComponentsInfo(HashMap<String, String> componentsInfo) {
-		this.componentsInfo = componentsInfo;
-	}
-
-	/**
-	 * Get the list containing the names of the packages.
-	 * 
-	 * @return list containing the names of the packages.
-	 */
-	public Set<String> getPackagesNames() {
-		return packagesNames;
-	}
-
-	/**
-	 * Set the list containing the names of the packages.
-	 * 
-	 * @param packagesName
-	 *            list containing the names of the packages.
-	 */
-	public void setPackagesNames(Set<String> packagesName) {
-		this.packagesNames = packagesName;
-	}
-
-	/**
-	 * Get the list containing the names of the packages.
-	 * 
-	 * @return a list of warnings.
-	 */
-	public List<Warning> getWarningList() {
-		return warningList;
-	}
-
-	/**
-	 * Set the list containing the names of the packages.
-	 * 
-	 * @param wList
-	 *            list of warnings.
-	 */
-	public void setWarningList(List<Warning> wList) {
-		this.warningList = wList;
-	}
-
 }

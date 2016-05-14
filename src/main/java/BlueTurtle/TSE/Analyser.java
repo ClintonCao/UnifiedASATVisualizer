@@ -4,23 +4,18 @@ import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+
 /**
  * Analyses java projects.
  * 
  * @author BlueTurtle.
  */
+@AllArgsConstructor
 public class Analyser {
-	private ArrayList<AnalyserCommand> commands;
-
-	/**
-	 * Constructor.
-	 * 
-	 * @param commands
-	 *            the commands for the analyser.
-	 */
-	public Analyser(ArrayList<AnalyserCommand> commands) {
-		this.commands = commands;
-	}
+	@Setter @Getter private ArrayList<AnalyserCommand> commands;
 
 	/**
 	 * Analyse creates a ProcessBuilder for each command. The output is
@@ -45,13 +40,5 @@ public class Analyser {
 			process.getOutputStream().flush();
 			process.destroy();
 		}
-	}
-
-	public ArrayList<AnalyserCommand> getCommands() {
-		return commands;
-	}
-
-	public void setCommands(ArrayList<AnalyserCommand> commands) {
-		this.commands = commands;
 	}
 }

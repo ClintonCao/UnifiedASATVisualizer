@@ -19,6 +19,8 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import BlueTurtle.interfaces.Settings;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Class that represents the settings for FindBugs.
@@ -29,8 +31,8 @@ import BlueTurtle.interfaces.Settings;
 public class FindBugsSettings implements Settings {
 	private static FindBugsSettings instance = null;
 
-	private File sourceFile = Paths.get("resources", "asatSettings", "FindBugs_Settings.xml").toFile();
-	private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "findbugs.xml").toString();
+	@Getter @Setter private File sourceFile = Paths.get("resources", "asatSettings", "FindBugs_Settings.xml").toFile();
+	@Getter @Setter private String defaultOutputFilePath = Paths.get("Runnables", "Testcode", "findbugs.xml").toString();
 
 	/**
 	 * Constructor.
@@ -111,21 +113,4 @@ public class FindBugsSettings implements Settings {
 
 		transformer.transform(source, result);
 	}
-
-	public String getDefaultOutputFilePath() {
-		return defaultOutputFilePath;
-	}
-
-	public void setDefaultOutputFilePath(String defaultOutputFilePath) {
-		this.defaultOutputFilePath = defaultOutputFilePath;
-	}
-
-	public File getSourceFile() {
-		return sourceFile;
-	}
-
-	public void setSourceFile(File sourceFile) {
-		this.sourceFile = sourceFile;
-	}
-
 }

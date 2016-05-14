@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import BlueTurtle.warnings.Warning;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class can be used to summarize the warnings according to their categories in GDC.
@@ -14,9 +16,9 @@ import BlueTurtle.warnings.Warning;
  */
 public class CategorySummarizer extends Summarizer {
 
-	private String category;
-	private List<Warning> warningList;
-	private HashMap<String, String> categoryInfo;
+	@Getter @Setter private String category;
+	@Getter @Setter private List<Warning> warningList;
+	@Getter @Setter private HashMap<String, String> categoryInfo;
 
 	/**
 	 * Constructor.
@@ -52,9 +54,7 @@ public class CategorySummarizer extends Summarizer {
 				numberOfWarnings++;
 			}
 		}
-
 	}
-
 	
 	/**
 	 * Check whether two CategorySummarizer are equal.
@@ -75,67 +75,5 @@ public class CategorySummarizer extends Summarizer {
 				&& warningList.equals(that.warningList) 
 				&& numberOfWarnings == that.numberOfWarnings
 				&& categoryInfo == that.categoryInfo);
-
 	}
-
-	/**************************************/
-	/****** Getters and Setters **********/
-	/************************************/
-
-	/**
-	 * Get the category from GDC.
-	 * 
-	 * @return the name of the category.
-	 */
-	public String getCategory() {
-		return category;
-	}
-
-	/**
-	 * Set the category from GDC.
-	 * 
-	 * @param category
-	 *            the name of the category.
-	 */
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	/**
-	 * Get the category information from GDC.
-	 * 
-	 * @return categoryInfo.
-	 */
-	public HashMap<String, String> getCategoryInfo() {
-		return categoryInfo;
-	}
-
-	/**
-	 * Set the category information from GDC.
-	 * 
-	 * @param categoryInfo
-	 *            the information table of the categories.
-	 */
-	public void setCategoryInfo(HashMap<String, String> categoryInfo) {
-		this.categoryInfo = categoryInfo;
-	}	
-	/**
-	 * Get the list of warning in this component.
-	 * 
-	 * @return list of warning in this component.
-	 */
-	public List<Warning> getWarningList() {
-		return warningList;
-	}
-
-	/**
-	 * Set the list of warnings in this component.
-	 * 
-	 * @param warnings
-	 *            list of warning.
-	 */
-	public void setWarningList(List<Warning> warnings) {
-		this.warningList = warnings;
-	}
-
 }

@@ -131,8 +131,8 @@ public class FindBugsWarningTest {
 	public void testChangeOfLine() {
 		int expected = 5;
 		FindBugsWarning fb = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
-		int actual = fb.getLine();
-		fb.setLine(expected);
+		int actual = fb.getLineNumber();
+		fb.setLineNumber(expected);
 		assertNotSame(expected, actual);
 	}
 	
