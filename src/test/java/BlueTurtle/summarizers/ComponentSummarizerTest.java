@@ -2,6 +2,7 @@ package BlueTurtle.summarizers;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
 import java.util.ArrayList;
@@ -39,8 +40,8 @@ public class ComponentSummarizerTest {
 		filePath = "./src/test/resources/ExampleClass.txt";
 		fileName = "ExampleClass.java";
 		packageName = "SomePackage.subpackage";
-		w = new CheckStyleWarning(filePath, fileName, 3, "Test", "TestRule");
-		w2 = new CheckStyleWarning("./src/test/resources/ExampleTestClass.txt", fileName, 3, "Test", "TestRule");
+		w = new CheckStyleWarning(filePath, fileName, 3, "Test", "TestRule", "Class");
+		w2 = new CheckStyleWarning("./src/test/resources/ExampleTestClass.txt", fileName, 3, "Test", "TestRule", "Class");
 		warningList = new ArrayList<Warning>();
 		warningList2 = new ArrayList<Warning>();
 		warningList2.add(w2);
@@ -165,7 +166,7 @@ public class ComponentSummarizerTest {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		assertNotEquals(cs, Integer.valueOf(1));
 	}
-	
+
 	/**
 	 * Test that the number of PMD warnings is not zero after summarise has been
 	 * called.
@@ -173,23 +174,23 @@ public class ComponentSummarizerTest {
 	@Test
 	public void testNumPMDWarningsIsNotZeroAfterSummarise() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		warningList.add(new PMDWarning(filePath, fileName, 3, packageName, "test", "test2", "test3"));
+		warningList.add(new PMDWarning(filePath, fileName, 3, packageName, "test", "test2", "test3", "Class"));
 		cs.summarise(warningList);
 		assertSame(1, cs.numberOfPMDWarnings);
 	}
-	
+
 	/**
-	 * Test that the number of FindBugs warnings is not zero after summarise has been
-	 * called.
+	 * Test that the number of FindBugs warnings is not zero after summarise has
+	 * been called.
 	 */
 	@Test
 	public void testNumFindBugsWarningsIsNotZeroAfterSummarise() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3"));
+		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3", "test4"));
 		cs.summarise(warningList);
 		assertSame(1, cs.numberOfFindBugsWarnings);
 	}
-	
+
 	/**
 	 * Test that a IllegalArgumentException is thrown for incrementNumWarnings.
 	 * called.
@@ -197,9 +198,19 @@ public class ComponentSummarizerTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testIllegalArgumentExceptionIncrementNumWarnings() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3"));
+		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3", "test4"));
 		cs.summarise(warningList);
 		cs.incrementNumberOfWarnings("Not a right type of ASAT");
+	}
+
+	/**
+	 * Test that the loc is not zero after summarise has been called.
+	 */
+	@Test
+	public void testLOCIsNotZeroAfterSummarise() {
+		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
+		cs.summarise(warningList);
+		assertNotSame(0, cs.getLoc());
 	}
 
 }

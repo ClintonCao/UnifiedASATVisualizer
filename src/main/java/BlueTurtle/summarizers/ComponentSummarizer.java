@@ -3,8 +3,11 @@ package BlueTurtle.summarizers;
 import java.util.ArrayList;
 import java.util.List;
 
+import BlueTurtle.finders.LOCFinder;
 import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.warnings.Warning;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class can be used to summarise the warnings for a specific component.
@@ -14,9 +17,10 @@ import BlueTurtle.warnings.Warning;
  */
 public class ComponentSummarizer extends Summarizer {
 
-	private String fileName;
-	private String filePath;
-	private List<Warning> warningList;
+	@Getter @Setter private String fileName;
+	@Getter @Setter private String filePath;
+	@Getter @Setter private List<Warning> warningList;
+	@Getter @Setter private int loc;
 
 	/**
 	 * Constructor.
@@ -32,6 +36,8 @@ public class ComponentSummarizer extends Summarizer {
 		super(packageName);
 		setFileName(fileName);
 		setFilePath(filePath);
+		int loc = LOCFinder.findLOC(filePath);
+		setLoc(loc);
 		setWarningList(new ArrayList<Warning>());
 	}
 
@@ -60,7 +66,6 @@ public class ComponentSummarizer extends Summarizer {
 
 	}
 
-	
 	/**
 	 * Check whether two ComponentSummarizer are equal.
 	 * 
@@ -76,75 +81,9 @@ public class ComponentSummarizer extends Summarizer {
 
 		ComponentSummarizer that = (ComponentSummarizer) other;
 
-		if (packageName.equals(that.packageName) && fileName.equals(that.fileName) && filePath.equals(that.filePath)
+		return (packageName.equals(that.packageName) && fileName.equals(that.fileName) && filePath.equals(that.filePath)
 				&& warningList.equals(that.warningList) && numberOfWarnings == that.numberOfWarnings
-				&& warningTypes.equals(that.warningTypes)) {
-			return true;
-		} else {
-			return false;
-		}
+				&& warningTypes.equals(that.warningTypes));
 
 	}
-
-	/**************************************/
-	/****** Getters and Setters **********/
-	/************************************/
-
-	/**
-	 * Get the name of the component.
-	 * 
-	 * @return the name of the component.
-	 */
-	public String getFileName() {
-		return fileName;
-	}
-
-	/**
-	 * Set the name of the component.
-	 * 
-	 * @param fileName
-	 *            the name of the component.
-	 */
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-	/**
-	 * Get the file path.
-	 * 
-	 * @return the file path.
-	 */
-	public String getFilePath() {
-		return filePath;
-	}
-
-	/**
-	 * Set the file path.
-	 * 
-	 * @param filePath
-	 *            the path of the file.
-	 */
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-
-	/**
-	 * Get the list of warning in this component.
-	 * 
-	 * @return list of warning in this component.
-	 */
-	public List<Warning> getWarningList() {
-		return warningList;
-	}
-
-	/**
-	 * Set the list of warnings in this component.
-	 * 
-	 * @param warnings
-	 *            list of warning.
-	 */
-	public void setWarningList(List<Warning> warnings) {
-		this.warningList = warnings;
-	}
-
 }

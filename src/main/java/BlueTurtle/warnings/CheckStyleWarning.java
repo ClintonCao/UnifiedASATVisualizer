@@ -1,5 +1,8 @@
 package BlueTurtle.warnings;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * This class is used to represent a checkstyle warning.
  * 
@@ -8,8 +11,8 @@ package BlueTurtle.warnings;
  */
 public class CheckStyleWarning extends Warning {
 
-	private int line;
-	private String message;
+	@Getter @Setter private int line;
+	@Getter @Setter private String message;
 
 	/**
 	 * Constructor.
@@ -25,9 +28,11 @@ public class CheckStyleWarning extends Warning {
 	 * 
 	 * @param ruleName
 	 *            the rule name of the warning.
+	 * @param classification
+	 *            of the violated rule of the warning.
 	 */
-	public CheckStyleWarning(String filePath, String filename, int line, String message, String ruleName) {
-		super(filePath, filename, "CheckStyle", ruleName);
+	public CheckStyleWarning(String filePath, String filename, int line, String message, String ruleName, String classification) {
+		super(filePath, filename, "CheckStyle", ruleName, classification);
 		setLine(line);
 		setMessage(message.replaceAll("'", ""));
 	}
@@ -47,57 +52,10 @@ public class CheckStyleWarning extends Warning {
 		}
 
 		CheckStyleWarning that = (CheckStyleWarning) other;
-		if (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
-				&& message.equals(that.message) && ruleName.equals(that.ruleName) && type.equals(that.type)) {
-			return true;
-		} else {
-			return false;
-		}
+
+		// fixed SimplifyBooleanReturn, Conditional logic can be removed.
+		return (ruleName.equals(that.ruleName) && filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
+				&& message.equals(that.message) && classification.equals(that.classification) && type.equals(that.type));
 
 	}
-
-	
-	/*************************************/
-	/*** Getters and setters ************/
-	/***********************************/
-
-	/**
-	 * Get the line number where the warning is located.
-	 * 
-	 * @return the line number where the warning is located.
-	 */
-	public int getLine() {
-		return line;
-	}
-
-	/**
-	 * Set line number where the warning is located.
-	 * 
-	 * @param line
-	 *            the line number where the warning is located.
-	 */
-	public void setLine(int line) {
-		this.line = line;
-	}
-
-	/**
-	 * Get the message of the CheckStyle warning.
-	 * 
-	 * @return the message of the CheckStyle warning.
-	 */
-	public String getMessage() {
-		return message;
-	}
-
-	/**
-	 * Set the message of the CheckStyle warning.
-	 * 
-	 * @param message
-	 *            the message of the warning (i.e. description of what caused
-	 *            the warning.)
-	 */
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
 }

@@ -1,7 +1,5 @@
 package BlueTurtle.commandbuilders;
 
-import java.util.ArrayList;
-
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.settings.PMDSettings;
 
@@ -20,7 +18,7 @@ public class PMDCommandBuilder extends CommandBuilder {
 	 *            the settings for PMD.
 	 */
 	public PMDCommandBuilder(PMDSettings pmdSettings) {
-		commands = new ArrayList<String>();
+		super();
 		this.setSettings(pmdSettings);
 	}
 
@@ -40,5 +38,4 @@ public class PMDCommandBuilder extends CommandBuilder {
 		String[] retCommands = commands.toArray(new String[commands.size()]);
 		return retCommands;
 	}
-
 }

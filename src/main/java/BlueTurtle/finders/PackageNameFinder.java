@@ -9,6 +9,7 @@ import java.io.FileReader;
  * @author BlueTurtle.
  *
  */
+@SuppressWarnings("checkstyle:hideutilityclassconstructor")
 public class PackageNameFinder {
 
 	/**
@@ -16,7 +17,7 @@ public class PackageNameFinder {
 	 * 
 	 * @param filePath
 	 *            the path to the file.
-	 * @return the package.
+	 * @return the package name.
 	 */
 	public static String findPackageName(String filePath) {
 		String packageName = "default";
@@ -30,8 +31,9 @@ public class PackageNameFinder {
 			reader.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+			return "Error";
 		}
 		return packageName;
 	}
-	
+
 }

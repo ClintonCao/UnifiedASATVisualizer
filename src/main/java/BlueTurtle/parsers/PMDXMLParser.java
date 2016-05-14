@@ -1,6 +1,7 @@
 package BlueTurtle.parsers;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class PMDXMLParser extends XMLParser {
 	 * @return a list of PMD warnings.
 	 */
 	@Override
-	public List<Warning> parseFile(String xmlFilePath) {
+	public List<Warning> parseFile(String xmlFilePath, HashMap<String, String> categoryInfo) {
 		// List to store the warnings.
 		List<Warning> pmdWarnings = new LinkedList<Warning>();
 		
@@ -90,9 +91,15 @@ public class PMDXMLParser extends XMLParser {
 
 							// Get the category of the warning.
 							String ruleName = warningElement.getAttribute("rule");
+							
+							// PMD rule name is a special concatenation of rule set and rule name
+							String pmdRN = ruleSet.toLowerCase() + ".xml/" + ruleName; 
+							
+							
+							String classification = categoryInfo.get(pmdRN);
 
 							// Add warning to the list of warnings.
-							pmdWarnings.add(new PMDWarning(filePath, fileName, line, packageName, ruleSet, method, ruleName));
+							pmdWarnings.add(new PMDWarning(filePath, fileName, line, packageName, ruleSet, method, ruleName, classification));
 						}
 					}
 				}

@@ -1,7 +1,5 @@
 package BlueTurtle.commandbuilders;
 
-import java.util.ArrayList;
-
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.settings.CheckStyleSettings;
 
@@ -20,7 +18,7 @@ public class CheckStyleCommandBuilder extends CommandBuilder {
 	 *            the setting for CheckStyle.
 	 */
 	public CheckStyleCommandBuilder(CheckStyleSettings checkStyleSettings) {
-		this.commands = new ArrayList<String>();
+		super();
 		this.setSettings(checkStyleSettings);
 	}
 

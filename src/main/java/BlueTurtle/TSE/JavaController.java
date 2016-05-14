@@ -1,29 +1,19 @@
 package BlueTurtle.TSE;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
 import BlueTurtle.commandbuilders.CoberturaCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
+import BlueTurtle.commandbuilders.FindBugsCommandBuilder;
 import BlueTurtle.commandbuilders.PMDCommandBuilder;
-import BlueTurtle.finders.PackageNameFinder;
-import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.interfaces.Controller;
-import BlueTurtle.parsers.CheckStyleXMLParser;
-import BlueTurtle.parsers.PMDXMLParser;
-import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.settings.CheckStyleSettings;
 import BlueTurtle.settings.CoberturaSettings;
+import BlueTurtle.settings.FindBugsSettings;
 import BlueTurtle.settings.PMDSettings;
-import BlueTurtle.summarizers.Summarizer;
-import BlueTurtle.warnings.Warning;
-import BlueTurtle.writers.JSWriter;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * JavaController controls the analyser to make it analyse java code. It
@@ -34,16 +24,17 @@ import BlueTurtle.writers.JSWriter;
  *
  */
 public class JavaController implements Controller {
-	private Analyser analyser;
-	private static String userDir = System.getProperty("user.dir");
+	@Getter @Setter private Analyser analyser;
+	@Getter @Setter private static String userDir = System.getProperty("user.dir");
 	private CommandBuilder commandBuilder;
-	private PMDSettings pmdSettings = new PMDSettings();
-	private CheckStyleSettings checkStyleSettings = new CheckStyleSettings(new File("CheckStyle_Settings.xml"));
+	private PMDSettings pmdSettings = PMDSettings.getInstance();
+	private CheckStyleSettings checkStyleSettings = CheckStyleSettings.getInstance();
 	private CoberturaSettings coberturaSettings = new CoberturaSettings();
 	private JSONFormatter jsonFormatter = new JSONFormatter();
-
+	private FindBugsSettings findBugsSettings = FindBugsSettings.getInstance();
+	
 	/**
-	 * Execute controller.
+	 * Execute controller. A command is constructed for every ASAT which needs to be run. 
 	 * 
 	 * @throws IOException
 	 *             throws an exception if a problem is encountered when
@@ -66,27 +57,16 @@ public class JavaController implements Controller {
 		String[] coberturaCommands = commandBuilder.buildCommand();
 		AnalyserCommand c3 = new AnalyserCommand(coberturaSettings.getDefaultOutputFilePath(), coberturaCommands);
 		commands.add(c3);
+		
+		commandBuilder = new FindBugsCommandBuilder(findBugsSettings);
+		String[] findBugsCommands = commandBuilder.buildCommand();
+		AnalyserCommand c4 = new AnalyserCommand(findBugsSettings.getDefaultOutputFilePath(), findBugsCommands);
+		commands.add(c4);
 
 		setAnalyser(new Analyser(commands));
 
 		analyser.analyse();
 		
 		jsonFormatter.format();
-	}
-
-	public void setAnalyser(Analyser analyser) {
-		this.analyser = analyser;
-	}
-
-	public Analyser getAnalyser() {
-		return this.analyser;
-	}
-
-	public static String getUserDir() {
-		return userDir;
-	}
-
-	public static void setUserDir(String newUserDir) {
-		userDir = newUserDir;
 	}
 }

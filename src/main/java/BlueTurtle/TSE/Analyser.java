@@ -1,27 +1,21 @@
 package BlueTurtle.TSE;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
 
 /**
  * Analyses java projects.
  * 
  * @author BlueTurtle.
  */
+@AllArgsConstructor
 public class Analyser {
-	private ArrayList<AnalyserCommand> commands;
-
-	/**
-	 * Constructor.
-	 * 
-	 * @param commands
-	 *            the commands for the analyser.
-	 */
-	public Analyser(ArrayList<AnalyserCommand> commands) {
-		this.commands = commands;
-	}
+	@Setter @Getter private ArrayList<AnalyserCommand> commands;
 
 	/**
 	 * Analyse creates a ProcessBuilder for each command. The output is
@@ -37,15 +31,14 @@ public class Analyser {
 			ProcessBuilder pb = new ProcessBuilder(command.getArgs());
 			pb.redirectOutput(Redirect.INHERIT);
 			pb.redirectError(Redirect.INHERIT);
-			pb.start();
+			Process process = pb.start();
+			try {
+				process.waitFor();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			process.getOutputStream().flush();
+			process.destroy();
 		}
-	}
-
-	public ArrayList<AnalyserCommand> getCommands() {
-		return commands;
-	}
-
-	public void setCommands(ArrayList<AnalyserCommand> commands) {
-		this.commands = commands;
 	}
 }

@@ -1,6 +1,9 @@
 package BlueTurtle.commandbuilders;
 
 import BlueTurtle.interfaces.Settings;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 
 /**
@@ -9,9 +12,17 @@ import java.util.ArrayList;
  * @author BlueTurtle.
  *
  */
+@SuppressWarnings("checkstyle:visibilitymodifier")
 public abstract class CommandBuilder {
-	protected ArrayList<String> commands;
-	private Settings settings;
+	@Getter @Setter protected ArrayList<String> commands;
+	@Getter @Setter private Settings settings;
+	
+	/**
+	 * Abstract constructor for CommandBuilder, commands is initialized.
+	 */
+	public CommandBuilder() {
+		commands = new ArrayList<String>();
+	}
 
 	/**
 	 * Build a command.
@@ -19,21 +30,4 @@ public abstract class CommandBuilder {
 	 * @return console command, each argument is a separate value in the array.
 	 */
 	public abstract String[] buildCommand();
-
-	public Settings getSettings() {
-		return settings;
-	}
-
-	public void setSettings(Settings settings) {
-		this.settings = settings;
-	}
-
-	public ArrayList<String> getCommands() {
-		return commands;
-	}
-
-	public void setCommands(ArrayList<String> commands) {
-		this.commands = commands;
-	}
-
 }

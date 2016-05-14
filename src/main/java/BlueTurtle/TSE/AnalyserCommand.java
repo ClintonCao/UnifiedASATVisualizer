@@ -1,41 +1,17 @@
 package BlueTurtle.TSE;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Represents a basic unit of work for the analyser to process.
  * 
  * @author BlueTurtle.
  *
  */
+@AllArgsConstructor
 public class AnalyserCommand {
-	private String defaultOutputFilePath;
-	private String[] args;
-
-	/**
-	 * Constructor.
-	 * 
-	 * @param defaultOutputFilePath
-	 *            the output of the result.
-	 * @param args
-	 *            - command line arguments.
-	 */
-	public AnalyserCommand(String defaultOutputFilePath, String[] args) {
-		this.setDefaultOutputFilePath(defaultOutputFilePath);
-		this.setArgs(args);
-	}
-
-	public String[] getArgs() {
-		return args;
-	}
-
-	public void setArgs(String[] args) {
-		this.args = args;
-	}
-
-	public String getDefaultOutputFilePath() {
-		return defaultOutputFilePath;
-	}
-
-	public void setDefaultOutputFilePath(String defaultOutputFilePath) {
-		this.defaultOutputFilePath = defaultOutputFilePath;
-	}
+	@Getter @Setter private String defaultOutputFilePath;
+	@Getter @Setter private String[] args;
 }
