@@ -1,7 +1,5 @@
 package BlueTurtle.commandbuilders;
 
-import java.util.ArrayList;
-
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.settings.FindBugsSettings;
 
@@ -13,7 +11,7 @@ import BlueTurtle.settings.FindBugsSettings;
 public class FindBugsCommandBuilder extends CommandBuilder {
 
 	public FindBugsCommandBuilder(FindBugsSettings findBugsSettings) {
-		this.commands = new ArrayList<String>();
+		super();
 		this.setSettings(findBugsSettings);
 	}
 

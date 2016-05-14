@@ -2,7 +2,6 @@ package BlueTurtle.TSE;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.nio.file.Paths; 
 import BlueTurtle.commandbuilders.CheckStyleCommandBuilder;
 import BlueTurtle.commandbuilders.CoberturaCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
@@ -34,7 +33,7 @@ public class JavaController implements Controller {
 	private FindBugsSettings findBugsSettings = FindBugsSettings.getInstance();
 	
 	/**
-	 * Execute controller.
+	 * Execute controller. A command is constructed for every ASAT which needs to be run. 
 	 * 
 	 * @throws IOException
 	 *             throws an exception if a problem is encountered when
