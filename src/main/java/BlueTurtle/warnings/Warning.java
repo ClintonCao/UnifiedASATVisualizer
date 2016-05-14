@@ -1,5 +1,8 @@
 package BlueTurtle.warnings;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * This class is used to represent a warning.
  * 
@@ -9,11 +12,11 @@ package BlueTurtle.warnings;
 @SuppressWarnings("checkstyle:visibilitymodifier")
 public abstract class Warning {
 
-	protected String classification;
-	protected String fileName;
-	protected String type;
-	protected String filePath;
-	protected String ruleName;
+	@Getter @Setter protected String classification;
+	@Getter @Setter protected String fileName;
+	@Getter @Setter protected String type;
+	@Getter @Setter protected String filePath;
+	@Getter @Setter protected String ruleName;
 
 	/**
 	 * Constructor.
@@ -44,104 +47,4 @@ public abstract class Warning {
 	 */
 	@Override
 	public abstract boolean equals(Object other);
-
-	/*************************************/
-	/*** Getters and setters ************/
-	/***********************************/
-
-	/**
-	 * Get the classification of the violated rule.
-	 * 
-	 * @return the classification of the violated rule.
-	 */
-	public String getClassification() {
-		return classification;
-	}
-
-	/**
-	 * Set the classification of the violated rule.
-	 * 
-	 * @param classification
-	 *            the of the violated rule.
-	 */
-	public void setClassification(String classification) {
-		this.classification = classification;
-	}
-
-	/**
-	 * Get the rule name of the violated rule.
-	 * 
-	 * @return the rule name of the violated rule.
-	 */
-	public String getRuleName() {
-		return ruleName;
-	}
-
-	/**
-	 * Set the rule name of the violated rule.
-	 * 
-	 * @param ruleName
-	 *            the of the violated rule.
-	 */
-	public void setRuleName(String ruleName) {
-		this.ruleName = ruleName;
-	}	
-	
-	/**
-	 * Get the file name where the warning is from.
-	 * 
-	 * @return the file name where the warning is from.
-	 */
-	public String getFileName() {
-		return fileName;
-	}
-
-	/**
-	 * Set the file name where the warning is from.
-	 * 
-	 * @param fileName
-	 *            the file name where the warning is from.
-	 */
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-	/**
-	 * Get the type of the warning.
-	 * 
-	 * @return the type of the warning.
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * Set the type of the warning.
-	 * 
-	 * @param type
-	 *            the type of the warning.
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	/**
-	 * Get the path to the file where the warning is located.
-	 * 
-	 * @return the path to the file where the warning is located.
-	 */
-	public String getFilePath() {
-		return filePath;
-	}
-
-	/**
-	 * Set the path to the file where the warning is located.
-	 * 
-	 * @param filePath
-	 *            the path to the file where the warning is located.
-	 */
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-
 }

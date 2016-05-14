@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map.Entry;
 import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.warnings.Warning;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class summarises the warnings of a specific package.
@@ -15,8 +17,8 @@ import BlueTurtle.warnings.Warning;
  */
 public class PackageSummarizer extends Summarizer {
 
-	private List<ComponentSummarizer> classes;
-	private int numberOfClasses;
+	@Getter @Setter private List<ComponentSummarizer> classes;
+	@Getter @Setter private int numberOfClasses;
 
 	/**
 	 * Constructor.
@@ -96,47 +98,4 @@ public class PackageSummarizer extends Summarizer {
 				&& classes.equals(that.classes) && warningTypes.equals(that.warningTypes));
 
 	}
-
-	/**************************************/
-	/****** Getters and Setters **********/
-	/************************************/
-
-	/**
-	 * Get the list of classes(and their warnings) in this package.
-	 * 
-	 * @return list of classes(and their warnings) in this package.
-	 */
-	public List<ComponentSummarizer> getClasses() {
-		return classes;
-	}
-
-	/**
-	 * Set the list of ComponentSummarizers in this package.
-	 * 
-	 * @param cs
-	 *            list of ComponentSummarizers.
-	 */
-	public void setClasses(List<ComponentSummarizer> cs) {
-		this.classes = cs;
-	}
-
-	/**
-	 * Get the number of classes.
-	 * 
-	 * @return the number of classes.
-	 */
-	public int getNumberOfClasses() {
-		return numberOfClasses;
-	}
-
-	/**
-	 * Set the number of classes.
-	 * 
-	 * @param numberOfClasses
-	 *            the number of classes.
-	 */
-	public void setNumberOfClasses(int numberOfClasses) {
-		this.numberOfClasses = numberOfClasses;
-	}
-
 }
