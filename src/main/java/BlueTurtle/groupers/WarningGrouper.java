@@ -24,7 +24,6 @@ import lombok.Setter;
  * @author BlueTurtle.
  *
  */
-@EqualsAndHashCode
 @AllArgsConstructor
 public class WarningGrouper implements Grouper {
 
@@ -85,5 +84,24 @@ public class WarningGrouper implements Grouper {
 		}
 
 		return result;
+	}
+	
+	/**
+	 * Check whether two Warning grouper are equal.
+	 * 
+	 * @param other
+	 *            the other WarningGrouper object
+	 */
+	@Override
+	public boolean equals(Object other) {
+		if (!(other instanceof WarningGrouper)) {
+			return false;
+		}
+
+		WarningGrouper that = (WarningGrouper) other;
+
+		// fix SimplifyBooleanReturn, Conditional logic can be removed.
+		return (componentsInfo.equals(that.getComponentsInfo()) && packagesNames.equals(that.getPackagesNames())
+				&& warningList.equals(that.getWarningList()));
 	}
 }
