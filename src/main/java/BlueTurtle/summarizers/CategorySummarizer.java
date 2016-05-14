@@ -1,12 +1,10 @@
 package BlueTurtle.summarizers;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import BlueTurtle.warnings.Warning;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +14,6 @@ import lombok.Setter;
  * @author BlueTurtle.
  *
  */
-@EqualsAndHashCode
 public class CategorySummarizer extends Summarizer {
 
 	@Getter @Setter private String category;
@@ -57,6 +54,26 @@ public class CategorySummarizer extends Summarizer {
 				numberOfWarnings++;
 			}
 		}
+	}
+	
+	/**
+	 * Check whether two CategorySummarizer are equal.
+	 * 
+	 * @param other
+	 *            the other CategorySummarizer.
+	 */
+	@Override
+	public boolean equals(Object other) {
 
+		if (!(other instanceof CategorySummarizer)) {
+			return false;
+		}
+
+		CategorySummarizer that = (CategorySummarizer) other;
+		
+		return (category.equals(that.getCategory()) 
+				&& warningList.equals(that.warningList) 
+				&& numberOfWarnings == that.numberOfWarnings
+				&& categoryInfo == that.categoryInfo);
 	}
 }
