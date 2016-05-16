@@ -13,7 +13,6 @@ import BlueTurtle.summarizers.PackageSummarizer;
 import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 

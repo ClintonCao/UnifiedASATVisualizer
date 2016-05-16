@@ -30,6 +30,7 @@ public class JSWriterTest {
 
 	private String outputPath;
 	private List<Summarizer> summarizedWarnings;
+	private JSWriter jsWriter = JSWriter.getInstance();
 
 	/**
 	 * Intitialize the things that are needed.
@@ -46,6 +47,7 @@ public class JSWriterTest {
 				new CheckStyleWarning("./src/test/resources/ExampleClass.txt", "ExampleClass.java", 5, "test", "test", "Class"));
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, list);
 		summarizedWarnings = wg.groupBy("packages");
+		jsWriter.setSummarizedWarnings(summarizedWarnings);
 
 		// make sure that the file does not already exist by coincidence.
 		File file = new File(outputPath);
@@ -73,8 +75,7 @@ public class JSWriterTest {
 	 */
 	@Test
 	public void testWriteToJsonFormat() throws IOException {
-		JSWriter jwriter = new JSWriter(summarizedWarnings);
-		jwriter.writeToJSFormat(outputPath);
+		jsWriter.writeToJSFormat(outputPath);
 
 		File file = new File(outputPath);
 		boolean fileWritten = file.exists();
@@ -86,9 +87,8 @@ public class JSWriterTest {
 	 */
 	@Test
 	public void testChangingSummarizedWarnings() {
-		JSWriter jwriter = new JSWriter(summarizedWarnings);
-		jwriter.setSummarizedWarnings(new ArrayList<Summarizer>());
-		assertSame(0, jwriter.getSummarizedWarnings().size());
+		jsWriter.setSummarizedWarnings(new ArrayList<Summarizer>());
+		assertSame(0, jsWriter.getSummarizedWarnings().size());
 	}
 
 }

@@ -9,6 +9,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import BlueTurtle.summarizers.Summarizer;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class can be used to write the output of the analyzer to JavaScript
@@ -19,16 +21,28 @@ import BlueTurtle.summarizers.Summarizer;
  */
 public class JSWriter {
 
+	private static JSWriter jsWriter = null;
+
+	@Getter
+	@Setter
 	private List<Summarizer> summarizedWarnings;
 
 	/**
-	 * Contructor.
-	 * 
-	 * @param summarizedWarnings
-	 *            the list of summarizer(where the warnings are summarized).
+	 * Constructor. Only this class can instantiate itself.
 	 */
-	public JSWriter(List<Summarizer> summarizedWarnings) {
-		setSummarizedWarnings(summarizedWarnings);
+	private JSWriter() {
+	}
+
+	/**
+	 * Get an instance of this class.
+	 * 
+	 * @return an instance of this class.
+	 */
+	public static synchronized JSWriter getInstance() {
+		if (jsWriter == null) {
+			jsWriter = new JSWriter();
+		}
+		return jsWriter;
 	}
 
 	/**
@@ -45,31 +59,11 @@ public class JSWriter {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(summarizedWarnings);
 		json += ';';
-		
+
 		writer.write("var inputData = ");
 		writer.newLine();
 		writer.write(json);
 		writer.flush();
 		writer.close();
 	}
-
-	/**
-	 * Get the list of summarized warnings.
-	 * 
-	 * @return a list of summarizers.
-	 */
-	public List<Summarizer> getSummarizedWarnings() {
-		return summarizedWarnings;
-	}
-
-	/**
-	 * Set the list of summarized warnings.
-	 * 
-	 * @param summarizedWarnings
-	 *            list of summarizers.
-	 */
-	public void setSummarizedWarnings(List<Summarizer> summarizedWarnings) {
-		this.summarizedWarnings = summarizedWarnings;
-	}
-
 }

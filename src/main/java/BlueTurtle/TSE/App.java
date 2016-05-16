@@ -121,8 +121,9 @@ public class App {
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, checkStyleWarnings);
 		List<Summarizer> list = wg.groupBy("packages");
 
-		JSWriter jwriter = new JSWriter(list);
-		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.js");
+		JSWriter jsWriter = JSWriter.getInstance();
+		jsWriter.setSummarizedWarnings(list);
+		jsWriter.writeToJSFormat("./src/main/resources/SummarizedOuput.js");
 		System.out.println("Done");
 	}
 }
