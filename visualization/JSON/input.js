@@ -13,6 +13,7 @@ var inputData = [
             "ruleName": "OverrideBothEqualsAndHashcode",
             "fileName": "CheckStyleWarning.java",
             "type": "PMD",
+			"ruleName": "Check",
             "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\CheckStyleWarning.java"
           }
         ],

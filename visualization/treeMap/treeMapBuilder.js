@@ -3,7 +3,7 @@ var treeMapBuilder = (function() {
 
     // initialize all variables
     var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
-
+	var refreshing = false;
 
 
     // initialize the entire treemap up till displaying
@@ -91,10 +91,11 @@ var treeMapBuilder = (function() {
         }
 		
 		// all the updateContent class will trigger this refresh of data
-		// so that the input of the user (checkboxes/radiobuttons) will cause this update.
+		// so that the input of the user (checkboxes/radiobuttons) will update the content of 
         $(".updateContent").off("click");
-        $(".updateContent").click(function(view) {
-            if (document.getElementById('treemapButton').checked) {
+        $(".updateContent").on('click', function(view) {
+            if (document.getElementById('treemapButton').checked && !refreshing) {
+				refreshing = true;
                 handleClickTreeMapTypeSat(view.target.value)
                 reloadContent();
                 var newNode = findNode(d, root);
@@ -102,7 +103,12 @@ var treeMapBuilder = (function() {
                     return newNode;
                 });
                 transition(newNode);
-            }
+				var millisecondsToWait = 200;
+				setTimeout(function() {
+    				refreshing = false;
+				}, millisecondsToWait);
+
+            }	
         });
 
         function findNode(d, root) {

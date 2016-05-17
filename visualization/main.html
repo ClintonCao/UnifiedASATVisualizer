@@ -18,17 +18,26 @@
         <div id="chart">
         </div>
         <div id="optionsMenu">
-        	<h3>SATs</h3>
+        	<h3 onClick="handleClickSatType()">SATs</h3>
             <form name="button-options" action="">
-                <label><input type="checkbox" class="updateContent" id="checkstyleButton" onclick="handleClickTypeSat(this);" name="sat" value="CheckStyle"> CheckStyle</label><br>
-                <label><input type="checkbox" class="updateContent" id="pmdButton" onclick="handleClickTypeSat(this);" name="sat" value="PMD"> PMD</label><br>
-                <label><input type="checkbox" class="updateContent" id="findBugsButton" onclick="handleClickTypeSat(this);" name="sat" value="FindBugs"> FindBugs</label><br>
+                <label><input type="checkbox" class="updateContent satType" id="checkstyleButton" onclick="handleClickTypeSat(this);" name="sat" value="CheckStyle"> CheckStyle</label><br>
+                <label><input type="checkbox" class="updateContent satType" id="pmdButton" onclick="handleClickTypeSat(this);" name="sat" value="PMD"> PMD</label><br>
+                <label><input type="checkbox" class="updateContent satType" id="findBugsButton" onclick="handleClickTypeSat(this);" name="sat" value="FindBugs"> FindBugs</label><br>
             <h3>Visualizers </h3>
                 <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap" checked> Treemap<br>
                 <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>
             <h3>Color scale </h3>
                 <input type="radio" id="absoluteButton" class="updateContent" name="colorScale" onclick="handleClickColorScale(this);"  value="absolute" checked> Absolute<br>
                 <input type="radio" id="relativeButton" class="updateContent" name="colorScale" onclick="handleClickColorScale(this);" value="relative"> Relative<br>
+            <h3>Category</h3>
+            <h4 class="category-titles" onClick="handleClickCategory('FunctionDefects')">Functional Defects</h4>
+                <label><input type="checkbox" class="updateContent functionalDefects" id="firstFunctionalDefect" onclick="handleClickCategorySat(this);" name="sat" value="Check"> Check</label><br>
+                <label><input type="checkbox" class="updateContent functionalDefects" id="secondFunctionalDefect"  onclick="handleClickCategorySat(this);" name="sat" value="Concurrency"> Concurrency</label><br>
+                <label><input type="checkbox" class="updateContent functionalDefects" onclick="handleClickCategorySat(this);" name="sat" value="ErrorHandling"> Error Handling</label><br>
+                <label><input type="checkbox" class="updateContent functionalDefects"onclick="handleClickCategorySat(this);" name="sat" value="Interface"> Interface</label><br>
+                <label><input type="checkbox" class="updateContent functionalDefects" onclick="handleClickCategorySat(this);" name="sat" value="Logic"> Logic</label><br>
+                <label><input type="checkbox" class="updateContent functionalDefects" onclick="handleClickCategorySat(this);" name="sat" value="Migration"> Migration</label><br>
+                <label><input type="checkbox" class="updateContent functionalDefects" onclick="handleClickCategorySat(this);" name="sat" value="Resource"> Resource</label><br>
             </form>
         </div>
     </div>

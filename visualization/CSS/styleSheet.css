@@ -3,7 +3,6 @@
   float:right;
   display:block;
   background-color:#7a92ff;
-  height:400px;
   width:150px;
   margin:100px 10px 0 10px;
   padding: 10px;
@@ -107,4 +106,10 @@ rect.parent {
 .link {
   stroke: #000;
   stroke-opacity: .25;
+}
+
+h4.category-titles{
+	margin:0;
+	cursor: pointer;
+	text-align:center;
 }

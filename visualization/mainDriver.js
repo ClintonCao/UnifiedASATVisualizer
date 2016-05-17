@@ -4,7 +4,8 @@
 var graphTrace = [];
 var graphTraceIndex = 0;
 var acceptedTypes = [];
-var acceptedRuleNames = ["PackageName", "JavadocMethod"];
+var acceptedCategories = ["PackageName", "JavadocMethod"];
+var acceptedCategories = [];
 
 // Run first time
 runTreeMap();
@@ -29,7 +30,7 @@ function handleClickTreeMapTypeSat(value) {
 }
 
 /*
- * Handles click on checkboxes for showing results of different tools
+ * Handles click on checkboxes for using different colorscales
  */
 function handleClickColorScale(radioButton) {
 	console.log(radioButton.value)
@@ -43,6 +44,37 @@ function handleClickColorScale(radioButton) {
 		createGraph(graphTrace[graphTraceIndex]);
 	}
 }
+
+/*
+ * toggle all category checkboxes
+ */
+function handleClickCategory(category) {
+	if( category == "FunctionDefects" ){
+		$('.functionalDefects').click()
+		
+		
+	}
+}
+
+/*
+ * toggle all sat type checkboxes
+ */
+function handleClickSatType() {
+		$('.satType').click()
+}
+
+function handleClickCategorySat(checkbox) {	
+ 	if (checkbox.checked) {
+		acceptedCategories.push(checkbox.value)
+    } else {
+        var index = acceptedCategories.indexOf(checkbox.value);
+        if (index > -1) {
+            acceptedCategories.splice(index, 1);
+        }
+    }
+	console.log(acceptedCategories);
+}
+
 
 // Delete the entire chart from the page.
 function removeChart() {
@@ -63,7 +95,7 @@ function handleClickTypeSat(cb) {
             handleClickTreeMapTypeSat(value);
             removeChart();
             if (packagesLevel) {
-                var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+                var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
                 var input = createJsonGraphPackages(packages);
 
                 if (typeof graphTrace[graphTraceIndex] === 'undefined') {
@@ -73,7 +105,7 @@ function handleClickTypeSat(cb) {
                 }
                 createGraph(graphTrace[graphTraceIndex]);
             } else {
-                var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+                var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
                 var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
 
                 if (typeof graphTrace[graphTraceIndex] === 'undefined') {
@@ -99,7 +131,7 @@ function handleClickVisualiser(radioButton) {
 }
 
 function getFilteredJSON() {
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     return createJsonTreeMap(packages);
 }
 
@@ -113,7 +145,7 @@ function runTreeMap() {
     var graphButtonDiv = document.getElementById("sub-title");
     graphButtonDiv.style.display = 'none';
 
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
 
     treeMapBuilder.createTreeMap({
         title: ""
@@ -136,7 +168,7 @@ function runGraph() {
     graphButton.firstChild.data = "This is the upperview";
     graphButton.disabled = true;
 
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
 
     var input = createJsonGraphPackages(packages);
 

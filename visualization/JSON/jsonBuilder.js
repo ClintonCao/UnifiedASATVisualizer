@@ -16,7 +16,7 @@ function replaceAll(stringObject, target, replacement){
  * Filter on type of tool and/or warnings
  *
  */
-function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
+function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	var packageArray = []
   	for (p = 0; p < inputData.length; p++) {
   		var package = inputData[p];
@@ -31,7 +31,7 @@ function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j]
 				//tmp disabled the acceptedrule filter
-				if($.inArray(warningJson.type, acceptedTypes) > -1 && ($.inArray(warningJson.ruleName, acceptedRuleNames) > -1 || true)) {
+				if($.inArray(warningJson.type, acceptedTypes) > -1 && false || ($.inArray(warningJson.ruleName, acceptedCategories) > -1)) {
 		  			classObject.amountOfWarnings++;
 				}
 	  		}
