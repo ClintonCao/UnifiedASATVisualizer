@@ -12,18 +12,19 @@ Total: ****
 
 | User Story | Score |
 |------------|-------|
-| definition |      |
-| splitting  |      |
-| responsibility |  |
+| definition |  10    |
+| splitting  |  10    |
+| responsibility | 10 |
 
 | Learning from History | Score |
 |-----------------------|-------|
-| estimation            |      |
-| prioritisation        |      |
-| reflection            |      |
+| estimation            | 8     |
+| prioritisation        | 10     |
+| reflection            |  10    |
 
 ## Notes
-
+* Provide a base unit because how much work does an effort of 10 points mean
+	* A base unit is the task you're basing this point system on
 
 #Code Evolution Quality Feedback
 
