@@ -2,7 +2,7 @@ var treeMapBuilder = (function() {
 
 
     // initialize all variables
-    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, color, x, y, svg, grandparent, maxDepth, defaults
+    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
 
 
 
@@ -89,7 +89,9 @@ var treeMapBuilder = (function() {
                 .classed("children", true)
                 .on("click", transition);
         }
-
+		
+		// all the updateContent class will trigger this refresh of data
+		// so that the input of the user (checkboxes/radiobuttons) will cause this update.
         $(".updateContent").off("click");
         $(".updateContent").click(function(view) {
             if (document.getElementById('treemapButton').checked) {
@@ -185,7 +187,7 @@ var treeMapBuilder = (function() {
             .style("fill", function(d) {
                 var ratio = 200 * d.warnings / d.value;
                 // if statement for when there are more warnings then lines
-                return (ratio > 100) ? color(100) : color(ratio);
+                return colorScale.getColor(ratio);
             });
 
         function toSourceCode(d) {
@@ -315,8 +317,7 @@ var treeMapBuilder = (function() {
         // Uses a range of 100 values between green and red
         // The closer the value is to 0, the more green it will use
         // The closer the value is to 100, the more red it will use
-        color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-
+        
         x = d3.scale.linear()
             .domain([0, width])
             .range([0, width]);
@@ -381,14 +382,7 @@ var treeMapBuilder = (function() {
             // After cresating the variables we can start initializing and displaying the tree.
             initializeTheTree(root);
             display(root);
-        },
-		changeColorScale: function(relative){
-			if ( relative ) {
-        		color = d3.scale.linear().domain([0, 20]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-			}else{
-        		color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-			}
-		}
+        }
 
     };
 

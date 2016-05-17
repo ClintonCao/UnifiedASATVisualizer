@@ -33,10 +33,14 @@ function handleClickTreeMapTypeSat(value) {
  */
 function handleClickColorScale(radioButton) {
 	console.log(radioButton.value)
-	if ( radioButton.value == "absolute"  ){
-		treeMapBuilder.changeColorScale(false)
+	if ( radioButton.value == "absolute" ){
+		colorScale.colorsAbsolute()
 	}else{
-		treeMapBuilder.changeColorScale(true)
+		colorScale.colorsRelative()
+	}
+	if (document.getElementById('graphButton').checked) {
+		removeChart();
+		createGraph(graphTrace[graphTraceIndex]);
 	}
 }
 

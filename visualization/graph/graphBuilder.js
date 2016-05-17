@@ -42,13 +42,11 @@ function nodeRadius(d) {
  */
 function nodeColour(d) {
     if (packagesLevel) {
-        var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-        var ratio = 200 * (d.totalWarnings) / d.loc;
-        return (ratio > 100) ? color(100) : color(ratio);
+       var ratio = 200 * (d.totalWarnings) / d.loc;
+        return colorScale.getColor(ratio);
     } else {
-        var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
         var ratio = 200 * (d.warnings) / d.loc;
-        return (ratio > 100) ? color(100) : color(ratio);
+        return colorScale.getColor(ratio);
     }
 }
 /*
