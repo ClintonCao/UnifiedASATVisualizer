@@ -381,7 +381,14 @@ var treeMapBuilder = (function() {
             // After cresating the variables we can start initializing and displaying the tree.
             initializeTheTree(root);
             display(root);
-        }
+        },
+		changeColorScale: function(relative){
+			if ( relative ) {
+        		color = d3.scale.linear().domain([0, 20]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
+			}else{
+        		color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
+			}
+		}
 
     };
 

@@ -27,6 +27,19 @@ function handleClickTreeMapTypeSat(value) {
         }
     }
 }
+
+/*
+ * Handles click on checkboxes for showing results of different tools
+ */
+function handleClickColorScale(radioButton) {
+	console.log(radioButton.value)
+	if ( radioButton.value == "absolute"  ){
+		treeMapBuilder.changeColorScale(false)
+	}else{
+		treeMapBuilder.changeColorScale(true)
+	}
+}
+
 // Delete the entire chart from the page.
 function removeChart() {
     var chartNode = document.getElementById("chart");
