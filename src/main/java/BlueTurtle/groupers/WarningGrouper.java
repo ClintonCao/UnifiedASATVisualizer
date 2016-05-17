@@ -1,6 +1,7 @@
 package BlueTurtle.groupers;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -12,7 +13,6 @@ import BlueTurtle.summarizers.ComponentSummarizer;
 import BlueTurtle.summarizers.PackageSummarizer;
 import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,12 +23,43 @@ import lombok.Setter;
  * @author BlueTurtle.
  *
  */
-@AllArgsConstructor
 public class WarningGrouper implements Grouper {
 
-	@Getter @Setter private HashMap<String, String> componentsInfo;
-	@Getter @Setter private Set<String> packagesNames;
+	/**
+	 * The types of criteria for grouping warnings.
+	 * 
+	 * @author BlueTurtle.
+	 *
+	 */
+	public enum Criteria {
+		COMPONENTS, PACKAGES
+	}
+
+	@Getter@Setter private HashMap<String, String> componentsInfo;
+	@Getter@Setter private Set<String> packagesNames;
+	@Getter @Setter private EnumMap<Criteria, List<Summarizer>> summarizedWarnings;
 	@Getter @Setter private List<Warning> warningList;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param componentsInfo
+	 *            the information of the components.
+	 * @param packagesNames
+	 *            the names of all packages.
+	 * @param warningList
+	 *            the list of warnings.
+	 */
+	public WarningGrouper(HashMap<String, String> componentsInfo, Set<String> packagesNames, List<Warning> warningList) {
+		setComponentsInfo(componentsInfo);
+		setPackagesNames(packagesNames);
+		setWarningList(warningList);
+		setSummarizedWarnings(new EnumMap<Criteria, List<Summarizer>>(Criteria.class));
+		List<Summarizer> csList = groupByComponent();
+		List<Summarizer> psList = groupByPackage();
+		summarizedWarnings.put(Criteria.COMPONENTS, csList);
+		summarizedWarnings.put(Criteria.PACKAGES, psList);
+	}
 
 	/**
 	 * Group things together, based on the criteria.
@@ -37,15 +68,8 @@ public class WarningGrouper implements Grouper {
 	 *            the criteria for grouping things together.
 	 */
 	@Override
-	public List<Summarizer> groupBy(String criteria) {
-		switch (criteria) {
-		case "components":
-			return groupByComponent();
-		case "packages":
-			return groupByPackage();
-		default:
-			return null;
-		}
+	public List<Summarizer> groupBy(Enum<Criteria> criteria) {
+		return summarizedWarnings.get(criteria);
 	}
 
 	/**
@@ -84,7 +108,7 @@ public class WarningGrouper implements Grouper {
 
 		return result;
 	}
-	
+
 	/**
 	 * Check whether two Warning grouper are equal.
 	 * 

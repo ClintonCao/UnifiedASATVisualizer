@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import BlueTurtle.groupers.WarningGrouper;
+import BlueTurtle.groupers.WarningGrouper.Criteria;
 import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.CheckStyleWarning;
 import BlueTurtle.warnings.Warning;
@@ -46,7 +47,7 @@ public class JSWriterTest {
 		list.add(
 				new CheckStyleWarning("./src/test/resources/ExampleClass.txt", "ExampleClass.java", 5, "test", "test", "Class"));
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, list);
-		summarizedWarnings = wg.groupBy("packages");
+		summarizedWarnings = wg.groupBy(Criteria.PACKAGES);
 		jsWriter.setSummarizedWarnings(summarizedWarnings);
 
 		// make sure that the file does not already exist by coincidence.

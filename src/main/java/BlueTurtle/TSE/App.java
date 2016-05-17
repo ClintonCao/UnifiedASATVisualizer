@@ -9,6 +9,7 @@ import java.util.Set;
 
 import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.groupers.WarningGrouper;
+import BlueTurtle.groupers.WarningGrouper.Criteria;
 import BlueTurtle.parsers.CheckStyleXMLParser;
 import BlueTurtle.parsers.FindBugsXMLParser;
 import BlueTurtle.parsers.GDCParser;
@@ -119,7 +120,7 @@ public class App {
 		}
 
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, checkStyleWarnings);
-		List<Summarizer> list = wg.groupBy("packages");
+		List<Summarizer> list = wg.groupBy(Criteria.PACKAGES);
 
 		JSWriter jsWriter = JSWriter.getInstance();
 		jsWriter.setSummarizedWarnings(list);
