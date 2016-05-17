@@ -20,9 +20,9 @@
         <div id="optionsMenu">
         	<h3>SATs</h3>
             <form name="button-options" action="">
-                <label><input type="checkbox" class="updateContent" id="checkstyleButton" onclick="handleClickTypeSat(this);" name="sat" value="CheckStyle"> CheckStyle</label><br>
-                <label><input type="checkbox" class="updateContent" id="pmdButton" onclick="handleClickTypeSat(this);" name="sat" value="PMD"> PMD</label><br>
-                <label><input type="checkbox" class="updateContent" id="findBugsButton" onclick="handleClickTypeSat(this);" name="sat" value="FindBugs"> FindBugs</label><br>
+                <div id="checkStyleDiv"><label id="checkStyleLabel"><input type="checkbox" class="updateContent" id="checkstyleButton" onclick="handleClickTypeSat(this);" name="sat" value="CheckStyle"> CheckStyle</label><br></div>
+                <div id="PMDDiv"><label id="PMDLabel"><input type="checkbox" class="updateContent" id="pmdButton" onclick="handleClickTypeSat(this);" name="sat" value="PMD"> PMD</label><br></div>
+                <div id="FindBugsDiv"><label id="FindBugsLabel"><input type="checkbox" class="updateContent" id="findBugsButton" onclick="handleClickTypeSat(this);" name="sat" value="FindBugs"> FindBugs</label><br></div>
             <h3>Visualizers </h3>
                 <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap" checked> Treemap<br>
                 <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>

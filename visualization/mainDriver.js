@@ -32,7 +32,7 @@ function handleClickTreeMapTypeSat(value) {
  * Handles click on checkboxes for showing results of different tools
  */
 function handleClickColorScale(radioButton) {
-	console.log(radioButton.value)
+	//console.log(radioButton.value)
 	if ( radioButton.value == "absolute"  ){
 		treeMapBuilder.changeColorScale(false)
 	}else{
@@ -96,6 +96,7 @@ function handleClickVisualiser(radioButton) {
 
 function getFilteredJSON() {
     var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    console.log(packages);
     return createJsonTreeMap(packages);
 }
 

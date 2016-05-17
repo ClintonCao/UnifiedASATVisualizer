@@ -25,6 +25,9 @@ function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
 		for (i = 0; i < classesArray.length; i++) {
 	  		var classObject = new Object();
 	  		classObjectJson = classesArray[i];
+	  		classObject.amountOfCheckStyleWarnings = 0;
+	  		classObject.amountOfPMDWarnings = 0;
+	  		classObject.amountOfFindBugsWarnings = 0;
 	  		classObject.amountOfWarnings = 0;
 	  		classObject.loc = classObjectJson.loc;
 	  		classObject.fileName = classObjectJson.fileName;
@@ -32,6 +35,15 @@ function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
 				var warningJson = classObjectJson.warningList[j]
 				//tmp disabled the acceptedrule filter
 				if($.inArray(warningJson.type, acceptedTypes) > -1 && ($.inArray(warningJson.ruleName, acceptedRuleNames) > -1 || true)) {
+					if(warningJson.type == "CheckStyle") {
+						classObject.amountOfCheckStyleWarnings++;
+					}
+					if(warningJson.type == "PMD") {
+						classObject.amountOfPMDWarnings++;
+					}
+					if(warningJson.type == "FindBugs") {
+						classObject.amountOfFindBugsWarnings++;
+					}
 		  			classObject.amountOfWarnings++;
 				}
 	  		}
@@ -56,10 +68,16 @@ function createJsonTreeMap(packages){
 			for (var i = 0; i < classes.length; i++) {
 				var fileName = classes[i].fileName;
 				var linesOfCode = classes[i].loc;
-				var amountOfWarnings = classes[i].amountOfWarnings;
+				console.log(classes[i].amountOfWarnings);
+				console.log(classes[i].amountOfCheckStyleWarnings);
+				console.log(classes[i].amountOfPMDWarnings);
+				console.log(classes[i].amountOfFindBugsWarnings);
 				jsonArrClass.push({
 					fileName: fileName,
-					warnings: amountOfWarnings,
+					warnings: classes[i].amountOfWarnings,
+					warningsCheckStyle: classes[i].amountOfCheckStyleWarnings,
+					warningsPMD: classes[i].amountOfPMDWarnings,
+					warningsFindBugs: classes[i].amountOfFindBugsWarnings,
 					value: linesOfCode
 				});
 			}

@@ -277,6 +277,13 @@ var treeMapBuilder = (function() {
     }
     //title above the chart
     function name(d) {
+        var checkStyleElement = document.getElementById("checkStyleLabel");
+        var PMDElement = document.getElementById("PMDLabel");
+        var findBugsElement = document.getElementById("FindBugsLabel");
+        checkStyleElement.innerHTML = '<input type="checkbox" class="updateContent" id="checkstyleButton" onclick="handleClickTypeSat(this);" name="sat" value="CheckStyle"> CheckStyle (' + d.warningsCheckStyle + ")";
+        PMDElement.innerHTML = "PMD (" + d.warningsPMD + ")";
+        findBugsElement.innerHTML = "FindBugs (" + d.warningsFindBugs + ")";
+
         return d.parent ?
             name(d.parent) + " / " + d.fileName + " (" + formatNumber(d.warnings) + ")" :
             d.fileName + " (" + formatNumber(d.warnings) + ")";
