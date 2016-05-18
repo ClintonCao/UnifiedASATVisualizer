@@ -189,6 +189,7 @@ var treeMapBuilder = (function() {
             });
         t.call(text);
 
+		// future method for more advance warning count
 		function getSatWarningsPrint(d){
 			output = ""
 			for (var i = 0; i < acceptedTypes.length; i++){
