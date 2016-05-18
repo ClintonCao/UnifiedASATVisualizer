@@ -1,5 +1,7 @@
 package BlueTurtle.commandbuilders;
 
+import java.util.ArrayList;
+
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.settings.CheckStyleSettings;
 
@@ -29,6 +31,7 @@ public class CheckStyleCommandBuilder extends CommandBuilder {
 	 */
 	@Override
 	public String[] buildCommand() {
+		ArrayList<String> commands  = new ArrayList<String>();
 		commands.add("java");
 		commands.add("-jar");
 		commands.add(JavaController.getUserDir() + "/Runnables/checkstyle-6.18-all.jar");

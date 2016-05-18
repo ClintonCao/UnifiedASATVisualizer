@@ -106,7 +106,7 @@ public class PMDXMLParserTest {
 	public void testXMLParserClassify() {				
 		String classification = XMLParser.classify("AbstractClassName", categoryInfo);
 		
-		assertEquals("Naming Conventions",classification);
+		assertEquals("Naming Conventions", classification);
 	}	
 
 }

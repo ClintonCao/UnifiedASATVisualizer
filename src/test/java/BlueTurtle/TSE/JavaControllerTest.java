@@ -18,7 +18,6 @@ public class JavaControllerTest {
 	 */
 	@Test
 	public void testUserDir() {
-		JavaController jc = new JavaController();
 		String expected = System.getProperty("user.dir");
 		String actual = JavaController.getUserDir();
 		assertEquals(expected, actual);
