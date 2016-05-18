@@ -96,7 +96,7 @@ var treeMapBuilder = (function() {
         $(".updateContent").on('click', function(view) {
             if (document.getElementById('treemapButton').checked && !refreshing) {
 				refreshing = true;
-                handleClickTreeMapTypeSat(view.target.value)
+                handleClickTreeMapTypeSat(view.target.value, view.target.checked)
                 reloadContent();
                 var newNode = findNode(d, root);
                 g.filter(function(newNode) {
@@ -166,7 +166,7 @@ var treeMapBuilder = (function() {
             .text(function(d) {
                 return d.fileName;
             })
-            .call(text2);
+            .call(textBottomRight);
 
         g.append("rect")
             .attr("class", "parent")
@@ -180,14 +180,22 @@ var treeMapBuilder = (function() {
             .text(function(d) {
                 return d.fileName;
             });
+			
         //title of the squares
         t.append("tspan")
             .attr("dy", "1.0em")
             .text(function(d) {
-                return formatNumber(d.warnings);
+                return getSatWarningsPrint(d);
             });
         t.call(text);
 
+		function getSatWarningsPrint(d){
+			output = ""
+			for (var i = 0; i < acceptedTypes.length; i++){
+				output += formatNumber(d.warnings) + acceptedTypes[i].substring(0,1) + " ";
+			}
+			return formatNumber(d.warnings);	
+		}
         // set the color of the squares based on warnings / line
         g.selectAll("rect")
             .style("fill", function(d) {
@@ -225,9 +233,9 @@ var treeMapBuilder = (function() {
 
             // Transition to the new view.
             t1.selectAll(".ptext").call(text).style("fill-opacity", 0);
-            t1.selectAll(".ctext").call(text2).style("fill-opacity", 0);
+            t1.selectAll(".ctext").call(textBottomRight).style("fill-opacity", 0);
             t2.selectAll(".ptext").call(text).style("fill-opacity", 1);
-            t2.selectAll(".ctext").call(text2).style("fill-opacity", 1);
+            t2.selectAll(".ctext").call(textBottomRight).style("fill-opacity", 1);
             t1.selectAll("rect").call(rect);
             t2.selectAll("rect").call(rect);
 
@@ -256,8 +264,7 @@ var treeMapBuilder = (function() {
                 return this.getComputedTextLength() < x(d.x + d.dx) - x(d.x) ? 1 : 0;
             });
     }
-
-    function text2(text) {
+    function textBottomRight(text) {
         text.attr("x", function(d) {
                 return x(d.x + d.dx) - this.getComputedTextLength() - 6;
             })
@@ -303,7 +310,7 @@ var treeMapBuilder = (function() {
             rootname: "TOP",
             format: ",d",
             title: "",
-            width: window.innerWidth - 225,
+            width: window.innerWidth - 350,
             height: window.innerHeight - 175
         };
         // Remove the chart if there is already one.

@@ -4,7 +4,6 @@
 var graphTrace = [];
 var graphTraceIndex = 0;
 var acceptedTypes = [];
-var acceptedCategories = ["PackageName", "JavadocMethod"];
 var acceptedCategories = [];
 
 // Run first time
@@ -18,9 +17,10 @@ $(".updateContent").prop('checked', false);
 /*
  * Handles click on checkboxes for showing results of different tools
  */
-function handleClickTreeMapTypeSat(value) {
-    if (acceptedTypes.indexOf(value) < 0) {
-        acceptedTypes.push(value);
+function handleClickTreeMapTypeSat(value, checked) {
+ 
+	if (checked) {
+		acceptedTypes.push(value)
     } else {
         var index = acceptedTypes.indexOf(value);
         if (index > -1) {
@@ -33,7 +33,6 @@ function handleClickTreeMapTypeSat(value) {
  * Handles click on checkboxes for using different colorscales
  */
 function handleClickColorScale(radioButton) {
-	console.log(radioButton.value)
 	if ( radioButton.value == "absolute" ){
 		colorScale.colorsAbsolute()
 	}else{
@@ -46,23 +45,23 @@ function handleClickColorScale(radioButton) {
 }
 
 /*
- * toggle all category checkboxes
+ * toggle all category checkboxes of a group
  */
 function handleClickCategory(category) {
 	if( category == "FunctionDefects" ){
-		$('.functionalDefects').click()
+		$('.FunctionalDefects').click()
 		
 		
+	}else if( category == "MaintainabilityDefects" ){
+		$('.MaintainabilityDefects').click()
+		
+		
+	}else if( category == "StyleConventions" ){
+		$('.StyleConventions').click()
 	}
 }
 
-/*
- * toggle all sat type checkboxes
- */
-function handleClickSatType() {
-		$('.satType').click()
-}
-
+// individual clicks
 function handleClickCategorySat(checkbox) {	
  	if (checkbox.checked) {
 		acceptedCategories.push(checkbox.value)
@@ -72,7 +71,6 @@ function handleClickCategorySat(checkbox) {
             acceptedCategories.splice(index, 1);
         }
     }
-	console.log(acceptedCategories);
 }
 
 

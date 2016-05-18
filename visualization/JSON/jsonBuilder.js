@@ -31,7 +31,7 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j]
 				//tmp disabled the acceptedrule filter
-				if($.inArray(warningJson.type, acceptedTypes) > -1 && false || ($.inArray(warningJson.ruleName, acceptedCategories) > -1)) {
+				if($.inArray(warningJson.type, acceptedTypes) > -1 &&  ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
 		  			classObject.amountOfWarnings++;
 				}
 	  		}
@@ -95,7 +95,6 @@ function createJsonGraphPackages(packages){
         	});
       	}
       	jsonArrPackage.push({fileName: classes.packageName, numberOfClasses: numberOfClasses, totalWarnings:totalWarningsPackage, loc:totalLines, classes: jsonArrClass});
-  		console.log(jsonArrPackage);
 	}
 	return {nodes: jsonArrPackage, links: [{"source":0, "target":1, "value":11}] }
 }
@@ -114,7 +113,6 @@ function createJsonGraphClasses(packages, packageName){
 	        	var fileName = classes[i].fileName;
 	        	var linesOfCode = classes[i].loc;
 	        	var amountOfWarnings = classes[i].amountOfWarnings;
-	        	console.log(classes[i].loc);
 	        	jsonArrClass.push({
 	          	fileName: fileName,
 	          	loc: linesOfCode,
