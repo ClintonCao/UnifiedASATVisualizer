@@ -55,6 +55,7 @@ public class FindBugsXMLParser extends XMLParser {
 			NodeList srcList = doc.getElementsByTagName("SrcDir");
 
 			String pathFront = "";
+			
 			if (pathsList != null && pathsList.getLength() > 0) {
 				Element pathElement = (Element) pathsList.item(0);
 				srcList = pathElement.getElementsByTagName("SrcDir");
@@ -87,7 +88,27 @@ public class FindBugsXMLParser extends XMLParser {
 
 					// get the file path from the file name.
 					String filePath = new File(fileN).getCanonicalPath();
-
+					
+					
+					/**************************************************/
+					/*********This part if for get absolute file path**/
+					// Get the class name where the warning is from.
+					String classN = fileElement.getAttribute("classname");
+					
+					// replace the . with \\ in the file name.
+					String cN = classN.replaceAll("\\.", "\\\\");
+					
+					pathFront = srcList.item(0).getTextContent();
+		
+					// concatenate the source path with the class name.
+					String fileConcate = pathFront + "\\" + cN + ".java";
+	
+					// get the absoluteFilePath.
+					String absoluteFilePath = new File(fileConcate).getAbsolutePath();
+					
+					/**************************************************/
+					/*********This part if for get absolute file path**/
+					
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf(File.separatorChar) + 1, filePath.length());
 					
@@ -119,8 +140,11 @@ public class FindBugsXMLParser extends XMLParser {
 							
 							String classification = categoryInfo.get(ruleName);
 
+							FindBugsWarning fbw = new FindBugsWarning(filePath, fileName, line, message, category, priority, ruleName, classification);
+							
+							fbw.setAbsoluteFilePath(absoluteFilePath);
 							// Add warning to the list of warnings.
-							findBugsWarnings.add(new FindBugsWarning(filePath, fileName, line, message, category, priority, ruleName, classification));
+							findBugsWarnings.add(fbw);
 						}
 					}
 				}

@@ -26,7 +26,7 @@ public class FindBugsXMLParserTest {
 	private static String testSet2 = "./src/test/resources/exampleFindbugs1.xml";
 	private static String testSet3 = "./src/test/resources/asat-gdc-mapping.html";
 
-//	private static String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java";
+	private static String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java";
 	private static String testSet2FileName = "FindBugsWarning.java";
 	private static String testSet2RuleName = "HE_EQUALS_USE_HASHCODE";
 	private static String testSet2Message = "BlueTurtle.warnings.FindBugsWarning defines equals and uses Object.hashCode()";
@@ -65,12 +65,12 @@ public class FindBugsXMLParserTest {
 	public void testParsingOneWarning() {
 		FindBugsXMLParser parser = new FindBugsXMLParser();
 
-		FindBugsWarning expected = new FindBugsWarning(testSet3FilePath, testSet2FileName, 47,
+		FindBugsWarning expected = new FindBugsWarning(testSet2FilePath, testSet2FileName, 47,
 				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName, testSet2Classification);
 
 		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2, categoryInfo).get(0);
 
-		assertEquals(expected, actual);
+		assertEquals(expected.getFilePath(), actual.getAbsoluteFilePath());
 	}
 
 	/**
