@@ -90,8 +90,9 @@ public class FindBugsXMLParser extends XMLParser {
 					String filePath = new File(fileN).getCanonicalPath();
 					
 					
-					/**************************************************/
-					/*********This part if for get absolute file path**/
+					/***********************************************************/
+					/*********This part is for get absolute file path***********/
+					
 					// Get the class name where the warning is from.
 					String classN = fileElement.getAttribute("classname");
 					
@@ -106,8 +107,8 @@ public class FindBugsXMLParser extends XMLParser {
 					// get the absoluteFilePath.
 					String absoluteFilePath = new File(fileConcate).getAbsolutePath();
 					
-					/**************************************************/
-					/*********This part if for get absolute file path**/
+					/***********************************************************/
+					/*********This part is for get absolute file path***********/
 					
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf(File.separatorChar) + 1, filePath.length());
