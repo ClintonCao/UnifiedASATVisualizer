@@ -103,14 +103,27 @@ public class FindBugsXMLParser extends XMLParser {
 					// replace the . with \\ in the file name.
 					String cN = classN.replaceAll("\\.", "\\\\");
 					
-					pathFront = srcList.item(0).getTextContent();
-		
-					// concatenate the source path with the class name.
-					String fileConcate = pathFront + "\\" + cN + ".java";
-	
-					// get the absoluteFilePath.
-					String absoluteFilePath = new File(fileConcate).getAbsolutePath();
 					
+					// initially start with 0
+					int k = 0;
+					
+					// With an empty file path
+					String absoluteFilePath = "";
+					// continue go down the list of source path if the file does not exist.
+					do {
+					
+						pathFront = srcList.item(k).getTextContent();
+		
+						// concatenate the source path with the class name.
+						String fileConcate = pathFront + "\\" + cN + ".java";
+	
+						// get the absoluteFilePath.
+						absoluteFilePath = new File(fileConcate).getAbsolutePath();
+					
+						// increment the counter
+						k++;
+						// check if the file exits or not.
+					} while(!new File(absoluteFilePath).exists());
 					/***********************************************************/
 					/*********This part is for get absolute file path***********/
 					
