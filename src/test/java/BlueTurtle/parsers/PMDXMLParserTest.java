@@ -98,5 +98,15 @@ public class PMDXMLParserTest {
 		
 		assertSame(0, warnings.size());
 	}
+	
+	/**
+	 * Test that the XML parser classify method.
+	 */
+	@Test
+	public void testXMLParserClassify() {				
+		String classification = XMLParser.classify("AbstractClassName", categoryInfo);
+		
+		assertEquals("Naming Conventions",classification);
+	}	
 
 }
