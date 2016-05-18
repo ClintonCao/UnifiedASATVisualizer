@@ -112,7 +112,7 @@ public class FindBugsXMLParser extends XMLParser {
 					
 					String path = "";
 					// continue go down the list of source path if the file does not exist.
-					do {
+//					do {
 					
 						pathFront = srcList.item(k).getTextContent();
 		
@@ -122,13 +122,13 @@ public class FindBugsXMLParser extends XMLParser {
 						// get the absoluteFilePath.
 						absoluteFilePath = new File(fileConcate).getAbsolutePath();
 					
-						// increment the counter
-						k++;
-						
-						File f = new File(absoluteFilePath);
-						path = f.toURI().toURL().getPath();
-						// check if the file exits or not.
-					} while(!new File(path).exists());
+//						// increment the counter
+//						k++;
+//						
+//						File f = new File(absoluteFilePath);
+//						path = f.toURI().toURL().getPath();
+//						// check if the file exits or not.
+//					} while(!new File(path).exists());
 					/***********************************************************/
 					/*********This part is for get absolute file path***********/
 					
