@@ -65,12 +65,12 @@ public class FindBugsXMLParserTest {
 	public void testParsingOneWarning() {
 		FindBugsXMLParser parser = new FindBugsXMLParser();
 
-		FindBugsWarning expected = new FindBugsWarning(testSet2FilePath, testSet2FileName, 47,
+		FindBugsWarning expected = new FindBugsWarning(testSet3FilePath, testSet2FileName, 47,
 				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName, testSet2Classification);
 
 		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2, categoryInfo).get(0);
 
-		assertEquals(expected.getFilePath(), actual.getAbsoluteFilePath());
+		assertEquals(expected.getFilePath(), actual.getFilePath());
 	}
 
 	/**
