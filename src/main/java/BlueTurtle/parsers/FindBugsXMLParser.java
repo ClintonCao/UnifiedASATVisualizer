@@ -109,6 +109,8 @@ public class FindBugsXMLParser extends XMLParser {
 					
 					// With an empty file path
 					String absoluteFilePath = "";
+					
+					String path = "";
 					// continue go down the list of source path if the file does not exist.
 					do {
 					
@@ -122,8 +124,11 @@ public class FindBugsXMLParser extends XMLParser {
 					
 						// increment the counter
 						k++;
+						
+						File f = new File(absoluteFilePath);
+						path = f.toURI().toURL().getPath();
 						// check if the file exits or not.
-					} while(!new File(absoluteFilePath).exists());
+					} while(!new File(path).exists());
 					/***********************************************************/
 					/*********This part is for get absolute file path***********/
 					
