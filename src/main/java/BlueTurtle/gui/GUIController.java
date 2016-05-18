@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -34,6 +35,57 @@ public class GUIController {
 
 	@FXML // fx:id="visualizeButton"
 	private Button visualizeButton; // Value injected by FXMLLoader
+
+	@FXML // fx:id="pmdButton"
+	private Button pmdButton; // Value injected by FXMLLoader
+
+	@FXML // fx:id="checkStyleButton"
+	private Button checkStyleButton; // Value injected by FXMLLoader
+
+	@FXML // fx:id="findbugsButton"
+	private Button findbugsButton; // Value injected by FXMLLoader
+
+	@FXML // fx:id="findbugsConfigText"
+	private Text findbugsConfigText; // Value injected by FXMLLoader
+
+	@FXML // fx:id="checkStyleConfigText"
+	private Text checkStyleConfigText; // Value injected by FXMLLoader
+
+	@FXML // fx:id="pmdConfigText"
+	private Text pmdConfigText; // Value injected by FXMLLoader
+
+	/**
+	 * Event for CheckStyle button.
+	 * 
+	 * @param event
+	 *            the event.
+	 */
+	@FXML
+	void selectCheckStyleConfigEvent(MouseEvent event) {
+
+	}
+
+	/**
+	 * Event for PMD button.
+	 * 
+	 * @param event
+	 *            the event.
+	 */
+	@FXML
+	void selectPMDConfigEvent(MouseEvent event) {
+
+	}
+
+	/**
+	 * Event for FindBugs button.
+	 * 
+	 * @param event
+	 *            the event.
+	 */
+	@FXML
+	void selectFindBugsConfigEvent(MouseEvent event) {
+
+	}
 
 	/**
 	 * Events for the LoadButton.
@@ -62,9 +114,15 @@ public class GUIController {
 	 */
 	@FXML
 	void initialize() {
-		assert selectButton != null : "fx:id=\"LoadButton\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert projectSourcePathText != null : "fx:id=\"projectPathText\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert visualizeButton != null : "fx:id=\"VisualizeButton\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert visualizeButton != null : "fx:id=\"visualizeButton\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert checkStyleButton != null : "fx:id=\"checkStyleButton\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert projectSourcePathText != null : "fx:id=\"projectSourcePathText\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert findbugsConfigText != null : "fx:id=\"findbugsConfigText\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert checkStyleConfigText != null : "fx:id=\"checkStyleConfigText\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert pmdConfigText != null : "fx:id=\"pmdConfigText\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert findbugsButton != null : "fx:id=\"findbugsButton\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert selectButton != null : "fx:id=\"selectButton\" was not injected: check your FXML file 'Menu.fxml'.";
+		assert pmdButton != null : "fx:id=\"pmdButton\" was not injected: check your FXML file 'Menu.fxml'.";
 
 		selectButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -84,6 +142,7 @@ public class GUIController {
 					projectSourcePathText.setText("No Directory selected");
 				} else {
 					projectSourcePathText.setText(selectedDirectory.getAbsolutePath());
+					enableAllOtherButtons();
 				}
 			}
 		});
@@ -102,5 +161,80 @@ public class GUIController {
 			}
 		});
 
+		checkStyleButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			/**
+			 * Event handler for the button.
+			 * 
+			 * @param event
+			 *            the event.
+			 */
+			@Override
+			public void handle(MouseEvent event) {
+				chooseFile(checkStyleConfigText);
+			}
+		});
+
+		pmdButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			/**
+			 * Event handler for the button.
+			 * 
+			 * @param event
+			 *            the event.
+			 */
+			@Override
+			public void handle(MouseEvent event) {
+				chooseFile(pmdConfigText);
+			}
+		});
+
+		findbugsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			/**
+			 * Event handler for the button.
+			 * 
+			 * @param event
+			 *            the event.
+			 */
+			@Override
+			public void handle(MouseEvent event) {
+				chooseFile(findbugsConfigText);
+			}
+		});
+
 	}
+
+	/**
+	 * Enable all other buttons in the GUI. This is used after a source folder
+	 * is selected.
+	 */
+	public void enableAllOtherButtons() {
+		checkStyleButton.setDisable(false);
+		pmdButton.setDisable(false);
+		findbugsButton.setDisable(false);
+		visualizeButton.setDisable(false);
+	}
+
+	/**
+	 * Choose configuration file for ASAT.
+	 * 
+	 * @param configText
+	 *            the text in the GUI for the config file.
+	 */
+	public void chooseFile(Text configText) {
+
+		FileChooser fileChooser = new FileChooser();
+
+		// Set extension filter
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
+		fileChooser.getExtensionFilters().add(extFilter);
+
+		File file = fileChooser.showOpenDialog(new Stage());
+
+		if (file != null) {
+			configText.setText(file.getAbsolutePath());
+		}
+	}
+
 }

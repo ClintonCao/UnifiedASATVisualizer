@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.media.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -7,45 +8,88 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.250501002004008" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlueTurtle.gui.GUIController">
+<SplitPane dividerPositions="0.2020033388981636" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlueTurtle.gui.GUIController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
          <children>
             <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="500.0" prefWidth="261.0">
                <children>
-                  <ImageView fitHeight="376.0" fitWidth="347.0" layoutX="-35.0" layoutY="62.0">
+                  <ImageView fitHeight="404.0" fitWidth="388.0" layoutX="-56.0" layoutY="82.0">
                      <image>
                         <Image url="@blueturtlelogo.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#2b24f2" layoutX="68.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BlueTurtle  ">
+                  <Text fill="#2b24f2" layoutX="51.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BlueTurtle  ">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="Gill Sans MT" size="36.0" />
                      </font>
                   </Text>
                </children>
             </Pane>
          </children>
       </AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="899.0" SplitPane.resizableWithParent="false">
          <children>
-            <Text layoutX="26.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to BlueTurtle's software tool for visualizing the result of ASATs (Automated Static Analysis Tools). Select your project and click on &quot;Visualize&quot; to get the visualization. " wrappingWidth="692.01220703125">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9e5ff" height="44.0" layoutX="190.0" layoutY="199.0" stroke="BLACK" strokeType="INSIDE" width="696.0" />
+            <Button fx:id="selectButton" layoutX="14.0" layoutY="202.0" mnemonicParsing="false" onMouseClicked="#selectButtonEvent" prefHeight="38.0" prefWidth="164.0" text="Select ">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Gill Sans MT" size="20.0" />
+               </font>
+            </Button>
+            <Text fx:id="projectSourcePathText" layoutX="190.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select your project source folder (src)" textAlignment="CENTER" wrappingWidth="696.0">
+               <font>
+                  <Font name="Gill Sans MT" size="17.0" />
+               </font></Text>
+            <Button fx:id="visualizeButton" disable="true" layoutX="323.0" layoutY="509.0" mnemonicParsing="false" onMouseClicked="#visualizeButtonEvent" prefHeight="38.0" prefWidth="267.0" text="Visualize">
+               <font>
+                  <Font name="Gill Sans MT" size="20.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9e5ff" height="71.0" layoutX="115.0" layoutY="28.0" stroke="BLACK" strokeType="INSIDE" width="722.0" />
+            <Text layoutX="137.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to BlueTurtle's software tool for visualizing the result of ASATs (Automated Static Analysis Tools)." wrappingWidth="667.01220703125">
+               <font>
+                  <Font name="Gill Sans MT" size="22.0" />
                </font>
             </Text>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ecf1f5" height="44.0" layoutX="11.0" layoutY="258.0" stroke="BLACK" strokeType="INSIDE" width="715.0" />
-            <Button fx:id="selectButton" layoutX="228.0" layoutY="202.0" mnemonicParsing="false" onMouseClicked="#selectButtonEvent" prefHeight="38.0" prefWidth="261.0" text="Select ">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9e5ff" height="167.0" layoutX="20.0" layoutY="314.0" stroke="BLACK" strokeType="INSIDE" width="901.0" />
+            <Text layoutX="20.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select configuration files for the ASATs (default file will be used if no file is selected for an ASAT)" wrappingWidth="840.6708984375">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Gill Sans MT" size="21.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9e5ff" height="44.0" layoutX="190.0" layoutY="324.0" stroke="BLACK" strokeType="INSIDE" width="696.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9e5ff" height="44.0" layoutX="190.0" layoutY="376.0" stroke="BLACK" strokeType="INSIDE" width="696.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9e5ff" height="44.0" layoutX="190.0" layoutY="429.0" stroke="BLACK" strokeType="INSIDE" width="696.0" />
+            <Button fx:id="checkStyleButton" disable="true" layoutX="36.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#selectCheckStyleConfigEvent" prefHeight="38.0" prefWidth="142.0" text="CheckStyle">
+               <font>
+                  <Font name="Gill Sans MT" size="20.0" />
                </font>
             </Button>
-            <Text fx:id="projectSourcePathText" layoutX="11.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select your project source folder (src)" textAlignment="CENTER" wrappingWidth="715.0" />
-            <Button fx:id="visualizeButton" layoutX="224.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#visualizeButtonEvent" prefHeight="38.0" prefWidth="261.0" text="Visualize">
+            <Button fx:id="pmdButton" disable="true" layoutX="36.0" layoutY="379.0" mnemonicParsing="false" onMouseClicked="#selectPMDConfigEvent" prefHeight="38.0" prefWidth="142.0" text="PMD">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Gill Sans MT" size="20.0" />
                </font>
             </Button>
+            <Button fx:id="findbugsButton" disable="true" layoutX="36.0" layoutY="432.0" mnemonicParsing="false" onMouseClicked="#selectFindBugsConfigEvent" prefHeight="38.0" prefWidth="142.0" text="FindBugs">
+               <font>
+                  <Font name="Gill Sans MT" size="20.0" />
+               </font>
+            </Button>
+            <Text fx:id="checkStyleConfigText" layoutX="190.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="default CheckStyle configuration file" textAlignment="CENTER" wrappingWidth="696.0">
+               <font>
+                  <Font name="Gill Sans MT" size="17.0" />
+               </font>
+            </Text>
+            <Text fx:id="pmdConfigText" layoutX="190.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="default PMD configuration file" textAlignment="CENTER" wrappingWidth="696.0">
+               <font>
+                  <Font name="Gill Sans MT" size="17.0" />
+               </font>
+            </Text>
+            <Text fx:id="findbugsConfigText" layoutX="190.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="default FindBugs configuration file" textAlignment="CENTER" wrappingWidth="696.0">
+               <font>
+                  <Font name="Gill Sans MT" size="17.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
   </items>
