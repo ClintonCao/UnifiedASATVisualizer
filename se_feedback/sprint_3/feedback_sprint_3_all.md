@@ -37,7 +37,7 @@ Total: ****
 
 |                     | Score |
 |---------------------|-------|
-| Code Change Quality |      |
+| Code Change Quality |       |
 
 | Code Readability | Score |
 |------------------|-------|
@@ -47,16 +47,18 @@ Total: ****
 
 | Continuous Integration | Score |
 |------------------------|-------|
-| Building               |      |
-| Testing                |      |
+| Building               | 10    |
+| Testing                | 7     |
 
 |         | Score |
 |---------|-------|
-| Tooling |      |
+| Tooling | 10    |
 
 | Pull-based Development | Score |
 |------------------------|-------|
-| Branching              |      |
-| Code Review            |      |
+| Branching              |  10   |
+| Code Review            |  10   |
 
 ##Notes
+* Good code reviews
+* Nice job with coveralls, now just boost the coverage score
