@@ -95,6 +95,7 @@ var treeMapBuilder = (function() {
         $(".updateContent").on('click', function(view) {
             if (document.getElementById('treemapButton').checked && !refreshing) {
 				refreshing = true;
+				
                 handleClickTreeMapTypeSat(view.target.value, view.target.checked)
                 reloadContent();
                 var newNode = findNode(d, root);
