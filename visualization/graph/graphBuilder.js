@@ -299,30 +299,25 @@ function createGraph(graph) {
 	
 	 function reloadContent(cb){
 		 if (cb.name == "sat") {
-            var value = cb.value;
-            handleClickTreeMapTypeSat(value, cb.checked);
+            handleClickTreeMapTypeSat(cb.value, cb.checked);
+		 }
             removeChart();
             if (packagesLevel) {
                 var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
                 var input = createJsonGraphPackages(packages);
 
-                if (typeof graphTrace[graphTraceIndex] === 'undefined') {
-                    graphTrace.push(input);
-                } else {
-                    graphTrace[graphTraceIndex] = input;
-                }
-                createGraph(graphTrace[graphTraceIndex]);
+               
             } else {
                 var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
                 var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
 
-                if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+            }
+			 if (typeof graphTrace[graphTraceIndex] === 'undefined') {
                     graphTrace.push(input);
                 } else {
                     graphTrace[graphTraceIndex] = input;
                 }
                 createGraph(graphTrace[graphTraceIndex]);
-            }
-        }
+        
 	 }
 };
