@@ -47,10 +47,10 @@ function nodeRadius(d) {
  */
 function nodeColour(d) {
     if (packagesLevel) {
-       var ratio = 200 * (d.totalWarnings) / d.loc;
+       var ratio = 100 * (d.totalWarnings) / d.loc;
         return colorScale.getColor(ratio);
     } else {
-        var ratio = 200 * (d.warnings) / d.loc;
+        var ratio = 100 * (d.warnings) / d.loc;
         return colorScale.getColor(ratio);
     }
 }
