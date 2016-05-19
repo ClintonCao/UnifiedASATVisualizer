@@ -31,18 +31,6 @@ function handleClickColorScale(radioButton) {
 
 
 /*
-* handles the clicks on Sat types
-*/
-function handleClickTypeSat(cb) {
-    if (document.getElementById('treemapButton').checked) {
-        // Is taken care off in the treemap self
-        // this way the treemap can refresh at current level.
-    } else if (document.getElementById('graphButton').checked) {
-       
-    }
-}
-
-/*
 * handles the clicks on Sat categories
 */
 function handleClickCategorySat(checkbox) {	

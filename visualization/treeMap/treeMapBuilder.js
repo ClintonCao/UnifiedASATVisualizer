@@ -96,6 +96,9 @@ var treeMapBuilder = (function() {
             if (document.getElementById('treemapButton').checked && !refreshing) {
 				refreshing = true;
 				
+				 if (view.target.name == "sat") {
+					handleClickTreeMapTypeSat(view.target.value, view.target.checked);
+				 }
                 handleClickTreeMapTypeSat(view.target.value, view.target.checked)
                 reloadContent();
                 var newNode = findNode(d, root);
