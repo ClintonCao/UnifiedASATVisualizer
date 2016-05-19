@@ -1,6 +1,7 @@
 package BlueTurtle.TSE;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -22,56 +23,41 @@ public class JSONFormatter {
 	HashMap<String, String> categoryInfo = gdcParser.parseFile("./src/main/resources/asat-gdc-mapping.html");
 	
 	public void format() throws IOException {
-		this.parseCheckStyleXML();
-		this.parsePMDXML();
+		List<Warning> checkStyleWarnings = parseCheckStyleXML();
+		List<Warning> pmdWarnings = parsePMDXML();
+		List<Warning> totalWarnings = new ArrayList<Warning>();
+		totalWarnings.addAll(checkStyleWarnings);
+		totalWarnings.addAll(pmdWarnings);
+		
+		writeJSON(totalWarnings);
 	}
 	
-	private void parseCheckStyleXML() throws IOException {
+	private List<Warning> parseCheckStyleXML() throws IOException {
 		xmlParser = new CheckStyleXMLParser();
 		
 		List<Warning> checkStyleWarnings = xmlParser.parseFile(JavaController.getUserDir() + "/Runnables/Testcode/checkstyle.xml", categoryInfo);
-
-		System.out.println("amount of CheckStyle Warnings:" + " " + checkStyleWarnings.size());
-
-		for (Warning w : checkStyleWarnings) {
-			System.out.println("Violated Rule Name: " + w.getRuleName());
-		}
-
-		HashMap<String, String> componentsInfo = new HashMap<String, String>();
-		Set<String> packagesNames = new HashSet<String>();
-
-		for (Warning w : checkStyleWarnings) {
-			componentsInfo.put(w.getFileName(), w.getFilePath());
-			packagesNames.add(PackageNameFinder.findPackageName(w.getFilePath()));
-		}
-
-		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, checkStyleWarnings);
-		List<Summarizer> list = wg.groupBy("packages");
-
-		JSWriter jwriter = new JSWriter(list);
-		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.js");	
+		
+		return checkStyleWarnings;
 	}
 	
-	private void parsePMDXML() throws IOException {
+	private List<Warning> parsePMDXML() throws IOException {
 		xmlParser = new PMDXMLParser();
 		
 		List<Warning> PMDWarnings = xmlParser.parseFile(JavaController.getUserDir() + "/Runnables/Testcode/pmd.xml", categoryInfo);
-
-		System.out.println("amount of PMD Warnings:" + " " + PMDWarnings.size());
-
-		for (Warning w : PMDWarnings) {
-			System.out.println("Violated Rule Name: " + w.getRuleName());
-		}
-
+		
+		return PMDWarnings;
+	}
+	
+	private void writeJSON(List<Warning> warnings) throws IOException {
 		HashMap<String, String> componentsInfo = new HashMap<String, String>();
 		Set<String> packagesNames = new HashSet<String>();
 
-		for (Warning w : PMDWarnings) {
+		for (Warning w : warnings) {
 			componentsInfo.put(w.getFileName(), w.getFilePath());
 			packagesNames.add(PackageNameFinder.findPackageName(w.getFilePath()));
 		}
 
-		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, PMDWarnings);
+		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
 		List<Summarizer> list = wg.groupBy("packages");
 
 		JSWriter jwriter = new JSWriter(list);
