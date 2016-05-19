@@ -36,12 +36,12 @@ public class AnalyserTest {
 
 		commandBuilder = new PMDCommandBuilder(pmdSettings);
 		String[] pmdCommands = commandBuilder.buildCommand();
-		AnalyserCommand c1 = new AnalyserCommand(pmdSettings.getDefaultOutputFilePath(), pmdCommands);
+		AnalyserCommand c1 = new AnalyserCommand(pmdSettings.getDefaultOutputFilePath(), pmdCommands, true);
 		commands.add(c1);
 
 		commandBuilder = new CheckStyleCommandBuilder(checkStyleSettings);
 		String[] checkStyleCommands = commandBuilder.buildCommand();
-		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings.getDefaultOutputFilePath(), checkStyleCommands);
+		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings.getDefaultOutputFilePath(), checkStyleCommands, false);
 		commands.add(c2);
 
 		Analyser analyser = new Analyser(commands);

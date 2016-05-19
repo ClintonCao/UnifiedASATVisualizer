@@ -14,4 +14,5 @@ import lombok.Setter;
 public class AnalyserCommand {
 	@Getter @Setter private String defaultOutputFilePath;
 	@Getter @Setter private String[] args;
+	@Getter @Setter private boolean redirectOutput;
 }

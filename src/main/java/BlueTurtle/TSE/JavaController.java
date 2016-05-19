@@ -45,22 +45,22 @@ public class JavaController implements Controller {
 
 		commandBuilder = new PMDCommandBuilder(pmdSettings);
 		String[] pmdCommands = commandBuilder.buildCommand();
-		AnalyserCommand c1 = new AnalyserCommand(pmdSettings.getDefaultOutputFilePath(), pmdCommands);
+		AnalyserCommand c1 = new AnalyserCommand(pmdSettings.getDefaultOutputFilePath(), pmdCommands, true);
 		commands.add(c1);
 
 		commandBuilder = new CheckStyleCommandBuilder(checkStyleSettings);
 		String[] checkStyleCommands = commandBuilder.buildCommand();
-		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings.getDefaultOutputFilePath(), checkStyleCommands);
+		AnalyserCommand c2 = new AnalyserCommand(checkStyleSettings.getDefaultOutputFilePath(), checkStyleCommands, false);
 		commands.add(c2);
 
 		commandBuilder = new CoberturaCommandBuilder(coberturaSettings);
 		String[] coberturaCommands = commandBuilder.buildCommand();
-		AnalyserCommand c3 = new AnalyserCommand(coberturaSettings.getDefaultOutputFilePath(), coberturaCommands);
+		AnalyserCommand c3 = new AnalyserCommand(coberturaSettings.getDefaultOutputFilePath(), coberturaCommands, false);
 		commands.add(c3);
 		
 		commandBuilder = new FindBugsCommandBuilder(findBugsSettings);
 		String[] findBugsCommands = commandBuilder.buildCommand();
-		AnalyserCommand c4 = new AnalyserCommand(findBugsSettings.getDefaultOutputFilePath(), findBugsCommands);
+		AnalyserCommand c4 = new AnalyserCommand(findBugsSettings.getDefaultOutputFilePath(), findBugsCommands, false);
 		commands.add(c4);
 
 		setAnalyser(new Analyser(commands));

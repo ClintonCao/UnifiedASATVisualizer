@@ -35,6 +35,8 @@ public class PMDCommandBuilder extends CommandBuilder {
 		commands.add(JavaController.getUserDir() + "/Runnables/Testcode/");
 		commands.add("xml");
 		commands.add("basic");
+		commands.add(">");
+		commands.add(JavaController.getUserDir() + "Runnables/Testcode/PMD.xml");
 		String[] retCommands = commands.toArray(new String[commands.size()]);
 		return retCommands;
 	}
