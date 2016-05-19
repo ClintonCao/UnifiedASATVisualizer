@@ -36,6 +36,58 @@ function appendInfoToSAT(CS, PMD, FB) {
     findBugsElement.innerHTML = "FindBugs (" + FB + ")";
 }
 
+<<<<<<< HEAD
+=======
+function handleClickTypeSat(cb) {
+    if (document.getElementById('treemapButton').checked) {
+        // Is taken care off in the treemap self
+        // this way the treemap can refresh at current level.
+    } else if (document.getElementById('graphButton').checked) {
+        if (cb.name == "sat") {
+            var value = cb.value;
+            handleClickTreeMapTypeSat(value, cb.checked);
+            removeChart();
+    if (packagesLevel) {
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        var input = createJsonGraphPackages(packages);
+
+        if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+            graphTrace.push(input);
+        } else {
+            graphTrace[graphTraceIndex] = input;
+        }
+        createGraph(graphTrace[graphTraceIndex]);
+    } else {
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+
+        if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+            graphTrace.push(input);
+        } else {
+            graphTrace[graphTraceIndex] = input;
+        }
+        createGraph(graphTrace[graphTraceIndex]);
+    }
+        }
+    }
+}
+
+/*
+ * Toggles between the graph and tree map visualization
+ */
+function handleClickVisualiser(radioButton) {
+    if (radioButton.value == "graph") {
+        runGraph();
+    } else if (radioButton.value == "treemap") {
+        runTreeMap();
+    }
+}
+
+function getFilteredJSON() {
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+    return createJsonTreeMap(packages);
+}
+>>>>>>> 5fe9302905ddec3c0447d73fbba152846cdd6389
 
 //Setup tree map and shows it
 function runTreeMap() {

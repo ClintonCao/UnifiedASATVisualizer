@@ -35,6 +35,9 @@ body {
 }
 
 .back-button{
+  width: -moz-calc(100% - 317px);
+  width: -webkit-calc(100% - 317px);
+  width: calc(100% - 317px);
   background: #7a92ff;
   color: #000;
   border: 1px solid #1982C4;

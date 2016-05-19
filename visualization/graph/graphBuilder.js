@@ -100,6 +100,34 @@ function nodeDoubleClick(d, i) {
 }
 
 /*
+ * Update the graph accordingly
+ */
+function redrawGraph() {
+    removeChart();
+    if (packagesLevel) {
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        var input = createJsonGraphPackages(packages);
+
+        if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+            graphTrace.push(input);
+        } else {
+            graphTrace[graphTraceIndex] = input;
+        }
+        createGraph(graphTrace[graphTraceIndex]);
+    } else {
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+
+        if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+            graphTrace.push(input);
+        } else {
+            graphTrace[graphTraceIndex] = input;
+        }
+        createGraph(graphTrace[graphTraceIndex]);
+    }
+}
+
+/*
  * Set the title of the graph
  */
 function setTitle() {
