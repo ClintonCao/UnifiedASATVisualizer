@@ -9,7 +9,6 @@ runTreeMap();
 setAllCheckboxesOnDefault();
 
 function setAllCheckboxesOnDefault() {
-		 console.log("setAllCheckboxesOnDefaultd");
 	$(".updateContent").prop('checked', false); 
 	$("#treemapButton").prop('checked', true);
 	$("#absoluteButton").prop('checked', true);

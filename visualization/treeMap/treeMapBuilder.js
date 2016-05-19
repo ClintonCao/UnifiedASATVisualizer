@@ -157,7 +157,6 @@ var treeMapBuilder = (function() {
     		var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     		var finalJson =  createJsonTreeMap(packages);
             root.values = finalJson;
-            console.log(getTotalASATWarning("PMD"));
             initialize(root, width, height);
             accumulateValue(root);
             accumulateWarnings(root);

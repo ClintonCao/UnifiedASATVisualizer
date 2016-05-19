@@ -41,8 +41,6 @@ function handleClickCategorySat(value, checked) {
             acceptedCategories.splice(index, 1);
         }
     }
-	
-	console.log(acceptedCategories);
 }
 
 /*
