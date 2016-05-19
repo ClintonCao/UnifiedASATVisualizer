@@ -92,12 +92,12 @@ var treeMapBuilder = (function() {
 		// all the updateContent class will trigger this refresh of data
 		// so that the input of the user (checkboxes/radiobuttons) will update the content of 
         $(".updateContent").off("click").on('click', function(view) {
-		 console.log("treemap update");
-            if (document.getElementById('treemapButton').checked && !refreshing) {
+            if (document.getElementById('treemapButton').checked) {
 				refreshing = true;
-				
 				if (view.target.name == "sat") {
 					handleClickTreeMapTypeSat(view.target.value, view.target.checked);
+				}else if (view.target.name == "category"){
+					handleClickCategorySat(view.target.value, view.target.checked);
 				}
                 reloadContent();
                 var newNode = findNode(d, root);
@@ -105,10 +105,6 @@ var treeMapBuilder = (function() {
                     return newNode;
                 });
                 transition(newNode);
-				var millisecondsToWait = 200;
-				setTimeout(function() {
-    				refreshing = false;
-				}, millisecondsToWait);
 
             }	
         });

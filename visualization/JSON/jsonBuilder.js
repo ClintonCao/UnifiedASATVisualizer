@@ -33,8 +33,6 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	  		classObject.fileName = classObjectJson.fileName;
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j];
-				console.log(acceptedTypes);
-				console.log($.inArray(warningJson.type, acceptedTypes) > -1);
 				if($.inArray(warningJson.type, acceptedTypes) > -1 && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
 		  			classObject.amountOfWarnings++;
 				}
@@ -43,8 +41,6 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 		}
 	classArray.packageName = package.packageName;
 	packageArray.push(classArray);
-	console.log("1:");
-	console.log(packageArray);
   	}
 	return packageArray;
 }

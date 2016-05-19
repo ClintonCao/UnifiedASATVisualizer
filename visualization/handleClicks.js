@@ -24,8 +24,7 @@ function handleClickColorScale(radioButton) {
 		colorScale.colorsRelative()
 	}
 	if (document.getElementById('graphButton').checked) {
-		removeChart();
-		createGraph(graphTrace[graphTraceIndex]);
+		reloadContent(null)
 	}
 }
 
@@ -33,15 +32,17 @@ function handleClickColorScale(radioButton) {
 /*
 * handles the clicks on Sat categories
 */
-function handleClickCategorySat(checkbox) {	
- 	if (checkbox.checked) {
-		acceptedCategories.push(checkbox.value)
+function handleClickCategorySat(value, checked) {	
+ 	if (checked) {
+		acceptedCategories.push(value)
     } else {
-        var index = acceptedCategories.indexOf(checkbox.value);
+        var index = acceptedCategories.indexOf(value);
         if (index > -1) {
             acceptedCategories.splice(index, 1);
         }
     }
+	
+	console.log(acceptedCategories);
 }
 
 /*
