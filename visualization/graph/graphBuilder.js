@@ -300,7 +300,7 @@ function createGraph(graph) {
 	 function reloadContent(cb){
 		 if (cb.name == "sat") {
             var value = cb.value;
-            handleClickTreeMapTypeSat(value);
+            handleClickTreeMapTypeSat(value, cb.checked);
             removeChart();
             if (packagesLevel) {
                 var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
