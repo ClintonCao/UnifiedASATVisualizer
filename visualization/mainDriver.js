@@ -8,9 +8,16 @@ var acceptedCategories = [];
 
 // Run first time
 runTreeMap();
+setAllCheckboxesOnDefault();
 
-// For firefox remove the checkboxes from previous runs.
-$(".updateContent").prop('checked', false); 
+function setAllCheckboxesOnDefault() {
+	$(".updateContent").prop('checked', false); 
+	$("#treemapButton").prop('checked', true);
+	$("#absoluteButton").prop('checked', true);
+	$(".FunctionalDefects").click();
+	$(".MaintainabilityDefects").click();
+	$(".StyleConventions").click();
+}
 
 
 /*
@@ -47,6 +54,8 @@ function handleClickColorScale(radioButton) {
  * toggle all category checkboxes of a group
  */
 function handleClickCategory(category) {
+	// for next week
+	/*
 	if( category == "FunctionDefects" ){
 		$('.FunctionalDefects').click()
 		
@@ -57,7 +66,7 @@ function handleClickCategory(category) {
 		
 	}else if( category == "StyleConventions" ){
 		$('.StyleConventions').click()
-	}
+	}*/
 }
 
 // individual clicks
@@ -70,6 +79,7 @@ function handleClickCategorySat(checkbox) {
             acceptedCategories.splice(index, 1);
         }
     }
+	console.log(acceptedCategories);
 }
 
 
