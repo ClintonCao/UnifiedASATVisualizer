@@ -1,4 +1,5 @@
-var inputData = [
+var inputData = 
+[
   {
     "classes": [
       {
@@ -10,13 +11,14 @@ var inputData = [
             "ruleSet": "Basic",
             "method": "equals",
             "packageName": "BlueTurtle.warnings",
-            "ruleName": "OverrideBothEqualsAndHashcode",
+            "classification": "Interface",
             "fileName": "CheckStyleWarning.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\CheckStyleWarning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\CheckStyleWarning.java",
+            "ruleName": "OverrideBothEqualsAndHashcode"
           }
         ],
-        "loc": 90,
+        "loc": 52,
         "packageName": "BlueTurtle.warnings",
         "numberOfWarnings": 1,
         "warningTypes": [
@@ -33,45 +35,50 @@ var inputData = [
           {
             "line": 1,
             "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
-            "ruleName": "PackageName",
+            "classification": "Naming Conventions",
             "fileName": "Warning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
+            "ruleName": "PackageName"
           },
           {
             "line": 13,
             "message": "Variable category must be private and have accessor methods.",
-            "ruleName": "VisibilityModifier",
+            "classification": "Object Oriented Design",
             "fileName": "Warning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
+            "ruleName": "VisibilityModifier"
           },
           {
             "line": 14,
             "message": "Variable filename must be private and have accessor methods.",
-            "ruleName": "VisibilityModifier",
+            "classification": "Object Oriented Design",
             "fileName": "Warning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
+            "ruleName": "VisibilityModifier"
           },
           {
             "line": 15,
             "message": "Variable type must be private and have accessor methods.",
-            "ruleName": "VisibilityModifier",
+            "classification": "Object Oriented Design",
             "fileName": "Warning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
+            "ruleName": "VisibilityModifier"
           },
           {
             "line": 20,
             "message": "Unused @param tag for filePath.",
-            "ruleName": "JavadocMethod",
+            "classification": "Documentation Conventions",
             "fileName": "Warning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
+            "ruleName": "JavadocMethod"
           }
         ],
-        "loc": 111,
+        "loc": 46,
         "packageName": "BlueTurtle.warnings",
         "numberOfWarnings": 5,
         "warningTypes": [
@@ -80,175 +87,117 @@ var inputData = [
         "numberOfCheckStyleWarnings": 5,
         "numberOfPMDWarnings": 0,
         "numberOfFindBugsWarnings": 0
-      },
-      {
-        "fileName": "FindBugsWarning.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java",
-        "warningList": [
-          {
-            "lineNumber": 47,
-            "message": "BlueTurtle.warnings.FindBugsWarning defines equals and uses Object.hashCode()",
-            "category": "BAD_PRACTICE",
-            "priority": "High",
-            "ruleName": "HE_EQUALS_USE_HASHCODE",
-            "fileName": "FindBugsWarning.java",
-            "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java"
-          },
-          {
-            "lineNumber": -1,
-            "message": "Unused field: BlueTurtle.warnings.FindBugsWarning.category",
-            "category": "PERFORMANCE",
-            "priority": "Normal",
-            "ruleName": "UUF_UNUSED_FIELD",
-            "fileName": "FindBugsWarning.java",
-            "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java"
-          }
-        ],
-        "loc": 134,
-        "packageName": "BlueTurtle.warnings",
-        "numberOfWarnings": 2,
-        "warningTypes": [
-          "FindBugs"
-        ],
-        "numberOfCheckStyleWarnings": 0,
-        "numberOfPMDWarnings": 0,
-        "numberOfFindBugsWarnings": 2
       }
     ],
-    "numberOfClasses": 3,
+    "numberOfClasses": 2,
     "packageName": "BlueTurtle.warnings",
-    "numberOfWarnings": 8,
+    "numberOfWarnings": 6,
     "warningTypes": [
       "PMD",
-      "CheckStyle",
-      "FindBugs"
+      "CheckStyle"
     ],
     "numberOfCheckStyleWarnings": 5,
     "numberOfPMDWarnings": 1,
-    "numberOfFindBugsWarnings": 2
-  },{
-    "packageName": "BlueTurtle.errors",
-    "amountOfWarnings": 5,
-    "numberOfClasses": 2,
-    "warningTypes": [
-      "CheckStyle"
-    ],
+    "numberOfFindBugsWarnings": 0
+  },
+  {
     "classes": [
       {
-        "fileName": "Error1.java",
-        "amountOfWarnings": 5,
-        "loc": 5,
-        "package_Name": "BlueTurtle.warnings",
-        "warningTypes": [
-          "CheckStyle"
-        ],
+        "fileName": "CheckStyleWarning.java",
+        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\CheckStyleWarning.java",
         "warningList": [
           {
-            "line": 1,
-            "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
-            "ruleName": "PackageName",
-            "fileName": "Warning.java",
-            "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
-          },
-          {
-            "line": 13,
-            "message": "Variable category must be private and have accessor methods.",
-            "ruleName": "VisibilityModifier",
-            "fileName": "Warning.java",
-            "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
-          },
-          {
-            "line": 14,
-            "message": "Variable filename must be private and have accessor methods.",
-            "ruleName": "VisibilityModifier",
-            "fileName": "Warning.java",
-            "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
-          },
-          {
-            "line": 15,
-            "message": "Variable type must be private and have accessor methods.",
-            "ruleName": "VisibilityModifier",
-            "fileName": "Warning.java",
-            "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
-          },
-          {
-            "line": 20,
-            "message": "Unused @param tag for filePath.",
-            "ruleName": "JavadocMethod",
-            "fileName": "Warning.java",
-            "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "line": 43,
+            "ruleSet": "Basic",
+            "method": "equals",
+            "packageName": "BlueTurtle.warnings",
+            "classification": "Interface",
+            "fileName": "CheckStyleWarning.java",
+            "type": "PMD",
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\CheckStyleWarning.java",
+            "ruleName": "OverrideBothEqualsAndHashcode"
           }
-        ]
+        ],
+        "loc": 52,
+        "packageName": "BlueTurtle.warnings",
+        "numberOfWarnings": 1,
+        "warningTypes": [
+          "PMD"
+        ],
+        "numberOfCheckStyleWarnings": 0,
+        "numberOfPMDWarnings": 1,
+        "numberOfFindBugsWarnings": 0
       },
-	  {
-        "fileName": "Error2.java",
-        "amountOfWarnings": 6,
-        "loc": 20,
-        "package_Name": "BlueTurtle.warnings",
-        "warningTypes": [
-          "CheckStyle"
-        ],
+      {
+        "fileName": "Warning.java",
+        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
         "warningList": [
           {
             "line": 1,
             "message": "Name BlueTurtle.warnings must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
-            "ruleName": "PackageName",
+            "classification": "Naming Conventions",
             "fileName": "Warning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
+            "ruleName": "PackageName"
           },
           {
             "line": 13,
             "message": "Variable category must be private and have accessor methods.",
-            "ruleName": "VisibilityModifier",
+            "classification": "Object Oriented Design",
             "fileName": "Warning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
+            "ruleName": "VisibilityModifier"
           },
           {
             "line": 14,
             "message": "Variable filename must be private and have accessor methods.",
-            "ruleName": "VisibilityModifier",
+            "classification": "Object Oriented Design",
             "fileName": "Warning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
+            "ruleName": "VisibilityModifier"
           },
           {
             "line": 15,
             "message": "Variable type must be private and have accessor methods.",
-            "ruleName": "VisibilityModifier",
+            "classification": "Object Oriented Design",
             "fileName": "Warning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
+            "ruleName": "VisibilityModifier"
           },
           {
             "line": 20,
             "message": "Unused @param tag for filePath.",
-            "ruleName": "JavadocMethod",
+            "classification": "Documentation Conventions",
             "fileName": "Warning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
-          },
-          {
-            "line": 25,
-            "message": "Unused @param tag for filePath.",
-            "ruleName": "JavadocMethod",
-            "fileName": "Warning.java",
-            "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
+            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java",
+            "ruleName": "JavadocMethod"
           }
-        ]
+        ],
+        "loc": 46,
+        "packageName": "BlueTurtle.warnings",
+        "numberOfWarnings": 5,
+        "warningTypes": [
+          "CheckStyle"
+        ],
+        "numberOfCheckStyleWarnings": 5,
+        "numberOfPMDWarnings": 0,
+        "numberOfFindBugsWarnings": 0
       }
     ],
-    "classesInfo": {
-      "Warning.java": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java"
-    }
+    "numberOfClasses": 2,
+    "packageName": "BlueTurtle.warnings",
+    "numberOfWarnings": 6,
+    "warningTypes": [
+      "PMD",
+      "CheckStyle"
+    ],
+    "numberOfCheckStyleWarnings": 5,
+    "numberOfPMDWarnings": 1,
+    "numberOfFindBugsWarnings": 0
   }
-]
+];

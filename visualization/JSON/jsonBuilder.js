@@ -13,10 +13,19 @@ function replaceAll(stringObject, target, replacement){
 
 /*
  *
+ * Calculates the worst case of #warnings/loc
+ *
+ */ 
+function getRelativeWarnings() {
+	
+}
+
+/*
+ *
  * Filter on type of tool and/or warnings
  *
  */
-function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
+function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	var packageArray = []
   	for (p = 0; p < inputData.length; p++) {
   		var package = inputData[p];
@@ -34,7 +43,7 @@ function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j]
 				//tmp disabled the acceptedrule filter
-				if($.inArray(warningJson.type, acceptedTypes) > -1 && ($.inArray(warningJson.ruleName, acceptedRuleNames) > -1 || true)) {
+				if($.inArray(warningJson.type, acceptedTypes) > -1 &&  ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
 		  			classObject.amountOfWarnings++;
 				}
 	  		}
@@ -130,7 +139,6 @@ function createJsonGraphPackages(packages){
         	});
       	}
       	jsonArrPackage.push({fileName: classes.packageName, numberOfClasses: numberOfClasses, totalWarnings:totalWarningsPackage, loc:totalLines, classes: jsonArrClass});
-  		console.log(jsonArrPackage);
 	}
 	return {nodes: jsonArrPackage, links: [{"source":0, "target":1, "value":11}] }
 }
@@ -149,7 +157,6 @@ function createJsonGraphClasses(packages, packageName){
 	        	var fileName = classes[i].fileName;
 	        	var linesOfCode = classes[i].loc;
 	        	var amountOfWarnings = classes[i].amountOfWarnings;
-	        	console.log(classes[i].loc);
 	        	jsonArrClass.push({
 	          	fileName: fileName,
 	          	loc: linesOfCode,

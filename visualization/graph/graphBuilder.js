@@ -141,7 +141,7 @@ function createGraph(graph) {
     /*
      * Defines the height and width of the graph
      */
-    var width = window.innerWidth - 225,
+    var width = window.innerWidth - 350,
         height = window.innerHeight - 175
 
 

@@ -4,7 +4,7 @@
 var graphTrace = [];
 var graphTraceIndex = 0;
 var acceptedTypes = [];
-var acceptedRuleNames = ["PackageName", "JavadocMethod"];
+var acceptedCategories = [];
 
 // Run first time
 runTreeMap();
@@ -17,9 +17,10 @@ $(".updateContent").prop('checked', false);
 /*
  * Handles click on checkboxes for showing results of different tools
  */
-function handleClickTreeMapTypeSat(value) {
-    if (acceptedTypes.indexOf(value) < 0) {
-        acceptedTypes.push(value);
+function handleClickTreeMapTypeSat(value, checked) {
+ 
+	if (checked) {
+		acceptedTypes.push(value)
     } else {
         var index = acceptedTypes.indexOf(value);
         if (index > -1) {
@@ -29,7 +30,7 @@ function handleClickTreeMapTypeSat(value) {
 }
 
 /*
- * Handles click on checkboxes for showing results of different tools
+ * Handles click on checkboxes for using different colorscales
  */
 function handleClickColorScale(radioButton) {
 	if ( radioButton.value == "absolute" ){
@@ -42,6 +43,36 @@ function handleClickColorScale(radioButton) {
 		createGraph(graphTrace[graphTraceIndex]);
 	}
 }
+
+/*
+ * toggle all category checkboxes of a group
+ */
+function handleClickCategory(category) {
+	if( category == "FunctionDefects" ){
+		$('.FunctionalDefects').click()
+		
+		
+	}else if( category == "MaintainabilityDefects" ){
+		$('.MaintainabilityDefects').click()
+		
+		
+	}else if( category == "StyleConventions" ){
+		$('.StyleConventions').click()
+	}
+}
+
+// individual clicks
+function handleClickCategorySat(checkbox) {	
+ 	if (checkbox.checked) {
+		acceptedCategories.push(checkbox.value)
+    } else {
+        var index = acceptedCategories.indexOf(checkbox.value);
+        if (index > -1) {
+            acceptedCategories.splice(index, 1);
+        }
+    }
+}
+
 
 // Delete the entire chart from the page.
 function removeChart() {
@@ -71,7 +102,7 @@ function handleClickTypeSat(cb) {
             handleClickTreeMapTypeSat(value);
             removeChart();
             if (packagesLevel) {
-                var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+                var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
                 var input = createJsonGraphPackages(packages);
 
                 if (typeof graphTrace[graphTraceIndex] === 'undefined') {
@@ -81,7 +112,7 @@ function handleClickTypeSat(cb) {
                 }
                 createGraph(graphTrace[graphTraceIndex]);
             } else {
-                var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+                var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
                 var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
 
                 if (typeof graphTrace[graphTraceIndex] === 'undefined') {
@@ -107,8 +138,7 @@ function handleClickVisualiser(radioButton) {
 }
 
 function getFilteredJSON() {
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-    //console.log(packages);
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     return createJsonTreeMap(packages);
 }
 
@@ -122,8 +152,8 @@ function runTreeMap() {
     var graphButtonDiv = document.getElementById("sub-title");
     graphButtonDiv.style.display = 'none';
 
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-    console.log(getFilteredJSON());
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+
     treeMapBuilder.createTreeMap({
         title: ""
     }, {
@@ -145,7 +175,7 @@ function runGraph() {
     graphButton.firstChild.data = "This is the upperview";
     graphButton.disabled = true;
 
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
 
     var input = createJsonGraphPackages(packages);
 

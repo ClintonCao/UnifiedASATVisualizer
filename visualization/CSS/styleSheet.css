@@ -1,11 +1,15 @@
+/* global settings */
+*{
+	font-family:Tahoma, Geneva, sans-serif;
+}
+
 /* Option menu*/
 #optionsMenu{
   float:right;
   display:block;
   background-color:#7a92ff;
-  height:400px;
-  width:150px;
-  margin:100px 10px 0 10px;
+  width:250px;
+  margin:0px 10px 0 10px;
   padding: 10px;
   border-style: ridge;
 }
@@ -20,7 +24,9 @@
   padding-bottom: 20px;
   border-style: ridge;
 }
-
+h3 {
+	margin:0;
+}
 body {
     background-color: #E0E0E0;
 }
@@ -37,7 +43,6 @@ body {
   border: 1px solid #1982C4;
   height: 25px;
   font-size: 15px;
-  font-family: Helvetica;
   font-weight: bold;
   border-style: ridge;
 }
@@ -50,7 +55,6 @@ body {
 #chart {
   float:left;
   background: #fff;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-style:solid;
   border-color:#FFFFFF;
   border-width:thin;
@@ -100,11 +104,28 @@ rect.parent {
 /*
  * Styling elements in the graph
  */
-.node {
+fam.node {
   stroke: #fff;
   stroke-width: 1.5px;
 }
 .link {
   stroke: #000;
   stroke-opacity: .25;
+}
+
+h4.category-titles{
+	padding: 0;
+	margin:0;
+	cursor: pointer;
+	text-align:center;
+}
+
+/**
+tree map element style
+**/
+
+/* name of a block or package */
+.ptext {
+	text-align:center;
+	font-size:18px;
 }
