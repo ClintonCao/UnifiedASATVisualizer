@@ -32,9 +32,10 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	  		classObject.loc = classObjectJson.loc;
 	  		classObject.fileName = classObjectJson.fileName;
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
-				var warningJson = classObjectJson.warningList[j]
-				//tmp disabled the acceptedrule filter
-				if($.inArray(warningJson.type, acceptedTypes) > -1 &&  ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
+				var warningJson = classObjectJson.warningList[j];
+				console.log(acceptedTypes);
+				console.log($.inArray(warningJson.type, acceptedTypes) > -1);
+				if($.inArray(warningJson.type, acceptedTypes) > -1 && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
 		  			classObject.amountOfWarnings++;
 				}
 	  		}
@@ -42,6 +43,8 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 		}
 	classArray.packageName = package.packageName;
 	packageArray.push(classArray);
+	console.log("1:");
+	console.log(packageArray);
   	}
 	return packageArray;
 }
@@ -131,6 +134,8 @@ function createJsonGraphPackages(packages){
       	}
       	jsonArrPackage.push({fileName: classes.packageName, numberOfClasses: numberOfClasses, totalWarnings:totalWarningsPackage, loc:totalLines, classes: jsonArrClass});
 	}
+	console.log("2:");
+	console.log(jsonArrPackage);
 	return {nodes: jsonArrPackage, links: [{"source":0, "target":1, "value":11}] };
 }
 

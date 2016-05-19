@@ -60,7 +60,7 @@ function nodeDoubleClick(d, i) {
 
         graphTraceIndex++;
 
-        var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
         var input = createJsonGraphClasses(packages, d.fileName);
 
         if (typeof graphTrace[graphTraceIndex] === 'undefined') {
@@ -79,7 +79,7 @@ function nodeDoubleClick(d, i) {
         /*
         graphTraceIndex++;
 
-        var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
         var input = createJsonGraphClasses(packages, d.fileName);
 
         if(typeof graphTrace[graphTraceIndex] === 'undefined') {
@@ -92,6 +92,34 @@ function nodeDoubleClick(d, i) {
         */
 
         window.open("http://9gag.com/", "_self")
+    }
+}
+
+/*
+ * Update the graph accordingly
+ */
+function redrawGraph() {
+    removeChart();
+    if (packagesLevel) {
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        var input = createJsonGraphPackages(packages);
+
+        if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+            graphTrace.push(input);
+        } else {
+            graphTrace[graphTraceIndex] = input;
+        }
+        createGraph(graphTrace[graphTraceIndex]);
+    } else {
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+
+        if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+            graphTrace.push(input);
+        } else {
+            graphTrace[graphTraceIndex] = input;
+        }
+        createGraph(graphTrace[graphTraceIndex]);
     }
 }
 
@@ -121,7 +149,7 @@ function goBack() {
     graphButton.firstChild.data = "This is the upperview";
     graphButton.disabled = true;
     graphTraceIndex--;
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     var input = createJsonGraphPackages(packages);
     if (typeof graphTrace[graphTraceIndex] === 'undefined') {
         graphTrace.push(input);
