@@ -10,7 +10,6 @@ var acceptedCategories = [];
 runTreeMap();
 
 // For firefox remove the checkboxes from previous runs.
-
 $(".updateContent").prop('checked', false); 
 
 
