@@ -13,24 +13,15 @@ function replaceAll(stringObject, target, replacement){
 
 /*
  *
- * Calculates the worst case of #warnings/loc
- *
- */ 
-function getRelativeWarnings() {
-	
-}
-
-/*
- *
  * Filter on type of tool and/or warnings
  *
  */
 function filterTypeRuleName(acceptedTypes, acceptedCategories){
-	var packageArray = []
+	var packageArray = [];
   	for (p = 0; p < inputData.length; p++) {
   		var package = inputData[p];
 		var classesArray = package.classes;
-		var classArray = []
+		var classArray = [];
 		for (i = 0; i < classesArray.length; i++) {
 	  		var classObject = new Object();
 	  		classObjectJson = classesArray[i];
@@ -47,10 +38,10 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 		  			classObject.amountOfWarnings++;
 				}
 	  		}
-	  		classArray.push(classObject)
+	  		classArray.push(classObject);
 		}
 	classArray.packageName = package.packageName;
-	packageArray.push(classArray)
+	packageArray.push(classArray);
   	}
 	return packageArray;
 }
@@ -61,7 +52,7 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
  *
  */
 function getTotalASATWarning(warningType) {
-	var packageArray = []
+	var packageArray = [];
 	for(var p =0; p < inputData.length; p++){
 		var package = inputData[p];
 		var classesArray = package.classes;
@@ -109,7 +100,7 @@ function createJsonTreeMap(packages){
 			}
 			jsonArrPackage.push({fileName: classes.packageName,values: jsonArrClass});
 		}
-	return [{fileName: "Project",values: jsonArrPackage}]
+	return [{fileName: "Project",values: jsonArrPackage}];
 }
 
 /*
@@ -140,7 +131,7 @@ function createJsonGraphPackages(packages){
       	}
       	jsonArrPackage.push({fileName: classes.packageName, numberOfClasses: numberOfClasses, totalWarnings:totalWarningsPackage, loc:totalLines, classes: jsonArrClass});
 	}
-	return {nodes: jsonArrPackage, links: [{"source":0, "target":1, "value":11}] }
+	return {nodes: jsonArrPackage, links: [{"source":0, "target":1, "value":11}] };
 }
 
 /*
@@ -165,5 +156,5 @@ function createJsonGraphClasses(packages, packageName){
 	      	}
     	}
   	}
-	return {nodes: jsonArrClass, links: [{"source":0, "target":1, "value":11}] }
+	return {nodes: jsonArrClass, links: [{"source":0, "target":1, "value":11}] };
 }

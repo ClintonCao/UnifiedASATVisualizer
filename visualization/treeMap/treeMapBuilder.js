@@ -225,7 +225,7 @@ var treeMapBuilder = (function() {
         // set the color of the squares based on warnings / line
         g.selectAll("rect")
             .style("fill", function(d) {
-                var ratio = 200 * d.warnings / d.value;
+                var ratio = 100 * d.warnings / d.value;
                 // if statement for when there are more warnings then lines
                 return colorScale.getColor(ratio);
             });
