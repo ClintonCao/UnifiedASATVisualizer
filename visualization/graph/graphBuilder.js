@@ -7,6 +7,7 @@ var graphTraceIndex = 0;
 
 //private var
 var refreshing = false;
+
 /*
  * Returns the length of a link
  */
@@ -284,40 +285,38 @@ function createGraph(graph) {
 	
 	// all the updateContent class will trigger this refresh of data
 	// so that the input of the user (checkboxes/radiobuttons) will update the content of 
-        $(".updateContent").off("click").on('click', function(view) {
-            if (document.getElementById('graphButton').checked && !refreshing) {
-				refreshing = true;
-				reloadContent(view.target)
-               
-				var millisecondsToWait = 200;
-				setTimeout(function() {
-    				refreshing = false;
-				}, millisecondsToWait);
+    $(".updateContent").off("click").on('click', function(view) {
+        if (document.getElementById('graphButton').checked && !refreshing) {
+			refreshing = true;
+			reloadContent(view.target)
+           
+			var millisecondsToWait = 200;
+			setTimeout(function() {
+				refreshing = false;
+			}, millisecondsToWait);
 
-            }	
-        });
+        }	
+    });
 	
 	 function reloadContent(cb){
 		 if (cb.name == "sat") {
             handleClickTreeMapTypeSat(cb.value, cb.checked);
 		 }
             removeChart();
+            var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
             if (packagesLevel) {
-                var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
                 var input = createJsonGraphPackages(packages);
 
                
             } else {
-                var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
                 var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
-
             }
-			 if (typeof graphTrace[graphTraceIndex] === 'undefined') {
-                    graphTrace.push(input);
-                } else {
-                    graphTrace[graphTraceIndex] = input;
-                }
-                createGraph(graphTrace[graphTraceIndex]);
+			if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+                graphTrace.push(input);
+            } else {
+                graphTrace[graphTraceIndex] = input;
+            }
+            createGraph(graphTrace[graphTraceIndex]);
         
 	 }
 };
