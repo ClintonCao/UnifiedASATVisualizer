@@ -1,6 +1,7 @@
 package BlueTurtle.TSE;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,6 +11,7 @@ import java.util.Set;
 import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.parsers.CheckStyleXMLParser;
+import BlueTurtle.parsers.FindBugsXMLParser;
 import BlueTurtle.parsers.GDCParser;
 import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
@@ -25,9 +27,11 @@ public class JSONFormatter {
 	public void format() throws IOException {
 		List<Warning> checkStyleWarnings = parseCheckStyleXML();
 		List<Warning> pmdWarnings = parsePMDXML();
+		List<Warning> findBugsWarnings = parseFindBugsXML();
 		List<Warning> totalWarnings = new ArrayList<Warning>();
 		totalWarnings.addAll(checkStyleWarnings);
 		totalWarnings.addAll(pmdWarnings);
+		totalWarnings.addAll(findBugsWarnings);
 		
 		writeJSON(totalWarnings);
 	}
@@ -46,6 +50,14 @@ public class JSONFormatter {
 		List<Warning> PMDWarnings = xmlParser.parseFile(JavaController.getUserDir() + "/Runnables/Testcode/pmd.xml", categoryInfo);
 		
 		return PMDWarnings;
+	}
+	
+	private List<Warning> parseFindBugsXML() throws IOException {
+		xmlParser = new FindBugsXMLParser();
+		
+		List<Warning> findBugsWarnings = xmlParser.parseFile(JavaController.getUserDir() + Paths.get("Runnables", "Testcode", "findbugs.xml"), categoryInfo);
+		System.out.println(findBugsWarnings.size());
+		return findBugsWarnings;
 	}
 	
 	private void writeJSON(List<Warning> warnings) throws IOException {
