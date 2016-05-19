@@ -2,7 +2,11 @@
  * Keep track of which level you are
  */
 var packagesLevel = true;
+var graphTrace = [];
+var graphTraceIndex = 0;
 
+//private var
+var refreshing = false;
 /*
  * Returns the length of a link
  */
@@ -60,7 +64,7 @@ function nodeDoubleClick(d, i) {
 
         graphTraceIndex++;
 
-        var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
         var input = createJsonGraphClasses(packages, d.fileName);
 
         if (typeof graphTrace[graphTraceIndex] === 'undefined') {
@@ -79,7 +83,7 @@ function nodeDoubleClick(d, i) {
         /*
         graphTraceIndex++;
 
-        var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
         var input = createJsonGraphClasses(packages, d.fileName);
 
         if(typeof graphTrace[graphTraceIndex] === 'undefined') {
@@ -121,7 +125,7 @@ function goBack() {
     graphButton.firstChild.data = "This is the upperview";
     graphButton.disabled = true;
     graphTraceIndex--;
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     var input = createJsonGraphPackages(packages);
     if (typeof graphTrace[graphTraceIndex] === 'undefined') {
         graphTrace.push(input);
@@ -153,7 +157,6 @@ function createGraph(graph) {
     var svg = d3.select("#chart").append("svg")
         .attr("width", width)
         .attr("height", height);
-
 
     force
         .nodes(graph.nodes)
@@ -250,4 +253,48 @@ function createGraph(graph) {
                 return d.y;
             });
     });
+	
+	// all the updateContent class will trigger this refresh of data
+	// so that the input of the user (checkboxes/radiobuttons) will update the content of 
+        $(".updateContent").off("click").on('click', function(view) {
+            if (document.getElementById('graphButton').checked && !refreshing) {
+				refreshing = true;
+				reloadContent(view.target)
+               
+				var millisecondsToWait = 200;
+				setTimeout(function() {
+    				refreshing = false;
+				}, millisecondsToWait);
+
+            }	
+        });
+	
+	 function reloadContent(cb){
+		 if (cb.name == "sat") {
+            var value = cb.value;
+            handleClickTreeMapTypeSat(value);
+            removeChart();
+            if (packagesLevel) {
+                var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+                var input = createJsonGraphPackages(packages);
+
+                if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+                    graphTrace.push(input);
+                } else {
+                    graphTrace[graphTraceIndex] = input;
+                }
+                createGraph(graphTrace[graphTraceIndex]);
+            } else {
+                var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+                var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+
+                if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+                    graphTrace.push(input);
+                } else {
+                    graphTrace[graphTraceIndex] = input;
+                }
+                createGraph(graphTrace[graphTraceIndex]);
+            }
+        }
+	 }
 };

@@ -91,8 +91,8 @@ var treeMapBuilder = (function() {
 		
 		// all the updateContent class will trigger this refresh of data
 		// so that the input of the user (checkboxes/radiobuttons) will update the content of 
-        $(".updateContent").off("click");
-        $(".updateContent").on('click', function(view) {
+        $(".updateContent").off("click").on('click', function(view) {
+		 console.log("treemap update");
             if (document.getElementById('treemapButton').checked && !refreshing) {
 				refreshing = true;
 				
@@ -156,7 +156,9 @@ var treeMapBuilder = (function() {
         }
 
         function reloadContent() {
-            root.values = getFilteredJSON();
+    		var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+    		var finalJson =  createJsonTreeMap(packages);
+            root.values = finalJson;
             console.log(getTotalASATWarning("PMD"));
             initialize(root, width, height);
             accumulateValue(root);
