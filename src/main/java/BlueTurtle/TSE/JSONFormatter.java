@@ -19,11 +19,22 @@ import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
 import BlueTurtle.writers.JSWriter;
 
+/**
+ * JSONFormatter reads the output of Checkstyle, Findbugs and PMD and produces a summarized defect output.
+ * @author michiel
+ *
+ */
 public class JSONFormatter {
 	private XMLParser xmlParser;
 	private GDCParser gdcParser = new GDCParser();
 	HashMap<String, String> categoryInfo = gdcParser.parseFile("./src/main/resources/asat-gdc-mapping.html");
 	
+	/**
+	 * Produces a list of warnings for by reading the output of PMD, Checkstyle and Findbugs. 
+	 * Then converts it to JSON format and writes it to a JavaScript file.
+	 * @throws IOException
+	 * 						File not found.
+	 */
 	public void format() throws IOException {
 		List<Warning> checkStyleWarnings = parseCheckStyleXML();
 		List<Warning> pmdWarnings = parsePMDXML();
@@ -36,6 +47,13 @@ public class JSONFormatter {
 		writeJSON(totalWarnings);
 	}
 	
+	/**
+	 * Parse CheckStyle output and produce list of warnings.
+	 * @return 
+	 * 			List of warnings.
+	 * @throws IOException
+	 * 			File not found.
+	 */
 	private List<Warning> parseCheckStyleXML() throws IOException {
 		xmlParser = new CheckStyleXMLParser();
 		
@@ -44,6 +62,13 @@ public class JSONFormatter {
 		return checkStyleWarnings;
 	}
 	
+	/**
+	 * Parse PMD output and produce list of warnings.
+	 * @return 
+	 * 			List of warnings.
+	 * @throws IOException
+	 * 			File not found.
+	 */
 	private List<Warning> parsePMDXML() throws IOException {
 		xmlParser = new PMDXMLParser();
 		
@@ -52,14 +77,27 @@ public class JSONFormatter {
 		return PMDWarnings;
 	}
 	
+	/**
+	 * Parse FindBugs output and produce list of warnings.
+	 * @return 
+	 * 			List of warnings.
+	 * @throws IOException
+	 * 			File not found.
+	 */
 	private List<Warning> parseFindBugsXML() throws IOException {
 		xmlParser = new FindBugsXMLParser();
 		
 		List<Warning> findBugsWarnings = xmlParser.parseFile(JavaController.getUserDir() + Paths.get("Runnables", "Testcode", "findbugs.xml"), categoryInfo);
-		System.out.println(findBugsWarnings.size());
 		return findBugsWarnings;
 	}
 	
+	/**
+	 * Groups the warnings together by packages and writes it as JSON output to a JavaScript file.
+	 * @param warnings
+	 * 				List of warnings to work with.
+	 * @throws IOException
+	 * 				Output file not found.
+	 */
 	private void writeJSON(List<Warning> warnings) throws IOException {
 		HashMap<String, String> componentsInfo = new HashMap<String, String>();
 		Set<String> packagesNames = new HashSet<String>();
