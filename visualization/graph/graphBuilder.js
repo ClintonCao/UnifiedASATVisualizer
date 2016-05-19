@@ -284,18 +284,18 @@ function createGraph(graph) {
 	
 	// all the updateContent class will trigger this refresh of data
 	// so that the input of the user (checkboxes/radiobuttons) will update the content of 
-        $(".updateContent").off("click").on('click', function(view) {
-            if (document.getElementById('graphButton').checked && !refreshing) {
-				refreshing = true;
-				reloadContent(view.target)
-               
-				var millisecondsToWait = 200;
-				setTimeout(function() {
-    				refreshing = false;
-				}, millisecondsToWait);
+    $(".updateContent").off("click").on('click', function(view) {
+        if (document.getElementById('graphButton').checked && !refreshing) {
+			refreshing = true;
+			reloadContent(view.target)
+           
+			var millisecondsToWait = 200;
+			setTimeout(function() {
+				refreshing = false;
+			}, millisecondsToWait);
 
-            }	
-        });
+        }	
+    });
 	
 	 function reloadContent(cb){
 		 if (cb.name == "sat") {
