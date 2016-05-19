@@ -32,11 +32,14 @@ function handleClickTreeMapTypeSat(value) {
  * Handles click on checkboxes for showing results of different tools
  */
 function handleClickColorScale(radioButton) {
-	//console.log(radioButton.value)
-	if ( radioButton.value == "absolute"  ){
-		treeMapBuilder.changeColorScale(false)
+	if ( radioButton.value == "absolute" ){
+		colorScale.colorsAbsolute()
 	}else{
-		treeMapBuilder.changeColorScale(true)
+		colorScale.colorsRelative()
+	}
+	if (document.getElementById('graphButton').checked) {
+		removeChart();
+		createGraph(graphTrace[graphTraceIndex]);
 	}
 }
 
@@ -48,6 +51,15 @@ function removeChart() {
     }
 }
 
+function appendInfoToSAT(CS, PMD, FB) {
+    var checkStyleElement = document.getElementById("checkStyleLabel");
+    var PMDElement = document.getElementById("PMDLabel");
+    var findBugsElement = document.getElementById("FindBugsLabel");
+
+    checkStyleElement.innerHTML = 'CheckStyle (' + CS + ")";
+    PMDElement.innerHTML = "PMD (" + PMD + ")";
+    findBugsElement.innerHTML = "FindBugs (" + FB + ")";
+}
 
 function handleClickTypeSat(cb) {
     if (document.getElementById('treemapButton').checked) {
@@ -96,7 +108,7 @@ function handleClickVisualiser(radioButton) {
 
 function getFilteredJSON() {
     var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-    console.log(packages);
+    //console.log(packages);
     return createJsonTreeMap(packages);
 }
 
@@ -111,7 +123,7 @@ function runTreeMap() {
     graphButtonDiv.style.display = 'none';
 
     var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-
+    console.log(getFilteredJSON());
     treeMapBuilder.createTreeMap({
         title: ""
     }, {

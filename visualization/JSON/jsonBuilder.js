@@ -35,15 +35,6 @@ function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
 				var warningJson = classObjectJson.warningList[j]
 				//tmp disabled the acceptedrule filter
 				if($.inArray(warningJson.type, acceptedTypes) > -1 && ($.inArray(warningJson.ruleName, acceptedRuleNames) > -1 || true)) {
-					if(warningJson.type == "CheckStyle") {
-						classObject.amountOfCheckStyleWarnings++;
-					}
-					if(warningJson.type == "PMD") {
-						classObject.amountOfPMDWarnings++;
-					}
-					if(warningJson.type == "FindBugs") {
-						classObject.amountOfFindBugsWarnings++;
-					}
 		  			classObject.amountOfWarnings++;
 				}
 	  		}
@@ -52,6 +43,36 @@ function filterTypeRuleName(acceptedTypes, acceptedRuleNames){
 	classArray.packageName = package.packageName;
 	packageArray.push(classArray)
   	}
+	return packageArray;
+}
+
+/*
+ *
+ * Counts for a specefic ASAT how many warnings there are
+ *
+ */
+function getTotalASATWarning(warningType) {
+	var packageArray = []
+	for(var p =0; p < inputData.length; p++){
+		var package = inputData[p];
+		var classesArray = package.classes;
+		var classArray = [];
+		for (i = 0; i < classesArray.length; i++) {
+			classObjectJson = classesArray[i];
+			var classObject = new Object();
+			classObject.amountOfWarnings = 0;
+			classObject.fileName = classObjectJson.fileName;
+			for (j = 0; j < classObjectJson.warningList.length; j++) { 
+				var warningJson = classObjectJson.warningList[j]
+				if(warningJson.type == warningType) {
+		  			classObject.amountOfWarnings++;
+				}
+	  		}
+	  		classArray.push(classObject);
+		}
+		classArray.packageName = package.packageName;
+		packageArray.push(classArray)
+	}
 	return packageArray;
 }
 
@@ -68,10 +89,6 @@ function createJsonTreeMap(packages){
 			for (var i = 0; i < classes.length; i++) {
 				var fileName = classes[i].fileName;
 				var linesOfCode = classes[i].loc;
-				console.log(classes[i].amountOfWarnings);
-				console.log(classes[i].amountOfCheckStyleWarnings);
-				console.log(classes[i].amountOfPMDWarnings);
-				console.log(classes[i].amountOfFindBugsWarnings);
 				jsonArrClass.push({
 					fileName: fileName,
 					warnings: classes[i].amountOfWarnings,

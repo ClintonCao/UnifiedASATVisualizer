@@ -2,7 +2,7 @@ var treeMapBuilder = (function() {
 
 
     // initialize all variables
-    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, color, x, y, svg, grandparent, maxDepth, defaults
+    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
 
 
 
@@ -40,7 +40,6 @@ var treeMapBuilder = (function() {
             }, 0) :
             d.warnings;
     }
-
 
     // Compute the treemap layout recursively such that each group of siblings
     // uses the same size (1×1) rather than the dimensions of the parent cell.
@@ -89,7 +88,9 @@ var treeMapBuilder = (function() {
                 .classed("children", true)
                 .on("click", transition);
         }
-
+		
+		// all the updateContent class will trigger this refresh of data
+		// so that the input of the user (checkboxes/radiobuttons) will cause this update.
         $(".updateContent").off("click");
         $(".updateContent").click(function(view) {
             if (document.getElementById('treemapButton').checked) {
@@ -122,8 +123,32 @@ var treeMapBuilder = (function() {
             }
         }
 
+        function sumNodeForASAT(d, root) {
+            var nodeAndSummation = [];
+            var sum = 0;
+            if(d.fileName == "Project" || d.fileName == "Test Project") {
+                for(var i = 0; i < root.length; i++) {
+                    for(var j = 0; j < root[i].length; j++) {
+                        sum += root[i][j].amountOfWarnings;
+                    }
+                }
+                return sum;
+            } else {
+                for(var i = 0; i < root.length; i++) {
+                    if(root[i].packageName == d.fileName) {
+                        for(var j = 0; j < root[i].length; j++) {
+                            sum += root[i][j].amountOfWarnings;
+                        }
+                        return sum;
+                    }
+                }
+            }
+            return -1;
+        }
+
         function reloadContent() {
             root.values = getFilteredJSON();
+            console.log(getTotalASATWarning("PMD"));
             initialize(root, width, height);
             accumulateValue(root);
             accumulateWarnings(root);
@@ -185,16 +210,19 @@ var treeMapBuilder = (function() {
             .style("fill", function(d) {
                 var ratio = 200 * d.warnings / d.value;
                 // if statement for when there are more warnings then lines
-                return (ratio > 100) ? color(100) : color(ratio);
+                return colorScale.getColor(ratio);
             });
 
         function toSourceCode(d) {
-            console.log(d.filePath)
+            //console.log(d.filePath)
         }
 
         function transition(d) {
             if (transitioning || !d) return;
             transitioning = true;
+
+            //console.log(sumNodeForASAT(d, getTotalASATWarning("CheckStyle"), 0))
+            appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
 
             var g2 = display(d),
                 t1 = g1.transition().duration(100),
@@ -277,13 +305,6 @@ var treeMapBuilder = (function() {
     }
     //title above the chart
     function name(d) {
-        var checkStyleElement = document.getElementById("checkStyleLabel");
-        var PMDElement = document.getElementById("PMDLabel");
-        var findBugsElement = document.getElementById("FindBugsLabel");
-        checkStyleElement.innerHTML = '<input type="checkbox" class="updateContent" id="checkstyleButton" onclick="handleClickTypeSat(this);" name="sat" value="CheckStyle"> CheckStyle (' + d.warningsCheckStyle + ")";
-        PMDElement.innerHTML = "PMD (" + d.warningsPMD + ")";
-        findBugsElement.innerHTML = "FindBugs (" + d.warningsFindBugs + ")";
-
         return d.parent ?
             name(d.parent) + " / " + d.fileName + " (" + formatNumber(d.warnings) + ")" :
             d.fileName + " (" + formatNumber(d.warnings) + ")";
@@ -322,8 +343,7 @@ var treeMapBuilder = (function() {
         // Uses a range of 100 values between green and red
         // The closer the value is to 0, the more green it will use
         // The closer the value is to 100, the more red it will use
-        color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-
+        
         x = d3.scale.linear()
             .domain([0, width])
             .range([0, width]);
@@ -388,14 +408,7 @@ var treeMapBuilder = (function() {
             // After cresating the variables we can start initializing and displaying the tree.
             initializeTheTree(root);
             display(root);
-        },
-		changeColorScale: function(relative){
-			if ( relative ) {
-        		color = d3.scale.linear().domain([0, 20]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-			}else{
-        		color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-			}
-		}
+        }
 
     };
 
