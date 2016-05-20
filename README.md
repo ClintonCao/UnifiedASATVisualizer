@@ -1,19 +1,16 @@
 # Contextproject-TSE &nbsp; [![Build Status](https://travis-ci.org/ClintonCao/Contextproject-TSE.svg?branch=master)](https://travis-ci.org/ClintonCao/Contextproject-TSE) [![Coverage Status](https://coveralls.io/repos/github/ClintonCao/Contextproject-TSE/badge.svg?branch=master)](https://coveralls.io/github/ClintonCao/Contextproject-TSE?branch=master)
 This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016. 
 
-**Team Members**:
+## Team Members:
 
-Boning Gong
-
-Clinton Cao
-
-Michiel Doesburg
-
-Sunwei Wang
-
-Tim Buckers
-
-**SE TA**: Bastiaan Reijm
+| Member name |
+|-------|
+|[Boning Gong] (https://github.com/boninggong)|
+|[Clinton Cao] (https://github.com/ClintonCao)|
+|[Michiel Doesburg] (https://github.com/Michieldoesburg)|
+|[Sunwei Wang] (https://github.com/SunweiWang)|
+|[Tim Buckers] (https://github.com/TimBuckers)|
+|**SE TA**: [Bastiaan Reijm] (https://github.com/breijm)|
 
 
 ## Links to sprint related documents:
@@ -42,3 +39,7 @@ Tim Buckers
 ## Links to other documents:
 
 SAT Research: [sat research] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/SAT%20research/StaticanalysistoolsresearchBlueTurtle.pdf)
+
+## Run the Visualizer:
+
+Go to the visualization map and run main.html using a browser
