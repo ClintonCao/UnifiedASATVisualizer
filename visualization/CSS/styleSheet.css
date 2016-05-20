@@ -3,15 +3,33 @@
 	font-family:Tahoma, Geneva, sans-serif;
 }
 
-/* Option menu*/
-#optionsMenu{
+/* Different menus for options */
+.optionsMenuRight{
   float:right;
   display:block;
   background-color:#7a92ff;
   width:250px;
-  margin:0px 10px 0 10px;
+  margin:0px 10px 15px 10px;
   padding: 10px;
   border-style: ridge;
+}
+.optionsMenuBottom{
+  background-color:#7a92ff;
+  width:1000px;
+}
+#FunctionDefects-menu {
+  float:left;
+  background-color:#7a92ff;
+  margin-right: 50px;
+}
+#MaintainabilityDefects-menu {
+  float:left;
+  background-color:#7a92ff;
+  margin-right: 50px;
+}
+#StyleConventions-menu {
+  background-color:#7a92ff;
+  float:left;
 }
 /* Title */
 .main-title {
@@ -31,7 +49,7 @@ body {
     background-color: #E0E0E0;
 }
 .wrapper {
-    
+  
 }
 
 .back-button{

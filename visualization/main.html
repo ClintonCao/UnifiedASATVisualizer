@@ -17,28 +17,37 @@
     <div id="wrapper">
         <div id="chart">
         </div>
-        <div id="optionsMenu">
-        	<h3 onClick="handleClickSatType()">SATs</h3>
+        <div class="optionsMenuRight">
+            <h3>Visualizers </h3>
             <form name="button-options" action="">
+                <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap"> Treemap<br>
+                <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>
+        </div>
+        <div class="optionsMenuRight">
+            <h3 onClick="handleClickSatType()">SATs</h3>
                 <div id="checkStyleDiv"><input type="checkbox" class="updateContent sats" id="checkstyleButton" name="sat" value="CheckStyle"><label id="checkStyleLabel"> CheckStyle</label><br></div>
                 <div id="PMDDiv"><input type="checkbox" class="updateContent sats" id="pmdButton" name="sat" value="PMD"><label id="PMDLabel"> PMD</label><br></div>
                 <div id="FindBugsDiv"><input type="checkbox" class="updateContent sats" id="findBugsButton" name="sat" value="FindBugs"><label id="FindBugsLabel"> FindBugs</label><br></div>
-            <h3>Visualizers </h3>
-                <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap"> Treemap<br>
-                <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>
+        </div>
+        <div class="optionsMenuRight">
             <h3>Color scale </h3>
                 <input type="radio" id="absoluteButton" class="updateContent" name="colorScale" onclick="handleClickColorScale(this);"  value="absolute"> Absolute<br>
                 <input type="radio" id="relativeButton" class="updateContent" name="colorScale" onclick="handleClickColorScale(this);" value="relative"> Relative<br>
-            <h3>Category</h3>
-            <h4 class="category-titles" onClick="handleClickCategory('FunctionDefects')">Functional Defects</h4>
-                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Check"> Check</label><br>
-                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Concurrency"> Concurrency</label><br>
-                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="ErrorHandling"> Error Handling</label><br>
-                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Interface"> Interface</label><br>
-                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Logic"> Logic</label><br>
-                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Migration"> Migration</label><br>
-                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Resource"> Resource</label><br>
-                 <h4 class="category-titles" onClick="handleClickCategory('MaintainabilityDefects')">Maintainability Defects</h4>
+            </form>
+        </div>
+    </div>
+
+    <div class="optionsMenuBottom">
+        <h4>Categories</h4>
+        <div id="FunctionDefects-menu">
+            <h4 class="category-titles" onClick="handleClickCategory('StyleConventions')">Style Conventions</h4>
+            <form name="button-options" action="">
+                <label><input type="checkbox" class="updateContent StyleConventions" name="category" value="Other"> Other</label><br>
+                <label><input type="checkbox" class="updateContent StyleConventions" name="category" value="Regular Expressions"> Regular Expressions</label><br>   
+                <label><input type="checkbox" class="updateContent StyleConventions" name="category" value="Tool Specific"> Tool Specific</label><br>
+        </div>
+        <div id="MaintainabilityDefects-menu">
+            <h4 class="category-titles" onClick="handleClickCategory('MaintainabilityDefects')">Maintainability Defects</h4>
                 <label><input type="checkbox" class="updateContent MaintainabilityDefects" name="category" value="Best Practices"> Best practices</label><br>
                 <label><input type="checkbox" class="updateContent MaintainabilityDefects" name="category" value="Code Structure"> Code Structure</label><br>
                 <label><input type="checkbox" class="updateContent MaintainabilityDefects" name="category" value="Documentation Conventions"> Doc. Conventions</label><br>
@@ -48,14 +57,19 @@
                 <label><input type="checkbox" class="updateContent MaintainabilityDefects" name="category" value="Refactorings - Simplifications"> Simplifications</label><br>
                 <label><input type="checkbox" class="updateContent MaintainabilityDefects" name="category" value="Refactorings - Redundancies"> Redundancies</label><br>
                 <label><input type="checkbox" class="updateContent MaintainabilityDefects" name="category" value="Style Conventions"> Style Conventions</label><br>
-                <h4 class="category-titles" onClick="handleClickCategory('StyleConventions')">Style Conventions</h4>
-                <label><input type="checkbox" class="updateContent StyleConventions" name="category" value="Other"> Other</label><br>
-                <label><input type="checkbox" class="updateContent StyleConventions" name="category" value="Regular Expressions"> Regular Expressions</label><br>	
-                <label><input type="checkbox" class="updateContent StyleConventions" name="category" value="Tool Specific"> Tool Specific</label><br>
+        </div>
+        <div id="StyleConventions-menu">
+            <h4 class="category-titles" onClick="handleClickCategory('FunctionDefects')">Functional Defects</h4>
+                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Check"> Check</label><br>
+                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Concurrency"> Concurrency</label><br>
+                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="ErrorHandling"> Error Handling</label><br>
+                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Interface"> Interface</label><br>
+                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Logic"> Logic</label><br>
+                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Migration"> Migration</label><br>
+                <label><input type="checkbox" class="updateContent FunctionalDefects" name="category" value="Resource"> Resource</label><br>
             </form>
         </div>
     </div>
-
 
 	<!--
 		All Javascript files
