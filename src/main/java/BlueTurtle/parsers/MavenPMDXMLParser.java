@@ -22,7 +22,7 @@ import BlueTurtle.warnings.Warning;
  * @author BlueTurtle.
  *
  */
-public class PMDXMLParser extends XMLParser {
+public class MavenPMDXMLParser extends XMLParser {
 
 	/**
 	 * Parse a PMD report file.
@@ -92,13 +92,8 @@ public class PMDXMLParser extends XMLParser {
 							// Get the category of the warning.
 							String ruleName = warningElement.getAttribute("rule");
 							
-							String firstWord = ruleSet.toLowerCase();
-							
-							if (firstWord.contains(" ")) {
-								firstWord = firstWord.substring(0, firstWord.indexOf(" "));
-							}
 							// PMD rule name is a special concatenation of rule set and rule name
-							String pmdRN = firstWord + ".xml/" + ruleName; 
+							String pmdRN = ruleSet.toLowerCase() + ".xml/" + ruleName; 
 							
 							
 							String classification = categoryInfo.get(pmdRN);
