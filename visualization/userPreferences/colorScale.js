@@ -21,10 +21,12 @@ var colorScale = (function() {
 		  		}
 		  		var curRatio = numberOfWarnings / classObjectJson.loc;
 		  		if(curRatio > worstRatio) {
+		  			console.log(classObjectJson.fileName);
 		  			worstRatio = curRatio;
 		  		}
 			}
 		}
+		console.log(worstRatio);
 		return (worstRatio * 100);
 	}
 
