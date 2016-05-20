@@ -1,17 +1,17 @@
 # Contextproject-TSE &nbsp; [![Build Status](https://travis-ci.org/ClintonCao/Contextproject-TSE.svg?branch=master)](https://travis-ci.org/ClintonCao/Contextproject-TSE) [![Coverage Status](https://coveralls.io/repos/github/ClintonCao/Contextproject-TSE/badge.svg?branch=master)](https://coveralls.io/github/ClintonCao/Contextproject-TSE?branch=master)
 This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016. 
 
-**Team Members**:
+## Team Members:
 
-⋆[Boning Gong] (https://github.com/boninggong)
+★[Boning Gong] (https://github.com/boninggong)
 
-⋆[Clinton Cao] (https://github.com/ClintonCao)
+★[Clinton Cao] (https://github.com/ClintonCao)
 
-⋆[Michiel Doesburg] (https://github.com/Michieldoesburg)
+★[Michiel Doesburg] (https://github.com/Michieldoesburg)
 
-⋆[Sunwei Wang] (https://github.com/SunweiWang)
+★[Sunwei Wang] (https://github.com/SunweiWang)
 
-⋆[Tim Buckers] (https://github.com/TimBuckers)
+★[Tim Buckers] (https://github.com/TimBuckers)
 
 **SE TA**: [Bastiaan Reijm] (https://github.com/breijm)
 
