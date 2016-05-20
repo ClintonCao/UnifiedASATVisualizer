@@ -39,3 +39,7 @@ This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016.
 ## Links to other documents:
 
 SAT Research: [sat research] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/SAT%20research/StaticanalysistoolsresearchBlueTurtle.pdf)
+
+## Run the Visualizer:
+
+Go to the visualization map and run main.html using a browser
