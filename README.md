@@ -3,17 +3,17 @@ This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016.
 
 **Team Members**:
 
-Boning Gong
+⋆[Boning Gong] (https://github.com/boninggong)
 
-Clinton Cao
+⋆[Clinton Cao] (https://github.com/ClintonCao)
 
-Michiel Doesburg
+⋆[Michiel Doesburg] (https://github.com/Michieldoesburg)
 
-Sunwei Wang
+⋆[Sunwei Wang] (https://github.com/SunweiWang)
 
-Tim Buckers
+⋆[Tim Buckers] (https://github.com/TimBuckers)
 
-**SE TA**: Bastiaan Reijm
+**SE TA**: [Bastiaan Reijm] (https://github.com/breijm)
 
 
 ## Links to sprint related documents:
