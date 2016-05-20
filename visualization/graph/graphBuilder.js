@@ -15,7 +15,7 @@ function linkDistance(d) {
     if (packagesLevel) {
         return 25 * d.value;
     } else {
-        return 15 * d.value;
+        return 22.5 * d.value;
     }
 }
 /*
@@ -34,9 +34,9 @@ function linkStrokeWidth(d) {
  */
 function nodeRadius(d) {
     if (packagesLevel) {
-        return Math.sqrt(d.numberOfClasses) * 5;
+        return Math.sqrt(d.loc) * 0.25;
     } else {
-        return Math.sqrt(d.loc) * 2.25;
+        return Math.sqrt(d.loc) * 0.75;
     }
 }
 /*
