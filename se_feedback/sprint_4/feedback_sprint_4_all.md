@@ -28,7 +28,7 @@ Total: **9.7**
 
 #Code Evolution Quality Feedback
 
-Total: **8.99**
+Total: **8.59**
 
 | Architecture                       | Score |
 |------------------------------------|-------|
@@ -48,7 +48,7 @@ Total: **8.99**
 | Continuous Integration | Score |
 |------------------------|-------|
 | Building               | 10    |
-| Testing                | 10    |
+| Testing                | 8    |
 
 |         | Score |
 |---------|-------|
@@ -84,3 +84,6 @@ Total: **8.99**
 	* Update the ADD with this!
 * Good code reviews
 * Good job testing!
+* Note to get a higher testing grade:
+	* provide documentation that this is the highest reasonable amount
+	* increase the coverage
