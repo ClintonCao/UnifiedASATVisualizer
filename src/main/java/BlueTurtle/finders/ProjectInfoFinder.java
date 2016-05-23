@@ -32,6 +32,9 @@ public class ProjectInfoFinder {
 		System.out.println("Path in findFiles = " + srcDir.getAbsolutePath());
 		// find all subdirectories;
 		File[] subdirs = srcDir.listFiles();
+		
+		if (subdirs == null) System.out.println("Something is not good");
+		
 		// Go through all subdirectories
 		for (File subdir : subdirs) {
 			// if it is a directory, keep searching for file.
