@@ -34,7 +34,9 @@ public class ProjectInfoFinderTest {
 		pif = new ProjectInfoFinder();
 		exampleFilePath = Paths.get("Runnables", "TestCode", "AllClosestPoints.java").toAbsolutePath().toString();
 		System.out.println("Path = " + exampleFilePath);
-		pif.findFiles(new File(Paths.get("Runnables", "TestCode").toAbsolutePath().toString()));
+		String testPath = System.getProperty("user.dir") + "/Runnables/TestCode/";
+		System.out.println(testPath);
+		pif.findFiles(new File(testPath));
 	}
 
 	/**
