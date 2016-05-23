@@ -8,12 +8,16 @@ import java.util.List;
 import java.util.Set;
 
 import BlueTurtle.finders.PackageNameFinder;
+import BlueTurtle.groupers.WarningGrouper;
+import BlueTurtle.groupers.WarningGrouper.Criteria;
 import BlueTurtle.parsers.CheckStyleXMLParser;
 import BlueTurtle.parsers.FindBugsXMLParser;
 import BlueTurtle.parsers.GDCParser;
 import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
+import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
+import BlueTurtle.writers.JSWriter;
 
 /**
  * JSONFormatter reads the output of Checkstyle, Findbugs and PMD and produces a summarized defect output.
@@ -34,11 +38,11 @@ public class JSONFormatter {
 	public void format() throws IOException {
 		List<Warning> checkStyleWarnings = parseCheckStyleXML();
 		List<Warning> pmdWarnings = parsePMDXML();
-		//List<Warning> findBugsWarnings = parseFindBugsXML();
+		List<Warning> findBugsWarnings = parseFindBugsXML();
 		List<Warning> totalWarnings = new ArrayList<Warning>();
 		totalWarnings.addAll(checkStyleWarnings);
 		totalWarnings.addAll(pmdWarnings);
-		//totalWarnings.addAll(findBugsWarnings);
+		totalWarnings.addAll(findBugsWarnings);
 		
 		writeJSON(totalWarnings);
 	}
@@ -102,10 +106,11 @@ public class JSONFormatter {
 			packagesNames.add(PackageNameFinder.findPackageName(w.getFilePath()));
 		}
 
-//		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
-//		List<Summarizer> list = wg.groupBy("packages");
-//
-//		JSWriter jwriter = new JSWriter(list);
-//		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.js");	
+		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
+		List<Summarizer> list = wg.groupBy(Criteria.PACKAGES);
+
+		JSWriter jwriter = JSWriter.getInstance();
+		jwriter.setSummarizedWarnings(list);
+		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.js");	
 	}
 }
