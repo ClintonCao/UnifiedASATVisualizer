@@ -28,6 +28,8 @@ public class ProjectInfoFinder {
 	 *            the source directory to search in.
 	 */
 	public void findFiles(File srcDir) {
+		
+		System.out.println("Path in findFiles = " + srcDir.getAbsolutePath());
 		// find all subdirectories;
 		File[] subdirs = srcDir.listFiles();
 		// Go through all subdirectories
