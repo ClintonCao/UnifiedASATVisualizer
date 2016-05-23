@@ -1,6 +1,9 @@
 package BlueTurtle.TSE;
 
+import java.io.File;
 import java.io.IOException;
+
+import BlueTurtle.gui.GUIController.ASAT;
 import BlueTurtle.interfaces.Controller;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +18,10 @@ import lombok.Setter;
  */
 public class JavaController implements Controller {
 	@Getter @Setter private static String userDir = System.getProperty("user.dir");
+	@Getter @Setter private static String checkStyleOutputFile;
+	@Getter @Setter private static String PMDOutputFile;
+	@Getter @Setter private static String findBugsOutputFile;
+
 
 	/**
 	 * Execute controller. A command is constructed for every ASAT which needs to be run. 
@@ -24,6 +31,23 @@ public class JavaController implements Controller {
 	 *             executing the commands.
 	 */
 	public void execute() throws IOException {
-
+		JSONFormatter jsonFormatter = new JSONFormatter();
+		jsonFormatter.format();
+	}
+	
+	public static void setASATOutput(ASAT asat, File file) {
+		switch (asat) {
+			case PMD:
+				PMDOutputFile = file.getAbsolutePath();
+				break;
+			case Checkstyle:
+				checkStyleOutputFile = file.getAbsolutePath();
+				break;
+			case Findbugs:
+				findBugsOutputFile = file.getAbsolutePath();
+				break;
+		default:
+			break;
+		}
 	}
 }

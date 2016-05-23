@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import BlueTurtle.TSE.JavaController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,6 +21,12 @@ import javafx.stage.Stage;
  *
  */
 public class GUIController {
+	
+	public enum ASAT {
+		Checkstyle,
+		PMD,
+		Findbugs;
+	}
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
 	private ResourceBundle resources;
@@ -171,7 +178,7 @@ public class GUIController {
 			 */
 			@Override
 			public void handle(MouseEvent event) {
-				chooseFile(checkStyleConfigText);
+				chooseFile(checkStyleConfigText, ASAT.Checkstyle);
 			}
 		});
 
@@ -185,7 +192,7 @@ public class GUIController {
 			 */
 			@Override
 			public void handle(MouseEvent event) {
-				chooseFile(pmdConfigText);
+				chooseFile(pmdConfigText, ASAT.PMD);
 			}
 		});
 
@@ -199,7 +206,7 @@ public class GUIController {
 			 */
 			@Override
 			public void handle(MouseEvent event) {
-				chooseFile(findbugsConfigText);
+				chooseFile(findbugsConfigText, ASAT.Findbugs);
 			}
 		});
 
@@ -222,7 +229,7 @@ public class GUIController {
 	 * @param configText
 	 *            the text in the GUI for the config file.
 	 */
-	public void chooseFile(Text configText) {
+	public void chooseFile(Text configText, ASAT asat) {
 
 		FileChooser fileChooser = new FileChooser();
 
@@ -231,7 +238,7 @@ public class GUIController {
 		fileChooser.getExtensionFilters().add(extFilter);
 
 		File file = fileChooser.showOpenDialog(new Stage());
-
+		JavaController.setASATOutput(asat, file);
 		if (file != null) {
 			configText.setText(file.getAbsolutePath());
 		}

@@ -1,6 +1,8 @@
 package BlueTurtle.TSE;
 
 import java.io.IOException;
+
+import BlueTurtle.gui.GUI;
 import BlueTurtle.interfaces.Controller;
 
 /**
@@ -37,6 +39,8 @@ public class Main {
 		switch (currentMode) {
 		case JAVA:
 			controller = new JavaController();
+			GUI gui = new GUI();
+			gui.startGUI();
 			break;
 		default:
 			break;
