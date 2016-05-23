@@ -19,19 +19,19 @@ import BlueTurtle.warnings.Warning;
  * @author BlueTurtle.
  *
  */
-public class PMDXMLParserTest {
+public class MavenPMDXMLParserTest {
 
 	private static String testSet = "./src/test/resources/examplePmd1.xml";
 	private static String testSet2 = "./src/test/resources/examplePmd2.xml";
 	private static String testSet3 = "./src/test/resources/asat-gdc-mapping.html";
 
-	private static String testSetFilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\CheckStyleWarning.java";
-	private static String testSetFileName = "CheckStyleWarning.java";
-	private static String testSetRuleName = "OverrideBothEqualsAndHashcode";
-	private static String testSetPackageName = "BlueTurtle.warnings";
-	private static String testSetRuleSet = "Basic";
-	private static String testSetMethod = "equals";
-	private static String testSetClassification = "Interface";
+	private static String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\CheckStyleWarning.java";
+	private static String testSet2FileName = "CheckStyleWarning.java";
+	private static String testSet2RuleName = "OverrideBothEqualsAndHashcode";
+	private static String testSet2PackageName = "BlueTurtle.warnings";
+	private static String testSet2RuleSet = "Basic";
+	private static String testSet2Method = "equals";
+	private static String testSet2Classification = "Interface";
 
 
 	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
@@ -65,8 +65,8 @@ public class PMDXMLParserTest {
 	public void testParsingOneWarning() {
 		XMLParser parser = new PMDXMLParser();
 
-		PMDWarning expected = new PMDWarning(testSetFilePath, testSetFileName, 43,
-				testSetPackageName, testSetRuleSet, testSetMethod, testSetRuleName, testSetClassification);
+		PMDWarning expected = new PMDWarning(testSet2FilePath, testSet2FileName, 43,
+				testSet2PackageName, testSet2RuleSet, testSet2Method, testSet2RuleName, testSet2Classification);
 
 		PMDWarning actual = (PMDWarning) parser.parseFile(testSet2, categoryInfo).get(0);
 
