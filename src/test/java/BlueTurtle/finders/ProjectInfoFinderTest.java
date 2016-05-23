@@ -32,7 +32,8 @@ public class ProjectInfoFinderTest {
 	public void setUp() throws Exception {
 		pif = new ProjectInfoFinder();
 		exampleFilePath = System.getProperty("user.dir") + "\\Runnables\\TestCode\\AllClosestPoints.java";
-		pif.findFiles(new File(System.getProperty("user.dir") + "/Runnables/TestCode/"));
+		System.out.println("Path = " + exampleFilePath);
+		pif.findFiles(new File(System.getProperty("user.dir") + "\\Runnables\\TestCode\\"));
 	}
 
 	/**
