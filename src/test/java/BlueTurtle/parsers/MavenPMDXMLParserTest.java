@@ -14,7 +14,7 @@ import BlueTurtle.warnings.PMDWarning;
 import BlueTurtle.warnings.Warning;
 
 /**
- * Test class for PMDXMLParser.
+ * Test class for MavenPMDXMLParser. 
  * 
  * @author BlueTurtle.
  *
@@ -50,7 +50,7 @@ public class MavenPMDXMLParserTest {
 	 */
 	@Test
 	public void testParseCorrectBehaviour() {
-		XMLParser parser = new PMDXMLParser();
+		XMLParser parser = new MavenPMDXMLParser();
 
 		List<Warning> warnings = parser.parseFile(testSet, categoryInfo);
 
@@ -63,7 +63,7 @@ public class MavenPMDXMLParserTest {
 	 */
 	@Test
 	public void testParsingOneWarning() {
-		XMLParser parser = new PMDXMLParser();
+		XMLParser parser = new MavenPMDXMLParser();
 
 		PMDWarning expected = new PMDWarning(testSet2FilePath, testSet2FileName, 43,
 				testSet2PackageName, testSet2RuleSet, testSet2Method, testSet2RuleName, testSet2Classification);
@@ -78,7 +78,7 @@ public class MavenPMDXMLParserTest {
 	 */
 	@Test
 	public void testCreateRightAmountOfWarnings() {
-		XMLParser parser = new PMDXMLParser();
+		XMLParser parser = new MavenPMDXMLParser();
 
 		List<Warning> warnings = parser.parseFile(testSet, categoryInfo);
 
@@ -90,7 +90,7 @@ public class MavenPMDXMLParserTest {
 	 */
 	@Test
 	public void testParseTheWrongFile() {
-		XMLParser parser = new PMDXMLParser();
+		XMLParser parser = new MavenPMDXMLParser();
 		
 		String testSet3 = "/ex.xml";
 
