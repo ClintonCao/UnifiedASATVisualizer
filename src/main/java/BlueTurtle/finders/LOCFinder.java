@@ -25,7 +25,7 @@ public class LOCFinder {
 			BufferedReader reader = new BufferedReader(new FileReader(filePath));
 			String line = reader.readLine();
 			while (line != null) {
-				if (!line.isEmpty()) {
+				if (!line.isEmpty() && !line.startsWith("import")) {
 					numLines++;
 				}
 				line = reader.readLine();
