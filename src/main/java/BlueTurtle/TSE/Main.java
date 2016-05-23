@@ -36,6 +36,7 @@ public class Main {
 	 *             execution of the controller.
 	 */
 	public static void main(String[] args) throws IOException {
+		
 		switch (currentMode) {
 		case JAVA:
 			controller = new JavaController();

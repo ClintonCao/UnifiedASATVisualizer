@@ -35,6 +35,9 @@ public class JavaController implements Controller {
 	}
 	
 	public static void setASATOutput(ASAT asat, File file) {
+		if(file == null) {
+			return;
+		}
 		switch (asat) {
 			case PMD:
 				PMDOutputFile = file.getAbsolutePath();

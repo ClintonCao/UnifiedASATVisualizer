@@ -1,8 +1,6 @@
 package BlueTurtle.TSE;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,15 +8,12 @@ import java.util.List;
 import java.util.Set;
 
 import BlueTurtle.finders.PackageNameFinder;
-import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.parsers.CheckStyleXMLParser;
 import BlueTurtle.parsers.FindBugsXMLParser;
 import BlueTurtle.parsers.GDCParser;
 import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
-import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
-import BlueTurtle.writers.JSWriter;
 
 /**
  * JSONFormatter reads the output of Checkstyle, Findbugs and PMD and produces a summarized defect output.
@@ -58,7 +53,7 @@ public class JSONFormatter {
 	private List<Warning> parseCheckStyleXML() throws IOException {
 		xmlParser = new CheckStyleXMLParser();
 		
-		List<Warning> checkStyleWarnings = xmlParser.parseFile(JavaController.getUserDir() + "/Runnables/Testcode/checkstyle.xml", categoryInfo);
+		List<Warning> checkStyleWarnings = xmlParser.parseFile(JavaController.getCheckStyleOutputFile(), categoryInfo);
 		
 		return checkStyleWarnings;
 	}
@@ -73,7 +68,7 @@ public class JSONFormatter {
 	private List<Warning> parsePMDXML() throws IOException {
 		xmlParser = new PMDXMLParser();
 		
-		List<Warning> PMDWarnings = xmlParser.parseFile(JavaController.getUserDir() + "/Runnables/Testcode/pmd.xml", categoryInfo);
+		List<Warning> PMDWarnings = xmlParser.parseFile(JavaController.getPMDOutputFile(), categoryInfo);
 		
 		return PMDWarnings;
 	}
@@ -87,7 +82,7 @@ public class JSONFormatter {
 	 */
 	private List<Warning> parseFindBugsXML() throws IOException {
 		xmlParser = new FindBugsXMLParser();
-		List<Warning> findBugsWarnings = xmlParser.parseFile(JavaController.getUserDir() + File.separator + Paths.get("Runnables", "Testcode", "findbugs.xml"), categoryInfo);
+		List<Warning> findBugsWarnings = xmlParser.parseFile(JavaController.getFindBugsOutputFile(), categoryInfo);
 		return findBugsWarnings;
 	}
 	
