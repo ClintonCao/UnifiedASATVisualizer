@@ -12,7 +12,6 @@ body{
 	background-size: cover;
 }
 
-
 div#menu-left-wrapper{
   float: left;
   margin-left: 20px;
@@ -41,7 +40,7 @@ div#left-menu{
 
 /* Chart div*/
 div#chart {
-  background: rgba(58, 118, 219, 1);
+  background:#CCC;
   margin:30px;
   border: 5px #FFFFFF solid;
 }
@@ -51,6 +50,34 @@ div#chart-wrapper{
   background: rgba(55, 58, 60, 0.8);
 }
 
+/* Different menus for options */
+.optionsMenuRight{
+  float:right;
+  display:block;
+  background-color:#7a92ff;
+  width:250px;
+  margin:0px 10px 15px 10px;
+  padding: 10px;
+  border-style: ridge;
+}
+.optionsMenuBottom{
+  background-color:#7a92ff;
+  width:1000px;
+}
+#FunctionDefects-menu {
+  float:left;
+  background-color:#7a92ff;
+  margin-right: 50px;
+}
+#MaintainabilityDefects-menu {
+  float:left;
+  background-color:#7a92ff;
+  margin-right: 50px;
+}
+#StyleConventions-menu {
+  background-color:#7a92ff;
+  float:left;
+}
 /* Title */
 #main-title {
   background: rgba(55, 58, 60, 0.8);
@@ -64,16 +91,10 @@ div#chart-wrapper{
 title{
 	color:#FFFFFF !important;
 }
-div.toggle{
-	margin-right:7px;
-}
 .back-button{
   border: none;
   color: white;
-  width: -moz-calc(100% - 317px);
-  width: -webkit-calc(100% - 317px);
-  width: calc(100% - 317px);
- /* background:#999;*/
+  width: 100%;
   color: #000;
   height: 25px;
   font-size: 15px;

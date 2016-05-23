@@ -109,7 +109,13 @@ function createJsonTreeMap(packages){
  */
 function createJsonGraphPackages(packages){
 	var jsonArrPackage = [];
+	var linksArray = [];
  	for(var p =0; p < packages.length; p++){
+ 		for(var z = p+1; z < packages.length; z++) {
+ 			if((Math.floor(Math.random() * 10) + 1) <= 8) {
+ 				linksArray.push({"source":p, "target":z, "value": 10});
+ 			}
+ 		}
 	  	var jsonArrClass = [];
 	  	var classes = packages[p];
 	  	var totalWarningsPackage = 0;
@@ -130,9 +136,7 @@ function createJsonGraphPackages(packages){
       	}
       	jsonArrPackage.push({fileName: classes.packageName, numberOfClasses: numberOfClasses, totalWarnings:totalWarningsPackage, loc:totalLines, classes: jsonArrClass});
 	}
-	console.log("2:");
-	console.log(jsonArrPackage);
-	return {nodes: jsonArrPackage, links: [{"source":0, "target":1, "value":11}] };
+	return {nodes: jsonArrPackage, links: linksArray };
 }
 
 /*
@@ -144,8 +148,14 @@ function createJsonGraphClasses(packages, packageName){
  	for(var p =0; p < packages.length; p++){
     	if(packages[p].packageName == packageName) {
       	var jsonArrClass = [];
+      	var linksArray = [];
       	var classes = packages[p];
 	      	for (var i = 0; i < classes.length; i++) {
+	      		for(var z = i+1; z < classes.length; z++) {
+	      			if((Math.floor(Math.random() * 10) + 1) <= 2) {
+		 				linksArray.push({"source":i, "target":z, "value": 10});
+		 			}
+		 		}
 	        	var fileName = classes[i].fileName;
 	        	var linesOfCode = classes[i].loc;
 	        	var amountOfWarnings = classes[i].amountOfWarnings;
@@ -157,5 +167,5 @@ function createJsonGraphClasses(packages, packageName){
 	      	}
     	}
   	}
-	return {nodes: jsonArrClass, links: [{"source":0, "target":1, "value":11}] };
+	return {nodes: jsonArrClass, links: linksArray };
 }

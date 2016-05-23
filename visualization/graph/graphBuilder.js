@@ -15,7 +15,7 @@ function linkDistance(d) {
     if (packagesLevel) {
         return 25 * d.value;
     } else {
-        return 15 * d.value;
+        return 22.5 * d.value;
     }
 }
 /*
@@ -34,9 +34,9 @@ function linkStrokeWidth(d) {
  */
 function nodeRadius(d) {
     if (packagesLevel) {
-        return Math.sqrt(d.numberOfClasses) * 5;
+        return Math.sqrt(d.loc) * 0.25;
     } else {
-        return Math.sqrt(d.loc) * 2.25;
+        return Math.sqrt(d.loc) * 0.75;
     }
 }
 /*
@@ -98,6 +98,30 @@ function nodeDoubleClick(d, i) {
 
         window.open("http://9gag.com/", "_self")
     }
+    appendInfoToSAT(getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("CheckStyle")), 
+        getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("PMD")), getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("FB")));
+}
+
+function getAmountOfWarningsOfCurrentLevel(warningsOfSpecificASAT) {
+    var sum = 0;
+    if(packagesLevel) {
+        for(var i = 0; i < warningsOfSpecificASAT.length; i++) {
+            for(var j = 0; j < warningsOfSpecificASAT[i].length; j++) {
+                sum += warningsOfSpecificASAT[i][j].amountOfWarnings;
+            }
+        }
+        return sum;
+    } else {
+        for(var i = 0; i < warningsOfSpecificASAT.length; i++) {
+            if(warningsOfSpecificASAT[i].packageName == sessionStorage.getItem('packageName')) {
+                for(var j = 0; j < warningsOfSpecificASAT[i].length; j++) {
+                    sum += warningsOfSpecificASAT[i][j].amountOfWarnings;
+                }
+                return sum;
+            }
+        }
+    }
+    return -1;
 }
 
 /*
@@ -148,6 +172,8 @@ function setTitle() {
 function goBack() {
     removeChart();
     packagesLevel = true;
+    appendInfoToSAT(getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("CheckStyle")), 
+        getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("PMD")), getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("FB")));
     var graphButtonDiv = document.getElementById("sub-title");
     graphButtonDiv.style.display = 'inline';
     var graphButton = document.getElementById('back-button');
@@ -292,27 +318,24 @@ function createGraph(graph) {
         }	
     });
 	
-	 function reloadContent(cb){
+	 function reloadContent(cb) {
 		 if (cb.name == "sat") {
             handleClickTreeMapTypeSat(cb.value, cb.checked);
-		 }else if (cb.name == "category"){
+		 } else if (cb.name == "category"){
 			handleClickCategorySat(cb.value, cb.checked);
 		 }
-            removeChart();
-            var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
-            if (packagesLevel) {
-                var input = createJsonGraphPackages(packages);
-
-               
-            } else {
-                var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
-            }
-			if(typeof graphTrace[graphTraceIndex] === 'undefined') {
-                graphTrace.push(input);
-            } else {
-                graphTrace[graphTraceIndex] = input;
-            }
-            createGraph(graphTrace[graphTraceIndex]);
-        
+        removeChart();
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        if (packagesLevel) {
+            var input = createJsonGraphPackages(packages);
+        } else {
+            var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+        }
+		if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+            graphTrace.push(input);
+        } else {
+            graphTrace[graphTraceIndex] = input;
+        }
+        createGraph(graphTrace[graphTraceIndex]);
 	 }
 };

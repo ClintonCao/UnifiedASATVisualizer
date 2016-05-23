@@ -9,13 +9,13 @@ runTreeMap();
 setAllCheckboxesOnDefault();
 
 function setAllCheckboxesOnDefault() {
-		 console.log("setAllCheckboxesOnDefaultd");
 	$(".updateContent").prop('checked', false); 
 	$("#treemapButton").prop('checked', true);
 	$("#absoluteButton").prop('checked', true);
 	$(".FunctionalDefects").click();
 	$(".MaintainabilityDefects").click();
 	$(".StyleConventions").click();
+	$(".sats").click();
 }
 
 // Delete the entire chart from the page.
@@ -32,9 +32,9 @@ function appendInfoToSAT(CS, PMD, FB) {
     var PMDElement = document.getElementById("PMDLabel");
     var findBugsElement = document.getElementById("FindBugsLabel");
 
-    checkStyleElement.innerHTML = ' CheckStyle (' + CS + ")";
-    PMDElement.innerHTML = " PMD (" + PMD + ")";
-    findBugsElement.innerHTML = " FindBugs (" + FB + ")";
+    checkStyleElement.innerHTML = '&nbsp; CheckStyle (' + CS + ")";
+    PMDElement.innerHTML = "&nbsp; PMD (" + PMD + ")";
+    findBugsElement.innerHTML = "&nbsp; FindBugs (" + FB + ")";
 }
 
 //Setup tree map and shows it

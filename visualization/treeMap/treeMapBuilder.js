@@ -1,3 +1,4 @@
+
 var treeMapBuilder = (function() {
 
 
@@ -98,18 +99,24 @@ var treeMapBuilder = (function() {
 					handleClickCategorySat(view.target.value, view.target.checked);
 				}
                 fastReload();
-
+				
             }	
         });
 		
 		$('.updateContent').change(function() {
-		   if (document.getElementById('treemapButton').checked) {
+		   if (document.getElementById('treemapButton').checked && !refreshing) {
+			   refreshing = true;
+			   console.log($(this).prop('value'));
+			   console.log("asdvsdiauvbib");
+			   
 				if ($(this).prop('name') == "sat") {
 					handleClickTreeMapTypeSat($(this).prop('value'), $(this).prop('checked'));
 				}else if ($(this).prop('name') == "category"){
 					handleClickCategorySat($(this).prop('value'), $(this).prop('checked'));
 				}
-                
+				fastReload();
+				var millisecondsToWait = 200;
+                setTimeout(function(){ refreshing = false; }, millisecondsToWait);
 
             }	
 		})
@@ -171,7 +178,6 @@ var treeMapBuilder = (function() {
     		var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     		var finalJson =  createJsonTreeMap(packages);
             root.values = finalJson;
-            console.log(getTotalASATWarning("PMD"));
             initialize(root, width, height);
             accumulateValue(root);
             accumulateWarnings(root);
@@ -353,7 +359,7 @@ var treeMapBuilder = (function() {
             rootname: "TOP",
             format: ",d",
             title: "",
-            width: window.innerWidth - 700,
+            width: window.innerWidth - 750,
             height: window.innerHeight - 175
         };
         // Remove the chart if there is already one.
