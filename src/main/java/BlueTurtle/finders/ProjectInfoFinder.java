@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import BlueTurtle.computers.LOCComputer;
 import lombok.Getter;
 
 /**
@@ -29,11 +30,8 @@ public class ProjectInfoFinder {
 	 */
 	public void findFiles(File srcDir) {
 		
-		System.out.println("Path in findFiles = " + srcDir.getAbsolutePath());
 		// find all subdirectories;
 		File[] subdirs = srcDir.listFiles();
-		
-		if (subdirs == null) System.out.println("Something is not good");
 		
 		// Go through all subdirectories
 		for (File subdir : subdirs) {
@@ -58,13 +56,10 @@ public class ProjectInfoFinder {
 		if (file.getName().endsWith(".java")) {
 			String path = file.getAbsolutePath();
 			classPaths.add(path); // add the path
-
-			int loc = LOCFinder.findLOC(path);
-			classLocs.put(path, loc);
-
-			String packageName = PackageNameFinder.findPackageName(path);
-			classPackage.put(path, packageName);
-			packages.add(packageName);
+			classLocs.put(path, LOCComputer.computeLOC(path)); // add the LOC
+			String packageName = PackageNameFinder.findPackageName(path); // find the package name
+			classPackage.put(path, packageName); // put entry of class and its package
+			packages.add(packageName); // add package to the list of packages
 		}
 	}
 

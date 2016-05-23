@@ -4,13 +4,15 @@ import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
 
+import BlueTurtle.computers.LOCComputer;
+
 /**
  * Test for LOCFinder class.
  * 
  * @author BlueTurtle.
  *
  */
-public class LOCFinderTest {
+public class LOCComputerTest {
 
 	/**
 	 * Test that the right right number of lines is found from the file.
@@ -18,7 +20,7 @@ public class LOCFinderTest {
 	 */
 	@Test
 	public void testRightLOCFound() {
-		int numLines = LOCFinder.findLOC("./src/test/resources/DefaultClass.txt");
+		int numLines = LOCComputer.computeLOC("./src/test/resources/DefaultClass.txt");
 		assertSame(5, numLines);
 	}
 
@@ -27,7 +29,7 @@ public class LOCFinderTest {
 	 */
 	@Test
 	public void testFindingLOCOnDifferentFile() {
-		int numLines = LOCFinder.findLOC("./src/test/resources/ExampleTestClass.txt");
+		int numLines = LOCComputer.computeLOC("./src/test/resources/ExampleTestClass.txt");
 		assertSame(6, numLines);
 	}
 
@@ -36,7 +38,7 @@ public class LOCFinderTest {
 	 */
 	@Test
 	public void testFindingLOCInNonExistingFile() {
-		int zero = LOCFinder.findLOC("./NonExistingClass.java");
+		int zero = LOCComputer.computeLOC("./NonExistingClass.java");
 		assertSame(0, zero);
 	}
 }

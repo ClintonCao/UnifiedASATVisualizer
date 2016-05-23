@@ -3,7 +3,7 @@ package BlueTurtle.summarizers;
 import java.util.ArrayList;
 import java.util.List;
 
-import BlueTurtle.finders.LOCFinder;
+import BlueTurtle.computers.LOCComputer;
 import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.warnings.Warning;
 import lombok.Getter;
@@ -36,7 +36,7 @@ public class ComponentSummarizer extends Summarizer {
 		super(packageName);
 		setFileName(fileName);
 		setFilePath(filePath);
-		int loc = LOCFinder.findLOC(filePath);
+		int loc = LOCComputer.computeLOC(filePath);
 		setLoc(loc);
 		setWarningList(new ArrayList<Warning>());
 	}
