@@ -31,10 +31,8 @@ public class ProjectInfoFinderTest {
 	@Before
 	public void setUp() throws Exception {
 		pif = new ProjectInfoFinder();
-		exampleFilePath = System.getProperty("user.dir") + File.separator + "Runnables" + File.separator + "TestCode"
-				+ File.separator + "AllClosestPoints.java";
-		pif.findFiles(new File(System.getProperty("user.dir") + File.separator + "Runnables" + File.separator
-				+ "TestCode" + File.separator));
+		exampleFilePath = System.getProperty("user.dir") + "\\Runnables\\TestCode\\AllClosestPoints.java";
+		pif.findFiles(new File(System.getProperty("user.dir") + "/Runnables/TestCode/"));
 	}
 
 	/**
@@ -63,7 +61,6 @@ public class ProjectInfoFinderTest {
 	@Test
 	public void testRightLOCForPathIsReturned() {
 		int actual = ProjectInfoFinder.getClassLocs().get(exampleFilePath);
-		System.out.println(actual);
 		assertEquals(272, actual);
 	}
 
