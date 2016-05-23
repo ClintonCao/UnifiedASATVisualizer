@@ -45,8 +45,10 @@ public class Main {
 		default:
 			break;
 		}
-		controller.execute();
-
 		System.out.println("Done.");
+	}
+	
+	public static void runVisualization() throws IOException {
+		controller.execute();
 	}
 }

@@ -22,7 +22,6 @@ public class JavaController implements Controller {
 	@Getter @Setter private static String PMDOutputFile;
 	@Getter @Setter private static String findBugsOutputFile;
 
-
 	/**
 	 * Execute controller. A command is constructed for every ASAT which needs to be run. 
 	 * 

@@ -1,10 +1,12 @@
 package BlueTurtle.gui;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import BlueTurtle.TSE.JavaController;
+import BlueTurtle.TSE.Main;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -209,7 +211,18 @@ public class GUIController {
 				chooseFile(findbugsConfigText, ASAT.Findbugs);
 			}
 		});
-
+		
+		visualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			
+			@Override
+			public void handle(MouseEvent event) {
+				try {
+					Main.runVisualization();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**
