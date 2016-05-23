@@ -1,10 +1,8 @@
-package BlueTurtle.finders;
+package BlueTurtle.computers;
 
 import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
-
-import BlueTurtle.computers.LOCComputer;
 
 /**
  * Test for LOCFinder class.
