@@ -32,9 +32,9 @@ public class ProjectInfoFinderTest {
 	@Before
 	public void setUp() throws Exception {
 		pif = new ProjectInfoFinder();
-		exampleFilePath = Paths.get("Runnables", "TestCode", "AllClosestPoints.java").toAbsolutePath().toString();
+		exampleFilePath = Paths.get("src", "test", "resources", "AllClosestPoints.java").toAbsolutePath().toString();
 		System.out.println("Path = " + exampleFilePath);
-		String testPath = System.getProperty("user.dir") + "/Runnables/TestCode/";
+		String testPath = Paths.get("src", "test", "resources").toAbsolutePath().toString();
 		System.out.println(testPath);
 		pif.findFiles(new File(testPath));
 	}
