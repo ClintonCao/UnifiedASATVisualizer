@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,9 +32,9 @@ public class ProjectInfoFinderTest {
 	@Before
 	public void setUp() throws Exception {
 		pif = new ProjectInfoFinder();
-		exampleFilePath = System.getProperty("user.dir") + "\\Runnables\\TestCode\\AllClosestPoints.java";
+		exampleFilePath = Paths.get("Runnables", "TestCode", "AllClosestPoints.java").toAbsolutePath().toString();
 		System.out.println("Path = " + exampleFilePath);
-		pif.findFiles(new File(System.getProperty("user.dir") + "\\Runnables\\TestCode\\"));
+		pif.findFiles(new File(Paths.get("Runnables", "TestCode").toAbsolutePath().toString()));
 	}
 
 	/**
