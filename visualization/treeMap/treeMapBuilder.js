@@ -40,7 +40,6 @@ var treeMapBuilder = (function() {
             }, 0) :
             d.warnings;
     }
-
     // Compute the treemap layout recursively such that each group of siblings
     // uses the same size (1×1) rather than the dimensions of the parent cell.
     // This optimizes the layout for the current zoom state. Note that a wrapper
@@ -93,21 +92,36 @@ var treeMapBuilder = (function() {
 		// so that the input of the user (checkboxes/radiobuttons) will update the content of 
         $(".updateContent").off("click").on('click', function(view) {
             if (document.getElementById('treemapButton').checked) {
-				refreshing = true;
 				if (view.target.name == "sat") {
 					handleClickTreeMapTypeSat(view.target.value, view.target.checked);
 				}else if (view.target.name == "category"){
 					handleClickCategorySat(view.target.value, view.target.checked);
 				}
-                reloadContent();
+                fastReload();
+
+            }	
+        });
+		
+		$('.updateContent').change(function() {
+		   if (document.getElementById('treemapButton').checked) {
+				if ($(this).prop('name') == "sat") {
+					handleClickTreeMapTypeSat($(this).prop('value'), $(this).prop('checked'));
+				}else if ($(this).prop('name') == "category"){
+					handleClickCategorySat($(this).prop('value'), $(this).prop('checked'));
+				}
+                
+
+            }	
+		})
+		function fastReload(){
+			reloadContent();
                 var newNode = findNode(d, root);
                 g.filter(function(newNode) {
                     return newNode;
                 });
                 transition(newNode);
-
-            }	
-        });
+		}
+		
 
         appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
 
@@ -200,7 +214,7 @@ var treeMapBuilder = (function() {
 
         var t = g.append("text")
             .attr("class", "ptext")
-            .attr("dy", ".75em")
+            .attr("dy", ".75em");
 
         t.append("tspan")
             .text(function(d) {
@@ -339,7 +353,7 @@ var treeMapBuilder = (function() {
             rootname: "TOP",
             format: ",d",
             title: "",
-            width: window.innerWidth - 350,
+            width: window.innerWidth - 700,
             height: window.innerHeight - 175
         };
         // Remove the chart if there is already one.
@@ -355,7 +369,6 @@ var treeMapBuilder = (function() {
         $('#chart').width(opts.width).height(opts.height);
         width = opts.width - margin.left - margin.right;
         height = opts.height - margin.top - margin.bottom;
-
         // Uses a range of 100 values between green and red
         // The closer the value is to 0, the more green it will use
         // The closer the value is to 100, the more red it will use

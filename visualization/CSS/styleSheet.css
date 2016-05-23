@@ -2,63 +2,88 @@
 *{
 	font-family:Tahoma, Geneva, sans-serif;
 }
-
-/* Option menu*/
-#optionsMenu{
-  float:right;
-  display:block;
-  background-color:#7a92ff;
-  width:250px;
-  margin:0px 10px 0 10px;
-  padding: 10px;
-  border-style: ridge;
+body{
+	color:#FFF !important;
+	margin:0;
+	background: url(../images/bg.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
+
+
+div#menu-left-wrapper{
+  float: left;
+  margin-left: 20px;
+  width: 270px;
+  background: rgba(55, 58, 60, 0.8);
+}
+
+div#menu-right-wrapper{
+  width: 270px;
+  float: right;
+  margin-right: 20px;
+  background: rgba(55, 58, 60, 0.8);
+}
+/* Option menu*/
+div#right-menu{
+  padding:20px;
+  margin: 0 20px 0 0;
+  opacity:0.8;
+}
+div#left-menu{
+  padding:20px;
+  margin: 0 20px 0 0;
+  opacity:0.8;
+}
+
+
+/* Chart div*/
+div#chart {
+  background: rgba(58, 118, 219, 1);
+  margin:30px;
+  border: 5px #FFFFFF solid;
+}
+div#chart-wrapper{
+  margin:0 20px 0 20px;
+  float:left;
+  background: rgba(55, 58, 60, 0.8);
+}
+
 /* Title */
-.main-title {
+#main-title {
+  background: rgba(55, 58, 60, 0.8);
+  opacity:0.8;
   font-weight: bold;
   font-size: 26px;
   text-align: center;
-  margin-top: 6px;
-  margin-bottom: 6px;
   padding-top: 20px;
   padding-bottom: 20px;
-  border-style: ridge;
 }
-h3 {
-	margin:0;
+title{
+	color:#FFFFFF !important;
 }
-body {
-    background-color: #E0E0E0;
+div.toggle{
+	margin-right:7px;
 }
-.wrapper {
-    
-}
-
 .back-button{
+  border: none;
+  color: white;
   width: -moz-calc(100% - 317px);
   width: -webkit-calc(100% - 317px);
   width: calc(100% - 317px);
-  background: #7a92ff;
+ /* background:#999;*/
   color: #000;
-  border: 1px solid #1982C4;
   height: 25px;
   font-size: 15px;
   font-weight: bold;
-  border-style: ridge;
 }
 
 .back-button:hover {
   background: #b3c1fe;
 }
 
-/* Chart div*/
-#chart {
-  float:left;
-  background: #fff;
-  border-style:solid;
-  border-color:#FFFFFF;
-  border-width:thin;
-}
 .title {
   font-weight: bold;
   font-size: 24px;
@@ -84,7 +109,9 @@ rect.parent {
   pointer-events: none;
 }
 .grandparent rect {
-  fill: #7a92ff;
+  /*fill: #999;*/
+  opacity:0;
+ 
 }
 .grandparent:hover rect {
   fill: #b3c1fe;
@@ -115,11 +142,9 @@ fam.node {
 
 h4.category-titles{
 	padding: 0;
-	margin:0;
+	margin:20px 0 10px 0;
 	cursor: pointer;
-	text-align:center;
 }
-
 /**
 tree map element style
 **/
@@ -129,3 +154,4 @@ tree map element style
 	text-align:center;
 	font-size:18px;
 }
+

@@ -32,9 +32,9 @@ function appendInfoToSAT(CS, PMD, FB) {
     var PMDElement = document.getElementById("PMDLabel");
     var findBugsElement = document.getElementById("FindBugsLabel");
 
-    checkStyleElement.innerHTML = 'CheckStyle (' + CS + ")";
-    PMDElement.innerHTML = "PMD (" + PMD + ")";
-    findBugsElement.innerHTML = "FindBugs (" + FB + ")";
+    checkStyleElement.innerHTML = ' CheckStyle (' + CS + ")";
+    PMDElement.innerHTML = " PMD (" + PMD + ")";
+    findBugsElement.innerHTML = " FindBugs (" + FB + ")";
 }
 
 //Setup tree map and shows it

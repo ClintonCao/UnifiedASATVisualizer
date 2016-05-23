@@ -1,7 +1,7 @@
 var colorScale = (function() {
-
+	var twoColors = [d3.rgb("#00a700"), d3.rgb('#a90000')];
 	// default color settings
-	var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
+	var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(twoColors);
 
 	/*
 	 *
@@ -37,10 +37,10 @@ var colorScale = (function() {
             return (ratio > 100) ? color(100) : color(ratio);
         },
 		colorsRelative: function() {
-			color = d3.scale.linear().domain([0, getRelativeWarnings()]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
+			color = d3.scale.linear().domain([0, getRelativeWarnings()]).interpolate(d3.interpolateHcl).range(twoColors);
 		},
 		colorsAbsolute: function() {
-			color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
+			color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(twoColors);
 		}
 
     };
