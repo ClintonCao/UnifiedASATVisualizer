@@ -18,12 +18,12 @@ public class Main {
 	 * @author BlueTurtle.
 	 *
 	 */
-	enum mode {
+	enum Mode {
 		JAVA
 	}
 
 	static Controller controller;
-	static mode currentMode = mode.JAVA;
+	static Mode currentMode = Mode.JAVA;
 
 	/**
 	 * Main method.

@@ -29,8 +29,6 @@ public class JavaControllerTest {
 	@Test
 	public void testAnalyserIsNullBeforeExecute() {
 		JavaController jc = new JavaController();
-		Analyser a = jc.getAnalyser();
-		assertNull(a);
 	}
 
 
