@@ -1,7 +1,6 @@
 package BlueTurtle.TSE;
 
 import java.io.IOException;
-
 import BlueTurtle.interfaces.Controller;
 
 /**
@@ -43,6 +42,7 @@ public class Main {
 			break;
 		}
 		controller.execute();
+
 		System.out.println("Done.");
 	}
 }
