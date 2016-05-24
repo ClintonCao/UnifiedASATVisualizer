@@ -22,13 +22,19 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
   		var package = inputData[p];
 		var classesArray = package.classes;
 		var classArray = [];
+		var CSW = 0;
+		var PMDW = 0;
+		var FBW = 0;
 		for (i = 0; i < classesArray.length; i++) {
 	  		var classObject = new Object();
 	  		classObjectJson = classesArray[i];
-	  		classObject.amountOfCheckStyleWarnings = 0;
-	  		classObject.amountOfPMDWarnings = 0;
-	  		classObject.amountOfFindBugsWarnings = 0;
 	  		classObject.amountOfWarnings = 0;
+	  		classObject.amountOfCheckStyleWarnings = classObjectJson.numberOfCheckStyleWarnings;
+			classObject.amountOfPMDWarnings = classObjectJson.numberOfPMDWarnings;
+			classObject.amountOfFindBugsWarnings = classObjectJson.numberOfFindBugsWarnings;
+			CSW += classObjectJson.numberOfCheckStyleWarnings;
+			PMDW += classObjectJson.numberOfPMDWarnings;
+			FBW += classObjectJson.numberOfFindBugsWarnings;
 	  		classObject.loc = classObjectJson.loc;
 	  		classObject.fileName = classObjectJson.fileName;
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
@@ -40,6 +46,9 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	  		classArray.push(classObject);
 		}
 	classArray.packageName = package.packageName;
+	classArray.amountOfCheckStyleWarnings = CSW;
+	classArray.amountOfPMDWarnings = PMDW;
+	classArray.amountOfFindBugsWarnings = FBW;
 	packageArray.push(classArray);
   	}
 	return packageArray;
@@ -47,7 +56,7 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 
 /*
  *
- * Counts for a specefic ASAT how many warnings there are
+ * Counts for a specific ASAT how many warnings there are
  *
  */
 function getTotalASATWarning(warningType) {
@@ -82,12 +91,17 @@ function getTotalASATWarning(warningType) {
  */
 function createJsonTreeMap(packages){
 	var jsonArrPackage = [];
+	var upperLevelCSW = 0;
+	var upperLevelPMDW = 0;
+	var upperLevelFBW = 0;
 		for(var p =0; p < packages.length; p++){
 			var jsonArrClass = [];
 			var classes = packages[p];
 			for (var i = 0; i < classes.length; i++) {
 				var fileName = classes[i].fileName;
 				var linesOfCode = classes[i].loc;
+				console.log("MOFFO");
+				console.log(classes[i].amountOfCheckStyleWarnings);
 				jsonArrClass.push({
 					fileName: fileName,
 					warnings: classes[i].amountOfWarnings,
@@ -97,9 +111,26 @@ function createJsonTreeMap(packages){
 					value: linesOfCode
 				});
 			}
-			jsonArrPackage.push({fileName: classes.packageName,values: jsonArrClass});
+			upperLevelCSW += classes.amountOfCheckStyleWarnings;
+			upperLevelPMDW += classes.amountOfPMDWarnings;
+			upperLevelFBW += classes.amountOfFindBugsWarnings;
+			jsonArrPackage.push(
+				{
+					fileName: classes.packageName, 
+					values: jsonArrClass,
+					warningsCheckStyle: classes.amountOfCheckStyleWarnings,
+					warningsPMD: classes.amountOfFindBugsWarnings,
+					warningsFindBugs: classes.amountOfFindBugsWarnings
+				});
 		}
-	return [{fileName: "Project",values: jsonArrPackage}];
+	return [
+		{
+			fileName: "Project",
+			values: jsonArrPackage,
+			warningsCheckStyle: upperLevelCSW,
+			warningsPMD: upperLevelPMDW,
+			warningsFindBugs: upperLevelFBW
+		}];
 }
 
 /*
