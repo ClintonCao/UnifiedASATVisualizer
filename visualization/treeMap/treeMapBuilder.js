@@ -3,7 +3,7 @@ var treeMapBuilder = (function() {
 
 
     // initialize all variables
-    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
+    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults,currentNode
 	var refreshing = false;
 
 
@@ -22,6 +22,7 @@ var treeMapBuilder = (function() {
         root.dy = height;
         root.depth = 0;
     }
+	
     // Aggregate the values for internal nodes. This is normally done by the
     // treemap layout, but not here because of our custom implementation.
     // We also take a snapshot of the original children (_children) to avoid
@@ -65,6 +66,11 @@ var treeMapBuilder = (function() {
     }
     //render the chart with given depth and children
     function display(d) {
+		
+						
+		currentNode = d;
+		console.log("currentnode" + currentNode.fileName);
+		
         // On click top bar to go back
         grandparent
             .datum(d.parent)
@@ -91,6 +97,7 @@ var treeMapBuilder = (function() {
 		
 		// all the updateContent class will trigger this refresh of data
 		// so that the input of the user (checkboxes/radiobuttons) will update the content of 
+		/*
         $(".updateContent").off("click").on('click', function(view) {
 			//document.getElementById('treemapButton').checked ||
            if ( true) {
@@ -102,7 +109,7 @@ var treeMapBuilder = (function() {
                 fastReload();
 				
           }	
-        });
+        });*/
 		
 		$('.updateContent').change(function() {
 			//document.getElementById('treemapButton').checked
@@ -120,45 +127,45 @@ var treeMapBuilder = (function() {
                 setTimeout(function(){
 					 refreshing = false; 
 			  		 $(this).disable = false
-					console.log("acceptedTypes");
-					console.log(acceptedTypes);
-					console.log("acceptedCategories");
-					console.log(acceptedCategories);
 				}, millisecondsToWait);
 				
 
             }	
 		})
 		function fastReload(){
-			reloadContent();
-                var newNode = findNode(d, root);
+                var newNode = findNode(currentNode, root);
                 g.filter(function(newNode) {
                     return newNode;
                 });
-                transition(newNode);
+				reloadContent();
+				//console.log(newNode);
+                //transition(newNode);
 		}
+		// code to find a certain node in the treemap
+		 function findNode(d, root) {
+			if (root.fileName != null && root.values != null) {
+					if (root.fileName == d.fileName) {
+						return (root);
+					} else {
+						var arr = root.values;
+						for (var i = 0; i < arr.length; i++) {
+							var finalNode = findNode(d, arr[i]);
+							if (finalNode != null) {
+								return finalNode;
+							}
+						}
+					}
+			} else {
+					var err = null
+					console.log("error node not found");
+					return err;
+			}
+        }
 		
 
         appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
 
-        function findNode(d, root) {
-            if (root.fileName != null && root.values != null) {
-                if (root.fileName == d.fileName) {
-                    return (root);
-                } else {
-                    var arr = root.values;
-                    for (var i = 0; i < arr.length; i++) {
-                        var finalNode = findNode(d, arr[i]);
-                        if (finalNode != null) {
-                            return finalNode;
-                        }
-                    }
-                }
-            } else {
-                var err = null
-                return err;
-            }
-        }
+       
 
         function sumNodeForASAT(d, root) {
             var nodeAndSummation = [];
@@ -267,7 +274,6 @@ var treeMapBuilder = (function() {
         function transition(d) {
             if (transitioning || !d) return;
             transitioning = true;
-
             appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
 
             var g2 = display(d),
