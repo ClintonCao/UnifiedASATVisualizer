@@ -76,4 +76,13 @@ public class CategorySummarizer extends Summarizer {
 				&& numberOfWarnings == that.numberOfWarnings
 				&& categoryInfo == that.categoryInfo);
 	}
+
+	/**
+	 * HashCode for CatergorySummarizer.
+	 */
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(category, warningList, numberOfWarnings, categoryInfo);
+	}
+	
 }

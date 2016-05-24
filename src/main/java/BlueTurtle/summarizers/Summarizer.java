@@ -78,5 +78,13 @@ public abstract class Summarizer {
 	 * @param other
 	 *            the other summarizer.
 	 */
+	@Override
 	public abstract boolean equals(Object other);
+	
+	/**
+	 * HashCode for summarizer.
+	 */
+	@Override
+	public abstract int hashCode();
+	
 }

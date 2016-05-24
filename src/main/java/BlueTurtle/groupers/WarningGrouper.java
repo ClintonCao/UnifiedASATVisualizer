@@ -127,4 +127,13 @@ public class WarningGrouper implements Grouper {
 		return (componentsInfo.equals(that.getComponentsInfo()) && packagesNames.equals(that.getPackagesNames())
 				&& warningList.equals(that.getWarningList()));
 	}
+	
+	/**
+	 * HashCode for WarningGrouper.
+	 */
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(componentsInfo, packagesNames, warningList);
+	}
+	
 }

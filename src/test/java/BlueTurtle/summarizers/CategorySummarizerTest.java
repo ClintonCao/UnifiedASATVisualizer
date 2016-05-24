@@ -120,6 +120,16 @@ public class CategorySummarizerTest {
 		cs2.summarise(warningList);
 		assertEquals(cs, cs2);
 	}
+	
+	/**
+	 * Test objects that are the same should return same hashCode.
+	 */
+	@Test
+	public void testSameHashCode() {
+		CategorySummarizer cs = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
+		CategorySummarizer cs2 = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
+		assertEquals(cs.hashCode(), cs2.hashCode());
+	}
 
 	/**
 	 * Test equals between two component summarizer. Only one summarizes the

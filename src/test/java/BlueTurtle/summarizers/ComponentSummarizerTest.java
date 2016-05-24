@@ -134,6 +134,16 @@ public class ComponentSummarizerTest {
 		cs2.summarise(warningList);
 		assertEquals(cs, cs2);
 	}
+	
+	/**
+	 * Test objects that are the same should return same hashCode.
+	 */
+	@Test
+	public void testSameHahCode() {
+		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
+		ComponentSummarizer cs2 = new ComponentSummarizer(fileName, filePath, packageName);
+		assertEquals(cs.hashCode(), cs2.hashCode());
+	}
 
 	/**
 	 * Test equals between two component summarizer. Only one summarizes the

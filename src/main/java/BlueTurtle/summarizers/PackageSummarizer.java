@@ -98,4 +98,12 @@ public class PackageSummarizer extends Summarizer {
 				&& classes.equals(that.classes) && warningTypes.equals(that.warningTypes));
 
 	}
+	
+	/**
+	 * HashCode for PackageSummarizer.
+	 */
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(packageName, numberOfWarnings, classes, warningTypes);
+	}
 }

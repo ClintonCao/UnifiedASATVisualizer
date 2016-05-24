@@ -86,4 +86,13 @@ public class ComponentSummarizer extends Summarizer {
 				&& warningTypes.equals(that.warningTypes));
 
 	}
+	
+	/**
+	 * HashCode for ComponentSummarizer.
+	 */
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(packageName, fileName, filePath, warningList, numberOfWarnings, warningTypes);
+	}
+	
 }
