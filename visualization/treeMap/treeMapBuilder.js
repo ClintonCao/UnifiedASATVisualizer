@@ -214,7 +214,7 @@ var treeMapBuilder = (function() {
             .call(rect)
             .append("title")
             .text(function(d) {
-                return d.fileName + " (" + formatNumber(d.warnings) + ")";
+                return d.fileName + " (" + getSatWarningsPrint(d) + ")";
             });
         children.append("text")
             .attr("class", "ctext")
@@ -244,13 +244,25 @@ var treeMapBuilder = (function() {
             });
         t.call(text);
 
-		// future method for more advance warning count
+		// Method for counting the different warnings
 		function getSatWarningsPrint(d){
 			output = ""
 			for (var i = 0; i < acceptedTypes.length; i++){
-				output += formatNumber(d.warnings) + acceptedTypes[i].substring(0,1) + " ";
+                switch(acceptedTypes[i]) {
+                    case "CheckStyle":
+                        output += formatNumber(d.warningsCheckStyle) + acceptedTypes[i].substring(0,1) + " + ";
+                        break;
+                    case "PMD":
+                        output += formatNumber(d.warningsPMD) + acceptedTypes[i].substring(0,1) + " + ";
+                        break;
+                    case "FindBugs":
+                        output += formatNumber(d.warningsFindBugs) + acceptedTypes[i].substring(0,1) + " + ";
+                        break;
+                    default:
+                        output += "";
+                }
 			}
-			return formatNumber(d.warnings);	
+			return output.slice(0, -3);
 		}
         // set the color of the squares based on warnings / line
         g.selectAll("rect")
