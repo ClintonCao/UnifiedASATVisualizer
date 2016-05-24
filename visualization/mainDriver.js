@@ -3,9 +3,9 @@
  */
 var acceptedTypes = [];
 var acceptedCategories = [];
-
 // Run first time
 runTreeMap();
+addAllAcceptedTypesAndCategories();
 setAllCheckboxesOnDefault();
 
 function setAllCheckboxesOnDefault() {
@@ -16,6 +16,25 @@ function setAllCheckboxesOnDefault() {
 	$(".MaintainabilityDefects").click();
 	$(".StyleConventions").click();
 	$(".sats").click();
+}
+// add all types and categories for first run
+function addAllAcceptedTypesAndCategories(){
+	for ( var i = 0; i < $(".FunctionalDefects").size(); i ++){
+		console.log();
+		handleClickCategorySat($(".FunctionalDefects")[i].value, true);
+	}
+	for ( var i = 0; i < $(".MaintainabilityDefects").size(); i ++){
+		console.log();
+		handleClickCategorySat($(".MaintainabilityDefects")[i].value, true);
+	}
+	for ( var i = 0; i < $(".StyleConventions").size(); i ++){
+		console.log();
+		handleClickCategorySat($(".StyleConventions")[i].value, true);
+	}
+	for ( var i = 0; i < $(".sats").size(); i ++){
+		console.log();
+		handleClickTreeMapTypeSat($(".sats")[i].value, true);
+	}
 }
 
 // Delete the entire chart from the page.
