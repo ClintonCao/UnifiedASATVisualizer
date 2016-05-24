@@ -47,6 +47,16 @@ public class FindBugsWarningTest {
 		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
 		assertEquals(expected, actual);
 	}
+	
+	/**
+	 * Test objects that are equals should return same HashCode.
+	 */
+	@Test
+	public void testSameHashCode() {
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		assertEquals(expected.hashCode(), actual.hashCode());
+	}
 
 	/**
 	 * Test equal method where objects have different file paths.
