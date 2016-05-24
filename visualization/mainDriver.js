@@ -47,7 +47,6 @@ function runTreeMap() {
 
     var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     var finalJson =  createJsonTreeMap(packages);
-	
     treeMapBuilder.createTreeMap({
         title: ""
     }, {

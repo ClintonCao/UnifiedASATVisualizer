@@ -5,7 +5,10 @@
 function handleClickTreeMapTypeSat(value, checked) {
  
 	if (checked) {
-		acceptedTypes.push(value)
+		var index = acceptedTypes.indexOf(value);
+        if (index < 0) {
+			acceptedTypes.push(value)
+        }
     } else {
         var index = acceptedTypes.indexOf(value);
         if (index > -1) {
@@ -34,7 +37,10 @@ function handleClickColorScale(radioButton) {
 */
 function handleClickCategorySat(value, checked) {	
  	if (checked) {
-		acceptedCategories.push(value)
+        var index = acceptedCategories.indexOf(value);
+       if (index < 0) {
+			acceptedCategories.push(value)
+       }
     } else {
         var index = acceptedCategories.indexOf(value);
         if (index > -1) {

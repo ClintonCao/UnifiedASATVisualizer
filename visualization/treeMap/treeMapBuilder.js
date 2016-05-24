@@ -92,7 +92,8 @@ var treeMapBuilder = (function() {
 		// all the updateContent class will trigger this refresh of data
 		// so that the input of the user (checkboxes/radiobuttons) will update the content of 
         $(".updateContent").off("click").on('click', function(view) {
-            if (document.getElementById('treemapButton').checked) {
+			//document.getElementById('treemapButton').checked ||
+           if ( true) {
 				if (view.target.name == "sat") {
 					handleClickTreeMapTypeSat(view.target.value, view.target.checked);
 				}else if (view.target.name == "category"){
@@ -100,23 +101,31 @@ var treeMapBuilder = (function() {
 				}
                 fastReload();
 				
-            }	
+          }	
         });
 		
 		$('.updateContent').change(function() {
-		   if (document.getElementById('treemapButton').checked && !refreshing) {
+			//document.getElementById('treemapButton').checked
+		   if ( true && !refreshing) {
 			   refreshing = true;
-			   console.log($(this).prop('value'));
-			   console.log("asdvsdiauvbib");
-			   
+			   $(this).disable = true
 				if ($(this).prop('name') == "sat") {
 					handleClickTreeMapTypeSat($(this).prop('value'), $(this).prop('checked'));
 				}else if ($(this).prop('name') == "category"){
 					handleClickCategorySat($(this).prop('value'), $(this).prop('checked'));
 				}
 				fastReload();
-				var millisecondsToWait = 200;
-                setTimeout(function(){ refreshing = false; }, millisecondsToWait);
+				// animation time of the toggle button
+				var millisecondsToWait = 100;
+                setTimeout(function(){
+					 refreshing = false; 
+			  		 $(this).disable = false
+					console.log("acceptedTypes");
+					console.log(acceptedTypes);
+					console.log("acceptedCategories");
+					console.log(acceptedCategories);
+				}, millisecondsToWait);
+				
 
             }	
 		})
