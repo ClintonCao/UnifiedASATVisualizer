@@ -35,10 +35,10 @@ public class WarningGrouper implements Grouper {
 		COMPONENTS, PACKAGES
 	}
 
-	@Getter@Setter private HashMap<String, String> componentsInfo;
-	@Getter@Setter private Set<String> packagesNames;
-	@Getter @Setter private EnumMap<Criteria, List<Summarizer>> summarizedWarnings;
-	@Getter @Setter private List<Warning> warningList;
+	@Getter private HashMap<String, String> componentsInfo;
+	@Getter private Set<String> packagesNames;
+	@Getter private EnumMap<Criteria, List<Summarizer>> summarizedWarnings;
+	@Getter private List<Warning> warningList;
 
 	/**
 	 * Constructor.
@@ -51,14 +51,12 @@ public class WarningGrouper implements Grouper {
 	 *            the list of warnings.
 	 */
 	public WarningGrouper(HashMap<String, String> componentsInfo, Set<String> packagesNames, List<Warning> warningList) {
-		setComponentsInfo(componentsInfo);
-		setPackagesNames(packagesNames);
-		setWarningList(warningList);
-		setSummarizedWarnings(new EnumMap<Criteria, List<Summarizer>>(Criteria.class));
-		List<Summarizer> csList = groupByComponent();
-		List<Summarizer> psList = groupByPackage();
-		summarizedWarnings.put(Criteria.COMPONENTS, csList);
-		summarizedWarnings.put(Criteria.PACKAGES, psList);
+		this.componentsInfo = componentsInfo;
+		this.packagesNames = packagesNames;
+		this.warningList = warningList;
+		this.summarizedWarnings = new EnumMap<Criteria, List<Summarizer>>(Criteria.class);
+		summarizedWarnings.put(Criteria.COMPONENTS, groupByComponent());
+		summarizedWarnings.put(Criteria.PACKAGES, groupByPackage());
 	}
 
 	/**
@@ -125,7 +123,7 @@ public class WarningGrouper implements Grouper {
 
 		// fix SimplifyBooleanReturn, Conditional logic can be removed.
 		return (componentsInfo.equals(that.getComponentsInfo()) && packagesNames.equals(that.getPackagesNames())
-				&& warningList.equals(that.getWarningList()));
+				&& warningList.equals(that.getWarningList()) && summarizedWarnings.equals(that.summarizedWarnings));
 	}
 	
 	/**
@@ -133,7 +131,7 @@ public class WarningGrouper implements Grouper {
 	 */
 	@Override
 	public int hashCode() {
-		return java.util.Objects.hash(componentsInfo, packagesNames, warningList);
+		return java.util.Objects.hash(componentsInfo, packagesNames, warningList, summarizedWarnings);
 	}
 	
 }
