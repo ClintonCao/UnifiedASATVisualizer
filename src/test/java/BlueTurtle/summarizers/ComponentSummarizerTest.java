@@ -11,6 +11,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import BlueTurtle.summarizers.Summarizer.ASATs;
 import BlueTurtle.warnings.CheckStyleWarning;
 import BlueTurtle.warnings.FindBugsWarning;
 import BlueTurtle.warnings.PMDWarning;
@@ -56,15 +57,14 @@ public class ComponentSummarizerTest {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		assertSame(0, cs.numberOfWarnings);
 	}
-
+	
 	/**
-	 * Test simple path change.
+	 * Test the file path of the summarizer.
 	 */
 	@Test
-	public void testPathChange() {
+	public void testFilePath() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		cs.setFilePath("New path");
-		assertEquals("New path", cs.getFilePath());
+		assertSame(filePath, cs.getFilePath());
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class ComponentSummarizerTest {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3", "test4"));
 		cs.summarise(warningList);
-		cs.incrementNumberOfWarnings("Not a right type of ASAT");
+		cs.incrementNumberOfWarnings(ASATs.valueOf("Not a right type of ASAT"));
 	}
 
 	/**

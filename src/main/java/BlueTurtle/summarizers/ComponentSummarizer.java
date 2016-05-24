@@ -7,7 +7,6 @@ import BlueTurtle.computers.LOCComputer;
 import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.warnings.Warning;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * This class can be used to summarise the warnings for a specific component.
@@ -17,10 +16,10 @@ import lombok.Setter;
  */
 public class ComponentSummarizer extends Summarizer {
 
-	@Getter @Setter private String fileName;
-	@Getter @Setter private String filePath;
-	@Getter @Setter private List<Warning> warningList;
-	@Getter @Setter private int loc;
+	@Getter private String fileName;
+	@Getter private String filePath;
+	@Getter private List<Warning> warningList;
+	@Getter private int loc;
 
 	/**
 	 * Constructor.
@@ -34,11 +33,10 @@ public class ComponentSummarizer extends Summarizer {
 	 */
 	public ComponentSummarizer(String fileName, String filePath, String packageName) {
 		super(packageName);
-		setFileName(fileName);
-		setFilePath(filePath);
-		int loc = LOCComputer.computeLOC(filePath);
-		setLoc(loc);
-		setWarningList(new ArrayList<Warning>());
+		this.fileName = fileName;
+		this.filePath = filePath;
+		this.loc = LOCComputer.computeLOC(filePath);
+		this.warningList = new ArrayList<Warning>();
 	}
 
 	/**
@@ -59,7 +57,7 @@ public class ComponentSummarizer extends Summarizer {
 					warningTypes.add(w.getType());
 				}
 				warningList.add(w);
-				incrementNumberOfWarnings(warningType);
+				incrementNumberOfWarnings(ASATs.valueOf(warningType));
 			}
 
 		}

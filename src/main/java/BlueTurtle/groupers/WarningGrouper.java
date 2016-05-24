@@ -14,7 +14,6 @@ import BlueTurtle.summarizers.PackageSummarizer;
 import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * This class is used to group warnings together (by their type or by

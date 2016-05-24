@@ -64,16 +64,26 @@ public class CategorySummarizerTest {
 		CategorySummarizer cs = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
 		assertSame(0, cs.numberOfWarnings);
 	}
-
+	
 	/**
-	 * Test simple category change.
+	 * Test the warnings list.
 	 */
 	@Test
-	public void testCategoryChange() {
+	public void testWarningList() {
 		CategorySummarizer cs = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
-		cs.setCategory(" Documentation Conventions ");
-		assertEquals(" Documentation Conventions ", cs.getCategory());
+		cs.summarise(warningList);
+		assertEquals(warningList, cs.getWarningList());
 	}
+	
+	/**
+	 * Test the category info.
+	 */
+	@Test
+	public void testCategoryInfo() {
+		CategorySummarizer cs = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
+		assertEquals(categoryInfo, cs.getCategoryInfo());
+	}
+
 
 	/**
 	 * Test that the number of warnings is not zero after summarise has been
