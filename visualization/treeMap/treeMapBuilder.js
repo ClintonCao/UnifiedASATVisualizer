@@ -351,8 +351,8 @@ var treeMapBuilder = (function() {
     //title above the chart
     function name(d) {
         return d.parent ?
-            name(d.parent) + " / " + d.fileName + " (" + formatNumber(d.warnings) + ")" :
-            d.fileName + " (" + formatNumber(d.warnings) + ")";
+            name(d.parent) + " / " + d.fileName : //+ " (" + formatNumber(d.warnings) + ")" :
+            d.fileName; // + " (" + formatNumber(d.warnings) + ")";
     }
 
     function setTheVariables(o, data) {
