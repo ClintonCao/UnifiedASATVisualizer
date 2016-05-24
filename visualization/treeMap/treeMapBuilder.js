@@ -6,7 +6,6 @@ var treeMapBuilder = (function() {
     var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
 	var refreshing = false;
 
-
     // initialize the entire treemap up till displaying
     function initializeTheTree(root) {
         initialize(root, width, height);
@@ -66,11 +65,31 @@ var treeMapBuilder = (function() {
     //render the chart with given depth and children
     function display(d) {
         // On click top bar to go back
+
+    /*
+     * Creates a tooltip that will be shown on hover over a node
+     */
+    var tooltip = d3.select("#chart")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden");
+
         grandparent
             .datum(d.parent)
             .on("click", transition)
             .select("text")
-            .text(name(d));
+            .text(name(d))
+            .on("mouseover", function(d) {
+                tooltip.text(d.fileName + " (" + getSatWarningsPrint(d) + ")");
+                return tooltip.style("visibility", "visible");
+            })
+            .on("mousemove", function(d) {
+                return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+            })
+            .on("mouseout", function(d) {
+                return tooltip.style("visibility", "hidden");
+            });
 
         var g1 = svg.insert("g", ".grandparent")
             .datum(d)
@@ -86,7 +105,36 @@ var treeMapBuilder = (function() {
                     return d._children;
                 })
                 .classed("children", true)
-                .on("click", transition);
+                .on("click", transition)
+                .on("mouseover", function(d) {
+                    tooltip.text(d.fileName + " (" + getSatWarningsPrint(d) + ")");
+                    return tooltip.style("visibility", "visible");
+                })
+                .on("mousemove", function(d) {
+                    return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                })
+                .on("mouseout", function(d) {
+                    return tooltip.style("visibility", "hidden");
+                });
+        }
+        // on click child to go to source code
+        else if (d.depth == maxDepth) {
+            g.filter(function(d) {
+                    return d;
+                })
+                .classed("child", true)
+                .on("click", toSourceCode)
+                .on("click", transition)
+                .on("mouseover", function(d) {
+                    tooltip.text(d.fileName + " (" + getSatWarningsPrint(d) + ")");
+                    return tooltip.style("visibility", "visible");
+                })
+                .on("mousemove", function(d) {
+                    return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                })
+                .on("mouseout", function(d) {
+                    return tooltip.style("visibility", "hidden");
+                });
         }
 		
 		// all the updateContent class will trigger this refresh of data
@@ -120,10 +168,6 @@ var treeMapBuilder = (function() {
                 setTimeout(function(){
 					 refreshing = false; 
 			  		 $(this).disable = false
-					console.log("acceptedTypes");
-					console.log(acceptedTypes);
-					console.log("acceptedCategories");
-					console.log(acceptedCategories);
 				}, millisecondsToWait);
 				
 
@@ -192,15 +236,6 @@ var treeMapBuilder = (function() {
             accumulateWarnings(root);
             layout(root, treemap);
             display(root);
-        }
-
-        // on click child to go to source code
-        if (d.depth == maxDepth) {
-            g.filter(function(d) {
-                    return d;
-                })
-                .classed("child", true)
-                .on("click", toSourceCode);
         }
 
         var children = g.selectAll(".child")
@@ -281,6 +316,8 @@ var treeMapBuilder = (function() {
             transitioning = true;
 
             appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
+
+            tooltip.style("visibility", "hidden");
 
             var g2 = display(d),
                 t1 = g1.transition().duration(100),

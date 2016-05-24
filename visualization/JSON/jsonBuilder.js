@@ -100,8 +100,6 @@ function createJsonTreeMap(packages){
 			for (var i = 0; i < classes.length; i++) {
 				var fileName = classes[i].fileName;
 				var linesOfCode = classes[i].loc;
-				console.log("MOFFO");
-				console.log(classes[i].amountOfCheckStyleWarnings);
 				jsonArrClass.push({
 					fileName: fileName,
 					warnings: classes[i].amountOfWarnings,

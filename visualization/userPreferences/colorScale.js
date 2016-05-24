@@ -26,7 +26,6 @@ var colorScale = (function() {
 		  		}
 			}
 		}
-		console.log(worstRatio);
 		return (worstRatio * 100);
 	}
 
