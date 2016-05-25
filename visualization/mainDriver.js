@@ -1,32 +1,42 @@
 /*
  * Global variabeles that are used across multiple classes
  */
-var graphTrace = [];
-var graphTraceIndex = 0;
 var acceptedTypes = [];
-var acceptedRuleNames = ["PackageName", "JavadocMethod"];
-
+var acceptedCategories = [];
 // Run first time
 runTreeMap();
+addAllAcceptedTypesAndCategories();
+setAllCheckboxesOnDefault();
 
-// For firefox remove the checkboxes from previous runs.
-
-$(".updateContent").prop('checked', false); 
-
-
-/*
- * Handles click on checkboxes for showing results of different tools
- */
-function handleClickTreeMapTypeSat(value) {
-    if (acceptedTypes.indexOf(value) < 0) {
-        acceptedTypes.push(value);
-    } else {
-        var index = acceptedTypes.indexOf(value);
-        if (index > -1) {
-            acceptedTypes.splice(index, 1);
-        }
-    }
+function setAllCheckboxesOnDefault() {
+	$(".updateContent").prop('checked', false); 
+	$("#treemapButton").prop('checked', true);
+	$("#absoluteButton").prop('checked', true);
+	$(".FunctionalDefects").click();
+	$(".MaintainabilityDefects").click();
+	$(".StyleConventions").click();
+	$(".sats").click();
 }
+// add all types and categories for first run
+function addAllAcceptedTypesAndCategories(){
+	for ( var i = 0; i < $(".FunctionalDefects").size(); i ++){
+		console.log();
+		handleClickCategorySat($(".FunctionalDefects")[i].value, true);
+	}
+	for ( var i = 0; i < $(".MaintainabilityDefects").size(); i ++){
+		console.log();
+		handleClickCategorySat($(".MaintainabilityDefects")[i].value, true);
+	}
+	for ( var i = 0; i < $(".StyleConventions").size(); i ++){
+		console.log();
+		handleClickCategorySat($(".StyleConventions")[i].value, true);
+	}
+	for ( var i = 0; i < $(".sats").size(); i ++){
+		console.log();
+		handleClickTreeMapTypeSat($(".sats")[i].value, true);
+	}
+}
+
 // Delete the entire chart from the page.
 function removeChart() {
     var chartNode = document.getElementById("chart");
@@ -35,60 +45,18 @@ function removeChart() {
     }
 }
 
+// Add total amount of warnings to the Sat types in the menu
+function appendInfoToSAT(CS, PMD, FB) {
+    var checkStyleElement = document.getElementById("checkStyleLabel");
+    var PMDElement = document.getElementById("PMDLabel");
+    var findBugsElement = document.getElementById("FindBugsLabel");
 
-function handleClickTypeSat(cb) {
-    if (document.getElementById('treemapButton').checked) {
-        // Is taken care off in the treemap self
-        // this way the treemap can refresh at current level.
-    } else if (document.getElementById('graphButton').checked) {
-        if (cb.name == "sat") {
-            var value = cb.value;
-            handleClickTreeMapTypeSat(value);
-            removeChart();
-            if (packagesLevel) {
-                var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-                var input = createJsonGraphPackages(packages);
-
-                if (typeof graphTrace[graphTraceIndex] === 'undefined') {
-                    graphTrace.push(input);
-                } else {
-                    graphTrace[graphTraceIndex] = input;
-                }
-                createGraph(graphTrace[graphTraceIndex]);
-            } else {
-                var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-                var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
-
-                if (typeof graphTrace[graphTraceIndex] === 'undefined') {
-                    graphTrace.push(input);
-                } else {
-                    graphTrace[graphTraceIndex] = input;
-                }
-                createGraph(graphTrace[graphTraceIndex]);
-            }
-        }
-    }
+    checkStyleElement.innerHTML = '&nbsp; CheckStyle (' + CS + ")";
+    PMDElement.innerHTML = "&nbsp; PMD (" + PMD + ")";
+    findBugsElement.innerHTML = "&nbsp; FindBugs (" + FB + ")";
 }
 
-/*
- * Toggles between the graph and tree map visualization
- */
-function handleClickVisualiser(radioButton) {
-    if (radioButton.value == "graph") {
-        runGraph();
-    } else if (radioButton.value == "treemap") {
-        runTreeMap();
-    }
-}
-
-function getFilteredJSON() {
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-    return createJsonTreeMap(packages);
-}
-
-/*
- * Setup tree map and shows it
- */
+//Setup tree map and shows it
 function runTreeMap() {
     removeChart();
     var title = document.getElementById("main-title");
@@ -96,19 +64,17 @@ function runTreeMap() {
     var graphButtonDiv = document.getElementById("sub-title");
     graphButtonDiv.style.display = 'none';
 
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
-
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+    var finalJson =  createJsonTreeMap(packages);
     treeMapBuilder.createTreeMap({
         title: ""
     }, {
         fileName: "Test Project",
-        values: getFilteredJSON()
+        values: finalJson
     });
 }
 
-/*
- * Setup graph and shows it
- */
+//Setup graph and shows it
 function runGraph() {
     removeChart();
     packagesLevel = true;
@@ -119,7 +85,7 @@ function runGraph() {
     graphButton.firstChild.data = "This is the upperview";
     graphButton.disabled = true;
 
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
 
     var input = createJsonGraphPackages(packages);
 

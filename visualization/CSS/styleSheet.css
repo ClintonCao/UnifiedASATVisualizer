@@ -1,60 +1,110 @@
+/* global settings */
+*{
+	font-family:Tahoma, Geneva, sans-serif;
+}
+body{
+	color:#FFF !important;
+	margin:0;
+	background: url(../images/bg.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+div#menu-left-wrapper{
+  float: left;
+  margin-left: 20px;
+  width: 270px;
+  background: rgba(55, 58, 60, 0.8);
+}
+
+div#menu-right-wrapper{
+  width: 270px;
+  float: right;
+  margin-right: 20px;
+  background: rgba(55, 58, 60, 0.8);
+}
 /* Option menu*/
-#optionsMenu{
+div#right-menu{
+  padding:20px;
+  margin: 0 20px 0 0;
+  opacity:0.8;
+}
+div#left-menu{
+  padding:20px;
+  margin: 0 20px 0 0;
+  opacity:0.8;
+}
+
+
+/* Chart div*/
+div#chart {
+  background:#CCC;
+  margin:30px;
+  border: 5px #FFFFFF solid;
+}
+div#chart-wrapper{
+  margin:0 20px 0 20px;
+  float:left;
+  background: rgba(55, 58, 60, 0.8);
+}
+
+/* Different menus for options */
+.optionsMenuRight{
   float:right;
   display:block;
   background-color:#7a92ff;
-  height:400px;
-  width:150px;
-  margin:100px 10px 0 10px;
+  width:250px;
+  margin:0px 10px 15px 10px;
   padding: 10px;
   border-style: ridge;
 }
+.optionsMenuBottom{
+  background-color:#7a92ff;
+  width:1000px;
+}
+#FunctionDefects-menu {
+  float:left;
+  background-color:#7a92ff;
+  margin-right: 50px;
+}
+#MaintainabilityDefects-menu {
+  float:left;
+  background-color:#7a92ff;
+  margin-right: 50px;
+}
+#StyleConventions-menu {
+  background-color:#7a92ff;
+  float:left;
+}
 /* Title */
-.main-title {
+#main-title {
+  background: rgba(55, 58, 60, 0.8);
+  opacity:0.8;
   font-weight: bold;
   font-size: 26px;
   text-align: center;
-  margin-top: 6px;
-  margin-bottom: 6px;
   padding-top: 20px;
   padding-bottom: 20px;
-  border-style: ridge;
 }
-
-body {
-    background-color: #E0E0E0;
+title{
+	color:#FFFFFF !important;
 }
-.wrapper {
-    
-}
-
 .back-button{
-  width: -moz-calc(100% - 200px);
-  width: -webkit-calc(100% - 200px);
-  width: calc(100% - 200px);
-  background: #7a92ff;
+  border: none;
+  color: white;
+  width: 100%;
   color: #000;
-  border: 1px solid #1982C4;
   height: 25px;
   font-size: 15px;
-  font-family: Helvetica;
   font-weight: bold;
-  border-style: ridge;
 }
 
 .back-button:hover {
   background: #b3c1fe;
 }
 
-/* Chart div*/
-#chart {
-  float:left;
-  background: #fff;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border-style:solid;
-  border-color:#FFFFFF;
-  border-width:thin;
-}
 .title {
   font-weight: bold;
   font-size: 24px;
@@ -80,7 +130,9 @@ rect.parent {
   pointer-events: none;
 }
 .grandparent rect {
-  fill: #7a92ff;
+  /*fill: #999;*/
+  opacity:0;
+ 
 }
 .grandparent:hover rect {
   fill: #b3c1fe;
@@ -100,7 +152,7 @@ rect.parent {
 /*
  * Styling elements in the graph
  */
-.node {
+fam.node {
   stroke: #fff;
   stroke-width: 1.5px;
 }
@@ -108,3 +160,19 @@ rect.parent {
   stroke: #000;
   stroke-opacity: .25;
 }
+
+h4.category-titles{
+	padding: 0;
+	margin:20px 0 10px 0;
+	cursor: pointer;
+}
+/**
+tree map element style
+**/
+
+/* name of a block or package */
+.ptext {
+	text-align:center;
+	font-size:18px;
+}
+

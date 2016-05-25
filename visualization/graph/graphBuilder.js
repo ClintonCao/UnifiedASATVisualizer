@@ -2,6 +2,11 @@
  * Keep track of which level you are
  */
 var packagesLevel = true;
+var graphTrace = [];
+var graphTraceIndex = 0;
+
+//private var
+var refreshing = false;
 
 /*
  * Returns the length of a link
@@ -10,7 +15,7 @@ function linkDistance(d) {
     if (packagesLevel) {
         return 25 * d.value;
     } else {
-        return 15 * d.value;
+        return 22.5 * d.value;
     }
 }
 /*
@@ -29,9 +34,9 @@ function linkStrokeWidth(d) {
  */
 function nodeRadius(d) {
     if (packagesLevel) {
-        return Math.sqrt(d.numberOfClasses) * 5;
+        return Math.sqrt(d.loc) * 0.25;
     } else {
-        return Math.sqrt(d.loc) * 2.25;
+        return Math.sqrt(d.loc) * 0.75;
     }
 }
 /*
@@ -42,13 +47,11 @@ function nodeRadius(d) {
  */
 function nodeColour(d) {
     if (packagesLevel) {
-        var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-        var ratio = 200 * (d.totalWarnings) / d.loc;
-        return (ratio > 100) ? color(100) : color(ratio);
+       var ratio = 100 * (d.totalWarnings) / d.loc;
+        return colorScale.getColor(ratio);
     } else {
-        var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range([d3.rgb("#00C800"), d3.rgb('#C80000')]);
-        var ratio = 200 * (d.warnings) / d.loc;
-        return (ratio > 100) ? color(100) : color(ratio);
+        var ratio = 100 * (d.warnings) / d.loc;
+        return colorScale.getColor(ratio);
     }
 }
 /*
@@ -62,7 +65,7 @@ function nodeDoubleClick(d, i) {
 
         graphTraceIndex++;
 
-        var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
         var input = createJsonGraphClasses(packages, d.fileName);
 
         if (typeof graphTrace[graphTraceIndex] === 'undefined') {
@@ -81,7 +84,7 @@ function nodeDoubleClick(d, i) {
         /*
         graphTraceIndex++;
 
-        var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
         var input = createJsonGraphClasses(packages, d.fileName);
 
         if(typeof graphTrace[graphTraceIndex] === 'undefined') {
@@ -94,6 +97,58 @@ function nodeDoubleClick(d, i) {
         */
 
         window.open("http://9gag.com/", "_self")
+    }
+    appendInfoToSAT(getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("CheckStyle")), 
+        getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("PMD")), getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("FB")));
+}
+
+function getAmountOfWarningsOfCurrentLevel(warningsOfSpecificASAT) {
+    var sum = 0;
+    if(packagesLevel) {
+        for(var i = 0; i < warningsOfSpecificASAT.length; i++) {
+            for(var j = 0; j < warningsOfSpecificASAT[i].length; j++) {
+                sum += warningsOfSpecificASAT[i][j].amountOfWarnings;
+            }
+        }
+        return sum;
+    } else {
+        for(var i = 0; i < warningsOfSpecificASAT.length; i++) {
+            if(warningsOfSpecificASAT[i].packageName == sessionStorage.getItem('packageName')) {
+                for(var j = 0; j < warningsOfSpecificASAT[i].length; j++) {
+                    sum += warningsOfSpecificASAT[i][j].amountOfWarnings;
+                }
+                return sum;
+            }
+        }
+    }
+    return -1;
+}
+
+/*
+ * Update the graph accordingly
+ */
+function redrawGraph() {
+    removeChart();
+    if (packagesLevel) {
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        var input = createJsonGraphPackages(packages);
+
+        if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+            graphTrace.push(input);
+        } else {
+            graphTrace[graphTraceIndex] = input;
+        }
+        createGraph(graphTrace[graphTraceIndex]);
+    } else {
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+
+        if (typeof graphTrace[graphTraceIndex] === 'undefined') {
+            graphTrace.push(input);
+        } else {
+            graphTrace[graphTraceIndex] = input;
+        }
+        createGraph(graphTrace[graphTraceIndex]);
     }
 }
 
@@ -117,13 +172,15 @@ function setTitle() {
 function goBack() {
     removeChart();
     packagesLevel = true;
+    appendInfoToSAT(getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("CheckStyle")), 
+        getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("PMD")), getAmountOfWarningsOfCurrentLevel(getTotalASATWarning("FB")));
     var graphButtonDiv = document.getElementById("sub-title");
     graphButtonDiv.style.display = 'inline';
     var graphButton = document.getElementById('back-button');
     graphButton.firstChild.data = "This is the upperview";
     graphButton.disabled = true;
     graphTraceIndex--;
-    var packages = filterTypeRuleName(acceptedTypes, acceptedRuleNames);
+    var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     var input = createJsonGraphPackages(packages);
     if (typeof graphTrace[graphTraceIndex] === 'undefined') {
         graphTrace.push(input);
@@ -143,7 +200,7 @@ function createGraph(graph) {
     /*
      * Defines the height and width of the graph
      */
-    var width = window.innerWidth - 225,
+    var width = window.innerWidth - 350,
         height = window.innerHeight - 175
 
 
@@ -155,7 +212,6 @@ function createGraph(graph) {
     var svg = d3.select("#chart").append("svg")
         .attr("width", width)
         .attr("height", height);
-
 
     force
         .nodes(graph.nodes)
@@ -252,4 +308,34 @@ function createGraph(graph) {
                 return d.y;
             });
     });
+	
+	// all the updateContent class will trigger this refresh of data
+	// so that the input of the user (checkboxes/radiobuttons) will update the content of 
+    $(".updateContent").off("click").on('click', function(view) {
+        if (document.getElementById('graphButton').checked) {
+			refreshing = true;
+			reloadContent(view.target)
+        }	
+    });
+	
+	 function reloadContent(cb) {
+		 if (cb.name == "sat") {
+            handleClickTreeMapTypeSat(cb.value, cb.checked);
+		 } else if (cb.name == "category"){
+			handleClickCategorySat(cb.value, cb.checked);
+		 }
+        removeChart();
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        if (packagesLevel) {
+            var input = createJsonGraphPackages(packages);
+        } else {
+            var input = createJsonGraphClasses(packages, sessionStorage.getItem('packageName'));
+        }
+		if(typeof graphTrace[graphTraceIndex] === 'undefined') {
+            graphTrace.push(input);
+        } else {
+            graphTrace[graphTraceIndex] = input;
+        }
+        createGraph(graphTrace[graphTraceIndex]);
+	 }
 };
