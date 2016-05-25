@@ -1,7 +1,10 @@
 package BlueTurtle.gui;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -219,6 +222,12 @@ public class GUIController {
 				try {
 					Main.runVisualization();
 				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				try {
+					Desktop.getDesktop().browse(new URI("visualization/main.html"));
+				} catch (IOException | URISyntaxException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
