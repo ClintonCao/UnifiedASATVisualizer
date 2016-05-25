@@ -3,8 +3,6 @@ package BlueTurtle.settings;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import BlueTurtle.interfaces.Settings;
-
 /**
  * Class that represents the settings for Cobertura.
  * 

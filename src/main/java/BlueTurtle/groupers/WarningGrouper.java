@@ -8,7 +8,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import BlueTurtle.finders.PackageNameFinder;
-import BlueTurtle.interfaces.Grouper;
 import BlueTurtle.summarizers.ComponentSummarizer;
 import BlueTurtle.summarizers.PackageSummarizer;
 import BlueTurtle.summarizers.Summarizer;

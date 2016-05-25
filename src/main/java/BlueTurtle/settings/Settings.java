@@ -1,4 +1,4 @@
-package BlueTurtle.interfaces;
+package BlueTurtle.settings;
 
 /**
  * Interface for settings.

@@ -2,8 +2,6 @@ package BlueTurtle.TSE;
 
 import java.io.IOException;
 
-import BlueTurtle.interfaces.Controller;
-
 /**
  * Temporary main class to run the commands.
  * 

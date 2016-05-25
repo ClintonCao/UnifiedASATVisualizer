@@ -8,7 +8,6 @@ import BlueTurtle.commandbuilders.CoberturaCommandBuilder;
 import BlueTurtle.commandbuilders.CommandBuilder;
 import BlueTurtle.commandbuilders.FindBugsCommandBuilder;
 import BlueTurtle.commandbuilders.PMDCommandBuilder;
-import BlueTurtle.interfaces.Controller;
 import BlueTurtle.settings.CheckStyleSettings;
 import BlueTurtle.settings.CoberturaSettings;
 import BlueTurtle.settings.FindBugsSettings;

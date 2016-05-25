@@ -1,6 +1,6 @@
 package BlueTurtle.commandbuilders;
 
-import BlueTurtle.interfaces.Settings;
+import BlueTurtle.settings.Settings;
 import lombok.Getter;
 import lombok.Setter;
 
