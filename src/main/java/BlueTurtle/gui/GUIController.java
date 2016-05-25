@@ -26,11 +26,9 @@ import javafx.stage.Stage;
  *
  */
 public class GUIController {
-	
+
 	public enum ASAT {
-		Checkstyle,
-		PMD,
-		Findbugs;
+		Checkstyle, PMD, Findbugs;
 	}
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
@@ -65,6 +63,8 @@ public class GUIController {
 
 	@FXML // fx:id="pmdConfigText"
 	private Text pmdConfigText; // Value injected by FXMLLoader
+	
+	private String projectPath = "";
 
 	/**
 	 * Event for CheckStyle button.
@@ -154,6 +154,7 @@ public class GUIController {
 					projectSourcePathText.setText("No Directory selected");
 				} else {
 					projectSourcePathText.setText(selectedDirectory.getAbsolutePath());
+					projectPath = projectSourcePathText.getText();
 					enableAllOtherButtons();
 				}
 			}
@@ -214,19 +215,16 @@ public class GUIController {
 				chooseFile(findbugsConfigText, ASAT.Findbugs);
 			}
 		});
-		
+
 		visualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			
+
 			@Override
 			public void handle(MouseEvent event) {
+				File htmlFile = new File("visualization/main.html");
 				try {
 					Main.runVisualization();
+					Desktop.getDesktop().browse(htmlFile.toURI());
 				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				try {
-					Desktop.getDesktop().browse(new URI("visualization/main.html"));
-				} catch (IOException | URISyntaxException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -254,6 +252,7 @@ public class GUIController {
 	public void chooseFile(Text configText, ASAT asat) {
 
 		FileChooser fileChooser = new FileChooser();
+		fileChooser.setInitialDirectory(new File(projectPath + "/target/"));
 
 		// Set extension filter
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
