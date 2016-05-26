@@ -1,9 +1,15 @@
 package BlueTurtle.gui;
 
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import BlueTurtle.TSE.JavaController;
+import BlueTurtle.TSE.Main;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,6 +26,16 @@ import javafx.stage.Stage;
  *
  */
 public class GUIController {
+
+	/**
+	 * Enums to represent the ASATs.
+	 * 
+	 * @author BlueTurtle.
+	 *
+	 */
+	public enum ASAT {
+		CheckStyle, PMD, FindBugs;
+	}
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
 	private ResourceBundle resources;
@@ -171,7 +187,7 @@ public class GUIController {
 			 */
 			@Override
 			public void handle(MouseEvent event) {
-				chooseFile(checkStyleConfigText);
+				chooseFile(checkStyleConfigText, ASAT.CheckStyle);
 			}
 		});
 
@@ -185,7 +201,7 @@ public class GUIController {
 			 */
 			@Override
 			public void handle(MouseEvent event) {
-				chooseFile(pmdConfigText);
+				chooseFile(pmdConfigText, ASAT.PMD);
 			}
 		});
 
@@ -199,10 +215,27 @@ public class GUIController {
 			 */
 			@Override
 			public void handle(MouseEvent event) {
-				chooseFile(findbugsConfigText);
+				chooseFile(findbugsConfigText, ASAT.FindBugs);
 			}
 		});
 
+		visualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				try {
+					Main.runVisualization();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				try {
+					Desktop.getDesktop().browse(new URI("visualization/main.html"));
+				} catch (IOException | URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**
@@ -221,8 +254,10 @@ public class GUIController {
 	 * 
 	 * @param configText
 	 *            the text in the GUI for the config file.
+	 * @param asat
+	 *            the ASAT type.
 	 */
-	public void chooseFile(Text configText) {
+	public void chooseFile(Text configText, ASAT asat) {
 
 		FileChooser fileChooser = new FileChooser();
 
@@ -231,7 +266,7 @@ public class GUIController {
 		fileChooser.getExtensionFilters().add(extFilter);
 
 		File file = fileChooser.showOpenDialog(new Stage());
-
+		JavaController.setASATOutput(asat, file);
 		if (file != null) {
 			configText.setText(file.getAbsolutePath());
 		}
