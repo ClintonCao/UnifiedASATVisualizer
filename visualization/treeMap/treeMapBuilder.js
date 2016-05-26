@@ -107,6 +107,7 @@ var treeMapBuilder = (function() {
 
         //on click square to go more in depth
         g.filter(function(d) {
+			console.log("funci");
                 return d._children;
             })
             .classed("children", true)
@@ -122,7 +123,14 @@ var treeMapBuilder = (function() {
                 return tooltip.style("visibility", "hidden");
             });
 
-
+var childrenArray = g.filter(function(d) {
+                return d._children;
+            })
+			// bottom layer now we add a click to go to the code editor
+			if ( childrenArray[0].length == 0 ){
+				g.on("click", toSourceCode);
+			}
+            
         // all the updateContent class will trigger this refresh of data
         // so that the input of the user (checkboxes/radiobuttons) will update the content of 
         /*
@@ -286,13 +294,6 @@ var treeMapBuilder = (function() {
                 return colorScale.getColor(ratio);
             });
 
-        function onClickSquare(d) {
-            if (d.depth < maxDepth) {
-                navigationDown(d)
-            } else {
-                toSourceCode(d)
-            }
-        }
 
         function navigationDown(d) {
             console.log("navigationDown")
@@ -302,7 +303,9 @@ var treeMapBuilder = (function() {
 
         function toSourceCode(d) {
             console.log("toSourceCode")
-            console.log(d.filePath)
+            console.log(d)
+			
+        	sessionStorage.setItem('fileName', d.fileName);
 			window.open('codeEditor.html','_self',false)
         }
 

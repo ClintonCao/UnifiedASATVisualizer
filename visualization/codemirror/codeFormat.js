@@ -1,4 +1,5 @@
-var value = "Some example code \n if ( true ) { then awesome; }";
+var value =  sessionStorage.getItem('fileName');
+value += "\n\n Some example code \n if ( true ) { then awesome; }";
 var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
     value: value,
     lineNumbers: true,
