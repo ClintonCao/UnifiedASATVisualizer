@@ -1,0 +1,10 @@
+component_depth: 1
+languages:
+- java
+- javascript
+
+exclude:
+- .*/d3.*
+- .*/SummarizedOuput.*
+- .*/input.*
+  

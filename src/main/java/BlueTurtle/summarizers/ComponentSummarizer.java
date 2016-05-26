@@ -48,7 +48,6 @@ public class ComponentSummarizer extends Summarizer {
 	@Override
 	public void summarise(List<Warning> warnings) {
 		for (Warning w : warnings) {
-
 			String pn = PackageNameFinder.findPackageName(w.getFilePath());
 			if (w.getFileName().equals(getFileName()) && pn.equals(getPackageName())) {
 				String warningType = w.getType();
