@@ -15,6 +15,8 @@ public class FindBugsWarning extends Warning {
 	@Getter @Setter private String message;
 	@Getter @Setter private String category;
 	@Getter @Setter private String priority;
+	@Getter @Setter private String absoluteFilePath;
+
 	
 	/**
 	 * Constructor.

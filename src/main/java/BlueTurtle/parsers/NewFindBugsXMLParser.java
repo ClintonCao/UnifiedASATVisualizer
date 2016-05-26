@@ -1,8 +1,6 @@
 package BlueTurtle.parsers;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +22,7 @@ import BlueTurtle.warnings.Warning;
  * @author BlueTurtle.
  *
  */
-public class FindBugsXMLParser extends XMLParser {
+public class NewFindBugsXMLParser extends XMLParser {
 
 	/**
 	 * Parse a FindBugs report file.
@@ -49,19 +47,7 @@ public class FindBugsXMLParser extends XMLParser {
 			Document doc = dBuilder.parse(inputFile);
 
 			// Normalize the elements of the document.
-			doc.getDocumentElement().normalize();
-			
-			// Get the list of file path of the project.
-			NodeList pathsList = doc.getElementsByTagName("Project");
-			
-			NodeList srcList = doc.getElementsByTagName("SrcDir");
-
-			String pathFront = "";
-			
-			if (pathsList != null && pathsList.getLength() > 0) {
-				Element pathElement = (Element) pathsList.item(0);
-				srcList = pathElement.getElementsByTagName("SrcDir");
-			}			
+			doc.getDocumentElement().normalize();		
 
 			// Get all list of files where there are warnings.
 			NodeList nList = doc.getElementsByTagName("file");
@@ -74,66 +60,8 @@ public class FindBugsXMLParser extends XMLParser {
 					// Convert the node to an element.
 					Element fileElement = (Element) file;
 
-					// Get the class name where the warning is from.
-					String className = fileElement.getAttribute("classname");
-					
-					// split the class name into a string array.
-					String [] classArray = className.split("\\.");
-					
-					// the last one is the class name.
-					className = classArray[classArray.length - 1];
-					
-					// concatenate the source path with the class name.
-					String fileN = className + ".java";
-					
-					fileN = fileN.substring(fileN.lastIndexOf(File.separatorChar) + 1, fileN.length());
-
-					// get the file path from the file name.
-//					String filePath = new File(fileN).getCanonicalPath();
-					Path p = Paths.get(fileN);
-					String filePath = p.toAbsolutePath().toString();
-					
-					
-					/***********************************************************/
-					/*********This part is for get absolute file path***********/
-					
-					// Get the class name where the warning is from.
-					String classN = fileElement.getAttribute("classname");
-					
-					// replace the . with \\ in the file name.
-					String cN = classN.replaceAll("\\.", "\\\\");
-					
-					
-					// initially start with 0
-					int k = 0;
-					
-					// With an empty file path
-					String absoluteFilePath = "";
-					
-					String path = "";
-					// continue go down the list of source path if the file does not exist.
-//					do {
-					
-						pathFront = srcList.item(k).getTextContent();
-		
-						// concatenate the source path with the class name.
-						String fileConcate = pathFront + "\\" + cN + ".java";
-	
-						// get the absoluteFilePath.
-						absoluteFilePath = new File(fileConcate).getAbsolutePath();
-					
-//						// increment the counter
-//						k++;
-//						
-//						File f = new File(absoluteFilePath);
-//						path = f.toURI().toURL().getPath();
-//						// check if the file exits or not.
-//					} while(!new File(path).exists());
-					/***********************************************************/
-					/*********This part is for get absolute file path***********/
-					
 					// Get the name of the file where the warning is from.
-					String fileName = filePath.substring(filePath.lastIndexOf(File.separatorChar) + 1, filePath.length());
+					String fileName = fileElement.getAttribute("classname");
 					
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("BugInstance");
@@ -162,12 +90,12 @@ public class FindBugsXMLParser extends XMLParser {
 							String ruleName = warningElement.getAttribute("type");
 							
 							String classification = categoryInfo.get(ruleName);
-
-							FindBugsWarning fbw = new FindBugsWarning(filePath, fileName, line, message, category, priority, ruleName, classification);
 							
-							fbw.setAbsoluteFilePath(absoluteFilePath);
+							// file path is set to empty string, because we are going to set the File path through
+							// ProjectInfoFinder class.
+
 							// Add warning to the list of warnings.
-							findBugsWarnings.add(fbw);
+							findBugsWarnings.add(new FindBugsWarning("", fileName, line, message, category, priority, ruleName, classification));
 						}
 					}
 				}
