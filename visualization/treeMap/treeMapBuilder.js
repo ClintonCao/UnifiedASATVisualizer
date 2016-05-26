@@ -66,7 +66,6 @@ var treeMapBuilder = (function() {
     //render the chart with given depth and children
     function display(d) {
 
-
         currentNode = d;
 
         // On click top bar to go back
@@ -262,7 +261,7 @@ var childrenArray = g.filter(function(d) {
         t.append("tspan")
             .attr("dy", "1.0em")
             .text(function(d) {
-                return d.value;
+                return d.warnings;
             });
         t.call(text);
 
