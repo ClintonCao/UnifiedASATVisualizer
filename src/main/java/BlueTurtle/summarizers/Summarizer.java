@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import BlueTurtle.gui.GUIController.ASAT;
 import BlueTurtle.warnings.Warning;
 import lombok.Getter;
 
@@ -16,15 +17,7 @@ import lombok.Getter;
 @SuppressWarnings("checkstyle:visibilitymodifier")
 public abstract class Summarizer {
 	
-	/**
-	 * Enums to define type of warnings.
-	 * @author BlueTurtle.
-	 *
-	 */
-	enum ASATs {
-		CheckStyle, PMD, FindBugs;
-	}
-	
+
 	@Getter protected String packageName;
 	@Getter protected int numberOfWarnings;
 	@Getter protected Set<String> warningTypes;
@@ -53,7 +46,7 @@ public abstract class Summarizer {
 	 * @param type
 	 *            the type of the warning.
 	 */
-	public void incrementNumberOfWarnings(ASATs type) {
+	public void incrementNumberOfWarnings(ASAT type) {
 		switch (type) {
 		case CheckStyle:
 			numberOfCheckStyleWarnings++;

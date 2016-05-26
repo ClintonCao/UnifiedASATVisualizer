@@ -5,6 +5,7 @@ import java.util.List;
 
 import BlueTurtle.computers.LOCComputer;
 import BlueTurtle.finders.PackageNameFinder;
+import BlueTurtle.gui.GUIController.ASAT;
 import BlueTurtle.warnings.Warning;
 import lombok.Getter;
 
@@ -56,7 +57,7 @@ public class ComponentSummarizer extends Summarizer {
 					warningTypes.add(w.getType());
 				}
 				warningList.add(w);
-				incrementNumberOfWarnings(ASATs.valueOf(warningType));
+				incrementNumberOfWarnings(ASAT.valueOf(warningType));
 			}
 
 		}

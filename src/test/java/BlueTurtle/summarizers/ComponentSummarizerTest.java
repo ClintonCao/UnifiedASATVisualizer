@@ -11,7 +11,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import BlueTurtle.summarizers.Summarizer.ASATs;
+import BlueTurtle.gui.GUIController.ASAT;
 import BlueTurtle.warnings.CheckStyleWarning;
 import BlueTurtle.warnings.FindBugsWarning;
 import BlueTurtle.warnings.PMDWarning;
@@ -210,7 +210,7 @@ public class ComponentSummarizerTest {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3", "test4"));
 		cs.summarise(warningList);
-		cs.incrementNumberOfWarnings(ASATs.valueOf("Not a right type of ASAT"));
+		cs.incrementNumberOfWarnings(ASAT.valueOf("Not a right type of ASAT"));
 	}
 
 	/**
