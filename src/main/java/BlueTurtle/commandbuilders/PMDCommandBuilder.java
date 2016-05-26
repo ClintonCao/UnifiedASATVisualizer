@@ -1,5 +1,7 @@
 package BlueTurtle.commandbuilders;
 
+import java.util.ArrayList;
+
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.settings.PMDSettings;
 
@@ -29,6 +31,7 @@ public class PMDCommandBuilder extends CommandBuilder {
 	 */
 	@Override
 	public String[] buildCommand() {
+		ArrayList<String> commands  = new ArrayList<String>();
 		commands.add("java");
 		commands.add("-jar");
 		commands.add(JavaController.getUserDir() + "/Runnables/pmd-bin-4.2.6/lib/pmd-4.2.6.jar");

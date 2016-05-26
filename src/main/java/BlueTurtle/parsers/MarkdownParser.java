@@ -15,6 +15,7 @@ public abstract class MarkdownParser {
 	 * 
 	 * @param filePath
 	 *            the path to the file that needs to be parsed.
+	 * @return returns a HashMap.
 	 */
 	public abstract HashMap<String, String> parseFile(String filePath);
 }

@@ -2,6 +2,7 @@ package BlueTurtle.interfaces;
 
 import java.util.List;
 
+import BlueTurtle.groupers.WarningGrouper.Criteria;
 import BlueTurtle.summarizers.Summarizer;
 
 /**
@@ -18,5 +19,5 @@ public interface Grouper {
 	 *            list of criterium for grouping things together.
 	 * @return a list of things that are grouped together.
 	 */
-	List<Summarizer> groupBy(String criteria);
+	List<Summarizer> groupBy(Enum<Criteria> criteria);
 }

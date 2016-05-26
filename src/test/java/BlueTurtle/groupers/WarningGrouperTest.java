@@ -7,6 +7,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import BlueTurtle.groupers.WarningGrouper.Criteria;
 import BlueTurtle.summarizers.ComponentSummarizer;
 import BlueTurtle.summarizers.PackageSummarizer;
 import BlueTurtle.summarizers.Summarizer;
@@ -74,7 +76,7 @@ public class WarningGrouperTest {
 		warnings.add(w);
 		warnings.add(w2);
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
-		assertNull(wg.groupBy("Unknown command"));
+		assertNull(wg.groupBy(null));
 	}
 
 	/**
@@ -88,7 +90,7 @@ public class WarningGrouperTest {
 		expected.add(cs);
 		expected.add(cs2);
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
-		List<Summarizer> actual = wg.groupBy("components");
+		List<Summarizer> actual = wg.groupBy(Criteria.COMPONENTS);
 		assertEquals(expected, actual);
 	}
 
@@ -100,9 +102,9 @@ public class WarningGrouperTest {
 		ps.summarise(warnings);
 		ps2.summarise(warnings);
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
-		List<Summarizer> list = wg.groupBy("packages");
+		List<Summarizer> list = wg.groupBy(Criteria.PACKAGES);
 
-		// because the order ofthe setis not always the same.
+		// because the order of the set is not always the same.
 		boolean answer = list.contains(ps) && list.contains(ps2);
 		assertTrue(answer);
 	}
@@ -185,6 +187,17 @@ public class WarningGrouperTest {
 		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
 		boolean answer = wg.equals(Integer.valueOf(6));
 		assertFalse(answer);
+	}
+	
+	/**
+	 * Test summarizedWarnings.
+	 */
+	@Test
+	public void testSummarizedWarnings() {
+		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
+		EnumMap<Criteria, List<Summarizer>> empty = new EnumMap<Criteria, List<Summarizer>>(Criteria.class);
+		EnumMap<Criteria, List<Summarizer>> actual = wg.getSummarizedWarnings();
+		assertNotEquals(empty, actual);
 	}
 
 }

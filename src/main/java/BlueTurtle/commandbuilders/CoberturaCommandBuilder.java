@@ -1,5 +1,7 @@
 package BlueTurtle.commandbuilders;
 
+import java.util.ArrayList;
+
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.settings.CoberturaSettings;
 
@@ -29,6 +31,7 @@ public class CoberturaCommandBuilder extends CommandBuilder {
 	 */
 	@Override
 	public String[] buildCommand() {
+		ArrayList<String> commands  = new ArrayList<String>();
 		commands.add(JavaController.getUserDir() + "/Runnables/cobertura-2.1.1/cobertura-report.bat");
 		commands.add("--format");
 		commands.add("xml");

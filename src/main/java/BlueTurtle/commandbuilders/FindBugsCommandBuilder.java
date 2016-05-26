@@ -1,5 +1,7 @@
 package BlueTurtle.commandbuilders;
 
+import java.util.ArrayList;
+
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.settings.FindBugsSettings;
 
@@ -26,7 +28,7 @@ public class FindBugsCommandBuilder extends CommandBuilder {
 	 */
 	@Override
 	public String[] buildCommand() {
-
+		ArrayList<String> commands  = new ArrayList<String>();
 		commands.add(JavaController.getUserDir() + "/Runnables/findbugs-3.0.1/bin/findbugs.bat");
 		commands.add("-textui");
 		commands.add("-maxHeap");
