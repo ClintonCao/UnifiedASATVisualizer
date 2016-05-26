@@ -78,6 +78,9 @@ div#chart-wrapper{
   background-color:#7a92ff;
   float:left;
 }
+#d3-tip{
+	font-size:19px;
+}
 /* Title */
 #main-title {
   background: rgba(55, 58, 60, 0.8);
@@ -175,4 +178,9 @@ tree map element style
 	text-align:center;
 	font-size:18px;
 }
+
+
+/**
+ code editor
+**/
 
