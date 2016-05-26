@@ -26,11 +26,15 @@ import javafx.stage.Stage;
  *
  */
 public class GUIController {
-	
+
+	/**
+	 * Enums to represent the ASATs.
+	 * 
+	 * @author BlueTurtle.
+	 *
+	 */
 	public enum ASAT {
-		Checkstyle,
-		PMD,
-		Findbugs;
+		CheckStyle, PMD, FindBugs;
 	}
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
@@ -183,7 +187,7 @@ public class GUIController {
 			 */
 			@Override
 			public void handle(MouseEvent event) {
-				chooseFile(checkStyleConfigText, ASAT.Checkstyle);
+				chooseFile(checkStyleConfigText, ASAT.CheckStyle);
 			}
 		});
 
@@ -211,12 +215,12 @@ public class GUIController {
 			 */
 			@Override
 			public void handle(MouseEvent event) {
-				chooseFile(findbugsConfigText, ASAT.Findbugs);
+				chooseFile(findbugsConfigText, ASAT.FindBugs);
 			}
 		});
-		
+
 		visualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			
+
 			@Override
 			public void handle(MouseEvent event) {
 				try {
@@ -250,6 +254,8 @@ public class GUIController {
 	 * 
 	 * @param configText
 	 *            the text in the GUI for the config file.
+	 * @param asat
+	 *            the ASAT type.
 	 */
 	public void chooseFile(Text configText, ASAT asat) {
 

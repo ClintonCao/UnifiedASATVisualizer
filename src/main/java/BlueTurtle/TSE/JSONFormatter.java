@@ -20,82 +20,78 @@ import BlueTurtle.warnings.Warning;
 import BlueTurtle.writers.JSWriter;
 
 /**
- * JSONFormatter reads the output of Checkstyle, Findbugs and PMD and produces a summarized defect output.
+ * JSONFormatter reads the output of Checkstyle, Findbugs and PMD and produces a
+ * summarized defect output.
+ * 
  * @author michiel
  *
  */
 public class JSONFormatter {
 	private XMLParser xmlParser;
 	private GDCParser gdcParser = new GDCParser();
-	HashMap<String, String> categoryInfo = gdcParser.parseFile("./src/main/resources/asat-gdc-mapping.html");
-	
+	private HashMap<String, String> categoryInfo = gdcParser.parseFile("./src/main/resources/asat-gdc-mapping.html");
+
 	/**
-	 * Produces a list of warnings for by reading the output of PMD, Checkstyle and Findbugs. 
-	 * Then converts it to JSON format and writes it to a JavaScript file.
+	 * Produces a list of warnings for by reading the output of PMD, Checkstyle
+	 * and Findbugs. Then converts it to JSON format and writes it to a
+	 * JavaScript file.
+	 * 
 	 * @throws IOException
-	 * 						File not found.
+	 *             File not found.
 	 */
 	public void format() throws IOException {
-		List<Warning> checkStyleWarnings = parseCheckStyleXML();
-		List<Warning> pmdWarnings = parsePMDXML();
-		List<Warning> findBugsWarnings = parseFindBugsXML();
 		List<Warning> totalWarnings = new ArrayList<Warning>();
-		totalWarnings.addAll(checkStyleWarnings);
-		totalWarnings.addAll(pmdWarnings);
-		totalWarnings.addAll(findBugsWarnings);
-		
+		totalWarnings.addAll(parseCheckStyleXML());
+		totalWarnings.addAll(parsePMDXML());
+		totalWarnings.addAll(parseFindBugsXML());
+
 		writeJSON(totalWarnings);
 	}
-	
+
 	/**
 	 * Parse CheckStyle output and produce list of warnings.
-	 * @return 
-	 * 			List of warnings.
+	 * 
+	 * @return List of warnings.
 	 * @throws IOException
-	 * 			File not found.
+	 *             File not found.
 	 */
 	private List<Warning> parseCheckStyleXML() throws IOException {
 		xmlParser = new CheckStyleXMLParser();
-		
-		List<Warning> checkStyleWarnings = xmlParser.parseFile(JavaController.getCheckStyleOutputFile(), categoryInfo);
-		
-		return checkStyleWarnings;
+		return xmlParser.parseFile(JavaController.getCheckStyleOutputFile(), categoryInfo);
 	}
-	
+
 	/**
 	 * Parse PMD output and produce list of warnings.
-	 * @return 
-	 * 			List of warnings.
+	 * 
+	 * @return List of warnings.
 	 * @throws IOException
-	 * 			File not found.
+	 *             File not found.
 	 */
 	private List<Warning> parsePMDXML() throws IOException {
 		xmlParser = new PMDXMLParser();
-		
-		List<Warning> PMDWarnings = xmlParser.parseFile(JavaController.getPMDOutputFile(), categoryInfo);
-		
-		return PMDWarnings;
+		return xmlParser.parseFile(JavaController.getPmdOutputFile(), categoryInfo);
 	}
-	
+
 	/**
 	 * Parse FindBugs output and produce list of warnings.
-	 * @return 
-	 * 			List of warnings.
+	 * 
+	 * @return List of warnings.
 	 * @throws IOException
-	 * 			File not found.
+	 *             File not found.
 	 */
 	private List<Warning> parseFindBugsXML() throws IOException {
 		xmlParser = new FindBugsXMLParser();
-		List<Warning> findBugsWarnings = xmlParser.parseFile(JavaController.getFindBugsOutputFile(), categoryInfo);
-		return findBugsWarnings;
+		return xmlParser.parseFile(JavaController.getFindBugsOutputFile(), categoryInfo);
 	}
-	
+
 	/**
-	 * Groups the warnings together by packages and writes it as JSON output to a JavaScript file.
+	 * Groups the warnings together by packages and writes it as JSON output to
+	 * a JavaScript file.
+	 * 
 	 * @param warnings
-	 * 				List of warnings to work with.
+	 *            List of warnings to work with.
 	 * @throws IOException
-	 * 				Output file not found.
+	 *             Output file not found.
 	 */
 	private void writeJSON(List<Warning> warnings) throws IOException {
 		HashMap<String, String> componentsInfo = new HashMap<String, String>();
@@ -111,6 +107,6 @@ public class JSONFormatter {
 
 		JSWriter jwriter = JSWriter.getInstance();
 		jwriter.setSummarizedWarnings(list);
-		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.js");	
+		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.js");
 	}
 }

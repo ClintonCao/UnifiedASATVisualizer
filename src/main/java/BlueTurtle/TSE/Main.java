@@ -36,7 +36,7 @@ public class Main {
 	 *             execution of the controller.
 	 */
 	public static void main(String[] args) throws IOException {
-		
+
 		switch (currentMode) {
 		case JAVA:
 			controller = new JavaController();
@@ -48,7 +48,14 @@ public class Main {
 		}
 		System.out.println("Done.");
 	}
-	
+
+	/**
+	 * Run compute all the necessary information needed for the visualization.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if problem is encountered while computing
+	 *             the information.
+	 */
 	public static void runVisualization() throws IOException {
 		controller.execute();
 	}
