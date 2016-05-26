@@ -19,11 +19,12 @@ import lombok.Setter;
 public class JavaController implements Controller {
 	@Getter @Setter private static String userDir = System.getProperty("user.dir");
 	@Getter @Setter private static String checkStyleOutputFile;
-	@Getter @Setter private static String PMDOutputFile;
+	@Getter @Setter private static String pmdOutputFile;
 	@Getter @Setter private static String findBugsOutputFile;
 
 	/**
-	 * Execute controller. A command is constructed for every ASAT which needs to be run. 
+	 * Execute controller. A command is constructed for every ASAT which needs
+	 * to be run.
 	 * 
 	 * @throws IOException
 	 *             throws an exception if a problem is encountered when
@@ -33,21 +34,29 @@ public class JavaController implements Controller {
 		JSONFormatter jsonFormatter = new JSONFormatter();
 		jsonFormatter.format();
 	}
-	
+
+	/**
+	 * Set the output path for the ASAT.
+	 * 
+	 * @param asat
+	 *            the asat type.
+	 * @param file
+	 *            the output file.
+	 */
 	public static void setASATOutput(ASAT asat, File file) {
-		if(file == null) {
+		if (file == null) {
 			return;
 		}
 		switch (asat) {
-			case PMD:
-				PMDOutputFile = file.getAbsolutePath();
-				break;
-			case Checkstyle:
-				checkStyleOutputFile = file.getAbsolutePath();
-				break;
-			case Findbugs:
-				findBugsOutputFile = file.getAbsolutePath();
-				break;
+		case PMD:
+			pmdOutputFile = file.getAbsolutePath();
+			break;
+		case CheckStyle:
+			checkStyleOutputFile = file.getAbsolutePath();
+			break;
+		case FindBugs:
+			findBugsOutputFile = file.getAbsolutePath();
+			break;
 		default:
 			break;
 		}
