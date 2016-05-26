@@ -49,7 +49,7 @@ public class CategorySummarizer extends Summarizer {
 			
 			String rule = w.getRuleName();
 			String currentC = categoryInfo.get(rule);
-			if (currentC == category) {
+			if (currentC.equals(category)) {
 				warningList.add(w);
 				numberOfWarnings++;
 			}

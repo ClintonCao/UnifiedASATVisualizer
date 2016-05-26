@@ -2,6 +2,7 @@ package BlueTurtle.TSE;
 
 import java.io.IOException;
 
+import BlueTurtle.gui.GUI;
 import BlueTurtle.interfaces.Controller;
 
 /**
@@ -18,12 +19,12 @@ public class Main {
 	 * @author BlueTurtle.
 	 *
 	 */
-	enum mode {
+	enum Mode {
 		JAVA
 	}
 
 	static Controller controller;
-	static mode currentMode = mode.JAVA;
+	static Mode currentMode = Mode.JAVA;
 
 	/**
 	 * Main method.
@@ -35,14 +36,27 @@ public class Main {
 	 *             execution of the controller.
 	 */
 	public static void main(String[] args) throws IOException {
+
 		switch (currentMode) {
 		case JAVA:
 			controller = new JavaController();
+			GUI gui = new GUI();
+			gui.startGUI();
 			break;
 		default:
 			break;
 		}
-		controller.execute();
 		System.out.println("Done.");
+	}
+
+	/**
+	 * Run compute all the necessary information needed for the visualization.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if problem is encountered while computing
+	 *             the information.
+	 */
+	public static void runVisualization() throws IOException {
+		controller.execute();
 	}
 }

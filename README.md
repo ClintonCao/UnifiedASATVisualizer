@@ -1,19 +1,16 @@
 # Contextproject-TSE &nbsp; [![Build Status](https://travis-ci.org/ClintonCao/Contextproject-TSE.svg?branch=master)](https://travis-ci.org/ClintonCao/Contextproject-TSE) [![Coverage Status](https://coveralls.io/repos/github/ClintonCao/Contextproject-TSE/badge.svg?branch=master)](https://coveralls.io/github/ClintonCao/Contextproject-TSE?branch=master)
 This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016. 
 
-**Team Members**:
+## Team Members:
 
-Boning Gong
-
-Clinton Cao
-
-Michiel Doesburg
-
-Sunwei Wang
-
-Tim Buckers
-
-**SE TA**: Bastiaan Reijm
+| Member name |
+|-------|
+|[Boning Gong] (https://github.com/boninggong)|
+|[Clinton Cao] (https://github.com/ClintonCao)|
+|[Michiel Doesburg] (https://github.com/Michieldoesburg)|
+|[Sunwei Wang] (https://github.com/SunweiWang)|
+|[Tim Buckers] (https://github.com/TimBuckers)|
+|**SE TA**: [Bastiaan Reijm] (https://github.com/breijm)|
 
 
 ## Links to sprint related documents:
@@ -27,7 +24,8 @@ Tim Buckers
 |Sprint Backlog 3 | [sprint backlog 3] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog3(BlueTurtle).pdf)|
 |Sprint Retrospective 3 | [sprint retrospective 3] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective3%28BlueTurtle%29.pdf)|
 |Sprint Backlog 4 | [sprint backlog 4] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog4%28BlueTurtle%29.pdf)|
-
+|Sprint Retrospective 4 | [sprint retrospective 4] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective4%20%28BlueTurtle%29.pdf)|
+|Sprint Backlog 5 | [sprint backlog 5] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog5%28BlueTurtle%29.pdf)|
 
 ## Links to product related documents:
 
@@ -42,3 +40,7 @@ Tim Buckers
 ## Links to other documents:
 
 SAT Research: [sat research] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/SAT%20research/StaticanalysistoolsresearchBlueTurtle.pdf)
+
+## Run the Visualizer:
+
+Go to the visualization map and run main.html using a browser
