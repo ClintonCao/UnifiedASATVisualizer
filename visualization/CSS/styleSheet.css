@@ -144,10 +144,11 @@ rect.parent {
 .grandparent rect {
   cursor: pointer;
 }
+/*
 .children rect.parent {
   fill: #bbb;
   fill-opacity: .5;
-}
+}*/
 .children:hover rect.child {
   fill: #bbb;
 }
