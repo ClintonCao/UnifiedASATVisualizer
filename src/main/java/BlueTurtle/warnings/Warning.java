@@ -47,4 +47,10 @@ public abstract class Warning {
 	 */
 	@Override
 	public abstract boolean equals(Object other);
+	
+	/**
+	 * HashCode for the object.
+	 */
+	@Override
+	public abstract int hashCode();
 }

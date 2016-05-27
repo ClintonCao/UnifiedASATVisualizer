@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import BlueTurtle.gui.GUIController.ASAT;
-import BlueTurtle.interfaces.Controller;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,18 +17,10 @@ import lombok.Setter;
  *
  */
 public class JavaController implements Controller {
-	@Getter
-	@Setter
-	private static String userDir = System.getProperty("user.dir");
-	@Getter
-	@Setter
-	private static String checkStyleOutputFile;
-	@Getter
-	@Setter
-	private static String pmdOutputFile;
-	@Getter
-	@Setter
-	private static String findBugsOutputFile;
+	@Getter @Setter private static String userDir = System.getProperty("user.dir");
+	@Getter @Setter private static String checkStyleOutputFile;
+	@Getter @Setter private static String pmdOutputFile;
+	@Getter @Setter private static String findBugsOutputFile;
 
 	/**
 	 * Execute controller. A command is constructed for every ASAT which needs

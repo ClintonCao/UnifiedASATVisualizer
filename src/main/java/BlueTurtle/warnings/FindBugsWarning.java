@@ -67,4 +67,12 @@ public class FindBugsWarning extends Warning {
 				&& message.equals(that.message) && category.equals(that.category) && classification.equals(that.classification)
 				&& priority.equals(that.priority) && type.equals(that.type) && ruleName.equals(that.ruleName));
 	}
+	
+	/**
+	 * HashCode for the FindBugsWarning.
+	 */
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(filePath, fileName, type, lineNumber, message, category, priority, ruleName, classification);
+	}
 }

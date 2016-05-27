@@ -66,7 +66,6 @@ var treeMapBuilder = (function() {
     //render the chart with given depth and children
     function display(d) {
 
-
         currentNode = d;
 
         // On click top bar to go back
@@ -107,7 +106,6 @@ var treeMapBuilder = (function() {
 
         //on click square to go more in depth
         g.filter(function(d) {
-			console.log("funci");
                 return d._children;
             })
             .classed("children", true)
@@ -123,7 +121,7 @@ var treeMapBuilder = (function() {
                 return tooltip.style("visibility", "hidden");
             });
 
-var childrenArray = g.filter(function(d) {
+        var childrenArray = g.filter(function(d) {
                 return d._children;
             })
 			// bottom layer now we add a click to go to the code editor
@@ -262,7 +260,7 @@ var childrenArray = g.filter(function(d) {
         t.append("tspan")
             .attr("dy", "1.0em")
             .text(function(d) {
-                return d.value;
+                return d.warnings;
             });
         t.call(text);
 
@@ -296,15 +294,11 @@ var childrenArray = g.filter(function(d) {
 
 
         function navigationDown(d) {
-            console.log("navigationDown")
             currentNodePath.push(findChildNumber(d, d.parent));
             transition(d)
         }
 
         function toSourceCode(d) {
-            console.log("toSourceCode")
-            console.log(d)
-			
         	sessionStorage.setItem('fileName', d.fileName);
 			window.open('codeEditor.html','_self',false)
         }

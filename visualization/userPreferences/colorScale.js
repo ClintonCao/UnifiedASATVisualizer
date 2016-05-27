@@ -1,3 +1,4 @@
+var isAbsolute = true;
 var colorScale = (function() {
 	var twoColors = [d3.rgb("#00a700"), d3.rgb('#a90000')];
 	// default color settings
@@ -21,7 +22,6 @@ var colorScale = (function() {
 		  		}
 		  		var curRatio = numberOfWarnings / classObjectJson.loc;
 		  		if(curRatio > worstRatio) {
-		  			console.log(classObjectJson.fileName);
 		  			worstRatio = curRatio;
 		  		}
 			}
@@ -35,7 +35,12 @@ var colorScale = (function() {
             return color;
         },
 		getColor: function(ratio) {
-            return (ratio > 100) ? color(100) : color(ratio);
+			if(isAbsolute) {
+				return (ratio > 100) ? color(100) : color(ratio);
+			} else {
+				console.log(ratio);
+				return color(ratio);
+			}
         },
 		colorsRelative: function() {
 			color = d3.scale.linear().domain([0, getRelativeWarnings()]).interpolate(d3.interpolateHcl).range(twoColors);

@@ -1,4 +1,4 @@
-package BlueTurtle.interfaces;
+package BlueTurtle.groupers;
 
 import java.util.List;
 
