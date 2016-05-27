@@ -154,6 +154,16 @@ public class PackageSummarizerTest {
 	}
 	
 	/**
+	 * Test objects that are the same should return same hashCode.
+	 */
+	@Test
+	public void tesSameHashCode() {
+		PackageSummarizer ps = new PackageSummarizer(packageName);
+		PackageSummarizer ps2 = new PackageSummarizer(packageName);
+		assertEquals(ps2.hashCode(), ps.hashCode());
+	}
+	
+	/**
 	 * Test equals with another object.
 	 */
 	@Test

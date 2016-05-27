@@ -48,6 +48,16 @@ public class ChecktStyleWarningTest {
 		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, message, ruleName, classification);
 		assertEquals(expected, actual);
 	}
+	
+	/**
+	 * Test objects that are equal should return same HashCode.
+	 */
+	@Test
+	public void testSameHashCode() {
+		CheckStyleWarning expected = new CheckStyleWarning(filePath, fileName, 1, message, ruleName, classification);
+		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, message, ruleName, classification);
+		assertEquals(expected.hashCode(), actual.hashCode());
+	}
 
 	/**
 	 * Test equal method where both objects represent the same warning.

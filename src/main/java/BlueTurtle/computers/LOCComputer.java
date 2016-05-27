@@ -1,4 +1,4 @@
-package BlueTurtle.finders;
+package BlueTurtle.computers;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,7 +10,7 @@ import java.io.FileReader;
  *
  */
 @SuppressWarnings("checkstyle:hideutilityclassconstructor")
-public class LOCFinder {
+public class LOCComputer {
 
 	/**
 	 * Find the number of (physical) lines for a source code file.
@@ -19,15 +19,16 @@ public class LOCFinder {
 	 *            the path to the source code file.
 	 * @return the number of (physical) lines.
 	 */
-	public static int findLOC(String filePath) {
+	public static int computeLOC(String filePath) {
 		int numLines = 0;
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(filePath));
 			String line = reader.readLine();
 			while (line != null) {
-				if (!line.isEmpty()) {
+				if (!line.isEmpty() && !line.startsWith("import")) {
 					numLines++;
 				}
+				
 				line = reader.readLine();
 			}
 
