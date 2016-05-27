@@ -144,7 +144,7 @@ var treeMapBuilder = (function() {
         });*/
 
         $('.updateContent').change(function() {
-            //document.getElementById('treemapButton').checked
+            $('.toggle').prop('disabled', true);
             if (true && !refreshing) {
                 refreshing = true;
                 $(this).disable = true
@@ -160,9 +160,8 @@ var treeMapBuilder = (function() {
                     refreshing = false;
                     $(this).disable = false
                 }, millisecondsToWait);
-
-
             }
+            $('.toggle').prop('disabled', false);
         })
 
         function fastReload() {

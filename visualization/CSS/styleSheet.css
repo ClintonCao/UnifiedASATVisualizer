@@ -1,7 +1,8 @@
-/* global settings */
-*{
-	font-family:Tahoma, Geneva, sans-serif;
-}
+/*
+ * General styling
+ */
+*{font-family:Tahoma, Geneva, sans-serif;}
+
 body{
 	color:#FFF !important;
 	margin:0;
@@ -25,20 +26,37 @@ div#menu-right-wrapper{
   margin-right: 20px;
   background: rgba(55, 58, 60, 0.8);
 }
-/* Option menu*/
+
+/* 
+ * Option menu right
+ */
 div#right-menu{
   padding:20px;
   margin: 0 20px 0 0;
   opacity:0.8;
 }
+
+/* 
+ * Option menu left
+ */
 div#left-menu{
   padding:20px;
   margin: 0 20px 0 0;
   opacity:0.8;
 }
+#checkStyleLabel {
+  color: #00FF00;
+}
+#PMDLabel {
+  color: #FF0000;
+}
+#FindBugsLabel {
+  color: #0000FF;
+}
 
-
-/* Chart div*/
+/* 
+ * Styling for the chart
+ */
 div#chart {
   background:#CCC;
   margin:30px;
@@ -81,6 +99,7 @@ div#chart-wrapper{
 #d3-tip{
 	font-size:19px;
 }
+
 /* Title */
 #main-title {
   background: rgba(55, 58, 60, 0.8);
@@ -125,11 +144,6 @@ rect {
   fill: none;
   stroke: #fff;
 }
-/*
-.children rect.parent {
-  fill: #bbb;
-  fill-opacity: .5;
-}*/
 
 .grandparent rect {
   stroke-width: 2px;
@@ -165,18 +179,9 @@ h4.category-titles{
 	margin:20px 0 10px 0;
 	cursor: pointer;
 }
-/**
-tree map element style
-**/
 
 /* name of a block or package */
 .ptext {
 	text-align:center;
 	font-size:18px;
 }
-
-
-/**
- code editor
-**/
-

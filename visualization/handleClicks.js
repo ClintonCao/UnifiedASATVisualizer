@@ -49,6 +49,9 @@ function handleClickCategorySat(value, checked) {
             acceptedCategories.splice(index, 1);
         }
     }
+    console.log("Testjes");
+    $('.toggle').attr('data-toggle');
+    //setTimeout(function(){ }, 100);
 }
 
 /*
