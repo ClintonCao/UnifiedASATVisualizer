@@ -127,6 +127,7 @@ public class NewFindBugsXMLParser extends XMLParser {
 				for(int i = 0; i < classPaths.size(); i++) {
 					if (classPaths.get(i).endsWith(fileNWithSep)){
 						filePath = classPaths.get(i);
+						break;
 					}
 				}
 				// Get the name of the file where the warning is from.

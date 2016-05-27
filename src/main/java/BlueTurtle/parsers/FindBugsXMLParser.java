@@ -66,8 +66,6 @@ public class FindBugsXMLParser extends XMLParser {
 			
 			addWarnings(srcList, nList, findBugsWarnings, categoryInfo);
 
-
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
