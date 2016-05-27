@@ -125,30 +125,25 @@ rect {
   fill: none;
   stroke: #fff;
 }
-rect.parent,
-.grandparent rect {
-  stroke-width: 2px;
-}
-rect.parent {
-  pointer-events: none;
-}
-.grandparent rect {
-  /*fill: #999;*/
-  opacity:0;
- 
-}
-.grandparent:hover rect {
-  fill: #b3c1fe;
-}
-.children rect.parent,
-.grandparent rect {
-  cursor: pointer;
-}
 /*
 .children rect.parent {
   fill: #bbb;
   fill-opacity: .5;
 }*/
+
+.grandparent rect {
+  stroke-width: 2px;
+  fill: #337ab7;
+}
+
+.grandparent:hover rect {
+  fill: #2d6da4;
+}
+
+.children rect.parent,
+.grandparent rect {
+  cursor: pointer;
+}
 .children:hover rect.child {
   fill: #bbb;
 }

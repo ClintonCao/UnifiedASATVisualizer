@@ -81,19 +81,9 @@ var treeMapBuilder = (function() {
 
         grandparent
             .datum(d.parent)
-            .on("click", navigationUp)
+            .on("click", transition)
             .select("text")
             .text(name(d))
-            .on("mouseover", function(d) {
-                tooltip.text(d.fileName + " (" + getSatWarningsPrint(d) + ")");
-                return tooltip.style("visibility", "visible");
-            })
-            .on("mousemove", function(d) {
-                return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
-            })
-            .on("mouseout", function(d) {
-                return tooltip.style("visibility", "hidden");
-            });
 
         var g1 = svg.insert("g", ".grandparent")
             .datum(d)
@@ -339,7 +329,6 @@ var treeMapBuilder = (function() {
 
         function transition(d) {
 
-
             if (transitioning || !d) return;
             transitioning = true;
             appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
@@ -382,9 +371,6 @@ var treeMapBuilder = (function() {
 
         return g;
     }
-
-    
-
 
 	function text(text) {
         text.selectAll("tspan")
