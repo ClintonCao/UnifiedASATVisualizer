@@ -106,7 +106,6 @@ var treeMapBuilder = (function() {
 
         //on click square to go more in depth
         g.filter(function(d) {
-			console.log("funci");
                 return d._children;
             })
             .classed("children", true)
@@ -122,7 +121,7 @@ var treeMapBuilder = (function() {
                 return tooltip.style("visibility", "hidden");
             });
 
-var childrenArray = g.filter(function(d) {
+        var childrenArray = g.filter(function(d) {
                 return d._children;
             })
 			// bottom layer now we add a click to go to the code editor
@@ -295,15 +294,11 @@ var childrenArray = g.filter(function(d) {
 
 
         function navigationDown(d) {
-            console.log("navigationDown")
             currentNodePath.push(findChildNumber(d, d.parent));
             transition(d)
         }
 
         function toSourceCode(d) {
-            console.log("toSourceCode")
-            console.log(d)
-			
         	sessionStorage.setItem('fileName', d.fileName);
 			window.open('codeEditor.html','_self',false)
         }
