@@ -5,7 +5,9 @@ import static org.junit.Assert.assertFalse;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Before;
@@ -21,6 +23,8 @@ public class ProjectInfoFinderTest {
 
 	private ProjectInfoFinder pif;
 	private String exampleFilePath;
+	private static String srcDir = System.getProperty("user.dir") + "/src";
+
 
 	/**
 	 * Initialize the objects that are needed.
@@ -34,6 +38,7 @@ public class ProjectInfoFinderTest {
 		pif = new ProjectInfoFinder();
 		exampleFilePath = Paths.get("src", "test", "resources", "TestCodeFolder", "AllClosestPoints.java").toAbsolutePath().toString();
 		pif.findFiles(new File(Paths.get("src", "test", "resources").toAbsolutePath().toString()));
+		pif.findFiles(new File(srcDir));
 	}
 
 	/**
@@ -74,6 +79,15 @@ public class ProjectInfoFinderTest {
 		Set<String> actual = ProjectInfoFinder.getPackages();
 		Set<String> expected = new HashSet<String>();
 		expected.add("default");
+		expected.add("BlueTurtle.warnings");
+		expected.add("BlueTurtle.groupers");
+		expected.add("BlueTurtle.computers");
+		expected.add("BlueTurtle.TSE");
+		expected.add("BlueTurtle.finders");
+		expected.add("BlueTurtle.gui");
+		expected.add("BlueTurtle.writers");
+		expected.add("BlueTurtle.summarizers");
+		expected.add("BlueTurtle.parsers");
 		assertEquals(expected, actual);
 	}
 

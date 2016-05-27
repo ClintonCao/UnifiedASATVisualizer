@@ -11,11 +11,12 @@ import static org.junit.Assert.assertSame;
 import org.junit.Before;
 import org.junit.Test;
 
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.warnings.FindBugsWarning;
 import BlueTurtle.warnings.Warning;
 
 /**
- * Test class for FindBugsXMLParser.
+ * Test class for NewFindBugsXMLParser.
  * 
  * @author BlueTurtle.
  *
@@ -25,15 +26,15 @@ public class FindBugsXMLParserTest {
 	private static String testSet = "./src/test/resources/exampleFindbugs2.xml";
 	private static String testSet2 = "./src/test/resources/exampleFindbugs1.xml";
 	private static String testSet3 = "./src/test/resources/asat-gdc-mapping.html";
+	private static String srcDir = System.getProperty("user.dir") + "/src";
 
-	private static String testSet2FilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java";
 	private static String testSet2FileName = "FindBugsWarning.java";
 	private static String testSet2RuleName = "HE_EQUALS_USE_HASHCODE";
 	private static String testSet2Message = "BlueTurtle.warnings.FindBugsWarning defines equals and uses Object.hashCode()";
 	private static String testSet2Category = "BAD_PRACTICE";
 	private static String testSet2Priority = "High";
 	private static String testSet2Classification = "Interface";
-	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar + "FindBugsWarning.java";
+	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar + "src" + File.separatorChar + "main" + File.separatorChar + "java" + File.separatorChar + "BlueTurtle" + File.separatorChar + "warnings"+ File.separatorChar + "FindBugsWarning.java";
 
 	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
@@ -44,6 +45,8 @@ public class FindBugsXMLParserTest {
 	public void setUp() {
 		GDCParser gP = new GDCParser();
 		categoryInfo = gP.parseFile(testSet3);
+		ProjectInfoFinder pif = new ProjectInfoFinder();
+		pif.findFiles(new File(srcDir));
 	}
 	
 	/**

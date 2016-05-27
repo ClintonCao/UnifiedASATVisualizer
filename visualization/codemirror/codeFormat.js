@@ -1,14 +1,23 @@
-var txt = '';
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function(){
-  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-    txt = xmlhttp.responseText;
-  }
-};
-xmlhttp.open("GET","b.txt",true);
-console.log(txt);
-console.log("txts");
-console.log(txt);
+function xhrSuccess () { this.callback.apply(this, this.arguments); }
+
+function xhrError () { console.error(this.statusText); }
+
+function loadFile (sURL, fCallback /*, argumentToPass1, argumentToPass2, etc. */) {
+  var oReq = new XMLHttpRequest();
+  oReq.callback = fCallback;
+  oReq.arguments = Array.prototype.slice.call(arguments, 2);
+  oReq.onload = xhrSuccess;
+  oReq.onerror = xhrError;
+  oReq.open("get", sURL, true);
+  oReq.send(null);
+}
+
+function showMessage (sMsg) {
+  alert(sMsg + this.responseText);
+}
+
+loadFile("b.txt", showMessage, "New message!\n\n");
+
 //chrome.exe --disable-web-security
 
 var value =  sessionStorage.getItem('fileName');

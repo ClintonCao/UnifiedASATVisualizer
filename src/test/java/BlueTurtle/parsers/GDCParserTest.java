@@ -2,6 +2,7 @@ package BlueTurtle.parsers;
 
 import java.util.HashMap;
 
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
@@ -43,18 +44,18 @@ public class GDCParserTest {
 		assertSame(2, categoryInfo.size());
 	}	
 
-//	/**
-//	 * Test that the parser parse the wrong file.
-//	 */
-//	@Test
-//	public void testParseTheWrongFile() {
-//		FindBugsXMLParser parser = new FindBugsXMLParser();
-//		
-//		String testSet3 = "./resources/ex.xml";
-//
-//		List<Warning> warnings = parser.parseFile(testSet3);
-//		
-//		assertNotSame(6, warnings.toString());
-//	}
+	/**
+	 * Test that the parser parse the wrong file.
+	 */
+	@Test
+	public void testParseTheWrongFile() {
+		GDCParser parser = new GDCParser();
+		
+		String testSet3 = "./resources/ex.xml";
+
+		HashMap<String, String> warnings = parser.parseFile(testSet3);
+		
+		assertNotSame(6, warnings.size());
+	}
 
 }
