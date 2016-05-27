@@ -30,10 +30,10 @@ public class ProjectInfoFinder {
 	 */
 	public void findFiles(File srcDir) {
 		
-		// find all subdirectories;
+		// Find all subdirectories.
 		File[] subdirs = srcDir.listFiles();
 		
-		// Go through all subdirectories
+		// Go through all subdirectories.
 		for (File subdir : subdirs) {
 			// if it is a directory, keep searching for file.
 			if (subdir.isDirectory()) {
