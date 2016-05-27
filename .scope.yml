@@ -7,4 +7,9 @@ exclude:
 - .*/d3.*
 - .*/SummarizedOuput.*
 - .*/input.*
+- .*/vim.*
+- .*/smarty.*
+- .*/multiplex.*
+- .*/codemirror.*
+- .*/haxe.*
   
