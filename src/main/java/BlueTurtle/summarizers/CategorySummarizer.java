@@ -6,7 +6,6 @@ import java.util.List;
 
 import BlueTurtle.warnings.Warning;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * This class can be used to summarize the warnings according to their categories in GDC.
@@ -16,9 +15,9 @@ import lombok.Setter;
  */
 public class CategorySummarizer extends Summarizer {
 
-	@Getter @Setter private String category;
-	@Getter @Setter private List<Warning> warningList;
-	@Getter @Setter private HashMap<String, String> categoryInfo;
+	@Getter private String category;
+	@Getter private List<Warning> warningList;
+	@Getter private HashMap<String, String> categoryInfo;
 
 	/**
 	 * Constructor.
@@ -32,9 +31,9 @@ public class CategorySummarizer extends Summarizer {
 	 */
 	public CategorySummarizer(String category, String packageName, HashMap<String, String> categoryInfo) {
 		super(packageName);
-		setCategory(category);
-		setCategoryInfo(categoryInfo);
-		setWarningList(new ArrayList<Warning>());
+		this.category = category;
+		this.categoryInfo = categoryInfo;
+		this.warningList = new ArrayList<Warning>();
 	}
 
 	/**
@@ -76,4 +75,13 @@ public class CategorySummarizer extends Summarizer {
 				&& numberOfWarnings == that.numberOfWarnings
 				&& categoryInfo == that.categoryInfo);
 	}
+
+	/**
+	 * HashCode for CatergorySummarizer.
+	 */
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(category, warningList, numberOfWarnings, categoryInfo);
+	}
+	
 }

@@ -1,4 +1,4 @@
-package BlueTurtle.interfaces;
+package BlueTurtle.parsers;
 
 import java.util.HashMap;
 import java.util.List;

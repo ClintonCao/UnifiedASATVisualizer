@@ -48,6 +48,16 @@ public class PMDWarningTest {
 		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
 		assertEquals(expected, actual);
 	}
+	
+	/**
+	 * Test objects that are equal should return same HashCode.
+	 */
+	@Test
+	public void testSameHashCode() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		assertEquals(expected.hashCode(), actual.hashCode());
+	}
 
 	/**
 	 * Test equal method where objects have different file paths.

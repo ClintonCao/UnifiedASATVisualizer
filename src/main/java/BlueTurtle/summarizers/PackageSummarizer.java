@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.warnings.Warning;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * This class summarises the warnings of a specific package.
@@ -17,8 +16,8 @@ import lombok.Setter;
  */
 public class PackageSummarizer extends Summarizer {
 
-	@Getter @Setter private List<ComponentSummarizer> classes;
-	@Getter @Setter private int numberOfClasses;
+	@Getter private List<ComponentSummarizer> classes;
+	@Getter private int numberOfClasses;
 
 	/**
 	 * Constructor.
@@ -28,8 +27,8 @@ public class PackageSummarizer extends Summarizer {
 	 */
 	public PackageSummarizer(String packageName) {
 		super(packageName);
-		setClasses(new ArrayList<ComponentSummarizer>());
-		setNumberOfClasses(0);
+		this.classes = new ArrayList<ComponentSummarizer>();
+		this.numberOfClasses = 0;
 	}
 
 	/**
@@ -97,5 +96,13 @@ public class PackageSummarizer extends Summarizer {
 		return (packageName.equals(that.packageName) && numberOfWarnings == that.numberOfWarnings
 				&& classes.equals(that.classes) && warningTypes.equals(that.warningTypes));
 
+	}
+	
+	/**
+	 * HashCode for PackageSummarizer.
+	 */
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(packageName, numberOfWarnings, classes, warningTypes);
 	}
 }

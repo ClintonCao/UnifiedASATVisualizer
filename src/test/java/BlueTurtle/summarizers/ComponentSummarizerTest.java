@@ -11,6 +11,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import BlueTurtle.gui.GUIController.ASAT;
 import BlueTurtle.warnings.CheckStyleWarning;
 import BlueTurtle.warnings.FindBugsWarning;
 import BlueTurtle.warnings.PMDWarning;
@@ -56,15 +57,14 @@ public class ComponentSummarizerTest {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		assertSame(0, cs.numberOfWarnings);
 	}
-
+	
 	/**
-	 * Test simple path change.
+	 * Test the file path of the summarizer.
 	 */
 	@Test
-	public void testPathChange() {
+	public void testFilePath() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		cs.setFilePath("New path");
-		assertEquals("New path", cs.getFilePath());
+		assertSame(filePath, cs.getFilePath());
 	}
 
 	/**
@@ -134,6 +134,16 @@ public class ComponentSummarizerTest {
 		cs2.summarise(warningList);
 		assertEquals(cs, cs2);
 	}
+	
+	/**
+	 * Test objects that are the same should return same hashCode.
+	 */
+	@Test
+	public void testSameHahCode() {
+		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
+		ComponentSummarizer cs2 = new ComponentSummarizer(fileName, filePath, packageName);
+		assertEquals(cs.hashCode(), cs2.hashCode());
+	}
 
 	/**
 	 * Test equals between two component summarizer. Only one summarizes the
@@ -200,7 +210,7 @@ public class ComponentSummarizerTest {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		warningList.add(new FindBugsWarning(filePath, fileName, 3, "testMessage", "test", "test2", "test3", "test4"));
 		cs.summarise(warningList);
-		cs.incrementNumberOfWarnings("Not a right type of ASAT");
+		cs.incrementNumberOfWarnings(ASAT.valueOf("Not a right type of ASAT"));
 	}
 
 	/**

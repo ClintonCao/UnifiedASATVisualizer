@@ -23,12 +23,14 @@ function handleClickTreeMapTypeSat(value, checked) {
 function handleClickColorScale(radioButton) {
 	if ( radioButton.value == "absolute" ){
 		colorScale.colorsAbsolute()
+		isAbsolute = true;
 	}else{
 		colorScale.colorsRelative()
+		isAbsolute = false;
 	}
-	if (document.getElementById('graphButton').checked) {
+	/*if (document.getElementById('graphButton').checked) {
 		reloadContent(null)
-	}
+	}*/
 }
 
 

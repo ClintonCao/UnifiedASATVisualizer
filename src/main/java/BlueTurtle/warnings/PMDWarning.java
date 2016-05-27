@@ -64,4 +64,12 @@ public class PMDWarning extends Warning {
 				&& classification.equals(that.classification) && packageName.equals(that.packageName) && type.equals(that.type) 
 				&& ruleSet.equals(that.ruleSet) && method.equals(that.method) && ruleName.equals(that.ruleName));
 	}
+	
+	/**
+	 * HashCode for the CheckStyle Warning.
+	 */
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(filePath, fileName, type, line, packageName, ruleSet, method, ruleName, classification);
+	}
 }
