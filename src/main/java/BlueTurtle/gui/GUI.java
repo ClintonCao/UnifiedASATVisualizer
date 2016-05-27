@@ -34,8 +34,8 @@ public class GUI extends Application {
 		try {
 			stage.setTitle("BlueTurtle Visualizer");
 			stage.getIcons().add(new Image(GUI.class.getResourceAsStream("/blueturtlelogo.png")));
-			stage.setHeight(600);
-			stage.setWidth(1200);
+			stage.setHeight(440);
+			stage.setWidth(1117);
 			stage.setResizable(false);
 			stage.setScene(new Scene((SplitPane) new FXMLLoader(getClass().getResource("/Menu.fxml")).load()));
 			stage.show();

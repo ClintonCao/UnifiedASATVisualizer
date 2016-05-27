@@ -3,21 +3,21 @@ package BlueTurtle.gui;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.TSE.Main;
+import BlueTurtle.gui.GUIController.ASAT;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Controller class for the GUI.
@@ -50,47 +50,9 @@ public class GUIController {
 	private Text projectSourcePathText; // Value injected by FXMLLoader
 
 	@FXML // fx:id="visualizeButton"
-	private Button visualizeButton; // Value injected by FXMLLoader
+	@Getter private static Button visualizeButton; // Value injected by FXMLLoader
 
-	@FXML // fx:id="pmdButton"
-	private Button pmdButton; // Value injected by FXMLLoader
-
-	@FXML // fx:id="checkStyleButton"
-	private Button checkStyleButton; // Value injected by FXMLLoader
-
-	@FXML // fx:id="findbugsButton"
-	private Button findbugsButton; // Value injected by FXMLLoader
-
-	@FXML // fx:id="findbugsConfigText"
-	private Text findbugsConfigText; // Value injected by FXMLLoader
-
-	@FXML // fx:id="checkStyleConfigText"
-	private Text checkStyleConfigText; // Value injected by FXMLLoader
-
-	@FXML // fx:id="pmdConfigText"
-	private Text pmdConfigText; // Value injected by FXMLLoader
-
-	/**
-	 * Event for CheckStyle button.
-	 * 
-	 * @param event
-	 *            the event.
-	 */
-	@FXML
-	void selectCheckStyleConfigEvent(MouseEvent event) {
-
-	}
-
-	/**
-	 * Event for PMD button.
-	 * 
-	 * @param event
-	 *            the event.
-	 */
-	@FXML
-	void selectPMDConfigEvent(MouseEvent event) {
-
-	}
+	@Getter @Setter private static String sourcePath;
 
 	/**
 	 * Event for FindBugs button.
@@ -131,144 +93,85 @@ public class GUIController {
 	@FXML
 	void initialize() {
 		assert visualizeButton != null : "fx:id=\"visualizeButton\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert checkStyleButton != null : "fx:id=\"checkStyleButton\" was not injected: check your FXML file 'Menu.fxml'.";
 		assert projectSourcePathText != null : "fx:id=\"projectSourcePathText\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert findbugsConfigText != null : "fx:id=\"findbugsConfigText\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert checkStyleConfigText != null : "fx:id=\"checkStyleConfigText\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert pmdConfigText != null : "fx:id=\"pmdConfigText\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert findbugsButton != null : "fx:id=\"findbugsButton\" was not injected: check your FXML file 'Menu.fxml'.";
 		assert selectButton != null : "fx:id=\"selectButton\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert pmdButton != null : "fx:id=\"pmdButton\" was not injected: check your FXML file 'Menu.fxml'.";
-
-		selectButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			/**
-			 * Event handler for the button.
-			 * 
-			 * @param event
-			 *            the event.
-			 */
-			@Override
-			public void handle(MouseEvent event) {
-
-				DirectoryChooser directoryChooser = new DirectoryChooser();
-				File selectedDirectory = directoryChooser.showDialog(new Stage());
-
-				if (selectedDirectory == null) {
-					projectSourcePathText.setText("No Directory selected");
-				} else {
-					projectSourcePathText.setText(selectedDirectory.getAbsolutePath());
-					enableAllOtherButtons();
-				}
-			}
-		});
-
-		visualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			/**
-			 * Event handler for the button.
-			 * 
-			 * @param event
-			 *            the event.
-			 */
-			@Override
-			public void handle(MouseEvent event) {
-				System.out.println("Visualize button pressed");
-			}
-		});
-
-		checkStyleButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			/**
-			 * Event handler for the button.
-			 * 
-			 * @param event
-			 *            the event.
-			 */
-			@Override
-			public void handle(MouseEvent event) {
-				chooseFile(checkStyleConfigText, ASAT.CheckStyle);
-			}
-		});
-
-		pmdButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			/**
-			 * Event handler for the button.
-			 * 
-			 * @param event
-			 *            the event.
-			 */
-			@Override
-			public void handle(MouseEvent event) {
-				chooseFile(pmdConfigText, ASAT.PMD);
-			}
-		});
-
-		findbugsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			/**
-			 * Event handler for the button.
-			 * 
-			 * @param event
-			 *            the event.
-			 */
-			@Override
-			public void handle(MouseEvent event) {
-				chooseFile(findbugsConfigText, ASAT.FindBugs);
-			}
-		});
-
-		visualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				try {
-					Main.runVisualization();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				try {
-					Desktop.getDesktop().browse(new URI("visualization/main.html"));
-				} catch (IOException | URISyntaxException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
+		
+		selectButton.setOnMouseClicked(new SelectButtonEventHandler(projectSourcePathText));
+		visualizeButton.setOnMouseClicked(new VisualizeButtonEventHandler());
 	}
 
-	/**
-	 * Enable all other buttons in the GUI. This is used after a source folder
-	 * is selected.
-	 */
-	public void enableAllOtherButtons() {
-		checkStyleButton.setDisable(false);
-		pmdButton.setDisable(false);
-		findbugsButton.setDisable(false);
-		visualizeButton.setDisable(false);
-	}
+}
+
+/**
+ * EventHandler class for select button of GUI.
+ * 
+ * @author BlueTurtle.
+ *
+ */
+class SelectButtonEventHandler implements EventHandler<MouseEvent> {
+
+	@Getter
+	private Text sourcePathText;
 
 	/**
-	 * Choose configuration file for ASAT.
+	 * Constructor.
 	 * 
-	 * @param configText
-	 *            the text in the GUI for the config file.
-	 * @param asat
-	 *            the ASAT type.
+	 * @param sourcePathText
+	 *            the text field that shows the path of the project.
 	 */
-	public void chooseFile(Text configText, ASAT asat) {
+	public SelectButtonEventHandler(Text sourcePathText) {
+		this.sourcePathText = sourcePathText;
+	}
 
-		FileChooser fileChooser = new FileChooser();
+	/**
+	 * Event handler for the button.
+	 * 
+	 * @param event
+	 *            the event.
+	 */
+	@Override
+	public void handle(MouseEvent event) {
 
-		// Set extension filter
-		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
-		fileChooser.getExtensionFilters().add(extFilter);
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		File selectedDirectory = directoryChooser.showDialog(new Stage());
 
-		File file = fileChooser.showOpenDialog(new Stage());
-		JavaController.setASATOutput(asat, file);
-		if (file != null) {
-			configText.setText(file.getAbsolutePath());
+		if (selectedDirectory == null) {
+			sourcePathText.setText("No Directory selected");
+		} else {
+			sourcePathText.setText(selectedDirectory.getAbsolutePath());
+			GUIController.setSourcePath(sourcePathText.getText());
+			GUIController.getVisualizeButton().setDisable(false);
+		}
+	}
+
+}
+
+/**
+ * EventHandler class for visualize button of GUI.
+ * 
+ * @author BlueTurtle.
+ *
+ */
+class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
+
+	@Getter @Setter static boolean enabled = false;
+	/**
+	 * Event handler for the button.
+	 * 
+	 * @param event
+	 *            the event.
+	 */
+	@Override
+	public void handle(MouseEvent event) {
+		JavaController.setASATOutput(ASAT.CheckStyle, new File(GUIController.getSourcePath() + "/target/checkstyle-result.xml"));
+		JavaController.setASATOutput(ASAT.PMD, new File(GUIController.getSourcePath() + "/target/pmd.xml"));
+		JavaController.setASATOutput(ASAT.FindBugs, new File(GUIController.getSourcePath() + "/target/findbugsXML.xml"));
+		try {
+			Main.runVisualization();
+			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
