@@ -58,4 +58,13 @@ public class CheckStyleWarning extends Warning {
 				&& message.equals(that.message) && classification.equals(that.classification) && type.equals(that.type));
 
 	}
+
+	/**
+	 * HashCode for the CheckStyle Warning.
+	 */
+	@Override
+	public int hashCode() {
+		return java.util.Objects.hash(filePath, fileName, type, line, message, ruleName, classification);
+	}
+	
 }
