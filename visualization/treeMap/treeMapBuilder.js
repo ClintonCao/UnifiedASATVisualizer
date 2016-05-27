@@ -126,7 +126,16 @@ var treeMapBuilder = (function() {
             })
 			// bottom layer now we add a click to go to the code editor
 			if ( childrenArray[0].length == 0 ){
-				g.on("click", toSourceCode);
+				g.on("click", toSourceCode).on("mouseover", function(d) {
+                tooltip.text(d.fileName + " (" + getSatWarningsPrint(d) + ")");
+                return tooltip.style("visibility", "visible");
+            	})
+            	.on("mousemove", function(d) {
+                return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+            	})
+            	.on("mouseout", function(d) {
+                return tooltip.style("visibility", "hidden");
+            	});
 			}
             
         // all the updateContent class will trigger this refresh of data
