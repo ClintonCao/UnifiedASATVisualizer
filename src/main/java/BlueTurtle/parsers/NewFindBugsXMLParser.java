@@ -79,6 +79,17 @@ public class NewFindBugsXMLParser extends XMLParser {
 		return findBugsWarnings;
 	}
 	
+
+	/**
+	 * add individual warning to the warningList.
+	 * 
+	 * @param fileName is the file name of the warning.
+	 * @param warningList is a list of warnings.
+	 * @param nList is the node list.
+	 * @param findBugsWarnings is the findBugs warnings.
+	 * @param categoryInfo is the category information.
+	 * @return a list of FindBugs warnings.
+	 */
 	public List<Warning> addWarnings(String fileName, NodeList warningList, NodeList nList, List<Warning> findBugsWarnings, HashMap<String, String> categoryInfo) {
 		
 		for (int j = 0; j < warningList.getLength(); j++) {
