@@ -30,6 +30,7 @@ var colorScale = (function() {
 		return (worstRatio * 100);
 	}
 
+	
     return {
 
         getColor: function() {

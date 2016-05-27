@@ -2,10 +2,10 @@ var treeMapBuilder = (function() {
 
 
     // initialize all variables
-    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults, currentNode
+    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
     var refreshing = false;
     var currentNodePath = []
-var id = 0;
+	
     // initialize the entire treemap up till displaying
     function initializeTheTree(root) {
         initialize(root, width, height);
@@ -64,10 +64,9 @@ var id = 0;
         }
     }
     //render the chart with given depth and children
-    function display(d) {
-
-        currentNode = d;
-
+	function display(d) {
+		// id for all squares
+		var id = 0;
         // On click top bar to go back
 
         /*
@@ -302,6 +301,7 @@ var id = 0;
             return output.slice(0, -3);
         }
 		/*
+		// code for normal color based on amount of warnings relative to lines
         g.selectAll("rect")
             .style("fill", function(d) {
                 var ratio = 100 * d.warnings / d.value;
@@ -383,7 +383,10 @@ var id = 0;
         return g;
     }
 
-    function text(text) {
+    
+
+
+	function text(text) {
         text.selectAll("tspan")
             .attr("x", function(d) {
                 return x(d.x) + 6;
@@ -431,7 +434,7 @@ var id = 0;
             name(d.parent) + " / " + d.fileName : //+ " (" + formatNumber(d.warnings) + ")" :
             d.fileName; // + " (" + formatNumber(d.warnings) + ")";
     }
-
+	
     function setTheVariables(o, data) {
         // hard coded the depth where the click should go to source code (no zoom)
         maxDepth = 2
@@ -517,10 +520,8 @@ var id = 0;
             root = data;
         }
     }
-
+	
     return {
-
-
         // The main method which is called to create the treeMap.
         // This calls all the methods needed like initialize.
         createTreeMap: function(o, data) {
