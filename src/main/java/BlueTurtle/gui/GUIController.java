@@ -50,7 +50,7 @@ public class GUIController {
 	private Text projectSourcePathText; // Value injected by FXMLLoader
 
 	@FXML // fx:id="visualizeButton"
-	@Getter private static Button visualizeButton; // Value injected by FXMLLoader
+	private Button visualizeButton; // Value injected by FXMLLoader
 
 	@Getter @Setter private static String sourcePath;
 
@@ -95,8 +95,9 @@ public class GUIController {
 		assert visualizeButton != null : "fx:id=\"visualizeButton\" was not injected: check your FXML file 'Menu.fxml'.";
 		assert projectSourcePathText != null : "fx:id=\"projectSourcePathText\" was not injected: check your FXML file 'Menu.fxml'.";
 		assert selectButton != null : "fx:id=\"selectButton\" was not injected: check your FXML file 'Menu.fxml'.";
-		
-		selectButton.setOnMouseClicked(new SelectButtonEventHandler(projectSourcePathText));
+
+		// Set the event handlers for the buttons.
+		selectButton.setOnMouseClicked(new SelectButtonEventHandler(projectSourcePathText, visualizeButton));
 		visualizeButton.setOnMouseClicked(new VisualizeButtonEventHandler());
 	}
 
@@ -110,17 +111,21 @@ public class GUIController {
  */
 class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 
-	@Getter
-	private Text sourcePathText;
+	@Getter private Text sourcePathText;
+	@Getter private Button visualizeButton;
 
 	/**
 	 * Constructor.
 	 * 
 	 * @param sourcePathText
 	 *            the text field that shows the path of the project.
+	 * @param visualizeButton
+	 *            the visualize button. This is needed for enabling the button
+	 *            after the project folder is selected.
 	 */
-	public SelectButtonEventHandler(Text sourcePathText) {
+	public SelectButtonEventHandler(Text sourcePathText, Button vButton) {
 		this.sourcePathText = sourcePathText;
+		this.visualizeButton = vButton;
 	}
 
 	/**
@@ -131,7 +136,6 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 	 */
 	@Override
 	public void handle(MouseEvent event) {
-
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		File selectedDirectory = directoryChooser.showDialog(new Stage());
 
@@ -140,7 +144,7 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 		} else {
 			sourcePathText.setText(selectedDirectory.getAbsolutePath());
 			GUIController.setSourcePath(sourcePathText.getText());
-			GUIController.getVisualizeButton().setDisable(false);
+			visualizeButton.setDisable(false);
 		}
 	}
 
@@ -154,7 +158,6 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
  */
 class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 
-	@Getter @Setter static boolean enabled = false;
 	/**
 	 * Event handler for the button.
 	 * 
@@ -163,9 +166,7 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 	 */
 	@Override
 	public void handle(MouseEvent event) {
-		JavaController.setASATOutput(ASAT.CheckStyle, new File(GUIController.getSourcePath() + "/target/checkstyle-result.xml"));
-		JavaController.setASATOutput(ASAT.PMD, new File(GUIController.getSourcePath() + "/target/pmd.xml"));
-		JavaController.setASATOutput(ASAT.FindBugs, new File(GUIController.getSourcePath() + "/target/findbugsXML.xml"));
+		setOutputFiles();
 		try {
 			Main.runVisualization();
 			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
@@ -173,6 +174,14 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void setOutputFiles() {
+		JavaController.setASATOutput(ASAT.CheckStyle,
+				new File(GUIController.getSourcePath() + "/target/checkstyle-result.xml"));
+		JavaController.setASATOutput(ASAT.PMD, new File(GUIController.getSourcePath() + "/target/pmd.xml"));
+		JavaController.setASATOutput(ASAT.FindBugs,
+				new File(GUIController.getSourcePath() + "/target/findbugsXML.xml"));
 	}
 
 }
