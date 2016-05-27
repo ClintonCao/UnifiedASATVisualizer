@@ -118,6 +118,17 @@ public class WarningGrouperTest {
 		WarningGrouper wg2 = new WarningGrouper(componentsInfo, packagesNames, warnings);
 		assertEquals(wg, wg2);
 	}
+	
+	/**
+	 * Test objects that are the same should return same HashCode.
+	 */
+	@Test
+	public void testSameHashCode() {
+		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
+		WarningGrouper wg2 = new WarningGrouper(componentsInfo, packagesNames, warnings);
+		assertEquals(wg.hashCode(), wg2.hashCode());
+	}
+
 
 	/**
 	 * Test equals where the warnings are different.

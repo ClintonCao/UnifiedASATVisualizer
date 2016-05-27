@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import BlueTurtle.gui.GUIController.ASAT;
 import BlueTurtle.warnings.Warning;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * This class can be used to summarize warnings.
@@ -16,13 +16,14 @@ import lombok.Setter;
  */
 @SuppressWarnings("checkstyle:visibilitymodifier")
 public abstract class Summarizer {
+	
 
-	@Getter @Setter protected String packageName;
-	@Getter @Setter protected int numberOfWarnings;
-	@Getter @Setter protected Set<String> warningTypes;
-	@Getter @Setter protected int numberOfCheckStyleWarnings;
-	@Getter @Setter protected int numberOfPMDWarnings;
-	@Getter @Setter protected int numberOfFindBugsWarnings;
+	@Getter protected String packageName;
+	@Getter protected int numberOfWarnings;
+	@Getter protected Set<String> warningTypes;
+	@Getter protected int numberOfCheckStyleWarnings;
+	@Getter protected int numberOfPMDWarnings;
+	@Getter protected int numberOfFindBugsWarnings;
 
 	/**
 	 * Constructor.
@@ -31,12 +32,12 @@ public abstract class Summarizer {
 	 *            the name of the package that the summarizer is working on.
 	 */
 	public Summarizer(String packageName) {
-		setPackageName(packageName);
-		setWarningTypes(new HashSet<String>());
-		setNumberOfWarnings(0);
-		setNumberOfCheckStyleWarnings(0);
-		setNumberOfPMDWarnings(0);
-		setNumberOfFindBugsWarnings(0);
+		this.packageName = packageName;
+		this.warningTypes = new HashSet<String>();
+		this.numberOfWarnings = 0;
+		this.numberOfCheckStyleWarnings = 0;
+		this.numberOfPMDWarnings = 0;
+		this.numberOfFindBugsWarnings = 0;
 	}
 
 	/**
@@ -45,21 +46,22 @@ public abstract class Summarizer {
 	 * @param type
 	 *            the type of the warning.
 	 */
-	public void incrementNumberOfWarnings(String type) {
+	public void incrementNumberOfWarnings(ASAT type) {
 		switch (type) {
-		case "CheckStyle":
+		case CheckStyle:
 			numberOfCheckStyleWarnings++;
 			numberOfWarnings++;
 			break;
-		case "PMD":
+		case PMD:
 			numberOfPMDWarnings++;
 			numberOfWarnings++;
 			break;
-		case "FindBugs":
+		case FindBugs:
 			numberOfFindBugsWarnings++;
 			numberOfWarnings++;
 			break;
 		default:
+			// Unreachable
 			throw new IllegalArgumentException("This is not a right type of warning");
 		}
 	}
@@ -78,5 +80,13 @@ public abstract class Summarizer {
 	 * @param other
 	 *            the other summarizer.
 	 */
+	@Override
 	public abstract boolean equals(Object other);
+	
+	/**
+	 * HashCode for summarizer.
+	 */
+	@Override
+	public abstract int hashCode();
+	
 }
