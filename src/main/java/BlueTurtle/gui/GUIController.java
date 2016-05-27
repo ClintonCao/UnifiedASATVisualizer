@@ -52,24 +52,6 @@ public class GUIController {
 
 	@FXML // fx:id="visualizeButton"
 	private Button visualizeButton; // Value injected by FXMLLoader
-
-	@FXML // fx:id="pmdButton"
-	private Button pmdButton; // Value injected by FXMLLoader
-
-	@FXML // fx:id="checkStyleButton"
-	private Button checkStyleButton; // Value injected by FXMLLoader
-
-	@FXML // fx:id="findbugsButton"
-	private Button findbugsButton; // Value injected by FXMLLoader
-
-	@FXML // fx:id="findbugsConfigText"
-	private Text findbugsConfigText; // Value injected by FXMLLoader
-
-	@FXML // fx:id="checkStyleConfigText"
-	private Text checkStyleConfigText; // Value injected by FXMLLoader
-
-	@FXML // fx:id="pmdConfigText"
-	private Text pmdConfigText; // Value injected by FXMLLoader
 	
 	private String projectPath = "";
 
@@ -134,14 +116,8 @@ public class GUIController {
 	@FXML
 	void initialize() {
 		assert visualizeButton != null : "fx:id=\"visualizeButton\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert checkStyleButton != null : "fx:id=\"checkStyleButton\" was not injected: check your FXML file 'Menu.fxml'.";
 		assert projectSourcePathText != null : "fx:id=\"projectSourcePathText\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert findbugsConfigText != null : "fx:id=\"findbugsConfigText\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert checkStyleConfigText != null : "fx:id=\"checkStyleConfigText\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert pmdConfigText != null : "fx:id=\"pmdConfigText\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert findbugsButton != null : "fx:id=\"findbugsButton\" was not injected: check your FXML file 'Menu.fxml'.";
 		assert selectButton != null : "fx:id=\"selectButton\" was not injected: check your FXML file 'Menu.fxml'.";
-		assert pmdButton != null : "fx:id=\"pmdButton\" was not injected: check your FXML file 'Menu.fxml'.";
 
 		selectButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -167,67 +143,17 @@ public class GUIController {
 			}
 		});
 
-		visualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			/**
-			 * Event handler for the button.
-			 * 
-			 * @param event
-			 *            the event.
-			 */
-			@Override
-			public void handle(MouseEvent event) {
-				System.out.println("Visualize button pressed");
-			}
-		});
-
-		checkStyleButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			/**
-			 * Event handler for the button.
-			 * 
-			 * @param event
-			 *            the event.
-			 */
-			@Override
-			public void handle(MouseEvent event) {
-				chooseFile(checkStyleConfigText, ASAT.CheckStyle);
-			}
-		});
-
-		pmdButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			/**
-			 * Event handler for the button.
-			 * 
-			 * @param event
-			 *            the event.
-			 */
-			@Override
-			public void handle(MouseEvent event) {
-				chooseFile(pmdConfigText, ASAT.PMD);
-			}
-		});
-
-		findbugsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			/**
-			 * Event handler for the button.
-			 * 
-			 * @param event
-			 *            the event.
-			 */
-			@Override
-			public void handle(MouseEvent event) {
-				chooseFile(findbugsConfigText, ASAT.FindBugs);
-			}
-		});
 
 		visualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
 			public void handle(MouseEvent event) {
 				File htmlFile = new File("visualization/main.html");
+				
+				JavaController.setASATOutput(ASAT.CheckStyle, new File(projectPath + "/target/checkstyle-result.xml"));
+				JavaController.setASATOutput(ASAT.PMD, new File(projectPath + "/target/pmd.xml"));
+				JavaController.setASATOutput(ASAT.FindBugs, new File(projectPath + "/target/findbugsXML.xml"));
+				
 				try {
 					Main.runVisualization();
 					Desktop.getDesktop().browse(htmlFile.toURI());
@@ -244,9 +170,6 @@ public class GUIController {
 	 * is selected.
 	 */
 	public void enableAllOtherButtons() {
-		checkStyleButton.setDisable(false);
-		pmdButton.setDisable(false);
-		findbugsButton.setDisable(false);
 		visualizeButton.setDisable(false);
 	}
 

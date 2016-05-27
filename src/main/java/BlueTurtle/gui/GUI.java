@@ -43,8 +43,8 @@ public class GUI extends Application {
 
 			Scene scene = new Scene(splitPane);
 
-			stage.setHeight(600);
-			stage.setWidth(1200);
+			stage.setHeight(450);
+			stage.setWidth(1141);
 			stage.setResizable(false);
 			stage.setScene(scene);
 			stage.show();
