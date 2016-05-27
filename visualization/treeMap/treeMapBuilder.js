@@ -2,10 +2,10 @@ var treeMapBuilder = (function() {
 
 
     // initialize all variables
-    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults, currentNode
+    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
     var refreshing = false;
     var currentNodePath = []
-
+	
     // initialize the entire treemap up till displaying
     function initializeTheTree(root) {
         initialize(root, width, height);
@@ -64,10 +64,9 @@ var treeMapBuilder = (function() {
         }
     }
     //render the chart with given depth and children
-    function display(d) {
-
-        currentNode = d;
-
+	function display(d) {
+		// id for all squares
+		var id = 0;
         // On click top bar to go back
 
         /*
@@ -243,6 +242,14 @@ var treeMapBuilder = (function() {
         children.append("rect")
             .attr("class", "child")
             .call(rect)
+			.style("fill", function(d) {
+				console.log(d);
+                var ratio = Math.round(100 * d.warnings / d.value);	
+				if ( ratio > 100 ) { ratio = 100; }
+				id +=1;
+				var gradientBackground = backgroundGradient.getBackground(svg, ratio, id);
+                return "url(#gradient"+ id + ")";
+            })
             .append("title");
 			
         children.append("text")
@@ -293,13 +300,17 @@ var treeMapBuilder = (function() {
             }
             return output.slice(0, -3);
         }
-        // set the color of the squares based on warnings / line
+		/*
+		// code for normal color based on amount of warnings relative to lines
         g.selectAll("rect")
             .style("fill", function(d) {
                 var ratio = 100 * d.warnings / d.value;
-                // if statement for when there are more warnings then lines
-                return colorScale.getColor(ratio);
-            });
+				var gradientBackground = backgroundGradient.getBackground(svg);
+                return "url(#gradient)";
+                //return backgroundGradient.getBackground();
+				
+				
+            });*/
 
 
         function navigationDown(d) {
@@ -372,7 +383,10 @@ var treeMapBuilder = (function() {
         return g;
     }
 
-    function text(text) {
+    
+
+
+	function text(text) {
         text.selectAll("tspan")
             .attr("x", function(d) {
                 return x(d.x) + 6;
@@ -420,7 +434,7 @@ var treeMapBuilder = (function() {
             name(d.parent) + " / " + d.fileName : //+ " (" + formatNumber(d.warnings) + ")" :
             d.fileName; // + " (" + formatNumber(d.warnings) + ")";
     }
-
+	
     function setTheVariables(o, data) {
         // hard coded the depth where the click should go to source code (no zoom)
         maxDepth = 2
@@ -506,10 +520,8 @@ var treeMapBuilder = (function() {
             root = data;
         }
     }
-
+	
     return {
-
-
         // The main method which is called to create the treeMap.
         // This calls all the methods needed like initialize.
         createTreeMap: function(o, data) {
