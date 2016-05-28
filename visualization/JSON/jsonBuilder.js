@@ -29,9 +29,9 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	  		var classObject = new Object();
 	  		classObjectJson = classesArray[i];
 	  		classObject.amountOfWarnings = 0;
-	  		classObject.amountOfCheckStyleWarnings = classObjectJson.numberOfCheckStyleWarnings;
-			classObject.amountOfPMDWarnings = classObjectJson.numberOfPMDWarnings;
-			classObject.amountOfFindBugsWarnings = classObjectJson.numberOfFindBugsWarnings;
+	  		classObject.amountOfCheckStyleWarnings = 0;
+			classObject.amountOfPMDWarnings = 0;
+			classObject.amountOfFindBugsWarnings = 0;
 			CSW += classObjectJson.numberOfCheckStyleWarnings;
 			PMDW += classObjectJson.numberOfPMDWarnings;
 			FBW += classObjectJson.numberOfFindBugsWarnings;
@@ -41,6 +41,19 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 				var warningJson = classObjectJson.warningList[j];
 				if($.inArray(warningJson.type, acceptedTypes) > -1 && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
 		  			classObject.amountOfWarnings++;
+		  			switch(warningJson.type) {
+		  				case 'CheckStyle':
+		  					classObject.amountOfCheckStyleWarnings++;
+		  					break;
+		  				case 'PMD':
+		  					classObject.amountOfPMDWarnings++;
+		  					break;
+		  				case 'FindBugs':
+		  					classObject.amountOfFindBugsWarnings++;
+		  					break;
+		  				default:
+		  					break;
+		  			}
 				}
 	  		}
 	  		classArray.push(classObject);
@@ -72,7 +85,7 @@ function getTotalASATWarning(warningType) {
 			classObject.fileName = classObjectJson.fileName;
 			for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j]
-				if(warningJson.type == warningType) {
+				if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
 		  			classObject.amountOfWarnings++;
 				}
 	  		}

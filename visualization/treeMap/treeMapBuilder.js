@@ -49,6 +49,7 @@ var treeMapBuilder = (function() {
     // of sibling was laid out in 1×1, we must rescale to fit using absolute
     // coordinates. This lets us use a viewport to zoom.
     function layout(d, treemap) {
+        appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
         if (d._children) {
             treemap.nodes({
                 _children: d._children
@@ -62,6 +63,28 @@ var treeMapBuilder = (function() {
                 layout(c, treemap);
             });
         }
+    }
+    function sumNodeForASAT(d, root) {
+        var nodeAndSummation = [];
+        var sum = 0;
+        if (d.fileName == "Project" || d.fileName == "Test Project") {
+            for (var i = 0; i < root.length; i++) {
+                for (var j = 0; j < root[i].length; j++) {
+                    sum += root[i][j].amountOfWarnings;
+                }
+            }
+            return sum;
+        } else {
+            for (var i = 0; i < root.length; i++) {
+                if (root[i].packageName == d.fileName) {
+                    for (var j = 0; j < root[i].length; j++) {
+                        sum += root[i][j].amountOfWarnings;
+                    }
+                    return sum;
+                }
+            }
+        }
+        return -1;
     }
     //render the chart with given depth and children
 	function display(d) {
@@ -100,14 +123,14 @@ var treeMapBuilder = (function() {
             .classed("children", true)
             .on("click", navigationDown)
             .on("mouseover", function(d) {
-                tooltip.text(d.fileName + " (" + getSatWarningsPrint(d) + ")");
-                return tooltip.style("visibility", "visible");
+                tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
+                tooltip.style("visibility", "visible");
             })
             .on("mousemove", function(d) {
-                return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
             })
             .on("mouseout", function(d) {
-                return tooltip.style("visibility", "hidden");
+                tooltip.style("visibility", "hidden");
             });
 
         var childrenArray = g.filter(function(d) {
@@ -116,14 +139,14 @@ var treeMapBuilder = (function() {
 			// bottom layer now we add a click to go to the code editor
 			if ( childrenArray[0].length == 0 ){
 				g.on("click", toSourceCode).on("mouseover", function(d) {
-                tooltip.text(d.fileName + " (" + getSatWarningsPrint(d) + ")");
-                return tooltip.style("visibility", "visible");
+                    tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
+                    tooltip.style("visibility", "visible");
             	})
             	.on("mousemove", function(d) {
-                return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                    tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
             	})
             	.on("mouseout", function(d) {
-                return tooltip.style("visibility", "hidden");
+                    tooltip.style("visibility", "hidden");
             	});
 			}
             
@@ -183,33 +206,7 @@ var treeMapBuilder = (function() {
             return node;
         }
 
-
         appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
-
-
-
-        function sumNodeForASAT(d, root) {
-            var nodeAndSummation = [];
-            var sum = 0;
-            if (d.fileName == "Project" || d.fileName == "Test Project") {
-                for (var i = 0; i < root.length; i++) {
-                    for (var j = 0; j < root[i].length; j++) {
-                        sum += root[i][j].amountOfWarnings;
-                    }
-                }
-                return sum;
-            } else {
-                for (var i = 0; i < root.length; i++) {
-                    if (root[i].packageName == d.fileName) {
-                        for (var j = 0; j < root[i].length; j++) {
-                            sum += root[i][j].amountOfWarnings;
-                        }
-                        return sum;
-                    }
-                }
-            }
-            return -1;
-        }
 
         function reloadContent() {
             var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
@@ -275,13 +272,13 @@ var treeMapBuilder = (function() {
             for (var i = 0; i < acceptedTypes.length; i++) {
                 switch (acceptedTypes[i]) {
                     case "CheckStyle":
-                        output += formatNumber(d.warningsCheckStyle) + " " + acceptedTypes[i] + " + ";
+                        output += acceptedTypes[i] + ": " + formatNumber(d.warningsCheckStyle) + " <br> ";
                         break;
                     case "PMD":
-                        output += formatNumber(d.warningsPMD) + " " + acceptedTypes[i] + " + ";
+                        output += acceptedTypes[i] + ": " + formatNumber(d.warningsPMD) + " <br> ";
                         break;
                     case "FindBugs":
-                        output += formatNumber(d.warningsFindBugs) + " " + acceptedTypes[i] + " + ";
+                        output += acceptedTypes[i] + ": " + formatNumber(d.warningsFindBugs) + " <br> ";
                         break;
                     default:
                         output += "";

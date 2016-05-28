@@ -3,7 +3,6 @@
  * Handles click on checkboxes for showing results of different tools
  */
 function handleClickTreeMapTypeSat(value, checked) {
- 
 	if (checked) {
 		var index = acceptedTypes.indexOf(value);
         if (index < 0) {
