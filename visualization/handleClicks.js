@@ -36,7 +36,8 @@ function handleClickColorScale(radioButton) {
 /*
 * handles the clicks on Sat categories
 */
-function handleClickCategorySat(value, checked) {	
+function handleClickCategorySat(value, checked) {
+		
  	if (checked) {
         var index = acceptedCategories.indexOf(value);
        if (index < 0) {
@@ -48,8 +49,7 @@ function handleClickCategorySat(value, checked) {
             acceptedCategories.splice(index, 1);
         }
     }
-    console.log("Testjes");
-    $('.toggle').attr('data-toggle');
+    //$('.toggle').attr('data-toggle');
     //setTimeout(function(){ }, 100);
 }
 

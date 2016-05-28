@@ -167,7 +167,6 @@ var treeMapBuilder = (function() {
         });*/
 
         $('.updateContent').change(function() {
-            $('.toggle').prop('disabled', true);
             if (true && !refreshing) {
                 refreshing = true;
                 $(this).disable = true
@@ -184,7 +183,6 @@ var treeMapBuilder = (function() {
                     $(this).disable = false
                 }, millisecondsToWait);
             }
-            $('.toggle').prop('disabled', false);
         })
 
         function fastReload() {

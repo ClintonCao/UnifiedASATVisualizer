@@ -2,6 +2,7 @@
  * General styling
  */
 *{font-family:Tahoma, Geneva, sans-serif;}
+.quick .toggle-group { transition: none; -webkit-transition: none; }
 
 body{
 	color:#FFF !important;
