@@ -1,5 +1,6 @@
 package BlueTurtle.groupers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -65,7 +66,7 @@ public class WarningGrouper implements Grouper {
 		List<Summarizer> csList = new ArrayList<Summarizer>();
 
 		for (String classPath : ProjectInfoFinder.getClassPaths()) {
-			String fileName = classPath.substring(classPath.lastIndexOf('\\') + 1, classPath.length());
+			String fileName = classPath.substring(classPath.lastIndexOf(File.separator) + 1, classPath.length());
 			String filePath = classPath;
 			
 			System.out.println(fileName);
