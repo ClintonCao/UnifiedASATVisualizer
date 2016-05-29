@@ -43,8 +43,9 @@ public class JSWriterTest {
 		pif.findFiles(new File(System.getProperty("user.dir") + "/src/test/resources"));
 		outputPath = "./src/test/resources/testOutput.js";
 		List<Warning> list = new ArrayList<Warning>();
-		String filePath = ProjectInfoFinder.getClassPaths().stream()
-				.filter(path -> path.endsWith("src\\test\\resources\\ExampleClass.java")).findFirst().get();
+		String filePath = ProjectInfoFinder.getClassPaths().stream().filter(path -> path.endsWith(
+				"src" + File.separator + "test" + File.separator + "resources" + File.separator + "ExampleClass.java"))
+				.findFirst().get();
 		list.add(new CheckStyleWarning(filePath, "ExampleClass.java", 5, "test", "test", "Class"));
 		WarningGrouper wg = new WarningGrouper(list);
 		summarizedWarnings = wg.groupBy(Criteria.PACKAGES);

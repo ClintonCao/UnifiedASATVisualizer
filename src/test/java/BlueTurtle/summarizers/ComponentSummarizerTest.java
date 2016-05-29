@@ -49,21 +49,21 @@ public class ComponentSummarizerTest {
 	public void initialize() throws IOException {
 		ProjectInfoFinder pif = new ProjectInfoFinder();
 		pif.findFiles(new File(System.getProperty("user.dir") + "/src/test/resources"));
-		filePath = ProjectInfoFinder.getClassPaths().stream()
-				.filter(path -> path.endsWith("src\\test\\resources\\ExampleClass.java")).findFirst().get();
-		filePath2 = ProjectInfoFinder.getClassPaths().stream()
-				.filter(path -> path.endsWith("\\src\\test\\resources\\ExampleTestClass.java")).findFirst().get();
+		filePath = ProjectInfoFinder.getClassPaths().stream().filter(path -> path.endsWith(
+				"src" + File.separator + "test" + File.separator + "resources" + File.separator + "ExampleClass.java"))
+				.findFirst().get();
+		filePath2 = ProjectInfoFinder.getClassPaths().stream().filter(path -> path.endsWith("src" + File.separator
+				+ "test" + File.separator + "resources" + File.separator + "ExampleTestClass.java")).findFirst().get();
 		fileName = "ExampleClass.java";
 		packageName = "SomePackage.subpackage";
 		w = new CheckStyleWarning(filePath, fileName, 3, "Test", "TestRule", "Class");
-		w2 = new CheckStyleWarning(filePath2, fileName, 3, "Test", "TestRule",
-				"Class");
+		w2 = new CheckStyleWarning(filePath2, fileName, 3, "Test", "TestRule", "Class");
 		warningList = new ArrayList<Warning>();
 		warningList2 = new ArrayList<Warning>();
 		warningList2.add(w2);
 		warningList.add(w);
 	}
-	
+
 	/**
 	 * Clean up the attributes of ProjectInfoFinder.
 	 */

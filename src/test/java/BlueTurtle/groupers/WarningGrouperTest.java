@@ -54,14 +54,19 @@ public class WarningGrouperTest {
 	public void initialize() throws IOException {
 		ProjectInfoFinder pif = new ProjectInfoFinder();
 		pif.findFiles(new File(System.getProperty("user.dir") + "/src/test/resources"));
-		String filePath = ProjectInfoFinder.getClassPaths().stream()
-				.filter(path -> path.endsWith("src\\test\\resources\\ExampleClass.java")).findFirst().get();
-		String filePath2 = ProjectInfoFinder.getClassPaths().stream()
-				.filter(path -> path.endsWith("\\src\\test\\resources\\ExampleTestClass.java")).findFirst().get();
+		String filePath = ProjectInfoFinder.getClassPaths().stream().filter(path -> path.endsWith(
+				"src" + File.separator + "test" + File.separator + "resources" + File.separator + "ExampleClass.java"))
+				.findFirst().get();
+		String filePath2 = ProjectInfoFinder.getClassPaths().stream().filter(path -> path.endsWith("src"
+				+ File.separator + "test" + File.separator + "resources" + File.separator + "ExampleTestClass.java"))
+				.findFirst().get();
 		String filePath3 = ProjectInfoFinder.getClassPaths().stream()
-				.filter(path -> path.endsWith("src\\test\\resources\\TestCodeFolder\\AllClosestPoints.java")).findFirst().get();
-		String filePath4 = ProjectInfoFinder.getClassPaths().stream()
-				.filter(path -> path.endsWith("\\src\\test\\resources\\DefaultClass.java")).findFirst().get();
+				.filter(path -> path.endsWith("src" + File.separator + "test" + File.separator + "resources"
+						+ File.separator + "TestCodeFolder" + File.separator + "AllClosestPoints.java"))
+				.findFirst().get();
+		String filePath4 = ProjectInfoFinder.getClassPaths().stream().filter(path -> path.endsWith(
+				"src" + File.separator + "test" + File.separator + "resources" + File.separator + "DefaultClass.java"))
+				.findFirst().get();
 		w = new CheckStyleWarning(filePath, "ExampleClass.java", 3, "Test", "TestRule", "Class");
 		w2 = new CheckStyleWarning(filePath2, "ExampleTestClass.java", 3, "Test", "TestRule", "Class");
 		w3 = new CheckStyleWarning(filePath3, "AllClosestPoints.java", 3, "Test", "TestRule", "Class");
@@ -78,7 +83,7 @@ public class WarningGrouperTest {
 		warnings.add(w3);
 		warnings.add(w4);
 	}
-	
+
 	/**
 	 * Clean up the attributes of ProjectInfoFinder.
 	 */
