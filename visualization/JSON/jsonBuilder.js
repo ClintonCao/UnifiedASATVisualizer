@@ -32,9 +32,6 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	  		classObject.amountOfCheckStyleWarnings = 0;
 			classObject.amountOfPMDWarnings = 0;
 			classObject.amountOfFindBugsWarnings = 0;
-			CSW += classObjectJson.numberOfCheckStyleWarnings;
-			PMDW += classObjectJson.numberOfPMDWarnings;
-			FBW += classObjectJson.numberOfFindBugsWarnings;
 	  		classObject.loc = classObjectJson.loc;
 	  		classObject.fileName = classObjectJson.fileName;
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
@@ -56,6 +53,9 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 		  			}
 				}
 	  		}
+	  		CSW += classObject.amountOfCheckStyleWarnings;
+	  		PMDW += classObject.amountOfPMDWarnings;
+	  		FBW += classObject.amountOfFindBugsWarnings;
 	  		classArray.push(classObject);
 		}
 	classArray.packageName = package.packageName;
@@ -122,9 +122,11 @@ function createJsonTreeMap(packages){
 					value: linesOfCode
 				});
 			}
+
 			upperLevelCSW += classes.amountOfCheckStyleWarnings;
 			upperLevelPMDW += classes.amountOfPMDWarnings;
 			upperLevelFBW += classes.amountOfFindBugsWarnings;
+
 			jsonArrPackage.push(
 				{
 					fileName: classes.packageName, 

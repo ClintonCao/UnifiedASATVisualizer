@@ -19,8 +19,6 @@ function rgbToHex(r, g, b) {
 			var edge = ratio + "%";
 			var ratio1 = ratio + 0.01;
 			var edge1 = ratio1 + "%";
-			console.log(edge);
-			console.log(edge1);
            var gradient = svg.append("defs")
 	  .append("linearGradient")
 		.attr("id", "gradient" + id)

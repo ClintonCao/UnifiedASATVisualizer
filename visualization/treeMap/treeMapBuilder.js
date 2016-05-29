@@ -177,7 +177,7 @@ var treeMapBuilder = (function() {
                 }
                 fastReload();
                 // animation time of the toggle button
-                var millisecondsToWait = 100;
+                var millisecondsToWait = 0;
                 setTimeout(function() {
                     refreshing = false;
                     $(this).disable = false
@@ -227,7 +227,6 @@ var treeMapBuilder = (function() {
             .attr("class", "child")
             .call(rect)
 			.style("fill", function(d) {
-				console.log(d);
                 var ratio = Math.round(100 * d.warnings / d.value);	
 				if ( ratio > 100 ) { ratio = 100; }
 				id +=1;
