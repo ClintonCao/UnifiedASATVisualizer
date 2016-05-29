@@ -73,12 +73,7 @@ public class WarningGrouperTest {
 		warnings.add(w);
 		warnings.add(w2);
 		warnings.add(w3);
-		warnings.add(w4);
-		cs.summarise(warnings);
-		cs2.summarise(warnings);
-		cs3.summarise(warnings);
-		cs4.summarise(warnings);
-		
+		warnings.add(w4);		
 	}
 
 	/**
@@ -110,6 +105,10 @@ public class WarningGrouperTest {
 	@Test
 	public void testGroupByComponents() {
 		List<Summarizer> expected = new ArrayList<Summarizer>();
+		cs.summarise(warnings);
+		cs2.summarise(warnings);
+		cs3.summarise(warnings);
+		cs4.summarise(warnings);
 		expected.add(cs4);
 		expected.add(cs);
 		expected.add(cs2);
