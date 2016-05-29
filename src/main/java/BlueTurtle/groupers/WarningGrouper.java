@@ -67,6 +67,10 @@ public class WarningGrouper implements Grouper {
 		for (String classPath : ProjectInfoFinder.getClassPaths()) {
 			String fileName = classPath.substring(classPath.lastIndexOf('\\') + 1, classPath.length());
 			String filePath = classPath;
+			
+			System.out.println(fileName);
+			System.out.println(filePath);
+			
 			String packageName = ProjectInfoFinder.getClassPackage().get(filePath);
 			ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 			cs.summarise(getWarningList());

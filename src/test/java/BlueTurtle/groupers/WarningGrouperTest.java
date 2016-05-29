@@ -8,6 +8,7 @@ import static org.junit.Assert.assertNotEquals;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -54,19 +55,10 @@ public class WarningGrouperTest {
 	public void initialize() throws IOException {
 		ProjectInfoFinder pif = new ProjectInfoFinder();
 		pif.findFiles(new File(System.getProperty("user.dir") + "/src/test/resources"));
-		String filePath = ProjectInfoFinder.getClassPaths().stream().filter(path -> path.endsWith(
-				"src" + File.separator + "test" + File.separator + "resources" + File.separator + "ExampleClass.java"))
-				.findFirst().get();
-		String filePath2 = ProjectInfoFinder.getClassPaths().stream().filter(path -> path.endsWith("src"
-				+ File.separator + "test" + File.separator + "resources" + File.separator + "ExampleTestClass.java"))
-				.findFirst().get();
-		String filePath3 = ProjectInfoFinder.getClassPaths().stream()
-				.filter(path -> path.endsWith("src" + File.separator + "test" + File.separator + "resources"
-						+ File.separator + "TestCodeFolder" + File.separator + "AllClosestPoints.java"))
-				.findFirst().get();
-		String filePath4 = ProjectInfoFinder.getClassPaths().stream().filter(path -> path.endsWith(
-				"src" + File.separator + "test" + File.separator + "resources" + File.separator + "DefaultClass.java"))
-				.findFirst().get();
+		String filePath = Paths.get("src", "test", "resources", "ExampleClass.java").toAbsolutePath().toString();
+		String filePath2 = Paths.get("src", "test", "resources", "ExampleTestClass.java").toAbsolutePath().toString();
+		String filePath3 = Paths.get("src", "test", "resources", "TestCodeFolder", "AllClosestPoints.java").toAbsolutePath().toString();
+		String filePath4 = Paths.get("src", "test", "resources", "DefaultClass.java").toAbsolutePath().toString();
 		w = new CheckStyleWarning(filePath, "ExampleClass.java", 3, "Test", "TestRule", "Class");
 		w2 = new CheckStyleWarning(filePath2, "ExampleTestClass.java", 3, "Test", "TestRule", "Class");
 		w3 = new CheckStyleWarning(filePath3, "AllClosestPoints.java", 3, "Test", "TestRule", "Class");
