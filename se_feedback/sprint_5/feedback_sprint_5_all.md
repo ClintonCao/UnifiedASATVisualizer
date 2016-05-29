@@ -64,3 +64,18 @@ Total: ****
 | Code Review            |     |
 
 ##Notes
+* ADD
+	* Good explanations of the design goals
+	* Consider adding sequence diagrams / flow diagrams of how the system works
+		* User starts the program and what happens in what order
+	* 2.2 - Persistant Data Management
+		* How is the data that your tool produces being stored?
+* `LOCComputer` + `PackageNameFinder`
+	* Good names
+	* contains a default constructor
+		* Classes have one static method so should be singletons but are not
+* Parsers
+	* consider storing the mapping of errors to categories in a singleton instead of passing it to each method call or pass to super constructor and store as instance attribute
+* `Summarizer`
+	* making equals and hashcode explicit in an abstract class is overkill since the `Object` class already contains these methods and every class is an `Object`
+* Good job on removing setters and implementing hashCode functions
