@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
-import BlueTurtle.finders.PackageNameFinder;
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.warnings.Warning;
 import lombok.Getter;
 
@@ -40,7 +40,7 @@ public class PackageSummarizer extends Summarizer {
 	@Override
 	public void summarise(List<Warning> warnings) {
 		HashMap<String, String> classesInfo = findOwnClasses(warnings);
-
+		
 		for (Entry<String, String> ci : classesInfo.entrySet()) {
 			ComponentSummarizer cs = new ComponentSummarizer(ci.getKey(), ci.getValue(), packageName);
 			cs.summarise(warnings);
@@ -52,6 +52,7 @@ public class PackageSummarizer extends Summarizer {
 			numberOfFindBugsWarnings += cs.getNumberOfFindBugsWarnings();
 			numberOfClasses++;
 		}
+		
 	}
 
 	/**
@@ -64,12 +65,13 @@ public class PackageSummarizer extends Summarizer {
 	 */
 	public HashMap<String, String> findOwnClasses(List<Warning> warnings) {
 		HashMap<String, String> ownClasses = new HashMap<String, String>();
-
+		
 		for (Warning w : warnings) {
 			String fileName = w.getFileName();
 			String filePath = w.getFilePath();
 
-			if (PackageNameFinder.findPackageName(filePath).equals(packageName) && !ownClasses.containsKey(fileName)) {
+			if (ProjectInfoFinder.getClassPackage().get(filePath).equals(packageName)
+					&& !ownClasses.containsKey(fileName)) {
 				ownClasses.put(fileName, filePath);
 			}
 
@@ -97,7 +99,7 @@ public class PackageSummarizer extends Summarizer {
 				&& classes.equals(that.classes) && warningTypes.equals(that.warningTypes));
 
 	}
-	
+
 	/**
 	 * HashCode for PackageSummarizer.
 	 */

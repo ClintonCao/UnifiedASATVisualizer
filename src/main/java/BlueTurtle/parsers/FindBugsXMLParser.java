@@ -126,9 +126,9 @@ public class FindBugsXMLParser extends XMLParser {
 				String filePath = " ";
 				
 				// Loop through all classPathes.
-				for(int i = 0; i < classPaths.size(); i++) {
+				for (int i = 0; i < classPaths.size(); i++) {
 					// if the classPath indeed ends with the right class.
-					if (classPaths.get(i).endsWith(fileNWithSep)){
+					if (classPaths.get(i).endsWith(fileNWithSep)) {
 						// update the file path.
 						filePath = classPaths.get(i);
 						break;

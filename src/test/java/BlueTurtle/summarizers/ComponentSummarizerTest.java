@@ -5,12 +5,16 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.gui.GUIController.ASAT;
 import BlueTurtle.warnings.CheckStyleWarning;
 import BlueTurtle.warnings.FindBugsWarning;
@@ -26,6 +30,7 @@ import BlueTurtle.warnings.Warning;
 public class ComponentSummarizerTest {
 
 	private String filePath;
+	private String filePath2;
 	private String fileName;
 	private String packageName;
 	private List<Warning> warningList;
@@ -35,18 +40,39 @@ public class ComponentSummarizerTest {
 
 	/**
 	 * Initialize necessary objects.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if problem is encountered while reading
+	 *             the file.
 	 */
 	@Before
-	public void initialize() {
-		filePath = "./src/test/resources/ExampleClass.txt";
+	public void initialize() throws IOException {
+		ProjectInfoFinder pif = new ProjectInfoFinder();
+		pif.findFiles(new File(System.getProperty("user.dir") + "/src/test/resources"));
+		filePath = ProjectInfoFinder.getClassPaths().stream()
+				.filter(path -> path.endsWith("src\\test\\resources\\ExampleClass.java")).findFirst().get();
+		filePath2 = ProjectInfoFinder.getClassPaths().stream()
+				.filter(path -> path.endsWith("\\src\\test\\resources\\ExampleTestClass.java")).findFirst().get();
 		fileName = "ExampleClass.java";
 		packageName = "SomePackage.subpackage";
 		w = new CheckStyleWarning(filePath, fileName, 3, "Test", "TestRule", "Class");
-		w2 = new CheckStyleWarning("./src/test/resources/ExampleTestClass.txt", fileName, 3, "Test", "TestRule", "Class");
+		w2 = new CheckStyleWarning(filePath2, fileName, 3, "Test", "TestRule",
+				"Class");
 		warningList = new ArrayList<Warning>();
 		warningList2 = new ArrayList<Warning>();
 		warningList2.add(w2);
 		warningList.add(w);
+	}
+	
+	/**
+	 * Clean up the attributes of ProjectInfoFinder.
+	 */
+	@After
+	public void clearAttributes() {
+		ProjectInfoFinder.getClassLocs().clear();
+		ProjectInfoFinder.getClassPaths().clear();
+		ProjectInfoFinder.getClassPackage().clear();
+		ProjectInfoFinder.getPackages().clear();
 	}
 
 	/**
@@ -57,7 +83,7 @@ public class ComponentSummarizerTest {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		assertSame(0, cs.numberOfWarnings);
 	}
-	
+
 	/**
 	 * Test the file path of the summarizer.
 	 */
@@ -85,7 +111,7 @@ public class ComponentSummarizerTest {
 	@Test
 	public void testEqualsWithDifferentNameAndPath() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		ComponentSummarizer cs2 = new ComponentSummarizer("Not same name", "Not same path", packageName);
+		ComponentSummarizer cs2 = new ComponentSummarizer("ExampleTestClass.java", filePath2, packageName);
 		assertNotEquals(cs, cs2);
 	}
 
@@ -107,7 +133,7 @@ public class ComponentSummarizerTest {
 	@Test
 	public void testEqualsWithDifferentPath() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		ComponentSummarizer cs2 = new ComponentSummarizer(fileName, "Not same path", packageName);
+		ComponentSummarizer cs2 = new ComponentSummarizer(fileName, filePath2, packageName);
 		assertNotEquals(cs, cs2);
 	}
 
@@ -134,7 +160,7 @@ public class ComponentSummarizerTest {
 		cs2.summarise(warningList);
 		assertEquals(cs, cs2);
 	}
-	
+
 	/**
 	 * Test objects that are the same should return same hashCode.
 	 */

@@ -6,15 +6,12 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.groupers.WarningGrouper.Criteria;
 import BlueTurtle.summarizers.Summarizer;
@@ -35,18 +32,21 @@ public class JSWriterTest {
 
 	/**
 	 * Intitialize the things that are needed.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if problem is encountered while reading
+	 *             the files.
 	 */
 	@Before
-	public void initialize() {
+	public void initialize() throws IOException {
+		ProjectInfoFinder pif = new ProjectInfoFinder();
+		pif.findFiles(new File(System.getProperty("user.dir") + "/src/test/resources"));
 		outputPath = "./src/test/resources/testOutput.js";
-		HashMap<String, String> componentsInfo = new HashMap<String, String>();
-		componentsInfo.put("ExampleClass.java", "./src/test/resources/ExampleClass.txt");
-		Set<String> packagesNames = new HashSet<String>();
-		packagesNames.add("SomePackage.subpackage");
 		List<Warning> list = new ArrayList<Warning>();
-		list.add(
-				new CheckStyleWarning("./src/test/resources/ExampleClass.txt", "ExampleClass.java", 5, "test", "test", "Class"));
-		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, list);
+		String filePath = ProjectInfoFinder.getClassPaths().stream()
+				.filter(path -> path.endsWith("src\\test\\resources\\ExampleClass.java")).findFirst().get();
+		list.add(new CheckStyleWarning(filePath, "ExampleClass.java", 5, "test", "test", "Class"));
+		WarningGrouper wg = new WarningGrouper(list);
 		summarizedWarnings = wg.groupBy(Criteria.PACKAGES);
 		jsWriter.setSummarizedWarnings(summarizedWarnings);
 
@@ -59,12 +59,17 @@ public class JSWriterTest {
 	}
 
 	/**
-	 * Cleanup the files that were created.
+	 * Cleanup the files that were created and also the attributes of
+	 * ProjectInfoFinder.
 	 */
 	@After
 	public void cleanup() {
 		File file = new File(outputPath);
 		file.delete();
+		ProjectInfoFinder.getClassLocs().clear();
+		ProjectInfoFinder.getClassPaths().clear();
+		ProjectInfoFinder.getClassPackage().clear();
+		ProjectInfoFinder.getPackages().clear();
 	}
 
 	/**
@@ -82,7 +87,7 @@ public class JSWriterTest {
 		boolean fileWritten = file.exists();
 		assertTrue(fileWritten);
 	}
-	
+
 	/**
 	 * Test changing the summarizedWarnings.
 	 */

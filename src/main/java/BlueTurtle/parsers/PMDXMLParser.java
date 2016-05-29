@@ -85,7 +85,7 @@ public class PMDXMLParser extends XMLParser {
 	 * @param fileName is the file name of the warning.
 	 * @param warningList is a list of warnings.
 	 * @param nList is the node list.
-	 * @param findBugsWarnings is the findBugs warnings.
+	 * @param pmdWarnings is the findBugs warnings.
 	 * @param categoryInfo is the category information.
 	 * @return a list of FindBugs warnings.
 	 */

@@ -119,7 +119,7 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 	 * 
 	 * @param sourcePathText
 	 *            the text field that shows the path of the project.
-	 * @param visualizeButton
+	 * @param vButton
 	 *            the visualize button. This is needed for enabling the button
 	 *            after the project folder is selected.
 	 */
@@ -176,6 +176,9 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 		}
 	}
 
+	/**
+	 * Set the output files for the JavaController.
+	 */
 	public void setOutputFiles() {
 		JavaController.setASATOutput(ASAT.CheckStyle,
 				new File(GUIController.getSourcePath() + "/target/checkstyle-result.xml"));
