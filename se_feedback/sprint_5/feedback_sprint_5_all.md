@@ -8,19 +8,19 @@
 #Sprint Feedback
 Feedback and Grades for Sprint 5.
 
-Total: ****
+Total: **9.1**
 
 | User Story | Score |
 |------------|-------|
-| definition |      |
-| splitting  |      |
-| responsibility |  |
+| definition |  8    |
+| splitting  |  10    |
+| responsibility | 10  |
 
 | Learning from History | Score |
 |-----------------------|-------|
-| estimation            |      |
-| prioritisation        |      |
-| reflection            |      |
+| estimation            |  10    |
+| prioritisation        |  10    |
+| reflection            |  8   |
 
 ## Notes
 * Unclear user stories
@@ -32,36 +32,36 @@ Total: ****
 
 #Code Evolution Quality Feedback
 
-Total: ****
+Total: **8.95**
 
 | Architecture                       | Score |
 |------------------------------------|-------|
-| Changes                            |      |
-| Architecture Design Document (ADD) |      |
+| Changes                            |  7    |
+| Architecture Design Document (ADD) |  5    |
 
 |                     | Score |
 |---------------------|-------|
-| Code Change Quality |       |
+| Code Change Quality |   9    |
 
 | Code Readability | Score |
 |------------------|-------|
-| Formatting       |      |
-| Naming           |      |
-| Comments         |      |
+| Formatting       |  10    |
+| Naming           |  10    |
+| Comments         |  10    |
 
 | Continuous Integration | Score |
 |------------------------|-------|
-| Building               |     |
-| Testing                |     |
+| Building               |  10   |
+| Testing                |  8   |
 
 |         | Score |
 |---------|-------|
-| Tooling |     |
+| Tooling | 10    |
 
 | Pull-based Development | Score |
 |------------------------|-------|
-| Branching              |     |
-| Code Review            |     |
+| Branching              |  10   |
+| Code Review            |  10   |
 
 ##Notes
 * ADD
