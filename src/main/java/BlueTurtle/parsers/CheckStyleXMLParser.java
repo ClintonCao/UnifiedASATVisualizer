@@ -117,15 +117,15 @@ public class CheckStyleXMLParser extends XMLParser {
 				// get the classPaths list from ProjectInfoFinder.
 				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
 				
-				// Loop through all classPathes.
-				for(int i = 0; i < classPaths.size(); i++) {
-					// if the classPath indeed ends with the right class.
-					if (classPaths.get(i).endsWith(fileName)){
-						// update the file path.
-						filePath = classPaths.get(i);
-						break;
-					}
-				}
+//				// Loop through all classPathes.
+//				for(int i = 0; i < classPaths.size(); i++) {
+//					// if the classPath indeed ends with the right class.
+//					if (classPaths.get(i).endsWith(fileName)){
+//						// update the file path.
+//						filePath = classPaths.get(i);
+//						break;
+//					}
+//				}
 				
 				// Add warning to the list of warnings.
 				checkStyleWarnings.add(new CheckStyleWarning(filePath, fileName, line, message, ruleName, classification));

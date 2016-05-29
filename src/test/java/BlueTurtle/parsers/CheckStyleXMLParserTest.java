@@ -77,7 +77,7 @@ public class CheckStyleXMLParserTest {
 	public void testParsingOneWarning() {
 		XMLParser parser = new CheckStyleXMLParser();
 
-		CheckStyleWarning expected = new CheckStyleWarning(testSet3FilePath, testSet2FileName, 20,
+		CheckStyleWarning expected = new CheckStyleWarning(testSet2FilePath, testSet2FileName, 20,
 				testSet2Message, testSet2RuleName, testSet2Classification);
 
 		CheckStyleWarning actual = (CheckStyleWarning) parser.parseFile(testSet2, categoryInfo).get(0);
