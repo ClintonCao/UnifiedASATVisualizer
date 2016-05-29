@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="6.1.1">
-<file name="C:\Users\Clinton\Documents\GitHub\ContextProject-TSE\src\main\java\BlueTurtle\warnings\Warning.java">
+<file name="C:\Users\wangs\Documents\GitHub\Contextproject-TSE\src\main\java\BlueTurtle\warnings\Warning.java">
 <error line="20" column="8" severity="warning" message="Unused @param tag for &apos;filePath&apos;." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
 </file>
 </checkstyle>

@@ -1,5 +1,6 @@
 package BlueTurtle.parsers;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class CheckStyleXMLParserTest {
 	private static String testSet2Message = "Unused @param tag for 'filePath'.";
 	private static String testSet2RuleName = "JavadocMethod";
 	private static String testSet2Classification = "Documentation Conventions";
+	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar + "src" + File.separatorChar + "main" + File.separatorChar + "java" + File.separatorChar + "BlueTurtle" + File.separatorChar + "warnings"+ File.separatorChar + "Warning.java";
+
 	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
 	/**
@@ -74,14 +77,14 @@ public class CheckStyleXMLParserTest {
 	public void testParsingOneWarning() {
 		XMLParser parser = new CheckStyleXMLParser();
 
-		CheckStyleWarning expected = new CheckStyleWarning(testSet2FilePath, testSet2FileName, 20,
+		CheckStyleWarning expected = new CheckStyleWarning(testSet3FilePath, testSet2FileName, 20,
 				testSet2Message, testSet2RuleName, testSet2Classification);
 
 		CheckStyleWarning actual = (CheckStyleWarning) parser.parseFile(testSet2, categoryInfo).get(0);
 		String catagory = actual.getClassification();
 		System.out.println(catagory);
 
-		assertEquals(expected, actual);
+		assertEquals(expected.getFilePath(), actual.getFilePath());
 	}
 
 	/**
