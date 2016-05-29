@@ -86,7 +86,7 @@ public class WarningGrouperTest {
 		cs2.summarise(warnings);
 		cs3.summarise(warnings);
 		cs4.summarise(warnings);
-		System.out.println(cs4.getWarningTypes());
+		
 	}
 
 	/**
