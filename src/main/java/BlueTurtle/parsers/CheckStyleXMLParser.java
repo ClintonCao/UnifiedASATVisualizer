@@ -70,30 +70,9 @@ public class CheckStyleXMLParser extends XMLParser {
 
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("error");
+					
+					addWarnings(filePath, fileName,warningList, nList, checkStyleWarnings, categoryInfo);
 
-					for (int j = 0; j < warningList.getLength(); j++) {
-						// Get the warning from the list of warnings.
-						Node warning = warningList.item(j);
-
-						if (warning.getNodeType() == Node.ELEMENT_NODE) {
-							// Convert the node to an element.
-							Element warningElement = (Element) warning;
-
-							// message of warning
-							String message = warningElement.getAttribute("message");
-
-							// line number where the warning is located.
-							int line = Integer.parseInt(warningElement.getAttribute("line"));
-
-							// Get the category of the warning.
-							String ruleName = getRuleName(warningElement.getAttribute("source"));
-							
-							String classification = categoryInfo.get(ruleName);
-							
-							// Add warning to the list of warnings.
-							checkStyleWarnings.add(new CheckStyleWarning(filePath, fileName, line, message, ruleName, classification));
-						}
-					}
 				}
 			}
 		} catch (Exception e) {
@@ -101,6 +80,44 @@ public class CheckStyleXMLParser extends XMLParser {
 		}
 
 		return checkStyleWarnings;
+	}
+	
+	/**
+	 * add individual warning to the warningList.
+	 * 
+	 * @param fileName is the file name of the warning.
+	 * @param warningList is a list of warnings.
+	 * @param nList is the node list.
+	 * @param checkStyleWarnings is the CheckStyle warnings.
+	 * @param categoryInfo is the category information.
+	 * @return a list of FindBugs warnings.
+	 */
+	public List<Warning> addWarnings(String filePath, String fileName, NodeList warningList, NodeList nList, List<Warning> checkStyleWarnings, HashMap<String, String> categoryInfo) {
+		for (int j = 0; j < warningList.getLength(); j++) {
+			// Get the warning from the list of warnings.
+			Node warning = warningList.item(j);
+
+			if (warning.getNodeType() == Node.ELEMENT_NODE) {
+				// Convert the node to an element.
+				Element warningElement = (Element) warning;
+
+				// message of warning
+				String message = warningElement.getAttribute("message");
+
+				// line number where the warning is located.
+				int line = Integer.parseInt(warningElement.getAttribute("line"));
+
+				// Get the category of the warning.
+				String ruleName = getRuleName(warningElement.getAttribute("source"));
+				
+				String classification = categoryInfo.get(ruleName);
+				
+				// Add warning to the list of warnings.
+				checkStyleWarnings.add(new CheckStyleWarning(filePath, fileName, line, message, ruleName, classification));
+			}
+		}
+		return checkStyleWarnings;
+		
 	}
 
 	/**
