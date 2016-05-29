@@ -23,6 +23,12 @@ Total: ****
 | reflection            |      |
 
 ## Notes
+* Unclear user stories
+	* GitHub issues - would be better to briefly state what the issue is about, thanks for adding the numbers
+	* The Project should be good tested - what do you deine as good?
+* Refactoring and improving coding style are different
+	* Add an explanation of what high level changes were made
+	* Here you can add that as part of refactoring you also improved coding style (what did you improve on)
 
 #Code Evolution Quality Feedback
 
