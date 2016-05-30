@@ -60,9 +60,6 @@ public class JavaControllerTest {
 	 */
 	@Test
 	public void allFilesStringsAreNull() {
-		System.out.println("Checkstyle: " + JavaController.getCheckStyleOutputFile());
-		System.out.println("FindBugs: " + JavaController.getFindBugsOutputFile());
-		System.out.println("PMD: " + JavaController.getPmdOutputFile());
 		assertTrue(JavaController.getCheckStyleOutputFile() == null && JavaController.getPmdOutputFile() == null
 				&& JavaController.getFindBugsOutputFile() == null);
 	}
