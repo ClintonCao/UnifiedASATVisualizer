@@ -9,6 +9,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCCheck-hover {
@@ -19,6 +20,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCConcurrency-hover {
@@ -29,6 +31,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCErrorHandling-hover {
@@ -39,6 +42,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCInterface-hover {
@@ -49,6 +53,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCLogic-hover {
@@ -59,6 +64,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 } 
             
 #GDCMigration-hover {
@@ -69,6 +75,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCResource-hover {
@@ -79,6 +86,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCMaintainabilityDefects-hover {
@@ -89,6 +97,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCBestPractices-hover {
@@ -99,6 +108,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCCodeStructure-hover {
@@ -109,6 +119,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCDocConventions-hover {
@@ -117,8 +128,8 @@
     padding: 10px;
     width: 250px;
     color: #FFFFFF;
-    position:absolute;
-    z-index:10002;
+    position:absolut
+    font-family: 'Roboto Mono', sans-serif;
 }
                 
 #GDCMetric-hover {
@@ -129,6 +140,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCNamingConventions-hover {
@@ -139,6 +151,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCOODesign-hover {
@@ -149,6 +162,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCSimplifications-hover {
@@ -159,6 +173,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCRedundancies-hover {
@@ -169,6 +184,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCStyleConventions-hover {
@@ -179,6 +195,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCOther-hover {
@@ -189,6 +206,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCRegularExpressions-hover {
@@ -199,6 +217,7 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }
 
 #GDCToolSpecific-hover {
@@ -209,4 +228,5 @@
     color: #FFFFFF;
     position:absolute;
     z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
 }

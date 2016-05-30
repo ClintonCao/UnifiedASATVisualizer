@@ -10,6 +10,11 @@ body{
 	background-repeat:no-repeat;
 	background-size:cover;
 	height:100%;width:100%;
+  font-family: 'Roboto', sans-serif;
+}
+.UIText {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
 }
 
 /* 
@@ -26,6 +31,7 @@ div#right-menu{
   margin: 0 20px 0 0;
   opacity:0.8;
   color: #fff;
+  font-family: 'Roboto Mono', sans-serif;
 }
 
 /* 
@@ -42,15 +48,19 @@ div#left-menu{
   margin: 0 20px 0 0;
   opacity:0.8;
   color: #fff;
+  font-family: 'Roboto Mono', sans-serif;
 }
 #checkStyleLabel {
   color: #12B212;
+  font-family: 'Roboto Mono', sans-serif;
 }
 #PMDLabel {
   color: #75B4EB;
+  font-family: 'Roboto Mono', sans-serif;
 }
 #FindBugsLabel {
   color: #ED4337;
+  font-family: 'Roboto Mono', sans-serif;
 }
 
 /* 
@@ -108,12 +118,13 @@ div#chart-wrapper{
 #main-title {
   background: rgba(55, 58, 60, 0.8);
   opacity:0.8;
-  font-weight: bold;
   font-size: 26px;
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
   color: #FFF;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 300;
 }
 
 /* Back button */
@@ -200,8 +211,9 @@ h4.category-titles{
     height: 17px;
 }
 .buttonText{
-    display: inline-block;
-	font-weight:bold;
+  display: inline-block;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 700;
 	size:15px;
-    height:10px;
+  height:10px;
 }
