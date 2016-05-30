@@ -13,6 +13,26 @@ import java.io.IOException;
 @SuppressWarnings("checkstyle:hideutilityclassconstructor")
 public class LOCComputer {
 
+	private static LOCComputer locComputer = null;
+
+	/**
+	 * Constructor. Only this class can instantiate itself.
+	 */
+	private LOCComputer() {
+	}
+
+	/**
+	 * Get an instance of this class.
+	 * 
+	 * @return an instance of this class.
+	 */
+	public static LOCComputer getInstance() {
+		if (locComputer == null) {
+			locComputer = new LOCComputer();
+		}
+		return locComputer;
+	}
+
 	/**
 	 * Find the number of (physical) lines for a source code file.
 	 * 
@@ -23,7 +43,7 @@ public class LOCComputer {
 	 *             throws an exception if problem is encountered while reading
 	 *             the file.
 	 */
-	public static int computeLOC(String filePath) throws IOException {
+	public int computeLOC(String filePath) throws IOException {
 		int numLines = 0;
 		BufferedReader reader = new BufferedReader(new FileReader(filePath));
 		String line = reader.readLine();

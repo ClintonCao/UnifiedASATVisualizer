@@ -24,7 +24,7 @@ public class PackageNameFinderTest {
 	 */
 	@Test
 	public void testRightPackageNameFound() throws IOException {
-		String packageName = PackageNameFinder.findPackageName("./src/test/resources/ExampleClass.java");
+		String packageName = PackageNameFinder.getInstance().findPackageName("./src/test/resources/ExampleClass.java");
 		assertEquals("SomePackage.subpackage", packageName);
 	}
 
@@ -37,7 +37,7 @@ public class PackageNameFinderTest {
 	 */
 	@Test
 	public void testFindingPackageNameOnDifferentFile() throws IOException {
-		String packageName = PackageNameFinder.findPackageName("./src/test/resources/ExampleTestClass.java");
+		String packageName = PackageNameFinder.getInstance().findPackageName("./src/test/resources/ExampleTestClass.java");
 		assertNotEquals("SomePackage.subpackage", packageName);
 	}
 
@@ -50,7 +50,7 @@ public class PackageNameFinderTest {
 	 */
 	@Test
 	public void testClassInDefaultPackage() throws IOException {
-		String packageName = PackageNameFinder.findPackageName("./src/test/resources/DefaultClass.java");
+		String packageName = PackageNameFinder.getInstance().findPackageName("./src/test/resources/DefaultClass.java");
 		assertEquals("default", packageName);
 	}
 
@@ -63,7 +63,7 @@ public class PackageNameFinderTest {
 	 */
 	@Test(expected = IOException.class)
 	public void testFindingNameInNonExistingFile() throws IOException {
-		String packageName = PackageNameFinder.findPackageName("./NonExstingFile.java");
+		String packageName = PackageNameFinder.getInstance().findPackageName("./NonExstingFile.java");
 	}
 
 }
