@@ -85,9 +85,7 @@ public class GUIController {
 	 *            the event.
 	 */
 	@FXML
-	void selectFindBugsConfigEvent(MouseEvent event) {
-
-	}
+	void selectFindBugsConfigEvent(MouseEvent event) { }
 
 	/**
 	 * Events for the LoadButton.
@@ -96,9 +94,7 @@ public class GUIController {
 	 *            the event.
 	 */
 	@FXML
-	void selectButtonEvent(MouseEvent event) {
-
-	}
+	void selectButtonEvent(MouseEvent event) { }
 
 	/**
 	 * Events from the VisualizeButton.
@@ -107,9 +103,7 @@ public class GUIController {
 	 *            the event.
 	 */
 	@FXML
-	void visualizeButtonEvent(MouseEvent event) {
-
-	}
+	void visualizeButtonEvent(MouseEvent event) { }
 
 	/**
 	 * Initialize the buttons.
