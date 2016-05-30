@@ -109,6 +109,9 @@ var treeMapBuilder = (function() {
             .on("click", navigationUp)
             .select("text")
             .text(name(d))
+            .style("fill", function() {
+                return '#333333';
+            });
 
         var g1 = svg.insert("g", ".grandparent")
             .datum(d)
@@ -251,6 +254,9 @@ var treeMapBuilder = (function() {
             .text(function(d) {
                 return d.fileName;
             })
+            .style("fill", function() {
+                return '#FFFFFF';
+            })
             .call(textBottomRight);
 
         g.append("rect")
@@ -262,15 +268,21 @@ var treeMapBuilder = (function() {
             .attr("dy", ".75em");
 
         t.append("tspan")
+            .style("fill", function(d) {
+                return '#FFFFFF';
+            })
             .text(function(d) {
                 return d.fileName;
             });
 
         //title of the squares
         t.append("tspan")
-            .attr("dy", "1.0em")
+            .attr("dy", "1.2em")
             .text(function(d) {
                 return d.warnings;
+            })
+            .style("fill", function(d) {
+                return '#FFFFFF';
             });
         t.call(text);
 

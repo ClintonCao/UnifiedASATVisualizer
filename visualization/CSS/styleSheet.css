@@ -112,6 +112,8 @@ div#chart-wrapper{
 #d3-tip{
 	font-size:15px;
   color: #fff;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 100;
 }
 
 /* Title */
@@ -152,15 +154,13 @@ text {
   pointer-events: none;
 }
 .grandparent text {
-  font-weight: bold;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 700;
 }
 rect {
   fill: none;
   stroke: #fff;
   stroke-width: 2px;
-}
-.ctext {
-  color: #ffffff;
 }
 .grandparent rect {
   stroke-width: 2px;
@@ -201,6 +201,10 @@ h4.category-titles{
 .ptext {
 	text-align:center;
 	font-size:18px;
+  font-weight: 100;
+}
+.ctext {
+  font-weight: 100;
 }
 
 /* Various buttons styling */
@@ -213,7 +217,7 @@ h4.category-titles{
 .buttonText{
   display: inline-block;
   font-family: 'Roboto Mono', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
 	size:15px;
   height:10px;
 }

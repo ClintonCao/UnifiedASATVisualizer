@@ -9,32 +9,9 @@ runTreeMap();
 addAllAcceptedTypesAndCategories();
 setAllCheckboxesOnDefault();
 
-var images = [
-  "images/bg1.png",
-  "images/bg2.png",
-  "images/bg3.png",
-  "images/bg4.png"  
-];
-var $body = $("body"),
-    $bg = $("#bg"),
-    n = images.length,
-    c = 0; // Loop Counter
-
-// Preload Array of images...
-for(var i=0; i<n; i++){
-  var tImg = new Image();
-  tImg.src = images[i];
-}
-
-$bg.css({backgroundImage : "url("+images[c]+")"}); 
-
-(function loopBg(){
-  $bg.hide().css({backgroundImage : "url("+images[++c%n]+")"}).delay(2000).fadeTo(1200, 1, function(){
-    $body.css({backgroundImage : "url("+images[c%n]+")"}); 
-    loopBg();
-  });
-}());
-
+/*
+ * Will set all available checkboxes on checked
+ */
 function setAllCheckboxesOnDefault() {
 	$(".updateContent").prop('checked', false); 
 	$("#treemapButton").prop('checked', true);
@@ -44,7 +21,10 @@ function setAllCheckboxesOnDefault() {
 	$(".StyleConventions").click();
 	$(".sats").click();
 }
-// add all types and categories for first run
+
+/*
+ * In the first run all ASATs and categories are included
+ */
 function addAllAcceptedTypesAndCategories(){
 	for ( var i = 0; i < $(".FunctionalDefects").size(); i ++){
 		handleClickCategorySat($(".FunctionalDefects")[i].value, true);
@@ -68,27 +48,15 @@ function removeChart() {
     }
 }
 
-// Define all the hover functions for the filterable categories
-function defineHovers() {
-    var allGDCHovers = ["#GDCFunctionalDefects", "#GDCCheck", "#GDCConcurrency", "#GDCErrorHandling", "#GDCInterface",
-         "#GDCLogic", "#GDCMigration", "#GDCResource", "#GDCMaintainabilityDefects", "#GDCBestPractices", "#GDCCodeStructure", 
-            "#GDCDocConventions", "#GDCMetric", "#GDCNamingConventions", "#GDCOODesign", "#GDCSimplifications", "#GDCRedundancies",
-                "#GDCStyleConventions", "#GDCOther", "#GDCRegularExpressions", "#GDCToolSpecific"];
-
-    for(var i = 0; i < allGDCHovers.length; i++) {
-        showHover(allGDCHovers[i]);
-    }
-}
-
 // Add total amount of warnings to the Sat types in the menu
 function appendInfoToSAT(CS, PMD, FB) {
     var checkStyleElement = document.getElementById("checkStyleLabel");
     var PMDElement = document.getElementById("PMDLabel");
     var findBugsElement = document.getElementById("FindBugsLabel");
 
-    checkStyleElement.innerHTML = '&nbsp; CheckStyle (' + CS + ")";
-    PMDElement.innerHTML = "&nbsp; PMD (" + PMD + ")";
-    findBugsElement.innerHTML = "&nbsp; FindBugs (" + FB + ")";
+    checkStyleElement.innerHTML = '&thinsp; CheckStyle(' + CS + ")";
+    PMDElement.innerHTML = "&thinsp; PMD(" + PMD + ")";
+    findBugsElement.innerHTML = "&thinsp; FindBugs(" + FB + ")";
 }
 
 //Setup tree map and shows it
