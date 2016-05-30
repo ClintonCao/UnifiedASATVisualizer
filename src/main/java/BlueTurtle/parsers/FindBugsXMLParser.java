@@ -121,7 +121,7 @@ public class FindBugsXMLParser extends XMLParser {
 				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
 				
 				// replace the dot in the file name with file separator. 
-				String fileNWithSep = fileName.replaceAll("\\.", Matcher.quoteReplacement(File.separator)) + ".java";
+				String fileNWithSep = fileName.replaceAll("\\.", Matcher.quoteReplacement(File.separator));
 				
 				String filePath = " ";
 				
