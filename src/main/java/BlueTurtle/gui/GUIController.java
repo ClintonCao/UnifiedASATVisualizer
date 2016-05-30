@@ -165,7 +165,6 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 			Main.runVisualization();
 			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -178,7 +177,7 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 				new File(GUIController.getSourcePath() + "/target/checkstyle-result.xml"));
 		JavaController.setASATOutput(ASAT.PMD, new File(GUIController.getSourcePath() + "/target/pmd.xml"));
 		JavaController.setASATOutput(ASAT.FindBugs,
-				new File(GUIController.getSourcePath() + "/target/findbugsXML.xml"));
+				new File(GUIController.getSourcePath() + "/target/findbugs.xml"));
 	}
 
 }

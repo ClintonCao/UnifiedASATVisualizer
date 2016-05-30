@@ -43,7 +43,7 @@ public class CategorySummarizerTest {
 		filePath = "./src/test/resources/ExampleClass.txt";
 		fileName = "ExampleClass.java";
 		packageName = "SomePackage.subpackage";
-		testSet = "./resources/htmlExample.html";
+		testSet = "./src/test/resources/htmlExample.html";
 		testSet3 = "./src/test/resources/asat-gdc-mapping.html";
 		w = new CheckStyleWarning(filePath, fileName, 3, "Test", "AbstractClassName", "Naming Conventions");
 		w2 = new CheckStyleWarning("./src/test/resources/ExampleTestClass.txt", fileName, 3, "Test", "TestRule", "Class");
