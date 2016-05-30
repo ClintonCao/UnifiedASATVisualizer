@@ -9,6 +9,31 @@ runTreeMap();
 addAllAcceptedTypesAndCategories();
 setAllCheckboxesOnDefault();
 
+var images = [
+  "images/bg1.png",
+  "images/bg2.png",
+  "images/bg3.png",
+  "images/bg4.png"  
+];
+var $body = $("body"),
+    $bg = $("#bg"),
+    n = images.length,
+    c = 0; // Loop Counter
+
+// Preload Array of images...
+for(var i=0; i<n; i++){
+  var tImg = new Image();
+  tImg.src = images[i];
+}
+
+$bg.css({backgroundImage : "url("+images[c]+")"}); 
+
+(function loopBg(){
+  $bg.hide().css({backgroundImage : "url("+images[++c%n]+")"}).delay(2000).fadeTo(1200, 1, function(){
+    //loopBg();
+  });
+}());
+
 function setAllCheckboxesOnDefault() {
 	$(".updateContent").prop('checked', false); 
 	$("#treemapButton").prop('checked', true);
