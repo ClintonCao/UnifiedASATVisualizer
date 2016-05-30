@@ -30,7 +30,8 @@ $bg.css({backgroundImage : "url("+images[c]+")"});
 
 (function loopBg(){
   $bg.hide().css({backgroundImage : "url("+images[++c%n]+")"}).delay(2000).fadeTo(1200, 1, function(){
-    //loopBg();
+    $body.css({backgroundImage : "url("+images[c%n]+")"}); 
+    loopBg();
   });
 }());
 
