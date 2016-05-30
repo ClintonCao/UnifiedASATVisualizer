@@ -18,8 +18,7 @@ public class LOCComputer {
 	/**
 	 * Constructor. Only this class can instantiate itself.
 	 */
-	private LOCComputer() {
-	}
+	private LOCComputer() { }
 
 	/**
 	 * Get an instance of this class.
