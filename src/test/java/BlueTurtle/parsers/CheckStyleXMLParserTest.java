@@ -25,7 +25,6 @@ public class CheckStyleXMLParserTest {
 
 	private static String testSet = "./src/test/resources/exampleCheckstyle1.xml";
 	private static String testSet2 = "./src/test/resources/exampleCheckstyle2.xml";
-	private static String testSet3 = "./src/test/resources/asat-gdc-mapping.html";
 
 	private static String testSet2FilePath = "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\Warning.java";
 	private static String testSet2FileName = "Warning.java";
@@ -42,7 +41,7 @@ public class CheckStyleXMLParserTest {
 	@Before
 	public void setUp() {
 		GDCParser gP = GDCParser.getInstance();
-		categoryInfo = gP.parseFile(testSet3);
+		categoryInfo = gP.getCategoryInfo();
 	}
 	
 	/**
@@ -53,7 +52,7 @@ public class CheckStyleXMLParserTest {
 		XMLParser parser = new CheckStyleXMLParser();
 
 
-		List<Warning> warnings = parser.parseFile(testSet, categoryInfo);
+		List<Warning> warnings = parser.parseFile(testSet);
 
 		assertSame(5, warnings.size());
 	}
@@ -80,7 +79,7 @@ public class CheckStyleXMLParserTest {
 		CheckStyleWarning expected = new CheckStyleWarning(testSet2FilePath, testSet2FileName, 20,
 				testSet2Message, testSet2RuleName, testSet2Classification);
 
-		CheckStyleWarning actual = (CheckStyleWarning) parser.parseFile(testSet2, categoryInfo).get(0);
+		CheckStyleWarning actual = (CheckStyleWarning) parser.parseFile(testSet2).get(0);
 		String catagory = actual.getClassification();
 		System.out.println(catagory);
 
@@ -94,7 +93,7 @@ public class CheckStyleXMLParserTest {
 	public void testCreateRightAmountOfWarnings() {
 		XMLParser parser = new CheckStyleXMLParser();
 
-		List<Warning> warnings = parser.parseFile(testSet, categoryInfo);
+		List<Warning> warnings = parser.parseFile(testSet);
 
 		assertNotSame(6, warnings.size());
 	}
@@ -121,7 +120,7 @@ public class CheckStyleXMLParserTest {
 		CheckStyleWarning expected = new CheckStyleWarning(testSet2FilePath, testSet2FileName, 21, testSet2Message,
 				testSet2RuleName, testSet2Classification);
 
-		CheckStyleWarning actual = (CheckStyleWarning) parser.parseFile(testSet2, categoryInfo).get(0);
+		CheckStyleWarning actual = (CheckStyleWarning) parser.parseFile(testSet2).get(0);
 
 		assertNotEquals(expected, actual);
 	}
@@ -135,7 +134,7 @@ public class CheckStyleXMLParserTest {
 		
 		String testSet3 = "/ex.xml";
 
-		List<Warning> warnings = parser.parseFile(testSet3, categoryInfo);
+		List<Warning> warnings = parser.parseFile(testSet3);
 		
 		assertSame(0, warnings.size());
 	}

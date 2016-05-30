@@ -30,13 +30,11 @@ public class CheckStyleXMLParser extends XMLParser {
 	 * Parse a CheckStyle report file.
 	 * 
 	 * @param xmlFilePath
-	 *            the location of the CheckStyle report.
-	 * @param categoryInfo
-	 * 			  the category information from GDC.            
+	 *            the location of the CheckStyle report.          
 	 * @return a list of CheckStyle warnings.
 	 */
 	@Override
-	public List<Warning> parseFile(String xmlFilePath, HashMap<String, String> categoryInfo) {
+	public List<Warning> parseFile(String xmlFilePath) {
 		// List to store the warnings.
 		List<Warning> checkStyleWarnings = new LinkedList<Warning>();
 
@@ -73,7 +71,7 @@ public class CheckStyleXMLParser extends XMLParser {
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("error");
 					
-					addWarnings(filePath, fileName, warningList, checkStyleWarnings, categoryInfo);
+					addWarnings(filePath, fileName, warningList, checkStyleWarnings);
 
 				}
 			}
@@ -91,10 +89,9 @@ public class CheckStyleXMLParser extends XMLParser {
 	 * @param warningList is a list of warnings.
 	 * @param nList is the node list.
 	 * @param checkStyleWarnings is the CheckStyle warnings.
-	 * @param categoryInfo is the category information.
 	 * @return a list of FindBugs warnings.
 	 */
-	public List<Warning> addWarnings(String filePath, String fileName, NodeList warningList, List<Warning> checkStyleWarnings, HashMap<String, String> categoryInfo) {
+	public List<Warning> addWarnings(String filePath, String fileName, NodeList warningList, List<Warning> checkStyleWarnings) {
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
 			Node warning = warningList.item(j);
@@ -112,7 +109,7 @@ public class CheckStyleXMLParser extends XMLParser {
 				// Get the category of the warning.
 				String ruleName = getRuleName(warningElement.getAttribute("source"));
 				
-				String classification = categoryInfo.get(ruleName);
+				String classification = classify(ruleName);
 				
 				// get the classPaths list from ProjectInfoFinder.
 				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
@@ -152,6 +149,7 @@ public class CheckStyleXMLParser extends XMLParser {
 		// Return only the name of the check.
 		return source.substring(source.lastIndexOf('.') + 1, source.length() - 1);
 	}
+
 
 
 

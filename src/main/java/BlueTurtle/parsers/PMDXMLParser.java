@@ -32,7 +32,7 @@ public class PMDXMLParser extends XMLParser {
 	 * @return a list of PMD warnings.
 	 */
 	@Override
-	public List<Warning> parseFile(String xmlFilePath, HashMap<String, String> categoryInfo) {
+	public List<Warning> parseFile(String xmlFilePath) {
 		// List to store the warnings.
 		List<Warning> pmdWarnings = new LinkedList<Warning>();
 		
@@ -69,7 +69,7 @@ public class PMDXMLParser extends XMLParser {
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("violation");
 					
-					addWarnings(filePath, fileName, warningList, nList, pmdWarnings, categoryInfo);
+					addWarnings(filePath, fileName, warningList, nList, pmdWarnings);
 
 				}
 			}
@@ -86,10 +86,9 @@ public class PMDXMLParser extends XMLParser {
 	 * @param warningList is a list of warnings.
 	 * @param nList is the node list.
 	 * @param findBugsWarnings is the findBugs warnings.
-	 * @param categoryInfo is the category information.
 	 * @return a list of FindBugs warnings.
 	 */
-	public List<Warning> addWarnings(String filePath, String fileName, NodeList warningList, NodeList nList, List<Warning> pmdWarnings, HashMap<String, String> categoryInfo) {
+	public List<Warning> addWarnings(String filePath, String fileName, NodeList warningList, NodeList nList, List<Warning> pmdWarnings) {
 		
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
@@ -118,7 +117,7 @@ public class PMDXMLParser extends XMLParser {
 				String pmdRN = ruleSet.replace(" ", "").toLowerCase() + ".xml/" + ruleName; 
 				
 				
-				String classification = categoryInfo.get(pmdRN);
+				String classification = classify(pmdRN);
 
 				// Add warning to the list of warnings.
 				pmdWarnings.add(new PMDWarning(filePath, fileName, line, packageName, ruleSet, method, ruleName, classification));

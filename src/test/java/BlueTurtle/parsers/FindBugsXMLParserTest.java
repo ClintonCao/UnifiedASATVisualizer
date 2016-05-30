@@ -25,7 +25,6 @@ public class FindBugsXMLParserTest {
 
 	private static String testSet = "./src/test/resources/exampleFindbugs2.xml";
 	private static String testSet2 = "./src/test/resources/exampleFindbugs1.xml";
-	private static String testSet3 = "./src/test/resources/asat-gdc-mapping.html";
 	private static String srcDir = System.getProperty("user.dir") + "/src";
 
 	private static String testSet2FileName = "FindBugsWarning.java";
@@ -44,7 +43,7 @@ public class FindBugsXMLParserTest {
 	@Before
 	public void setUp() {
 		GDCParser gP = GDCParser.getInstance();
-		categoryInfo = gP.parseFile(testSet3);
+		categoryInfo = gP.getCategoryInfo();
 		ProjectInfoFinder pif = new ProjectInfoFinder();
 		pif.findFiles(new File(srcDir));
 	}
@@ -56,7 +55,7 @@ public class FindBugsXMLParserTest {
 	public void testParseCorrectBehaviour() {
 		FindBugsXMLParser parser = new FindBugsXMLParser();
 
-		List<Warning> warnings = parser.parseFile(testSet2, categoryInfo);
+		List<Warning> warnings = parser.parseFile(testSet2);
 
 		assertSame(2, warnings.size());
 	}
@@ -71,7 +70,7 @@ public class FindBugsXMLParserTest {
 		FindBugsWarning expected = new FindBugsWarning(testSet3FilePath, testSet2FileName, 47,
 				testSet2Message, testSet2Category, testSet2Priority, testSet2RuleName, testSet2Classification);
 
-		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2, categoryInfo).get(0);
+		FindBugsWarning actual = (FindBugsWarning) parser.parseFile(testSet2).get(0);
 
 		assertEquals(expected.getFilePath(), actual.getFilePath());
 	}
@@ -83,7 +82,7 @@ public class FindBugsXMLParserTest {
 	public void testCreateRightAmountOfWarnings() {
 		FindBugsXMLParser parser = new FindBugsXMLParser();
 
-		List<Warning> warnings = parser.parseFile(testSet, categoryInfo);
+		List<Warning> warnings = parser.parseFile(testSet);
 
 		assertNotSame(6, warnings.size());
 	}
@@ -97,7 +96,7 @@ public class FindBugsXMLParserTest {
 		
 		String testSet3 = "/ex.xml";
 
-		List<Warning> warnings = parser.parseFile(testSet3, categoryInfo);
+		List<Warning> warnings = parser.parseFile(testSet3);
 		
 		assertSame(0, warnings.size());
 	}

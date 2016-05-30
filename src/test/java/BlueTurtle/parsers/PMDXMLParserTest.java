@@ -42,7 +42,7 @@ public class PMDXMLParserTest {
 	@Before
 	public void setUp() {
 		GDCParser gP = GDCParser.getInstance();
-		categoryInfo = gP.parseFile(testSet3);
+		categoryInfo = gP.getCategoryInfo();
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class PMDXMLParserTest {
 	public void testParseCorrectBehaviour() {
 		XMLParser parser = new PMDXMLParser();
 
-		List<Warning> warnings = parser.parseFile(testSet, categoryInfo);
+		List<Warning> warnings = parser.parseFile(testSet);
 
 		assertSame(1, warnings.size());
 	}
@@ -68,7 +68,7 @@ public class PMDXMLParserTest {
 		PMDWarning expected = new PMDWarning(testSetFilePath, testSetFileName, 43,
 				testSetPackageName, testSetRuleSet, testSetMethod, testSetRuleName, testSetClassification);
 
-		PMDWarning actual = (PMDWarning) parser.parseFile(testSet2, categoryInfo).get(0);
+		PMDWarning actual = (PMDWarning) parser.parseFile(testSet2).get(0);
 
 		assertEquals(expected, actual);
 	}
@@ -80,7 +80,7 @@ public class PMDXMLParserTest {
 	public void testCreateRightAmountOfWarnings() {
 		XMLParser parser = new PMDXMLParser();
 
-		List<Warning> warnings = parser.parseFile(testSet, categoryInfo);
+		List<Warning> warnings = parser.parseFile(testSet);
 
 		assertNotSame(6, warnings.size());
 	}
@@ -94,7 +94,7 @@ public class PMDXMLParserTest {
 		
 		String testSet3 = "/ex.xml";
 
-		List<Warning> warnings = parser.parseFile(testSet3, categoryInfo);
+		List<Warning> warnings = parser.parseFile(testSet3);
 		
 		assertSame(0, warnings.size());
 	}
@@ -104,7 +104,7 @@ public class PMDXMLParserTest {
 	 */
 	@Test
 	public void testXMLParserClassify() {				
-		String classification = XMLParser.classify("AbstractClassName", categoryInfo);
+		String classification = XMLParser.classify("AbstractClassName");
 		
 		assertEquals("Naming Conventions", classification);
 	}	

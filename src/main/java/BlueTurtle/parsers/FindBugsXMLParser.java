@@ -35,7 +35,7 @@ public class FindBugsXMLParser extends XMLParser {
 	 * @return a list of FindBugs warnings.
 	 */
 	@Override
-	public List<Warning> parseFile(String xmlFilePath, HashMap<String, String> categoryInfo) {
+	public List<Warning> parseFile(String xmlFilePath) {
 
 		// List to store the warnings.
 		List<Warning> findBugsWarnings = new LinkedList<Warning>();
@@ -71,7 +71,7 @@ public class FindBugsXMLParser extends XMLParser {
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("BugInstance");
 					
-					addWarnings(fileName, warningList, findBugsWarnings, nList, categoryInfo);
+					addWarnings(fileName, warningList, findBugsWarnings, nList);
 
 				}
 			}
@@ -89,9 +89,8 @@ public class FindBugsXMLParser extends XMLParser {
 	 * @param warningList is a list of warnings.
 	 * @param nList is the node list.
 	 * @param findBugsWarnings is the findBugs warnings.
-	 * @param categoryInfo is the category information.
 	 */
-	public void addWarnings(String fileName, NodeList warningList, List<Warning> findBugsWarnings, NodeList nList, HashMap<String, String> categoryInfo) {
+	public void addWarnings(String fileName, NodeList warningList, List<Warning> findBugsWarnings, NodeList nList) {
 		
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
@@ -116,7 +115,7 @@ public class FindBugsXMLParser extends XMLParser {
 				// Get the category of the warning.
 				String ruleName = warningElement.getAttribute("type");
 				
-				String classification = categoryInfo.get(ruleName);
+				String classification = classify(ruleName);
 				
 				// get the classPaths list from ProjectInfoFinder.
 				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
