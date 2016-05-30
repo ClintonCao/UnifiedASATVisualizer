@@ -90,6 +90,8 @@ var treeMapBuilder = (function() {
 	function display(d) {
 		// id for all squares
 		var id = 0;
+
+        console.log(currentNodePath);
         // On click top bar to go back
 
         /*
@@ -104,7 +106,7 @@ var treeMapBuilder = (function() {
 
         grandparent
             .datum(d.parent)
-            .on("click", transition)
+            .on("click", navigationUp)
             .select("text")
             .text(name(d))
 
