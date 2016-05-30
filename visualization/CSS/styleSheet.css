@@ -110,6 +110,7 @@ div#chart-wrapper{
 }
 #d3-tip{
 	font-size:15px;
+  color: #fff;
 }
 
 /* Title */
