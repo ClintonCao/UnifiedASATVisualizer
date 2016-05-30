@@ -24,7 +24,7 @@ public class LOCComputerTest {
 	 */
 	@Test
 	public void testRightLOCFound() throws IOException {
-		int numLines = LOCComputer.computeLOC("./src/test/resources/DefaultClass.java");
+		int numLines = LOCComputer.getInstance().computeLOC("./src/test/resources/DefaultClass.java");
 		assertSame(5, numLines);
 	}
 
@@ -37,7 +37,7 @@ public class LOCComputerTest {
 	 */
 	@Test
 	public void testFindingLOCOnDifferentFile() throws IOException {
-		int numLines = LOCComputer.computeLOC("./src/test/resources/ExampleTestClass.java");
+		int numLines = LOCComputer.getInstance().computeLOC("./src/test/resources/ExampleTestClass.java");
 		assertSame(6, numLines);
 	}
 
@@ -50,7 +50,7 @@ public class LOCComputerTest {
 	 */
 	@Test(expected = IOException.class)
 	public void testFindingLOCInNonExistingFile() throws IOException {
-		int zero = LOCComputer.computeLOC("./NonExistingClass.java");
+		int zero = LOCComputer.getInstance().computeLOC("./NonExistingClass.java");
 		assertSame(0, zero);
 	}
 }

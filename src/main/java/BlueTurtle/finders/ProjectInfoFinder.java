@@ -62,8 +62,8 @@ public class ProjectInfoFinder {
 		if (file.getName().endsWith(".java")) {
 			String path = file.getAbsolutePath();
 			classPaths.add(path); // add the path
-			classLocs.put(path, LOCComputer.computeLOC(path)); // add the LOC
-			String packageName = PackageNameFinder.findPackageName(path); // find the package name
+			classLocs.put(path, LOCComputer.getInstance().computeLOC(path)); // add the LOC
+			String packageName = PackageNameFinder.getInstance().findPackageName(path); // find the package name
 			classPackage.put(path, packageName); // put entry of class and its package
 			packages.add(packageName); // add package to the list of packages
 		}
