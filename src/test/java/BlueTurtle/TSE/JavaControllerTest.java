@@ -5,9 +5,6 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.IOException;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,9 +29,9 @@ public class JavaControllerTest {
 	 */
 	@Before
 	public void setUp() {
-		JavaController.setASATOutput(ASAT.CheckStyle, null);
-		JavaController.setASATOutput(ASAT.PMD, null);
-		JavaController.setASATOutput(ASAT.FindBugs, null);
+		JavaController.setCheckStyleOutputFile(null);
+		JavaController.setPmdOutputFile(null);;
+		JavaController.setFindBugsOutputFile(null);
 	}
 
 //	/**
@@ -63,6 +60,9 @@ public class JavaControllerTest {
 	 */
 	@Test
 	public void allFilesStringsAreNull() {
+		System.out.println("Checkstyle: " + JavaController.getCheckStyleOutputFile());
+		System.out.println("FindBugs: " + JavaController.getFindBugsOutputFile());
+		System.out.println("PMD: " + JavaController.getPmdOutputFile());
 		assertTrue(JavaController.getCheckStyleOutputFile() == null && JavaController.getPmdOutputFile() == null
 				&& JavaController.getFindBugsOutputFile() == null);
 	}
