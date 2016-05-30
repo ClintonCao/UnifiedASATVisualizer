@@ -1,0 +1,249 @@
+#GDCFunctionalDefects-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+}
+
+#GDCCheck-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCConcurrency-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCErrorHandling-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCInterface-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCLogic-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+} 
+            
+#GDCMigration-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCResource-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCMaintainabilityDefects-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCBestPractices-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCCodeStructure-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCDocConventions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+                
+#GDCMetric-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCNamingConventions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCOODesign-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCSimplifications-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCRedundancies-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCStyleConventions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCOther-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCRegularExpressions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
+
+#GDCToolSpecific-hover {
+    display:none;
+    background: rgba(55, 58, 60, 0.8);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    /*top:180px;
+    left:250px;*/
+    z-index:10002;
+}
