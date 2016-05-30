@@ -6,8 +6,10 @@
 
 body{
 	margin:0;
-  background: transparent;
-  height:100%;width:100%;
+	background:url(../images/bg2.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+	height:100%;width:100%;
 }
 
 #bg{
