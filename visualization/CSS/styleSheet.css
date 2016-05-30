@@ -187,6 +187,7 @@ h4.category-titles{
 .ptext {
 	text-align:center;
 	font-size:18px;
+  color: #ffffff !important;
 }
 
 /* radio button style */
