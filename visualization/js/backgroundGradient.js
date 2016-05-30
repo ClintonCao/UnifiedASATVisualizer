@@ -1,17 +1,17 @@
 
 var backgroundGradient = (function() {
 	
-	var greenTints = [d3.rgb("#243523"), d3.rgb('#28cb1c')];	
+	var greenTints = [d3.rgb("#8c9b8b"), d3.rgb('#28cb1c')];	
 	var greenScale = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(greenTints);
-	var blueTints = [d3.rgb("#2b2a47"), d3.rgb('#221bc2')];	
+	var blueTints = [d3.rgb("#a2a2a2"), d3.rgb('#0524c2')];	
 	var blueScale = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(blueTints);
-	var redTints = [d3.rgb("#423030"), d3.rgb('#cd2828')];	
+	var redTints = [d3.rgb("#c2b6b6"), d3.rgb('#cd2828')];	
 	var redScale = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(redTints);
+	var grayTints = [d3.rgb("#a2a2a2"), d3.rgb('#a2a2a2')];	
+	var grayScale = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(grayTints);
 	
-	return {
-
-        getBackground: function(svg,ratioArray,weight, id) {
-			var total = ratioArray[0] + ratioArray[1] + ratioArray[2];
+	function calculateBackgroundGradient(svg,ratioArray,weight, id){
+		var total = ratioArray[0] + ratioArray[1] + ratioArray[2];
 			if ( total == 0 ) {
 				var firstRatio = 0;
 				var firstRatio1 = 0.01;
@@ -68,8 +68,12 @@ var backgroundGradient = (function() {
 		.attr("offset", endEdge)
 		.attr("stop-color", blueScale(weight*100))
 		.attr("stop-opacity", 1);
-		
 		return gradient;
+	}
+	return {
+
+        getBackground: function(svg,ratioArray,weight, id) {
+			return calculateBackgroundGradient(svg,ratioArray,weight, id);
 		}
     }
 	
