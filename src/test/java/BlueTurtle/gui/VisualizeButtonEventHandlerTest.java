@@ -4,9 +4,11 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
+import org.junit.After;
 import org.junit.Test;
 
 import BlueTurtle.TSE.JavaController;
+import BlueTurtle.gui.GUIController.ASAT;
 
 /**
  * Test class for VisualizeButtonEventHandlerTest.
@@ -16,6 +18,17 @@ import BlueTurtle.TSE.JavaController;
  */
 public class VisualizeButtonEventHandlerTest {
 
+	
+	/**
+	 * clean up the attributes of the JavaController.
+	 */
+	@After
+	public void cleaUp() {
+		JavaController.setASATOutput(ASAT.CheckStyle, null);
+		JavaController.setASATOutput(ASAT.PMD, null);
+		JavaController.setASATOutput(ASAT.FindBugs, null);
+	}
+	
 	/**
 	 * Test setOutputFiles of VisualizeButtonEventHandler class.
 	 */
