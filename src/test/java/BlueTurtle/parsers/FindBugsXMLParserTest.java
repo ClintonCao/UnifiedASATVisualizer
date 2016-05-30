@@ -43,7 +43,7 @@ public class FindBugsXMLParserTest {
 	 */
 	@Before
 	public void setUp() {
-		GDCParser gP = new GDCParser();
+		GDCParser gP = GDCParser.getInstance();
 		categoryInfo = gP.parseFile(testSet3);
 		ProjectInfoFinder pif = new ProjectInfoFinder();
 		pif.findFiles(new File(srcDir));

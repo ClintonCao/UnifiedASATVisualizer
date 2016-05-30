@@ -35,7 +35,7 @@ public class PMDWarningTest {
 	 */
 	@Before
 	public void setUp() {
-		GDCParser gP = new GDCParser();
+		GDCParser gP = GDCParser.getInstance();
 		categoryInfo = gP.parseFile(testSet3);
 	}
 

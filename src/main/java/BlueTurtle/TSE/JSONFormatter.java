@@ -28,7 +28,7 @@ import BlueTurtle.writers.JSWriter;
  */
 public class JSONFormatter {
 	private XMLParser xmlParser;
-	private GDCParser gdcParser = new GDCParser();
+	private GDCParser gdcParser = GDCParser.getInstance();
 	private HashMap<String, String> categoryInfo = gdcParser.parseFile("./src/main/resources/asat-gdc-mapping.html");
 
 	/**
