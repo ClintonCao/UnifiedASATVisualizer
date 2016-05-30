@@ -5,7 +5,10 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.io.IOException;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import BlueTurtle.gui.GUIController.ASAT;
@@ -18,10 +21,32 @@ import BlueTurtle.gui.GUIController.ASAT;
  */
 public class JavaControllerTest {
 
-	private String checkStyleOutputFilePath = "./src/test/resources/exampleCheckStyle1.xml";
-	private String pmdOutputFilePath = "./src/test/resources/examplePmd1.xml";
-	private String findBugsOutputFilePath = "./src/test/resources/exampleFindbugs1.xml";
-	private String outputPath = "./src/test/resources/testOutput.js";
+	private String checkStyleOutputFilePath = System.getProperty("user.dir")
+			+ "/src/test/resources/exampleCheckStyle1.xml";
+	private String pmdOutputFilePath = System.getProperty("user.dir") + "/src/test/resources/examplePmd1.xml";
+	private String findBugsOutputFilePath = System.getProperty("user.dir") + "/src/test/resources/exampleFindbugs1.xml";
+	private String outputPath = System.getProperty("user.dir") + "/src/test/resources/testOutput.js";
+
+	/**
+	 * Clear the attributes of JavaController.
+	 */
+	@Before
+	public void setUp() {
+		JavaController.setASATOutput(ASAT.CheckStyle, null);
+		JavaController.setASATOutput(ASAT.PMD, null);
+		JavaController.setASATOutput(ASAT.FindBugs, null);
+	}
+
+//	/**
+//	 * Delete the created files.
+//	 */
+//	@After
+//	public void cleanUp() {
+//		File f = new File(System.getProperty("user.dir") + "/src/main/resources/SummarizedOuput.js");
+//		if (f.exists()) {
+//			f.delete();
+//		}
+//	}
 
 	/**
 	 * Test that the user direction path is the same.
@@ -88,5 +113,22 @@ public class JavaControllerTest {
 		String newFile = JavaController.getCheckStyleOutputFile();
 		assertEquals(currentFile, newFile);
 	}
+
+//	/**
+//	 * Test execute should output file.
+//	 * 
+//	 * @throws IOException
+//	 *             throws an exception if a problem is encountered while reading
+//	 *             the file.
+//	 */
+//	@Test
+//	public void testExecute() throws IOException {
+//		JavaController.setASATOutput(ASAT.CheckStyle, new File(checkStyleOutputFilePath));
+//		JavaController.setASATOutput(ASAT.PMD, new File(pmdOutputFilePath));
+//		JavaController.setASATOutput(ASAT.FindBugs, new File(findBugsOutputFilePath));
+//		JavaController jc = new JavaController();
+//		jc.execute();
+//		assertTrue(new File(System.getProperty("user.dir") + "/src/main/resources/SummarizedOuput.js").exists());
+//	}
 
 }
