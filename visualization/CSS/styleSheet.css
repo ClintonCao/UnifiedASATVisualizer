@@ -144,6 +144,7 @@ text {
 rect {
   fill: none;
   stroke: #fff;
+  stroke-width: 2px;
 }
 
 .grandparent rect {
@@ -185,4 +186,21 @@ h4.category-titles{
 .ptext {
 	text-align:center;
 	font-size:18px;
+}
+
+/* radio button style */
+input[type=radio] {
+	/*visibility:hidden;*/
+}
+.radioButton{
+	margin-top:10px;
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+}
+.buttonText{
+    display: inline-block;
+	font-weight:bold;
+	size:15px;
+    height:10px;
 }

@@ -21,16 +21,19 @@ function handleClickTreeMapTypeSat(value, checked) {
  */
 function handleClickColorScale(radioButton) {
 	if ( radioButton.value == "absolute" ){
-		colorScale.colorsAbsolute()
-		isAbsolute = true;
-	}else{
-		colorScale.colorsRelative()
-		isAbsolute = false;
+		backgroundGradient.setColorMethod(0);
+	}else if ( radioButton.value == "relative" ){
+		backgroundGradient.setColorMethod(1);
+	}else if ( radioButton.value == "asat" ){
+		backgroundGradient.setColorMethod(2);
+	}else if ( radioButton.value == "category" ){
+		backgroundGradient.setColorMethod(3);
 	}
 	/*if (document.getElementById('graphButton').checked) {
 		reloadContent(null)
 	}*/
 }
+
 
 
 /*
