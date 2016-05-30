@@ -4,12 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotSame;
 
-import java.util.HashMap;
-
-import org.junit.Before;
 import org.junit.Test;
-
-import BlueTurtle.parsers.GDCParser;
 
 /**
  * Test for PMDWarning class.
@@ -19,8 +14,6 @@ import BlueTurtle.parsers.GDCParser;
 public class PMDWarningTest {
 	
 	private static String filePath = "\\src\\test\\TestPMD.java";
-	private static String testSet3 = "./src/test/resources/asat-gdc-mapping.html";
-
 	private static String fileName = "PMD.java";
 	private static String packageName = "test";
 	private static String ruleName = "UnnecessaryBooleanAssertion";
@@ -28,16 +21,6 @@ public class PMDWarningTest {
 	private static String method = "equals";
 	private static String classification = "Refactorings - Redundancies";
 
-	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
-
-	/**
-	 * Set up the GDP parser, parse the category information.
-	 */
-	@Before
-	public void setUp() {
-		GDCParser gP = GDCParser.getInstance();
-		categoryInfo = gP.parseFile(testSet3);
-	}
 
 	/**
 	 * Test equal method where both objects represent the same warning.
