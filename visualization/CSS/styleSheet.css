@@ -143,6 +143,7 @@ text {
 rect {
   fill: none;
   stroke: #fff;
+  stroke-width: 2px;
 }
 .ctext {
   color: #ffffff;
@@ -187,4 +188,21 @@ h4.category-titles{
 	text-align:center;
 	font-size:18px;
   color: #ffffff !important;
+}
+
+/* radio button style */
+input[type=radio] {
+	/*visibility:hidden;*/
+}
+.radioButton{
+	margin-top:10px;
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+}
+.buttonText{
+    display: inline-block;
+	font-weight:bold;
+	size:15px;
+    height:10px;
 }
