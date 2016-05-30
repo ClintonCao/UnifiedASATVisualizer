@@ -3,21 +3,22 @@ package BlueTurtle.gui;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.TSE.Main;
+import BlueTurtle.finders.ProjectInfoFinder;
+import BlueTurtle.gui.GUIController.ASAT;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Controller class for the GUI.
@@ -53,7 +54,7 @@ public class GUIController {
 	@FXML // fx:id="visualizeButton"
 	private Button visualizeButton; // Value injected by FXMLLoader
 	
-	private String projectPath = "";
+	@Getter @Setter private static String sourcePath;
 
 	/**
 	 * Event for CheckStyle button.
@@ -119,82 +120,94 @@ public class GUIController {
 		assert projectSourcePathText != null : "fx:id=\"projectSourcePathText\" was not injected: check your FXML file 'Menu.fxml'.";
 		assert selectButton != null : "fx:id=\"selectButton\" was not injected: check your FXML file 'Menu.fxml'.";
 
-		selectButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			/**
-			 * Event handler for the button.
-			 * 
-			 * @param event
-			 *            the event.
-			 */
-			@Override
-			public void handle(MouseEvent event) {
-
-				DirectoryChooser directoryChooser = new DirectoryChooser();
-				File selectedDirectory = directoryChooser.showDialog(new Stage());
-
-				if (selectedDirectory == null) {
-					projectSourcePathText.setText("No Directory selected");
-				} else {
-					projectSourcePathText.setText(selectedDirectory.getAbsolutePath());
-					projectPath = projectSourcePathText.getText();
-					enableAllOtherButtons();
-				}
-			}
-		});
-
-
-		visualizeButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-			@Override
-			public void handle(MouseEvent event) {
-				File htmlFile = new File("visualization/main.html");
-				
-				JavaController.setASATOutput(ASAT.CheckStyle, new File(projectPath + "/target/checkstyle-result.xml"));
-				JavaController.setASATOutput(ASAT.PMD, new File(projectPath + "/target/pmd.xml"));
-				JavaController.setASATOutput(ASAT.FindBugs, new File(projectPath + "/target/findbugsXML.xml"));
-				
-				try {
-					Main.runVisualization();
-					Desktop.getDesktop().browse(htmlFile.toURI());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
+		// Set the event handlers for the buttons.
+		selectButton.setOnMouseClicked(new SelectButtonEventHandler(projectSourcePathText, visualizeButton));
+		visualizeButton.setOnMouseClicked(new VisualizeButtonEventHandler());
 	}
 
-	/**
-	 * Enable all other buttons in the GUI. This is used after a source folder
-	 * is selected.
-	 */
-	public void enableAllOtherButtons() {
-		visualizeButton.setDisable(false);
-	}
+}
+
+/**
+ * EventHandler class for select button of GUI.
+ * 
+ * @author BlueTurtle.
+ *
+ */
+class SelectButtonEventHandler implements EventHandler<MouseEvent> {
+
+	@Getter private Text sourcePathText;
+	@Getter private Button visualizeButton;
 
 	/**
-	 * Choose configuration file for ASAT.
+	 * Constructor.
 	 * 
-	 * @param configText
-	 *            the text in the GUI for the config file.
-	 * @param asat
-	 *            the ASAT type.
+	 * @param sourcePathText
+	 *            the text field that shows the path of the project.
+	 * @param vButton
+	 *            the visualize button. This is needed for enabling the button
+	 *            after the project folder is selected.
 	 */
-	public void chooseFile(Text configText, ASAT asat) {
+	public SelectButtonEventHandler(Text sourcePathText, Button vButton) {
+		this.sourcePathText = sourcePathText;
+		this.visualizeButton = vButton;
+	}
 
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setInitialDirectory(new File(projectPath + "/target/"));
+	/**
+	 * Event handler for the button.
+	 * 
+	 * @param event
+	 *            the event.
+	 */
+	@Override
+	public void handle(MouseEvent event) {
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		File selectedDirectory = directoryChooser.showDialog(new Stage());
 
-		// Set extension filter
-		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
-		fileChooser.getExtensionFilters().add(extFilter);
-
-		File file = fileChooser.showOpenDialog(new Stage());
-		JavaController.setASATOutput(asat, file);
-		if (file != null) {
-			configText.setText(file.getAbsolutePath());
+		if (selectedDirectory == null) {
+			sourcePathText.setText("No Directory selected");
+		} else {
+			sourcePathText.setText(selectedDirectory.getAbsolutePath());
+			GUIController.setSourcePath(sourcePathText.getText());
+			visualizeButton.setDisable(false);
 		}
 	}
 
+}
+
+/**
+ * EventHandler class for visualize button of GUI.
+ * 
+ * @author BlueTurtle.
+ *
+ */
+class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
+
+	/**
+	 * Event handler for the button.
+	 * 
+	 * @param event
+	 *            the event.
+	 */
+	@Override
+	public void handle(MouseEvent event) {
+		setOutputFiles();
+		try {
+			new ProjectInfoFinder().findFiles(new File(GUIController.getSourcePath()));
+			Main.runVisualization();
+			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Set the output files for the JavaController.
+	 */
+	public void setOutputFiles() {
+		JavaController.setASATOutput(ASAT.CheckStyle,
+				new File(GUIController.getSourcePath() + "/target/checkstyle-result.xml"));
+		JavaController.setASATOutput(ASAT.PMD, new File(GUIController.getSourcePath() + "/target/pmd.xml"));
+		JavaController.setASATOutput(ASAT.FindBugs,
+				new File(GUIController.getSourcePath() + "/target/findbugsXML.xml"));
+	}
 }

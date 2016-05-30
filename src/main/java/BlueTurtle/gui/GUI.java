@@ -32,28 +32,18 @@ public class GUI extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-
 			stage.setTitle("BlueTurtle Visualizer");
-
 			stage.getIcons().add(new Image(GUI.class.getResourceAsStream("/blueturtlelogo.png")));
-
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu.fxml"));
-
-			SplitPane splitPane = (SplitPane) loader.load();
-
-			Scene scene = new Scene(splitPane);
-
-			stage.setHeight(450);
-			stage.setWidth(1141);
+			stage.setHeight(420);
+			stage.setWidth(1083);
 			stage.setResizable(false);
-			stage.setScene(scene);
+			stage.setScene(new Scene((SplitPane) new FXMLLoader(getClass().getResource("/Menu.fxml")).load()));
 			stage.show();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Stop the application / GUI.
 	 */

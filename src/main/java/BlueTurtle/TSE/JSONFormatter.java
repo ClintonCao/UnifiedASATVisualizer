@@ -1,13 +1,11 @@
 package BlueTurtle.TSE;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import BlueTurtle.finders.PackageNameFinder;
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.groupers.WarningGrouper.Criteria;
 import BlueTurtle.parsers.CheckStyleXMLParser;
@@ -44,7 +42,7 @@ public class JSONFormatter {
 		totalWarnings.addAll(parseCheckStyleXML());
 		totalWarnings.addAll(parsePMDXML());
 		totalWarnings.addAll(parseFindBugsXML());
-
+		new ProjectInfoFinder().findFiles(new File(JavaController.getUserDir()));
 		writeJSON(totalWarnings);
 	}
 
@@ -94,15 +92,7 @@ public class JSONFormatter {
 	 *             Output file not found.
 	 */
 	private void writeJSON(List<Warning> warnings) throws IOException {
-		HashMap<String, String> componentsInfo = new HashMap<String, String>();
-		Set<String> packagesNames = new HashSet<String>();
-
-		for (Warning w : warnings) {
-			componentsInfo.put(w.getFileName(), w.getFilePath());
-			packagesNames.add(PackageNameFinder.findPackageName(w.getFilePath()));
-		}
-
-		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
+		WarningGrouper wg = new WarningGrouper(warnings);
 		List<Summarizer> list = wg.groupBy(Criteria.PACKAGES);
 
 		JSWriter jwriter = JSWriter.getInstance();

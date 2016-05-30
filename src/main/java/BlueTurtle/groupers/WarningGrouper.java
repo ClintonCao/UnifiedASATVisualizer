@@ -1,13 +1,10 @@
 package BlueTurtle.groupers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import BlueTurtle.finders.PackageNameFinder;
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.summarizers.ComponentSummarizer;
 import BlueTurtle.summarizers.PackageSummarizer;
 import BlueTurtle.summarizers.Summarizer;
@@ -33,24 +30,16 @@ public class WarningGrouper implements Grouper {
 		COMPONENTS, PACKAGES
 	}
 
-	@Getter private HashMap<String, String> componentsInfo;
-	@Getter private Set<String> packagesNames;
 	@Getter private EnumMap<Criteria, List<Summarizer>> summarizedWarnings;
 	@Getter private List<Warning> warningList;
 
 	/**
 	 * Constructor.
 	 * 
-	 * @param componentsInfo
-	 *            the information of the components.
-	 * @param packagesNames
-	 *            the names of all packages.
 	 * @param warningList
 	 *            the list of warnings.
 	 */
-	public WarningGrouper(HashMap<String, String> componentsInfo, Set<String> packagesNames, List<Warning> warningList) {
-		this.componentsInfo = componentsInfo;
-		this.packagesNames = packagesNames;
+	public WarningGrouper(List<Warning> warningList) {
 		this.warningList = warningList;
 		this.summarizedWarnings = new EnumMap<Criteria, List<Summarizer>>(Criteria.class);
 		summarizedWarnings.put(Criteria.COMPONENTS, groupByComponent());
@@ -76,10 +65,10 @@ public class WarningGrouper implements Grouper {
 	public List<Summarizer> groupByComponent() {
 		List<Summarizer> csList = new ArrayList<Summarizer>();
 
-		for (Entry<String, String> ci : getComponentsInfo().entrySet()) {
-			String fileName = ci.getKey();
-			String filePath = ci.getValue();
-			String packageName = PackageNameFinder.findPackageName(filePath);
+		for (String classPath : ProjectInfoFinder.getClassPaths()) {
+			String fileName = classPath.substring(classPath.lastIndexOf(File.separator) + 1, classPath.length());
+			String filePath = classPath;
+			String packageName = ProjectInfoFinder.getClassPackage().get(filePath);
 			ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 			cs.summarise(getWarningList());
 			csList.add(cs);
@@ -96,7 +85,7 @@ public class WarningGrouper implements Grouper {
 	public List<Summarizer> groupByPackage() {
 		List<Summarizer> result = new ArrayList<Summarizer>();
 
-		for (String p : packagesNames) {
+		for (String p : ProjectInfoFinder.getPackages()) {
 			PackageSummarizer ps = new PackageSummarizer(p);
 			ps.summarise(warningList);
 			result.add(ps);
@@ -120,16 +109,15 @@ public class WarningGrouper implements Grouper {
 		WarningGrouper that = (WarningGrouper) other;
 
 		// fix SimplifyBooleanReturn, Conditional logic can be removed.
-		return (componentsInfo.equals(that.getComponentsInfo()) && packagesNames.equals(that.getPackagesNames())
-				&& warningList.equals(that.getWarningList()) && summarizedWarnings.equals(that.summarizedWarnings));
+		return (warningList.equals(that.getWarningList()) && summarizedWarnings.equals(that.summarizedWarnings));
 	}
-	
+
 	/**
 	 * HashCode for WarningGrouper.
 	 */
 	@Override
 	public int hashCode() {
-		return java.util.Objects.hash(componentsInfo, packagesNames, warningList, summarizedWarnings);
+		return java.util.Objects.hash(warningList, summarizedWarnings);
 	}
-	
+
 }
