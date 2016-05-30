@@ -30,7 +30,7 @@ public class JavaControllerTest {
 	@Before
 	public void setUp() {
 		JavaController.setCheckStyleOutputFile(null);
-		JavaController.setPmdOutputFile(null);;
+		JavaController.setPmdOutputFile(null);
 		JavaController.setFindBugsOutputFile(null);
 	}
 
