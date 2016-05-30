@@ -3,7 +3,8 @@
  */
 var acceptedTypes = [];
 var acceptedCategories = [];
-// Run first time
+
+defineHovers();
 runTreeMap();
 addAllAcceptedTypesAndCategories();
 setAllCheckboxesOnDefault();
@@ -38,6 +39,18 @@ function removeChart() {
     var chartNode = document.getElementById("chart");
     while (chartNode.firstChild) {
         chartNode.removeChild(chartNode.firstChild);
+    }
+}
+
+// Define all the hover functions for the filterable categories
+function defineHovers() {
+    var allGDCHovers = ["#GDCFunctionalDefects", "#GDCCheck", "#GDCConcurrency", "#GDCErrorHandling", "#GDCInterface",
+         "#GDCLogic", "#GDCMigration", "#GDCResource", "#GDCMaintainabilityDefects", "#GDCBestPractices", "#GDCCodeStructure", 
+            "#GDCDocConventions", "#GDCMetric", "#GDCNamingConventions", "#GDCOODesign", "#GDCSimplifications", "#GDCRedundancies",
+                "#GDCStyleConventions", "#GDCOther", "#GDCRegularExpressions", "#GDCToolSpecific"];
+
+    for(var i = 0; i < allGDCHovers.length; i++) {
+        showHover(allGDCHovers[i]);
     }
 }
 

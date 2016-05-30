@@ -193,9 +193,8 @@ var treeMapBuilder = (function() {
             });
             transition(newNode);
         }
+
         // code to find a certain node in the treemap
-
-
         function findNode(path, root) {
             var node = root;
             for (var i = 0; i < path.length; i++) {
