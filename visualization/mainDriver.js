@@ -90,15 +90,15 @@ function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamCon
     var RedundanciesElement = document.getElementById("RedundanciesLabel");
     var StyleConventionsElement = document.getElementById("StyleConventionsLabel");
 
-    BestPracticesElement.innerHTML = '&thinsp; Best Practices (' + Check + ")";
-    CodeStructureElement.innerHTML = "&thinsp; Code Structure (" + Conc + ")";
-    DocConventionsElement.innerHTML = "&thinsp; Doc. Conventions (" + ErrorH + ")";
-    MetricElement.innerHTML = '&thinsp; Metric (' + Inter + ")";
-    NamingConventionsElement.innerHTML = "&thinsp; Naming Conventions (" + Logic + ")";
-    OODesignElement.innerHTML = "&thinsp; OO Design (" + Mig + ")";
-    SimplificationsElement.innerHTML = '&thinsp; Simplifications (' + Res + ")";
-    RedundanciesElement.innerHTML = "&thinsp; Redundancies (" + Mig + ")";
-    StyleConventionsElement.innerHTML = '&thinsp; Style Conventions (' + Res + ")";
+    BestPracticesElement.innerHTML = '&thinsp; Best Practices (' + Prac + ")";
+    CodeStructureElement.innerHTML = "&thinsp; Code Structure (" + Struc + ")";
+    DocConventionsElement.innerHTML = "&thinsp; Doc. Conventions (" + DocConv + ")";
+    MetricElement.innerHTML = '&thinsp; Metric (' + Metric + ")";
+    NamingConventionsElement.innerHTML = "&thinsp; Naming Conventions (" + NamConv + ")";
+    OODesignElement.innerHTML = "&thinsp; OO Design (" + OOD + ")";
+    SimplificationsElement.innerHTML = '&thinsp; Simplifications (' + Simp + ")";
+    RedundanciesElement.innerHTML = "&thinsp; Redundancies (" + Red + ")";
+    StyleConventionsElement.innerHTML = '&thinsp; Style Conventions (' + StyleConv + ")";
 }
 
 // Add total amount of warnings to each sub category within the other category in the right menu

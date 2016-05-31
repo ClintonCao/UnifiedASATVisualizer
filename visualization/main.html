@@ -101,52 +101,52 @@
                    <span id="GDCMaintainabilityDefects-hover">
                     Rules that check for problems that only affect the future development efforts of changing or adding to the system, but have no impact on the correctness of the program.
                     </span>
-                <span id="GDCBestPractices"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Best Practices"> Best practices</label></span><br>
+                <span id="GDCBestPractices"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Best Practices"><label id="BestPracticesLabel" class="UIText"> Best practices</label></span><br>
                 <span id="GDCBestPractices-hover">
                     Rules that check the code for violations regarding coding conventions that affect the compiled output of the code.
                   </span>
-                <span id="GDCCodeStructure"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini"  data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Code Structure"> Code Structure</label></span><br>
+                <span id="GDCCodeStructure"><input type="checkbox" data-toggle="toggle" data-size="mini"  data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Code Structure"><label id="CodeStructureLabel" class="UIText"> Code Structure</label></span><br>
                 <span id="GDCCodeStructure-hover">
                     Rules that check the structure, in terms of the file system or the coupling, for violations of common conventions.
                   </span>
-                <span id="GDCDocConventions"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Documentation Conventions"> Doc. Conventions</label></span><br>
+                <span id="GDCDocConventions"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Documentation Conventions"><label id="DocConventionsLabel" class="UIText"> Doc. Conventions</label></span><br>
                 <span id="GDCDocConventions-hover">
                     Rules that check the documentation for violations of common conventions.
                   </span>
-                <span id="GDCMetric"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" valDue="Metric"> Metric</label></span><br>
+                <span id="GDCMetric"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Metric"><label id="MetricLabel" class="UIText"> Metric</label></span><br>
                 <span id="GDCMetric-hover">
                     A rule that measures a certain attribute of the code. The rule might only be to inform the developer of the value of the attribute, or it can give warnings/errors based on certain thresholds.
                   </span>
-                <span id="GDCNamingConventions"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Naming Conventions"> Naming Conventions</label></span><br>
+                <span id="GDCNamingConventions"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Naming Conventions"><label id="NamingConventionsLabel" class="UIText"> Naming Conventions</label></span><br>
                 <span id="GDCNamingConventions-hover">
                     Rules that check violations of common naming conventions.
                   </span>
-                <span id="GDCOODesign"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Object Oriented Design"> OO Design</label></span><br>
+                <span id="GDCOODesign"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Object Oriented Design"><label id="OODesignLabel" class="UIText"> OO Design</label></span><br>
                 <span id="GDCOODesign-hover">
                     Rules that check for violations of proper object oriented design principles.
                   </span>
-                <span id="GDCSimplifications"><label class="UIText"><input type="checkbox"data-toggle="toggle" data-size="mini"  data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Refactorings - Simplifications"> Simplifications</label></span><br>
+                <span id="GDCSimplifications"><input type="checkbox"data-toggle="toggle" data-size="mini"  data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Refactorings - Simplifications"><label id="SimplificationsLabel" class="UIText"> Simplifications</label></span><br>
                 <span id="GDCSimplifications-hover">
                     Rules that determine if a specific piece of code could be simplified to improve readability and understandability.
                   </span>
-                <span id="GDCRedundancies"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Refactorings - Redundancies"> Redundancies</label></span><br>
+                <span id="GDCRedundancies"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Refactorings - Redundancies"><label id="RedundanciesLabel" class="UIText"> Redundancies</label></span><br>
                 <span id="GDCRedundancies-hover">
                     Rules that determine if a piece of code or artifact is redundant and can be safely deleted.
                   </span>
-                <span id="GDCStyleConventions"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Style Conventions"> Style Conventions</label></span><br>
+                <span id="GDCStyleConventions"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Style Conventions"><label id="StyleConventionsLabel" class="UIText"> Style Conventions</label></span><br>
                 <span id="GDCStyleConventions-hover">
                     Rules that check the code for violations of style conventions, that do not affect the compiled output of the code.
                   </span>
                   <span class="UIText"><h4 class="category-titles" onClick="handleClickCategory('StyleConventions')">Other</h4></span>
-                  <span id="GDCOther"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Other"> Other</label></span><br>
+                  <span id="GDCOther"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Other"><label id="OtherLabel" class="UIText"> Other</label></span><br>
                   <span id="GDCOther-hover">
                     Rules that identify neither functional nor maintainability defects.
                   </span>
-                <span id="GDCRegularExpressions"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Regular Expressions"> Regular Expressions</label></span><br>
+                <span id="GDCRegularExpressions"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Regular Expressions"><label id="RegularExpressionsLabel" class="UIText"> Regular Expressions</label></span><br>
                 <span id="GDCRegularExpressions-hover">
                     Rules that rely on user defined regular expressions. Because the user can use them to check a multitude of things, it is not possible to categorize these rules in general.
                   </span>   
-                <span id="GDCToolSpecific"><label class="UIText"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Tool Specific"> Tool Specific</label></span><br>
+                <span id="GDCToolSpecific"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Tool Specific"><label id="ToolSpecificLabel" class="UIText"> Tool Specific</label></span><br>
                 <span id="GDCToolSpecific-hover">
                     Rules that configure how the tool works, rather than which defects it checks for (or does not check for). Examples of such rules might be: whether to colorize the output, how to write the results to file, or how much memory the tool can use.
                   </span>
