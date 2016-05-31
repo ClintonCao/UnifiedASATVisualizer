@@ -125,6 +125,12 @@ public class PMDXMLParser extends XMLParser {
 				// get the classPaths list from ProjectInfoFinder.
 				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
 
+				// debug info
+				System.out.println("------------------------------------------");
+				System.out.println("fileName:" + fileName);
+				System.out.println("size of the stream: " + classPaths.size());
+				System.out.println("------------------------------------------");
+
 				//for-loop in stream, find correct filePath.
 				String filePath = classPaths.stream().filter(p -> p.endsWith(fileName)).findFirst().get();
 
@@ -134,9 +140,6 @@ public class PMDXMLParser extends XMLParser {
 				// Get the name of the file where the warning is from.
 				String finalFileName = filePathtemp.substring(filePathtemp.lastIndexOf(File.separatorChar) + 1, filePathtemp.length());
 
-				
-				System.out.println("filePath: " + filePath);
-				System.out.println("fileName: " + finalFileName);
 				// Add warning to the list of warnings.
 				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName, classification));
 			}
