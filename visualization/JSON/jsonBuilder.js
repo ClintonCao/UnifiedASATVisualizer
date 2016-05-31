@@ -89,6 +89,9 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 		var CSW = 0;
 		var PMDW = 0;
 		var FBW = 0;
+		var FDW = 0;
+		var MDW = 0;
+		var ODW = 0;
 		for (i = 0; i < classesArray.length; i++) {
 	  		var classObject = new Object();
 	  		classObjectJson = classesArray[i];
@@ -136,12 +139,18 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	  		CSW += classObject.amountOfCheckStyleWarnings;
 	  		PMDW += classObject.amountOfPMDWarnings;
 	  		FBW += classObject.amountOfFindBugsWarnings;
+	  		FDW += classObject.amountOfFunctionalDefects;
+	  		MDW += classObject.amountOfMaintainabilityDefects;
+	  		ODW += classObject.amountOfOtherDefects;
 	  		classArray.push(classObject);
 		}
 	classArray.packageName = package.packageName;
 	classArray.amountOfCheckStyleWarnings = CSW;
 	classArray.amountOfPMDWarnings = PMDW;
 	classArray.amountOfFindBugsWarnings = FBW;
+	classArray.amountOfFunctionalDefects = FDW;
+	classArray.amountOfMaintainabilityDefects = MDW;
+	classArray.amountOfOtherDefects = ODW;
 	packageArray.push(classArray);
   	}
 	return packageArray;
@@ -222,7 +231,10 @@ function createJsonTreeMap(packages){
 					values: jsonArrClass,
 					warningsCheckStyle: classes.amountOfCheckStyleWarnings,
 					warningsPMD: classes.amountOfFindBugsWarnings,
-					warningsFindBugs: classes.amountOfFindBugsWarnings
+					warningsFindBugs: classes.amountOfFindBugsWarnings,
+					warningsFunctionalDefects: classes.amountOfFunctionalDefects,
+					warningsMaintainabilityDefects: classes.amountOfMaintainabilityDefects,
+					warningsOtherDefects: classes.amountOfOtherDefects
 				});
 		}
 	return [
@@ -231,7 +243,10 @@ function createJsonTreeMap(packages){
 			values: jsonArrPackage,
 			warningsCheckStyle: upperLevelCSW,
 			warningsPMD: upperLevelPMDW,
-			warningsFindBugs: upperLevelFBW
+			warningsFindBugs: upperLevelFBW,
+			warningsFunctionalDefects: upperLevelFD,
+			warningsMaintainabilityDefects: upperLevelMD,
+			warningsOtherDefects: upperLevelOD
 		}];
 }
 

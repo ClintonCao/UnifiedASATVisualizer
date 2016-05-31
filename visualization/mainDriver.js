@@ -68,6 +68,7 @@ function runTreeMap() {
     graphButtonDiv.style.display = 'none';
 
     var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+    console.log(packages);
     var finalJson =  createJsonTreeMap(packages);
     treeMapBuilder.createTreeMap({
         title: ""
