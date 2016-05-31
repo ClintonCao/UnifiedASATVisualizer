@@ -1,6 +1,5 @@
 var treeMapBuilder = (function() {
 
-
     // initialize all variables
     var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
     var refreshing = false;
@@ -64,6 +63,11 @@ var treeMapBuilder = (function() {
             });
         }
     }
+    /* 
+     * Sums for each node how many warnings they have.
+     * It still checks on Project and Test Project hard coded to find wheter it is on 
+     * package level or class level, this should be changed to a dynamic way in the future.
+     */
     function sumNodeForASAT(d, root) {
         var nodeAndSummation = [];
         var sum = 0;
@@ -86,13 +90,10 @@ var treeMapBuilder = (function() {
         }
         return -1;
     }
-    //render the chart with given depth and children
+    //Renders the chart with given depth and children
 	function display(d) {
 		// id for all squares
 		var id = 0;
-
-        console.log(currentNodePath);
-        // On click top bar to go back
 
         /*
          * Creates a tooltip that will be shown on hover over a node
@@ -104,11 +105,18 @@ var treeMapBuilder = (function() {
             .style("z-index", "10")
             .style("visibility", "hidden");
 
+        /* 
+         * Creates the navigation balk where you can keep track of
+         * which level you are and which you can use to navigate back
+         */
         grandparent
             .datum(d.parent)
             .on("click", navigationUp)
             .select("text")
             .text(name(d))
+            .style("fill", function() {
+                return '#333333';
+            });
 
         var g1 = svg.insert("g", ".grandparent")
             .datum(d)
@@ -152,22 +160,10 @@ var treeMapBuilder = (function() {
             	});
 			}
             
-        // all the updateContent class will trigger this refresh of data
-        // so that the input of the user (checkboxes/radiobuttons) will update the content of 
-        /*
-        $(".updateContent").off("click").on('click', function(view) {
-			//document.getElementById('treemapButton').checked ||
-           if ( true) {
-				if (view.target.name == "sat") {
-					handleClickTreeMapTypeSat(view.target.value, view.target.checked);
-				}else if (view.target.name == "category"){
-					handleClickCategorySat(view.target.value, view.target.checked);
-				}
-                fastReload();
-				
-          }	
-        });*/
-
+        /* 
+         * This function will be triggered when the user clicks on a button
+         * It will refresh the data in the treemap according to which button is clicked
+         */
         $('.updateContent').change(function() {
             if (true && !refreshing) {
                 refreshing = true;
@@ -196,7 +192,7 @@ var treeMapBuilder = (function() {
             transition(newNode);
         }
 
-        // code to find a certain node in the treemap
+        // Code to find a certain node in the treemap
         function findNode(path, root) {
             var node = root;
             for (var i = 0; i < path.length; i++) {
@@ -205,6 +201,9 @@ var treeMapBuilder = (function() {
             return node;
         }
 
+        /* 
+         * Will calculate the total amount of warnings for each ASAT and displays it
+         */
         appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
 
         function reloadContent() {
@@ -245,11 +244,17 @@ var treeMapBuilder = (function() {
                 return "url(#gradient"+ id + ")";
             })
             .append("title");
-			
+		
+        /* 
+         * Sets in the lower right corner of a node the filename
+         */
         children.append("text")
             .attr("class", "ctext")
             .text(function(d) {
                 return d.fileName;
+            })
+            .style("fill", function() {
+                return '#FFFFFF';
             })
             .call(textBottomRight);
 
@@ -261,16 +266,27 @@ var treeMapBuilder = (function() {
             .attr("class", "ptext")
             .attr("dy", ".75em");
 
+        /* 
+         * Sets in the upper left corner of a node the filename
+         */
         t.append("tspan")
+            .style("fill", function(d) {
+                return '#FFFFFF';
+            })
             .text(function(d) {
                 return d.fileName;
             });
 
-        //title of the squares
+        /* 
+         * Sets in the upper left corner of a node the amount of warnings
+         */
         t.append("tspan")
-            .attr("dy", "1.0em")
+            .attr("dy", "1.2em")
             .text(function(d) {
                 return d.warnings;
+            })
+            .style("fill", function(d) {
+                return '#FFFFFF';
             });
         t.call(text);
 
@@ -305,7 +321,6 @@ var treeMapBuilder = (function() {
 				
 				
             });*/
-
 
         function navigationDown(d) {
             currentNodePath.push(findChildNumber(d, d.parent));

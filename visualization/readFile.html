@@ -57,7 +57,8 @@
      */
     function displayContents(txt) {
         var el = document.getElementById('main'); 
-        el.innerHTML = txt; //display output in DOM
+		var newTxt = txt.replace(/\n/g, "<br />");
+        el.innerHTML = newTxt; //display output in DOM
     }   
 </script>
 </head>
