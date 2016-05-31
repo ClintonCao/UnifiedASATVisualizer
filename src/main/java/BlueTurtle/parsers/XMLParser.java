@@ -12,6 +12,9 @@ import BlueTurtle.warnings.Warning;
  *
  */
 public abstract class XMLParser implements Parser {
+	
+	private static String mdFilePath = "./src/main/resources/asat-gdc-mapping.html";
+
 
 	/**
 	 * Parse a XML file.
@@ -32,7 +35,9 @@ public abstract class XMLParser implements Parser {
 	 * @return the category of a warning(based on the GDC).
 	 */
 	public static String classify(String ruleName) {
-		HashMap<String, String> categoryInfo = GDCParser.getInstance().getCategoryInfo();
+		GDCParser gp = GDCParser.getInstance();
+		gp.parseFile(mdFilePath);
+		HashMap<String, String> categoryInfo = gp.getCategoryInfo();
 		String classification = categoryInfo.get(ruleName);
 		return classification;
 	}

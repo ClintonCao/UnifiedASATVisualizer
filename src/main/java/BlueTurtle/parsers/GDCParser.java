@@ -29,7 +29,7 @@ public class GDCParser extends MarkdownParser {
 	private static GDCParser gdcParser = null;
 	
 	@Getter
-	private HashMap<String, String> categoryInfo;
+	private static HashMap<String, String> categoryInfo;
 	
 	/**
 	 * Constructor. Only through this can GDCParser instantiate itself.
@@ -56,7 +56,6 @@ public class GDCParser extends MarkdownParser {
 	 *            the location of the GDC grouping file.
 	 * @return a Hashmap of category informations.
 	 */
-	@Override
 	public HashMap<String, String> parseFile(String mdFilePath) {
 		// the hashmap to store the category informations.
 		categoryInfo = new HashMap<String, String>();

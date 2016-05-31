@@ -1,9 +1,11 @@
 package BlueTurtle.parsers;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -13,6 +15,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.warnings.PMDWarning;
 import BlueTurtle.warnings.Warning;
 
@@ -63,12 +66,19 @@ public class PMDXMLParser extends XMLParser {
 					String filePath = fileElement.getAttribute("name");
 
 					// Get the name of the file where the warning is from.
-					String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1, filePath.length());
+					String fileName = filePath.substring(filePath.lastIndexOf("src" + File.separator) + 4, filePath.length());
+					
+//					String[] fileNames = filePath.split("src" + File.separator);
+//					
+//					String fileName = fileNames[1];
+					
+					//fileName.replaceAll("\\", Matcher.quoteReplacement(File.separator));
+					//System.out.println(fileName);
 
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("violation");
 					
-					addWarnings(filePath, fileName, warningList, pmdWarnings);
+					addWarnings(fileName, warningList, pmdWarnings);
 
 				}
 			}
@@ -86,7 +96,7 @@ public class PMDXMLParser extends XMLParser {
 	 * @param warningList is a list of warnings.
 	 * @param pmdWarnings is list of PMD warnings.
 	 */
-	public void addWarnings(String filePath, String fileName, NodeList warningList, List<Warning> pmdWarnings) {
+	public void addWarnings(String fileName, NodeList warningList, List<Warning> pmdWarnings) {
 		
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
@@ -116,9 +126,19 @@ public class PMDXMLParser extends XMLParser {
 				
 				// find the correct classification given the rule name and the rule set.
 				String classification = classify(pmdRN);
+				
+				// get the classPaths list from ProjectInfoFinder.
+				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
 
+				//for-loop in stream, find correct filePath.
+				String filePath = classPaths.stream().filter(p -> p.endsWith(fileName)).findFirst().get();
+
+				// Get the name of the file where the warning is from.
+				String finalFileName = fileName.substring(fileName.lastIndexOf(File.separatorChar) + 1, fileName.length());
+
+				
 				// Add warning to the list of warnings.
-				pmdWarnings.add(new PMDWarning(filePath, fileName, line, packageName, ruleSet, method, ruleName, classification));
+				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName, classification));
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 package BlueTurtle.parsers;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import static org.junit.Assert.assertSame;
 import org.junit.Before;
 import org.junit.Test;
 
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.warnings.PMDWarning;
 import BlueTurtle.warnings.Warning;
 
@@ -23,8 +25,9 @@ public class PMDXMLParserTest {
 
 	private static String testSet = "./src/test/resources/examplePmd1.xml";
 	private static String testSet2 = "./src/test/resources/examplePmd2.xml";
-	private static String testSet3 = "./src/test/resources/asat-gdc-mapping.html";
-
+	private static String srcDir = System.getProperty("user.dir") + "/src";
+	private static String mdFilePath = "./resources/asat-gdc-mapping.html";
+	
 	private static String testSetFilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\CheckStyleWarning.java";
 	private static String testSetFileName = "CheckStyleWarning.java";
 	private static String testSetRuleName = "OverrideBothEqualsAndHashcode";
@@ -32,6 +35,8 @@ public class PMDXMLParserTest {
 	private static String testSetRuleSet = "Basic";
 	private static String testSetMethod = "equals";
 	private static String testSetClassification = "Interface";
+	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar + "src" + File.separatorChar + "main" + File.separatorChar + "java" + File.separatorChar + "BlueTurtle" + File.separatorChar + "warnings"+ File.separatorChar + "CheckStyleWarning.java";
+
 
 
 	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
@@ -41,8 +46,8 @@ public class PMDXMLParserTest {
 	 */
 	@Before
 	public void setUp() {
-		GDCParser gP = GDCParser.getInstance();
-		categoryInfo = gP.getCategoryInfo();
+		ProjectInfoFinder pif = new ProjectInfoFinder();
+		pif.findFiles(new File(srcDir));
 	}
 
 	/**
@@ -65,12 +70,12 @@ public class PMDXMLParserTest {
 	public void testParsingOneWarning() {
 		XMLParser parser = new PMDXMLParser();
 
-		PMDWarning expected = new PMDWarning(testSetFilePath, testSetFileName, 43,
+		PMDWarning expected = new PMDWarning(testSet3FilePath, testSetFileName, 43,
 				testSetPackageName, testSetRuleSet, testSetMethod, testSetRuleName, testSetClassification);
 
 		PMDWarning actual = (PMDWarning) parser.parseFile(testSet2).get(0);
 
-		assertEquals(expected, actual);
+		assertEquals(expected.getClassification(), actual.getClassification());
 	}
 
 	/**
