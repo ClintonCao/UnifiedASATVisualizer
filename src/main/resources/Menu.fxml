@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.20617696160267113" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="1083.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BlueTurtle.gui.GUIController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="416.0" SplitPane.resizableWithParent="false">
+         <children>
+            <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="500.0" prefWidth="261.0">
+               <children>
+                  <ImageView fitHeight="378.0" fitWidth="363.0" layoutX="-51.0" layoutY="61.0">
+                     <image>
+                        <Image url="@blueturtlelogo.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#2b24f2" layoutX="43.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BlueTurtle  ">
+                     <font>
+                        <Font name="Gill Sans MT" size="36.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="746.0" SplitPane.resizableWithParent="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9e5ff" height="44.0" layoutX="140.0" layoutY="216.0" stroke="BLACK" strokeType="INSIDE" width="686.0" />
+            <Button fx:id="selectButton" layoutX="11.0" layoutY="215.0" mnemonicParsing="false" onMouseClicked="#selectButtonEvent" prefHeight="38.0" prefWidth="122.0" text="Select ">
+               <font>
+                  <Font name="Gill Sans MT" size="25.0" />
+               </font>
+            </Button>
+            <Text fx:id="projectSourcePathText" layoutX="140.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select your project folder." textAlignment="CENTER" wrappingWidth="686.0">
+               <font>
+                  <Font name="Gill Sans MT" size="17.0" />
+               </font>
+            </Text>
+            <Button fx:id="visualizeButton" disable="true" layoutX="324.0" layoutY="311.0" mnemonicParsing="false" onMouseClicked="#visualizeButtonEvent" prefHeight="44.0" prefWidth="252.0" text="Visualize">
+               <font>
+                  <Font name="Gill Sans MT" size="25.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9e5ff" height="71.0" layoutX="72.0" layoutY="28.0" stroke="BLACK" strokeType="INSIDE" width="722.0" />
+            <Text layoutX="99.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to BlueTurtle's software tool for visualizing the result of ASATs (Automated Static Analysis Tools)." wrappingWidth="667.01220703125">
+               <font>
+                  <Font name="Gill Sans MT" size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="128.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please make sure you have run mvn site before selecting your project folder." wrappingWidth="714.826171875">
+               <font>
+                  <Font name="Gill Sans MT" size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>
