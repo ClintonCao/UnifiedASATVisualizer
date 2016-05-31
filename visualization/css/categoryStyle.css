@@ -128,7 +128,8 @@
     padding: 10px;
     width: 250px;
     color: #FFFFFF;
-    position:absolut
+    position:absolute;
+    z-index: 10002;
     font-family: 'Roboto Mono', sans-serif;
 }
                 
