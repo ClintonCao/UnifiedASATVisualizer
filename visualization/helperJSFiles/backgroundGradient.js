@@ -1,20 +1,23 @@
 
-var backgroundGradient = (function() {
+var backgroundObject = (function() {
+	var maxConstant = 100
 	var colorMethod = 0;
 	
-	var greenTints = [d3.rgb("#8c9b8b"), d3.rgb('#0b9c01')];	
-	var greenScale = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(greenTints);
-	var blueTints = [d3.rgb("#a7b1bc"), d3.rgb('#06387b')];	
-	var blueScale = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(blueTints);
-	var redTints = [d3.rgb("#c2b6b6"), d3.rgb('#8e0000')];	
-	var redScale = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(redTints);
-	var grayTints = [d3.rgb("#a2a2a2"), d3.rgb('#a2a2a2')];	
-	var grayScale = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(grayTints);
+	var twoColors, color,greenTints,greenScale,blueTints, blueScale,redTints,redScale,grayTints,grayScale;
+	reloadColorScale();
 	
-	var twoColors = [d3.rgb("#00a700"), d3.rgb('#a90000')];
-	// default color settings
-	var color = d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(twoColors);
-
+	function reloadColorScale(){
+		twoColors = [d3.rgb("#00a700"), d3.rgb('#a90000')];
+		color = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
+		greenTints = [d3.rgb("#8c9b8b"), d3.rgb('#0b9c01')];
+		greenScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(greenTints);
+		blueTints = [d3.rgb("#a7b1bc"), d3.rgb('#06387b')];	
+		blueScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(blueTints);
+		redTints = [d3.rgb("#c2b6b6"), d3.rgb('#8e0000')];	
+		redScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(redTints);
+		grayTints = [d3.rgb("#a2a2a2"), d3.rgb('#a2a2a2')];	
+	}
+	
 	/*
 	 *
 	 * Calculates the worst case of #warnings/loc
@@ -39,11 +42,16 @@ var backgroundGradient = (function() {
 		}
 		return (worstRatio * 100);
 	}
-	function colorsRelative() {
-			return d3.scale.linear().domain([0, getRelativeWarnings()]).interpolate(d3.interpolateHcl).range(twoColors);
+	function setColorsRelative(){
+		maxConstant = getRelativeWarnings();
+		reloadColorScale();
 	}
-	function colorsAbsolute() {
-			return d3.scale.linear().domain([0, 100]).interpolate(d3.interpolateHcl).range(twoColors);
+	function setColorsAbsolute(){
+		maxConstant = 100;
+		reloadColorScale();
+	}
+	function getNormalColors() {
+			return d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
 	}
 	function calculateBackgroundGradient(svg,ratioArray,weight, id){
 		var total = ratioArray[0] + ratioArray[1] + ratioArray[2];
@@ -73,45 +81,42 @@ var backgroundGradient = (function() {
 		.attr("x2", "100%")
 		.attr("y2", "0%")
 		.attr("spreadMethod", "pad");
-	
+	console.log(weight);
 	gradient.append("stop")
 		.attr("offset", "0%")
-		.attr("stop-color", greenScale(weight*100))
+		.attr("stop-color", greenScale(weight*maxConstant))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", firstEdge)
-		.attr("stop-color",  greenScale(weight*100))
+		.attr("stop-color",  greenScale(weight*maxConstant))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", firstEdge)
-		.attr("stop-color", redScale(weight*100))
+		.attr("stop-color", redScale(weight*maxConstant))
 		.attr("stop-opacity", 1);
 	
 	gradient.append("stop")
 		.attr("offset", secondEdge)
-		.attr("stop-color", redScale(weight*100))
+		.attr("stop-color", redScale(weight*maxConstant))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", secondEdge1)
-		.attr("stop-color", blueScale(weight*100))
+		.attr("stop-color", blueScale(weight*maxConstant))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", endEdge)
-		.attr("stop-color", blueScale(weight*100))
+		.attr("stop-color", blueScale(weight*maxConstant))
 		.attr("stop-opacity", 1);
 		return gradient;
 	}
-	function calculateBackground(svg, weight, relative, id){
-		if(relative){
-			var currentColorScale = colorsRelative();
-		}else{
-			var currentColorScale = colorsAbsolute();
-		}
+	function calculateBackground(svg, weight, id){
 		
+		var currentColorScale = getNormalColors();
+	
 		var gradient = svg.append("defs")
 			.append("linearGradient")
 			.attr("id", "gradient" + id)
@@ -123,28 +128,69 @@ var backgroundGradient = (function() {
 	
 		gradient.append("stop")
 			.attr("offset", "0%")
-			.attr("stop-color", currentColorScale(weight*100))
+			.attr("stop-color", currentColorScale(weight*maxConstant))
 			.attr("stop-opacity", 1);
 		return gradient;
 	}
 	return {
-
-        getBackground: function(svg,ratioArray,weight, id) {
+        getBackground: function(svg,ratioTuple,weight, id) {
 			if ( weight > 1 ){ weight = 1;}
 			switch(colorMethod) {
 				case 0:
-					return calculateBackground(svg, weight, true, id);
+					setColorsAbsolute();
+					return calculateBackground(svg, weight, id);
 					break;
 				case 1:
-					return calculateBackground(svg, weight, false, id);
+					setColorsRelative();
+					return calculateBackground(svg, weight, id);
 					break;
 				case 2:
-					return calculateBackgroundGradient(svg,ratioArray,weight, id);
+					setColorsAbsolute();
+					return calculateBackgroundGradient(svg,ratioTuple[0],weight, id);
+					break;
+				case 3:
+					setColorsRelative();
+					return calculateBackgroundGradient(svg,ratioTuple[0],weight, id);
+					break;
+				case 4:
+					setColorsAbsolute();
+					return calculateBackgroundGradient(svg,ratioTuple[1],weight, id);
+					break;
+				case 5:
+					setColorsRelative();
+					return calculateBackgroundGradient(svg,ratioTuple[1],weight, id);
 					break;
 			} 
 		},
 		setColorMethod: function(index){
 			colorMethod = index;
+		},
+		getRatios: function(d){
+				ratioArrayASAT = [];
+				var constant = 100;
+                var ratioCheckStyle = Math.round(constant * d.warningsCheckStyle / d.value);	
+				if ( ratioCheckStyle > maxConstant ) { ratioCheckStyle = maxConstant; }
+				ratioArrayASAT.push(ratioCheckStyle);
+                var ratiowarningsPMD = Math.round(constant * d.warningsPMD / d.value);	
+				if ( ratiowarningsPMD > maxConstant ) { ratiowarningsPMD = maxConstant; }
+				ratioArrayASAT.push(ratiowarningsPMD);
+                var ratioFindBugs = Math.round(constant * d.warningsFindBugs / d.value);	
+				if ( ratioFindBugs > maxConstant ) { ratioFindBugs = maxConstant; }
+				ratioArrayASAT.push(ratioFindBugs);
+
+				ratioArrayCategory = [];
+                var ratioFunctionalDefects = Math.round(constant * d.warningsFunctionalDefects / d.value);	
+				if ( ratioFunctionalDefects > maxConstant ) { ratioFunctionalDefects = maxConstant; }
+				ratioArrayCategory.push(ratioFunctionalDefects);
+				
+                var ratioMaintainabilityDefects = Math.round(constant * d.warningsMaintainabilityDefects / d.value);	
+				if ( ratioMaintainabilityDefects > maxConstant ) { ratioMaintainabilityDefects = maxConstant; }
+				ratioArrayCategory.push(ratioMaintainabilityDefects);
+				
+                var ratioOtherDefects = Math.round(constant * d.warningsOtherDefects / d.value);	
+				if ( ratioOtherDefects > maxConstant ) { ratioOtherDefects = maxConstant; }
+				ratioArrayCategory.push(ratioOtherDefects);
+				return [ratioArrayASAT,ratioArrayCategory]
 		}
     }
 	
