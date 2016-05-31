@@ -68,11 +68,6 @@ public class PMDXMLParser extends XMLParser {
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf("src" + File.separator) + 4, filePath.length());
 					
-//					String[] fileNames = filePath.split("src" + File.separator);
-//					
-//					String fileName = fileNames[1];
-					
-					//fileName.replaceAll("\\", Matcher.quoteReplacement(File.separator));
 					//System.out.println(fileName);
 
 					// Get all the warnings.
@@ -133,10 +128,15 @@ public class PMDXMLParser extends XMLParser {
 				//for-loop in stream, find correct filePath.
 				String filePath = classPaths.stream().filter(p -> p.endsWith(fileName)).findFirst().get();
 
+				
+				String filePathtemp = filePath;
+				
 				// Get the name of the file where the warning is from.
-				String finalFileName = fileName.substring(fileName.lastIndexOf(File.separatorChar) + 1, fileName.length());
+				String finalFileName = filePathtemp.substring(filePathtemp.lastIndexOf(File.separatorChar) + 1, filePathtemp.length());
 
 				
+				System.out.println("filePath: " + filePath);
+				System.out.println("fileName: " + finalFileName);
 				// Add warning to the list of warnings.
 				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName, classification));
 			}
