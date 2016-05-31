@@ -48,7 +48,7 @@ function removeChart() {
     }
 }
 
-// Add total amount of warnings to the Sat types in the menu
+// Add total amount of warnings to the different ASATs in the left menu
 function appendInfoToSAT(CS, PMD, FB) {
     var checkStyleElement = document.getElementById("checkStyleLabel");
     var PMDElement = document.getElementById("PMDLabel");
@@ -57,6 +57,59 @@ function appendInfoToSAT(CS, PMD, FB) {
     checkStyleElement.innerHTML = '&thinsp; CheckStyle(' + CS + ")";
     PMDElement.innerHTML = "&thinsp; PMD(" + PMD + ")";
     findBugsElement.innerHTML = "&thinsp; FindBugs(" + FB + ")";
+}
+
+// Add total amount of warnings to each sub category within the functional defects in the right menu
+function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res) {
+    var CheckElement = document.getElementById("CheckLabel");
+    var ConcElement = document.getElementById("ConcurrencyLabel");
+    var ErrorElement = document.getElementById("ErrorHandlingLabel");
+    var InterfaceElement = document.getElementById("InterfaceLabel");
+    var LogicElement = document.getElementById("LogicLabel");
+    var MigrationElement = document.getElementById("MigrationLabel");
+    var ResourceElement = document.getElementById("ResourceLabel");
+
+    CheckElement.innerHTML = '&thinsp; Check (' + Check + ")";
+    ConcElement.innerHTML = "&thinsp; Concurrency (" + Conc + ")";
+    ErrorElement.innerHTML = "&thinsp; Error Handling (" + ErrorH + ")";
+    InterfaceElement.innerHTML = '&thinsp; Interface (' + Inter + ")";
+    LogicElement.innerHTML = "&thinsp; Logic (" + Logic + ")";
+    MigrationElement.innerHTML = "&thinsp; Migration (" + Mig + ")";
+    ResourceElement.innerHTML = '&thinsp; Resource (' + Res + ")";
+}
+
+// Add total amount of warnings to each sub category within the maintainability defects in the right menu
+function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, Simp, Red, StyleConv) {
+    var BestPracticesElement = document.getElementById("BestPracticesLabel");
+    var CodeStructureElement = document.getElementById("CodeStructureLabel");
+    var DocConventionsElement = document.getElementById("DocConventionsLabel");
+    var MetricElement = document.getElementById("MetricLabel");
+    var NamingConventionsElement = document.getElementById("NamingConventionsLabel");
+    var OODesignElement = document.getElementById("OODesignLabel");
+    var SimplificationsElement = document.getElementById("SimplificationsLabel");
+    var RedundanciesElement = document.getElementById("RedundanciesLabel");
+    var StyleConventionsElement = document.getElementById("StyleConventionsLabel");
+
+    BestPracticesElement.innerHTML = '&thinsp; Best Practices (' + Prac + ")";
+    CodeStructureElement.innerHTML = "&thinsp; Code Structure (" + Struc + ")";
+    DocConventionsElement.innerHTML = "&thinsp; Doc. Conventions (" + DocConv + ")";
+    MetricElement.innerHTML = '&thinsp; Metric (' + Metric + ")";
+    NamingConventionsElement.innerHTML = "&thinsp; Naming Conventions (" + NamConv + ")";
+    OODesignElement.innerHTML = "&thinsp; OO Design (" + OOD + ")";
+    SimplificationsElement.innerHTML = '&thinsp; Simplifications (' + Simp + ")";
+    RedundanciesElement.innerHTML = "&thinsp; Redundancies (" + Red + ")";
+    StyleConventionsElement.innerHTML = '&thinsp; Style Conventions (' + StyleConv + ")";
+}
+
+// Add total amount of warnings to each sub category within the other category in the right menu
+function appendInfoToOtherDefects(Other, RegExpr, Tools) {
+    var OtherElement = document.getElementById("OtherLabel");
+    var RegularExpressionsElement = document.getElementById("RegularExpressionsLabel");
+    var ToolSpecificElement = document.getElementById("ToolSpecificLabel");
+
+    OtherElement.innerHTML = '&thinsp; Other (' + Other + ")";
+    RegularExpressionsElement.innerHTML = "&thinsp; Regular Expressions (" + RegExpr + ")";
+    ToolSpecificElement.innerHTML = "&thinsp; Tool Specific(" + Tools + ")";
 }
 
 //Setup tree map and shows it

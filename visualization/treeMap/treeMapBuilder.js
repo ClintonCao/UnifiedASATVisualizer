@@ -21,6 +21,42 @@ var treeMapBuilder = (function() {
         root.depth = 0;
     }
 
+    /*
+     * Will put the #warnings for each specific ASAT and warning type
+     */
+    function updateWarningsCountInUI(d) {
+        var CheckStyleWarnings = sumNodeForASAT(d, getTotalASATWarning("CheckStyle"));
+        var PMDWarnings = sumNodeForASAT(d, getTotalASATWarning("PMD"));
+        var FindBugsWarnings = sumNodeForASAT(d, getTotalASATWarning("FindBugs"));
+        appendInfoToSAT(CheckStyleWarnings, PMDWarnings, FindBugsWarnings);
+
+        var CheckWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Check"));
+        var ConcWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Concurrency"));
+        var ErrorWarnings = sumNodeForASAT(d, getTotalCategoryWarning("ErrorHandling"));
+        var InterfaceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Interface"));
+        var LogicWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Logic"));
+        var MigrationWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Migration"));
+        var ResourceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Resource"));
+        appendInfoToFunctionalDefects(CheckWarnings, ConcWarnings, ErrorWarnings, InterfaceWarnings, LogicWarnings, MigrationWarnings, ResourceWarnings);
+
+        var BestPracticeWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Best Practices"));
+        var CodeStructureWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Code Structure"));
+        var DocConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Documentation Conventions"));
+        var MetricWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Metric"));
+        var NamingConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Naming Conventions"));
+        var OODesignWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Object Oriented Design"));
+        var SimplificationsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Simplifications"));
+        var ReduncanciesWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Redundancies"));
+        var StyleConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Style Conventions"));
+        appendInfoToMaintainabilityDefects(BestPracticeWarnings, CodeStructureWarnings, DocConventionsWarnings, MetricWarnings, NamingConventionsWarnings, OODesignWarnings, SimplificationsWarnings, ReduncanciesWarnings, StyleConventionsWarnings);
+
+        var OtherWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Other"));
+        var RegularExpressionsWarnings =sumNodeForASAT(d, getTotalCategoryWarning("Regular Expressions"));
+        var ToolSpecificWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Tool Specific"));
+        appendInfoToOtherDefects(OtherWarnings, RegularExpressionsWarnings, ToolSpecificWarnings);
+
+    }
+
     // Aggregate the values for internal nodes. This is normally done by the
     // treemap layout, but not here because of our custom implementation.
     // We also take a snapshot of the original children (_children) to avoid
@@ -48,7 +84,8 @@ var treeMapBuilder = (function() {
     // of sibling was laid out in 1×1, we must rescale to fit using absolute
     // coordinates. This lets us use a viewport to zoom.
     function layout(d, treemap) {
-        appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
+        updateWarningsCountInUI(d);
+
         if (d._children) {
             treemap.nodes({
                 _children: d._children
@@ -201,10 +238,7 @@ var treeMapBuilder = (function() {
             return node;
         }
 
-        /* 
-         * Will calculate the total amount of warnings for each ASAT and displays it
-         */
-        appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
+        updateWarningsCountInUI(d);
 
         function reloadContent() {
             var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);

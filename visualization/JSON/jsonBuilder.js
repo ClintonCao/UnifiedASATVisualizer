@@ -163,6 +163,7 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
  */
 function getTotalASATWarning(warningType) {
 	var packageArray = [];
+	var classObject = new Object();
 	for(var p =0; p < inputData.length; p++){
 		var package = inputData[p];
 		var classesArray = package.classes;
@@ -175,6 +176,37 @@ function getTotalASATWarning(warningType) {
 			for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j]
 				if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
+		  			classObject.amountOfWarnings++;
+				}
+	  		}
+	  		classArray.push(classObject);
+		}
+		classArray.packageName = package.packageName;
+		packageArray.push(classArray)
+	}
+	return packageArray;
+}
+
+/*
+ *
+ * Counts for a specific category how many warnings there are
+ *
+ */
+function getTotalCategoryWarning(warningType) {
+	var packageArray = [];
+	var classObject = new Object();
+	for(var p =0; p < inputData.length; p++){
+		var package = inputData[p];
+		var classesArray = package.classes;
+		var classArray = [];
+		for (i = 0; i < classesArray.length; i++) {
+			classObjectJson = classesArray[i];
+			var classObject = new Object();
+			classObject.amountOfWarnings = 0;
+			classObject.fileName = classObjectJson.fileName;
+			for (j = 0; j < classObjectJson.warningList.length; j++) { 
+				var warningJson = classObjectJson.warningList[j]
+				if($.inArray(warningJson.type, acceptedTypes) > -1 && warningJson.classification == warningType) {
 		  			classObject.amountOfWarnings++;
 				}
 	  		}
