@@ -68,8 +68,6 @@ public class PMDXMLParser extends XMLParser {
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
 					
-					//System.out.println(fileName);
-
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("violation");
 					
@@ -125,20 +123,23 @@ public class PMDXMLParser extends XMLParser {
 				// get the classPaths list from ProjectInfoFinder.
 				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
 
+				System.out.println("old name: " + fileName);
+				
+				// replace the backward slash in the file name with file separator. 
+				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
+				
+				
 				// debug info
 				System.out.println("------------------------------------------");
-				System.out.println("fileName:" + fileName);
+				System.out.println("fileName:" + fileNWithSep);
 				System.out.println("size of the stream: " + classPaths.size());
 				System.out.println("------------------------------------------");
 
 				//for-loop in stream, find correct filePath.
-				String filePath = classPaths.stream().filter(p -> p.endsWith(fileName)).findFirst().get();
-
-				
-				String filePathtemp = filePath;
+				String filePath = classPaths.stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
 				
 				// Get the name of the file where the warning is from.
-				String finalFileName = filePathtemp.substring(filePathtemp.lastIndexOf(File.separatorChar) + 1, filePathtemp.length());
+				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
 
 				// Add warning to the list of warnings.
 				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName, classification));
