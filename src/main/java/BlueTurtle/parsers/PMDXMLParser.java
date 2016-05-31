@@ -127,13 +127,6 @@ public class PMDXMLParser extends XMLParser {
 				
 				// replace the backward slash in the file name with file separator. 
 				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
-				
-				
-				// debug info
-				System.out.println("------------------------------------------");
-				System.out.println("fileName:" + fileNWithSep);
-				System.out.println("size of the stream: " + classPaths.size());
-				System.out.println("------------------------------------------");
 
 				//for-loop in stream, find correct filePath.
 				String filePath = classPaths.stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
