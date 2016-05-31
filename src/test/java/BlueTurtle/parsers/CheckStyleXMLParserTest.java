@@ -36,15 +36,6 @@ public class CheckStyleXMLParserTest {
 	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
 	/**
-	 * Set up the GDP parser, parse the category information.
-	 */
-	@Before
-	public void setUp() {
-		GDCParser gP = GDCParser.getInstance();
-		categoryInfo = gP.getCategoryInfo();
-	}
-	
-	/**
 	 * Test that the parser can parse a valid CheckStyle output file.
 	 */
 	@Test
@@ -83,7 +74,7 @@ public class CheckStyleXMLParserTest {
 		String catagory = actual.getClassification();
 		System.out.println(catagory);
 
-		assertEquals(expected.getFilePath(), actual.getFilePath());
+		assertEquals(expected, actual);
 	}
 
 	/**

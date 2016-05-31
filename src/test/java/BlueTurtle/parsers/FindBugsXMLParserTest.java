@@ -26,7 +26,6 @@ public class FindBugsXMLParserTest {
 	private static String testSet = "./src/test/resources/exampleFindbugs2.xml";
 	private static String testSet2 = "./src/test/resources/exampleFindbugs1.xml";
 	private static String srcDir = System.getProperty("user.dir") + "/src";
-	private static String mdFilePath = "./resources/asat-gdc-mapping.html";
 
 	private static String testSet2FileName = "FindBugsWarning.java";
 	private static String testSet2RuleName = "HE_EQUALS_USE_HASHCODE";
@@ -43,9 +42,6 @@ public class FindBugsXMLParserTest {
 	 */
 	@Before
 	public void setUp() {
-//		GDCParser gP = GDCParser.getInstance();
-//		gP.parseFile(mdFilePath);
-//		categoryInfo = gP.getCategoryInfo();
 		ProjectInfoFinder pif = new ProjectInfoFinder();
 		pif.findFiles(new File(srcDir));
 	}

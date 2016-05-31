@@ -26,9 +26,7 @@ public class PMDXMLParserTest {
 	private static String testSet = "./src/test/resources/examplePmd1.xml";
 	private static String testSet2 = "./src/test/resources/examplePmd2.xml";
 	private static String srcDir = System.getProperty("user.dir") + "/src";
-	private static String mdFilePath = "./resources/asat-gdc-mapping.html";
 	
-	private static String testSetFilePath = "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\CheckStyleWarning.java";
 	private static String testSetFileName = "CheckStyleWarning.java";
 	private static String testSetRuleName = "OverrideBothEqualsAndHashcode";
 	private static String testSetPackageName = "BlueTurtle.warnings";
@@ -75,7 +73,7 @@ public class PMDXMLParserTest {
 
 		PMDWarning actual = (PMDWarning) parser.parseFile(testSet2).get(0);
 
-		assertEquals(expected.getClassification(), actual.getClassification());
+		assertEquals(expected, actual);
 	}
 
 	/**
