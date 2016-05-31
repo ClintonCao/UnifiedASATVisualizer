@@ -67,6 +67,7 @@ div#left-menu{
  * Styling for the chart
  */
 div#chart {
+  cursor: pointer;
   background:#CCC;
   margin:30px;
   border: 5px #FFFFFF solid;
@@ -177,6 +178,10 @@ rect {
 }
 .children:hover rect.child {
   fill: #bbb;
+}
+g.children:hover{
+  stroke-width: 1px;
+  stroke: #FFFFFF;
 }
 
 /*
