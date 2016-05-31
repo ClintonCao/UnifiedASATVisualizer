@@ -21,6 +21,12 @@ function showHover(category) {
         var left = $(this).offset().left;
         if(category == "#GDCFunctionalDefects" || category == "#GDCMaintainabilityDefects") {
             var top = $(this).offset().top + 45;
+        } else if(category == "#GDCOther" ) {
+            var top = $(this).offset().top - 85;
+        } else if(category == "#GDCRegularExpressions") {
+            var top = $(this).offset().top - 185;
+        } else if(category == "#GDCToolSpecific") {
+            var top = $(this).offset().top - 225;
         } else {
             var top = $(this).offset().top + 25;
         }
