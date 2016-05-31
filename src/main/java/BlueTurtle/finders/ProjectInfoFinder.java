@@ -1,6 +1,7 @@
 package BlueTurtle.finders;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,12 +28,14 @@ public class ProjectInfoFinder {
 	 * 
 	 * @param srcDir
 	 *            the source directory to search in.
+	 * @throws IOException
+	 *             throws an exception if problem is encountered while reading
+	 *             the files.
 	 */
-	public void findFiles(File srcDir) {
-		
+	public void findFiles(File srcDir) throws IOException {
 		// Find all subdirectories.
 		File[] subdirs = srcDir.listFiles();
-		
+
 		// Go through all subdirectories.
 		for (File subdir : subdirs) {
 			// if it is a directory, keep searching for file.
@@ -50,14 +53,17 @@ public class ProjectInfoFinder {
 	 * 
 	 * @param file
 	 *            the file of the class.
+	 * @throws IOException
+	 *             throws an exception if problem is encountered while reading
+	 *             the file.
 	 */
-	public void computeInformation(File file) {
+	public void computeInformation(File file) throws IOException {
 		// if it is a java file, then compute information for the class.
 		if (file.getName().endsWith(".java")) {
 			String path = file.getAbsolutePath();
 			classPaths.add(path); // add the path
-			classLocs.put(path, LOCComputer.computeLOC(path)); // add the LOC
-			String packageName = PackageNameFinder.findPackageName(path); // find the package name
+			classLocs.put(path, LOCComputer.getInstance().computeLOC(path)); // add the LOC
+			String packageName = PackageNameFinder.getInstance().findPackageName(path); // find the package name
 			classPackage.put(path, packageName); // put entry of class and its package
 			packages.add(packageName); // add package to the list of packages
 		}

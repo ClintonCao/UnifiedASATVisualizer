@@ -31,8 +31,7 @@ public class JavaController implements Controller {
 	 *             executing the commands.
 	 */
 	public void execute() throws IOException {
-		JSONFormatter jsonFormatter = new JSONFormatter();
-		jsonFormatter.format();
+		new JSONFormatter().format();
 	}
 
 	/**

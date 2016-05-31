@@ -45,7 +45,6 @@ public class CategorySummarizer extends Summarizer {
 	@Override
 	public void summarise(List<Warning> warnings) {
 		for (Warning w : warnings) {
-			
 			String rule = w.getRuleName();
 			String currentC = categoryInfo.get(rule);
 			if (currentC.equals(category)) {
