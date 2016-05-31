@@ -32,12 +32,11 @@ public class PMDXMLParser extends XMLParser {
 	 * @return a list of PMD warnings.
 	 */
 	@Override
-	public List<Warning> parseFile(String xmlFilePath, HashMap<String, String> categoryInfo) {
+	public List<Warning> parseFile(String xmlFilePath) {
 		// List to store the warnings.
 		List<Warning> pmdWarnings = new LinkedList<Warning>();
 		
 		try {
-
 			// Instantiate things that are necessary for the parser.
 			File inputFile = new File(xmlFilePath);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -69,7 +68,7 @@ public class PMDXMLParser extends XMLParser {
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("violation");
 					
-					addWarnings(filePath, fileName, warningList, nList, pmdWarnings, categoryInfo);
+					addWarnings(filePath, fileName, warningList, pmdWarnings);
 
 				}
 			}
@@ -82,14 +81,19 @@ public class PMDXMLParser extends XMLParser {
 	/**
 	 * add individual warning to the warningList.
 	 * 
+	 * @param filePathis the file path of the warning
 	 * @param fileName is the file name of the warning.
 	 * @param warningList is a list of warnings.
+<<<<<<< HEAD
 	 * @param nList is the node list.
 	 * @param pmdWarnings is the findBugs warnings.
 	 * @param categoryInfo is the category information.
 	 * @return a list of FindBugs warnings.
+=======
+	 * @param pmdWarnings is list of PMD warnings.
+>>>>>>> 10304833d0ddfef667a577e3da5d541a245712cf
 	 */
-	public List<Warning> addWarnings(String filePath, String fileName, NodeList warningList, NodeList nList, List<Warning> pmdWarnings, HashMap<String, String> categoryInfo) {
+	public void addWarnings(String filePath, String fileName, NodeList warningList, List<Warning> pmdWarnings) {
 		
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
@@ -115,17 +119,15 @@ public class PMDXMLParser extends XMLParser {
 				String ruleName = warningElement.getAttribute("rule");
 				
 				// PMD rule name is a special concatenation of rule set and rule name
-				String pmdRN = ruleSet.toLowerCase() + ".xml/" + ruleName; 
+				String pmdRN = ruleSet.replace(" ", "").toLowerCase() + ".xml/" + ruleName; 
 				
-				
-				String classification = categoryInfo.get(pmdRN);
+				// find the correct classification given the rule name and the rule set.
+				String classification = classify(pmdRN);
 
 				// Add warning to the list of warnings.
 				pmdWarnings.add(new PMDWarning(filePath, fileName, line, packageName, ruleSet, method, ruleName, classification));
 			}
 		}
-		
-		return pmdWarnings;
 	}
 	
 		

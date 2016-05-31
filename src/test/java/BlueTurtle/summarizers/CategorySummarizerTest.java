@@ -51,7 +51,7 @@ public class CategorySummarizerTest {
 		warningList2 = new ArrayList<Warning>();
 		warningList2.add(w2);
 		warningList.add(w);
-		GDCParser parser = new GDCParser();
+		GDCParser parser = GDCParser.getInstance();
      	categoryInfo = parser.parseFile(testSet);
      	categoryInfo2 = parser.parseFile(testSet3);
 	}
