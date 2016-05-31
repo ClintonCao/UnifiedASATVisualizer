@@ -2,10 +2,10 @@ var treeMapBuilder = (function() {
 
 
     // initialize all variables
-    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults, currentNode
+    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
     var refreshing = false;
     var currentNodePath = []
-
+	
     // initialize the entire treemap up till displaying
     function initializeTheTree(root) {
         initialize(root, width, height);
@@ -49,6 +49,7 @@ var treeMapBuilder = (function() {
     // of sibling was laid out in 1×1, we must rescale to fit using absolute
     // coordinates. This lets us use a viewport to zoom.
     function layout(d, treemap) {
+        appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
         if (d._children) {
             treemap.nodes({
                 _children: d._children
@@ -63,11 +64,34 @@ var treeMapBuilder = (function() {
             });
         }
     }
+    function sumNodeForASAT(d, root) {
+        var nodeAndSummation = [];
+        var sum = 0;
+        if (d.fileName == "Project" || d.fileName == "Test Project") {
+            for (var i = 0; i < root.length; i++) {
+                for (var j = 0; j < root[i].length; j++) {
+                    sum += root[i][j].amountOfWarnings;
+                }
+            }
+            return sum;
+        } else {
+            for (var i = 0; i < root.length; i++) {
+                if (root[i].packageName == d.fileName) {
+                    for (var j = 0; j < root[i].length; j++) {
+                        sum += root[i][j].amountOfWarnings;
+                    }
+                    return sum;
+                }
+            }
+        }
+        return -1;
+    }
     //render the chart with given depth and children
-    function display(d) {
+	function display(d) {
+		// id for all squares
+		var id = 0;
 
-        currentNode = d;
-
+        console.log(currentNodePath);
         // On click top bar to go back
 
         /*
@@ -85,15 +109,8 @@ var treeMapBuilder = (function() {
             .on("click", navigationUp)
             .select("text")
             .text(name(d))
-            .on("mouseover", function(d) {
-                tooltip.text(d.fileName + " (" + getSatWarningsPrint(d) + ")");
-                return tooltip.style("visibility", "visible");
-            })
-            .on("mousemove", function(d) {
-                return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
-            })
-            .on("mouseout", function(d) {
-                return tooltip.style("visibility", "hidden");
+            .style("fill", function() {
+                return '#333333';
             });
 
         var g1 = svg.insert("g", ".grandparent")
@@ -111,14 +128,14 @@ var treeMapBuilder = (function() {
             .classed("children", true)
             .on("click", navigationDown)
             .on("mouseover", function(d) {
-                tooltip.text(d.fileName + " (" + getSatWarningsPrint(d) + ")");
-                return tooltip.style("visibility", "visible");
+                tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
+                tooltip.style("visibility", "visible");
             })
             .on("mousemove", function(d) {
-                return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
             })
             .on("mouseout", function(d) {
-                return tooltip.style("visibility", "hidden");
+                tooltip.style("visibility", "hidden");
             });
 
         var childrenArray = g.filter(function(d) {
@@ -127,14 +144,14 @@ var treeMapBuilder = (function() {
 			// bottom layer now we add a click to go to the code editor
 			if ( childrenArray[0].length == 0 ){
 				g.on("click", toSourceCode).on("mouseover", function(d) {
-                tooltip.text(d.fileName + " (" + getSatWarningsPrint(d) + ")");
-                return tooltip.style("visibility", "visible");
+                    tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
+                    tooltip.style("visibility", "visible");
             	})
             	.on("mousemove", function(d) {
-                return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                    tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
             	})
             	.on("mouseout", function(d) {
-                return tooltip.style("visibility", "hidden");
+                    tooltip.style("visibility", "hidden");
             	});
 			}
             
@@ -155,7 +172,6 @@ var treeMapBuilder = (function() {
         });*/
 
         $('.updateContent').change(function() {
-            //document.getElementById('treemapButton').checked
             if (true && !refreshing) {
                 refreshing = true;
                 $(this).disable = true
@@ -166,13 +182,11 @@ var treeMapBuilder = (function() {
                 }
                 fastReload();
                 // animation time of the toggle button
-                var millisecondsToWait = 100;
+                var millisecondsToWait = 0;
                 setTimeout(function() {
                     refreshing = false;
                     $(this).disable = false
                 }, millisecondsToWait);
-
-
             }
         })
 
@@ -184,9 +198,8 @@ var treeMapBuilder = (function() {
             });
             transition(newNode);
         }
+
         // code to find a certain node in the treemap
-
-
         function findNode(path, root) {
             var node = root;
             for (var i = 0; i < path.length; i++) {
@@ -195,33 +208,7 @@ var treeMapBuilder = (function() {
             return node;
         }
 
-
         appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
-
-
-
-        function sumNodeForASAT(d, root) {
-            var nodeAndSummation = [];
-            var sum = 0;
-            if (d.fileName == "Project" || d.fileName == "Test Project") {
-                for (var i = 0; i < root.length; i++) {
-                    for (var j = 0; j < root[i].length; j++) {
-                        sum += root[i][j].amountOfWarnings;
-                    }
-                }
-                return sum;
-            } else {
-                for (var i = 0; i < root.length; i++) {
-                    if (root[i].packageName == d.fileName) {
-                        for (var j = 0; j < root[i].length; j++) {
-                            sum += root[i][j].amountOfWarnings;
-                        }
-                        return sum;
-                    }
-                }
-            }
-            return -1;
-        }
 
         function reloadContent() {
             var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
@@ -243,12 +230,32 @@ var treeMapBuilder = (function() {
         children.append("rect")
             .attr("class", "child")
             .call(rect)
+			.style("fill", function(d) {
+				ratioArray = [];
+                var ratioCheckStyle = Math.round(100 * d.warningsCheckStyle / d.value);	
+				if ( ratioCheckStyle > 100 ) { ratioCheckStyle = 100; }
+				ratioArray.push(ratioCheckStyle);
+                var ratiowarningsPMD = Math.round(100 * d.warningsPMD / d.value);	
+				if ( ratiowarningsPMD > 100 ) { ratiowarningsPMD = 100; }
+				ratioArray.push(ratiowarningsPMD);
+                var ratioFindBugs = Math.round(100 * d.warningsFindBugs / d.value);	
+				if ( ratioFindBugs > 100 ) { ratioFindBugs = 100; }
+				ratioArray.push(ratioFindBugs);
+				var weight = d.warnings / d.value;
+				if(weight > 100){weight = 100}
+				id +=1;
+				var gradientBackground = backgroundGradient.getBackground(svg, ratioArray,weight, id);
+                return "url(#gradient"+ id + ")";
+            })
             .append("title");
 			
         children.append("text")
             .attr("class", "ctext")
             .text(function(d) {
                 return d.fileName;
+            })
+            .style("fill", function() {
+                return '#FFFFFF';
             })
             .call(textBottomRight);
 
@@ -261,15 +268,21 @@ var treeMapBuilder = (function() {
             .attr("dy", ".75em");
 
         t.append("tspan")
+            .style("fill", function(d) {
+                return '#FFFFFF';
+            })
             .text(function(d) {
                 return d.fileName;
             });
 
         //title of the squares
         t.append("tspan")
-            .attr("dy", "1.0em")
+            .attr("dy", "1.2em")
             .text(function(d) {
                 return d.warnings;
+            })
+            .style("fill", function(d) {
+                return '#FFFFFF';
             });
         t.call(text);
 
@@ -279,13 +292,13 @@ var treeMapBuilder = (function() {
             for (var i = 0; i < acceptedTypes.length; i++) {
                 switch (acceptedTypes[i]) {
                     case "CheckStyle":
-                        output += formatNumber(d.warningsCheckStyle) + " " + acceptedTypes[i] + " + ";
+                        output += acceptedTypes[i] + ": " + formatNumber(d.warningsCheckStyle) + " <br> ";
                         break;
                     case "PMD":
-                        output += formatNumber(d.warningsPMD) + " " + acceptedTypes[i] + " + ";
+                        output += acceptedTypes[i] + ": " + formatNumber(d.warningsPMD) + " <br> ";
                         break;
                     case "FindBugs":
-                        output += formatNumber(d.warningsFindBugs) + " " + acceptedTypes[i] + " + ";
+                        output += acceptedTypes[i] + ": " + formatNumber(d.warningsFindBugs) + " <br> ";
                         break;
                     default:
                         output += "";
@@ -293,13 +306,17 @@ var treeMapBuilder = (function() {
             }
             return output.slice(0, -3);
         }
-        // set the color of the squares based on warnings / line
+		/*
+		// code for normal color based on amount of warnings relative to lines
         g.selectAll("rect")
             .style("fill", function(d) {
                 var ratio = 100 * d.warnings / d.value;
-                // if statement for when there are more warnings then lines
-                return colorScale.getColor(ratio);
-            });
+				var gradientBackground = backgroundGradient.getBackground(svg);
+                return "url(#gradient)";
+                //return backgroundGradient.getBackground();
+				
+				
+            });*/
 
 
         function navigationDown(d) {
@@ -327,7 +344,6 @@ var treeMapBuilder = (function() {
         }
 
         function transition(d) {
-
 
             if (transitioning || !d) return;
             transitioning = true;
@@ -372,7 +388,7 @@ var treeMapBuilder = (function() {
         return g;
     }
 
-    function text(text) {
+	function text(text) {
         text.selectAll("tspan")
             .attr("x", function(d) {
                 return x(d.x) + 6;
@@ -420,7 +436,7 @@ var treeMapBuilder = (function() {
             name(d.parent) + " / " + d.fileName : //+ " (" + formatNumber(d.warnings) + ")" :
             d.fileName; // + " (" + formatNumber(d.warnings) + ")";
     }
-
+	
     function setTheVariables(o, data) {
         // hard coded the depth where the click should go to source code (no zoom)
         maxDepth = 2
@@ -506,10 +522,8 @@ var treeMapBuilder = (function() {
             root = data;
         }
     }
-
+	
     return {
-
-
         // The main method which is called to create the treeMap.
         // This calls all the methods needed like initialize.
         createTreeMap: function(o, data) {

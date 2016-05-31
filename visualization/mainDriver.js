@@ -3,11 +3,15 @@
  */
 var acceptedTypes = [];
 var acceptedCategories = [];
-// Run first time
+
+defineHovers();
 runTreeMap();
 addAllAcceptedTypesAndCategories();
 setAllCheckboxesOnDefault();
 
+/*
+ * Will set all available checkboxes on checked
+ */
 function setAllCheckboxesOnDefault() {
 	$(".updateContent").prop('checked', false); 
 	$("#treemapButton").prop('checked', true);
@@ -17,22 +21,21 @@ function setAllCheckboxesOnDefault() {
 	$(".StyleConventions").click();
 	$(".sats").click();
 }
-// add all types and categories for first run
+
+/*
+ * In the first run all ASATs and categories are included
+ */
 function addAllAcceptedTypesAndCategories(){
 	for ( var i = 0; i < $(".FunctionalDefects").size(); i ++){
-		console.log();
 		handleClickCategorySat($(".FunctionalDefects")[i].value, true);
 	}
 	for ( var i = 0; i < $(".MaintainabilityDefects").size(); i ++){
-		console.log();
 		handleClickCategorySat($(".MaintainabilityDefects")[i].value, true);
 	}
 	for ( var i = 0; i < $(".StyleConventions").size(); i ++){
-		console.log();
 		handleClickCategorySat($(".StyleConventions")[i].value, true);
 	}
 	for ( var i = 0; i < $(".sats").size(); i ++){
-		console.log();
 		handleClickTreeMapTypeSat($(".sats")[i].value, true);
 	}
 }
@@ -51,9 +54,9 @@ function appendInfoToSAT(CS, PMD, FB) {
     var PMDElement = document.getElementById("PMDLabel");
     var findBugsElement = document.getElementById("FindBugsLabel");
 
-    checkStyleElement.innerHTML = '&nbsp; CheckStyle (' + CS + ")";
-    PMDElement.innerHTML = "&nbsp; PMD (" + PMD + ")";
-    findBugsElement.innerHTML = "&nbsp; FindBugs (" + FB + ")";
+    checkStyleElement.innerHTML = '&thinsp; CheckStyle(' + CS + ")";
+    PMDElement.innerHTML = "&thinsp; PMD(" + PMD + ")";
+    findBugsElement.innerHTML = "&thinsp; FindBugs(" + FB + ")";
 }
 
 //Setup tree map and shows it

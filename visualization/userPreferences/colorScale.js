@@ -1,4 +1,5 @@
 var isAbsolute = true;
+
 var colorScale = (function() {
 	var twoColors = [d3.rgb("#00a700"), d3.rgb('#a90000')];
 	// default color settings
@@ -29,6 +30,7 @@ var colorScale = (function() {
 		return (worstRatio * 100);
 	}
 
+	
     return {
 
         getColor: function() {
