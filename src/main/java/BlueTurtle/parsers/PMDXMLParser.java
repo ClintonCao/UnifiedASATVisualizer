@@ -66,7 +66,7 @@ public class PMDXMLParser extends XMLParser {
 					String filePath = fileElement.getAttribute("name");
 
 					// Get the name of the file where the warning is from.
-					String fileName = filePath.substring(filePath.lastIndexOf("src" + File.separator) + 4, filePath.length());
+					String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
 					
 					//System.out.println(fileName);
 
