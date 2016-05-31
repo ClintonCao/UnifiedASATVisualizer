@@ -227,20 +227,10 @@ var treeMapBuilder = (function() {
             .attr("class", "child")
             .call(rect)
 			.style("fill", function(d) {
-				ratioArray = [];
-                var ratioCheckStyle = Math.round(100 * d.warningsCheckStyle / d.value);	
-				if ( ratioCheckStyle > 100 ) { ratioCheckStyle = 100; }
-				ratioArray.push(ratioCheckStyle);
-                var ratiowarningsPMD = Math.round(100 * d.warningsPMD / d.value);	
-				if ( ratiowarningsPMD > 100 ) { ratiowarningsPMD = 100; }
-				ratioArray.push(ratiowarningsPMD);
-                var ratioFindBugs = Math.round(100 * d.warningsFindBugs / d.value);	
-				if ( ratioFindBugs > 100 ) { ratioFindBugs = 100; }
-				ratioArray.push(ratioFindBugs);
+				var ratios =  backgroundObject.getRatios(d);
 				var weight = d.warnings / d.value;
-				if(weight > 100){weight = 100}
 				id +=1;
-				var gradientBackground = backgroundGradient.getBackground(svg, ratioArray,weight, id);
+				var gradientBackground = backgroundObject.getBackground(svg, ratios,weight, id);
                 return "url(#gradient"+ id + ")";
             })
             .append("title");

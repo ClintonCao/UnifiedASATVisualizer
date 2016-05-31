@@ -20,20 +20,20 @@ function handleClickTreeMapTypeSat(value, checked) {
  * Handles click on checkboxes for using different colorscales
  */
 function handleClickColorScale(radioButton) {
-	if ( radioButton.value == "absolute" ){
-		backgroundGradient.setColorMethod(0);
-	}else if ( radioButton.value == "relative" ){
-		backgroundGradient.setColorMethod(1);
-	}else if ( radioButton.value == "asat" ){
-		backgroundGradient.setColorMethod(2);
-	}else if ( radioButton.value == "category" ){
-		backgroundGradient.setColorMethod(3);
+	if ( radioButton.value == "normalAbsolute" ){
+		backgroundObject.setColorMethod(0);
+	}else if ( radioButton.value == "normalRelative" ){
+		backgroundObject.setColorMethod(1);
+	}else if ( radioButton.value == "asatAbsolute" ){
+		backgroundObject.setColorMethod(2);
+	}else if ( radioButton.value == "asatRelative" ){
+		backgroundObject.setColorMethod(3);
+	}else if ( radioButton.value == "categoryAbsolute" ){
+		backgroundObject.setColorMethod(4);
+	}else if ( radioButton.value == "categoryRelative" ){
+		backgroundObject.setColorMethod(5);
 	}
-	/*if (document.getElementById('graphButton').checked) {
-		reloadContent(null)
-	}*/
 }
-
 
 
 /*
