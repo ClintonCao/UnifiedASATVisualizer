@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
 
 /**
  * This class can be used to parse a CheckStyle XML output file.
@@ -66,12 +67,12 @@ public class CheckStyleXMLParser extends XMLParser {
 					String filePath = fileElement.getAttribute("name");
 
 					// Get the name of the file where the warning is from.
-					String fileName = filePath.substring(filePath.lastIndexOf(File.separatorChar) + 1, filePath.length());
-
+					String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
+					
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("error");
 					
-					addWarnings(filePath, fileName, warningList, checkStyleWarnings);
+					addWarnings(fileName, warningList, checkStyleWarnings);
 
 				}
 			}
@@ -91,7 +92,7 @@ public class CheckStyleXMLParser extends XMLParser {
 	 * @param checkStyleWarnings is the CheckStyle warnings.
 	 * @return a list of FindBugs warnings.
 	 */
-	public List<Warning> addWarnings(String filePath, String fileName, NodeList warningList, List<Warning> checkStyleWarnings) {
+	public List<Warning> addWarnings(String fileName, NodeList warningList, List<Warning> checkStyleWarnings) {
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
 			Node warning = warningList.item(j);
@@ -114,8 +115,24 @@ public class CheckStyleXMLParser extends XMLParser {
 				// get the classPaths list from ProjectInfoFinder.
 				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
 				
+				// replace the backward slash in the file name with file separator. 
+				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
+				
+				// debug info.
+				System.out.println("........................");
+				System.out.println(fileNWithSep);
+				System.out.println(classPaths.size());
+				System.out.println("........................");
+
+
+				//for-loop in stream, find correct filePath.
+				String filePath = classPaths.stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
+				
+				// Get the name of the file where the warning is from.
+				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
+
 				// Add warning to the list of warnings.
-				checkStyleWarnings.add(new CheckStyleWarning(filePath, fileName, line, message, ruleName, classification));
+				checkStyleWarnings.add(new CheckStyleWarning(filePath, finalFileName, line, message, ruleName, classification));
 			}
 		}
 		return checkStyleWarnings;

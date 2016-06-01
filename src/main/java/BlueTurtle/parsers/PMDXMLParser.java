@@ -122,8 +122,6 @@ public class PMDXMLParser extends XMLParser {
 				
 				// get the classPaths list from ProjectInfoFinder.
 				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
-
-				System.out.println("old name: " + fileName);
 				
 				// replace the backward slash in the file name with file separator. 
 				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
