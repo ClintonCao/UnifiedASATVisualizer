@@ -5,6 +5,9 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.io.IOException;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,8 +25,6 @@ public class JavaControllerTest {
 			+ "/src/test/resources/exampleCheckStyle1.xml";
 	private String pmdOutputFilePath = System.getProperty("user.dir") + "/src/test/resources/examplePmd1.xml";
 	private String findBugsOutputFilePath = System.getProperty("user.dir") + "/src/test/resources/exampleFindbugs1.xml";
-	private String outputPath = System.getProperty("user.dir") + "/src/test/resources/testOutput.js";
-
 	/**
 	 * Clear the attributes of JavaController.
 	 */
@@ -34,16 +35,16 @@ public class JavaControllerTest {
 		JavaController.setFindBugsOutputFile(null);
 	}
 
-//	/**
-//	 * Delete the created files.
-//	 */
-//	@After
-//	public void cleanUp() {
-//		File f = new File(System.getProperty("user.dir") + "/src/main/resources/SummarizedOuput.js");
-//		if (f.exists()) {
-//			f.delete();
-//		}
-//	}
+	/**
+	 * Delete the created files.
+	 */
+	@After
+	public void cleanUp() {
+		File f = new File(System.getProperty("user.dir") + "/src/main/resources/SummarizedOuput.js");
+		if (f.exists()) {
+			f.delete();
+		}
+	}
 
 	/**
 	 * Test that the user direction path is the same.
@@ -111,21 +112,21 @@ public class JavaControllerTest {
 		assertEquals(currentFile, newFile);
 	}
 
-//	/**
-//	 * Test execute should output file.
-//	 * 
-//	 * @throws IOException
-//	 *             throws an exception if a problem is encountered while reading
-//	 *             the file.
-//	 */
-//	@Test
-//	public void testExecute() throws IOException {
-//		JavaController.setASATOutput(ASAT.CheckStyle, new File(checkStyleOutputFilePath));
-//		JavaController.setASATOutput(ASAT.PMD, new File(pmdOutputFilePath));
-//		JavaController.setASATOutput(ASAT.FindBugs, new File(findBugsOutputFilePath));
-//		JavaController jc = new JavaController();
-//		jc.execute();
-//		assertTrue(new File(System.getProperty("user.dir") + "/src/main/resources/SummarizedOuput.js").exists());
-//	}
+	/**
+	 * Test execute should output file.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if a problem is encountered while reading
+	 *             the file.
+	 */
+	@Test
+	public void testExecute() throws IOException {
+		JavaController.setASATOutput(ASAT.CheckStyle, new File(checkStyleOutputFilePath));
+		JavaController.setASATOutput(ASAT.PMD, new File(pmdOutputFilePath));
+		JavaController.setASATOutput(ASAT.FindBugs, new File(findBugsOutputFilePath));
+		JavaController jc = new JavaController();
+		jc.execute();
+		assertTrue(new File(System.getProperty("user.dir") + "/src/main/resources/SummarizedOuput.js").exists());
+	}
 
 }

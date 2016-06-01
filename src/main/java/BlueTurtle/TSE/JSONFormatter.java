@@ -17,12 +17,12 @@ import BlueTurtle.writers.JSWriter;
  * JSONFormatter reads the output of Checkstyle, Findbugs and PMD and produces a
  * summarized defect output.
  * 
- * @author michiel
+ * @author BlueTurtle.
  *
  */
 public class JSONFormatter {
 	private XMLParser xmlParser;
-	
+
 	/**
 	 * Produces a list of warnings for by reading the output of PMD, Checkstyle
 	 * and Findbugs. Then converts it to JSON format and writes it to a
