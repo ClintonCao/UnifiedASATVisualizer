@@ -95,8 +95,6 @@ public class CheckStyleXMLParserTest {
 				testSet2RuleName, testSet2Classification);
 
 		CheckStyleWarning actual = (CheckStyleWarning) parser.parseFile(testSet2).get(0);
-		String catagory = actual.getClassification();
-		System.out.println(catagory);
 
 		assertEquals(expected, actual);
 	}
