@@ -207,5 +207,15 @@ public class PackageSummarizerTest {
 		PackageSummarizer ps2 = new PackageSummarizer(packageName);
 		assertEquals(ps2.toString(), ps.toString());
 	}
+	
+	/**
+	 * Test two different PackageSummarizer return the different string.
+	 */
+	@Test
+	public void testDifferentStringShouldBeReturned() {
+		PackageSummarizer ps = new PackageSummarizer("Test");
+		PackageSummarizer ps2 = new PackageSummarizer(packageName);
+		assertNotEquals(ps.toString(), ps2.toString());
+	}
 
 }

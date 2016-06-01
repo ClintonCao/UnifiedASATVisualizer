@@ -258,5 +258,15 @@ public class ComponentSummarizerTest {
 		ComponentSummarizer cs2 = new ComponentSummarizer(fileName, filePath, packageName);
 		assertEquals(cs.toString(), cs2.toString());
 	}
+	
+	/**
+	 * Test two different ComponentSummarizer return the different string.
+	 */
+	@Test
+	public void testDifferentStringShouldBeReturned() {
+		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
+		ComponentSummarizer cs2 = new ComponentSummarizer("Test", filePath, packageName);
+		assertNotEquals(cs.toString(), cs2.toString());
+	}
 
 }

@@ -172,6 +172,16 @@ public class CategorySummarizerTest {
 		CategorySummarizer cs2 = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
 		assertEquals(cs.toString(), cs2.toString());
 	}
+	
+	/**
+	 * Test two different CatergorySummarizer return the different string.
+	 */
+	@Test
+	public void testDifferentCategorySummarizerReturnDifferentString() {
+		CategorySummarizer cs = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
+		CategorySummarizer cs2 = new CategorySummarizer("Test", packageName, categoryInfo);
+		assertNotEquals(cs.toString(), cs2.toString());
+	}
 
 
 }
