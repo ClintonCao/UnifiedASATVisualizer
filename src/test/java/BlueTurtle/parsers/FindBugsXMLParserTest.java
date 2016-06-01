@@ -1,6 +1,7 @@
 package BlueTurtle.parsers;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,9 +41,10 @@ public class FindBugsXMLParserTest {
 
 	/**
 	 * Set up the GDP parser, parse the category information.
+	 * @throws IOException 
 	 */
 	@Before
-	public void setUp() {
+	public void setUp() throws IOException {
 		GDCParser gP = new GDCParser();
 		categoryInfo = gP.parseFile(testSet3);
 		ProjectInfoFinder pif = new ProjectInfoFinder();

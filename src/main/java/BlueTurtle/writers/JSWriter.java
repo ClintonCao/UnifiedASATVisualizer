@@ -8,6 +8,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import BlueTurtle.TSE.CodeFile;
 import BlueTurtle.summarizers.Summarizer;
 import lombok.Getter;
 import lombok.Setter;
@@ -55,6 +56,19 @@ public class JSWriter {
 	 *             writing to file.
 	 */
 	public void writeToJSFormat(String outputFilePath) throws IOException {
+		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson(summarizedWarnings);
+		json += ';';
+
+		writer.write("var inputData = ");
+		writer.newLine();
+		writer.write(json);
+		writer.flush();
+		writer.close();
+	}
+	
+	public void writeSourceCodeToJS(CodeFile codeFile, String outputFilePath) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(summarizedWarnings);
