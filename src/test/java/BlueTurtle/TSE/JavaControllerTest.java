@@ -22,7 +22,7 @@ import BlueTurtle.gui.GUIController.ASAT;
 public class JavaControllerTest {
 
 	private String checkStyleOutputFilePath = System.getProperty("user.dir")
-			+ "/src/test/resources/exampleCheckStyle1.xml";
+			+ "/src/test/resources/exampleCheckstyle1.xml";
 	private String pmdOutputFilePath = System.getProperty("user.dir") + "/src/test/resources/examplePmd1.xml";
 	private String findBugsOutputFilePath = System.getProperty("user.dir") + "/src/test/resources/exampleFindbugs1.xml";
 	/**
