@@ -2,7 +2,6 @@ package BlueTurtle.parsers;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -35,10 +34,11 @@ public class FindBugsXMLParser extends XMLParser {
 	 * @return a list of FindBugs warnings.
 	 */
 	@Override
-	public List<Warning> parseFile(String xmlFilePath, HashMap<String, String> categoryInfo) {
+	public List<Warning> parseFile(String xmlFilePath) {
+
 		// List to store the warnings.
 		List<Warning> findBugsWarnings = new LinkedList<Warning>();
-		
+
 		try {
 
 			// Instantiate things that are necessary for the parser.
@@ -50,7 +50,7 @@ public class FindBugsXMLParser extends XMLParser {
 			Document doc = dBuilder.parse(inputFile);
 
 			// Normalize the elements of the document.
-			doc.getDocumentElement().normalize();		
+			doc.getDocumentElement().normalize();
 
 			// Get all list of files where there are warnings.
 			NodeList nList = doc.getElementsByTagName("file");
@@ -65,11 +65,11 @@ public class FindBugsXMLParser extends XMLParser {
 
 					// Get the name of the file where the warning is from.
 					String fileName = fileElement.getAttribute("classname");
-					
+
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("BugInstance");
-					
-					addWarnings(fileName, warningList, nList, findBugsWarnings, categoryInfo);
+
+					addWarnings(fileName, warningList, findBugsWarnings, nList);
 
 				}
 			}
@@ -78,20 +78,21 @@ public class FindBugsXMLParser extends XMLParser {
 		}
 		return findBugsWarnings;
 	}
-	
 
 	/**
 	 * add individual warning to the warningList.
 	 * 
-	 * @param fileName is the file name of the warning.
-	 * @param warningList is a list of warnings.
-	 * @param nList is the node list.
-	 * @param findBugsWarnings is the findBugs warnings.
-	 * @param categoryInfo is the category information.
-	 * @return a list of FindBugs warnings.
+	 * @param fileName
+	 *            is the file name of the warning.
+	 * @param warningList
+	 *            is a list of warnings.
+	 * @param nList
+	 *            is the node list.
+	 * @param findBugsWarnings
+	 *            is the findBugs warnings.
 	 */
-	public List<Warning> addWarnings(String fileName, NodeList warningList, NodeList nList, List<Warning> findBugsWarnings, HashMap<String, String> categoryInfo) {
-		
+	public void addWarnings(String fileName, NodeList warningList, List<Warning> findBugsWarnings, NodeList nList) {
+
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
 			Node warning = warningList.item(j);
@@ -105,47 +106,39 @@ public class FindBugsXMLParser extends XMLParser {
 
 				// category of warning
 				String category = warningElement.getAttribute("category");
-				
+
 				// priority of warning
 				String priority = warningElement.getAttribute("priority");
-				
+
 				// line number where the warning is located.
 				int line = Integer.parseInt(warningElement.getAttribute("lineNumber"));
 
 				// Get the category of the warning.
 				String ruleName = warningElement.getAttribute("type");
-				
-				String classification = categoryInfo.get(ruleName);
-				
+
+				String classification = classify(ruleName);
+
 				// get the classPaths list from ProjectInfoFinder.
 				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
-				
-				// replace the dot in the file name with file separator. 
+
+				// replace the dot in the file name with file separator.
 				String fileNWithSep = fileName.replaceAll("\\.", Matcher.quoteReplacement(File.separator)) + ".java";
-				
-				String filePath = " ";
-				
-				// Loop through all classPathes.
-				for (int i = 0; i < classPaths.size(); i++) {
-					// if the classPath indeed ends with the right class.
-					if (classPaths.get(i).endsWith(fileNWithSep)) {
-						// update the file path.
-						filePath = classPaths.get(i);
-						break;
-					}
-				}
+
+				// for-loop in stream.
+				String filePath = classPaths.stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
+
 				// Get the name of the file where the warning is from.
-				fileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
-				
+				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1,
+						fileNWithSep.length());
+
 				// Construct the new FindBugsWarning.
-				FindBugsWarning fbw = new FindBugsWarning(filePath, fileName, line, message, category, priority, ruleName, classification);
-				
+				FindBugsWarning fbw = new FindBugsWarning(filePath, finalFileName, line, message, category, priority,
+						ruleName, classification);
+
 				// Add warning to the list of warnings.
 				findBugsWarnings.add(fbw);
 			}
 		}
-		return findBugsWarnings;
 	}
-	
 
 }
