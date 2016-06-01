@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.gui.GUIController.ASAT;
 
 /**
@@ -25,16 +26,22 @@ public class JavaControllerTest {
 			+ "/src/test/resources/exampleCheckstyle1.xml";
 	private String pmdOutputFilePath = System.getProperty("user.dir") + "/src/test/resources/examplePmd1.xml";
 	private String findBugsOutputFilePath = System.getProperty("user.dir") + "/src/test/resources/exampleFindbugs1.xml";
+
 	/**
 	 * Clear the attributes of JavaController.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if there was a problem encounterd while
+	 *             reading the files.
 	 */
 	@Before
-	public void setUp() {
+	public void setUp() throws IOException {
+		new ProjectInfoFinder().findFiles(new File(System.getProperty("user.dir")));
 		JavaController.setCheckStyleOutputFile(null);
 		JavaController.setPmdOutputFile(null);
 		JavaController.setFindBugsOutputFile(null);
 	}
-
+	
 	/**
 	 * Delete the created files.
 	 */
@@ -44,6 +51,10 @@ public class JavaControllerTest {
 		if (f.exists()) {
 			f.delete();
 		}
+		ProjectInfoFinder.getClassLocs().clear();
+		ProjectInfoFinder.getPackages().clear();
+		ProjectInfoFinder.getClassPaths().clear();
+		ProjectInfoFinder.getClassPackage().clear();
 	}
 
 	/**
