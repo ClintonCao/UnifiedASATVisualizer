@@ -214,4 +214,14 @@ public class FindBugsWarningTest {
 		assertNotEquals(expected, actual);
 	}
 	
+	/**
+	 * Test two equal FindBugsWarning return the same string.
+	 */
+	@Test
+	public void testTwoEqualsWarningReturnSameString() {
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		assertEquals(expected.toString(), actual.toString());
+	}
+	
 }

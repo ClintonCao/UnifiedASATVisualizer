@@ -114,7 +114,6 @@ public class WarningGrouperTest {
 		expected.add(cs2);
 		expected.add(cs3);
 		WarningGrouper wg = new WarningGrouper(warnings);
-		//List<Summarizer> actual = wg.groupBy(Criteria.COMPONENTS);
 		assertTrue(expected.containsAll(wg.groupBy(Criteria.COMPONENTS)));
 	}
 

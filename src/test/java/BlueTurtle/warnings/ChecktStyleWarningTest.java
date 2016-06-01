@@ -173,5 +173,15 @@ public class ChecktStyleWarningTest {
 		CheckStyleWarning diff = new CheckStyleWarning(filePath, fileName, 1, "hey", ruleName, classification);
 		assertNotEquals(cw, diff);
 	}
+	
+	/**
+	 * Test two equal CheckStylWarning should return same string.
+	 */
+	@Test
+	public void testTwoEqualWarningReturnSameString() {
+		CheckStyleWarning expected = new CheckStyleWarning(filePath, fileName, 1, message, ruleName, classification);
+		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, message, ruleName, classification);
+		assertEquals(expected.toString(), actual.toString());
+	}
 
 }

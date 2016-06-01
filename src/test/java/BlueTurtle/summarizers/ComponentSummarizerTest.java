@@ -165,7 +165,7 @@ public class ComponentSummarizerTest {
 	 * Test objects that are the same should return same hashCode.
 	 */
 	@Test
-	public void testSameHahCode() {
+	public void testSameHashCode() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		ComponentSummarizer cs2 = new ComponentSummarizer(fileName, filePath, packageName);
 		assertEquals(cs.hashCode(), cs2.hashCode());
@@ -247,6 +247,16 @@ public class ComponentSummarizerTest {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
 		cs.summarise(warningList);
 		assertNotSame(0, cs.getLoc());
+	}
+	
+	/**
+	 * Test two equal ComponentSummarizer return the same string.
+	 */
+	@Test
+	public void testSameStringShouldBeReturned() {
+		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
+		ComponentSummarizer cs2 = new ComponentSummarizer(fileName, filePath, packageName);
+		assertEquals(cs.toString(), cs2.toString());
 	}
 
 }

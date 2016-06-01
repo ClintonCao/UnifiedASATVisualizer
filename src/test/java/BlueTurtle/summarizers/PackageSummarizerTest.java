@@ -197,5 +197,15 @@ public class PackageSummarizerTest {
 		boolean answer = ps.equals(Integer.valueOf(5));
 		assertFalse(answer);
 	}
+	
+	/**
+	 * Test two equals PackageSummarizer return the same string.
+	 */
+	@Test
+	public void testSameStringIsReturned() {
+		PackageSummarizer ps = new PackageSummarizer(packageName);
+		PackageSummarizer ps2 = new PackageSummarizer(packageName);
+		assertEquals(ps2.toString(), ps.toString());
+	}
 
 }

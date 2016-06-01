@@ -186,5 +186,15 @@ public class PMDWarningTest {
 		String actual = pmd.getMethod();
 		pmd.setMethod(expected);
 		assertNotEquals(expected, actual);
-	}		
+	}	
+	
+	/**
+	 * Test two equal PMDWarning return the same string.
+	 */
+	@Test
+	public void testTwoEqualWarningReturnSameString() {
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		assertEquals(expected.toString(), actual.toString());
+	}
 }
