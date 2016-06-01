@@ -14,7 +14,6 @@ import org.w3c.dom.Element;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -117,13 +116,6 @@ public class CheckStyleXMLParser extends XMLParser {
 				
 				// replace the backward slash in the file name with file separator. 
 				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
-				
-				// debug info.
-				System.out.println("........................");
-				System.out.println(fileNWithSep);
-				System.out.println(classPaths.size());
-				System.out.println("........................");
-
 
 				//for-loop in stream, find correct filePath.
 				String filePath = classPaths.stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();

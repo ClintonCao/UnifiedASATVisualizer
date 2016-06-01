@@ -1,7 +1,6 @@
 package BlueTurtle.parsers;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -34,10 +33,6 @@ public class PMDXMLParserTest {
 	private static String testSetMethod = "equals";
 	private static String testSetClassification = "Interface";
 	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar + "src" + File.separatorChar + "main" + File.separatorChar + "java" + File.separatorChar + "BlueTurtle" + File.separatorChar + "warnings"+ File.separatorChar + "CheckStyleWarning.java";
-
-
-
-	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
 
 	/**
 	 * Set up the GDP parser, parse the category information.
