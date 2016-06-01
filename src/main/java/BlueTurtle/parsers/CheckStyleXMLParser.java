@@ -12,7 +12,6 @@ import BlueTurtle.warnings.Warning;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -113,15 +112,13 @@ public class CheckStyleXMLParser extends XMLParser {
 
 				String classification = classify(ruleName);
 
-				// get the classPaths list from ProjectInfoFinder.
-				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
-
 				// replace the backward slash in the file name with file
 				// separator.
 				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
 
-				//for-loop in stream, find correct filePath.
-				String filePath = classPaths.stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
+				// for-loop in stream, find correct filePath.
+				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep))
+						.findFirst().get();
 
 				// Get the name of the file where the warning is from.
 				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1,

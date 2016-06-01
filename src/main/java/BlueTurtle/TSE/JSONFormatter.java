@@ -1,16 +1,12 @@
 package BlueTurtle.TSE;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.groupers.WarningGrouper.Criteria;
 import BlueTurtle.parsers.CheckStyleXMLParser;
 import BlueTurtle.parsers.FindBugsXMLParser;
-import BlueTurtle.parsers.GDCParser;
 import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.summarizers.Summarizer;
@@ -26,9 +22,7 @@ import BlueTurtle.writers.JSWriter;
  */
 public class JSONFormatter {
 	private XMLParser xmlParser;
-	private GDCParser gdcParser = GDCParser.getInstance();
-	private HashMap<String, String> categoryInfo = gdcParser.parseFile("./src/main/resources/asat-gdc-mapping.html");
-
+	
 	/**
 	 * Produces a list of warnings for by reading the output of PMD, Checkstyle
 	 * and Findbugs. Then converts it to JSON format and writes it to a
@@ -42,7 +36,6 @@ public class JSONFormatter {
 		totalWarnings.addAll(parseCheckStyleXML());
 		totalWarnings.addAll(parsePMDXML());
 		totalWarnings.addAll(parseFindBugsXML());
-		new ProjectInfoFinder().findFiles(new File(JavaController.getUserDir()));
 		writeJSON(totalWarnings);
 	}
 

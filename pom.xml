@@ -82,6 +82,7 @@
         			<exclude>**/GUI*</exclude>
         			<exclude>**/GUIController*</exclude>
         			<exclude>**/SelectButtonEventHandler*</exclude>
+        			<exclude>**/Main*</exclude>
     			</excludes>
 				</configuration>
     			<executions>
@@ -156,6 +157,7 @@
         			<exclude>**/GUI*</exclude>
         			<exclude>**/GUIController*</exclude>
         			<exclude>**/SelectButtonEventHandler*</exclude>
+        			<exclude>**/Main*</exclude>
     			</excludes>
 				</configuration>
                 <reportSets>

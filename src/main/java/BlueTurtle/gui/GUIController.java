@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.TSE.Main;
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.gui.GUIController.ASAT;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -162,6 +163,7 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 	public void handle(MouseEvent event) {
 		setOutputFiles();
 		try {
+			new ProjectInfoFinder().findFiles(new File(GUIController.getSourcePath()));
 			Main.runVisualization();
 			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
 		} catch (IOException e) {

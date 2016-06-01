@@ -1,7 +1,6 @@
 package BlueTurtle.parsers;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -118,14 +117,12 @@ public class FindBugsXMLParser extends XMLParser {
 
 				String classification = classify(ruleName);
 
-				// get the classPaths list from ProjectInfoFinder.
-				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
-
 				// replace the dot in the file name with file separator.
 				String fileNWithSep = fileName.replaceAll("\\.", Matcher.quoteReplacement(File.separator)) + ".java";
 
 				// for-loop in stream.
-				String filePath = classPaths.stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
+				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep))
+						.findFirst().get();
 
 				// Get the name of the file where the warning is from.
 				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1,
