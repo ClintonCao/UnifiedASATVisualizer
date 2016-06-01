@@ -62,6 +62,18 @@ div#left-menu{
   color: #ED4337;
   font-family: 'Roboto Mono', sans-serif;
 }
+#maintainabilityDefectsLabel{
+  color: #ED4337;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#functionalDefectsLabel{
+  color: #12B212;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#otherLabel{
+  color: #75B4EB;
+  font-family: 'Roboto Mono', sans-serif;
+}
 
 /* 
  * Styling for the chart
