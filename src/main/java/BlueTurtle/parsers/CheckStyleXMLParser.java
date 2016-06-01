@@ -120,13 +120,7 @@ public class CheckStyleXMLParser extends XMLParser {
 				// separator.
 				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
 
-				// debug info.
-				System.out.println("........................");
-				System.out.println(fileNWithSep);
-				System.out.println(classPaths.size());
-				System.out.println("........................");
-
-				// for-loop in stream, find correct filePath.
+				//for-loop in stream, find correct filePath.
 				String filePath = classPaths.stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
 
 				// Get the name of the file where the warning is from.

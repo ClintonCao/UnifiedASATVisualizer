@@ -77,13 +77,20 @@
     			<groupId>org.jacoco</groupId>
     			<artifactId>jacoco-maven-plugin</artifactId>
     			<version>0.7.5.201505241946</version>
+    			<configuration>
+   				 <excludes>
+        			<exclude>**/GUI*</exclude>
+        			<exclude>**/GUIController*</exclude>
+        			<exclude>**/SelectButtonEventHandler*</exclude>
+    			</excludes>
+				</configuration>
     			<executions>
-       			 	<execution>
-            		<id>prepare-agent</id>
+       			  <execution>
+            	 	<id>prepare-agent</id>
             		<goals>
-               		 <goal>prepare-agent</goal>
+               			<goal>prepare-agent</goal>
             		</goals>
-        			</execution>
+        		  </execution>
     			</executions>
 			</plugin>
 						
@@ -141,10 +148,24 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.7</version>
-			</plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.5.201505241946</version>
+                <configuration>
+   				 <excludes>
+        			<exclude>**/GUI*</exclude>
+        			<exclude>**/GUIController*</exclude>
+        			<exclude>**/SelectButtonEventHandler*</exclude>
+    			</excludes>
+				</configuration>
+                <reportSets>
+                <reportSet>
+                    <reports>
+                        <report>report</report>
+                    </reports>
+                </reportSet>
+            </reportSets>
+            </plugin>
 
 			<!-- PMD configuration for JUnit tests -->
 			<plugin>
@@ -169,6 +190,7 @@
                     <includeTests>true</includeTests>
                  </configuration>
 			</plugin>
+			
 		</plugins>
 	</reporting>
 	

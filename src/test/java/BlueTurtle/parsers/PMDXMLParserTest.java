@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,6 +48,17 @@ public class PMDXMLParserTest {
 	@Before
 	public void setUp() throws IOException {
 		new ProjectInfoFinder().findFiles(new File(srcDir));
+	}
+
+	/**
+	 * Clean up the attributes of ProjectInfoFinder.
+	 */
+	@After
+	public void cleanUp() {
+		ProjectInfoFinder.getClassLocs().clear();
+		ProjectInfoFinder.getPackages().clear();
+		ProjectInfoFinder.getClassPaths().clear();
+		ProjectInfoFinder.getClassPackage().clear();
 	}
 
 	/**
