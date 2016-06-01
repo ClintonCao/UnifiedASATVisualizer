@@ -91,5 +91,14 @@ public class ComponentSummarizer extends Summarizer {
 	public int hashCode() {
 		return java.util.Objects.hash(packageName, fileName, filePath, warningList, numberOfWarnings, warningTypes);
 	}
+
+	@Override
+	public String toString() {
+		return "ComponentSummarizer [fileName=" + fileName + ", filePath=" + filePath + ", warningList=" + warningList
+				+ ", loc=" + loc + ", packageName=" + packageName + ", numberOfWarnings=" + numberOfWarnings
+				+ ", warningTypes=" + warningTypes + ", numberOfCheckStyleWarnings=" + numberOfCheckStyleWarnings
+				+ ", numberOfPMDWarnings=" + numberOfPMDWarnings + ", numberOfFindBugsWarnings="
+				+ numberOfFindBugsWarnings + "]";
+	}
 	
 }
