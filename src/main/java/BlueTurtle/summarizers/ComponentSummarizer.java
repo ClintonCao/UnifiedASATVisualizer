@@ -16,10 +16,14 @@ import lombok.Getter;
  */
 public class ComponentSummarizer extends Summarizer {
 
-	@Getter private String fileName;
-	@Getter private String filePath;
-	@Getter private List<Warning> warningList;
-	@Getter private int loc;
+	@Getter
+	private String fileName;
+	@Getter
+	private String filePath;
+	@Getter
+	private List<Warning> warningList;
+	@Getter
+	private int loc;
 
 	/**
 	 * Constructor.
@@ -58,9 +62,9 @@ public class ComponentSummarizer extends Summarizer {
 				warningList.add(w);
 				incrementNumberOfWarnings(ASAT.valueOf(warningType));
 			}
-			
+
 		}
-		
+
 	}
 
 	/**
@@ -83,7 +87,7 @@ public class ComponentSummarizer extends Summarizer {
 				&& warningTypes.equals(that.warningTypes));
 
 	}
-	
+
 	/**
 	 * HashCode for ComponentSummarizer.
 	 */
@@ -92,6 +96,9 @@ public class ComponentSummarizer extends Summarizer {
 		return java.util.Objects.hash(packageName, fileName, filePath, warningList, numberOfWarnings, warningTypes);
 	}
 
+	/**
+	 * toString method for ComponentSummarizer.
+	 */
 	@Override
 	public String toString() {
 		return "ComponentSummarizer [fileName=" + fileName + ", filePath=" + filePath + ", warningList=" + warningList
@@ -100,5 +107,5 @@ public class ComponentSummarizer extends Summarizer {
 				+ ", numberOfPMDWarnings=" + numberOfPMDWarnings + ", numberOfFindBugsWarnings="
 				+ numberOfFindBugsWarnings + "]";
 	}
-	
+
 }
