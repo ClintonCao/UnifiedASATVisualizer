@@ -83,7 +83,7 @@ public class CheckStyleXMLParser extends XMLParser {
 				// Convert the node to an element.
 				Element warningElement = (Element) warning;
 
-				// message of warning
+				// The message contained by the warning.
 				String message = warningElement.getAttribute("message");
 
 				// line number where the warning is located.

@@ -84,13 +84,13 @@ public class FindBugsXMLParser extends XMLParser {
 				// Convert the node to an element.
 				Element warningElement = (Element) warning;
 
-				// message of warning
+				// The message contained by the warning.
 				String message = warningElement.getAttribute("message");
 
-				// category of warning
+				// The category of warning.
 				String category = warningElement.getAttribute("category");
 
-				// priority of warning
+				// The priority of warning, can be high or low.
 				String priority = warningElement.getAttribute("priority");
 
 				// line number where the warning is located.

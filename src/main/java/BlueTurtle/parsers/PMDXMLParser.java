@@ -99,13 +99,13 @@ public class PMDXMLParser extends XMLParser {
 				// Convert the node to an element.
 				Element warningElement = (Element) warning;
 
-				// packageName of warning
+				// package which warning is in.
 				String packageName = warningElement.getAttribute("package");
 
-				// ruleSet of warning
+				// the ruleSet of warning.
 				String ruleSet = warningElement.getAttribute("ruleset");
 
-				// method of warning
+				// method of warning.
 				String method = warningElement.getAttribute("method");
 
 				// line number where the warning is located.
@@ -114,28 +114,23 @@ public class PMDXMLParser extends XMLParser {
 				// Get the category of the warning.
 				String ruleName = warningElement.getAttribute("rule");
 
-				// PMD rule name is a special concatenation of rule set and rule
-				// name
+				// PMD rule name is a special concatenation of rule set and rule name.
 				String pmdRN = ruleSet.replace(" ", "").toLowerCase() + ".xml/" + ruleName;
 
-				// find the correct classification given the rule name and the
-				// rule set.
+				// find the correct classification given the rule name and the rule set.
 				String classification = classify(pmdRN);
 
-				// replace the backward slash in the file name with file
-				// separator.
+				// replace the backward slash in the file name with file separator.
 				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
 
 				// for-loop in stream, find correct filePath.
 				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
 
 				// Get the name of the file where the warning is from.
-				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1,
-						fileNWithSep.length());
+				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
 
 				// Add warning to the list of warnings.
-				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName,
-						classification));
+				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName, classification));
 			}
 		}
 	}
