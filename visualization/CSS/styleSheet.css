@@ -189,7 +189,7 @@ rect {
   cursor: pointer;
 }
 .children:hover rect.child {
-  fill: rgba(55, 58, 60, 0.8);
+  fill: rgba(255,255,255, 0.25);
 }
 g.children:hover{
   stroke-width: 0.3px;

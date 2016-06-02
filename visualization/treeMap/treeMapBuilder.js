@@ -132,8 +132,6 @@ var treeMapBuilder = (function() {
 		// id for all squares
 		var id = 0;
 
-        console.log(d);
-
         /*
          * Creates a tooltip that will be shown on hover over a node
          */
@@ -143,6 +141,10 @@ var treeMapBuilder = (function() {
             .style("position", "absolute")
             .style("z-index", "10")
             .style("visibility", "hidden");
+
+        console.log("-----------------------Displaying d: ----------------------")
+        console.log(name(d));
+        console.log(d);
 
         /* 
          * Creates the navigation balk where you can keep track of
@@ -225,9 +227,11 @@ var treeMapBuilder = (function() {
         function fastReload() {
             reloadContent();
             var newNode = findNode(currentNodePath, root);
-            g.filter(function(newNode) {
-                return newNode;
-            });
+            console.log("---------------Found node:--------------");
+            console.log(newNode);
+            // g.filter(function(newNode) {
+            //     return newNode;
+            // });
             transition(newNode);
         }
 
@@ -237,7 +241,6 @@ var treeMapBuilder = (function() {
             for (var i = 0; i < path.length; i++) {
                 node = node._children[path[i]]
                 console.log(currentNodePath);
-                //console.log(node);
             }
             return node;
         }
@@ -259,6 +262,9 @@ var treeMapBuilder = (function() {
                 return d._children || [d];
             })
             .enter().append("g");
+
+        console.log("---------------Children:--------------");
+        console.log(children);
 
         children.append("rect")
             .attr("class", "child")
@@ -380,6 +386,8 @@ var treeMapBuilder = (function() {
             });*/
 
         function navigationDown(d) {
+            console.log("-----------------Down to: -------------------")
+            console.log(d);
             currentNodePath.push(findChildNumber(d, d.parent));
             transition(d)
         }
@@ -399,13 +407,20 @@ var treeMapBuilder = (function() {
         }
 
         function navigationUp(d) {
+            console.log("-----------------Up to: -------------------")
+            console.log(d);
             currentNodePath.pop();
             transition(d)
         }
 
         function transition(d) {
 
-            if (transitioning || !d) return;
+            console.log("-----------------Transitioning to: -------------------");
+            console.log(d);
+
+            if (transitioning || !d) {
+                return;
+            }
             transitioning = true;
             appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
 
@@ -423,12 +438,16 @@ var treeMapBuilder = (function() {
             svg.style("shape-rendering", null);
 
             // Draw child nodes on top of parent nodes.
-            svg.selectAll(".depth").sort(function(a, b) {
-                return a.depth - b.depth;
-            });
+            // svg.selectAll(".depth").sort(function(a, b) {
+            //     return a.depth - b.depth;
+            // });
 
             // Fade-in entering text.
             g2.selectAll("text").style("fill-opacity", 0);
+            console.log("-----------------t1: -------------------")
+            console.log(t1.selectAll("rect"));
+            console.log("-----------------t2: -------------------")
+            console.log(t2.selectAll("rect"));
 
             // Transition to the new view.
             t1.selectAll(".ptext").call(text).style("fill-opacity", 0);
