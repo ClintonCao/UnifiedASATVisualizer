@@ -1,3 +1,9 @@
+var CheckStyleElement = document.getElementById("checkStyleLabel");
+var PMDElement = document.getElementById("PMDLabel");
+var FindBugsElement = document.getElementById("FindBugsLabel");
+var MaintainabilityDefectsElement = document.getElementById("maintainabilityDefectsLabel");
+var FunctionDefectsElement = document.getElementById("functionalDefectsLabel");
+var OtherElement = document.getElementById("otherLabel");
 
 /*
  * Handles click on checkboxes for showing results of different tools
@@ -20,12 +26,6 @@ function handleClickTreeMapTypeSat(value, checked) {
  * Sets all ASAT and Categorie labels to white
  */
 function setAllLabelsWhite() {
-	var CheckStyleElement = document.getElementById("checkStyleLabel");
-	var PMDElement = document.getElementById("PMDLabel");
-	var FindBugsElement = document.getElementById("FindBugsLabel");
-	var MaintainabilityDefectsElement = document.getElementById("maintainabilityDefectsLabel");
-	var FunctionDefectsElement = document.getElementById("functionalDefectsLabel");
-	var OtherElement = document.getElementById("otherLabel");
 	CheckStyleElement.style.color = "#FFFFFF";
 	PMDElement.style.color = "#FFFFFF";
 	FindBugsElement.style.color = "#FFFFFF";
@@ -38,12 +38,6 @@ function setAllLabelsWhite() {
  * Colors based on ASAT so the labels are given colours
  */
 function setASATColoured() {
-	var CheckStyleElement = document.getElementById("checkStyleLabel");
-	var PMDElement = document.getElementById("PMDLabel");
-	var FindBugsElement = document.getElementById("FindBugsLabel");
-	var MaintainabilityDefectsElement = document.getElementById("maintainabilityDefectsLabel");
-	var FunctionDefectsElement = document.getElementById("functionalDefectsLabel");
-	var OtherElement = document.getElementById("otherLabel");
 	CheckStyleElement.style.color = "#12B212";
 	PMDElement.style.color = "#75B4EB";
 	FindBugsElement.style.color = "#ED4337";
@@ -56,12 +50,6 @@ function setASATColoured() {
  * Colors based on Categories so the labels are given colours
  */
 function setCategoriesColoured() {
-	var CheckStyleElement = document.getElementById("checkStyleLabel");
-	var PMDElement = document.getElementById("PMDLabel");
-	var FindBugsElement = document.getElementById("FindBugsLabel");
-	var MaintainabilityDefectsElement = document.getElementById("maintainabilityDefectsLabel");
-	var FunctionDefectsElement = document.getElementById("functionalDefectsLabel");
-	var OtherElement = document.getElementById("otherLabel");
 	CheckStyleElement.style.color = "#FFFFFF";
 	PMDElement.style.color = "#FFFFFF";
 	FindBugsElement.style.color = "#FFFFFF";

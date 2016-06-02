@@ -234,6 +234,7 @@ var treeMapBuilder = (function() {
             var node = root;
             for (var i = 0; i < path.length; i++) {
                 node = node._children[path[i]]
+                console.log(node);
             }
             return node;
         }
@@ -563,7 +564,6 @@ var treeMapBuilder = (function() {
             .attr("y", -margin.top)
             .attr("width", width)
             .attr("height", margin.top);
-
 
         grandparent.append("text")
             .attr("x", 6)
