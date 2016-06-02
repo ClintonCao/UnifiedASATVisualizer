@@ -259,7 +259,18 @@ var treeMapBuilder = (function() {
 
         children.append("rect")
             .attr("class", "child")
-            .call(rect)
+            .attr("x", function(d) {
+                return x(d.x);
+            })
+            .attr("y", function(d) {
+                return y(d.y);
+            })
+            .attr("width", function(d) {
+                return x(d.x + d.dx) - x(d.x);
+            })
+            .attr("height", function(d) {
+                return y(d.y + d.dy) - y(d.y);
+            })
 			.style("fill", function(d) {
 				var ratios =  backgroundObject.getRatios(d);
 				var weight = d.warnings / d.value;
@@ -282,9 +293,28 @@ var treeMapBuilder = (function() {
             })
             .call(textBottomRight);
 
-        g.append("rect")
+        if(currentNodePath.length == 1) {
+            g.append("rect")
             .attr("class", "parent")
+            .attr("class", "child")
+            .attr("x", function(d) {
+                return x(d.x);
+            })
+            .attr("y", function(d) {
+                return y(d.y);
+            })
+            .attr("width", function(d) {
+                return x(d.x + d.dx) - x(d.x);
+            })
+            .attr("height", function(d) {
+                return y(d.y + d.dy) - y(d.y);
+            });
+        } else {
+            g.append("rect")
+            .attr("class", "parent")
+            .attr("class", "child")
             .call(rect);
+        }
 
         var t = g.append("text")
             .attr("class", "ptext")
