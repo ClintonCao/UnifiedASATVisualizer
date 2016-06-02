@@ -45,7 +45,7 @@ var backgroundObject = (function() {
 	function getNormalColors() {
 			return d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
 	}
-	function calculateBackgroundGradient(svg,ratioArray,weight, id){
+	function calculateBackgroundGradient(svg,ratioArray,weight, id,x,y){
 		var total = ratioArray[0] + ratioArray[1] + ratioArray[2];
 			if ( total == 0 ) {
 				var firstRatio = 0;
@@ -54,9 +54,13 @@ var backgroundObject = (function() {
 				var secondRatio1 = 0.01;
 				var end = 0;
 			}else{
-				var firstRatio = ratioArray[0] / total * 100;
+				var firstRatio = ratioArray[0] / total;
+				var secondRatio = ( ratioArray[0] + ratioArray[1]) / total;
+
+				var tuple = gradientCalculator.calculate(x,y, firstRatio, secondRatio);
+				firstRatio = tuple[0]
+				secondRatio = tuple[1]
 				var firstRatio1 = firstRatio + 0.01;
-				var secondRatio = ( ratioArray[0] + ratioArray[1]) / total * 100;
 				var secondRatio1 = secondRatio + 0.01;
 				var end = 100;
 			}
@@ -71,7 +75,7 @@ var backgroundObject = (function() {
 		.attr("x1", "0%")
 		.attr("y1", "0%")
 		.attr("x2", "100%")
-		.attr("y2", "0%")
+		.attr("y2", "100%")
 		.attr("spreadMethod", "pad");
 	console.log(weight);
 	gradient.append("stop")
@@ -125,17 +129,17 @@ var backgroundObject = (function() {
 		return gradient;
 	}
 	return {
-        getBackground: function(svg,ratioTuple,weight, id) {
+        getBackground: function(svg,ratioTuple,weight, id,x,y) {
 			if ( weight > 1 ){ weight = 1;}
 			switch(colorMethod) {
 				case 0:
 					return calculateBackground(svg, weight, id);
 					break;
 				case 1:
-					return calculateBackgroundGradient(svg,ratioTuple[0],weight, id);
+					return calculateBackgroundGradient(svg,ratioTuple[0],weight, id,x,y);
 					break;
 				case 2:
-					return calculateBackgroundGradient(svg,ratioTuple[1],weight, id);
+					return calculateBackgroundGradient(svg,ratioTuple[1],weight, id,x,y);
 					break;
 			} 
 		},
