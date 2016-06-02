@@ -37,21 +37,9 @@ public class CheckStyleXMLParser extends XMLParser {
 		// List to store the warnings.
 		List<Warning> checkStyleWarnings = new LinkedList<Warning>();
 
-		try {
-
-			// Instantiate things that are necessary for the parser.
-			File inputFile = new File(xmlFilePath);
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-
-			// Parse the file.
-			Document doc = dBuilder.parse(inputFile);
-
-			// Normalize the elements of the document.
-			doc.getDocumentElement().normalize();
 
 			// Get all list of files where there are warnings.
-			NodeList nList = doc.getElementsByTagName("file");
+			NodeList nList = setUp(xmlFilePath);
 
 			for (int i = 0; i < nList.getLength(); i++) {
 				// Get the file from the list.
@@ -71,12 +59,8 @@ public class CheckStyleXMLParser extends XMLParser {
 					NodeList warningList = fileElement.getElementsByTagName("error");
 
 					addWarnings(fileName, warningList, checkStyleWarnings);
-
 				}
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
 		return checkStyleWarnings;
 	}
