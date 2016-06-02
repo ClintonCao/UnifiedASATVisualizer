@@ -2,7 +2,6 @@ package BlueTurtle.parsers;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -41,7 +40,6 @@ public class FindBugsXMLParser extends XMLParser {
 		List<Warning> findBugsWarnings = new LinkedList<Warning>();
 		
 		try {
-
 			// Instantiate things that are necessary for the parser.
 			File inputFile = new File(xmlFilePath);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -67,12 +65,10 @@ public class FindBugsXMLParser extends XMLParser {
 					// Get the name of the file where the warning is from.
 					String fileName = fileElement.getAttribute("classname");
 					
-					
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("BugInstance");
 					
 					addWarnings(fileName, warningList, findBugsWarnings, nList);
-
 				}
 			}
 		} catch (Exception e) {

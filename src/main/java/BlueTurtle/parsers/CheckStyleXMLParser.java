@@ -39,7 +39,6 @@ public class CheckStyleXMLParser extends XMLParser {
 		List<Warning> checkStyleWarnings = new LinkedList<Warning>();
 
 		try {
-
 			// Instantiate things that are necessary for the parser.
 			File inputFile = new File(xmlFilePath);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -87,7 +86,6 @@ public class CheckStyleXMLParser extends XMLParser {
 	 * 
 	 * @param fileName is the file name of the warning.
 	 * @param warningList is a list of warnings.
-	 * @param nList is the node list.
 	 * @param checkStyleWarnings is the CheckStyle warnings.
 	 * @return a list of FindBugs warnings.
 	 */
