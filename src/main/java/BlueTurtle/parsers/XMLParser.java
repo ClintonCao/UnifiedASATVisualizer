@@ -12,18 +12,18 @@ import BlueTurtle.warnings.Warning;
  *
  */
 public abstract class XMLParser implements Parser {
+	
+	private static String mdFilePath = "./src/main/resources/asat-gdc-mapping.html";
+
 
 	/**
 	 * Parse a XML file.
 	 * 
 	 * @param filePath
 	 *            the path to the file that needs to be parsed.
-	 * @param categoryInfo
-	 *            the category information from GDC.
-	 * 
 	 * @return a list of warnings.
 	 */
-	public abstract List<Warning> parseFile(String filePath, HashMap<String, String> categoryInfo);
+	public abstract List<Warning> parseFile(String filePath);
 
 	/**
 	 * Classify the rule name to the correct classification according to
@@ -31,13 +31,13 @@ public abstract class XMLParser implements Parser {
 	 * 
 	 * @param ruleName
 	 *            the violated rule name of the warning.
-	 * 
-	 * @param categoryInfo
-	 *            the information from GDC.
-	 * 
+	 *
 	 * @return the category of a warning(based on the GDC).
 	 */
-	public static String classify(String ruleName, HashMap<String, String> categoryInfo) {
+	public static String classify(String ruleName) {
+		GDCParser gp = GDCParser.getInstance();
+		gp.parseFile(mdFilePath);
+		HashMap<String, String> categoryInfo = gp.getCategoryInfo();
 		String classification = categoryInfo.get(ruleName);
 		return classification;
 	}

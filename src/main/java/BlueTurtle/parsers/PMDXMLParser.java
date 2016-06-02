@@ -1,9 +1,9 @@
 package BlueTurtle.parsers;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -13,6 +13,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.warnings.PMDWarning;
 import BlueTurtle.warnings.Warning;
 
@@ -32,12 +33,11 @@ public class PMDXMLParser extends XMLParser {
 	 * @return a list of PMD warnings.
 	 */
 	@Override
-	public List<Warning> parseFile(String xmlFilePath, HashMap<String, String> categoryInfo) {
+	public List<Warning> parseFile(String xmlFilePath) {
 		// List to store the warnings.
 		List<Warning> pmdWarnings = new LinkedList<Warning>();
-		
-		try {
 
+		try {
 			// Instantiate things that are necessary for the parser.
 			File inputFile = new File(xmlFilePath);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -64,12 +64,12 @@ public class PMDXMLParser extends XMLParser {
 					String filePath = fileElement.getAttribute("name");
 
 					// Get the name of the file where the warning is from.
-					String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1, filePath.length());
+					String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
 
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("violation");
-					
-					addWarnings(filePath, fileName, warningList, nList, pmdWarnings, categoryInfo);
+
+					addWarnings(fileName, warningList, pmdWarnings);
 
 				}
 			}
@@ -78,19 +78,19 @@ public class PMDXMLParser extends XMLParser {
 		}
 		return pmdWarnings;
 	}
-	
+
 	/**
-	 * add individual warning to the warningList.
+	 * Add individual warning to the warningList.
 	 * 
-	 * @param fileName is the file name of the warning.
-	 * @param warningList is a list of warnings.
-	 * @param nList is the node list.
-	 * @param findBugsWarnings is the findBugs warnings.
-	 * @param categoryInfo is the category information.
-	 * @return a list of FindBugs warnings.
+	 * @param fileName
+	 *            is the file name of the warning.
+	 * @param warningList
+	 *            is a list of warnings.
+	 * @param pmdWarnings
+	 *            is list of PMD warnings.
 	 */
-	public List<Warning> addWarnings(String filePath, String fileName, NodeList warningList, NodeList nList, List<Warning> pmdWarnings, HashMap<String, String> categoryInfo) {
-		
+	public void addWarnings(String fileName, NodeList warningList, List<Warning> pmdWarnings) {
+
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
 			Node warning = warningList.item(j);
@@ -104,30 +104,40 @@ public class PMDXMLParser extends XMLParser {
 
 				// ruleSet of warning
 				String ruleSet = warningElement.getAttribute("ruleset");
-				
+
 				// method of warning
 				String method = warningElement.getAttribute("method");
-				
+
 				// line number where the warning is located.
 				int line = Integer.parseInt(warningElement.getAttribute("beginline"));
 
 				// Get the category of the warning.
 				String ruleName = warningElement.getAttribute("rule");
-				
-				// PMD rule name is a special concatenation of rule set and rule name
-				String pmdRN = ruleSet.toLowerCase() + ".xml/" + ruleName; 
-				
-				
-				String classification = categoryInfo.get(pmdRN);
+
+				// PMD rule name is a special concatenation of rule set and rule
+				// name
+				String pmdRN = ruleSet.replace(" ", "").toLowerCase() + ".xml/" + ruleName;
+
+				// find the correct classification given the rule name and the
+				// rule set.
+				String classification = classify(pmdRN);
+
+				// replace the backward slash in the file name with file
+				// separator.
+				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
+
+				// for-loop in stream, find correct filePath.
+				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
+
+				// Get the name of the file where the warning is from.
+				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1,
+						fileNWithSep.length());
 
 				// Add warning to the list of warnings.
-				pmdWarnings.add(new PMDWarning(filePath, fileName, line, packageName, ruleSet, method, ruleName, classification));
+				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName,
+						classification));
 			}
 		}
-		
-		return pmdWarnings;
 	}
-	
-		
 
 }

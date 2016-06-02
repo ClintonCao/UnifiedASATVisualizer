@@ -31,8 +31,7 @@ public class JSWriter {
 	/**
 	 * Constructor. Only this class can instantiate itself.
 	 */
-	private JSWriter() {
-	}
+	private JSWriter() { }
 
 	/**
 	 * Get an instance of this class.

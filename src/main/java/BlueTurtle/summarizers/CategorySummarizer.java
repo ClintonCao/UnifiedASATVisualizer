@@ -45,7 +45,6 @@ public class CategorySummarizer extends Summarizer {
 	@Override
 	public void summarise(List<Warning> warnings) {
 		for (Warning w : warnings) {
-			
 			String rule = w.getRuleName();
 			String currentC = categoryInfo.get(rule);
 			if (currentC.equals(category)) {
@@ -82,6 +81,18 @@ public class CategorySummarizer extends Summarizer {
 	@Override
 	public int hashCode() {
 		return java.util.Objects.hash(category, warningList, numberOfWarnings, categoryInfo);
+	}
+	
+	/**
+	 * toString for CategorySummarizer.
+	 */
+	@Override
+	public String toString() {
+		return "CategorySummarizer [category=" + category + ", warningList=" + warningList + ", categoryInfo="
+				+ categoryInfo + ", packageName=" + packageName + ", numberOfWarnings=" + numberOfWarnings
+				+ ", warningTypes=" + warningTypes + ", numberOfCheckStyleWarnings=" + numberOfCheckStyleWarnings
+				+ ", numberOfPMDWarnings=" + numberOfPMDWarnings + ", numberOfFindBugsWarnings="
+				+ numberOfFindBugsWarnings + "]";
 	}
 	
 }
