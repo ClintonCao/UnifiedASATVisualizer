@@ -2,10 +2,15 @@ package BlueTurtle.parsers;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+
+import BlueTurtle.summarizers.Summarizer;
+import BlueTurtle.writers.JSWriter;
+import lombok.Getter;
 
 
 /**
@@ -21,8 +26,28 @@ import org.jsoup.select.Elements;
  */
 public class GDCParser extends MarkdownParser {
 	
-	private HashMap<String, String> categoryInfo;
+	private static GDCParser gdcParser = null;
 	
+	@Getter
+	private static HashMap<String, String> categoryInfo;
+	
+	/**
+	 * Constructor. Only through this can GDCParser instantiate itself.
+	 */
+	private GDCParser() {
+	}
+
+	/**
+	 * Get an instance of GDCParser.
+	 * 
+	 * @return an instance of current class.
+	 */
+	public static synchronized GDCParser getInstance() {
+		if (gdcParser == null) {
+			gdcParser = new GDCParser();
+		}
+		return gdcParser;
+	}
 
 	/**
 	 * Parse a GDC grouping file.
@@ -31,7 +56,6 @@ public class GDCParser extends MarkdownParser {
 	 *            the location of the GDC grouping file.
 	 * @return a Hashmap of category informations.
 	 */
-	@Override
 	public HashMap<String, String> parseFile(String mdFilePath) {
 		// the hashmap to store the category informations.
 		categoryInfo = new HashMap<String, String>();

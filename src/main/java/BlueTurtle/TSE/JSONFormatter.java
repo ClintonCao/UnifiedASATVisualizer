@@ -28,7 +28,7 @@ import BlueTurtle.writers.JSWriter;
  */
 public class JSONFormatter {
 	private XMLParser xmlParser;
-	private GDCParser gdcParser = new GDCParser();
+	private GDCParser gdcParser = GDCParser.getInstance();
 	private HashMap<String, String> categoryInfo = gdcParser.parseFile("./src/main/resources/asat-gdc-mapping.html");
 
 	/**
@@ -57,7 +57,7 @@ public class JSONFormatter {
 	 */
 	private List<Warning> parseCheckStyleXML() throws IOException {
 		xmlParser = new CheckStyleXMLParser();
-		return xmlParser.parseFile(JavaController.getCheckStyleOutputFile(), categoryInfo);
+		return xmlParser.parseFile(JavaController.getCheckStyleOutputFile());
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class JSONFormatter {
 	 */
 	private List<Warning> parsePMDXML() throws IOException {
 		xmlParser = new PMDXMLParser();
-		return xmlParser.parseFile(JavaController.getPmdOutputFile(), categoryInfo);
+		return xmlParser.parseFile(JavaController.getPmdOutputFile());
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class JSONFormatter {
 	 */
 	private List<Warning> parseFindBugsXML() throws IOException {
 		xmlParser = new FindBugsXMLParser();
-		return xmlParser.parseFile(JavaController.getFindBugsOutputFile(), categoryInfo);
+		return xmlParser.parseFile(JavaController.getFindBugsOutputFile());
 	}
 
 	/**
