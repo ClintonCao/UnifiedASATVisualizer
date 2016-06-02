@@ -16,9 +16,12 @@ public class CodeFile {
 		BufferedReader writer = new BufferedReader(new FileReader(file));
 		String nextLine;
 		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append('"');
 		while((nextLine = writer.readLine()) != null) {
 			stringBuilder.append(nextLine);
+			stringBuilder.append("\n");
 		}
+		stringBuilder.append('"');
 		setCode(stringBuilder.toString());
 		writer.close();
 	}

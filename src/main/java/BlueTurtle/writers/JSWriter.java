@@ -70,12 +70,10 @@ public class JSWriter {
 	public void writeSourceCodeToJS(CodeFile codeFile, String outputFilePath) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String json = gson.toJson(summarizedWarnings);
-		json += ';';
 
 		writer.write("var inputData = ");
 		writer.newLine();
-		writer.write(json);
+		writer.write(codeFile.getCode());
 		writer.flush();
 		writer.close();
 	}

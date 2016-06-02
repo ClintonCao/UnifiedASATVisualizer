@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import BlueTurtle.TSE.CodeFile;
 import BlueTurtle.computers.LOCComputer;
+import BlueTurtle.writers.JSWriter;
 import lombok.Getter;
 
 /**
@@ -67,13 +69,13 @@ public class ProjectInfoFinder {
 			classPackage.put(path, packageName); // put entry of class and its package
 			packages.add(packageName); // add package to the list of packages
 			
-//			CodeFile codeFile = new CodeFile(); 
-//			codeFile.setPath(path);
-//			codeFile.getCodeFromFile(file);
-//			
-//			JSWriter jswriter = JSWriter.getInstance();
-//			
-//			jswriter.writeSourceCodeToJS(codeFile, "/sourcecodetest.txt");
+			CodeFile codeFile = new CodeFile(); 
+			codeFile.setPath(path);
+			codeFile.getCodeFromFile(file);
+			
+			JSWriter jswriter = JSWriter.getInstance();
+			
+			jswriter.writeSourceCodeToJS(codeFile, "./sourcecodetest.txt");
 		}
 	}
 
