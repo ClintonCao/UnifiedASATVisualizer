@@ -46,19 +46,19 @@ public class CheckStyleXMLParser extends XMLParser {
 				Node file = nList.item(i);
 
 				if (file.getNodeType() == Node.ELEMENT_NODE) {
-					// Convert the node to an element.
-					Element fileElement = (Element) file;
 
 					// Get the path of the file where the warning is from.
-					String filePath = fileElement.getAttribute("name");
+					String filePath = ((Element) file).getAttribute("name");
 
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
 
 					// Get all the warnings.
-					NodeList warningList = fileElement.getElementsByTagName("error");
+					NodeList warningList = ((Element) file).getElementsByTagName("error");
 
-					addWarnings(fileName, warningList, checkStyleWarnings);} }
+					addWarnings(fileName, warningList, checkStyleWarnings);
+				} 
+			}
 
 		return checkStyleWarnings;
 	}
@@ -104,7 +104,9 @@ public class CheckStyleXMLParser extends XMLParser {
 				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
 
 				// Add warning to the list of warnings.
-				checkStyleWarnings.add(new CheckStyleWarning(filePath, finalFileName, line, message, ruleName, classification));}}
+				checkStyleWarnings.add(new CheckStyleWarning(filePath, finalFileName, line, message, ruleName, classification));
+			}
+		}
 		
 		return checkStyleWarnings;
 
