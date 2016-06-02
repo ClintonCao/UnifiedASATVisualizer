@@ -57,31 +57,48 @@ function setCategoriesColoured() {
 	FunctionDefectsElement.style.color = "#12B212";
 	OtherElement.style.color = "#75B4EB";
 }
+
 /*
  * Handles click on checkboxes for using different colorscales
  */
 function handleClickColorScale(radioButton) {
-	if ( radioButton.value == "normalAbsolute" ){
+	if ( radioButton.value == "normal" ){
 		setAllLabelsWhite();
 		backgroundObject.setColorMethod(0);
-	}else if ( radioButton.value == "normalRelative" ){
-		setAllLabelsWhite();
+	} else if ( radioButton.value == "asat" ){
+		setASATColoured();
 		backgroundObject.setColorMethod(1);
-	}else if ( radioButton.value == "asatAbsolute" ){
-		setASATColoured();
+	} else if ( radioButton.value == "category" ){
+		setCategoriesColoured();
 		backgroundObject.setColorMethod(2);
-	}else if ( radioButton.value == "asatRelative" ){
-		setASATColoured();
-		backgroundObject.setColorMethod(3);
-	}else if ( radioButton.value == "categoryAbsolute" ){
-		setCategoriesColoured();
-		backgroundObject.setColorMethod(4);
-	}else if ( radioButton.value == "categoryRelative" ){
-		setCategoriesColoured();
-		backgroundObject.setColorMethod(5);
 	}
 }
 
+/*
+ * Handles click for relative
+ */
+function handleClickRelativeColours(radioButton) {
+	var normalButtonElement = document.getElementById("normalButton");
+	var asatButtonElement = document.getElementById("asatButton");
+	var categoryButtonElement = document.getElementById("categoryButton");
+
+	if($(radioButton).prop('checked')) {
+		backgroundObject.setColorsRelative();
+	} else {
+		backgroundObject.setColorsAbsolute();
+	}
+
+	if ( document.getElementById("normalButton").checked ){
+		setAllLabelsWhite();
+		backgroundObject.setColorMethod(0);
+	} else if ( document.getElementById("asatButton").checked ){
+		setASATColoured();
+		backgroundObject.setColorMethod(1);
+	} else if ( document.getElementById("categoryButton").checked ){
+		setCategoriesColoured();
+		backgroundObject.setColorMethod(2);
+	} 
+}
 
 /*
 * handles the clicks on Sat categories

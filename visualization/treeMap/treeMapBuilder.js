@@ -142,10 +142,6 @@ var treeMapBuilder = (function() {
             .style("z-index", "10")
             .style("visibility", "hidden");
 
-        console.log("-----------------------Displaying d: ----------------------")
-        console.log(name(d));
-        console.log(d);
-
         /* 
          * Creates the navigation balk where you can keep track of
          * which level you are and which you can use to navigate back
@@ -213,6 +209,8 @@ var treeMapBuilder = (function() {
                     handleClickTreeMapTypeSat($(this).prop('value'), $(this).prop('checked'));
                 } else if ($(this).prop('name') == "category") {
                     handleClickCategorySat($(this).prop('value'), $(this).prop('checked'));
+                } else if($(this).prop('name') == "relative") {
+                    handleClickRelativeColours($(this));
                 }
                 fastReload();
                 // animation time of the toggle button
@@ -227,8 +225,6 @@ var treeMapBuilder = (function() {
         function fastReload() {
             reloadContent();
             var newNode = findNode(currentNodePath, root);
-            console.log("---------------Found node:--------------");
-            console.log(newNode);
             // g.filter(function(newNode) {
             //     return newNode;
             // });
@@ -240,7 +236,6 @@ var treeMapBuilder = (function() {
             var node = root;
             for (var i = 0; i < path.length; i++) {
                 node = node._children[path[i]]
-                console.log(currentNodePath);
             }
             return node;
         }
@@ -262,9 +257,6 @@ var treeMapBuilder = (function() {
                 return d._children || [d];
             })
             .enter().append("g");
-
-        console.log("---------------Children:--------------");
-        console.log(children);
 
         children.append("rect")
             .attr("class", "child")
@@ -386,8 +378,6 @@ var treeMapBuilder = (function() {
             });*/
 
         function navigationDown(d) {
-            console.log("-----------------Down to: -------------------")
-            console.log(d);
             currentNodePath.push(findChildNumber(d, d.parent));
             transition(d)
         }
@@ -407,16 +397,11 @@ var treeMapBuilder = (function() {
         }
 
         function navigationUp(d) {
-            console.log("-----------------Up to: -------------------")
-            console.log(d);
             currentNodePath.pop();
             transition(d)
         }
 
         function transition(d) {
-
-            console.log("-----------------Transitioning to: -------------------");
-            console.log(d);
 
             if (transitioning || !d) {
                 return;
@@ -444,10 +429,6 @@ var treeMapBuilder = (function() {
 
             // Fade-in entering text.
             g2.selectAll("text").style("fill-opacity", 0);
-            console.log("-----------------t1: -------------------")
-            console.log(t1.selectAll("rect"));
-            console.log("-----------------t2: -------------------")
-            console.log(t2.selectAll("rect"));
 
             // Transition to the new view.
             t1.selectAll(".ptext").call(text).style("fill-opacity", 0);

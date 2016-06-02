@@ -34,19 +34,14 @@
                   <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap"> Treemap<br>
                   <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>-->
                   <h3>Color scale </h3>
-                  <input type="radio" id="absoluteButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);"  value="normalAbsolute">
-                  <div class="buttonText">Normal (Absolute)</div><br/>
-                  <input type="radio" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="normalRelative">
-                  <div class="buttonText">Normal (Relative)</div><br/>
-                  <input type="radio" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asatAbsolute">
-                  <div class="buttonText">ASAT (Absolute)</div><br/>
-                  <input type="radio" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asatRelative">
-                  <div class="buttonText">ASAT (Relative)</div><br/>
-                  <input type="radio" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="categoryAbsolute">
-                  <div class="buttonText">Category (Absolute)</div><br/>
-                  <input type="radio" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="categoryRelative">
-                  <div class="buttonText">Category (Relative)</div>
-                  
+                  <input type="radio" id="normalButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="normal">
+                  <div class="buttonText">Normal </div><br/>
+                  <input type="radio" id="asatButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asat">
+                  <div class="buttonText">ASAT </div><br/>
+                  <input type="radio" id="categoryButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="category">
+                  <div class="buttonText">Category</div><br/><br/>
+                  <div class="buttonText"><input type="checkbox" onClick="handleClickRelative(this)" data-toggle="toggle" data-size="mini" class="updateContent relative" name="relative" id="relativeButton" value="Relative"><label id="relativeLabel"> Relative</label><br></div>
+
                </form>
             </div>
          </div>

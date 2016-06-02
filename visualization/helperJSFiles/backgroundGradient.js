@@ -42,14 +42,6 @@ var backgroundObject = (function() {
 		}
 		return (worstRatio * 100);
 	}
-	function setColorsRelative(){
-		maxConstant = getRelativeWarnings();
-		reloadColorScale();
-	}
-	function setColorsAbsolute(){
-		maxConstant = 100;
-		reloadColorScale();
-	}
 	function getNormalColors() {
 			return d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
 	}
@@ -137,30 +129,23 @@ var backgroundObject = (function() {
 			if ( weight > 1 ){ weight = 1;}
 			switch(colorMethod) {
 				case 0:
-					setColorsAbsolute();
 					return calculateBackground(svg, weight, id);
 					break;
 				case 1:
-					setColorsRelative();
-					return calculateBackground(svg, weight, id);
+					return calculateBackgroundGradient(svg,ratioTuple[0],weight, id);
 					break;
 				case 2:
-					setColorsAbsolute();
-					return calculateBackgroundGradient(svg,ratioTuple[0],weight, id);
-					break;
-				case 3:
-					setColorsRelative();
-					return calculateBackgroundGradient(svg,ratioTuple[0],weight, id);
-					break;
-				case 4:
-					setColorsAbsolute();
-					return calculateBackgroundGradient(svg,ratioTuple[1],weight, id);
-					break;
-				case 5:
-					setColorsRelative();
 					return calculateBackgroundGradient(svg,ratioTuple[1],weight, id);
 					break;
 			} 
+		},
+		setColorsRelative: function(){
+			maxConstant = getRelativeWarnings();
+			reloadColorScale();
+		},
+		setColorsAbsolute: function(){
+			maxConstant = 100;
+			reloadColorScale();
 		},
 		setColorMethod: function(index){
 			colorMethod = index;

@@ -238,3 +238,11 @@ h4.category-titles{
 	size:15px;
   height:10px;
 }
+#relativeLabel{
+  display: inline-block;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 400;
+  size:15px;
+  height:10px;
+  padding-left: 7.5px;
+}
