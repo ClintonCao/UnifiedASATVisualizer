@@ -24,6 +24,7 @@ public class ProjectInfoFinder {
 	@Getter private static HashMap<String, Integer> classLocs = new HashMap<String, Integer>();
 	@Getter private static HashMap<String, String> classPackage = new HashMap<String, String>();
 	@Getter private static Set<String> packages = new HashSet<String>();
+	@Getter private static ArrayList<CodeFile> codeFiles = new ArrayList<CodeFile>();
 
 	/**
 	 * Find the class files (recursively) in the directory.
@@ -48,6 +49,9 @@ public class ProjectInfoFinder {
 				computeInformation(subdir);
 			}
 		}
+		JSWriter jswriter = JSWriter.getInstance();
+		
+		jswriter.writeSourceCodeToJS(codeFiles, "./sourcecodetest.js");
 	}
 
 	/**
@@ -72,10 +76,7 @@ public class ProjectInfoFinder {
 			CodeFile codeFile = new CodeFile(); 
 			codeFile.setPath(path);
 			codeFile.getCodeFromFile(file);
-			
-			JSWriter jswriter = JSWriter.getInstance();
-			
-			jswriter.writeSourceCodeToJS(codeFile, "./sourcecodetest.txt");
+			codeFiles.add(codeFile);
 		}
 	}
 

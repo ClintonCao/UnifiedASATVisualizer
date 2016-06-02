@@ -718,7 +718,7 @@ var inputData =
             "ruleName": "NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"
           }
         ],
-        "loc": 64,
+        "loc": 65,
         "packageName": "BlueTurtle.finders",
         "numberOfWarnings": 1,
         "warningTypes": [
@@ -829,7 +829,7 @@ var inputData =
             "ruleName": "DM_DEFAULT_ENCODING"
           }
         ],
-        "loc": 59,
+        "loc": 61,
         "packageName": "BlueTurtle.writers",
         "numberOfWarnings": 2,
         "warningTypes": [
