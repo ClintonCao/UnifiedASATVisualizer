@@ -51,7 +51,7 @@ public class ProjectInfoFinder {
 		}
 		JSWriter jswriter = JSWriter.getInstance();
 		
-		jswriter.writeSourceCodeToJS(codeFiles, "./sourcecodetest.js");
+		jswriter.writeSourceCodeToJS(codeFiles, "./src/main/resources/CodeFiles.js");
 	}
 
 	/**
