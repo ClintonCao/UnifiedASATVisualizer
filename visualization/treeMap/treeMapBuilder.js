@@ -132,6 +132,8 @@ var treeMapBuilder = (function() {
 		// id for all squares
 		var id = 0;
 
+        console.log(d);
+
         /*
          * Creates a tooltip that will be shown on hover over a node
          */
@@ -234,7 +236,8 @@ var treeMapBuilder = (function() {
             var node = root;
             for (var i = 0; i < path.length; i++) {
                 node = node._children[path[i]]
-                console.log(node);
+                console.log(currentNodePath);
+                //console.log(node);
             }
             return node;
         }
@@ -249,7 +252,6 @@ var treeMapBuilder = (function() {
             accumulateValue(root);
             accumulateWarnings(root);
             layout(root, treemap);
-            display(root);
         }
 
         var children = g.selectAll(".child")
