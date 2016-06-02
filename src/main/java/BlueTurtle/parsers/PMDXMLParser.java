@@ -5,10 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -37,21 +33,13 @@ public class PMDXMLParser extends XMLParser {
 		// List to store the warnings.
 		List<Warning> pmdWarnings = new LinkedList<Warning>();
 
-		try {
-			// Instantiate things that are necessary for the parser.
-			File inputFile = new File(xmlFilePath);
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-
-			// Parse the file.
-			Document doc = dBuilder.parse(inputFile);
-
-			// Normalize the elements of the document.
-			doc.getDocumentElement().normalize();
-
 			// Get all list of files where there are warnings.
-			NodeList nList = doc.getElementsByTagName("file");
+			NodeList nList = setUp(xmlFilePath);
 
+			// if there are no files with warnings, there return an empty list of warnings.
+			if (nList == null)
+				return pmdWarnings;
+			
 			for (int i = 0; i < nList.getLength(); i++) {
 				// Get the file from the list.
 				Node file = nList.item(i);
@@ -73,9 +61,7 @@ public class PMDXMLParser extends XMLParser {
 
 				}
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 		return pmdWarnings;
 	}
 
