@@ -1,6 +1,6 @@
 
 var backgroundObject = (function() {
-	var maxConstant = 100;
+	var maxConstant = 200;
 	var colorMethod = 0;
 	
 	var twoColors, color,greenTints,greenScale,blueTints, blueScale,redTints,redScale,grayTints,grayScale;
@@ -85,32 +85,32 @@ var backgroundObject = (function() {
 		.attr("spreadMethod", "pad");
 	gradient.append("stop")
 		.attr("offset", "0%")
-		.attr("stop-color", greenScale(weight*maxConstant))
+		.attr("stop-color", greenScale(weight*100))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", firstEdge)
-		.attr("stop-color",  greenScale(weight*maxConstant))
+		.attr("stop-color",  greenScale(weight*100))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", firstEdge)
-		.attr("stop-color", redScale(weight*maxConstant))
+		.attr("stop-color", redScale(weight*100))
 		.attr("stop-opacity", 1);
 	
 	gradient.append("stop")
 		.attr("offset", secondEdge)
-		.attr("stop-color", redScale(weight*maxConstant))
+		.attr("stop-color", redScale(weight*100))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", secondEdge1)
-		.attr("stop-color", blueScale(weight*maxConstant))
+		.attr("stop-color", blueScale(weight*100))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", endEdge)
-		.attr("stop-color", blueScale(weight*maxConstant))
+		.attr("stop-color", blueScale(weight*100))
 		.attr("stop-opacity", 1);
 		return gradient;
 	}
@@ -118,6 +118,9 @@ var backgroundObject = (function() {
 		
 		var currentColorScale = getNormalColors();
 	
+	console.log("currentColorScale: "+ currentColorScale(weight* 100));
+	console.log("maxConstant: "+ maxConstant);
+	console.log("weight: "+ weight);
 		var gradient = svg.append("defs")
 			.append("linearGradient")
 			.attr("id", "gradient" + id)
@@ -126,10 +129,9 @@ var backgroundObject = (function() {
 			.attr("x2", "100%")
 			.attr("y2", "0%")
 			.attr("spreadMethod", "pad");
-	
 		gradient.append("stop")
 			.attr("offset", "0%")
-			.attr("stop-color", currentColorScale(weight*maxConstant))
+			.attr("stop-color", currentColorScale(weight*100))
 			.attr("stop-opacity", 1);
 		return gradient;
 	}
@@ -153,7 +155,7 @@ var backgroundObject = (function() {
 			reloadColorScale();
 		},
 		setColorsAbsolute: function(){
-			maxConstant = 100;
+			maxConstant = 200;
 			reloadColorScale();
 		},
 		setColorMethod: function(index){
