@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+import BlueTurtle.TSE.CodeFile;
 import BlueTurtle.computers.LOCComputer;
+import BlueTurtle.writers.JSWriter;
 import lombok.Getter;
 
 /**
@@ -22,6 +24,7 @@ public class ProjectInfoFinder {
 	@Getter private static HashMap<String, Integer> classLocs = new HashMap<String, Integer>();
 	@Getter private static HashMap<String, String> classPackage = new HashMap<String, String>();
 	@Getter private static Set<String> packages = new HashSet<String>();
+	@Getter private ArrayList<CodeFile> codeFiles = new ArrayList<CodeFile>();
 
 	/**
 	 * Find the class files (recursively) in the directory.
@@ -69,4 +72,23 @@ public class ProjectInfoFinder {
 		}
 	}
 
+	/**
+	 * Retrieves the code from every file located through the filepath in classPaths. 
+	 * The code is stored in a CodeFile object which is added to the codeFiles field.
+	 * These files are then written to an output file.
+	 * @throws IOException
+	 * 				if file is not found, inaccessible, etc.
+	 */
+	public void retrieveCodeFiles() throws IOException {
+		for (String classPath : classPaths) {
+			File currFile = new File(classPath);
+			CodeFile codeFile = new CodeFile(); 
+			codeFile.setPath(classPath);
+			codeFile.getCodeFromFile(currFile);
+			codeFiles.add(codeFile);
+		}
+		JSWriter jswriter = JSWriter.getInstance();
+
+		jswriter.writeSourceCodeToJS(codeFiles, "./src/main/resources/CodeFiles.js");
+	}
 }
