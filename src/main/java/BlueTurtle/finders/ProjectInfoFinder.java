@@ -24,7 +24,7 @@ public class ProjectInfoFinder {
 	@Getter private static HashMap<String, Integer> classLocs = new HashMap<String, Integer>();
 	@Getter private static HashMap<String, String> classPackage = new HashMap<String, String>();
 	@Getter private static Set<String> packages = new HashSet<String>();
-	@Getter private static ArrayList<CodeFile> codeFiles = new ArrayList<CodeFile>();
+	@Getter private ArrayList<CodeFile> codeFiles = new ArrayList<CodeFile>();
 
 	/**
 	 * Find the class files (recursively) in the directory.

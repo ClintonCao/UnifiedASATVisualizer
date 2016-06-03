@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Set;
@@ -98,6 +99,16 @@ public class ProjectInfoFinderTest {
 		expected.add("SomePackage.different");
 		expected.add("SomePackage.subpackage");
 		assertEquals(expected, actual);
+	}
+	
+	/**
+	 * Test retrieveCodeFiles method. At least one instance of CodeFile should be added to codeFiles field.
+	 * @throws IOException
+	 */
+	@Test
+	public void testRetrieveCodeFiles() throws IOException {
+		pif.retrieveCodeFiles();
+		assert(pif.getCodeFiles().size() > 0);
 	}
 
 }
