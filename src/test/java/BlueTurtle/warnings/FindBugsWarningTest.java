@@ -4,12 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotSame;
 
-import java.util.HashMap;
-
-import org.junit.Before;
 import org.junit.Test;
 
-import BlueTurtle.parsers.GDCParser;
 
 /**
  * Test for FindBugsWarning class.
@@ -19,24 +15,12 @@ import BlueTurtle.parsers.GDCParser;
 public class FindBugsWarningTest {
 	
 	private static String filePath = "\\src\\test\\TestPMD.java";
-	private static String testSet3 = "./src/test/resources/asat-gdc-mapping.html";
-
 	private static String fileName = "FindBugs.java";
 	private static String message = "BlueTurtle.warnings.PMDWarning defines equals and uses Object.hashCode()";
 	private static String ruleName = "HE_EQUALS_USE_HASHCODE";
 	private static String category = "BAD_PRACTICE";
 	private static String priority = "High";
 	private static String classification = "Interface";
-	private static HashMap<String, String> categoryInfo = new HashMap<String, String>();
-
-	/**
-	 * Set up the GDP parser, parse the category information.
-	 */
-	@Before
-	public void setUp() {
-		GDCParser gP = new GDCParser();
-		categoryInfo = gP.parseFile(testSet3);
-	}
 
 	/**
 	 * Test equal method where both objects represent the same warning.
@@ -228,6 +212,26 @@ public class FindBugsWarningTest {
 		String actual = fb.getFilePath();
 		fb.setMessage(expected);
 		assertNotEquals(expected, actual);
+	}
+	
+	/**
+	 * Test two equal FindBugsWarning return the same string.
+	 */
+	@Test
+	public void testTwoEqualsWarningReturnSameString() {
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		assertEquals(expected.toString(), actual.toString());
+	}
+	
+	/**
+	 * Test two different FindBugsWarning return the different strings.
+	 */
+	@Test
+	public void testDifferentEqualsWarningReturnDifferentString() {
+		FindBugsWarning expected = new FindBugsWarning(filePath, fileName, 6, message, category, priority, ruleName, classification);
+		FindBugsWarning actual = new FindBugsWarning(filePath, fileName, 1, message, category, priority, ruleName, classification);
+		assertNotEquals(expected.toString(), actual.toString());
 	}
 	
 }

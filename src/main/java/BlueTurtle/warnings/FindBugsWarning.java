@@ -11,11 +11,11 @@ import lombok.Setter;
  */
 public class FindBugsWarning extends Warning {
 
+	
 	@Getter @Setter private int lineNumber;
 	@Getter @Setter private String message;
 	@Getter @Setter private String category;
 	@Getter @Setter private String priority;
-	@Getter @Setter private String absoluteFilePath;
 
 	
 	/**
@@ -75,4 +75,16 @@ public class FindBugsWarning extends Warning {
 	public int hashCode() {
 		return java.util.Objects.hash(filePath, fileName, type, lineNumber, message, category, priority, ruleName, classification);
 	}
+	
+	/**
+	 * toString method for FindBugsWarning.
+	 */
+	@Override
+	public String toString() {
+		return "FindBugsWarning [lineNumber=" + lineNumber + ", message=" + message + ", category=" + category
+				+ ", priority=" + priority + ", classification="
+				+ classification + ", fileName=" + fileName + ", type=" + type + ", filePath=" + filePath
+				+ ", ruleName=" + ruleName + "]";
+	}
+	
 }

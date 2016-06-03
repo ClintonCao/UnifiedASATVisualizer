@@ -1,16 +1,12 @@
 package BlueTurtle.TSE;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.groupers.WarningGrouper.Criteria;
 import BlueTurtle.parsers.CheckStyleXMLParser;
 import BlueTurtle.parsers.FindBugsXMLParser;
-import BlueTurtle.parsers.GDCParser;
 import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.summarizers.Summarizer;
@@ -26,8 +22,6 @@ import BlueTurtle.writers.JSWriter;
  */
 public class JSONFormatter {
 	private XMLParser xmlParser;
-	private GDCParser gdcParser = new GDCParser();
-	private HashMap<String, String> categoryInfo = gdcParser.parseFile("./src/main/resources/asat-gdc-mapping.html");
 
 	/**
 	 * Produces a list of warnings for by reading the output of PMD, Checkstyle
@@ -42,7 +36,6 @@ public class JSONFormatter {
 		totalWarnings.addAll(parseCheckStyleXML());
 		totalWarnings.addAll(parsePMDXML());
 		totalWarnings.addAll(parseFindBugsXML());
-		new ProjectInfoFinder().findFiles(new File(JavaController.getUserDir()));
 		writeJSON(totalWarnings);
 	}
 
@@ -55,7 +48,7 @@ public class JSONFormatter {
 	 */
 	private List<Warning> parseCheckStyleXML() throws IOException {
 		xmlParser = new CheckStyleXMLParser();
-		return xmlParser.parseFile(JavaController.getCheckStyleOutputFile(), categoryInfo);
+		return xmlParser.parseFile(JavaController.getCheckStyleOutputFile());
 	}
 
 	/**
@@ -67,7 +60,7 @@ public class JSONFormatter {
 	 */
 	private List<Warning> parsePMDXML() throws IOException {
 		xmlParser = new PMDXMLParser();
-		return xmlParser.parseFile(JavaController.getPmdOutputFile(), categoryInfo);
+		return xmlParser.parseFile(JavaController.getPmdOutputFile());
 	}
 
 	/**
@@ -79,7 +72,7 @@ public class JSONFormatter {
 	 */
 	private List<Warning> parseFindBugsXML() throws IOException {
 		xmlParser = new FindBugsXMLParser();
-		return xmlParser.parseFile(JavaController.getFindBugsOutputFile(), categoryInfo);
+		return xmlParser.parseFile(JavaController.getFindBugsOutputFile());
 	}
 
 	/**

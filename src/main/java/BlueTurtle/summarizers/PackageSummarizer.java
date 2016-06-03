@@ -107,4 +107,15 @@ public class PackageSummarizer extends Summarizer {
 	public int hashCode() {
 		return java.util.Objects.hash(packageName, numberOfWarnings, classes, warningTypes);
 	}
+	
+	/**
+	 * toString method for PackageSummarizer.
+	 */
+	@Override
+	public String toString() {
+		return "PackageSummarizer [classes=" + classes + ", numberOfClasses=" + numberOfClasses + ", packageName="
+				+ packageName + ", numberOfWarnings=" + numberOfWarnings + ", warningTypes=" + warningTypes
+				+ ", numberOfCheckStyleWarnings=" + numberOfCheckStyleWarnings + ", numberOfPMDWarnings="
+				+ numberOfPMDWarnings + ", numberOfFindBugsWarnings=" + numberOfFindBugsWarnings + "]";
+	}
 }
