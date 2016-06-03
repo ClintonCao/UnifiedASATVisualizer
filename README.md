@@ -1,4 +1,4 @@
-# Contextproject-TSE &nbsp; [![Build Status](https://travis-ci.org/ClintonCao/Contextproject-TSE.svg?branch=master)](https://travis-ci.org/ClintonCao/Contextproject-TSE) [![Coverage Status](https://coveralls.io/repos/github/ClintonCao/Contextproject-TSE/badge.svg?branch=master)](https://coveralls.io/github/ClintonCao/Contextproject-TSE?branch=master)
+# Contextproject-TSE &nbsp; [![Build Status](https://travis-ci.org/ClintonCao/Contextproject-TSE.svg?branch=master)](https://travis-ci.org/ClintonCao/Contextproject-TSE) [![Coverage Status](https://coveralls.io/repos/github/ClintonCao/Contextproject-TSE/badge.svg?branch=master)](https://coveralls.io/github/ClintonCao/Contextproject-TSE?branch=master) [![MIT license](http://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016. 
 
 ## Team Members:
