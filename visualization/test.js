@@ -1,1 +1,0 @@
-var testii = "Hello my friend";
