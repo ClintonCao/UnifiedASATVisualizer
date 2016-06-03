@@ -70,13 +70,16 @@ var backgroundObject = (function() {
 			var secondEdge = secondRatio + "%";
 			var secondEdge1 = secondRatio1 + "%";
 			var endEdge = end + "%";
-           var gradient = svg.append("defs")
+		   var tupleAngle = gradientCalculator.get45Angle(x,y);
+		   console.log(tupleAngle[0]);
+		   console.log(tupleAngle[1]);
+           var gradient = svg.append("defs")	   
 	  .append("linearGradient")
 		.attr("id", "gradient" + id)
 		.attr("x1", "0%")
 		.attr("y1", "0%")
-		.attr("x2", "100%")
-		.attr("y2", "100%")
+		.attr("x2", tupleAngle[0])
+		.attr("y2", tupleAngle[1])
 		.attr("spreadMethod", "pad");
 	gradient.append("stop")
 		.attr("offset", "0%")

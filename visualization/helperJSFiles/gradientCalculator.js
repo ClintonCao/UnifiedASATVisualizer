@@ -77,6 +77,17 @@ var gradientCalculator = (function() {
 		calculate: function(x, y, a, b ,c) {
 			measurements(x, y);
 			return calculateBoundaries(a, b, a+b+c);
+		},
+		get45Angle: function (x,y){
+			console.log("x " + x);
+			console.log("y " + y);
+			if ( x > y ){
+				var ratio  =100* (y/x)
+				return [ratio + "%","100%"]
+			}else{
+				var ratio  =100* (x/y)
+				return ["100%", ratio + "%"]
+			}
 		}
 	}
 
