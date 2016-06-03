@@ -73,8 +73,8 @@ var backgroundObject = (function() {
 			var secondEdge1 = secondRatio1 + "%";
 			var endEdge = end + "%";
 		   var tupleAngle = gradientCalculator.get45Angle(x,y);
-		   console.log(tupleAngle[0]);
-		   console.log(tupleAngle[1]);
+		   console.log("Angle 1 " + tupleAngle[0]);
+		   console.log("Angle 2 " + tupleAngle[1]);
            var gradient = svg.append("defs")	   
 	  .append("linearGradient")
 		.attr("id", "gradient" + id)
