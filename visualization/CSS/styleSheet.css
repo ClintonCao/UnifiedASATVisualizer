@@ -51,15 +51,27 @@ div#left-menu{
   font-family: 'Roboto Mono', sans-serif;
 }
 #checkStyleLabel {
-  color: #12B212;
+  color: #FFFFFF;
   font-family: 'Roboto Mono', sans-serif;
 }
 #PMDLabel {
-  color: #75B4EB;
+  color: #FFFFFF;
   font-family: 'Roboto Mono', sans-serif;
 }
 #FindBugsLabel {
-  color: #ED4337;
+  color: #FFFFFF;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#maintainabilityDefectsLabel{
+  color: #FFFFFF;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#functionalDefectsLabel{
+  color: #FFFFFF;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#otherLabel{
+  color: #FFFFFF;
   font-family: 'Roboto Mono', sans-serif;
 }
 
@@ -177,11 +189,11 @@ rect {
   cursor: pointer;
 }
 .children:hover rect.child {
-  fill: #bbb;
+  fill: rgba(255,255,255, 0.25);
 }
 g.children:hover{
-  stroke-width: 1px;
-  stroke: #FFFFFF;
+  stroke-width: 0.3px;
+  stroke: #000000;
 }
 
 /*
@@ -225,4 +237,12 @@ h4.category-titles{
   font-weight: 400;
 	size:15px;
   height:10px;
+}
+#relativeLabel{
+  display: inline-block;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 400;
+  size:15px;
+  height:10px;
+  padding-left: 7.5px;
 }

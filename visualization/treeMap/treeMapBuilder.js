@@ -209,6 +209,8 @@ var treeMapBuilder = (function() {
                     handleClickTreeMapTypeSat($(this).prop('value'), $(this).prop('checked'));
                 } else if ($(this).prop('name') == "category") {
                     handleClickCategorySat($(this).prop('value'), $(this).prop('checked'));
+                } else if($(this).prop('name') == "relative") {
+                    handleClickRelativeColours($(this));
                 }
                 fastReload();
                 // animation time of the toggle button
@@ -223,9 +225,9 @@ var treeMapBuilder = (function() {
         function fastReload() {
             reloadContent();
             var newNode = findNode(currentNodePath, root);
-            g.filter(function(newNode) {
-                return newNode;
-            });
+            // g.filter(function(newNode) {
+            //     return newNode;
+            // });
             transition(newNode);
         }
 
@@ -248,7 +250,6 @@ var treeMapBuilder = (function() {
             accumulateValue(root);
             accumulateWarnings(root);
             layout(root, treemap);
-            display(root);
         }
 
         var children = g.selectAll(".child")
@@ -259,12 +260,23 @@ var treeMapBuilder = (function() {
 
         children.append("rect")
             .attr("class", "child")
-            .call(rect)
+            .attr("x", function(d) {
+                return x(d.x);
+            })
+            .attr("y", function(d) {
+                return y(d.y);
+            })
+            .attr("width", function(d) {
+                return x(d.x + d.dx) - x(d.x);
+            })
+            .attr("height", function(d) {
+                return y(d.y + d.dy) - y(d.y);
+            })
 			.style("fill", function(d) {
 				var ratios =  backgroundObject.getRatios(d);
 				var weight = d.warnings / d.value;
 				id +=1;
-				var gradientBackground = backgroundObject.getBackground(svg, ratios,weight, id);
+				var gradientBackground = backgroundObject.getBackground(svg, ratios,weight, id,x(d.x + d.dx) - x(d.x),y(d.y + d.dy) - y(d.y));
                 return "url(#gradient"+ id + ")";
             })
             .append("title");
@@ -282,9 +294,28 @@ var treeMapBuilder = (function() {
             })
             .call(textBottomRight);
 
-        g.append("rect")
+        if(currentNodePath.length == 1) {
+            g.append("rect")
             .attr("class", "parent")
+            .attr("class", "child")
+            .attr("x", function(d) {
+                return x(d.x);
+            })
+            .attr("y", function(d) {
+                return y(d.y);
+            })
+            .attr("width", function(d) {
+                return x(d.x + d.dx) - x(d.x);
+            })
+            .attr("height", function(d) {
+                return y(d.y + d.dy) - y(d.y);
+            });
+        } else {
+            g.append("rect")
+            .attr("class", "parent")
+            .attr("class", "child")
             .call(rect);
+        }
 
         var t = g.append("text")
             .attr("class", "ptext")
@@ -372,7 +403,9 @@ var treeMapBuilder = (function() {
 
         function transition(d) {
 
-            if (transitioning || !d) return;
+            if (transitioning || !d) {
+                return;
+            }
             transitioning = true;
             appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
 
@@ -390,9 +423,9 @@ var treeMapBuilder = (function() {
             svg.style("shape-rendering", null);
 
             // Draw child nodes on top of parent nodes.
-            svg.selectAll(".depth").sort(function(a, b) {
-                return a.depth - b.depth;
-            });
+            // svg.selectAll(".depth").sort(function(a, b) {
+            //     return a.depth - b.depth;
+            // });
 
             // Fade-in entering text.
             g2.selectAll("text").style("fill-opacity", 0);
@@ -533,7 +566,6 @@ var treeMapBuilder = (function() {
             .attr("y", -margin.top)
             .attr("width", width)
             .attr("height", margin.top);
-
 
         grandparent.append("text")
             .attr("x", 6)

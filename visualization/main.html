@@ -34,19 +34,14 @@
                   <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap"> Treemap<br>
                   <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>-->
                   <h3>Color scale </h3>
-                  <input type="radio" id="absoluteButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);"  value="normalAbsolute">
-                  <div class="buttonText">Normal (Absolute)</div><br/>
-                  <input type="radio" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="normalRelative">
-                  <div class="buttonText">Normal (Relative)</div><br/>
-                  <input type="radio" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asatAbsolute">
-                  <div class="buttonText">ASAT (Absolute)</div><br/>
-                  <input type="radio" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asatRelative">
-                  <div class="buttonText">ASAT (Relative)</div><br/>
-                  <input type="radio" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="categoryAbsolute">
-                  <div class="buttonText">Category (Absolute)</div><br/>
-                  <input type="radio" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="category">
-                  <div class="buttonText">Category (Relative)</div>
-                  
+                  <input type="radio" id="normalButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="normal">
+                  <div class="buttonText">Normal </div><br/>
+                  <input type="radio" id="asatButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asat">
+                  <div class="buttonText">ASAT </div><br/>
+                  <input type="radio" id="categoryButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="category">
+                  <div class="buttonText">Category</div><br/><br/>
+                  <div class="buttonText"><input type="checkbox" onClick="handleClickRelative(this)" data-toggle="toggle" data-size="mini" class="updateContent relative" name="relative" id="relativeButton" value="Relative"><label id="relativeLabel"> Relative</label><br></div>
+
                </form>
             </div>
          </div>
@@ -60,7 +55,7 @@
          <div id="menu-right-wrapper">
             <div id="right-menu">
                   <h3>Category</h3>
-                  <span id="GDCFunctionalDefects" class="UIText"><h4 class="category-titles" onClick="handleClickCategory('FunctionDefects')">Functional Defects</h4></span>
+                  <span id="GDCFunctionalDefects" class="UIText"><h4 class="category-titles" id="functionalDefectsLabel"  onClick="handleClickCategory('FunctionDefects')">Functional Defects</h4></span>
                   <span id="GDCFunctionalDefects-hover">
                     Rules that check for defects that affect the behavior of the program.
                     </span>
@@ -97,7 +92,7 @@
                 <span id="GDCResource-hover">
                     Errors concerning the initialization, casting, or release of data, whether that data is external (databases) or internal (variables).
                   </span>
-                  <span id="GDCMaintainabilityDefects" class="UIText"><h4 class="category-titles" onClick="handleClickCategory('MaintainabilityDefects')">Maintainability Defects</h4></span>
+                  <span id="GDCMaintainabilityDefects" class="UIText"><h4 id="maintainabilityDefectsLabel"   class="category-titles" onClick="handleClickCategory('MaintainabilityDefects')">Maintainability Defects</h4></span>
                    <span id="GDCMaintainabilityDefects-hover">
                     Rules that check for problems that only affect the future development efforts of changing or adding to the system, but have no impact on the correctness of the program.
                     </span>
@@ -137,7 +132,7 @@
                 <span id="GDCStyleConventions-hover">
                     Rules that check the code for violations of style conventions, that do not affect the compiled output of the code.
                   </span>
-                  <span class="UIText"><h4 class="category-titles" onClick="handleClickCategory('StyleConventions')">Other</h4></span>
+                  <span class="UIText"><h4 class="category-titles" id="otherLabel" onClick="handleClickCategory('StyleConventions')">Other</h4></span>
                   <span id="GDCOther"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Other"><label id="OtherLabel" class="UIText"> Other</label></span><br>
                   <span id="GDCOther-hover">
                     Rules that identify neither functional nor maintainability defects.
@@ -168,6 +163,7 @@
       <script src="JSON/OOPPJSON.js"></script>
       <script src="JSON/jsonBuilder.js"></script>
       <script src="helperJSFiles/backgroundGradient.js"></script>
+      <script src="helperJSFiles/gradientCalculator.js"></script>
       <script src="helperJSFiles/handleClicks.js"></script>
       <script src="treemap/treeMapBuilder.js"></script>   
       <script src="helperJSFiles/handleGDCHovers.js"></script> 

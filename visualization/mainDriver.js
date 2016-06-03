@@ -15,7 +15,7 @@ setAllCheckboxesOnDefault();
 function setAllCheckboxesOnDefault() {
 	$(".updateContent").prop('checked', false); 
 	$("#treemapButton").prop('checked', true);
-	$("#absoluteButton").prop('checked', true);
+	$("#normalButton").prop('checked', true);
 	$(".FunctionalDefects").click();
 	$(".MaintainabilityDefects").click();
 	$(".StyleConventions").click();
@@ -121,7 +121,6 @@ function runTreeMap() {
     graphButtonDiv.style.display = 'none';
 
     var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
-    console.log(packages);
     var finalJson =  createJsonTreeMap(packages);
     treeMapBuilder.createTreeMap({
         title: ""
