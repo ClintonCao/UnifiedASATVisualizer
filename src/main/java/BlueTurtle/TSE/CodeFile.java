@@ -8,10 +8,23 @@ import java.io.IOException;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Represents a file of code on the system. Consists of two strings:
+ * the path to the file and the contents of the file. 
+ * @author michiel
+ *
+ */
 public class CodeFile {
 	@Getter @Setter private String path;
 	@Getter @Setter private String code = "";
-
+	
+	/**
+	 * Reads the code from a file and saves it in the code field.
+	 * @param file 
+	 * 			file to read from.
+	 * @throws IOException
+	 * 			if file is not found, inaccessible, etc.
+	 */
 	public void getCodeFromFile(File file) throws IOException {
 		BufferedReader writer = new BufferedReader(new FileReader(file));
 		String nextLine;

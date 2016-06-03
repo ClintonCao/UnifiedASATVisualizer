@@ -68,7 +68,17 @@ public class JSWriter {
 		writer.flush();
 		writer.close();
 	}
-
+	
+	/**
+	 * Write the codefiles as JSON to a javascript file. 
+	 * 
+	 * @param codeFiles
+	 * 				codefiles to write.
+	 * @param outputFilePath
+	 * 				file to write to.
+	 * @throws IOException
+	 * 				if outputfile is not found, inaccessible, etc.
+	 */
 	public void writeSourceCodeToJS(ArrayList<CodeFile> codeFiles, String outputFilePath) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();		
