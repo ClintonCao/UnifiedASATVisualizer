@@ -39,8 +39,8 @@ function setAllLabelsWhite() {
  */
 function setASATColoured() {
 	CheckStyleElement.style.color = "#12B212";
-	PMDElement.style.color = "#75B4EB";
-	FindBugsElement.style.color = "#ED4337";
+	PMDElement.style.color = "#ED4337"
+	FindBugsElement.style.color = "#75B4EB";
 	MaintainabilityDefectsElement.style.color = "#FFFFFF";
 	FunctionDefectsElement.style.color = "#FFFFFF";
 	OtherElement.style.color = "#FFFFFF";

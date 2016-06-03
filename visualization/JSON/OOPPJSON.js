@@ -87,7 +87,7 @@ var inputData =
             "ruleName": "UnusedPrivateField"
           }
         ],
-        "loc": 81,
+        "loc": 80,
         "packageName": "BlueTurtle.warnings",
         "numberOfWarnings": 2,
         "warningTypes": [

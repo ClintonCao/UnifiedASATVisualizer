@@ -1,14 +1,16 @@
 
 var backgroundObject = (function() {
-	var maxConstant = 100
+	var maxConstant = 200;
 	var colorMethod = 0;
 	
 	var twoColors, color,greenTints,greenScale,blueTints, blueScale,redTints,redScale,grayTints,grayScale;
 	reloadColorScale();
 	
 	function reloadColorScale(){
+		console.log(maxConstant);
 		twoColors = [d3.rgb("#00a700"), d3.rgb('#a90000')];
 		color = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
+		console.log(color(100));
 		greenTints = [d3.rgb("#8c9b8b"), d3.rgb('#0b9c01')];
 		greenScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(greenTints);
 		blueTints = [d3.rgb("#a7b1bc"), d3.rgb('#06387b')];	
@@ -47,6 +49,7 @@ var backgroundObject = (function() {
 	}
 	function calculateBackgroundGradient(svg,ratioArray,weight, id,x,y){
 		var total = ratioArray[0] + ratioArray[1] + ratioArray[2];
+		
 			if ( total == 0 ) {
 				var firstRatio = 0;
 				var firstRatio1 = 0.01;
@@ -54,10 +57,10 @@ var backgroundObject = (function() {
 				var secondRatio1 = 0.01;
 				var end = 0;
 			}else{
-				var firstRatio = ratioArray[0] / total;
-				var secondRatio = ( ratioArray[0] + ratioArray[1]) / total;
+			//	var firstRatio = ratioArray[0] / total;
+				//var secondRatio = ( ratioArray[0] + ratioArray[1]) / total;
 
-				var tuple = gradientCalculator.calculate(x,y, firstRatio, secondRatio);
+				var tuple = gradientCalculator.calculate(x,y, ratioArray[0], ratioArray[1], ratioArray[2]);
 				firstRatio = tuple[0]
 				secondRatio = tuple[1]
 				var firstRatio1 = firstRatio + 0.01;
@@ -69,43 +72,45 @@ var backgroundObject = (function() {
 			var secondEdge = secondRatio + "%";
 			var secondEdge1 = secondRatio1 + "%";
 			var endEdge = end + "%";
-           var gradient = svg.append("defs")
+		   var tupleAngle = gradientCalculator.get45Angle(x,y);
+		   console.log("Angle 1 " + tupleAngle[0]);
+		   console.log("Angle 2 " + tupleAngle[1]);
+           var gradient = svg.append("defs")	   
 	  .append("linearGradient")
 		.attr("id", "gradient" + id)
 		.attr("x1", "0%")
 		.attr("y1", "0%")
-		.attr("x2", "100%")
-		.attr("y2", "100%")
+		.attr("x2", tupleAngle[0])
+		.attr("y2", tupleAngle[1])
 		.attr("spreadMethod", "pad");
-	console.log(weight);
 	gradient.append("stop")
 		.attr("offset", "0%")
-		.attr("stop-color", greenScale(weight*maxConstant))
+		.attr("stop-color", greenScale(weight*100))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", firstEdge)
-		.attr("stop-color",  greenScale(weight*maxConstant))
+		.attr("stop-color",  greenScale(weight*100))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", firstEdge)
-		.attr("stop-color", redScale(weight*maxConstant))
+		.attr("stop-color", redScale(weight*100))
 		.attr("stop-opacity", 1);
 	
 	gradient.append("stop")
 		.attr("offset", secondEdge)
-		.attr("stop-color", redScale(weight*maxConstant))
+		.attr("stop-color", redScale(weight*100))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", secondEdge1)
-		.attr("stop-color", blueScale(weight*maxConstant))
+		.attr("stop-color", blueScale(weight*100))
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
 		.attr("offset", endEdge)
-		.attr("stop-color", blueScale(weight*maxConstant))
+		.attr("stop-color", blueScale(weight*100))
 		.attr("stop-opacity", 1);
 		return gradient;
 	}
@@ -113,6 +118,9 @@ var backgroundObject = (function() {
 		
 		var currentColorScale = getNormalColors();
 	
+	console.log("currentColorScale: "+ currentColorScale(weight* 100));
+	console.log("maxConstant: "+ maxConstant);
+	console.log("weight: "+ weight);
 		var gradient = svg.append("defs")
 			.append("linearGradient")
 			.attr("id", "gradient" + id)
@@ -121,10 +129,9 @@ var backgroundObject = (function() {
 			.attr("x2", "100%")
 			.attr("y2", "0%")
 			.attr("spreadMethod", "pad");
-	
 		gradient.append("stop")
 			.attr("offset", "0%")
-			.attr("stop-color", currentColorScale(weight*maxConstant))
+			.attr("stop-color", currentColorScale(weight*100))
 			.attr("stop-opacity", 1);
 		return gradient;
 	}
@@ -148,7 +155,7 @@ var backgroundObject = (function() {
 			reloadColorScale();
 		},
 		setColorsAbsolute: function(){
-			maxConstant = 100;
+			maxConstant = 200;
 			reloadColorScale();
 		},
 		setColorMethod: function(index){
