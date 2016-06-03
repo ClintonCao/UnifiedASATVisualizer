@@ -2,14 +2,10 @@ package BlueTurtle.parsers;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import BlueTurtle.summarizers.Summarizer;
-import BlueTurtle.writers.JSWriter;
 import lombok.Getter;
 
 

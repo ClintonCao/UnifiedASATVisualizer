@@ -1,7 +1,7 @@
 package BlueTurtle.parsers;
 
 import java.io.File;
-import java.util.HashMap;
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertSame;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,17 +33,33 @@ public class CheckStyleXMLParserTest {
 	private static String testSet2Message = "Unused @param tag for 'filePath'.";
 	private static String testSet2RuleName = "JavadocMethod";
 	private static String testSet2Classification = "Documentation Conventions";
-	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar + "src" + File.separatorChar + "main" + File.separatorChar + "java" + File.separatorChar + "BlueTurtle" + File.separatorChar + "warnings"+ File.separatorChar + "Warning.java";
+	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar + "src"
+			+ File.separatorChar + "main" + File.separatorChar + "java" + File.separatorChar + "BlueTurtle"
+			+ File.separatorChar + "warnings" + File.separatorChar + "Warning.java";
 
 	/**
 	 * Set up the GDP parser, parse the category information.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if a problem is ecountered while reading
+	 *             the files.
 	 */
 	@Before
-	public void setUp() {
-		ProjectInfoFinder pif = new ProjectInfoFinder();
-		pif.findFiles(new File(srcDir));
+	public void setUp() throws IOException {
+		new ProjectInfoFinder().findFiles(new File(srcDir));
 	}
 	
+	/**
+	 * Clean up the attributes of ProjectInfoFinder.
+	 */
+	@After
+	public void cleanUp() {
+		ProjectInfoFinder.getClassLocs().clear();
+		ProjectInfoFinder.getPackages().clear();
+		ProjectInfoFinder.getClassPackage().clear();
+		ProjectInfoFinder.getClassPaths().clear();
+	}
+
 	/**
 	 * Test that the parser can parse a valid CheckStyle output file.
 	 */
@@ -74,12 +91,10 @@ public class CheckStyleXMLParserTest {
 	public void testParsingOneWarning() {
 		XMLParser parser = new CheckStyleXMLParser();
 
-		CheckStyleWarning expected = new CheckStyleWarning(testSet3FilePath, testSet2FileName, 20,
-				testSet2Message, testSet2RuleName, testSet2Classification);
+		CheckStyleWarning expected = new CheckStyleWarning(testSet3FilePath, testSet2FileName, 20, testSet2Message,
+				testSet2RuleName, testSet2Classification);
 
 		CheckStyleWarning actual = (CheckStyleWarning) parser.parseFile(testSet2).get(0);
-		String catagory = actual.getClassification();
-		System.out.println(catagory);
 
 		assertEquals(expected, actual);
 	}
@@ -122,20 +137,19 @@ public class CheckStyleXMLParserTest {
 
 		assertNotEquals(expected, actual);
 	}
-	
+
 	/**
 	 * Test that the parser parse the wrong file.
 	 */
 	@Test
 	public void testParseTheWrongFile() {
 		XMLParser parser = new CheckStyleXMLParser();
-		
+
 		String testSet3 = "/ex.xml";
 
 		List<Warning> warnings = parser.parseFile(testSet3);
-		
+
 		assertSame(0, warnings.size());
 	}
-	
 
 }

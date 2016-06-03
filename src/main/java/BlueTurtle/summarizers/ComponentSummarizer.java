@@ -3,8 +3,7 @@ package BlueTurtle.summarizers;
 import java.util.ArrayList;
 import java.util.List;
 
-import BlueTurtle.computers.LOCComputer;
-import BlueTurtle.finders.PackageNameFinder;
+import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.gui.GUIController.ASAT;
 import BlueTurtle.warnings.Warning;
 import lombok.Getter;
@@ -17,10 +16,14 @@ import lombok.Getter;
  */
 public class ComponentSummarizer extends Summarizer {
 
-	@Getter private String fileName;
-	@Getter private String filePath;
-	@Getter private List<Warning> warningList;
-	@Getter private int loc;
+	@Getter
+	private String fileName;
+	@Getter
+	private String filePath;
+	@Getter
+	private List<Warning> warningList;
+	@Getter
+	private int loc;
 
 	/**
 	 * Constructor.
@@ -36,7 +39,7 @@ public class ComponentSummarizer extends Summarizer {
 		super(packageName);
 		this.fileName = fileName;
 		this.filePath = filePath;
-		this.loc = LOCComputer.computeLOC(filePath);
+		this.loc = ProjectInfoFinder.getClassLocs().get(filePath);
 		this.warningList = new ArrayList<Warning>();
 	}
 
@@ -49,10 +52,10 @@ public class ComponentSummarizer extends Summarizer {
 	@Override
 	public void summarise(List<Warning> warnings) {
 		for (Warning w : warnings) {
-			String pn = PackageNameFinder.findPackageName(w.getFilePath());
+
+			String pn = ProjectInfoFinder.getClassPackage().get(w.getFilePath());
 			if (w.getFileName().equals(getFileName()) && pn.equals(getPackageName())) {
 				String warningType = w.getType();
-
 				if (!warningTypes.contains(warningType)) {
 					warningTypes.add(w.getType());
 				}
@@ -84,7 +87,7 @@ public class ComponentSummarizer extends Summarizer {
 				&& warningTypes.equals(that.warningTypes));
 
 	}
-	
+
 	/**
 	 * HashCode for ComponentSummarizer.
 	 */
@@ -92,5 +95,17 @@ public class ComponentSummarizer extends Summarizer {
 	public int hashCode() {
 		return java.util.Objects.hash(packageName, fileName, filePath, warningList, numberOfWarnings, warningTypes);
 	}
-	
+
+	/**
+	 * toString method for ComponentSummarizer.
+	 */
+	@Override
+	public String toString() {
+		return "ComponentSummarizer [fileName=" + fileName + ", filePath=" + filePath + ", warningList=" + warningList
+				+ ", loc=" + loc + ", packageName=" + packageName + ", numberOfWarnings=" + numberOfWarnings
+				+ ", warningTypes=" + warningTypes + ", numberOfCheckStyleWarnings=" + numberOfCheckStyleWarnings
+				+ ", numberOfPMDWarnings=" + numberOfPMDWarnings + ", numberOfFindBugsWarnings="
+				+ numberOfFindBugsWarnings + "]";
+	}
+
 }

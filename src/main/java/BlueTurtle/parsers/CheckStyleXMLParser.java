@@ -1,8 +1,5 @@
 package BlueTurtle.parsers;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import BlueTurtle.finders.ProjectInfoFinder;
@@ -12,7 +9,6 @@ import BlueTurtle.warnings.Warning;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,7 +26,7 @@ public class CheckStyleXMLParser extends XMLParser {
 	 * Parse a CheckStyle report file.
 	 * 
 	 * @param xmlFilePath
-	 *            the location of the CheckStyle report.          
+	 *            the location of the CheckStyle report.
 	 * @return a list of CheckStyle warnings.
 	 */
 	@Override
@@ -38,56 +34,45 @@ public class CheckStyleXMLParser extends XMLParser {
 		// List to store the warnings.
 		List<Warning> checkStyleWarnings = new LinkedList<Warning>();
 
-		try {
-			// Instantiate things that are necessary for the parser.
-			File inputFile = new File(xmlFilePath);
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-
-			// Parse the file.
-			Document doc = dBuilder.parse(inputFile);
-
-			// Normalize the elements of the document.
-			doc.getDocumentElement().normalize();
-
 			// Get all list of files where there are warnings.
-			NodeList nList = doc.getElementsByTagName("file");
+			NodeList nList = setUp(xmlFilePath);
+			
+			// if there are no files with warnings, there return an empty list of warnings.
+			if (nList == null)
+				return checkStyleWarnings;
 
 			for (int i = 0; i < nList.getLength(); i++) {
 				// Get the file from the list.
 				Node file = nList.item(i);
 
 				if (file.getNodeType() == Node.ELEMENT_NODE) {
-					// Convert the node to an element.
-					Element fileElement = (Element) file;
 
 					// Get the path of the file where the warning is from.
-					String filePath = fileElement.getAttribute("name");
+					String filePath = ((Element) file).getAttribute("name");
 
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
-					
-					// Get all the warnings.
-					NodeList warningList = fileElement.getElementsByTagName("error");
-					
-					addWarnings(fileName, warningList, checkStyleWarnings);
 
-				}
+					// Get all the warnings.
+					NodeList warningList = ((Element) file).getElementsByTagName("error");
+
+					addWarnings(fileName, warningList, checkStyleWarnings);
+				} 
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
 		return checkStyleWarnings;
 	}
-	
+
 	/**
-	 * add individual warning to the warningList.
+	 * Add individual warning to the warningList.
 	 * 
-	 * @param fileName is the file name of the warning.
-	 * @param warningList is a list of warnings.
-	 * @param checkStyleWarnings is the CheckStyle warnings.
-	 * @return a list of FindBugs warnings.
+	 * @param fileName
+	 *            is the file name of the warning.
+	 * @param warningList
+	 *            is a list of warnings.
+	 * @param checkStyleWarnings
+	 *            is the CheckStyle warnings.
+	 * @return a list of CheckStyle warnings.
 	 */
 	public List<Warning> addWarnings(String fileName, NodeList warningList, List<Warning> checkStyleWarnings) {
 		for (int j = 0; j < warningList.getLength(); j++) {
@@ -98,7 +83,7 @@ public class CheckStyleXMLParser extends XMLParser {
 				// Convert the node to an element.
 				Element warningElement = (Element) warning;
 
-				// message of warning
+				// The message contained by the warning.
 				String message = warningElement.getAttribute("message");
 
 				// line number where the warning is located.
@@ -106,18 +91,15 @@ public class CheckStyleXMLParser extends XMLParser {
 
 				// Get the category of the warning.
 				String ruleName = getRuleName(warningElement.getAttribute("source"));
-				
+
 				String classification = classify(ruleName);
-				
-				// get the classPaths list from ProjectInfoFinder.
-				ArrayList<String> classPaths = ProjectInfoFinder.getClassPaths();
-				
-				// replace the backward slash in the file name with file separator. 
+
+				// replace the backward slash in the file name with file separator.
 				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
 
-				//for-loop in stream, find correct filePath.
-				String filePath = classPaths.stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
-				
+				// for-loop in stream, find correct filePath.
+				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
+
 				// Get the name of the file where the warning is from.
 				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
 
@@ -125,8 +107,9 @@ public class CheckStyleXMLParser extends XMLParser {
 				checkStyleWarnings.add(new CheckStyleWarning(filePath, finalFileName, line, message, ruleName, classification));
 			}
 		}
-		return checkStyleWarnings;
 		
+		return checkStyleWarnings;
+
 	}
 
 	/**
@@ -146,10 +129,5 @@ public class CheckStyleXMLParser extends XMLParser {
 		// Return only the name of the check.
 		return source.substring(source.lastIndexOf('.') + 1, source.length() - 1);
 	}
-
-
-
-
-
 
 }

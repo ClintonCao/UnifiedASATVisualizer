@@ -12,4 +12,7 @@ exclude:
 - .*/multiplex.*
 - .*/codemirror.*
 - .*/haxe.*
+- .*/OOPPJSON.*
+- .*/BlueTurtleJSON.*
+- .*/bootstrap.*
   

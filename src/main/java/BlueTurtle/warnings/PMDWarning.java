@@ -72,4 +72,15 @@ public class PMDWarning extends Warning {
 	public int hashCode() {
 		return java.util.Objects.hash(filePath, fileName, type, line, packageName, ruleSet, method, ruleName, classification);
 	}
+	
+	/**
+	 * toString method for PMDWarning.
+	 */
+	@Override
+	public String toString() {
+		return "PMDWarning [line=" + line + ", ruleSet=" + ruleSet + ", method=" + method + ", packageName="
+				+ packageName + ", classification=" + classification + ", fileName=" + fileName + ", type=" + type
+				+ ", filePath=" + filePath + ", ruleName=" + ruleName + "]";
+	}
+	
 }

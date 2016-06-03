@@ -2,17 +2,11 @@ package BlueTurtle.TSE;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import BlueTurtle.finders.PackageNameFinder;
 import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.groupers.WarningGrouper.Criteria;
 import BlueTurtle.parsers.CheckStyleXMLParser;
 import BlueTurtle.parsers.FindBugsXMLParser;
-import BlueTurtle.parsers.GDCParser;
 import BlueTurtle.parsers.PMDXMLParser;
 import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.summarizers.Summarizer;
@@ -23,13 +17,11 @@ import BlueTurtle.writers.JSWriter;
  * JSONFormatter reads the output of Checkstyle, Findbugs and PMD and produces a
  * summarized defect output.
  * 
- * @author michiel
+ * @author BlueTurtle.
  *
  */
 public class JSONFormatter {
 	private XMLParser xmlParser;
-	private GDCParser gdcParser = GDCParser.getInstance();
-	private HashMap<String, String> categoryInfo = gdcParser.parseFile("./src/main/resources/asat-gdc-mapping.html");
 
 	/**
 	 * Produces a list of warnings for by reading the output of PMD, Checkstyle
@@ -44,7 +36,6 @@ public class JSONFormatter {
 		totalWarnings.addAll(parseCheckStyleXML());
 		totalWarnings.addAll(parsePMDXML());
 		totalWarnings.addAll(parseFindBugsXML());
-
 		writeJSON(totalWarnings);
 	}
 
@@ -94,15 +85,7 @@ public class JSONFormatter {
 	 *             Output file not found.
 	 */
 	private void writeJSON(List<Warning> warnings) throws IOException {
-		HashMap<String, String> componentsInfo = new HashMap<String, String>();
-		Set<String> packagesNames = new HashSet<String>();
-
-		for (Warning w : warnings) {
-			componentsInfo.put(w.getFileName(), w.getFilePath());
-			packagesNames.add(PackageNameFinder.findPackageName(w.getFilePath()));
-		}
-
-		WarningGrouper wg = new WarningGrouper(componentsInfo, packagesNames, warnings);
+		WarningGrouper wg = new WarningGrouper(warnings);
 		List<Summarizer> list = wg.groupBy(Criteria.PACKAGES);
 
 		JSWriter jwriter = JSWriter.getInstance();

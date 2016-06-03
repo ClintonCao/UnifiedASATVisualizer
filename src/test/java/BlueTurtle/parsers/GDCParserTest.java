@@ -16,8 +16,8 @@ import org.junit.Test;
  */
 public class GDCParserTest {
 
-	private static String testSet = "./resources/htmlExample.html";
-	private static String testSet2 = "./resources/asat-gdc-mapping.html";
+	private static String testSet = "./src/test/resources/htmlExample.html";
+	private static String testSet2 = "./src/test/resources/asat-gdc-mapping.html";
 
 
 	/**
@@ -51,7 +51,7 @@ public class GDCParserTest {
 	public void testParseTheWrongFile() {
 		GDCParser parser = GDCParser.getInstance();
 		
-		String testSet3 = "./resources/ex.xml";
+		String testSet3 = "./src/test/resources/ex.xml";
 
 		HashMap<String, String> warnings = parser.parseFile(testSet3);
 		
