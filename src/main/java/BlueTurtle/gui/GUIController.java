@@ -163,7 +163,10 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 	public void handle(MouseEvent event) {
 		setOutputFiles();
 		try {
-			new ProjectInfoFinder().findFiles(new File(GUIController.getSourcePath()));
+			ProjectInfoFinder pif = new ProjectInfoFinder();
+			pif.findFiles(new File(GUIController.getSourcePath()));
+			pif.retrieveCodeFiles();
+			
 			Main.runVisualization();
 			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
 		} catch (IOException e) {

@@ -49,9 +49,6 @@ public class ProjectInfoFinder {
 				computeInformation(subdir);
 			}
 		}
-		JSWriter jswriter = JSWriter.getInstance();
-		
-		jswriter.writeSourceCodeToJS(codeFiles, "./src/main/resources/CodeFiles.js");
 	}
 
 	/**
@@ -72,12 +69,20 @@ public class ProjectInfoFinder {
 			String packageName = PackageNameFinder.getInstance().findPackageName(path); // find the package name
 			classPackage.put(path, packageName); // put entry of class and its package
 			packages.add(packageName); // add package to the list of packages
-			
-			CodeFile codeFile = new CodeFile(); 
-			codeFile.setPath(path);
-			codeFile.getCodeFromFile(file);
-			codeFiles.add(codeFile);
 		}
 	}
 
+
+	public void retrieveCodeFiles() throws IOException {
+		for(String classPath : classPaths) {
+			File currFile = new File(classPath);
+			CodeFile codeFile = new CodeFile(); 
+			codeFile.setPath(classPath);
+			codeFile.getCodeFromFile(currFile);
+			codeFiles.add(codeFile);
+		}
+		JSWriter jswriter = JSWriter.getInstance();
+
+		jswriter.writeSourceCodeToJS(codeFiles, "./src/main/resources/CodeFiles.js");
+	}
 }
