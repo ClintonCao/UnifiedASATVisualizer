@@ -51,7 +51,7 @@ public class CategorySummarizerTest {
 		warningList2 = new ArrayList<Warning>();
 		warningList2.add(w2);
 		warningList.add(w);
-		GDCParser parser = new GDCParser();
+		GDCParser parser = GDCParser.getInstance();
      	categoryInfo = parser.parseFile(testSet);
      	categoryInfo2 = parser.parseFile(testSet3);
 	}
@@ -161,6 +161,26 @@ public class CategorySummarizerTest {
 	public void testEqualsFalseWithDiffernetObject() {
 		CategorySummarizer cs = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
 		assertNotEquals(cs, Integer.valueOf(1));
+	}
+	
+	/**
+	 * Test two equal CatergorySummarizer return the same string.
+	 */
+	@Test
+	public void testEqualCategorySummarizerReturnsSameString() {
+		CategorySummarizer cs = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
+		CategorySummarizer cs2 = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
+		assertEquals(cs.toString(), cs2.toString());
+	}
+	
+	/**
+	 * Test two different CatergorySummarizer return the different string.
+	 */
+	@Test
+	public void testDifferentCategorySummarizerReturnDifferentString() {
+		CategorySummarizer cs = new CategorySummarizer("Naming Conventions", packageName, categoryInfo);
+		CategorySummarizer cs2 = new CategorySummarizer("Test", packageName, categoryInfo);
+		assertNotEquals(cs.toString(), cs2.toString());
 	}
 
 

@@ -25,7 +25,7 @@ public class GDCParserTest {
 	 */
 	@Test
 	public void testParseCorrectBehaviour() {
-		GDCParser parser = new GDCParser();
+		GDCParser parser = GDCParser.getInstance();
 
 		HashMap<String, String> categoryInfo = parser.parseFile(testSet);
 
@@ -37,7 +37,7 @@ public class GDCParserTest {
 	 */
 	@Test
 	public void testCreateRightAmountOfWarnings() {
-		GDCParser parser = new GDCParser();
+		GDCParser parser = GDCParser.getInstance();
 
 		HashMap<String, String> categoryInfo = parser.parseFile(testSet);
 
@@ -49,7 +49,7 @@ public class GDCParserTest {
 	 */
 	@Test
 	public void testParseTheWrongFile() {
-		GDCParser parser = new GDCParser();
+		GDCParser parser = GDCParser.getInstance();
 		
 		String testSet3 = "./src/test/resources/ex.xml";
 

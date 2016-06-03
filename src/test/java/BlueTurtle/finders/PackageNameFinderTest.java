@@ -63,7 +63,7 @@ public class PackageNameFinderTest {
 	 */
 	@Test(expected = IOException.class)
 	public void testFindingNameInNonExistingFile() throws IOException {
-		String packageName = PackageNameFinder.getInstance().findPackageName("./NonExstingFile.java");
+		PackageNameFinder.getInstance().findPackageName("./NonExstingFile.java");
 	}
 
 }

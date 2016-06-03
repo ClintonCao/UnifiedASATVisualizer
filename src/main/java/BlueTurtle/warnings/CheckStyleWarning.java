@@ -67,4 +67,14 @@ public class CheckStyleWarning extends Warning {
 		return java.util.Objects.hash(filePath, fileName, type, line, message, ruleName, classification);
 	}
 	
+	/**
+	 * toString method for CheckStylWarning.
+	 */
+	@Override
+	public String toString() {
+		return "CheckStyleWarning [line=" + line + ", message=" + message + ", classification=" + classification
+				+ ", fileName=" + fileName + ", type=" + type + ", filePath=" + filePath + ", ruleName=" + ruleName
+				+ "]";
+	}
+	
 }
