@@ -14,56 +14,37 @@ var gradientCalculator = (function() {
 		var t = 0.5 * w - v;
 		var p = y - 2 * x;
 		firstBoundary = 0.5*v;
-		secondBoundary = v + t;
 		totalLineLength = Math.sqrt(2 * b * b) * 0.5 + v;
+		secondBoundary = totalLineLength - firstBoundary;
 
-		surfHead = 0.5 * firstBoundary *v;
-		mainSurf = (secondBoundary - firstBoundary) * v;
+		surfHead = 0.5 * v *v;
+		mainSurf = (secondBoundary - firstBoundary) * v; //x * y - surfHead* 2;
 		surfTail = surfHead;
 
 		surface = surfHead + mainSurf + surfTail;
 
-		// console.log("Line total length: ");
-		// console.log(totalLineLength);
-		// console.log("v: ");
-		// console.log(v);
-		// console.log("Surfhead: ");
-		// console.log(surfHead);
-		// console.log("Main surf: ");
-		// console.log(mainSurf);
-		// console.log("Tail surf: ");
-		// console.log(surfTail);
-		// console.log("x * y surf: ");
-		// console.log(x * y);
-
-		// console.log("First bound: ");
-		// console.log(firstBoundary);
-		// console.log("Second Bound: ");
-		// console.log(secondBoundary);
-		// console.log("Last bound: ");
-		// console.log(totalLineLength);
 
 	}
 
-	function calculateBoundaries(a, b) {
-		var aLoc = calculateSpecificBoundary(a);
-		var bLoc = calculateSpecificBoundary(a + b);
+	function calculateBoundaries(a, b, total) {
+		
+		var aLoc = calculateSpecificBoundary(a, total);
+		var bLoc = calculateSpecificBoundary(a + b, total);
+				
 		return [aLoc/totalLineLength * 100, bLoc/totalLineLength * 100];
 	}
 
-	function calculateSpecificBoundary(z) {
-		var zSurf = z * surface;
+	function calculateSpecificBoundary(z, total) {
+		var zSurf = (z/total) * surface;
 		var zLocation = 0;
 		if(zSurf > surfHead) {
-			console.log(zLocation);
-			zLocation += firstBoundary;
+			zLocation = firstBoundary;
 			zSurf -= surfHead;
 			if(zSurf > mainSurf) {
 				zSurf -= mainSurf;
 				zLocation = secondBoundary;
 				return inSurfTail(zSurf, zLocation);
 			} else {
-				console.log(zLocation);
 				return inMainSurf(zSurf, zLocation);
 			}
 		} else {
@@ -74,30 +55,28 @@ var gradientCalculator = (function() {
 	function inSurfHead(remainder) {
 		var occupiedSurf = remainder / surfHead;
 		var length = Math.sqrt(occupiedSurf);
-		return length;
+		return length * firstBoundary;
 	}
 
 	function inMainSurf(remainder, curLength) {
-		console.log("remainder");
-		console.log(remainder);
 		var occupiedSurf = remainder / mainSurf;
 		var extraLength = occupiedSurf * (secondBoundary - firstBoundary);
-		console.log("extraLength");
-		console.log(extraLength);
 		return curLength + extraLength;
 	}	
 
 	function inSurfTail(remainder, curLength) {
 		var occupiedSurf = remainder / surfTail;
-		var length = 1 - Math.sqrt(occupiedSurf);
-		return curLength + length; 
+		var length
+		if(1 - occupiedSurf < 0.05){ length = 1; }
+		else if(1 - occupiedSurf > 0.95){ length = 0; }
+		else{ length =  occupiedSurf* occupiedSurf; }
+		return curLength + length * firstBoundary;
 	}
 
 	return {
-		calculate: function(x, y, a, b) {
+		calculate: function(x, y, a, b ,c) {
 			measurements(x, y);
-			//onsole.log("44");
-			return calculateBoundaries(a, b);
+			return calculateBoundaries(a, b, a+b+c);
 		}
 	}
 

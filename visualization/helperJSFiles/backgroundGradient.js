@@ -47,6 +47,7 @@ var backgroundObject = (function() {
 	}
 	function calculateBackgroundGradient(svg,ratioArray,weight, id,x,y){
 		var total = ratioArray[0] + ratioArray[1] + ratioArray[2];
+		
 			if ( total == 0 ) {
 				var firstRatio = 0;
 				var firstRatio1 = 0.01;
@@ -54,10 +55,10 @@ var backgroundObject = (function() {
 				var secondRatio1 = 0.01;
 				var end = 0;
 			}else{
-				var firstRatio = ratioArray[0] / total;
-				var secondRatio = ( ratioArray[0] + ratioArray[1]) / total;
+			//	var firstRatio = ratioArray[0] / total;
+				//var secondRatio = ( ratioArray[0] + ratioArray[1]) / total;
 
-				var tuple = gradientCalculator.calculate(x,y, firstRatio, secondRatio);
+				var tuple = gradientCalculator.calculate(x,y, ratioArray[0], ratioArray[1], ratioArray[2]);
 				firstRatio = tuple[0]
 				secondRatio = tuple[1]
 				var firstRatio1 = firstRatio + 0.01;
@@ -77,7 +78,6 @@ var backgroundObject = (function() {
 		.attr("x2", "100%")
 		.attr("y2", "100%")
 		.attr("spreadMethod", "pad");
-	console.log(weight);
 	gradient.append("stop")
 		.attr("offset", "0%")
 		.attr("stop-color", greenScale(weight*maxConstant))
