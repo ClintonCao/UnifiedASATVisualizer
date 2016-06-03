@@ -26106,7 +26106,7 @@ var inputData =
             "ruleName": "RegexpSingleline"
           }
         ],
-        "loc": 664,
+        "loc": 1264,
         "packageName": "junitTests",
         "numberOfWarnings": 597,
         "warningTypes": [
@@ -40011,7 +40011,7 @@ var inputData =
             "ruleName": "RegexpSingleline"
           }
         ],
-        "loc": 39,
+        "loc": 329,
         "packageName": "junitTests",
         "numberOfWarnings": 31,
         "warningTypes": [
