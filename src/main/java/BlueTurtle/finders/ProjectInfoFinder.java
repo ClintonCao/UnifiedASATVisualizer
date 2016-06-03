@@ -72,7 +72,13 @@ public class ProjectInfoFinder {
 		}
 	}
 
-
+	/**
+	 * Retrieves the code from every file located through the filepath in classPaths. 
+	 * The code is stored in a CodeFile object which is added to the codeFiles field.
+	 * These files are then written to an output file.
+	 * @throws IOException
+	 * 				if file is not found, inaccessible, etc.
+	 */
 	public void retrieveCodeFiles() throws IOException {
 		for(String classPath : classPaths) {
 			File currFile = new File(classPath);
