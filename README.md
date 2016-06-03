@@ -41,8 +41,8 @@ This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016.
 
 ## Links to other documents:
 
-SAT Research: [sat research] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/SAT%20research/StaticanalysistoolsresearchBlueTurtle.pdf)
+ASAT Research: [asat research] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/ASAT%20research/StaticanalysistoolsresearchBlueTurtle.pdf)
 
-## Run the Visualizer:
+## Run the Program:
 
-Go to the visualization map and run main.html using a browser
+Go to the src/main/java/BlueTurtle/TSE folder and run the file Main.java, and then follow the instructions on the User Interface, select the Project in you local space that you want to visualize, and click 'Visualize' button.
