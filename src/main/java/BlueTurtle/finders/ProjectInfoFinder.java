@@ -80,7 +80,7 @@ public class ProjectInfoFinder {
 	 * 				if file is not found, inaccessible, etc.
 	 */
 	public void retrieveCodeFiles() throws IOException {
-		for(String classPath : classPaths) {
+		for (String classPath : classPaths) {
 			File currFile = new File(classPath);
 			CodeFile codeFile = new CodeFile(); 
 			codeFile.setPath(classPath);

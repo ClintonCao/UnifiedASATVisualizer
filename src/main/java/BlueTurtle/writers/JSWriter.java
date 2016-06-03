@@ -1,7 +1,6 @@
 package BlueTurtle.writers;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import lombok.Setter;
  * @author BlueTurtle.
  *
  */
-public class JSWriter {
+public final class JSWriter {
 
 	private static JSWriter jsWriter = null;
 

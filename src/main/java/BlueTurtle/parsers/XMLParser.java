@@ -33,13 +33,13 @@ public abstract class XMLParser implements Parser {
 	public abstract List<Warning> parseFile(String filePath);
 
 	/**
-	 * Set up 
+	 * Set up.
 	 * 
 	 * @param xmlFilePath
 	 *            the location of the CheckStyle report.
 	 * @return a list of files where there are warnings.
 	 */
-	public NodeList setUp(String xmlFilePath){
+	public NodeList setUp(String xmlFilePath) {
 		// set up an empty list.
 		NodeList nList = null;
 		try {

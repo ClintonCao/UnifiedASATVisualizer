@@ -1,5 +1,7 @@
 package BlueTurtle.TSE;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -33,6 +35,6 @@ public class CodeFileTest {
 	@Test
 	public void testGetCodeFromFile() throws IOException {
 		codeFile.getCodeFromFile(testFile);
-		assert(codeFile.getCode().length() > 0);
+		assertTrue(codeFile.getCode().length() > 0);
 	}
 }

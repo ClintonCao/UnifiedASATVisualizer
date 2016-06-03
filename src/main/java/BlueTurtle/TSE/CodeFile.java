@@ -30,7 +30,7 @@ public class CodeFile {
 		String nextLine;
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append('"');
-		while((nextLine = writer.readLine()) != null) {
+		while ((nextLine = writer.readLine()) != null) {
 			stringBuilder.append(nextLine);
 			stringBuilder.append("\n");
 		}

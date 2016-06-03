@@ -2,6 +2,7 @@ package BlueTurtle.finders;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -104,11 +105,12 @@ public class ProjectInfoFinderTest {
 	/**
 	 * Test retrieveCodeFiles method. At least one instance of CodeFile should be added to codeFiles field.
 	 * @throws IOException
+	 * 				if file is not found, inaccessible, etc.
 	 */
 	@Test
 	public void testRetrieveCodeFiles() throws IOException {
 		pif.retrieveCodeFiles();
-		assert(pif.getCodeFiles().size() > 0);
+		assertTrue(pif.getCodeFiles().size() > 0);
 	}
 
 }
