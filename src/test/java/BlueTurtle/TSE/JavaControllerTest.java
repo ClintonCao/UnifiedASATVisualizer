@@ -137,7 +137,7 @@ public class JavaControllerTest {
 		JavaController.setASATOutput(ASAT.FindBugs, new File(findBugsOutputFilePath));
 		JavaController jc = new JavaController();
 		jc.execute();
-		assertTrue(new File(System.getProperty("user.dir") + "/src/main/resources/SummarizedOuput.js").exists());
+		assertTrue(new File(System.getProperty("user.dir") + "/visualization/JSON/OOPPJSON.js").exists());
 	}
 
 }

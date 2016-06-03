@@ -1,45 +1,85 @@
-/* global settings */
-*{
-	font-family:Tahoma, Geneva, sans-serif;
-}
+/*
+ * General styling
+ */
+*{font-family:Tahoma, Geneva, sans-serif;margin:0;padding:0;}
+.quick .toggle-group { transition: none; -webkit-transition: none; }
+
 body{
-	color:#FFF !important;
 	margin:0;
-	background: url(../images/mtn.jpeg) no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	background:url(../images/bg2.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+	height:100%;width:100%;
+  font-family: 'Roboto', sans-serif;
+}
+.UIText {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
 }
 
-div#menu-left-wrapper{
-  float: left;
-  margin-left: 20px;
-  width: 270px;
-  background: rgba(55, 58, 60, 0.8);
-}
-
+/* 
+ * Option menu right
+ */
 div#menu-right-wrapper{
   width: 270px;
   float: right;
   margin-right: 20px;
   background: rgba(55, 58, 60, 0.8);
 }
-/* Option menu*/
 div#right-menu{
-  padding:20px;
+  padding: 0 0 20px 20px;
   margin: 0 20px 0 0;
   opacity:0.8;
+  color: #fff;
+  font-family: 'Roboto Mono', sans-serif;
+}
+
+/* 
+ * Option menu left
+ */
+div#menu-left-wrapper{
+  float: left;
+  margin-left: 20px;
+  width: 270px;
+  background: rgba(55, 58, 60, 0.8);
 }
 div#left-menu{
-  padding:20px;
+  padding: 0 0 20px 20px;
   margin: 0 20px 0 0;
   opacity:0.8;
+  color: #fff;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#checkStyleLabel {
+  color: #FFFFFF;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#PMDLabel {
+  color: #FFFFFF;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#FindBugsLabel {
+  color: #FFFFFF;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#maintainabilityDefectsLabel{
+  color: #FFFFFF;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#functionalDefectsLabel{
+  color: #FFFFFF;
+  font-family: 'Roboto Mono', sans-serif;
+}
+#otherLabel{
+  color: #FFFFFF;
+  font-family: 'Roboto Mono', sans-serif;
 }
 
-
-/* Chart div*/
+/* 
+ * Styling for the chart
+ */
 div#chart {
+  cursor: pointer;
   background:#CCC;
   margin:30px;
   border: 5px #FFFFFF solid;
@@ -56,8 +96,8 @@ div#chart-wrapper{
   display:block;
   background-color:#7a92ff;
   width:250px;
-  margin:0px 10px 15px 10px;
-  padding: 10px;
+  margin: 0px 10px 15px 10px;
+  padding: 0 0 0px 0px;
   border-style: ridge;
 }
 .optionsMenuBottom{
@@ -78,22 +118,31 @@ div#chart-wrapper{
   background-color:#7a92ff;
   float:left;
 }
+
+/*
+ * Styling for the tooltip of the treemap
+ */
 #d3-tip{
-	font-size:19px;
+	font-size:15px;
+  color: #fff;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 100;
 }
+
 /* Title */
 #main-title {
   background: rgba(55, 58, 60, 0.8);
   opacity:0.8;
-  font-weight: bold;
   font-size: 26px;
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
+  color: #FFF;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 300;
 }
-title{
-	color:#FFFFFF !important;
-}
+
+/* Back button */
 .back-button{
   border: none;
   color: white;
@@ -103,7 +152,6 @@ title{
   font-size: 15px;
   font-weight: bold;
 }
-
 .back-button:hover {
   background: #b3c1fe;
 }
@@ -119,37 +167,33 @@ text {
   pointer-events: none;
 }
 .grandparent text {
-  font-weight: bold;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 700;
 }
 rect {
   fill: none;
   stroke: #fff;
-}
-rect.parent,
-.grandparent rect {
   stroke-width: 2px;
 }
-rect.parent {
-  pointer-events: none;
-}
 .grandparent rect {
-  /*fill: #999;*/
-  opacity:0;
- 
+  stroke-width: 2px;
+  fill: #337ab7;
 }
+
 .grandparent:hover rect {
-  fill: #b3c1fe;
+  fill: #2d6da4;
 }
+
 .children rect.parent,
 .grandparent rect {
   cursor: pointer;
 }
-.children rect.parent {
-  fill: #bbb;
-  fill-opacity: .5;
-}
 .children:hover rect.child {
-  fill: #bbb;
+  fill: rgba(255,255,255, 0.25);
+}
+g.children:hover{
+  stroke-width: 0.3px;
+  stroke: #000000;
 }
 
 /*
@@ -169,18 +213,271 @@ h4.category-titles{
 	margin:20px 0 10px 0;
 	cursor: pointer;
 }
-/**
-tree map element style
-**/
 
-/* name of a block or package */
+/* Name of a node */
 .ptext {
 	text-align:center;
 	font-size:18px;
+  font-weight: 100;
+}
+.ctext {
+  font-weight: 100;
 }
 
+/* Various buttons styling */
+.radioButton{
+	margin-top:10px;
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+}
+.buttonText{
+  display: inline-block;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 400;
+	size:15px;
+  height:10px;
+}
+#relativeLabel{
+  display: inline-block;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 400;
+  size:15px;
+  height:10px;
+  padding-left: 7.5px;
+}
 
-/**
- code editor
-**/
+/*
+ * Defines for all descriptions of categories how they should appear on a hover action
+ */
+#GDCFunctionalDefects-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCCheck-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCConcurrency-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCErrorHandling-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCInterface-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCLogic-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+} 
+            
+#GDCMigration-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCResource-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCMaintainabilityDefects-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCBestPractices-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCCodeStructure-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCDocConventions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index: 10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+                
+#GDCMetric-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCNamingConventions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCOODesign-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCSimplifications-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCRedundancies-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCStyleConventions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCOther-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCRegularExpressions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCToolSpecific-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
 
