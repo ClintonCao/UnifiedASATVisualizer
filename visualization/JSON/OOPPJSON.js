@@ -718,7 +718,7 @@ var inputData =
             "ruleName": "LineLength"
           }
         ],
-        "loc": 169,
+        "loc": 1690,
         "packageName": "Brain",
         "numberOfWarnings": 64,
         "warningTypes": [
@@ -2407,7 +2407,7 @@ var inputData =
             "ruleName": "FinalParameters"
           }
         ],
-        "loc": 606,
+        "loc": 6060,
         "packageName": "Brain",
         "numberOfWarnings": 186,
         "warningTypes": [
@@ -2638,7 +2638,7 @@ var inputData =
             "ruleName": "DesignForExtension"
           }
         ],
-        "loc": 52,
+        "loc": 220,
         "packageName": "Brain",
         "numberOfWarnings": 24,
         "warningTypes": [
@@ -5814,7 +5814,7 @@ var inputData =
             "ruleName": "CollapsibleIfStatements"
           }
         ],
-        "loc": 715,
+        "loc": 7150,
         "packageName": "Brain",
         "numberOfWarnings": 247,
         "warningTypes": [
@@ -26859,7 +26859,7 @@ var inputData =
             "ruleName": "RegexpSingleline"
           }
         ],
-        "loc": 35,
+        "loc": 3500,
         "packageName": "junitTests",
         "numberOfWarnings": 37,
         "warningTypes": [
@@ -27117,7 +27117,7 @@ var inputData =
             "ruleName": "MagicNumber"
           }
         ],
-        "loc": 70,
+        "loc": 7000,
         "packageName": "junitTests",
         "numberOfWarnings": 27,
         "warningTypes": [
@@ -34944,7 +34944,7 @@ var inputData =
             "ruleName": "RegexpSingleline"
           },
           {
-            "line": 367,
+            "line": 3670,
             "message": "Method setDefaultFormationCondition0 is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "TeamTest.java",
@@ -35088,7 +35088,7 @@ var inputData =
             "ruleName": "RegexpSingleline"
           },
           {
-            "line": 381,
+            "line": 3810,
             "message": "Method setDefaultFormationCondition01 is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "TeamTest.java",
@@ -39716,7 +39716,7 @@ var inputData =
             "ruleName": "AvoidUsingOctalValues"
           }
         ],
-        "loc": 728,
+        "loc": 8280,
         "packageName": "junitTests",
         "numberOfWarnings": 1039,
         "warningTypes": [

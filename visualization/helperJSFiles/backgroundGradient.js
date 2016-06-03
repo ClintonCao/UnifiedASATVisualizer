@@ -1,14 +1,16 @@
 
 var backgroundObject = (function() {
-	var maxConstant = 100
+	var maxConstant = 100;
 	var colorMethod = 0;
 	
 	var twoColors, color,greenTints,greenScale,blueTints, blueScale,redTints,redScale,grayTints,grayScale;
 	reloadColorScale();
 	
 	function reloadColorScale(){
+		console.log(maxConstant);
 		twoColors = [d3.rgb("#00a700"), d3.rgb('#a90000')];
 		color = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
+		console.log(color(100));
 		greenTints = [d3.rgb("#8c9b8b"), d3.rgb('#0b9c01')];
 		greenScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(greenTints);
 		blueTints = [d3.rgb("#a7b1bc"), d3.rgb('#06387b')];	
