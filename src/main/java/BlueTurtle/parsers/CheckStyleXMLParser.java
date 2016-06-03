@@ -1,8 +1,5 @@
 package BlueTurtle.parsers;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import BlueTurtle.finders.ProjectInfoFinder;
@@ -37,46 +34,31 @@ public class CheckStyleXMLParser extends XMLParser {
 		// List to store the warnings.
 		List<Warning> checkStyleWarnings = new LinkedList<Warning>();
 
-		try {
-
-			// Instantiate things that are necessary for the parser.
-			File inputFile = new File(xmlFilePath);
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-
-			// Parse the file.
-			Document doc = dBuilder.parse(inputFile);
-
-			// Normalize the elements of the document.
-			doc.getDocumentElement().normalize();
-
 			// Get all list of files where there are warnings.
-			NodeList nList = doc.getElementsByTagName("file");
+			NodeList nList = setUp(xmlFilePath);
+			
+			// if there are no files with warnings, there return an empty list of warnings.
+			if (nList == null)
+				return checkStyleWarnings;
 
 			for (int i = 0; i < nList.getLength(); i++) {
 				// Get the file from the list.
 				Node file = nList.item(i);
 
 				if (file.getNodeType() == Node.ELEMENT_NODE) {
-					// Convert the node to an element.
-					Element fileElement = (Element) file;
 
 					// Get the path of the file where the warning is from.
-					String filePath = fileElement.getAttribute("name");
+					String filePath = ((Element) file).getAttribute("name");
 
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
 
 					// Get all the warnings.
-					NodeList warningList = fileElement.getElementsByTagName("error");
+					NodeList warningList = ((Element) file).getElementsByTagName("error");
 
 					addWarnings(fileName, warningList, checkStyleWarnings);
-
-				}
+				} 
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
 		return checkStyleWarnings;
 	}
@@ -90,7 +72,7 @@ public class CheckStyleXMLParser extends XMLParser {
 	 *            is a list of warnings.
 	 * @param checkStyleWarnings
 	 *            is the CheckStyle warnings.
-	 * @return a list of FindBugs warnings.
+	 * @return a list of CheckStyle warnings.
 	 */
 	public List<Warning> addWarnings(String fileName, NodeList warningList, List<Warning> checkStyleWarnings) {
 		for (int j = 0; j < warningList.getLength(); j++) {
@@ -101,7 +83,7 @@ public class CheckStyleXMLParser extends XMLParser {
 				// Convert the node to an element.
 				Element warningElement = (Element) warning;
 
-				// message of warning
+				// The message contained by the warning.
 				String message = warningElement.getAttribute("message");
 
 				// line number where the warning is located.
@@ -112,23 +94,20 @@ public class CheckStyleXMLParser extends XMLParser {
 
 				String classification = classify(ruleName);
 
-				// replace the backward slash in the file name with file
-				// separator.
+				// replace the backward slash in the file name with file separator.
 				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
 
 				// for-loop in stream, find correct filePath.
-				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep))
-						.findFirst().get();
+				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
 
 				// Get the name of the file where the warning is from.
-				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1,
-						fileNWithSep.length());
+				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
 
 				// Add warning to the list of warnings.
-				checkStyleWarnings
-						.add(new CheckStyleWarning(filePath, finalFileName, line, message, ruleName, classification));
+				checkStyleWarnings.add(new CheckStyleWarning(filePath, finalFileName, line, message, ruleName, classification));
 			}
 		}
+		
 		return checkStyleWarnings;
 
 	}

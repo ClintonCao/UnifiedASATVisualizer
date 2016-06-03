@@ -28,6 +28,7 @@ import lombok.Setter;
  */
 public class GUIController {
 
+
 	/**
 	 * Enums to represent the ASATs.
 	 * 
@@ -52,8 +53,30 @@ public class GUIController {
 
 	@FXML // fx:id="visualizeButton"
 	private Button visualizeButton; // Value injected by FXMLLoader
-
+	
 	@Getter @Setter private static String sourcePath;
+
+	/**
+	 * Event for CheckStyle button.
+	 * 
+	 * @param event
+	 *            the event.
+	 */
+	@FXML
+	void selectCheckStyleConfigEvent(MouseEvent event) {
+
+	}
+
+	/**
+	 * Event for PMD button.
+	 * 
+	 * @param event
+	 *            the event.
+	 */
+	@FXML
+	void selectPMDConfigEvent(MouseEvent event) {
+
+	}
 
 	/**
 	 * Event for FindBugs button.
@@ -184,5 +207,4 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 		JavaController.setASATOutput(ASAT.FindBugs,
 				new File(GUIController.getSourcePath() + "/target/findbugs.xml"));
 	}
-
 }

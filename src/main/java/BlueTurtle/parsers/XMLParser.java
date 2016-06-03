@@ -1,7 +1,14 @@
 package BlueTurtle.parsers;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
 import BlueTurtle.warnings.Warning;
 
@@ -25,6 +32,37 @@ public abstract class XMLParser implements Parser {
 	 */
 	public abstract List<Warning> parseFile(String filePath);
 
+	/**
+	 * Set up 
+	 * 
+	 * @param xmlFilePath
+	 *            the location of the CheckStyle report.
+	 * @return a list of files where there are warnings.
+	 */
+	public NodeList setUp(String xmlFilePath){
+		// set up an empty list.
+		NodeList nList = null;
+		try {
+			// Instantiate things that are necessary for the parser.
+			File inputFile = new File(xmlFilePath);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+
+			// Parse the file.
+			Document doc = dBuilder.parse(inputFile);
+
+			// Normalize the elements of the document.
+			doc.getDocumentElement().normalize();
+
+			// Get all list of files where there are warnings.
+			nList = doc.getElementsByTagName("file");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return nList;
+	}
+	
 	/**
 	 * Classify the rule name to the correct classification according to
 	 * categoryInfo.

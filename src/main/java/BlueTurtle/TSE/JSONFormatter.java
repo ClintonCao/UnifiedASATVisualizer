@@ -90,6 +90,7 @@ public class JSONFormatter {
 
 		JSWriter jwriter = JSWriter.getInstance();
 		jwriter.setSummarizedWarnings(list);
-		jwriter.writeToJSFormat("./src/main/resources/SummarizedOuput.js");
+		jwriter.writeToJSFormat("visualization/JSON/OOPPJSON.js");	
+
 	}
 }

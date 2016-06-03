@@ -17,7 +17,7 @@ import BlueTurtle.warnings.FindBugsWarning;
 import BlueTurtle.warnings.Warning;
 
 /**
- * Test class for NewFindBugsXMLParser.
+ * Test class for FindBugsXMLParser.
  * 
  * @author BlueTurtle.
  *
@@ -26,6 +26,7 @@ public class FindBugsXMLParserTest {
 
 	private static String testSet = "./src/test/resources/exampleFindbugs2.xml";
 	private static String testSet2 = "./src/test/resources/exampleFindbugs1.xml";
+	private static String testSet3 = "./src/test/resources/exampleFindbugs2.xml";
 	private static String srcDir = System.getProperty("user.dir") + "/src";
 
 	private static String testSet2FileName = "FindBugsWarning.java";
@@ -88,17 +89,6 @@ public class FindBugsXMLParserTest {
 		assertEquals(expected, actual);
 	}
 
-	/**
-	 * Test that the parser created the right amount of warnings.
-	 */
-	@Test
-	public void testCreateRightAmountOfWarnings() {
-		FindBugsXMLParser parser = new FindBugsXMLParser();
-
-		List<Warning> warnings = parser.parseFile(testSet);
-
-		assertNotSame(6, warnings.size());
-	}
 
 	/**
 	 * Test that the parser parse the wrong file.

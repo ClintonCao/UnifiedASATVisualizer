@@ -11,6 +11,70 @@ function replaceAll(stringObject, target, replacement){
 	return stringObject.split(target).join(replacement);
 }
 
+function categorizeWarningType(classification) {
+	switch(classification) {
+		case 'Check':
+			return 0;
+			break;
+		case 'Concurrency':
+			return 0;
+			break;
+		case 'ErrorHandling':
+			return 0;
+			break;
+		case 'Interface':
+			return 0;
+			break;
+		case 'Logic':
+			return 0;
+			break;
+		case 'Migration':
+			return 0;
+			break;
+		case 'Resource':
+			return 0;
+			break;
+		case 'Best Practices':
+			return 1;
+			break;
+		case 'Code Structure':
+			return 1;
+			break;
+		case 'Documentation Conventions':
+			return 1;
+			break;
+		case 'Metric':
+			return 1;
+			break;
+		case 'Naming Conventions':
+			return 1;
+			break;
+		case 'Object Oriented Design':
+			return 1;
+			break;
+		case 'Refactorings - Simplifications':
+			return 1;
+			break;
+		case 'Refactorings - Redundancies':
+			return 1;
+			break;
+		case 'Style Conventions':
+			return 1;
+			break;
+		case 'Other':
+			return 2;
+			break;
+		case 'Regular Expressions':
+			return 2;
+			break;
+		case 'Tool Specific':
+			return 2;
+			break;
+		default:
+			break;
+	}
+}
+
 /*
  *
  * Filter on type of tool and/or warnings
@@ -25,30 +89,68 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 		var CSW = 0;
 		var PMDW = 0;
 		var FBW = 0;
+		var FDW = 0;
+		var MDW = 0;
+		var ODW = 0;
 		for (i = 0; i < classesArray.length; i++) {
 	  		var classObject = new Object();
 	  		classObjectJson = classesArray[i];
 	  		classObject.amountOfWarnings = 0;
-	  		classObject.amountOfCheckStyleWarnings = classObjectJson.numberOfCheckStyleWarnings;
-			classObject.amountOfPMDWarnings = classObjectJson.numberOfPMDWarnings;
-			classObject.amountOfFindBugsWarnings = classObjectJson.numberOfFindBugsWarnings;
-			CSW += classObjectJson.numberOfCheckStyleWarnings;
-			PMDW += classObjectJson.numberOfPMDWarnings;
-			FBW += classObjectJson.numberOfFindBugsWarnings;
+	  		classObject.amountOfCheckStyleWarnings = 0;
+			classObject.amountOfPMDWarnings = 0;
+			classObject.amountOfFindBugsWarnings = 0;
+			classObject.amountOfFunctionalDefects = 0;
+			classObject.amountOfMaintainabilityDefects = 0;
+			classObject.amountOfOtherDefects = 0;
 	  		classObject.loc = classObjectJson.loc;
 	  		classObject.fileName = classObjectJson.fileName;
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j];
 				if($.inArray(warningJson.type, acceptedTypes) > -1 && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
 		  			classObject.amountOfWarnings++;
+		  			switch(warningJson.type) {
+		  				case 'CheckStyle':
+		  					classObject.amountOfCheckStyleWarnings++;
+		  					break;
+		  				case 'PMD':
+		  					classObject.amountOfPMDWarnings++;
+		  					break;
+		  				case 'FindBugs':
+		  					classObject.amountOfFindBugsWarnings++;
+		  					break;
+		  				default:
+		  					break;
+		  			}
+		  			switch(categorizeWarningType(warningJson.classification)) {
+		  				case 0:
+		  					classObject.amountOfFunctionalDefects++;
+		  					break;
+		  				case 1:
+		  					classObject.amountOfMaintainabilityDefects++;
+		  					break;
+		  				case 2:
+		  					classObject.amountOfOtherDefects++;
+		  					break;
+		  				default: 
+		  					break;
+		  			}
 				}
 	  		}
+	  		CSW += classObject.amountOfCheckStyleWarnings;
+	  		PMDW += classObject.amountOfPMDWarnings;
+	  		FBW += classObject.amountOfFindBugsWarnings;
+	  		FDW += classObject.amountOfFunctionalDefects;
+	  		MDW += classObject.amountOfMaintainabilityDefects;
+	  		ODW += classObject.amountOfOtherDefects;
 	  		classArray.push(classObject);
 		}
 	classArray.packageName = package.packageName;
 	classArray.amountOfCheckStyleWarnings = CSW;
 	classArray.amountOfPMDWarnings = PMDW;
 	classArray.amountOfFindBugsWarnings = FBW;
+	classArray.amountOfFunctionalDefects = FDW;
+	classArray.amountOfMaintainabilityDefects = MDW;
+	classArray.amountOfOtherDefects = ODW;
 	packageArray.push(classArray);
   	}
 	return packageArray;
@@ -61,6 +163,7 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
  */
 function getTotalASATWarning(warningType) {
 	var packageArray = [];
+	var classObject = new Object();
 	for(var p =0; p < inputData.length; p++){
 		var package = inputData[p];
 		var classesArray = package.classes;
@@ -72,7 +175,38 @@ function getTotalASATWarning(warningType) {
 			classObject.fileName = classObjectJson.fileName;
 			for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j]
-				if(warningJson.type == warningType) {
+				if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
+		  			classObject.amountOfWarnings++;
+				}
+	  		}
+	  		classArray.push(classObject);
+		}
+		classArray.packageName = package.packageName;
+		packageArray.push(classArray)
+	}
+	return packageArray;
+}
+
+/*
+ *
+ * Counts for a specific category how many warnings there are
+ *
+ */
+function getTotalCategoryWarning(warningType) {
+	var packageArray = [];
+	var classObject = new Object();
+	for(var p =0; p < inputData.length; p++){
+		var package = inputData[p];
+		var classesArray = package.classes;
+		var classArray = [];
+		for (i = 0; i < classesArray.length; i++) {
+			classObjectJson = classesArray[i];
+			var classObject = new Object();
+			classObject.amountOfWarnings = 0;
+			classObject.fileName = classObjectJson.fileName;
+			for (j = 0; j < classObjectJson.warningList.length; j++) { 
+				var warningJson = classObjectJson.warningList[j]
+				if($.inArray(warningJson.type, acceptedTypes) > -1 && warningJson.classification == warningType) {
 		  			classObject.amountOfWarnings++;
 				}
 	  		}
@@ -94,6 +228,9 @@ function createJsonTreeMap(packages){
 	var upperLevelCSW = 0;
 	var upperLevelPMDW = 0;
 	var upperLevelFBW = 0;
+	var upperLevelFD = 0;
+	var upperLevelMD = 0;
+	var upperLevelOD = 0;
 		for(var p =0; p < packages.length; p++){
 			var jsonArrClass = [];
 			var classes = packages[p];
@@ -106,19 +243,30 @@ function createJsonTreeMap(packages){
 					warningsCheckStyle: classes[i].amountOfCheckStyleWarnings,
 					warningsPMD: classes[i].amountOfPMDWarnings,
 					warningsFindBugs: classes[i].amountOfFindBugsWarnings,
+					warningsFunctionalDefects: classes[i].amountOfFunctionalDefects,
+					warningsMaintainabilityDefects: classes[i].amountOfMaintainabilityDefects,
+					warningsOtherDefects: classes[i].amountOfOtherDefects,
 					value: linesOfCode
 				});
 			}
+
 			upperLevelCSW += classes.amountOfCheckStyleWarnings;
 			upperLevelPMDW += classes.amountOfPMDWarnings;
 			upperLevelFBW += classes.amountOfFindBugsWarnings;
+			upperLevelFD += classes.amountOfFunctionalDefects;
+			upperLevelMD += classes.amountOfMaintainabilityDefects;
+			upperLevelOD += classes.amountOfOtherDefects;
+
 			jsonArrPackage.push(
 				{
 					fileName: classes.packageName, 
 					values: jsonArrClass,
 					warningsCheckStyle: classes.amountOfCheckStyleWarnings,
 					warningsPMD: classes.amountOfFindBugsWarnings,
-					warningsFindBugs: classes.amountOfFindBugsWarnings
+					warningsFindBugs: classes.amountOfFindBugsWarnings,
+					warningsFunctionalDefects: classes.amountOfFunctionalDefects,
+					warningsMaintainabilityDefects: classes.amountOfMaintainabilityDefects,
+					warningsOtherDefects: classes.amountOfOtherDefects
 				});
 		}
 	return [
@@ -127,7 +275,10 @@ function createJsonTreeMap(packages){
 			values: jsonArrPackage,
 			warningsCheckStyle: upperLevelCSW,
 			warningsPMD: upperLevelPMDW,
-			warningsFindBugs: upperLevelFBW
+			warningsFindBugs: upperLevelFBW,
+			warningsFunctionalDefects: upperLevelFD,
+			warningsMaintainabilityDefects: upperLevelMD,
+			warningsOtherDefects: upperLevelOD
 		}];
 }
 

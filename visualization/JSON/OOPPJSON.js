@@ -11,7 +11,7 @@ var inputData =
             "message": "File does not end with a newline.",
             "classification": "Style Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "NewlineAtEndOfFile"
           },
@@ -20,7 +20,7 @@ var inputData =
             "message": "Name Brain must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
             "classification": "Naming Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "PackageName"
           },
@@ -29,7 +29,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "JavadocStyle"
           },
@@ -38,7 +38,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "RegexpSingleline"
           },
@@ -47,7 +47,7 @@ var inputData =
             "message": "File contains tab characters (this is the first instance).",
             "classification": "Style Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "FileTabCharacter"
           },
@@ -56,7 +56,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "JavadocVariable"
           },
@@ -65,7 +65,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "JavadocVariable"
           },
@@ -74,7 +74,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "JavadocVariable"
           },
@@ -93,6 +93,141 @@ var inputData =
             "classification": "Regular Expressions",
             "fileName": "Speler.java",
             "type": "CheckStyle",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 19,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "Speler.java",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "RegexpSingleline"
           },
@@ -182,7 +317,7 @@ var inputData =
             "message": "Parameter ap should be final.",
             "classification": "Best Practices",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "FinalParameters"
           },
@@ -191,7 +326,7 @@ var inputData =
             "message": "ap hides a field.",
             "classification": "Logic",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "HiddenField"
           },
@@ -200,7 +335,7 @@ var inputData =
             "message": "Parameter dp should be final.",
             "classification": "Best Practices",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "FinalParameters"
           },
@@ -209,7 +344,7 @@ var inputData =
             "message": "dp hides a field.",
             "classification": "Logic",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "HiddenField"
           },
@@ -218,7 +353,7 @@ var inputData =
             "message": "Parameter stamina should be final.",
             "classification": "Best Practices",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "FinalParameters"
           },
@@ -227,7 +362,7 @@ var inputData =
             "message": "stamina hides a field.",
             "classification": "Logic",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "HiddenField"
           },
@@ -236,7 +371,7 @@ var inputData =
             "message": "Parameter team should be final.",
             "classification": "Best Practices",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "FinalParameters"
           },
@@ -245,7 +380,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "RegexpSingleline"
           },
@@ -254,7 +389,7 @@ var inputData =
             "message": "Method getAp is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "DesignForExtension"
           },
@@ -263,7 +398,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "RegexpSingleline"
           },
@@ -362,7 +497,7 @@ var inputData =
             "message": "Parameter dp should be final.",
             "classification": "Best Practices",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "FinalParameters"
           },
@@ -371,7 +506,7 @@ var inputData =
             "message": "dp hides a field.",
             "classification": "Logic",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "HiddenField"
           },
@@ -380,7 +515,7 @@ var inputData =
             "message": "Expected @param tag for dp.",
             "classification": "Documentation Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "JavadocMethod"
           },
@@ -389,7 +524,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "RegexpSingleline"
           },
@@ -398,7 +533,7 @@ var inputData =
             "message": "Method getStamina is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "DesignForExtension"
           },
@@ -407,7 +542,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "JavadocStyle"
           },
@@ -416,7 +551,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "RegexpSingleline"
           },
@@ -425,7 +560,7 @@ var inputData =
             "message": "Method setStamina is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "DesignForExtension"
           },
@@ -434,7 +569,7 @@ var inputData =
             "message": "Parameter stamina should be final.",
             "classification": "Best Practices",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "FinalParameters"
           },
@@ -443,7 +578,7 @@ var inputData =
             "message": "stamina hides a field.",
             "classification": "Logic",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "HiddenField"
           },
@@ -452,7 +587,7 @@ var inputData =
             "message": "Expected @param tag for stamina.",
             "classification": "Documentation Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "JavadocMethod"
           },
@@ -533,7 +668,7 @@ var inputData =
             "message": "Parameter out should be final.",
             "classification": "Best Practices",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "FinalParameters"
           },
@@ -542,7 +677,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 85).",
             "classification": "Metric",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "LineLength"
           },
@@ -551,7 +686,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "JavadocStyle"
           },
@@ -560,7 +695,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "RegexpSingleline"
           },
@@ -569,7 +704,7 @@ var inputData =
             "message": "Parameter sc should be final.",
             "classification": "Best Practices",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "FinalParameters"
           },
@@ -578,18 +713,18 @@ var inputData =
             "message": "Line is longer than 80 characters (found 85).",
             "classification": "Metric",
             "fileName": "Speler.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Speler.java",
             "ruleName": "LineLength"
           }
         ],
-        "loc": 169,
+        "loc": 1690,
         "packageName": "Brain",
         "numberOfWarnings": 64,
         "warningTypes": [
-          "CheckStyle"
+          "PMD"
         ],
-        "numberOfCheckStyleWarnings": 64,
+        "numberOfPMDWarnings": 64,
         "numberOfPMDWarnings": 0,
         "numberOfFindBugsWarnings": 0
       },
@@ -602,7 +737,7 @@ var inputData =
             "message": "File does not end with a newline.",
             "classification": "Style Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "NewlineAtEndOfFile"
           },
@@ -611,7 +746,7 @@ var inputData =
             "message": "Name Brain must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
             "classification": "Naming Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "PackageName"
           },
@@ -620,7 +755,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocStyle"
           },
@@ -629,7 +764,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -638,7 +773,7 @@ var inputData =
             "message": "File contains tab characters (this is the first instance).",
             "classification": "Style Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FileTabCharacter"
           },
@@ -647,7 +782,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocVariable"
           },
@@ -656,7 +791,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocVariable"
           },
@@ -665,7 +800,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocVariable"
           },
@@ -674,7 +809,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocVariable"
           },
@@ -683,7 +818,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocVariable"
           },
@@ -692,7 +827,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocVariable"
           },
@@ -701,7 +836,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocVariable"
           },
@@ -710,7 +845,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocVariable"
           },
@@ -719,7 +854,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocVariable"
           },
@@ -818,7 +953,7 @@ var inputData =
             "message": "Parameter draw should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -827,7 +962,7 @@ var inputData =
             "message": "draw hides a field.",
             "classification": "Logic",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "HiddenField"
           },
@@ -836,7 +971,7 @@ var inputData =
             "message": "Parameter goalsvoor should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -845,7 +980,7 @@ var inputData =
             "message": "goalsvoor hides a field.",
             "classification": "Logic",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "HiddenField"
           },
@@ -854,7 +989,7 @@ var inputData =
             "message": "Parameter goalstegen should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -863,7 +998,7 @@ var inputData =
             "message": "goalstegen hides a field.",
             "classification": "Logic",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "HiddenField"
           },
@@ -872,7 +1007,7 @@ var inputData =
             "message": "Parameter id should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -881,7 +1016,7 @@ var inputData =
             "message": "id hides a field.",
             "classification": "Logic",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "HiddenField"
           },
@@ -890,7 +1025,7 @@ var inputData =
             "message": "3 is a magic number.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "MagicNumber"
           },
@@ -899,7 +1034,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocStyle"
           },
@@ -908,7 +1043,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1052,7 +1187,7 @@ var inputData =
             "message": "Parameter man should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -1061,7 +1196,7 @@ var inputData =
             "message": "Expected @param tag for man.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocMethod"
           },
@@ -1070,7 +1205,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1079,7 +1214,7 @@ var inputData =
             "message": "Method getTeam is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1088,7 +1223,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1097,7 +1232,7 @@ var inputData =
             "message": "Method getFormation is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1106,7 +1241,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 81).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -1115,7 +1250,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 82).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -1124,7 +1259,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1133,7 +1268,7 @@ var inputData =
             "message": "Method setFormation is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1142,7 +1277,7 @@ var inputData =
             "message": "Parameter formation should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -1232,7 +1367,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocStyle"
           },
@@ -1241,7 +1376,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1250,7 +1385,7 @@ var inputData =
             "message": "Method setNaam is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1259,7 +1394,7 @@ var inputData =
             "message": "Parameter naam should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -1268,7 +1403,7 @@ var inputData =
             "message": "naam hides a field.",
             "classification": "Logic",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "HiddenField"
           },
@@ -1277,7 +1412,7 @@ var inputData =
             "message": "Expected @param tag for naam.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocMethod"
           },
@@ -1286,7 +1421,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1295,7 +1430,7 @@ var inputData =
             "message": "Method getWins is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1304,7 +1439,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocStyle"
           },
@@ -1313,7 +1448,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1421,7 +1556,7 @@ var inputData =
             "message": "Expected @param tag for loss.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocMethod"
           },
@@ -1430,7 +1565,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1439,7 +1574,7 @@ var inputData =
             "message": "Method getDraw is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1448,7 +1583,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocStyle"
           },
@@ -1457,7 +1592,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1466,7 +1601,7 @@ var inputData =
             "message": "Method setDraw is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1475,7 +1610,7 @@ var inputData =
             "message": "Parameter draw should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -1484,7 +1619,7 @@ var inputData =
             "message": "draw hides a field.",
             "classification": "Logic",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "HiddenField"
           },
@@ -1493,7 +1628,7 @@ var inputData =
             "message": "Expected @param tag for draw.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocMethod"
           },
@@ -1502,7 +1637,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1511,7 +1646,7 @@ var inputData =
             "message": "Method getId is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1520,7 +1655,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocStyle"
           },
@@ -1610,7 +1745,7 @@ var inputData =
             "message": "Unused @param tag for aantal.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocMethod"
           },
@@ -1619,7 +1754,7 @@ var inputData =
             "message": "Method setGoalsvoor is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1628,7 +1763,7 @@ var inputData =
             "message": "Parameter i should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -1637,7 +1772,7 @@ var inputData =
             "message": "Expected @param tag for i.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocMethod"
           },
@@ -1646,7 +1781,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocStyle"
           },
@@ -1655,7 +1790,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1664,7 +1799,7 @@ var inputData =
             "message": "Unused @param tag for aantal.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocMethod"
           },
@@ -1673,7 +1808,7 @@ var inputData =
             "message": "Method incrGoalsvoor is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1826,7 +1961,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 83).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -1835,7 +1970,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1844,7 +1979,7 @@ var inputData =
             "message": "Method getRating is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1853,7 +1988,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 85).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -1862,7 +1997,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 81).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -1871,7 +2006,7 @@ var inputData =
             "message": "Method toString is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1880,7 +2015,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocStyle"
           },
@@ -1889,7 +2024,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -1898,7 +2033,7 @@ var inputData =
             "message": "Method setDefaultFormation is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1907,7 +2042,7 @@ var inputData =
             "message": "Parameter df should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -1916,7 +2051,7 @@ var inputData =
             "message": "Expected @param tag for df.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocMethod"
           },
@@ -1925,7 +2060,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 82).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -1934,7 +2069,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 81).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -1943,7 +2078,7 @@ var inputData =
             "message": "Method setEasyFormation is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -1952,7 +2087,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 81).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -1961,7 +2096,7 @@ var inputData =
             "message": "4 is a magic number.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "MagicNumber"
           },
@@ -1970,7 +2105,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 87).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -1979,7 +2114,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 89).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -1988,7 +2123,7 @@ var inputData =
             "message": "3 is a magic number.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "MagicNumber"
           },
@@ -1997,7 +2132,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 87).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -2006,7 +2141,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 89).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -2015,7 +2150,7 @@ var inputData =
             "message": "3 is a magic number.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "MagicNumber"
           },
@@ -2024,7 +2159,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 87).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -2033,7 +2168,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 97).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -2042,7 +2177,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 83).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -2051,7 +2186,7 @@ var inputData =
             "message": "Method setMediumFormation is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -2060,7 +2195,7 @@ var inputData =
             "message": "4 is a magic number.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "MagicNumber"
           },
@@ -2069,7 +2204,7 @@ var inputData =
             "message": "3 is a magic number.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "MagicNumber"
           },
@@ -2078,7 +2213,7 @@ var inputData =
             "message": "3 is a magic number.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "MagicNumber"
           },
@@ -2204,7 +2339,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocStyle"
           },
@@ -2213,7 +2348,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -2222,7 +2357,7 @@ var inputData =
             "message": "Method write is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "DesignForExtension"
           },
@@ -2231,7 +2366,7 @@ var inputData =
             "message": "Parameter out should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           },
@@ -2240,7 +2375,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 84).",
             "classification": "Metric",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "LineLength"
           },
@@ -2249,7 +2384,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "JavadocStyle"
           },
@@ -2258,7 +2393,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "RegexpSingleline"
           },
@@ -2267,18 +2402,18 @@ var inputData =
             "message": "Parameter sc should be final.",
             "classification": "Best Practices",
             "fileName": "Team.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Team.java",
             "ruleName": "FinalParameters"
           }
         ],
-        "loc": 606,
+        "loc": 6060,
         "packageName": "Brain",
         "numberOfWarnings": 186,
         "warningTypes": [
-          "CheckStyle"
+          "PMD"
         ],
-        "numberOfCheckStyleWarnings": 186,
+        "numberOfPMDWarnings": 186,
         "numberOfPMDWarnings": 0,
         "numberOfFindBugsWarnings": 0
       },
@@ -2291,7 +2426,7 @@ var inputData =
             "message": "File does not end with a newline.",
             "classification": "Style Conventions",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "NewlineAtEndOfFile"
           },
@@ -2300,7 +2435,7 @@ var inputData =
             "message": "Name Brain must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
             "classification": "Naming Conventions",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "PackageName"
           },
@@ -2309,7 +2444,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "JavadocStyle"
           },
@@ -2318,7 +2453,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "RegexpSingleline"
           },
@@ -2327,7 +2462,7 @@ var inputData =
             "message": "File contains tab characters (this is the first instance).",
             "classification": "Style Conventions",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "FileTabCharacter"
           },
@@ -2336,7 +2471,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "JavadocVariable"
           },
@@ -2345,7 +2480,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "JavadocVariable"
           },
@@ -2354,7 +2489,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "JavadocVariable"
           },
@@ -2363,7 +2498,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "JavadocStyle"
           },
@@ -2471,7 +2606,7 @@ var inputData =
             "message": "Method getMinuut is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "DesignForExtension"
           },
@@ -2480,7 +2615,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "RegexpSingleline"
           },
@@ -2489,7 +2624,7 @@ var inputData =
             "message": "Method getTeam is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "DesignForExtension"
           },
@@ -2498,18 +2633,18 @@ var inputData =
             "message": "Method toString is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "Goal.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Goal.java",
             "ruleName": "DesignForExtension"
           }
         ],
-        "loc": 52,
+        "loc": 220,
         "packageName": "Brain",
         "numberOfWarnings": 24,
         "warningTypes": [
-          "CheckStyle"
+          "PMD"
         ],
-        "numberOfCheckStyleWarnings": 24,
+        "numberOfPMDWarnings": 24,
         "numberOfPMDWarnings": 0,
         "numberOfFindBugsWarnings": 0
       },
@@ -2522,7 +2657,7 @@ var inputData =
             "message": "File does not end with a newline.",
             "classification": "Style Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "NewlineAtEndOfFile"
           },
@@ -2531,7 +2666,7 @@ var inputData =
             "message": "Name Brain must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
             "classification": "Naming Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "PackageName"
           },
@@ -2540,7 +2675,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "JavadocStyle"
           },
@@ -2549,7 +2684,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "RegexpSingleline"
           },
@@ -2558,7 +2693,7 @@ var inputData =
             "message": "File contains tab characters (this is the first instance).",
             "classification": "Style Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "FileTabCharacter"
           },
@@ -2567,7 +2702,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "JavadocVariable"
           },
@@ -2576,7 +2711,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "JavadocVariable"
           },
@@ -2585,7 +2720,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "JavadocVariable"
           },
@@ -2594,7 +2729,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "JavadocVariable"
           },
@@ -2603,7 +2738,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "JavadocVariable"
           },
@@ -2612,7 +2747,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "JavadocVariable"
           },
@@ -2621,7 +2756,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "JavadocVariable"
           },
@@ -2630,7 +2765,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "RegexpSingleline"
           },
@@ -2639,7 +2774,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 82).",
             "classification": "Metric",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "LineLength"
           },
@@ -2648,7 +2783,7 @@ var inputData =
             "message": "Parameter naam should be final.",
             "classification": "Best Practices",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "FinalParameters"
           },
@@ -2657,7 +2792,7 @@ var inputData =
             "message": "naam hides a field.",
             "classification": "Logic",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "HiddenField"
           },
@@ -2666,7 +2801,7 @@ var inputData =
             "message": "Parameter id should be final.",
             "classification": "Best Practices",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "FinalParameters"
           },
@@ -2675,7 +2810,7 @@ var inputData =
             "message": "id hides a field.",
             "classification": "Logic",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "HiddenField"
           },
@@ -2684,7 +2819,7 @@ var inputData =
             "message": "Parameter prijs should be final.",
             "classification": "Best Practices",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "FinalParameters"
           },
@@ -2693,7 +2828,7 @@ var inputData =
             "message": "prijs hides a field.",
             "classification": "Logic",
             "fileName": "Man.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Man.java",
             "ruleName": "HiddenField"
           },
@@ -3378,6 +3513,69 @@ var inputData =
             "classification": "Style Conventions",
             "fileName": "Match.java",
             "type": "CheckStyle",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Match.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "Match.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Match.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "Match.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Match.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "Match.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Match.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "Match.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Match.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "Match.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Match.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "Match.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Match.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "Match.java",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\Brain\\Match.java",
             "ruleName": "NewlineAtEndOfFile"
           },
@@ -5616,7 +5814,7 @@ var inputData =
             "ruleName": "CollapsibleIfStatements"
           }
         ],
-        "loc": 715,
+        "loc": 7150,
         "packageName": "Brain",
         "numberOfWarnings": 247,
         "warningTypes": [
@@ -8605,7 +8803,7 @@ var inputData =
       "PMD",
       "CheckStyle"
     ],
-    "numberOfCheckStyleWarnings": 923,
+    "numberOfPMDWarnings": 923,
     "numberOfPMDWarnings": 11,
     "numberOfFindBugsWarnings": 0
   },
@@ -8620,7 +8818,7 @@ var inputData =
             "message": "File does not end with a newline.",
             "classification": "Style Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "NewlineAtEndOfFile"
           },
@@ -8629,7 +8827,7 @@ var inputData =
             "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "PackageName"
           },
@@ -8638,7 +8836,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocStyle"
           },
@@ -8647,7 +8845,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "RegexpSingleline"
           },
@@ -8656,7 +8854,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "RegexpSingleline"
           },
@@ -8665,7 +8863,7 @@ var inputData =
             "message": "File contains tab characters (this is the first instance).",
             "classification": "Style Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "FileTabCharacter"
           },
@@ -8674,7 +8872,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocVariable"
           },
@@ -8683,7 +8881,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocVariable"
           },
@@ -8692,7 +8890,7 @@ var inputData =
             "message": "Name Spelers must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MemberName"
           },
@@ -8701,7 +8899,7 @@ var inputData =
             "message": "Line is longer than 80 characters (found 82).",
             "classification": "Metric",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "LineLength"
           },
@@ -8710,7 +8908,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocVariable"
           },
@@ -8719,7 +8917,7 @@ var inputData =
             "message": "Name WeergeefTeam1 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -8728,7 +8926,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -8737,7 +8935,7 @@ var inputData =
             "message": "Name WeergeefTeam2 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -8746,7 +8944,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -8755,7 +8953,7 @@ var inputData =
             "message": "Name WeergeefTeam3 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -8764,7 +8962,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -8773,7 +8971,7 @@ var inputData =
             "message": "Name WeergeefTeam4 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -8782,7 +8980,7 @@ var inputData =
             "message": "3 is a magic number.",
             "classification": "Best Practices",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MagicNumber"
           },
@@ -8791,7 +8989,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -8800,7 +8998,7 @@ var inputData =
             "message": "Name WeergeefTeam5 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -8809,7 +9007,7 @@ var inputData =
             "message": "4 is a magic number.",
             "classification": "Best Practices",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MagicNumber"
           },
@@ -8818,7 +9016,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -8827,7 +9025,7 @@ var inputData =
             "message": "Name WeergeefTeam6 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -8836,7 +9034,7 @@ var inputData =
             "message": "5 is a magic number.",
             "classification": "Best Practices",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MagicNumber"
           },
@@ -8845,7 +9043,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -8854,7 +9052,7 @@ var inputData =
             "message": "Name WeergeefTeam7 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -8863,7 +9061,7 @@ var inputData =
             "message": "6 is a magic number.",
             "classification": "Best Practices",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MagicNumber"
           },
@@ -8872,7 +9070,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -8881,7 +9079,7 @@ var inputData =
             "message": "Name WeergeefTeam8 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -8890,7 +9088,7 @@ var inputData =
             "message": "7 is a magic number.",
             "classification": "Best Practices",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MagicNumber"
           },
@@ -8899,7 +9097,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "PMD",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -9475,7 +9673,7 @@ var inputData =
             "message": "Name SelectTeam13 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -9484,7 +9682,7 @@ var inputData =
             "message": "12 is a magic number.",
             "classification": "Best Practices",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MagicNumber"
           },
@@ -9493,7 +9691,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -9502,7 +9700,7 @@ var inputData =
             "message": "Name SelectTeam14 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -9511,7 +9709,7 @@ var inputData =
             "message": "13 is a magic number.",
             "classification": "Best Practices",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MagicNumber"
           },
@@ -9520,7 +9718,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -9529,7 +9727,7 @@ var inputData =
             "message": "Name SelectTeam15 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -9538,7 +9736,7 @@ var inputData =
             "message": "14 is a magic number.",
             "classification": "Best Practices",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MagicNumber"
           },
@@ -9547,7 +9745,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "JavadocMethod"
           },
@@ -9556,7 +9754,7 @@ var inputData =
             "message": "Name SelectTeam16 must match pattern ^[a-z][a-zA-Z0-9]*$.",
             "classification": "Naming Conventions",
             "fileName": "LoadPlayersController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\LoadPlayersController.java",
             "ruleName": "MethodName"
           },
@@ -9702,7 +9900,7 @@ var inputData =
         "warningTypes": [
           "CheckStyle"
         ],
-        "numberOfCheckStyleWarnings": 120,
+        "numberOfFindBugsWarnings": 120,
         "numberOfPMDWarnings": 0,
         "numberOfFindBugsWarnings": 0
       },
@@ -9715,7 +9913,7 @@ var inputData =
             "message": "File does not end with a newline.",
             "classification": "Style Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "NewlineAtEndOfFile"
           },
@@ -9724,7 +9922,7 @@ var inputData =
             "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
             "classification": "Naming Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "PackageName"
           },
@@ -9733,7 +9931,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "JavadocStyle"
           },
@@ -9742,7 +9940,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "RegexpSingleline"
           },
@@ -9751,7 +9949,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "RegexpSingleline"
           },
@@ -9760,7 +9958,7 @@ var inputData =
             "message": "File contains tab characters (this is the first instance).",
             "classification": "Style Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "FileTabCharacter"
           },
@@ -9769,7 +9967,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "JavadocVariable"
           },
@@ -9778,7 +9976,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "JavadocVariable"
           },
@@ -9787,7 +9985,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "JavadocVariable"
           },
@@ -9796,7 +9994,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "JavadocVariable"
           },
@@ -9805,7 +10003,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "JavadocVariable"
           },
@@ -9814,7 +10012,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "JavadocVariable"
           },
@@ -9823,7 +10021,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "JavadocVariable"
           },
@@ -9832,7 +10030,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "JavadocVariable"
           },
@@ -9841,7 +10039,7 @@ var inputData =
             "message": "Missing a Javadoc comment.",
             "classification": "Documentation Conventions",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "JavadocVariable"
           },
@@ -9850,7 +10048,7 @@ var inputData =
             "message": "Method initialize is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "DesignForExtension"
           },
@@ -9859,7 +10057,7 @@ var inputData =
             "message": "Parameter url should be final.",
             "classification": "Best Practices",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "FinalParameters"
           },
@@ -9868,7 +10066,7 @@ var inputData =
             "message": "Parameter rb should be final.",
             "classification": "Best Practices",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "FinalParameters"
           },
@@ -9877,7 +10075,7 @@ var inputData =
             "message": "Method initMyTeam is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "MarketPlaceController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\MarketPlaceController.java",
             "ruleName": "DesignForExtension"
           },
@@ -15736,7 +15934,7 @@ var inputData =
             "message": "File does not end with a newline.",
             "classification": "Style Conventions",
             "fileName": "TacticsController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
             "ruleName": "NewlineAtEndOfFile"
           },
@@ -15745,7 +15943,7 @@ var inputData =
             "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
             "classification": "Naming Conventions",
             "fileName": "TacticsController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
             "ruleName": "PackageName"
           },
@@ -15754,7 +15952,7 @@ var inputData =
             "message": "First sentence should end with a period.",
             "classification": "Documentation Conventions",
             "fileName": "TacticsController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
             "ruleName": "JavadocStyle"
           },
@@ -15763,7 +15961,7 @@ var inputData =
             "message": "Line has trailing spaces.",
             "classification": "Regular Expressions",
             "fileName": "TacticsController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
             "ruleName": "RegexpSingleline"
           },
@@ -15772,7 +15970,1303 @@ var inputData =
             "message": "File contains tab characters (this is the first instance).",
             "classification": "Style Conventions",
             "fileName": "TacticsController.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "FileTabCharacter"
+          },
+          {
+            "line": 6,
+            "message": "Name GUI must match pattern ^[a-z]+(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$.",
+            "classification": "Naming Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "PackageName"
+          },
+          {
+            "line": 39,
+            "message": "First sentence should end with a period.",
+            "classification": "Documentation Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "JavadocStyle"
+          },
+          {
+            "line": 40,
+            "message": "Line has trailing spaces.",
+            "classification": "Regular Expressions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
+            "ruleName": "RegexpSingleline"
+          },
+          {
+            "line": 47,
+            "message": "File contains tab characters (this is the first instance).",
+            "classification": "Style Conventions",
+            "fileName": "TacticsController.java",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\GUI\\TacticsController.java",
             "ruleName": "FileTabCharacter"
           },
@@ -24612,7 +26106,7 @@ var inputData =
             "ruleName": "RegexpSingleline"
           }
         ],
-        "loc": 664,
+        "loc": 1264,
         "packageName": "junitTests",
         "numberOfWarnings": 597,
         "warningTypes": [
@@ -24631,7 +26125,412 @@ var inputData =
             "message": "File does not end with a newline.",
             "classification": "Style Conventions",
             "fileName": "KaartTest.java",
-            "type": "CheckStyle",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "KaartTest.java",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\KaartTest.java",
             "ruleName": "NewlineAtEndOfFile"
           },
@@ -24960,7 +26859,7 @@ var inputData =
             "ruleName": "RegexpSingleline"
           }
         ],
-        "loc": 35,
+        "loc": 3500,
         "packageName": "junitTests",
         "numberOfWarnings": 37,
         "warningTypes": [
@@ -25218,7 +27117,7 @@ var inputData =
             "ruleName": "MagicNumber"
           }
         ],
-        "loc": 70,
+        "loc": 7000,
         "packageName": "junitTests",
         "numberOfWarnings": 27,
         "warningTypes": [
@@ -25237,7 +27136,3238 @@ var inputData =
             "message": "File does not end with a newline.",
             "classification": "Style Conventions",
             "fileName": "TeamTest.java",
-            "type": "CheckStyle",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+          {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "PMD",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
+            "ruleName": "NewlineAtEndOfFile"
+          },
+		  {
+            "line": 0,
+            "message": "File does not end with a newline.",
+            "classification": "Style Conventions",
+            "fileName": "TeamTest.java",
+            "type": "FindBugs",
             "filePath": "C:\\users\\clint\\Downloads\\src\\junitTests\\TeamTest.java",
             "ruleName": "NewlineAtEndOfFile"
           },
@@ -29814,7 +34944,7 @@ var inputData =
             "ruleName": "RegexpSingleline"
           },
           {
-            "line": 367,
+            "line": 3670,
             "message": "Method setDefaultFormationCondition0 is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "TeamTest.java",
@@ -29958,7 +35088,7 @@ var inputData =
             "ruleName": "RegexpSingleline"
           },
           {
-            "line": 381,
+            "line": 3810,
             "message": "Method setDefaultFormationCondition01 is not designed for extension - needs to be abstract, final or empty.",
             "classification": "Object Oriented Design",
             "fileName": "TeamTest.java",
@@ -34586,7 +39716,7 @@ var inputData =
             "ruleName": "AvoidUsingOctalValues"
           }
         ],
-        "loc": 728,
+        "loc": 8280,
         "packageName": "junitTests",
         "numberOfWarnings": 1039,
         "warningTypes": [
@@ -34881,7 +40011,7 @@ var inputData =
             "ruleName": "RegexpSingleline"
           }
         ],
-        "loc": 39,
+        "loc": 329,
         "packageName": "junitTests",
         "numberOfWarnings": 31,
         "warningTypes": [
