@@ -45,4 +45,10 @@ ASAT Research: [asat research] (https://github.com/ClintonCao/Contextproject-TSE
 
 ## Run the Program:
 
-Go to the src/main/java/BlueTurtle/TSE folder and run the file Main.java, and then follow the instructions on the User Interface, select the Project in you local space that you want to visualize, and click 'Visualize' button.
+* Go to the `src/main/java/BlueTurtle/TSE` folder.
+* Run the file `Main.java`.
+* Follow the instruction on the User Interface.
+* Select the project that you want to visualize in your local space.
+* Click the `Visualize` button.
+
+(The output of Visualizer still need to be fixed)
