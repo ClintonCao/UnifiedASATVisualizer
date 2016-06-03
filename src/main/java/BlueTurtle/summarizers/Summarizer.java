@@ -73,20 +73,5 @@ public abstract class Summarizer {
 	 *            the list of warnings to be summarized.
 	 */
 	public abstract void summarise(List<Warning> warnings);
-
-	/**
-	 * Check whether two summarizer are the same.
-	 * 
-	 * @param other
-	 *            the other summarizer.
-	 */
-	@Override
-	public abstract boolean equals(Object other);
-	
-	/**
-	 * HashCode for summarizer.
-	 */
-	@Override
-	public abstract int hashCode();
 	
 }
