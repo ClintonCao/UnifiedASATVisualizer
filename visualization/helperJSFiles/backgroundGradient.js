@@ -93,8 +93,7 @@ var backgroundObject = (function() {
 					return gradient;
 			}
 		} else {
-			if(ratioArray[0] == 0 && ratioArray[1] != 0 && ratioArray[2] != 0) {	
-				//console.log("CS GONE" + ratioArray);			
+			if(ratioArray[0] == 0 && ratioArray[1] != 0 && ratioArray[2] != 0) {			
 				gradient.append("stop")
 					.attr("offset", "0%")
 					.attr("stop-color", redScale(weight*100))
@@ -113,7 +112,6 @@ var backgroundObject = (function() {
 					.attr("stop-color", blueScale(weight*100))
 					.attr("stop-opacity", 1);
 			} else if(ratioArray[1] == 0 && ratioArray[0] != 0 && ratioArray[2] != 0) {
-				//console.log("PMD GONE" + ratioArray);
 				gradient.append("stop")
 					.attr("offset", "0%")
 					.attr("stop-color", greenScale(weight*100))
@@ -132,7 +130,6 @@ var backgroundObject = (function() {
 					.attr("stop-color", blueScale(weight*100))
 					.attr("stop-opacity", 1);
 			} else if(ratioArray[2] == 0 && ratioArray[1] != 0 && ratioArray[0] != 0) {
-				//console.log("FindBugs GONE" + ratioArray);
 				gradient.append("stop")
 					.attr("offset", "0%")
 					.attr("stop-color", greenScale(weight*100))
@@ -288,29 +285,24 @@ var backgroundObject = (function() {
 				ratioArrayASAT = [];
 				var constant = 100;
 				var warningsTotal = checkIfNot0(d.warnings);
+	
                 var ratioCheckStyle = Math.round(constant * d.warningsCheckStyle / warningsTotal);	
-				if ( ratioCheckStyle > maxConstant ) { ratioCheckStyle = maxConstant; }
 				ratioArrayASAT.push(ratioCheckStyle);
-				console.log("CS " + ratioArrayASAT);
+				
                 var ratiowarningsPMD = Math.round(constant * d.warningsPMD / warningsTotal);	
-				if ( ratiowarningsPMD > maxConstant ) { ratiowarningsPMD = maxConstant; }
 				ratioArrayASAT.push(ratiowarningsPMD);
-				console.log("PMD " + ratioArrayASAT);
+				
                 var ratioFindBugs = Math.round(constant * d.warningsFindBugs / warningsTotal);	
-				if ( ratioFindBugs > maxConstant ) { ratioFindBugs = maxConstant; }
 				ratioArrayASAT.push(ratioFindBugs);
-				console.log("FB " + ratioArrayASAT);
+				
 				ratioArrayCategory = [];
                 var ratioFunctionalDefects = Math.round(constant * d.warningsFunctionalDefects / warningsTotal);	
-				if ( ratioFunctionalDefects > maxConstant ) { ratioFunctionalDefects = maxConstant; }
 				ratioArrayCategory.push(ratioFunctionalDefects);
 				
                 var ratioMaintainabilityDefects = Math.round(constant * d.warningsMaintainabilityDefects / warningsTotal);	
-				if ( ratioMaintainabilityDefects > maxConstant ) { ratioMaintainabilityDefects = maxConstant; }
 				ratioArrayCategory.push(ratioMaintainabilityDefects);
 				
                 var ratioOtherDefects = Math.round(constant * d.warningsOtherDefects / warningsTotal);	
-				if ( ratioOtherDefects > maxConstant ) { ratioOtherDefects = maxConstant; }
 				ratioArrayCategory.push(ratioOtherDefects);
 			
 				return [ratioArrayASAT,ratioArrayCategory]
