@@ -7,10 +7,8 @@ var backgroundObject = (function() {
 	reloadColorScale();
 	
 	function reloadColorScale(){
-		console.log(maxConstant);
 		twoColors = [d3.rgb("#00a700"), d3.rgb('#a90000')];
 		color = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
-		console.log(color(100));
 		greenTints = [d3.rgb("#8c9b8b"), d3.rgb('#0b9c01')];
 		greenScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(greenTints);
 		blueTints = [d3.rgb("#a7b1bc"), d3.rgb('#06387b')];	
@@ -73,8 +71,6 @@ var backgroundObject = (function() {
 			var secondEdge1 = secondRatio1 + "%";
 			var endEdge = end + "%";
 		   var tupleAngle = gradientCalculator.get45Angle(x,y);
-		   console.log("Angle 1 " + tupleAngle[0]);
-		   console.log("Angle 2 " + tupleAngle[1]);
            var gradient = svg.append("defs")	   
 	  .append("linearGradient")
 		.attr("id", "gradient" + id)
@@ -117,10 +113,6 @@ var backgroundObject = (function() {
 	function calculateBackground(svg, weight, id){
 		
 		var currentColorScale = getNormalColors();
-	
-	console.log("currentColorScale: "+ currentColorScale(weight* 100));
-	console.log("maxConstant: "+ maxConstant);
-	console.log("weight: "+ weight);
 		var gradient = svg.append("defs")
 			.append("linearGradient")
 			.attr("id", "gradient" + id)
