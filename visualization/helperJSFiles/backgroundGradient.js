@@ -54,10 +54,7 @@ var backgroundObject = (function() {
 				var secondRatio = 0;
 				var secondRatio1 = 0.01;
 				var end = 0;
-			}else{
-			//	var firstRatio = ratioArray[0] / total;
-				//var secondRatio = ( ratioArray[0] + ratioArray[1]) / total;
-
+			} else {
 				var tuple = gradientCalculator.calculate(x,y, ratioArray[0], ratioArray[1], ratioArray[2]);
 				firstRatio = tuple[0]
 				secondRatio = tuple[1]
@@ -90,7 +87,7 @@ var backgroundObject = (function() {
 		.attr("stop-opacity", 1);
 		
 	gradient.append("stop")
-		.attr("offset", firstEdge)
+		.attr("offset", firstEdge1)
 		.attr("stop-color", redScale(weight*100))
 		.attr("stop-opacity", 1);
 	
@@ -156,28 +153,47 @@ var backgroundObject = (function() {
 		getRatios: function(d){
 				ratioArrayASAT = [];
 				var constant = 100;
-                var ratioCheckStyle = Math.round(constant * d.warningsCheckStyle / d.value);	
+				console.log("d: " + d.warnings);
+                var ratioCheckStyle = Math.round(constant * d.warningsCheckStyle / d.warnings);	
 				if ( ratioCheckStyle > maxConstant ) { ratioCheckStyle = maxConstant; }
 				ratioArrayASAT.push(ratioCheckStyle);
-                var ratiowarningsPMD = Math.round(constant * d.warningsPMD / d.value);	
+				console.log("---------------------------CS------------------------");
+				console.log(d.warningsCheckStyle);
+				console.log(ratioArrayASAT);
+                var ratiowarningsPMD = Math.round(constant * d.warningsPMD / d.warnings);	
 				if ( ratiowarningsPMD > maxConstant ) { ratiowarningsPMD = maxConstant; }
 				ratioArrayASAT.push(ratiowarningsPMD);
-                var ratioFindBugs = Math.round(constant * d.warningsFindBugs / d.value);	
+				console.log("---------------------------PMD------------------------");
+				console.log(d.warningsPMD);
+				console.log(ratioArrayASAT);
+                var ratioFindBugs = Math.round(constant * d.warningsFindBugs / d.warnings);	
 				if ( ratioFindBugs > maxConstant ) { ratioFindBugs = maxConstant; }
 				ratioArrayASAT.push(ratioFindBugs);
+				console.log("---------------------------FB------------------------");
+				console.log(d.warningsFindBugs);
+				console.log(ratioArrayASAT);
 
 				ratioArrayCategory = [];
-                var ratioFunctionalDefects = Math.round(constant * d.warningsFunctionalDefects / d.value);	
+                var ratioFunctionalDefects = Math.round(constant * d.warningsFunctionalDefects / d.warnings);	
 				if ( ratioFunctionalDefects > maxConstant ) { ratioFunctionalDefects = maxConstant; }
 				ratioArrayCategory.push(ratioFunctionalDefects);
+				console.log("---------------------------Func------------------------");
+				console.log(d.warningsFunctionalDefects);
+				console.log(ratioArrayCategory);
 				
-                var ratioMaintainabilityDefects = Math.round(constant * d.warningsMaintainabilityDefects / d.value);	
+                var ratioMaintainabilityDefects = Math.round(constant * d.warningsMaintainabilityDefects / d.warnings);	
 				if ( ratioMaintainabilityDefects > maxConstant ) { ratioMaintainabilityDefects = maxConstant; }
 				ratioArrayCategory.push(ratioMaintainabilityDefects);
+				console.log("---------------------------Main------------------------");
+				console.log(d.warningsMaintainabilityDefects);
+				console.log(ratioArrayCategory);
 				
-                var ratioOtherDefects = Math.round(constant * d.warningsOtherDefects / d.value);	
+                var ratioOtherDefects = Math.round(constant * d.warningsOtherDefects / d.warnings);	
 				if ( ratioOtherDefects > maxConstant ) { ratioOtherDefects = maxConstant; }
 				ratioArrayCategory.push(ratioOtherDefects);
+				console.log("---------------------------Other------------------------");
+				console.log(d.warningsOtherDefects);
+				console.log(ratioArrayCategory);
 				return [ratioArrayASAT,ratioArrayCategory]
 		}
     }

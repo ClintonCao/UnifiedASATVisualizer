@@ -225,6 +225,7 @@ function getTotalCategoryWarning(warningType) {
  */
 function createJsonTreeMap(packages){
 	var jsonArrPackage = [];
+	var upperLevelTotal = 0;
 	var upperLevelCSW = 0;
 	var upperLevelPMDW = 0;
 	var upperLevelFBW = 0;
@@ -256,11 +257,13 @@ function createJsonTreeMap(packages){
 			upperLevelFD += classes.amountOfFunctionalDefects;
 			upperLevelMD += classes.amountOfMaintainabilityDefects;
 			upperLevelOD += classes.amountOfOtherDefects;
+			upperLevelTotal += classes.amountOfWarnings;
 
 			jsonArrPackage.push(
 				{
 					fileName: classes.packageName, 
 					values: jsonArrClass,
+					warnings: classes.amountOfWarnings,
 					warningsCheckStyle: classes.amountOfCheckStyleWarnings,
 					warningsPMD: classes.amountOfFindBugsWarnings,
 					warningsFindBugs: classes.amountOfFindBugsWarnings,
@@ -273,6 +276,7 @@ function createJsonTreeMap(packages){
 		{
 			fileName: "Project",
 			values: jsonArrPackage,
+			warnings: upperLevelTotal,
 			warningsCheckStyle: upperLevelCSW,
 			warningsPMD: upperLevelPMDW,
 			warningsFindBugs: upperLevelFBW,
