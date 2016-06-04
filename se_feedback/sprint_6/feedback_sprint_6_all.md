@@ -23,6 +23,9 @@ Total: ****
 | reflection            |     |
 
 ## Notes
+* Michiel has significantly less hours than the rest but no reason why.
+* Good to shortly recap the client feedback in the problem section
+* Thanks for adding the notes 
 
 #Code Evolution Quality Feedback
 
