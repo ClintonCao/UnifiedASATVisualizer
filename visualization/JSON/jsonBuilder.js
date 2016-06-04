@@ -274,7 +274,7 @@ function createJsonTreeMap(packages){
 					values: jsonArrClass,
 					warnings: classes.amountOfWarnings,
 					warningsCheckStyle: classes.amountOfCheckStyleWarnings,
-					warningsPMD: classes.amountOfFindBugsWarnings,
+					warningsPMD: classes.amountOfPMDWarnings,
 					warningsFindBugs: classes.amountOfFindBugsWarnings,
 					warningsFunctionalDefects: classes.amountOfFunctionalDefects,
 					warningsMaintainabilityDefects: classes.amountOfMaintainabilityDefects,

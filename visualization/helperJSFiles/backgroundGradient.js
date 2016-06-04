@@ -93,7 +93,8 @@ var backgroundObject = (function() {
 					return gradient;
 			}
 		} else {
-			if(ratioArray[0] == 0 && ratioArray[1] != 0 && ratioArray[2] != 0) {				
+			if(ratioArray[0] == 0 && ratioArray[1] != 0 && ratioArray[2] != 0) {	
+				//console.log("CS GONE" + ratioArray);			
 				gradient.append("stop")
 					.attr("offset", "0%")
 					.attr("stop-color", redScale(weight*100))
@@ -112,6 +113,7 @@ var backgroundObject = (function() {
 					.attr("stop-color", blueScale(weight*100))
 					.attr("stop-opacity", 1);
 			} else if(ratioArray[1] == 0 && ratioArray[0] != 0 && ratioArray[2] != 0) {
+				//console.log("PMD GONE" + ratioArray);
 				gradient.append("stop")
 					.attr("offset", "0%")
 					.attr("stop-color", greenScale(weight*100))
@@ -130,6 +132,7 @@ var backgroundObject = (function() {
 					.attr("stop-color", blueScale(weight*100))
 					.attr("stop-opacity", 1);
 			} else if(ratioArray[2] == 0 && ratioArray[1] != 0 && ratioArray[0] != 0) {
+				//console.log("FindBugs GONE" + ratioArray);
 				gradient.append("stop")
 					.attr("offset", "0%")
 					.attr("stop-color", greenScale(weight*100))
@@ -288,15 +291,15 @@ var backgroundObject = (function() {
                 var ratioCheckStyle = Math.round(constant * d.warningsCheckStyle / warningsTotal);	
 				if ( ratioCheckStyle > maxConstant ) { ratioCheckStyle = maxConstant; }
 				ratioArrayASAT.push(ratioCheckStyle);
-				
+				console.log("CS " + ratioArrayASAT);
                 var ratiowarningsPMD = Math.round(constant * d.warningsPMD / warningsTotal);	
 				if ( ratiowarningsPMD > maxConstant ) { ratiowarningsPMD = maxConstant; }
 				ratioArrayASAT.push(ratiowarningsPMD);
-				
+				console.log("PMD " + ratioArrayASAT);
                 var ratioFindBugs = Math.round(constant * d.warningsFindBugs / warningsTotal);	
 				if ( ratioFindBugs > maxConstant ) { ratioFindBugs = maxConstant; }
 				ratioArrayASAT.push(ratioFindBugs);
-
+				console.log("FB " + ratioArrayASAT);
 				ratioArrayCategory = [];
                 var ratioFunctionalDefects = Math.round(constant * d.warningsFunctionalDefects / warningsTotal);	
 				if ( ratioFunctionalDefects > maxConstant ) { ratioFunctionalDefects = maxConstant; }
