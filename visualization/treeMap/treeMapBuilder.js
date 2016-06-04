@@ -349,6 +349,7 @@ var treeMapBuilder = (function() {
         // Method for counting the different warnings
         function getSatWarningsPrint(d) {
             output = ""
+            output += "Lines of code: " + d.loc + " <br> ";
             for (var i = 0; i < acceptedTypes.length; i++) {
                 switch (acceptedTypes[i]) {
                     case "CheckStyle":
