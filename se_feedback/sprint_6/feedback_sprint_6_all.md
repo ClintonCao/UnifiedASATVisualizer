@@ -61,3 +61,23 @@ Total: ****
 | Code Review            |     |
 
 ##Notes
+* ADD
+	* The diagrams makes your explanation a lot clearer.
+	* You should explain how you run the tools in the Concurrency section 
+* Good job on the test coverage document!
+* Java
+	* `JavaController.setASATOutput`
+		* Consider using a properties file (or JSON) to store ASAT Output locations
+	* `Warning` 
+		* making equals and hashcode explicit in an abstract class is overkill since the `Object` class already contains these methods and every class is an `Object`
+* Visualisation
+	* `mainDriver`
+		* `appendXXXX` (3 functions)
+			* statements can be combined into function calls with parameters
+	* `treeMapBuilder`
+		* `updateWarningsCountInUI`
+			* large amount of statements consider splitting into smaller functions
+		* 599 lines of code, that's a lot - consider breaking into smaller pieces
+	* two folders `css` and `CSS`?
+* Good job taking feedback into account
+* Quoting Elon Musk and Charles Darwin in your code reviews, classy
