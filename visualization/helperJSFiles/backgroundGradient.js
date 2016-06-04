@@ -1,6 +1,6 @@
 
 var backgroundObject = (function() {
-	var maxConstant = 200;
+	var maxConstant = 100;
 	var colorMethod = 0;
 	
 	var twoColors, color,greenTints,greenScale,blueTints, blueScale,redTints,redScale,grayTints,grayScale;
@@ -147,7 +147,7 @@ var backgroundObject = (function() {
 			reloadColorScale();
 		},
 		setColorsAbsolute: function(){
-			maxConstant = 200;
+			maxConstant = 100;
 			reloadColorScale();
 		},
 		setColorMethod: function(index){
