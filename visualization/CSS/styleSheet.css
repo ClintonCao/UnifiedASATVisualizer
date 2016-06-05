@@ -78,11 +78,18 @@ div#left-menu{
 /* 
  * Styling for the chart
  */
+div#chart-and-code {
+  cursor: pointer;
+}
 div#chart {
   cursor: pointer;
   background:#CCC;
   margin:30px;
   border: 5px #FFFFFF solid;
+}
+div#code-div{
+  margin:30px;
+  visibility:hidden;
 }
 div#chart-wrapper{
   margin:0 20px 0 20px;

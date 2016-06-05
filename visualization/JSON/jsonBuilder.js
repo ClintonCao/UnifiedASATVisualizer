@@ -192,6 +192,39 @@ function getTotalASATWarning(warningType) {
 
 /*
  *
+ * get object with all warnings with lines from a certain class
+ * filterd on warning type
+ */
+function getWarningLines(warningType, className) {
+	for(var p =0; p < inputData.length; p++){
+		var package = inputData[p];
+		var classesArray = package.classes;
+		var classArray = [];
+		for (i = 0; i < classesArray.length; i++) {
+			classObjectJson = classesArray[i];
+			if(className == classObjectJson.fileName){
+				var classObject = new Object();
+				classObject.amountOfWarnings = 0;
+				classObject.fileName = classObjectJson.fileName;
+				classObject.warningList = []
+				for (j = 0; j < classObjectJson.warningList.length; j++) { 
+					var warningJson = classObjectJson.warningList[j]
+					if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
+						classObject.amountOfWarnings++;
+						var warningObject = new Object();
+						warningObject.line = warningJson.line;
+						warningObject.type = warningJson.type;
+						classObject.warningList.push(warningObject);
+					}
+				}
+			}
+		}
+	}
+	console.log(classObject);
+	return classObject;
+}
+/*
+ *
  * Counts for a specific category how many warnings there are
  *
  */

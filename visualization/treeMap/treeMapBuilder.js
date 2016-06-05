@@ -276,7 +276,6 @@ var treeMapBuilder = (function() {
 				var ratios =  backgroundObject.getRatios(d);
 				var weight = d.warnings / d.value;
 				id +=1;
-                console.log(d.fileName);
 				var gradientBackground = backgroundObject.getBackground(svg, ratios,weight, id,x(d.x + d.dx),y(d.y + d.dy) );
                 return "url(#gradient"+ id + ")";
             })
@@ -385,8 +384,13 @@ var treeMapBuilder = (function() {
         }
 
         function toSourceCode(d) {
-        	sessionStorage.setItem('fileName', d.fileName);
-			window.open('codeEditor.html','_self',false)
+			console.log(d);
+			console.log(d.filePath);
+			sourceCode.display("C:\\Users\\michiel\\workspace\\Contextproject-TSE\\src\\test\\resources\\TestCodeFolder\\AllClosestPoints.java");
+			sourceCode.show();
+        	$('.CodeMirror').width(opts.width).height(opts.height-30);
+			sourceCode.highlightWarnings();
+			
         }
 
         function findChildNumber(d, parent) {
@@ -514,8 +518,6 @@ var treeMapBuilder = (function() {
             width: window.innerWidth - 750,
             height: window.innerHeight - 175
         };
-        // Remove the chart if there is already one.
-        removeChart();
         // Setting up some values about number format(rounding) and marigns
         opts = $.extend(true, {}, defaults, o);
         formatNumber = d3.format(opts.format);
@@ -524,7 +526,9 @@ var treeMapBuilder = (function() {
         theight = 36 + 16;
 
         // size of the chart 
-        $('#chart').width(opts.width).height(opts.height);
+        $('#chart-and-code').width(opts.width+ 70).height(opts.height);
+        $('#chart').width(opts.width).height(opts.height);		
+        $('#code-div').width(opts.width).height(opts.height);
         width = opts.width - margin.left - margin.right;
         height = opts.height - margin.top - margin.bottom;
         // Uses a range of 100 values between green and red

@@ -114,7 +114,6 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
 
 //Setup tree map and shows it
 function runTreeMap() {
-    removeChart();
     var title = document.getElementById("main-title");
     title.innerHTML = "Treemap view of project";
     var graphButtonDiv = document.getElementById("sub-title");
@@ -132,7 +131,6 @@ function runTreeMap() {
 
 //Setup graph and shows it
 function runGraph() {
-    removeChart();
     packagesLevel = true;
     graphTraceIndex = 0;
     var graphButtonDiv = document.getElementById("sub-title");

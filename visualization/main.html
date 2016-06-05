@@ -11,6 +11,14 @@
       <link href="css/bootstrap-toggle.min.css" rel="stylesheet">
       <!-- Imports Google fonts for more awesome UI -->
       <link href='https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400,700' rel='stylesheet' type='text/css'>
+      
+      <!-- code mirror -->
+	<link rel=stylesheet href="codemirror/doc/docs.css">
+
+	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+	<link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css">
+	<link rel="stylesheet" href="codemirror/addon/dialog/dialog.css">
+	<link rel="stylesheet" href="codemirror/theme/monokai.css">
       <meta charset="utf-8">
       <title>Visualization of different ASATs</title>
    </head>
@@ -47,7 +55,12 @@
           <div id="sub-title" class="sub-title">
             <!--<button class="back-button" id="back-button" onclick="goBack()">Go back to package view</button>-->
          </div>
+            <div id="chart-and-code">
             <div id="chart">
+            </div>
+            <div id="code-div">
+            <article></article>
+            </div>
             </div>
          </div>
          <div id="menu-right-wrapper">
@@ -158,7 +171,22 @@
       <script src="Bootstrap/bootstrap.min.js"></script>
       <script src="Bootstrap/bootstrap-toggle.min.js"></script>
       <script src="D3/d3.min.js"></script>
+       <script src="jQuery/jquery-1.12.3.min.js"></script>
+	<script src="codemirror/lib/codemirror.js"></script>
+    <script src="codemirror/addon/search/searchcursor.js"></script>
+    <script src="codemirror/addon/search/search.js"></script>
+    <script src="codemirror/addon/dialog/dialog.js"></script>
+    <script src="codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="codemirror/addon/edit/closebrackets.js"></script>
+    <script src="codemirror/addon/comment/comment.js"></script>
+    <script src="codemirror/addon/wrap/hardwrap.js"></script>
+    <script src="codemirror/addon/fold/foldcode.js"></script>
+    <script src="codemirror/addon/fold/brace-fold.js"></script>
+    <script src="codemirror/mode/javascript/javascript.js"></script>
+    <script src="codemirror/keymap/sublime.js"></script>
+    <script src="codemirror/sourceCode.js"></script>
       <script src="JSON/OOPPJSON.js"></script>
+      <script src="JSON/CodeFiles.js"></script>
       <script src="JSON/jsonBuilder.js"></script>
       <script src="helperJSFiles/backgroundGradient.js"></script>
       <script src="helperJSFiles/gradientCalculator.js"></script>
