@@ -54,6 +54,7 @@ var backgroundObject = (function() {
 		ThirdEdgeEnd = ThirdRatioEnd + "%";
 	}
 	function createGradientColours(gradient, onlyOneColour, whichOne, weight, ratioArray) {
+		console.log("R array: " + ratioArray);
 		if(onlyOneColour) {
 			switch(whichOne) {
 				case 0:
@@ -112,6 +113,7 @@ var backgroundObject = (function() {
 					.attr("stop-color", blueScale(weight*100))
 					.attr("stop-opacity", 1);
 			} else if(ratioArray[1] == 0 && ratioArray[0] != 0 && ratioArray[2] != 0) {
+				console.log("First edge: " + firstRatioEnd);
 				gradient.append("stop")
 					.attr("offset", "0%")
 					.attr("stop-color", greenScale(weight*100))
@@ -183,6 +185,7 @@ var backgroundObject = (function() {
 		var tupleAngle = gradientCalculator.get45Angle(x,y);
 
 		firstRatioBegin = 0;
+		console.log("tup:" + tuple);
 		firstRatioEnd = tuple[0];
 		SecondRatioBegin = firstRatioEnd + 0.01;
 		SecondRatioEnd = tuple[1]

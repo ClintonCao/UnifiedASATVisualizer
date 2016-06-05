@@ -276,6 +276,7 @@ var treeMapBuilder = (function() {
 				var ratios =  backgroundObject.getRatios(d);
 				var weight = d.warnings / d.value;
 				id +=1;
+                console.log(d.fileName);
 				var gradientBackground = backgroundObject.getBackground(svg, ratios,weight, id,x(d.x + d.dx),y(d.y + d.dy) );
                 return "url(#gradient"+ id + ")";
             })
