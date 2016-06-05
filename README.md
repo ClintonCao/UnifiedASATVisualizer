@@ -28,6 +28,8 @@ This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016.
 |Sprint Backlog 5 | [sprint backlog 5] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog5%28BlueTurtle%29.pdf)|
 |Sprint Retrospective 5 | [sprint retrospective 5] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective5(BlueTurtle).pdf)|
 |Sprint Backlog 6 | [sprint backlog 6] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog6(BlueTurtle).pdf)|
+|Sprint Retrospective 6 | [sprint retrospective 6] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective6(BlueTurtle).pdf)|
+|Sprint Backlog 7 | [sprint backlog 7] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog7(BlueTurtle).pdf)|
 
 ## Links to product related documents:
 
@@ -35,14 +37,21 @@ This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016.
 |-------|--------------------------------------|
 |Product Planning | [product planning]  (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductPlanningBlueTurtle.pdf)|
 |Product Vision | [product vision] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ProductVisionBlueTurtle.pdf)|
-|Architecture Design  | [architecture design] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ArchitectureDesign.pdf)|
+|Architecture Design  | [architecture design] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ArchitectureDesign(BlueTurtle).pdf)|
 |Product Requirement | [product requirement] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Requirements/RequirementsSoftwareVisualizationToolBlueTurtle.pdf)|
 |First Concept  | [first concept] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/First%20Concept/FirstConceptBlueTurtle.pdf) |
 
 ## Links to other documents:
 
-SAT Research: [sat research] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/SAT%20research/StaticanalysistoolsresearchBlueTurtle.pdf)
+ASAT Research: [asat research] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/ASAT%20research/StaticanalysistoolsresearchBlueTurtle.pdf)
 
-## Run the Visualizer:
+## Link to SIG Feedback 1 (Picture):
+SIG Feedback: [SIG Feedback](https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/SIG%20Feedback/SIGFeedback.JPG)
 
-Go to the visualization map and run main.html using a browser
+## Run the Program:
+
+* Go to the `src/main/java/BlueTurtle/TSE` folder.
+* Run the file `Main.java`.
+* Follow the instruction on the User Interface.
+* Select the project that you want to visualize in your local space.
+* Click the `Visualize` button.

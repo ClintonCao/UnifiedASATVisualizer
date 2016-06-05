@@ -3,11 +3,13 @@ package BlueTurtle.writers;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import BlueTurtle.TSE.CodeFile;
 import BlueTurtle.summarizers.Summarizer;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +21,7 @@ import lombok.Setter;
  * @author BlueTurtle.
  *
  */
-public class JSWriter {
+public final class JSWriter {
 
 	private static JSWriter jsWriter = null;
 
@@ -59,6 +61,29 @@ public class JSWriter {
 		String json = gson.toJson(summarizedWarnings);
 		json += ';';
 
+		writer.write("var inputData = ");
+		writer.newLine();
+		writer.write(json);
+		writer.flush();
+		writer.close();
+	}
+	
+	/**
+	 * Write the codefiles as JSON to a javascript file. 
+	 * 
+	 * @param codeFiles
+	 * 				codefiles to write.
+	 * @param outputFilePath
+	 * 				file to write to.
+	 * @throws IOException
+	 * 				if outputfile is not found, inaccessible, etc.
+	 */
+	public void writeSourceCodeToJS(ArrayList<CodeFile> codeFiles, String outputFilePath) throws IOException {
+		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath));
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();		
+		String json = gson.toJson(codeFiles);
+		json += ';';
+		
 		writer.write("var inputData = ");
 		writer.newLine();
 		writer.write(json);

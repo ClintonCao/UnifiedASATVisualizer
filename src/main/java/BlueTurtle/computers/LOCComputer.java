@@ -11,7 +11,7 @@ import java.io.IOException;
  *
  */
 @SuppressWarnings("checkstyle:hideutilityclassconstructor")
-public class LOCComputer {
+public final class LOCComputer {
 
 	private static LOCComputer locComputer = null;
 
