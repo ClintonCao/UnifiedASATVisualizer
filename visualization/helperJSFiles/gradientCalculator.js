@@ -23,7 +23,6 @@ var gradientCalculator = (function() {
 
 		surface = surfHead + mainSurf + surfTail;
 
-
 	}
 
 	function calculateBoundaries(a, b, total) {
@@ -75,18 +74,33 @@ var gradientCalculator = (function() {
 
 	return {
 		calculate: function(x, y, a, b ,c) {
+			if(x == 0) {
+				x = 0.01;
+			}
+			if(y == 0) {
+				y = 0.01;
+			}
 			measurements(x, y);
+			console.log("x: " + x);
+			console.log("y: " + y);
+			console.log("a: " + a);
+			console.log("b: " + b);
+			console.log("c: " + c);
 			return calculateBoundaries(a, b, a+b+c);
 		},
 		get45Angle: function (x,y){
-			console.log("x " + x);
-			console.log("y " + y);
 			if ( x > y ){
-				var ratio  =100* (y/x)
-				return [ratio + "%","100%"]
+				var ratio  = (100* (y/x)) + "%";
+				if(ratio == "-Infinity%") {
+					ratio = "100%";
+				}
+				return [ratio,"100%"]
 			}else{
-				var ratio  =100* (x/y)
-				return ["100%", ratio + "%"]
+				var ratio  = (100* (x/y)) + "%";
+				if(ratio == "-Infinity%") {
+					ratio = "100%";
+				}
+				return ["100%", ratio]
 			}
 		}
 	}

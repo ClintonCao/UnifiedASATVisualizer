@@ -11,7 +11,7 @@ import java.io.IOException;
  *
  */
 @SuppressWarnings("checkstyle:hideutilityclassconstructor")
-public class PackageNameFinder {
+public final class PackageNameFinder {
 
 	private static PackageNameFinder packageNameFinder = null;
 
