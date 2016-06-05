@@ -409,7 +409,6 @@ var treeMapBuilder = (function() {
                 return;
             }
             transitioning = true;
-            appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
 
             tooltip.style("visibility", "hidden");
 

@@ -90,11 +90,17 @@ var gradientCalculator = (function() {
 		},
 		get45Angle: function (x,y){
 			if ( x > y ){
-				var ratio  =100* (y/x)
-				return [ratio + "%","100%"]
+				var ratio  = (100* (y/x)) + "%";
+				if(ratio == "-Infinity%") {
+					ratio = "100%";
+				}
+				return [ratio,"100%"]
 			}else{
-				var ratio  =100* (x/y)
-				return ["100%", ratio + "%"]
+				var ratio  = (100* (x/y)) + "%";
+				if(ratio == "-Infinity%") {
+					ratio = "100%";
+				}
+				return ["100%", ratio]
 			}
 		}
 	}
