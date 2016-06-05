@@ -276,7 +276,7 @@ var treeMapBuilder = (function() {
 				var ratios =  backgroundObject.getRatios(d);
 				var weight = d.warnings / d.value;
 				id +=1;
-				console.log(d.fileName);
+                console.log(d.fileName);
 				var gradientBackground = backgroundObject.getBackground(svg, ratios,weight, id,x(d.x + d.dx),y(d.y + d.dy) );
                 return "url(#gradient"+ id + ")";
             })
@@ -349,6 +349,7 @@ var treeMapBuilder = (function() {
         // Method for counting the different warnings
         function getSatWarningsPrint(d) {
             output = ""
+            output += "Lines of code: " + d.loc + " <br> ";
             for (var i = 0; i < acceptedTypes.length; i++) {
                 switch (acceptedTypes[i]) {
                     case "CheckStyle":
@@ -408,7 +409,6 @@ var treeMapBuilder = (function() {
                 return;
             }
             transitioning = true;
-            appendInfoToSAT(sumNodeForASAT(d, getTotalASATWarning("CheckStyle")), sumNodeForASAT(d, getTotalASATWarning("PMD")), sumNodeForASAT(d, getTotalASATWarning("FindBugs")));
 
             tooltip.style("visibility", "hidden");
 
