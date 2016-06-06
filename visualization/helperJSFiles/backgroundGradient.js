@@ -216,8 +216,8 @@ var backgroundObject = (function() {
 				.attr("id", "gradient" + id)
 				.attr("x1", "0%")
 				.attr("y1", "0%")
-				.attr("x2", tupleAngle[0])
-				.attr("y2", tupleAngle[1])
+				.attr("x2", "100%")
+				.attr("y2", "100%")
 				.attr("spreadMethod", "pad");
 			if(ratioArray[0] == 100) {
 				setToPercentages();
