@@ -195,7 +195,7 @@ function getTotalASATWarning(warningType) {
  * Get object with all warnings with lines from a certain class
  * filterd on warning type
  */
-function getWarningLines(warningType, className) {
+function getWarningLines(className) {
 	for(var p =0; p < inputData.length; p++){
 		var package = inputData[p];
 		var classesArray = package.classes;
@@ -209,7 +209,7 @@ function getWarningLines(warningType, className) {
 				classObject.warningList = []
 				for (j = 0; j < classObjectJson.warningList.length; j++) { 
 					var warningJson = classObjectJson.warningList[j]
-					if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
+					if(($.inArray(warningJson.classification, acceptedCategories) > -1)) {
 						classObject.amountOfWarnings++;
 						var warningObject = new Object();
 						warningObject.line = warningJson.line;

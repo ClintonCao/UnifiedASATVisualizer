@@ -80,8 +80,8 @@ return {
 	display: function(path){
 		displayCode(path);
 	},
-	highlightWarnings: function(){
-		var warnings = getWarningLines("CheckStyle","Match.java");
+	highlightWarnings: function(fileName){
+		var warnings = getWarningLines(fileName);
 		for( var i =0 ; i < warnings.warningList.length; i ++ ){
 			highlight(warnings.warningList[i].line, warnings.warningList[i].type);
 		}
