@@ -1,9 +1,8 @@
-
 var backgroundObject = (function() {
 	var maxConstant = 100;
 	var colorMethod = 0;
-	
-	var twoColors, color, greenTints, greenScale, blueTints, blueScale, redTints, redScale, grayTints, grayScale, firstRatioBegin, firstRatioEnd, SecondRatioBegin, SecondRatioEnd, ThirdRatioBegin, ThirdRatioEnd, firstEdgeBegin, firstEdgeEnd, SecondEdgeBegin, SecondEdgeEnd, ThridEdgeBegin, ThirdEdgeEnd;
+	var twoColors, color, greenTints, greenScale, blueTints, blueScale, redTints, redScale, grayTints, grayScale;
+	var firstRatioBegin, firstRatioEnd, SecondRatioBegin, SecondRatioEnd, ThirdRatioBegin, ThirdRatioEnd, firstEdgeBegin, firstEdgeEnd, SecondEdgeBegin, SecondEdgeEnd, ThridEdgeBegin, ThirdEdgeEnd;
 	reloadColorScale();
 	
 	function reloadColorScale(){
@@ -53,127 +52,69 @@ var backgroundObject = (function() {
 		ThridEdgeBegin = ThridRatioBegin + "%";
 		ThirdEdgeEnd = ThirdRatioEnd + "%";
 	}
+	function setGreenScale(gradient, start, end, weight) {
+		gradient.append("stop")
+			.attr("offset", start)
+			.attr("stop-color", greenScale(weight*100))
+			.attr("stop-opacity", 1);
+		gradient.append("stop")
+			.attr("offset", end)
+			.attr("stop-color", greenScale(weight*100))
+			.attr("stop-opacity", 1);
+	}
+	function setRedScale(gradient, start, end, weight) {
+		gradient.append("stop")
+			.attr("offset", start)
+			.attr("stop-color", redScale(weight*100))
+			.attr("stop-opacity", 1);
+		gradient.append("stop")
+			.attr("offset", end)
+			.attr("stop-color", redScale(weight*100))
+			.attr("stop-opacity", 1);
+	}
+	function setBlueScale(gradient, start, end, weight) {
+		gradient.append("stop")
+			.attr("offset", start)
+			.attr("stop-color", blueScale(weight*100))
+			.attr("stop-opacity", 1);
+		gradient.append("stop")
+			.attr("offset", end)
+			.attr("stop-color", blueScale(weight*100))
+			.attr("stop-opacity", 1);
+	}
 	function createGradientColours(gradient, onlyOneColour, whichOne, weight, ratioArray) {
 		console.log("R array: " + ratioArray);
 		if(onlyOneColour) {
 			switch(whichOne) {
 				case 0:
-					gradient.append("stop")
-					.attr("offset", "0%")
-					.attr("stop-color", greenScale(weight*100))
-					.attr("stop-opacity", 1);
-					
-					gradient.append("stop")
-						.attr("offset", "100%")
-						.attr("stop-color",  greenScale(weight*100))
-						.attr("stop-opacity", 1);
+					setGreenScale(gradient, "0%", "100%", weight);
 					return gradient;
 				case 1:
-					gradient.append("stop")
-					.attr("offset", "0%")
-					.attr("stop-color", redScale(weight*100))
-					.attr("stop-opacity", 1);
-					
-					gradient.append("stop")
-						.attr("offset", "100%")
-						.attr("stop-color",  redScale(weight*100))
-						.attr("stop-opacity", 1);
+					setRedScale(gradient, "0%", "100%", weight);
 					return gradient;
 				case 2:
-					gradient.append("stop")
-					.attr("offset", "0%")
-					.attr("stop-color", blueScale(weight*100))
-					.attr("stop-opacity", 1);
-					
-					gradient.append("stop")
-						.attr("offset", "100%")
-						.attr("stop-color",  blueScale(weight*100))
-						.attr("stop-opacity", 1);
+					setBlueScale(gradient, "0%", "100%", weight);
 					return gradient;
 				default:
 					return gradient;
 			}
 		} else {
 			if(ratioArray[0] == 0 && ratioArray[1] != 0 && ratioArray[2] != 0) {			
-				gradient.append("stop")
-					.attr("offset", "0%")
-					.attr("stop-color", redScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", SecondEdgeEnd)
-					.attr("stop-color", redScale(weight*100))
-					.attr("stop-opacity", 1);
+				setRedScale(gradient, "0%", SecondEdgeEnd, weight);
 				ThridEdgeBegin = (SecondRatioEnd + 0.01) + "%";
-				gradient.append("stop")
-					.attr("offset", ThridEdgeBegin)
-					.attr("stop-color", blueScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", "100%")
-					.attr("stop-color", blueScale(weight*100))
-					.attr("stop-opacity", 1);
+				setBlueScale(gradient, ThridEdgeBegin, "100%", weight);
 			} else if(ratioArray[1] == 0 && ratioArray[0] != 0 && ratioArray[2] != 0) {
-				console.log("First edge: " + firstRatioEnd);
-				gradient.append("stop")
-					.attr("offset", "0%")
-					.attr("stop-color", greenScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", firstEdgeEnd)
-					.attr("stop-color",  greenScale(weight*100))
-					.attr("stop-opacity", 1);
+				setGreenScale(gradient, "0%", firstEdgeEnd, weight);
 				ThridEdgeBegin = (firstRatioEnd + 0.01) + "%";
-				gradient.append("stop")
-					.attr("offset", ThridEdgeBegin)
-					.attr("stop-color", blueScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", "100%")
-					.attr("stop-color", blueScale(weight*100))
-					.attr("stop-opacity", 1);
+				setBlueScale(gradient, ThridEdgeBegin, "100%", weight);
 			} else if(ratioArray[2] == 0 && ratioArray[1] != 0 && ratioArray[0] != 0) {
-				gradient.append("stop")
-					.attr("offset", "0%")
-					.attr("stop-color", greenScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", firstEdgeEnd)
-					.attr("stop-color",  greenScale(weight*100))
-					.attr("stop-opacity", 1);
+				setGreenScale(gradient, "0%", firstEdgeEnd, weight);
 				SecondEdgeBegin = (firstRatioEnd + 0.01) + "%";
-				gradient.append("stop")
-					.attr("offset", SecondEdgeBegin)
-					.attr("stop-color", redScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", "100%")
-					.attr("stop-color", redScale(weight*100))
-					.attr("stop-opacity", 1);
+				setRedScale(gradient, SecondEdgeBegin, "100%", weight);
 			} else {
-				gradient.append("stop")
-					.attr("offset", firstEdgeBegin)
-					.attr("stop-color", greenScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", firstEdgeEnd)
-					.attr("stop-color",  greenScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", SecondEdgeBegin)
-					.attr("stop-color", redScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", SecondEdgeEnd)
-					.attr("stop-color", redScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", ThridEdgeBegin)
-					.attr("stop-color", blueScale(weight*100))
-					.attr("stop-opacity", 1);
-				gradient.append("stop")
-					.attr("offset", ThirdEdgeEnd)
-					.attr("stop-color", blueScale(weight*100))
-					.attr("stop-opacity", 1);
+				setGreenScale(gradient, "0%", firstEdgeEnd, weight)
+				setRedScale(gradient, SecondEdgeBegin, SecondEdgeEnd, weight);
+				setBlueScale(gradient, ThridEdgeBegin, "100%", weight);
 			}
 			return gradient;
 		}
@@ -185,7 +126,6 @@ var backgroundObject = (function() {
 		var tupleAngle = gradientCalculator.get45Angle(x,y);
 
 		firstRatioBegin = 0;
-		console.log("tup:" + tuple);
 		firstRatioEnd = tuple[0];
 		SecondRatioBegin = firstRatioEnd + 0.01;
 		SecondRatioEnd = tuple[1]
@@ -242,7 +182,6 @@ var backgroundObject = (function() {
 		}
 	}
 	function calculateBackground(svg, weight, id){
-		
 		var currentColorScale = getNormalColors();
 		var gradient = svg.append("defs")
 			.append("linearGradient")
@@ -285,30 +224,30 @@ var backgroundObject = (function() {
 			colorMethod = index;
 		},
 		getRatios: function(d){
-				ratioArrayASAT = [];
-				var constant = 100;
-				var warningsTotal = checkIfNot0(d.warnings);
-	
-                var ratioCheckStyle = Math.round(constant * d.warningsCheckStyle / warningsTotal);	
-				ratioArrayASAT.push(ratioCheckStyle);
-				
-                var ratiowarningsPMD = Math.round(constant * d.warningsPMD / warningsTotal);	
-				ratioArrayASAT.push(ratiowarningsPMD);
-				
-                var ratioFindBugs = Math.round(constant * d.warningsFindBugs / warningsTotal);	
-				ratioArrayASAT.push(ratioFindBugs);
-				
-				ratioArrayCategory = [];
-                var ratioFunctionalDefects = Math.round(constant * d.warningsFunctionalDefects / warningsTotal);	
-				ratioArrayCategory.push(ratioFunctionalDefects);
-				
-                var ratioMaintainabilityDefects = Math.round(constant * d.warningsMaintainabilityDefects / warningsTotal);	
-				ratioArrayCategory.push(ratioMaintainabilityDefects);
-				
-                var ratioOtherDefects = Math.round(constant * d.warningsOtherDefects / warningsTotal);	
-				ratioArrayCategory.push(ratioOtherDefects);
+			ratioArrayASAT = [];
+			var constant = 100;
+			var warningsTotal = checkIfNot0(d.warnings);
+
+            var ratioCheckStyle = Math.round(constant * d.warningsCheckStyle / warningsTotal);	
+			ratioArrayASAT.push(ratioCheckStyle);
 			
-				return [ratioArrayASAT,ratioArrayCategory]
+            var ratiowarningsPMD = Math.round(constant * d.warningsPMD / warningsTotal);	
+			ratioArrayASAT.push(ratiowarningsPMD);
+			
+            var ratioFindBugs = Math.round(constant * d.warningsFindBugs / warningsTotal);	
+			ratioArrayASAT.push(ratioFindBugs);
+			
+			ratioArrayCategory = [];
+            var ratioFunctionalDefects = Math.round(constant * d.warningsFunctionalDefects / warningsTotal);	
+			ratioArrayCategory.push(ratioFunctionalDefects);
+			
+            var ratioMaintainabilityDefects = Math.round(constant * d.warningsMaintainabilityDefects / warningsTotal);	
+			ratioArrayCategory.push(ratioMaintainabilityDefects);
+			
+            var ratioOtherDefects = Math.round(constant * d.warningsOtherDefects / warningsTotal);	
+			ratioArrayCategory.push(ratioOtherDefects);
+		
+			return [ratioArrayASAT,ratioArrayCategory]
 		}
     }
 	
