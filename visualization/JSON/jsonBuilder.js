@@ -104,6 +104,7 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 			classObject.amountOfMaintainabilityDefects = 0;
 			classObject.amountOfOtherDefects = 0;
 	  		classObject.loc = classObjectJson.loc;
+	  		classObject.filePath = classObjectJson.filePath;
 	  		classObject.fileName = classObjectJson.fileName;
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j];
@@ -276,9 +277,10 @@ function createJsonTreeMap(packages){
 			for (var i = 0; i < classes.length; i++) {
 				var fileName = classes[i].fileName;
 				var linesOfCode = classes[i].loc;
+				console.log(classes[i].filePath);
 				jsonArrClass.push({
 					fileName: fileName,
-					filepath: classes[i].filePath,
+					filePath: classes[i].filePath,
 					loc: linesOfCode,
 					warnings: classes[i].amountOfWarnings,
 					warningsCheckStyle: classes[i].amountOfCheckStyleWarnings,
@@ -304,6 +306,7 @@ function createJsonTreeMap(packages){
 			jsonArrPackage.push(
 				{
 					fileName: classes.packageName, 
+					filePath: classes.filePath,
 					loc: middleLevelLOC,
 					values: jsonArrClass,
 					warnings: classes.amountOfWarnings,
