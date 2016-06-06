@@ -85,11 +85,11 @@ return {
 		for( var i =0 ; i < warnings.warningList.length; i ++ ){
 			highlight(warnings.warningList[i].line, warnings.warningList[i].type);
 		}
-	}
-	setLabelsWarnings: function() {
-		var warnings = getWarningLines("CheckStyle","Match.java");
+	},
+	setLabelsWarnings: function(fileName) {
+		var warnings = getWarningLines(fileName);
 		for( var i =0 ; i < warnings.warningList.length; i ++ ){
-			setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].type);
+			setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat);
 		}
 	}
 }

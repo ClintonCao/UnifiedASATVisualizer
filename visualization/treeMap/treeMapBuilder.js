@@ -391,7 +391,7 @@ var treeMapBuilder = (function() {
 			sourceCode.show();
         	$('.CodeMirror').width(opts.width).height(opts.height-30);
 			sourceCode.highlightWarnings(d.fileName);
-			
+			sourceCode.setLabelsWarnings(d.fileName);
         }
 
         function findChildNumber(d, parent) {
