@@ -2,6 +2,7 @@ package BlueTurtle.TSE;
 
 import java.io.IOException;
 
+import org.apache.log4j.BasicConfigurator;
 
 import BlueTurtle.gui.GUI;
 
@@ -41,6 +42,8 @@ public class Main {
 
 		switch (currentMode) {
 		case JAVA:
+			// Needed for the logger to work (if Maven needs to be run).
+			BasicConfigurator.configure();
 			controller = new JavaController();
 			GUI gui = new GUI();
 			gui.startGUI();

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.apache.maven.cli.MavenCli;
+
 import BlueTurtle.TSE.JavaController;
 import BlueTurtle.TSE.Main;
 import BlueTurtle.finders.ProjectInfoFinder;
@@ -28,16 +30,13 @@ import lombok.Setter;
  */
 public class GUIController {
 
-
 	/**
 	 * Enums to represent the ASATs.
 	 * 
 	 * @author BlueTurtle.
 	 *
 	 */
-	public enum ASAT {
-		CheckStyle, PMD, FindBugs;
-	}
+	public enum ASAT { CheckStyle, PMD, FindBugs; }
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
 	private ResourceBundle resources;
@@ -53,8 +52,8 @@ public class GUIController {
 
 	@FXML // fx:id="visualizeButton"
 	private Button visualizeButton; // Value injected by FXMLLoader
-	
-	@Getter @Setter private static String sourcePath;
+
+	@Getter @Setter private static String projectPath;
 
 	/**
 	 * Event for CheckStyle button.
@@ -63,9 +62,7 @@ public class GUIController {
 	 *            the event.
 	 */
 	@FXML
-	void selectCheckStyleConfigEvent(MouseEvent event) {
-
-	}
+	void selectCheckStyleConfigEvent(MouseEvent event) { }
 
 	/**
 	 * Event for PMD button.
@@ -74,9 +71,7 @@ public class GUIController {
 	 *            the event.
 	 */
 	@FXML
-	void selectPMDConfigEvent(MouseEvent event) {
-
-	}
+	void selectPMDConfigEvent(MouseEvent event) { }
 
 	/**
 	 * Event for FindBugs button.
@@ -129,8 +124,10 @@ public class GUIController {
  */
 class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 
-	@Getter private Text sourcePathText;
-	@Getter private Button visualizeButton;
+	@Getter
+	private Text sourcePathText;
+	@Getter
+	private Button visualizeButton;
 
 	/**
 	 * Constructor.
@@ -161,7 +158,7 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 			sourcePathText.setText("No Directory selected");
 		} else {
 			sourcePathText.setText(selectedDirectory.getAbsolutePath());
-			GUIController.setSourcePath(sourcePathText.getText());
+			GUIController.setProjectPath(sourcePathText.getText());
 			visualizeButton.setDisable(false);
 		}
 	}
@@ -184,12 +181,13 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 	 */
 	@Override
 	public void handle(MouseEvent event) {
+		checkOutputFiles();
 		setOutputFiles();
 		try {
 			ProjectInfoFinder pif = new ProjectInfoFinder();
-			pif.findFiles(new File(GUIController.getSourcePath()));
+			pif.findFiles(new File(GUIController.getProjectPath()));
 			pif.retrieveCodeFiles();
-			
+
 			Main.runVisualization();
 			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
 		} catch (IOException e) {
@@ -202,9 +200,23 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 	 */
 	public void setOutputFiles() {
 		JavaController.setASATOutput(ASAT.CheckStyle,
-				new File(GUIController.getSourcePath() + "/target/checkstyle-result.xml"));
-		JavaController.setASATOutput(ASAT.PMD, new File(GUIController.getSourcePath() + "/target/pmd.xml"));
-		JavaController.setASATOutput(ASAT.FindBugs,
-				new File(GUIController.getSourcePath() + "/target/findbugs.xml"));
+				new File(GUIController.getProjectPath() + "/target/checkstyle-result.xml"));
+		JavaController.setASATOutput(ASAT.PMD, new File(GUIController.getProjectPath() + "/target/pmd.xml"));
+		JavaController.setASATOutput(ASAT.FindBugs, new File(GUIController.getProjectPath() + "/target/findbugs.xml"));
 	}
+
+	/**
+	 * Check if there are already existing from the ASATs. If there are no
+	 * output files, then run maven on the user's project.
+	 */
+	public void checkOutputFiles() {
+		if (!new File(GUIController.getProjectPath() + "/target/checkstyle-result.xml").exists()
+				&& !new File(GUIController.getProjectPath() + "/target/pmd.xml").exists()
+				&& !new File(GUIController.getProjectPath() + "/target/findbugs.xml").exists()) {
+			
+			new MavenCli().doMain(new String[] { "site" }, GUIController.getProjectPath(), System.out, System.out);
+			
+		}
+	}
+	
 }
