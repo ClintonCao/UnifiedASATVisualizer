@@ -22,14 +22,19 @@ var treeMapBuilder = (function() {
     }
 
     /*
-     * Will put the #warnings for each specific ASAT and warning type
+     * Will put the #warnings for each ASAT
      */
-    function updateWarningsCountInUI(d) {
+    function updateASATWarningsCount(d) {
         var CheckStyleWarnings = sumNodeForASAT(d, getTotalASATWarning("CheckStyle"));
         var PMDWarnings = sumNodeForASAT(d, getTotalASATWarning("PMD"));
         var FindBugsWarnings = sumNodeForASAT(d, getTotalASATWarning("FindBugs"));
         appendInfoToSAT(CheckStyleWarnings, PMDWarnings, FindBugsWarnings);
+    }
 
+    /*
+     * Will put the #warnings for the function defects category
+     */
+    function updateFunctionalDefectsCount(d) {
         var CheckWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Check"));
         var ConcWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Concurrency"));
         var ErrorWarnings = sumNodeForASAT(d, getTotalCategoryWarning("ErrorHandling"));
@@ -38,7 +43,12 @@ var treeMapBuilder = (function() {
         var MigrationWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Migration"));
         var ResourceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Resource"));
         appendInfoToFunctionalDefects(CheckWarnings, ConcWarnings, ErrorWarnings, InterfaceWarnings, LogicWarnings, MigrationWarnings, ResourceWarnings);
+    }
 
+    /*
+     * Will put the #warnings for the maintainability defects category
+     */
+    function updateMaintainabilityDefectsCount(d) {
         var BestPracticeWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Best Practices"));
         var CodeStructureWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Code Structure"));
         var DocConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Documentation Conventions"));
@@ -49,12 +59,26 @@ var treeMapBuilder = (function() {
         var ReduncanciesWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Redundancies"));
         var StyleConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Style Conventions"));
         appendInfoToMaintainabilityDefects(BestPracticeWarnings, CodeStructureWarnings, DocConventionsWarnings, MetricWarnings, NamingConventionsWarnings, OODesignWarnings, SimplificationsWarnings, ReduncanciesWarnings, StyleConventionsWarnings);
+    }
 
+    /*
+     * Will put the #warnings for the other defects category
+     */
+    function updateOtherDefectsCount(d) {
         var OtherWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Other"));
         var RegularExpressionsWarnings =sumNodeForASAT(d, getTotalCategoryWarning("Regular Expressions"));
         var ToolSpecificWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Tool Specific"));
         appendInfoToOtherDefects(OtherWarnings, RegularExpressionsWarnings, ToolSpecificWarnings);
+    }
 
+    /*
+     * Will put the #warnings for each specific ASAT and warning type
+     */
+    function updateWarningsCountInUI(d) {
+        updateASATWarningsCount(d);
+        updateFunctionalDefectsCount(d);
+        updateMaintainabilityDefectsCount(d);
+        updateOtherDefectsCount(d);
     }
 
     // Aggregate the values for internal nodes. This is normally done by the
@@ -240,6 +264,7 @@ var treeMapBuilder = (function() {
             return node;
         }
 
+        // Updates all warning counts for all ASATS and categories
         updateWarningsCountInUI(d);
 
         function reloadContent() {
