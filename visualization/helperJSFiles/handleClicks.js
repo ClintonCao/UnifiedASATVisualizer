@@ -104,7 +104,6 @@ function handleClickRelativeColours(radioButton) {
 * handles the clicks on Sat categories
 */
 function handleClickCategorySat(value, checked) {
-		
  	if (checked) {
         var index = acceptedCategories.indexOf(value);
        if (index < 0) {
@@ -116,8 +115,6 @@ function handleClickCategorySat(value, checked) {
             acceptedCategories.splice(index, 1);
         }
     }
-    //$('.toggle').attr('data-toggle');
-    //setTimeout(function(){ }, 100);
 }
 
 /*
