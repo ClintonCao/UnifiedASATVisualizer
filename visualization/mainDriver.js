@@ -59,6 +59,99 @@ function appendInfoToSAT(CS, PMD, FB) {
     findBugsElement.innerHTML = "&thinsp; FindBugs(" + FB + ")";
 }
 
+/*
+ * Sum how many active functional defects there are
+ */
+function sumFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res) {
+	var summation = 0;
+	for(var i = 0; i < acceptedCategories.length; i++) {
+		switch(acceptedCategories[i]) {
+			case 'Check':
+				summation += Check;
+				break;
+			case 'Concurrency':
+				summation += Conc;
+				break;
+			case 'ErrorHandling':
+				summation += ErrorH;
+				break;
+			case 'Interface':
+				summation += Inter;
+				break;
+			case 'Logic':
+				summation += Logic;
+				break;
+			case 'Migration':
+				summation += Mig;
+				break;
+			case 'Resource':
+				summation += Res;
+				break;
+		}
+	}
+	return summation;
+}
+
+/*
+ * Sum how many active maintainability defects there are
+ */
+function sumMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, Simp, Red, StyleConv) {
+	var summation = 0;
+	for(var i = 0; i < acceptedCategories.length; i++) {
+		switch(acceptedCategories[i]) {
+			case 'Best Practices':
+				summation += Prac;
+				break;
+			case 'Code Structure':
+				summation += Struc;
+				break;
+			case 'Documentation Conventions':
+				summation += DocConv;
+				break;
+			case 'Metric':
+				summation += Metric;
+				break;
+			case 'Naming Conventions':
+				summation += NamConv;
+				break;
+			case 'Object Oriented Design':
+				summation += OOD;
+				break;
+			case 'Refactorings - Simplifications':
+				summation += Simp;
+				break;
+			case 'Refactorings - Redundancies':
+				summation += Red;
+				break;
+			case 'Style Conventions':
+				summation += StyleConv;
+				break;
+		}
+	}
+	return summation;
+}
+
+/*
+ * Sum how many active other defects there are
+ */
+function sumOtherDefects(Other, RegExpr, Tools) {
+	var summation = 0;
+	for(var i = 0; i < acceptedCategories.length; i++) {
+		switch(acceptedCategories[i]) {
+			case 'Other':
+				summation += Other;
+				break;
+			case 'Regular Expressions':
+				summation += RegExpr;
+				break;
+			case 'Tool Specific':
+				summation += Tools;
+				break;
+		}
+	}
+	return summation;
+}
+
 // Add total amount of warnings to each sub category within the functional defects in the right menu
 function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res) {
     var CheckElement = document.getElementById("CheckLabel");
@@ -77,7 +170,8 @@ function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, R
     LogicElement.innerHTML = "&thinsp; Logic (" + Logic + ")";
     MigrationElement.innerHTML = "&thinsp; Migration (" + Mig + ")";
     ResourceElement.innerHTML = '&thinsp; Resource (' + Res + ")";
-    FuncDefElement.innerHTML = ' Functional Defects (' + (Check + Conc + ErrorH + Inter + Logic + Mig + Res) + ")";
+    var sum = sumFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res);
+    FuncDefElement.innerHTML = ' Functional Defects (' + sum + ")";
 }
 
 // Add total amount of warnings to each sub category within the maintainability defects in the right menu
@@ -102,7 +196,8 @@ function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamCon
     SimplificationsElement.innerHTML = '&thinsp; Simplifications (' + Simp + ")";
     RedundanciesElement.innerHTML = "&thinsp; Redundancies (" + Red + ")";
     StyleConventionsElement.innerHTML = '&thinsp; Style Conventions (' + StyleConv + ")";
-    MainDefElement.innerHTML = ' Maintainability Defects (' + (Prac + Struc + DocConv + Metric + NamConv + OOD + Simp + Red + StyleConv) + ")";
+    var sum = sumMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, Simp, Red, StyleConv);
+    MainDefElement.innerHTML = ' Maintainability Defects (' + sum + ")";
 }
 
 // Add total amount of warnings to each sub category within the other category in the right menu
@@ -115,7 +210,8 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
     OtherElement.innerHTML = '&thinsp; Other (' + Other + ")";
     RegularExpressionsElement.innerHTML = "&thinsp; Regular Expressions (" + RegExpr + ")";
     ToolSpecificElement.innerHTML = "&thinsp; Tool Specific(" + Tools + ")";
-    OthElement.innerHTML = " Other (" + (Other + RegExpr + Tools) + ")";
+    var sum = sumOtherDefects(Other, RegExpr, Tools);
+    OthElement.innerHTML = " Other (" + sum + ")";
 }
 
 //Setup tree map and shows it
