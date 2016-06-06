@@ -405,6 +405,7 @@ var treeMapBuilder = (function() {
         function navigationUp(d) {
             currentNodePath.pop();
             transition(d)
+			
         }
 
         function transition(d) {
