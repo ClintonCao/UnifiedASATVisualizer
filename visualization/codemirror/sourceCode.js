@@ -51,7 +51,13 @@ function setLabels(lineNumber, type, cat) {
 		}
 	});
 }
-
+function setBackButton(fileName){
+	$('#back-div').html(fileName);
+	$('#back-div').click(function() {
+	  //treeMapBuilder
+	  sourceCode.hide();
+	});
+	}
 function displayCode(pathID){	
 	for ( var i = 0; i < codeExport.length; i++){	
 
@@ -78,24 +84,22 @@ return {
 		
 	readAllCode: function(){	
 	},
-	show: function(){
+	show: function(d){
 		var chartDiv = document.getElementById("code-div");
 			chartDiv.style.visibility = 'visible';
-			document.getElementById("chart").style.display  = 'none';  
+			document.getElementById("chart").style.visibility = 'hidden';
+			
+			displayCode(d.filePath);
+			var warnings = getWarningLines(d.fileName);
+			for( var i =0 ; i < warnings.warningList.length; i ++ ){
+				highlight(warnings.warningList[i].line, warnings.warningList[i].type);
+			}
+			setBackButton(d.fileName);
 	},
 	hide: function(){
 		var chartDiv = document.getElementById("code-div");
 			chartDiv.style.visibility = 'hidden';
-			document.getElementById("chart").style.display  = 'inline-block';  
-	},
-	display: function(path){
-		displayCode(path);
-	},
-	highlightWarnings: function(fileName){
-		var warnings = getWarningLines(fileName);
-		for( var i =0 ; i < warnings.warningList.length; i ++ ){
-			highlight(warnings.warningList[i].line, warnings.warningList[i].type);
-		}
+			document.getElementById("chart").style.visibility = 'visible';
 	},
 	setLabelsWarnings: function(fileName) {
 		var warnings = getWarningLines(fileName);
