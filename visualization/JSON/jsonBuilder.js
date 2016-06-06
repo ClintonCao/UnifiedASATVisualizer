@@ -92,6 +92,7 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 		var FDW = 0;
 		var MDW = 0;
 		var ODW = 0;
+		var LOC = 0;
 		for (i = 0; i < classesArray.length; i++) {
 	  		var classObject = new Object();
 	  		classObjectJson = classesArray[i];
@@ -142,9 +143,11 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	  		FDW += classObject.amountOfFunctionalDefects;
 	  		MDW += classObject.amountOfMaintainabilityDefects;
 	  		ODW += classObject.amountOfOtherDefects;
+	  		LOC += classObject.loc;
 	  		classArray.push(classObject);
 		}
 	classArray.packageName = package.packageName;
+	classArray.LOC = LOC;
 	classArray.amountOfCheckStyleWarnings = CSW;
 	classArray.amountOfPMDWarnings = PMDW;
 	classArray.amountOfFindBugsWarnings = FBW;
@@ -225,6 +228,8 @@ function getTotalCategoryWarning(warningType) {
  */
 function createJsonTreeMap(packages){
 	var jsonArrPackage = [];
+	var upperLevelLoc = 0;
+	var upperLevelTotal = 0;
 	var upperLevelCSW = 0;
 	var upperLevelPMDW = 0;
 	var upperLevelFBW = 0;
@@ -234,11 +239,13 @@ function createJsonTreeMap(packages){
 		for(var p =0; p < packages.length; p++){
 			var jsonArrClass = [];
 			var classes = packages[p];
+			var middleLevelLOC = 0;
 			for (var i = 0; i < classes.length; i++) {
 				var fileName = classes[i].fileName;
 				var linesOfCode = classes[i].loc;
 				jsonArrClass.push({
 					fileName: fileName,
+					loc: linesOfCode,
 					warnings: classes[i].amountOfWarnings,
 					warningsCheckStyle: classes[i].amountOfCheckStyleWarnings,
 					warningsPMD: classes[i].amountOfPMDWarnings,
@@ -248,6 +255,7 @@ function createJsonTreeMap(packages){
 					warningsOtherDefects: classes[i].amountOfOtherDefects,
 					value: linesOfCode
 				});
+				middleLevelLOC += classes[i].loc;
 			}
 
 			upperLevelCSW += classes.amountOfCheckStyleWarnings;
@@ -256,13 +264,17 @@ function createJsonTreeMap(packages){
 			upperLevelFD += classes.amountOfFunctionalDefects;
 			upperLevelMD += classes.amountOfMaintainabilityDefects;
 			upperLevelOD += classes.amountOfOtherDefects;
+			upperLevelTotal += classes.amountOfWarnings;
+			upperLevelLoc += middleLevelLOC;
 
 			jsonArrPackage.push(
 				{
 					fileName: classes.packageName, 
+					loc: middleLevelLOC,
 					values: jsonArrClass,
+					warnings: classes.amountOfWarnings,
 					warningsCheckStyle: classes.amountOfCheckStyleWarnings,
-					warningsPMD: classes.amountOfFindBugsWarnings,
+					warningsPMD: classes.amountOfPMDWarnings,
 					warningsFindBugs: classes.amountOfFindBugsWarnings,
 					warningsFunctionalDefects: classes.amountOfFunctionalDefects,
 					warningsMaintainabilityDefects: classes.amountOfMaintainabilityDefects,
@@ -272,7 +284,9 @@ function createJsonTreeMap(packages){
 	return [
 		{
 			fileName: "Project",
+			loc: upperLevelLoc,
 			values: jsonArrPackage,
+			warnings: upperLevelTotal,
 			warningsCheckStyle: upperLevelCSW,
 			warningsPMD: upperLevelPMDW,
 			warningsFindBugs: upperLevelFBW,
