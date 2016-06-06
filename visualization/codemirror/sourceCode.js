@@ -27,7 +27,7 @@ function displayCode(pathID){
 for ( var i = 0; i < codeExport.length; i++){	
 
 	if (codeExport[i].path == pathID){
-	var value = codeExport[i].code;
+		var value = codeExport[i].code.substring(1, codeExport[i].code.length -2);
 	}
 	
 }
