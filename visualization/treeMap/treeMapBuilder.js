@@ -409,8 +409,6 @@ var treeMapBuilder = (function() {
         }
 
         function toSourceCode(d) {
-			console.log(d);
-			console.log(d.filePath);
             sourceCode.display(d.filePath)
 			//sourceCode.display("C:\\users\\clint\\Downloads\\src\\Brain\\Formation.java");
 			sourceCode.show();
