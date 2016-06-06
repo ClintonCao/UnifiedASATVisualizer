@@ -182,7 +182,6 @@ var backgroundObject = (function() {
 		}
 	}
 	function calculateBackground(svg, weight, id){
-		
 		var currentColorScale = getNormalColors();
 		var gradient = svg.append("defs")
 			.append("linearGradient")
