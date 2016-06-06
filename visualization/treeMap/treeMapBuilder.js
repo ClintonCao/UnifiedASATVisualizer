@@ -20,6 +20,7 @@ var treeMapBuilder = (function() {
         root.dy = height;
         root.depth = 0;
     }
+	
 
     /*
      * Will put the #warnings for each ASAT
@@ -151,6 +152,15 @@ var treeMapBuilder = (function() {
         }
         return -1;
     }
+	  // Code to find a certain node in the treemap
+        function findNode(path, root) {
+            var node = root;
+            for (var i = 0; i < path.length; i++) {
+                node = node._children[path[i]]
+            }
+            return node;
+        }
+		
     //Renders the chart with given depth and children
 	function display(d) {
 		// id for all squares
@@ -198,7 +208,7 @@ var treeMapBuilder = (function() {
                 tooltip.style("visibility", "visible");
             })
             .on("mousemove", function(d) {
-                tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                tooltip.style("top", (d3.event.pageY - 120) + "px").style("left", (d3.event.pageX - 280) + "px");
             })
             .on("mouseout", function(d) {
                 tooltip.style("visibility", "hidden");
@@ -249,20 +259,10 @@ var treeMapBuilder = (function() {
         function fastReload() {
             reloadContent();
             var newNode = findNode(currentNodePath, root);
-            // g.filter(function(newNode) {
-            //     return newNode;
-            // });
             transition(newNode);
         }
 
-        // Code to find a certain node in the treemap
-        function findNode(path, root) {
-            var node = root;
-            for (var i = 0; i < path.length; i++) {
-                node = node._children[path[i]]
-            }
-            return node;
-        }
+      
 
         // Updates all warning counts for all ASATS and categories
         updateWarningsCountInUI(d);
@@ -409,13 +409,8 @@ var treeMapBuilder = (function() {
         }
 
         function toSourceCode(d) {
-			console.log(d);
-			console.log(d.filePath);
-            sourceCode.display(d.filePath)
-			//sourceCode.display("C:\\users\\clint\\Downloads\\src\\Brain\\Formation.java");
-			sourceCode.show();
+			sourceCode.show(d);
         	$('.CodeMirror').width(opts.width).height(opts.height-30);
-			sourceCode.highlightWarnings(d.fileName);
 			sourceCode.setLabelsWarnings(d.fileName);
         }
 
@@ -624,7 +619,6 @@ var treeMapBuilder = (function() {
             initializeTheTree(root);
             display(root);
         }
-
     };
 
 }());
