@@ -278,6 +278,7 @@ function createJsonTreeMap(packages){
 				var linesOfCode = classes[i].loc;
 				jsonArrClass.push({
 					fileName: fileName,
+					filepath: classes[i].filePath,
 					loc: linesOfCode,
 					warnings: classes[i].amountOfWarnings,
 					warningsCheckStyle: classes[i].amountOfCheckStyleWarnings,
