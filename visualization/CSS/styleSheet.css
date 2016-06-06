@@ -136,6 +136,13 @@ div#chart-wrapper{
   font-weight: 100;
 }
 
+.form {
+  font-size: 18px;
+  color: #999999;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 300;
+}
+
 /* Title */
 #main-title {
   background: rgba(55, 58, 60, 0.8);
