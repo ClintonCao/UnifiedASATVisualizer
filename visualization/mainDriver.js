@@ -217,7 +217,7 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
 //Setup tree map and shows it
 function runTreeMap() {
     var title = document.getElementById("main-title");
-    title.innerHTML = "Treemap view of project <a class='form' target='_blank' href='https://docs.google.com/forms/d/1HDEeIx4Dzvxd2Aa_hiNsSMrKt0K6smW7YciHGzabKlw/viewform?c=0&w=1&usp=mail_form_link'>- Feedback-form</a>";
+    title.innerHTML = "Treemap view of project";
     var graphButtonDiv = document.getElementById("sub-title");
     graphButtonDiv.style.display = 'none';
 
