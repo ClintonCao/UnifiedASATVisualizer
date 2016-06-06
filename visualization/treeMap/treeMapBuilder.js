@@ -386,7 +386,7 @@ var treeMapBuilder = (function() {
         function toSourceCode(d) {
 			console.log(d);
 			console.log(d.filePath);
-			sourceCode.display("C:\\Users\\michiel\\workspace\\Contextproject-TSE\\src\\test\\resources\\TestCodeFolder\\AllClosestPoints.java");
+			sourceCode.display("C:\\users\\clint\\Downloads\\src\\Brain\\Formation.java");
 			sourceCode.show();
         	$('.CodeMirror').width(opts.width).height(opts.height-30);
 			sourceCode.highlightWarnings();
