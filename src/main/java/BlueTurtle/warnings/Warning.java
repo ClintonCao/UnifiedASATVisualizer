@@ -40,17 +40,4 @@ public abstract class Warning {
 		setClassification(classification); 
 	}
 	
-	/**
-	 * Check whether two warnings are the same exact warning.
-	 * @param other the other warning.
-	 * @return a boolean.
-	 */
-	@Override
-	public abstract boolean equals(Object other);
-	
-	/**
-	 * HashCode for the object.
-	 */
-	@Override
-	public abstract int hashCode();
 }
