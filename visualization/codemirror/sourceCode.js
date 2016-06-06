@@ -4,8 +4,7 @@
 
 var sourceCode = (function() {
 
-function hightlight(lineNumber, type){
-	
+function highlight(lineNumber, type){
 	$( '.CodeMirror-code').children().each(function () {
        if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ){
 		  switch(type) {
@@ -23,27 +22,45 @@ function hightlight(lineNumber, type){
     });
 }
 
-function displayCode(pathID){	
-for ( var i = 0; i < codeExport.length; i++){	
+function setLabels(lineNumber, type, cat) {
+	$( '.CodeMirror-code').children().each(function () {
+       if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ){
+		  switch(type) {
+		case 'CheckStyle':
+			$(this).css('content',cat);
+			break;
+		case 'PMD':
+			$(this).css('content',cat);
+			break;
+		case 'FindBugs':
+			$(this).css('content',cat);
+			break;
+		  }
+	   }
+    });
+}
 
-	if (codeExport[i].path == pathID){
-		var value = codeExport[i].code.substring(1, codeExport[i].code.length -2);
+function displayCode(pathID){	
+	for ( var i = 0; i < codeExport.length; i++){	
+
+		if (codeExport[i].path == pathID){
+			var value = codeExport[i].code.substring(1, codeExport[i].code.length -2);
+		}
+		
 	}
-	
-}
-var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
-    value: value,
-    lineNumbers: true,
-    mode: "javascript",
-    keyMap: "sublime",
-	readOnly: "nocursor",
-    autoCloseBrackets: true,
-    matchBrackets: true,
-    showCursorWhenSelecting: true,
-    theme: "monokai",
-    tabSize: 2
-});
-}
+	var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
+	    value: value,
+	    lineNumbers: true,
+	    mode: "javascript",
+	    keyMap: "sublime",
+		readOnly: "nocursor",
+	    autoCloseBrackets: true,
+	    matchBrackets: true,
+	    showCursorWhenSelecting: true,
+	    theme: "monokai",
+	    tabSize: 2
+	});
+	}
 
 return {
 		
@@ -66,7 +83,13 @@ return {
 	highlightWarnings: function(){
 		var warnings = getWarningLines("CheckStyle","Match.java");
 		for( var i =0 ; i < warnings.warningList.length; i ++ ){
-			hightlight(warnings.warningList[i].line, warnings.warningList[i].type);
+			highlight(warnings.warningList[i].line, warnings.warningList[i].type);
+		}
+	}
+	setLabelsWarnings: function() {
+		var warnings = getWarningLines("CheckStyle","Match.java");
+		for( var i =0 ; i < warnings.warningList.length; i ++ ){
+			setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].type);
 		}
 	}
 }

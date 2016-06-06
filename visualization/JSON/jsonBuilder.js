@@ -192,8 +192,7 @@ function getTotalASATWarning(warningType) {
 }
 
 /*
- *
- * get object with all warnings with lines from a certain class
+ * Get object with all warnings with lines from a certain class
  * filterd on warning type
  */
 function getWarningLines(warningType, className) {
@@ -215,6 +214,7 @@ function getWarningLines(warningType, className) {
 						var warningObject = new Object();
 						warningObject.line = warningJson.line;
 						warningObject.type = warningJson.type;
+						warningObject.cat = warningJson.classification;
 						classObject.warningList.push(warningObject);
 					}
 				}
@@ -277,7 +277,6 @@ function createJsonTreeMap(packages){
 			for (var i = 0; i < classes.length; i++) {
 				var fileName = classes[i].fileName;
 				var linesOfCode = classes[i].loc;
-				console.log(classes[i].filePath);
 				jsonArrClass.push({
 					fileName: fileName,
 					filePath: classes[i].filePath,
