@@ -116,7 +116,7 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
 function runTreeMap() {
     removeChart();
     var title = document.getElementById("main-title");
-    title.innerHTML = "<a href='http://www.google.com/'>Treemap view of project</a>";
+    title.innerHTML = "Treemap view of project";
     var graphButtonDiv = document.getElementById("sub-title");
     graphButtonDiv.style.display = 'none';
 
