@@ -224,7 +224,7 @@ var treeMapBuilder = (function() {
                     tooltip.style("visibility", "visible");
             	})
             	.on("mousemove", function(d) {
-                    tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                    tooltip.style("top", (d3.event.pageY - 120) + "px").style("left", (d3.event.pageX - 280) + "px");
             	})
             	.on("mouseout", function(d) {
                     tooltip.style("visibility", "hidden");
