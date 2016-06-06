@@ -390,7 +390,7 @@ var treeMapBuilder = (function() {
 			//sourceCode.display("C:\\users\\clint\\Downloads\\src\\Brain\\Formation.java");
 			sourceCode.show();
         	$('.CodeMirror').width(opts.width).height(opts.height-30);
-			sourceCode.highlightWarnings();
+			sourceCode.highlightWarnings(d.fileName);
 			
         }
 
