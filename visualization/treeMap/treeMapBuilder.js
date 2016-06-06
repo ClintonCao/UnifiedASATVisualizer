@@ -264,6 +264,7 @@ var treeMapBuilder = (function() {
             return node;
         }
 
+        // Updates all warning counts for all ASATS and categories
         updateWarningsCountInUI(d);
 
         function reloadContent() {
