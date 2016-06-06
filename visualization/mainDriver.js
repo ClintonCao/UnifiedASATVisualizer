@@ -68,6 +68,7 @@ function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, R
     var LogicElement = document.getElementById("LogicLabel");
     var MigrationElement = document.getElementById("MigrationLabel");
     var ResourceElement = document.getElementById("ResourceLabel");
+    var FuncDefElement = document.getElementById("FuncDefLabel");
 
     CheckElement.innerHTML = '&thinsp; Check (' + Check + ")";
     ConcElement.innerHTML = "&thinsp; Concurrency (" + Conc + ")";
@@ -76,6 +77,7 @@ function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, R
     LogicElement.innerHTML = "&thinsp; Logic (" + Logic + ")";
     MigrationElement.innerHTML = "&thinsp; Migration (" + Mig + ")";
     ResourceElement.innerHTML = '&thinsp; Resource (' + Res + ")";
+    FuncDefElement.innerHTML = ' Functional Defects (' + (Check + Conc + ErrorH + Inter + Logic + Mig + Res) + ")";
 }
 
 // Add total amount of warnings to each sub category within the maintainability defects in the right menu
@@ -89,6 +91,7 @@ function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamCon
     var SimplificationsElement = document.getElementById("SimplificationsLabel");
     var RedundanciesElement = document.getElementById("RedundanciesLabel");
     var StyleConventionsElement = document.getElementById("StyleConventionsLabel");
+    var MainDefElement = document.getElementById("MainDefLabel");
 
     BestPracticesElement.innerHTML = '&thinsp; Best Practices (' + Prac + ")";
     CodeStructureElement.innerHTML = "&thinsp; Code Structure (" + Struc + ")";
@@ -99,6 +102,7 @@ function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamCon
     SimplificationsElement.innerHTML = '&thinsp; Simplifications (' + Simp + ")";
     RedundanciesElement.innerHTML = "&thinsp; Redundancies (" + Red + ")";
     StyleConventionsElement.innerHTML = '&thinsp; Style Conventions (' + StyleConv + ")";
+    MainDefElement.innerHTML = ' Maintainability Defects (' + (Prac + Struc + DocConv + Metric + NamConv + OOD + Simp + Red + StyleConv) + ")";
 }
 
 // Add total amount of warnings to each sub category within the other category in the right menu
@@ -106,10 +110,12 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
     var OtherElement = document.getElementById("OtherLabel");
     var RegularExpressionsElement = document.getElementById("RegularExpressionsLabel");
     var ToolSpecificElement = document.getElementById("ToolSpecificLabel");
+    var OthElement = document.getElementById("OthLabel");
 
     OtherElement.innerHTML = '&thinsp; Other (' + Other + ")";
     RegularExpressionsElement.innerHTML = "&thinsp; Regular Expressions (" + RegExpr + ")";
     ToolSpecificElement.innerHTML = "&thinsp; Tool Specific(" + Tools + ")";
+    OthElement.innerHTML = " Other (" + (Other + RegExpr + Tools) + ")";
 }
 
 //Setup tree map and shows it
