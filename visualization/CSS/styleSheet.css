@@ -50,6 +50,15 @@ div#left-menu{
   color: #fff;
   font-family: 'Roboto Mono', sans-serif;
 }
+div#back-div{
+  widows:100%;
+  height:30px;
+  stroke-width: 2px;
+  fill: #337ab7;
+}
+div#back-div:hover {
+  fill: #2d6da4;
+}
 #checkStyleLabel {
   color: #FFFFFF;
   font-family: 'Roboto Mono', sans-serif;
