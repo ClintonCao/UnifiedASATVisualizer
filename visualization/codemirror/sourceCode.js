@@ -14,12 +14,15 @@ function highlight(lineNumber, type){
 		  switch(type) {
 		case 'CheckStyle':
 			$(this).css('background','#386938');
+			$(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#386938');
 			break;
 		case 'PMD':
 			$(this).css('background','#88120a');
+			$(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#88120a');
 			break;
 		case 'FindBugs':
 			$(this).css('background','#043e70');
+			$(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#043e70');
 			break;
 		  }
 	   }
@@ -29,10 +32,9 @@ function highlight(lineNumber, type){
 function setLabels(lineNumber, type, cat, message) {
 	$( '.CodeMirror-code').children().each(function () {
 		
-		if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ){
+		if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ) {
 
 			if( curLine == $(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text()) {
-				
 				currentAsatWarnings.push(type);
 				currentCatWarnings.push(cat);
 				currentMessageWarnings.push(message);
@@ -75,11 +77,10 @@ function setLabels(lineNumber, type, cat, message) {
 	});
 }
 function setBackButton(fileName){
-	$('#back-div').html(fileName);
-	$('#back-div').click(function() {
-	  //treeMapBuilder
-	  sourceCode.hide();
-	});
+		$('#back-div').html(fileName);
+		$('#back-div').click(function() {
+		  sourceCode.hide();
+		});
 	}
 function displayCode(pathID){	
 	for ( var i = 0; i < codeExport.length; i++){	
@@ -120,7 +121,7 @@ return {
 			setBackButton(d.fileName);
 	},
 	hide: function(){
-		var myNode = document.getElementById("foo");
+		var myNode = document.getElementById("code-article");
 		while (myNode.firstChild) {
 			myNode.removeChild(myNode.firstChild);
 		}
