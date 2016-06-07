@@ -104,6 +104,7 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 			classObject.amountOfMaintainabilityDefects = 0;
 			classObject.amountOfOtherDefects = 0;
 	  		classObject.loc = classObjectJson.loc;
+	  		classObject.message = classObjectJson.message;
 	  		classObject.filePath = classObjectJson.filePath;
 	  		classObject.fileName = classObjectJson.fileName;
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
@@ -214,6 +215,7 @@ function getWarningLines(className) {
 						var warningObject = new Object();
 						warningObject.line = warningJson.line;
 						warningObject.type = warningJson.type;
+						warningObject.message = warningJson.message;
 						warningObject.cat = warningJson.classification;
 						classObject.warningList.push(warningObject);
 					}
@@ -279,6 +281,7 @@ function createJsonTreeMap(packages){
 				jsonArrClass.push({
 					fileName: fileName,
 					filePath: classes[i].filePath,
+					message: classes[i].message,
 					loc: linesOfCode,
 					warnings: classes[i].amountOfWarnings,
 					warningsCheckStyle: classes[i].amountOfCheckStyleWarnings,
@@ -304,7 +307,6 @@ function createJsonTreeMap(packages){
 			jsonArrPackage.push(
 				{
 					fileName: classes.packageName, 
-					filePath: classes.filePath,
 					loc: middleLevelLOC,
 					values: jsonArrClass,
 					warnings: classes.amountOfWarnings,

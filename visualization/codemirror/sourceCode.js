@@ -22,13 +22,14 @@ function highlight(lineNumber, type){
     });
 }
 
-function setLabels(lineNumber, type, cat) {
+function setLabels(lineNumber, type, cat, message) {
 	/*
      * Creates a tooltip that will be shown on hover over a node
      */
     var tooltip = d3.select("#chart-and-code")
         .append("div")
-		.attr("id","d3-tip")
+		.attr("class","d3-tip2")
+		.style("width", 300)
         .style("position", "absolute")
         .style("z-index", "10")
         .style("visibility", "hidden");
@@ -36,13 +37,12 @@ function setLabels(lineNumber, type, cat) {
 	$( '.CodeMirror-code').children().each(function () {
 		var curLine = $(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text();
 		if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ){
-
 			$(this).mouseenter(function(){
-				tooltip.html(cat);
+				tooltip.html(lineNumber + ": " + "<br>-" + type + "<br>-" + cat + "<br>-" + message + "<br>");
                 tooltip.style("visibility", "visible");
 			});
 			$(this).mousemove(function(){
-				tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px");
+				tooltip.style("top", (event.pageY - 130) + "px").style("left", (event.pageX - 280) + "px");
 			});
 			$(this).mouseleave(function(){
 				tooltip.style("visibility", "hidden");
@@ -107,7 +107,7 @@ return {
 	setLabelsWarnings: function(fileName) {
 		var warnings = getWarningLines(fileName);
 		for( var i =0 ; i < warnings.warningList.length; i ++ ){
-			setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat);
+			setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
 		}
 	}
 }

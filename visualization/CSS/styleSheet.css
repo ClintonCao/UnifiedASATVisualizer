@@ -161,6 +161,18 @@ div#chart-wrapper{
   font-weight: 100;
 }
 
+/*
+ * Styling for the tooltip of the treemap
+ */
+.d3-tip2{
+  font-size:15px;
+  color: #FFFFFF !important;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 100;
+  padding: 10px;
+  background-color: rgba(55, 58, 60, 0.75);
+}
+
 .form {
   font-size: 18px;
   color: #999999;
