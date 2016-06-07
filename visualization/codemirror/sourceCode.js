@@ -119,6 +119,10 @@ return {
 				highlight(warnings.warningList[i].line, warnings.warningList[i].type);
 			}
 			setBackButton(d.fileName);
+			var warnings = getWarningLines(d.fileName);
+			for( var i =0 ; i < warnings.warningList.length; i ++ ){
+				setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
+			}
 	},
 	hide: function(){
 		var myNode = document.getElementById("code-article");
@@ -128,12 +132,6 @@ return {
 		var chartDiv = document.getElementById("code-div");
 			chartDiv.style.visibility = 'hidden';
 			document.getElementById("chart").style.visibility = 'visible';
-	},
-	setLabelsWarnings: function(fileName) {
-		var warnings = getWarningLines(fileName);
-		for( var i =0 ; i < warnings.warningList.length; i ++ ){
-			setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
-		}
 	}
 }
 

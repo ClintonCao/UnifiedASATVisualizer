@@ -409,9 +409,8 @@ var treeMapBuilder = (function() {
         }
 
         function toSourceCode(d) {
-            //sourceCode.show(d);
-        	//$('.CodeMirror').width(opts.width).height(opts.height-30);
-			//sourceCode.setLabelsWarnings(d.fileName);
+            sourceCode.show(d);
+        	$('.CodeMirror').width(opts.width).height(opts.height-30);
         }
 
         function findChildNumber(d, parent) {
