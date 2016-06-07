@@ -35,9 +35,7 @@ public class GUIController {
 	 * @author BlueTurtle.
 	 *
 	 */
-	public enum ASAT {
-		CheckStyle, PMD, FindBugs;
-	}
+	public enum ASAT { CheckStyle, PMD, FindBugs;}
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
 	private ResourceBundle resources;
@@ -54,7 +52,7 @@ public class GUIController {
 	@FXML // fx:id="visualizeButton"
 	private Button visualizeButton; // Value injected by FXMLLoader
 	
-	@Getter @Setter private static String sourcePath;
+	@Getter @Setter private static String projectPath;
 
 	/**
 	 * Event for CheckStyle button.
@@ -63,9 +61,7 @@ public class GUIController {
 	 *            the event.
 	 */
 	@FXML
-	void selectCheckStyleConfigEvent(MouseEvent event) {
-
-	}
+	void selectCheckStyleConfigEvent(MouseEvent event) { }
 
 	/**
 	 * Event for PMD button.
@@ -74,9 +70,7 @@ public class GUIController {
 	 *            the event.
 	 */
 	@FXML
-	void selectPMDConfigEvent(MouseEvent event) {
-
-	}
+	void selectPMDConfigEvent(MouseEvent event) { }
 
 	/**
 	 * Event for FindBugs button.
@@ -161,7 +155,7 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 			sourcePathText.setText("No Directory selected");
 		} else {
 			sourcePathText.setText(selectedDirectory.getAbsolutePath());
-			GUIController.setSourcePath(sourcePathText.getText());
+			GUIController.setProjectPath(sourcePathText.getText());
 			visualizeButton.setDisable(false);
 		}
 	}
@@ -187,7 +181,7 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 		setOutputFiles();
 		try {
 			ProjectInfoFinder pif = new ProjectInfoFinder();
-			pif.findFiles(new File(GUIController.getSourcePath()));
+			pif.findFiles(new File(GUIController.getProjectPath()));
 			pif.retrieveCodeFiles();
 			
 			Main.runVisualization();
@@ -202,9 +196,9 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 	 */
 	public void setOutputFiles() {
 		JavaController.setASATOutput(ASAT.CheckStyle,
-				new File(GUIController.getSourcePath() + "/target/checkstyle-result.xml"));
-		JavaController.setASATOutput(ASAT.PMD, new File(GUIController.getSourcePath() + "/target/pmd.xml"));
+				new File(GUIController.getProjectPath() + "/target/checkstyle-result.xml"));
+		JavaController.setASATOutput(ASAT.PMD, new File(GUIController.getProjectPath() + "/target/pmd.xml"));
 		JavaController.setASATOutput(ASAT.FindBugs,
-				new File(GUIController.getSourcePath() + "/target/findbugs.xml"));
+				new File(GUIController.getProjectPath() + "/target/findbugs.xml"));
 	}
 }
