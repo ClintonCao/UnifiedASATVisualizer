@@ -83,7 +83,6 @@ var backgroundObject = (function() {
 			.attr("stop-opacity", 1);
 	}
 	function createGradientColours(gradient, onlyOneColour, whichOne, weight, ratioArray) {
-		console.log("R array: " + ratioArray);
 		if(onlyOneColour) {
 			switch(whichOne) {
 				case 0:

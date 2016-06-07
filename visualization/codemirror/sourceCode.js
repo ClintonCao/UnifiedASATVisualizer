@@ -23,21 +23,33 @@ function highlight(lineNumber, type){
 }
 
 function setLabels(lineNumber, type, cat) {
+	/*
+     * Creates a tooltip that will be shown on hover over a node
+     */
+    var tooltip = d3.select("#chart-and-code")
+        .append("div")
+		.attr("id","d3-tip")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden");
+
 	$( '.CodeMirror-code').children().each(function () {
-       if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ){
-		  switch(type) {
-		case 'CheckStyle':
-			$(this).css('content',cat);
-			break;
-		case 'PMD':
-			$(this).css('content',cat);
-			break;
-		case 'FindBugs':
-			$(this).css('content',cat);
-			break;
-		  }
-	   }
-    });
+		var curLine = $(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text();
+		if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ){
+
+			$(this).mouseenter(function(){
+				tooltip.html(cat);
+                tooltip.style("visibility", "visible");
+			});
+			$(this).mousemove(function(){
+				console.log(d3.event);
+				tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px");
+			});
+			$(this).mouseleave(function(){
+				tooltip.style("visibility", "hidden");
+			});
+		}
+	});
 }
 function setBackButton(fileName){
 	$('#back-div').html(fileName);
@@ -71,7 +83,6 @@ function displayCode(pathID){
 return {
 		
 	readAllCode: function(){	
-		console.log(editor.getValue());
 	},
 	show: function(d){
 		var chartDiv = document.getElementById("code-div");
