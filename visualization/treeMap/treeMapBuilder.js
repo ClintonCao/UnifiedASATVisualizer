@@ -165,6 +165,7 @@ var treeMapBuilder = (function() {
 	function display(d) {
 		// id for all squares
 		var id = 0;
+        name(d);
 
         /*
          * Creates a tooltip that will be shown on hover over a node
@@ -184,7 +185,7 @@ var treeMapBuilder = (function() {
             .datum(d.parent)
             .on("click", navigationUp)
             .select("text")
-            .text(name(d))
+            .text("<- Back")
             .style("fill", function() {
                 return '#333333';
             });
@@ -422,10 +423,13 @@ var treeMapBuilder = (function() {
             return null;
         }
 
+        function testFunction() {
+            console.log("Clicked balk");
+        }
+
         function navigationUp(d) {
             currentNodePath.pop();
             transition(d)
-			
         }
 
         function transition(d) {
@@ -516,11 +520,14 @@ var treeMapBuilder = (function() {
                 return y(d.y + d.dy) - y(d.y);
             });
     }
-    //title above the chart
+
+    // Sets the current path in a specific div and
+    // gives the return button the text
     function name(d) {
-        return d.parent ?
-            name(d.parent) + " / " + d.fileName : //+ " (" + formatNumber(d.warnings) + ")" :
-            d.fileName; // + " (" + formatNumber(d.warnings) + ")";
+        var subTitleDiv = document.getElementById("current-path");
+        subTitleDiv.innerHTML = d.parent ? name(d.parent) + " / " + d.fileName : //+ " (" + formatNumber(d.warnings) + ")" :
+                                d.fileName; // + " (" + formatNumber(d.warnings) + ")";
+        return subTitleDiv.innerHTML;
     }
 	
     function setTheVariables(o, data) {
@@ -584,19 +591,6 @@ var treeMapBuilder = (function() {
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .style("shape-rendering", "crispEdges");
-
-        pathText = svg.append("g")
-            .attr("class", "pathText");
-
-        pathText.append("rect")
-            .attr("y", -margin.top)
-            .attr("width", width)
-            .attr("height", margin.top);
-
-        pathText.append("text")
-            .attr("x", 6)
-            .attr("y", 6 - margin.top)
-            .attr("dy", ".75em")
 
         grandparent = svg.append("g")
             .attr("class", "grandparent");

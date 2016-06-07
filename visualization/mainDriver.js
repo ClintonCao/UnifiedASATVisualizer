@@ -218,8 +218,6 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
 function runTreeMap() {
     var title = document.getElementById("main-title");
     title.innerHTML = "Treemap view of project";
-    var graphButtonDiv = document.getElementById("sub-title");
-    graphButtonDiv.style.display = 'none';
 
     var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     var finalJson =  createJsonTreeMap(packages);

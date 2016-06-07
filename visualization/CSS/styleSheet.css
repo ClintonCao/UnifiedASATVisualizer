@@ -228,7 +228,8 @@ rect {
 }
 
 .grandparent:hover rect {
-  fill: #2d6da4;
+  fill: #6c98bf;
+  font-weight: 700;
 }
 
 .children rect.parent,
@@ -241,6 +242,14 @@ rect {
 g.children:hover{
   stroke-width: 0.3px;
   stroke: #000000;
+}
+
+#current-path {
+  color: #FFFFFF;
+  text-align: center;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 300;
+  padding-bottom: -25px;
 }
 
 /*
