@@ -15,4 +15,5 @@ exclude:
 - .*/OOPPJSON.*
 - .*/BlueTurtleJSON.*
 - .*/bootstrap.*
+- .*/CodeFiles.*
   
