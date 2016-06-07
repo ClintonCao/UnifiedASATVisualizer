@@ -5,6 +5,7 @@ var currentCatWarnings = [];
 var currentMessageWarnings = [];
 var currentTooltip;
 var curLine = 1;
+var packagePath = "";
 
 var sourceCode = (function() {
 
@@ -71,10 +72,12 @@ function setLabels(lineNumber, type, cat, message) {
 			currentMessageWarnings = [message];
 		}
 }
-function setBackButton(fileName){
-		$('#back-div').html(fileName);
+function setBackButton(d){
+		$('#back-div').html("<- Back");
 		$('#back-div').click(function() {
-		  sourceCode.hide();
+		  	var subTitleDiv = document.getElementById("current-path");
+    		subTitleDiv.innerHTML = packagePath;
+		  	sourceCode.hide();
 		});
 	}
 function displayCode(pathID){	
@@ -103,17 +106,20 @@ return {
 		
 	readAllCode: function(){	
 	},
-	show: function(d){
+	show: function(d, curPath){
 		var chartDiv = document.getElementById("code-div");
 			chartDiv.style.visibility = 'visible';
 			document.getElementById("chart").style.visibility = 'hidden';
+
+			packagePath = curPath.substring(0, curPath.lastIndexOf("/") + 1);
+			packagePath = packagePath.substring(0, packagePath.length - 2);
 			
 			displayCode(d.filePath);
 			var warnings = getWarningLines(d.fileName);
 			for( var i =0 ; i < warnings.warningList.length; i ++ ){
 				highlight(warnings.warningList[i].line, warnings.warningList[i].type);
 			}
-			setBackButton(d.fileName);
+			setBackButton(d);
 			var warnings = getWarningLines(d.fileName);
 			for( var i =0 ; i < warnings.warningList.length; i ++ ){
 				setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
