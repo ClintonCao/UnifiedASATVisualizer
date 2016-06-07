@@ -42,7 +42,6 @@ function setLabels(lineNumber, type, cat) {
                 tooltip.style("visibility", "visible");
 			});
 			$(this).mousemove(function(){
-				console.log(d3.event);
 				tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px");
 			});
 			$(this).mouseleave(function(){
@@ -97,7 +96,7 @@ return {
 			setBackButton(d.fileName);
 	},
 	hide: function(){
-		var myNode = document.getElementById("foo");
+		var myNode = document.getElementById("code-article");
 		while (myNode.firstChild) {
 			myNode.removeChild(myNode.firstChild);
 		}
