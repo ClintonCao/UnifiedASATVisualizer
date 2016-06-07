@@ -4,13 +4,13 @@ var currentAsatWarnings = [];
 var currentCatWarnings = [];
 var currentMessageWarnings = [];
 var currentTooltip;
-var curLine = -1;
+var curLine = 1;
 
 var sourceCode = (function() {
 
 function highlight(lineNumber, type){
 		   var childs = $( '.CodeMirror-code').children()
-		   var child = childs[lineNumber];
+		   var child = childs[lineNumber - 1];
 		  switch(type) {
 		case 'CheckStyle':
 			$(child).css('background','#386938');
@@ -28,51 +28,48 @@ function highlight(lineNumber, type){
 }
 
 function setLabels(lineNumber, type, cat, message) {
-	$( '.CodeMirror-code').children().each(function () {
-		
-		if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ) {
+	var childs = $( '.CodeMirror-code').children()
+	var child = childs[lineNumber - 1];
+	var child2 = childs[curLine - 1]
+		if( curLine == $(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text()) {
+			currentAsatWarnings.push(type);
+			currentCatWarnings.push(cat);
+			currentMessageWarnings.push(message);
 
-			if( curLine == $(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text()) {
-				currentAsatWarnings.push(type);
-				currentCatWarnings.push(cat);
-				currentMessageWarnings.push(message);
+		} else {
 
-			} else {
+			/*
+			 * Creates a tooltip that will be shown on hover over a node
+			 */
+			var tooltip = d3.select("#chart-and-code")
+			    .append("div")
+				.attr("class","d3-tip2")
+				.style("width", 300)
+			    .style("position", "absolute")
+			    .style("z-index", "10")
+			    .style("visibility", "hidden");
 
-				/*
-				 * Creates a tooltip that will be shown on hover over a node
-				 */
-				var tooltip = d3.select("#chart-and-code")
-				    .append("div")
-					.attr("class","d3-tip2")
-					.style("width", 300)
-				    .style("position", "absolute")
-				    .style("z-index", "10")
-				    .style("visibility", "hidden");
-
-				var textInTooltip = "Line " + lineNumber + ": ";
-				for(var i = 0; i < currentAsatWarnings.length; i++) {
-					textInTooltip += "<br>-" + currentAsatWarnings[i] + "<br>-" + currentCatWarnings[i] + "<br>-" + currentMessageWarnings[i] + "<br>"
-				}
-
-				$(this).mouseenter(function(){
-					tooltip.html(textInTooltip);
-	                tooltip.style("visibility", "visible");
-				});
-				$(this).mousemove(function(){
-					tooltip.style("top", (event.pageY - 130) + "px").style("left", (event.pageX - 280) + "px");
-				});
-				$(this).mouseleave(function(){
-					tooltip.style("visibility", "hidden");
-				});
-
-				curLine = $(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text();
-				currentAsatWarnings = [type];
-				currentCatWarnings = [cat];
-				currentMessageWarnings = [message];
+			var textInTooltip = "Line " + curLine + ": ";
+			for(var i = 0; i < currentAsatWarnings.length; i++) {
+				textInTooltip += "<br>-" + currentAsatWarnings[i] + "<br>-" + currentCatWarnings[i] + "<br>-" + currentMessageWarnings[i] + "<br>"
 			}
+
+			$(child2).mouseenter(function(){
+				tooltip.html(textInTooltip);
+                tooltip.style("visibility", "visible");
+			});
+			$(child2).mousemove(function(){
+				tooltip.style("top", (event.pageY - 130) + "px").style("left", (event.pageX - 280) + "px");
+			});
+			$(child2).mouseleave(function(){
+				tooltip.style("visibility", "hidden");
+			});
+
+			curLine = $(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text();
+			currentAsatWarnings = [type];
+			currentCatWarnings = [cat];
+			currentMessageWarnings = [message];
 		}
-	});
 }
 function setBackButton(fileName){
 		$('#back-div').html(fileName);

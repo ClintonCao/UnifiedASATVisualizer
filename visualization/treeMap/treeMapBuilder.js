@@ -585,6 +585,19 @@ var treeMapBuilder = (function() {
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .style("shape-rendering", "crispEdges");
 
+        pathText = svg.append("g")
+            .attr("class", "pathText");
+
+        pathText.append("rect")
+            .attr("y", -margin.top)
+            .attr("width", width)
+            .attr("height", margin.top);
+
+        pathText.append("text")
+            .attr("x", 6)
+            .attr("y", 6 - margin.top)
+            .attr("dy", ".75em")
+
         grandparent = svg.append("g")
             .attr("class", "grandparent");
 
