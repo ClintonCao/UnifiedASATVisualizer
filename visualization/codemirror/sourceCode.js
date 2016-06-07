@@ -9,24 +9,22 @@ var curLine = -1;
 var sourceCode = (function() {
 
 function highlight(lineNumber, type){
-	$( '.CodeMirror-code').children().each(function () {
-       if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ){
+		   var childs = $( '.CodeMirror-code').children()
+		   var child = childs[lineNumber];
 		  switch(type) {
 		case 'CheckStyle':
-			$(this).css('background','#386938');
-			$(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#386938');
+			$(child).css('background','#386938');
+			$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#386938');
 			break;
 		case 'PMD':
-			$(this).css('background','#88120a');
-			$(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#88120a');
+			$(child).css('background','#88120a');
+			$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#88120a');
 			break;
 		case 'FindBugs':
-			$(this).css('background','#043e70');
-			$(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#043e70');
+			$(child).css('background','#043e70');
+			$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#043e70');
 			break;
 		  }
-	   }
-    });
 }
 
 function setLabels(lineNumber, type, cat, message) {
