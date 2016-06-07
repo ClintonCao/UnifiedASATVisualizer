@@ -52,7 +52,7 @@ function setLabels(lineNumber, type, cat, message) {
 				    .style("z-index", "10")
 				    .style("visibility", "hidden");
 
-				var textInTooltip = lineNumber + ": ";
+				var textInTooltip = "Line " + lineNumber + ": ";
 				for(var i = 0; i < currentAsatWarnings.length; i++) {
 					textInTooltip += "<br>-" + currentAsatWarnings[i] + "<br>-" + currentCatWarnings[i] + "<br>-" + currentMessageWarnings[i] + "<br>"
 				}
