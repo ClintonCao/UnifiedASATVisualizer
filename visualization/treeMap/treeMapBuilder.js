@@ -3,6 +3,7 @@ var treeMapBuilder = (function() {
     // initialize all variables
     var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
     var refreshing = false;
+    var upperLevel = true;
     var currentNodePath = []
 	
     // initialize the entire treemap up till displaying
@@ -165,7 +166,10 @@ var treeMapBuilder = (function() {
 	function display(d) {
 		// id for all squares
 		var id = 0;
-        name(d);
+        var backButtonText = "Highest level";
+        if(name(d).indexOf('/') > -1) {
+            backButtonText = "<- Back";
+        } 
 
         /*
          * Creates a tooltip that will be shown on hover over a node
@@ -185,7 +189,7 @@ var treeMapBuilder = (function() {
             .datum(d.parent)
             .on("click", navigationUp)
             .select("text")
-            .text("<- Back")
+            .text(backButtonText)
             .style("fill", function() {
                 return '#333333';
             });
@@ -435,8 +439,10 @@ var treeMapBuilder = (function() {
         function transition(d) {
 
             if (transitioning || !d) {
+                upperLevel = true;
                 return;
-            }
+            } 
+            upperLevel = false;
             transitioning = true;
 
             tooltip.style("visibility", "hidden");
