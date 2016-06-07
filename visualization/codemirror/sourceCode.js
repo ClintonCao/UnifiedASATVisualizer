@@ -86,6 +86,10 @@ return {
 			setBackButton(d.fileName);
 	},
 	hide: function(){
+		var myNode = document.getElementById("foo");
+		while (myNode.firstChild) {
+			myNode.removeChild(myNode.firstChild);
+		}
 		var chartDiv = document.getElementById("code-div");
 			chartDiv.style.visibility = 'hidden';
 			document.getElementById("chart").style.visibility = 'visible';

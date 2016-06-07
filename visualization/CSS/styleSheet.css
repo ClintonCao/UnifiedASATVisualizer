@@ -111,6 +111,10 @@ div#code-div{
   top: 0;
   left: 0;
 }
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
 div#chart-wrapper{
   margin:0 20px 0 20px;
   float:left;
