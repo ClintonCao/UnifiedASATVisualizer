@@ -414,6 +414,7 @@ var treeMapBuilder = (function() {
         }
 
         function toSourceCode(d) {
+            $('input.updateContent').attr('disabled','disabled');
             sourceCode.show(d, name(d));
         	$('.CodeMirror').width(opts.width).height(opts.height-30);
         }

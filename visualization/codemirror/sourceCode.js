@@ -77,6 +77,7 @@ function setBackButton(d){
 		$('#back-div').click(function() {
 		  	var subTitleDiv = document.getElementById("current-path");
     		subTitleDiv.innerHTML = packagePath;
+    		$('input.updateContent').attr('disabled',false);
 		  	sourceCode.hide();
 		});
 	}
