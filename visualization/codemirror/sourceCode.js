@@ -1,6 +1,7 @@
 
 //chrome.exe --disable-web-security
-
+var currentWarnings = [];
+var currentTooltip;
 
 var sourceCode = (function() {
 
@@ -23,31 +24,62 @@ function highlight(lineNumber, type){
 }
 
 function setLabels(lineNumber, type, cat, message) {
-	/*
-     * Creates a tooltip that will be shown on hover over a node
-     */
-    var tooltip = d3.select("#chart-and-code")
-        .append("div")
-		.attr("class","d3-tip2")
-		.style("width", 300)
-        .style("position", "absolute")
-        .style("z-index", "10")
-        .style("visibility", "hidden");
-
 	$( '.CodeMirror-code').children().each(function () {
-		var curLine = $(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text();
+		
 		if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ){
-			$(this).mouseenter(function(){
-				tooltip.html(lineNumber + ": " + "<br>-" + type + "<br>-" + cat + "<br>-" + message + "<br>");
-                tooltip.style("visibility", "visible");
-			});
-			$(this).mousemove(function(){
-				console.log(d3.event);
-				tooltip.style("top", (event.pageY - 130) + "px").style("left", (event.pageX - 280) + "px");
-			});
-			$(this).mouseleave(function(){
-				tooltip.style("visibility", "hidden");
-			});
+
+			if(currentWarnings[currentWarnings.length - 1] == $(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text()) {
+				
+				//var height = currentWarnings
+
+				/*
+				 * Creates a tooltip that will be shown on hover over a node
+				 */
+				// var tooltip = d3.select("#chart-and-code")
+				//     .append("div")
+				// 	.attr("class","d3-tip2")
+				// 	.attr("id", "tip-sourceCode")
+				// 	.style("width", 300)
+				//     .style("position", "absolute")
+				//     .style("z-index", "10")
+				//     .style("visibility", "hidden");
+
+				console.log("Duplicate");
+
+				currentTooltip.innerHTML = "<br><br>-" + type + "<br>-" + cat + "<br>-" + message + "<br>";
+	               
+
+			} else {
+				/*
+				 * Creates a tooltip that will be shown on hover over a node
+				 */
+				var tooltip = d3.select("#chart-and-code")
+				    .append("div")
+					.attr("class","d3-tip2")
+					.attr("id", "tip-sourceCode")
+					.style("width", 300)
+				    .style("position", "absolute")
+				    .style("z-index", "10")
+				    .style("visibility", "hidden");
+
+				currentWarnings = [];
+				currentHeight = document.getElementById('tip-sourceCode').clientHeight;
+
+				$(this).mouseenter(function(){
+					console.log("1: " + message);
+					tooltip.html(lineNumber + ": " + "<br>-" + type + "<br>-" + cat + "<br>-" + message + "<br>");
+	                tooltip.style("visibility", "visible");
+				});
+				$(this).mousemove(function(){
+					tooltip.style("top", (event.pageY - 130) + "px").style("left", (event.pageX - 280) + "px");
+				});
+				$(this).mouseleave(function(){
+					tooltip.style("visibility", "hidden");
+				});
+				currentTooltip = tooltip;
+			}
+
+			currentWarnings.push(lineNumber);
 		}
 	});
 }
