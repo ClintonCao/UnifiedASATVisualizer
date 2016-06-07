@@ -1,7 +1,10 @@
 
 //chrome.exe --disable-web-security
-var currentWarnings = [];
+var currentAsatWarnings = [];
+var currentCatWarnings = [];
+var currentMessageWarnings = [];
 var currentTooltip;
+var curLine = -1;
 
 var sourceCode = (function() {
 
@@ -28,46 +31,32 @@ function setLabels(lineNumber, type, cat, message) {
 		
 		if ($(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text() == lineNumber ){
 
-			if(currentWarnings[currentWarnings.length - 1] == $(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text()) {
+			if( curLine == $(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text()) {
 				
-				//var height = currentWarnings
-
-				/*
-				 * Creates a tooltip that will be shown on hover over a node
-				 */
-				// var tooltip = d3.select("#chart-and-code")
-				//     .append("div")
-				// 	.attr("class","d3-tip2")
-				// 	.attr("id", "tip-sourceCode")
-				// 	.style("width", 300)
-				//     .style("position", "absolute")
-				//     .style("z-index", "10")
-				//     .style("visibility", "hidden");
-
-				console.log("Duplicate");
-
-				currentTooltip.innerHTML = "<br><br>-" + type + "<br>-" + cat + "<br>-" + message + "<br>";
-	               
+				currentAsatWarnings.push(type);
+				currentCatWarnings.push(cat);
+				currentMessageWarnings.push(message);
 
 			} else {
+
 				/*
 				 * Creates a tooltip that will be shown on hover over a node
 				 */
 				var tooltip = d3.select("#chart-and-code")
 				    .append("div")
 					.attr("class","d3-tip2")
-					.attr("id", "tip-sourceCode")
 					.style("width", 300)
 				    .style("position", "absolute")
 				    .style("z-index", "10")
 				    .style("visibility", "hidden");
 
-				currentWarnings = [];
-				currentHeight = document.getElementById('tip-sourceCode').clientHeight;
+				var textInTooltip = lineNumber + ": ";
+				for(var i = 0; i < currentAsatWarnings.length; i++) {
+					textInTooltip += "<br>-" + currentAsatWarnings[i] + "<br>-" + currentCatWarnings[i] + "<br>-" + currentMessageWarnings[i] + "<br>"
+				}
 
 				$(this).mouseenter(function(){
-					console.log("1: " + message);
-					tooltip.html(lineNumber + ": " + "<br>-" + type + "<br>-" + cat + "<br>-" + message + "<br>");
+					tooltip.html(textInTooltip);
 	                tooltip.style("visibility", "visible");
 				});
 				$(this).mousemove(function(){
@@ -76,10 +65,12 @@ function setLabels(lineNumber, type, cat, message) {
 				$(this).mouseleave(function(){
 					tooltip.style("visibility", "hidden");
 				});
-				currentTooltip = tooltip;
-			}
 
-			currentWarnings.push(lineNumber);
+				curLine = $(this).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text();
+				currentAsatWarnings = [type];
+				currentCatWarnings = [cat];
+				currentMessageWarnings = [message];
+			}
 		}
 	});
 }
