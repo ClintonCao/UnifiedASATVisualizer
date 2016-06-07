@@ -117,8 +117,9 @@ div#code-div{
   overflow-x: auto;
 }
 div#chart-wrapper{
-  margin:0 20px 0 20px;
+  margin: 0 20px 0 20px;
   float:left;
+  padding-bottom: 35px;
   background: rgba(55, 58, 60, 0.8);
 }
 
