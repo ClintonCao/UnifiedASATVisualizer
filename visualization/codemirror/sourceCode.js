@@ -73,7 +73,7 @@ function setLabels(lineNumber, type, cat, message) {
 		}
 }
 function setBackButton(d){
-		$('#back-div').html(" ← ");
+		$('#back-div').html(" < Back ");
 		$('#back-div').click(function() {
 		  	var subTitleDiv = document.getElementById("current-path");
     		$('input.updateContent').attr('disabled',false);

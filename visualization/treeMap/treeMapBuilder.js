@@ -1,4 +1,4 @@
-var treeMapBuilder = (function() {
+	var treeMapBuilder = (function() {
 
     // initialize all variables
     var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
@@ -168,7 +168,7 @@ var treeMapBuilder = (function() {
 		var id = 0;
         var backButtonText = "Highest level";
         if(name(d).indexOf('/') > -1) {
-            backButtonText = " ← ";
+            backButtonText = " < Back ";
         }
 
         setPath(name(d));
