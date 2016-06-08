@@ -44,12 +44,17 @@ This is BlueTurtle's repository for Contextproject (TSE) 2015 - 2016.
 ## Links to other documents:
 
 ASAT Research: [asat research] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/ASAT%20research/StaticanalysistoolsresearchBlueTurtle.pdf)
+Maven execution research [maven execution research]()
 
 ## Link to SIG Feedback 1 (Picture):
 SIG Feedback: [SIG Feedback](https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/SIG%20Feedback/SIGFeedback.JPG)
 
-## Run the Program:
+## Requirements:
+* Java JDK 1.8
+* Maven is required.
+* The project must be a Maven Project.
 
+## Running the Program:
 * Go to the `src/main/java/BlueTurtle/TSE` folder.
 * Run the file `Main.java`.
 * Follow the instruction on the User Interface.
