@@ -317,7 +317,7 @@ function createJsonTreeMap(packages){
 					warningsMaintainabilityDefects: classes.amountOfMaintainabilityDefects,
 					warningsOtherDefects: classes.amountOfOtherDefects
 				});
-		}
+		}/*
 	return [
 		{
 			fileName: "Project",
@@ -330,7 +330,8 @@ function createJsonTreeMap(packages){
 			warningsFunctionalDefects: upperLevelFD,
 			warningsMaintainabilityDefects: upperLevelMD,
 			warningsOtherDefects: upperLevelOD
-		}];
+		}];*/
+		return jsonArrPackage;
 }
 
 /*
