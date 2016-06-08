@@ -16,4 +16,7 @@ exclude:
 - .*/BlueTurtleJSON.*
 - .*/bootstrap.*
 - .*/CodeFiles.*
+- .*/outputWarningsJSON.*
+- .*/outputCodeJSON.*
+- .*/CodeFiles.*
   
