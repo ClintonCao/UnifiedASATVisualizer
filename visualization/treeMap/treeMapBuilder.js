@@ -215,7 +215,7 @@ var treeMapBuilder = (function() {
 			// bottom layer now we add a click to go to the code editor
 			if ( childrenArray[0].length == 0 ){
 				g.on("click", toSourceCode).on("mouseover", function(d) {
-                    
+
             	})
             	.on("mousemove", function(d) {
 					$('#extra-info-div') .css('display', 'inline-block')
