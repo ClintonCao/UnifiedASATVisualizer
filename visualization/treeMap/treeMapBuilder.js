@@ -274,7 +274,11 @@ var treeMapBuilder = (function() {
 
         function reloadContent() {
             var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+			console.log("pack");
+			console.log(packages);
             var finalJson = createJsonTreeMap(packages);
+			console.log("finalJson");
+			console.log(finalJson);
             root.values = finalJson;
             initialize(root, width, height);
             accumulateValue(root);
