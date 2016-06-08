@@ -38,7 +38,9 @@ public class FindBugsXMLParser extends XMLParser {
 			NodeList nList = setUp(xmlFilePath);
 			
 			// if there are no files with warnings, there return an empty list of warnings.
-			if (nList == null) { return findBugsWarnings; }
+			if (nList == null) { 
+				return findBugsWarnings; 
+			}
 
 			for (int i = 0; i < nList.getLength(); i++) {
 				// Get the file from the list.

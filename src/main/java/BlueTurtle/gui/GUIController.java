@@ -35,7 +35,7 @@ public class GUIController {
 	 * @author BlueTurtle.
 	 *
 	 */
-	public enum ASAT { CheckStyle, PMD, FindBugs;}
+	public enum ASAT { CheckStyle, PMD, FindBugs; }
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
 	private ResourceBundle resources;
