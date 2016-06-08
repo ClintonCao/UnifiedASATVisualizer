@@ -6,7 +6,7 @@
     var upperLevel = true;
     var currentNodePath = [];
     var currentPathNodes = [];
-	
+
     // initialize the entire treemap up till displaying
     function initializeTheTree(root) {
         initialize(root, width, height);
@@ -22,7 +22,7 @@
         root.dy = height;
         root.depth = 0;
     }
-	
+
 
     /*
      * Will put the #warnings for each ASAT
@@ -127,9 +127,9 @@
             });
         }
     }
-    /* 
+    /*
      * Sums for each node how many warnings they have.
-     * It still checks on Project and Test Project hard coded to find wheter it is on 
+     * It still checks on Project and Test Project hard coded to find wheter it is on
      * TODO: package level or class level, this should be changed to a dynamic way in the future.
      */
     function sumNodeForASAT(d, root) {
@@ -162,7 +162,7 @@
             }
             return node;
         }
-		
+
     //Renders the chart with given depth and children
 	function display(d) {
 		// id for all squares
@@ -170,7 +170,7 @@
 
         setPath(d, name(d));
 
-        /* 
+        /*
          * Creates the navigation balk where you can keep track of
          * which level you are and which you can use to navigate back
          */
@@ -222,8 +222,8 @@
 				$('#extra-info-div') .css('display', 'none')
             	});
 			}
-            
-        /* 
+
+        /*
          * This function will be triggered when the user clicks on a button
          * It will refresh the data in the treemap according to which button is clicked
          */
@@ -254,7 +254,7 @@
             transition(newNode);
         }
 
-      
+
 
         // Updates all warning counts for all ASATS and categories
         updateWarningsCountInUI(d);
@@ -297,8 +297,8 @@
                 return "url(#gradient"+ id + ")";
             })
             .append("title");
-		
-        /* 
+
+        /*
          * Sets in the lower right corner of a node the filename
          */
         children.append("text")
@@ -338,7 +338,7 @@
             .attr("class", "ptext")
             .attr("dy", ".75em");
 
-        /* 
+        /*
          * Sets in the upper left corner of a node the filename
          */
         t.append("tspan")
@@ -349,7 +349,7 @@
                 return d.fileName;
             });
 
-        /* 
+        /*
          * Sets in the upper left corner of a node the amount of warnings
          */
         t.append("tspan")
@@ -391,8 +391,8 @@
 				var gradientBackground = backgroundGradient.getBackground(svg);
                 return "url(#gradient)";
                 //return backgroundGradient.getBackground();
-				
-				
+
+
             });*/
 
         function navigationDown(d) {
@@ -430,7 +430,7 @@
             if (transitioning || !d) {
                 upperLevel = true;
                 return;
-            } 
+            }
             upperLevel = false;
             transitioning = true;
 
@@ -533,12 +533,13 @@
                 subTitleDiv.innerHTML = newPath;
                 for(var i = 0; i < usedIDs.length; i++) {
                     var stringID = "'" + usedIDs[i] + "'";
-                    console.log(currentPathNodes[i]);
-                    document.getElementById(stringID).addEventListener("click", function() {goToRelevantLevel(currentPathNodes[i], true, currentNodePath, currentPathNodes);}, false);
+										var element = currentPathNodes[i];
+										console.log(element);
+                    document.getElementById(stringID).addEventListener("click", function() {goToRelevantLevel(element, true, currentNodePath, currentPathNodes);}, false);
                 }
             } else {
                 subTitleDiv.innerHTML = '<span id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
-                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(currentPathNodes[0], false, currentNodePath, currentPathNodes);}, false);
+                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(d.parent, false, currentNodePath, currentPathNodes);}, false);
             }
         } else {
            subTitleDiv.innerHTML = " <span id='currentLocation'>" + path + "</span>";
@@ -548,10 +549,10 @@
     // Sets the current path in a specific div and
     // gives the return button the text
     function name(d) {
-        var path = d.parent ? name(d.parent) + " / " + d.fileName : d.fileName; 
+        var path = d.parent ? name(d.parent) + " / " + d.fileName : d.fileName;
         return path;
     }
-	
+
     function setTheVariables(o, data) {
         // hard coded the depth where the click should go to source code (no zoom)
         maxDepth = 2
@@ -575,9 +576,9 @@
         margin = opts.margin;
         theight = 36 + 16;
 
-        // size of the chart 
+        // size of the chart
         $('#chart-and-code').width(opts.width + 70).height(opts.height - 30);
-        $('#chart').width(opts.width).height(0);		
+        $('#chart').width(opts.width).height(0);
         $('#code-div').width(opts.width).height(opts.height - 30);
         width = opts.width - margin.left - margin.right;
         height = opts.height - margin.top - margin.bottom;
@@ -636,7 +637,7 @@
             root = data;
         }
     }
-	
+
     return {
         // The main method which is called to create the treeMap.
         // This calls all the methods needed like initialize.
