@@ -88,6 +88,9 @@ div#back-div:hover {
   color: #FFFFFF;
   font-family: 'Roboto Mono', sans-serif;
 }
+#currentLocation {
+  font-weight: bold;
+}
 
 /* 
  * Styling for the chart

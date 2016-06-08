@@ -76,8 +76,14 @@ function setBackButton(d){
 		$('#back-div').html("<- Back");
 		$('#back-div').click(function() {
 		  	var subTitleDiv = document.getElementById("current-path");
-    		subTitleDiv.innerHTML = packagePath;
     		$('input.updateContent').attr('disabled',false);
+	        if(packagePath.indexOf('/') > -1) {
+	            var pathFirstPart = packagePath.substring(0, packagePath.lastIndexOf("/") + 1);
+	            var pathSecondPart = packagePath.split(/[/ ]+/).pop();
+	            subTitleDiv.innerHTML = pathFirstPart + " <span id='currentLocation'>" + pathSecondPart + "</span>";
+	        } else {
+	            subTitleDiv.innerHTML = packagePath;
+	        }
 		  	sourceCode.hide();
 		});
 	}

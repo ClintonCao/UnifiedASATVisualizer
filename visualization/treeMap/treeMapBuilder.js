@@ -168,8 +168,10 @@ var treeMapBuilder = (function() {
 		var id = 0;
         var backButtonText = "Highest level";
         if(name(d).indexOf('/') > -1) {
-            backButtonText = "Back one level";
-        } 
+            backButtonText = "<- Back";
+        }
+
+        setPath(name(d));
 
         /*
          * Creates a tooltip that will be shown on hover over a node
@@ -420,6 +422,7 @@ var treeMapBuilder = (function() {
         function toSourceCode(d) {
             $('input.updateContent').attr('disabled','disabled');
             sourceCode.show(d, name(d));
+            setPath(name(d));
         	$('.CodeMirror').width(opts.width).height(opts.height-30);
         }
 
@@ -532,13 +535,23 @@ var treeMapBuilder = (function() {
             });
     }
 
+    function setPath(path) {
+        var subTitleDiv = document.getElementById("current-path");
+        if(path.indexOf('/') > -1) {
+            var pathFirstPart = path.substring(0, path.lastIndexOf("/") + 1);
+            var pathSecondPart = path.split(/[/ ]+/).pop();
+            subTitleDiv.innerHTML = pathFirstPart + " <span id='currentLocation'>" + pathSecondPart + "</span>";
+        } else {
+            subTitleDiv.innerHTML = path;
+        }
+    }
+
     // Sets the current path in a specific div and
     // gives the return button the text
     function name(d) {
-        var subTitleDiv = document.getElementById("current-path");
-        subTitleDiv.innerHTML = d.parent ? name(d.parent) + " / " + d.fileName : //+ " (" + formatNumber(d.warnings) + ")" :
+        var path = d.parent ? name(d.parent) + " / " + d.fileName : //+ " (" + formatNumber(d.warnings) + ")" :
                                 d.fileName; // + " (" + formatNumber(d.warnings) + ")";
-        return subTitleDiv.innerHTML;
+        return path;
     }
 	
     function setTheVariables(o, data) {
