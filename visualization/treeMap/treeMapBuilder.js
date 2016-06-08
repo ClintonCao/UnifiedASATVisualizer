@@ -168,7 +168,7 @@ var treeMapBuilder = (function() {
 		var id = 0;
         var backButtonText = "Highest level";
         if(name(d).indexOf('/') > -1) {
-            backButtonText = "⬅ Back";
+            backButtonText = " ← ";
         }
 
         setPath(name(d));
