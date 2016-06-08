@@ -129,11 +129,19 @@ var treeMapBuilder = (function() {
     /* 
      * Sums for each node how many warnings they have.
      * It still checks on Project and Test Project hard coded to find wheter it is on 
-     * package level or class level, this should be changed to a dynamic way in the future.
+     * TODO: package level or class level, this should be changed to a dynamic way in the future.
      */
     function sumNodeForASAT(d, root) {
         var nodeAndSummation = [];
         var sum = 0;
+        if (d.fileName == "") {
+            for (var i = 0; i < root.length; i++) {
+                for (var j = 0; j < root[i].length; j++) {
+                    sum += root[i][j].amountOfWarnings;
+                 }
+             }
+             return sum;
+        } else {
             for (var i = 0; i < root.length; i++) {
                 if (root[i].packageName == d.fileName) {
                     for (var j = 0; j < root[i].length; j++) {
@@ -142,6 +150,7 @@ var treeMapBuilder = (function() {
                     return sum;
                 }
             }
+        }
         return -1;
     }
 	  // Code to find a certain node in the treemap
@@ -159,7 +168,7 @@ var treeMapBuilder = (function() {
 		var id = 0;
         var backButtonText = "Highest level";
         if(name(d).indexOf('/') > -1) {
-            backButtonText = "⬅ Back";
+            backButtonText = " ← ";
         }
 
         setPath(name(d));
