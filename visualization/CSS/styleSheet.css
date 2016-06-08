@@ -59,7 +59,7 @@ div#back-div{
   font-family: 'Roboto Mono', sans-serif;
   font-weight: 700;
   padding-left:5px;
-  padding-top:3px;	
+  font-size: 19px;
 }
 div#back-div:hover {
   background: #2d6da4;
@@ -221,6 +221,7 @@ text {
 .grandparent text {
   font-family: 'Roboto Mono', sans-serif;
   font-weight: 700;
+  font-size: 19px;
 }
 rect {
   fill: none;
