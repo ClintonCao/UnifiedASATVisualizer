@@ -202,14 +202,12 @@ var treeMapBuilder = (function() {
             .classed("children", true)
             .on("click", navigationDown)
             .on("mouseover", function(d) {
-                tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
-                tooltip.style("visibility", "visible");
-            })
-            .on("mousemove", function(d) {
-                tooltip.style("top", (d3.event.pageY - 130) + "px").style("left", (d3.event.pageX - 280) + "px");
+				$('#extra-info-div') .css('display', 'inline-block')
+				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
             })
             .on("mouseout", function(d) {
-                tooltip.style("visibility", "hidden");
+				$('#extra-info-div').html("");
+				$('#extra-info-div') .css('display', 'none')
             });
 
         var childrenArray = g.filter(function(d) {
@@ -222,10 +220,12 @@ var treeMapBuilder = (function() {
                     tooltip.style("visibility", "visible");
             	})
             	.on("mousemove", function(d) {
-                    tooltip.style("top", (d3.event.pageY - 130) + "px").style("left", (d3.event.pageX - 280) + "px");
+					$('#extra-info-div') .css('display', 'inline-block')
+					$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
             	})
             	.on("mouseout", function(d) {
-                    tooltip.style("visibility", "hidden");
+					$('#extra-info-div').html("");
+				$('#extra-info-div') .css('display', 'none')
             	});
 			}
             

@@ -27,29 +27,35 @@
          <!-- Title of the current view -->
       </nav>
       <div id="wrapper">
-       	  <div id="menu-left-wrapper">
-            <div id="left-menu">
-            <h3 onClick="handleClickSatType()">ASATs</h3>
-               
-               <form name="button-options" action="">
-                  <div id="checkStyleDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="checkstyleButton" name="sat" value="CheckStyle"><label id="checkStyleLabel"> CheckStyle</label><br></div>
-                  <div id="PMDDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="pmdButton" name="sat" value="PMD"><label id="PMDLabel"> PMD</label><br></div>
-                  <div id="FindBugsDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="findBugsButton" name="sat" value="FindBugs"><label id="FindBugsLabel"> FindBugs</label><br></div>
-                  <!--
-                  <h3>Visualizers </h3>
-                  <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap"> Treemap<br>
-                  <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>-->
-                  <h3>Color scale </h3>
-                  <input type="radio" id="normalButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="normal">
-                  <div class="buttonText">Normal </div><br/>
-                  <input type="radio" id="asatButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asat">
-                  <div class="buttonText">ASAT </div><br/>
-                  <input type="radio" id="categoryButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="category">
-                  <div class="buttonText">Category</div><br/><br/>
-                  <div class="buttonText"><input type="checkbox" onClick="handleClickRelative(this)" data-toggle="toggle" data-size="mini" class="updateContent relative" name="relative" id="relativeButton" value="Relative"><label id="relativeLabel"> Relative</label><br></div>
-
-               </form>
-            </div>
+       	  <div id="left-wrapper">
+              <div id="menu-left-wrapper">
+                <div id="left-menu">
+                <h3 onClick="handleClickSatType()">ASATs</h3>
+                   
+                   <form name="button-options" action="">
+                      <div id="checkStyleDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="checkstyleButton" name="sat" value="CheckStyle"><label id="checkStyleLabel"> CheckStyle</label><br></div>
+                      <div id="PMDDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="pmdButton" name="sat" value="PMD"><label id="PMDLabel"> PMD</label><br></div>
+                      <div id="FindBugsDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="findBugsButton" name="sat" value="FindBugs"><label id="FindBugsLabel"> FindBugs</label><br></div>
+                      <!--
+                      <h3>Visualizers </h3>
+                      <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap"> Treemap<br>
+                      <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>-->
+                      <h3>Color scale </h3>
+                      <input type="radio" id="normalButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="normal">
+                      <div class="buttonText">Normal </div><br/>
+                      <input type="radio" id="asatButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asat">
+                      <div class="buttonText">ASAT </div><br/>
+                      <input type="radio" id="categoryButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="category">
+                      <div class="buttonText">Category</div><br/><br/>
+                      <div class="buttonText"><input type="checkbox" onClick="handleClickRelative(this)" data-toggle="toggle" data-size="mini" class="updateContent relative" name="relative" id="relativeButton" value="Relative"><label id="relativeLabel"> Relative</label><br></div>
+    
+                   </form>
+                </div>
+             </div>
+              <div id="extra-info-left-wrapper">
+                <div id="extra-info-div">
+                </div>
+             </div>
          </div>
          <div id="chart-wrapper">
             <div id="current-path"></div>
@@ -62,6 +68,7 @@
             </div>
             </div>
          </div>
+         
          <div id="menu-right-wrapper">
             <div id="right-menu">
                   <h3>Category</h3>
