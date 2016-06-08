@@ -12,8 +12,12 @@ setAllCheckboxesOnDefault();
 function goToRelevantLevel(d, fromSourceCode, nodePath, allNodes) {
 	nodePath.pop();
 	allNodes.pop();
-	console.log("the D: ");
-	console.log(fromSourceCode);
+	console.log("the A: ");
+	console.log(d);
+	console.log("the B: ");
+	console.log(nodePath);
+	console.log("the C: ");
+	console.log(allNodes);
 	if(fromSourceCode) {
 		$('input.updateContent').attr('disabled', false);
 		//$('#current-path').html(packagePath);

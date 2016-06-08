@@ -533,11 +533,12 @@
                 subTitleDiv.innerHTML = newPath;
                 for(var i = 0; i < usedIDs.length; i++) {
                     var stringID = "'" + usedIDs[i] + "'";
+                    console.log(currentPathNodes[i]);
                     document.getElementById(stringID).addEventListener("click", function() {goToRelevantLevel(currentPathNodes[i], true, currentNodePath, currentPathNodes);}, false);
                 }
             } else {
                 subTitleDiv.innerHTML = '<span id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
-                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(d.parent, false, currentNodePath, currentPathNodes);}, false);
+                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(currentPathNodes[0], false, currentNodePath, currentPathNodes);}, false);
             }
         } else {
            subTitleDiv.innerHTML = " <span id='currentLocation'>" + path + "</span>";
