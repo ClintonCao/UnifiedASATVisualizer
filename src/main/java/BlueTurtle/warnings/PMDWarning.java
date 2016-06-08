@@ -12,7 +12,6 @@ import lombok.Setter;
 public class PMDWarning extends Warning {
 
 	@Getter @Setter private int line;
-	@Getter @Setter private String ruleSet;
 	@Getter @Setter private String method;
 	@Getter @Setter private String packageName;
 	
@@ -29,18 +28,17 @@ public class PMDWarning extends Warning {
 	 *            the package of the warning.
 	 * @param ruleName
 	 *            the rule name of the warning.
-	 * @param ruleSet
-	 *            the ruleSet of the warning.
+	 * @param message
+	 *            the ruleSet/message of the warning.
 	 * @param method
 	 *            the method of the warning.
 	 * @param classification
 	 *            of the violated rule of the warning.
 	 */
-	public PMDWarning(String filePath, String filename, int line, String packageName, String ruleSet, String method,  String ruleName, String classification) {
-		super(filePath, filename, "PMD", ruleName, classification);
+	public PMDWarning(String filePath, String filename, int line, String packageName, String message, String method,  String ruleName, String classification) {
+		super(filePath, filename, "PMD", ruleName, message, classification);
 		setLine(line);
 		setPackageName(packageName);
-		setRuleSet(ruleSet);
 		setMethod(method);
 	}
 
@@ -62,7 +60,7 @@ public class PMDWarning extends Warning {
 
 		return (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
 				&& classification.equals(that.classification) && packageName.equals(that.packageName) && type.equals(that.type) 
-				&& ruleSet.equals(that.ruleSet) && method.equals(that.method) && ruleName.equals(that.ruleName));
+				&& message.equals(that.message) && method.equals(that.method) && ruleName.equals(that.ruleName));
 	}
 	
 	/**
@@ -70,17 +68,17 @@ public class PMDWarning extends Warning {
 	 */
 	@Override
 	public int hashCode() {
-		return java.util.Objects.hash(filePath, fileName, type, line, packageName, ruleSet, method, ruleName, classification);
+		return java.util.Objects.hash(filePath, fileName, type, line, packageName, message, method, ruleName, classification);
 	}
-	
+
 	/**
 	 * toString method for PMDWarning.
 	 */
 	@Override
 	public String toString() {
-		return "PMDWarning [line=" + line + ", ruleSet=" + ruleSet + ", method=" + method + ", packageName="
-				+ packageName + ", classification=" + classification + ", fileName=" + fileName + ", type=" + type
-				+ ", filePath=" + filePath + ", ruleName=" + ruleName + "]";
+		return "PMDWarning [line=" + line + ", method=" + method + ", packageName=" + packageName + ", classification="
+				+ classification + ", fileName=" + fileName + ", type=" + type + ", filePath=" + filePath
+				+ ", ruleName=" + ruleName + ", message=" + message + "]";
 	}
 	
 }

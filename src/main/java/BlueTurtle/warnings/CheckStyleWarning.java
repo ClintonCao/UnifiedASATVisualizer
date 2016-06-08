@@ -12,7 +12,6 @@ import lombok.Setter;
 public class CheckStyleWarning extends Warning {
 
 	@Getter @Setter private int line;
-	@Getter @Setter private String message;
 
 	/**
 	 * Constructor.
@@ -32,7 +31,7 @@ public class CheckStyleWarning extends Warning {
 	 *            of the violated rule of the warning.
 	 */
 	public CheckStyleWarning(String filePath, String filename, int line, String message, String ruleName, String classification) {
-		super(filePath, filename, "CheckStyle", ruleName, classification);
+		super(filePath, filename, "CheckStyle", ruleName, message, classification);
 		setLine(line);
 		setMessage(message.replaceAll("'", ""));
 	}

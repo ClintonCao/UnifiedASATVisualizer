@@ -114,7 +114,7 @@ public class PMDWarningTest {
 	@Test
 	public void testEqualsFalseWithDifferentRuleSets() {
 		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, classification);
-		expected.setRuleSet("Basic");
+		expected.setMessage("Basic");
 		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
 		assertNotEquals(expected, actual);
 	}		
@@ -171,8 +171,8 @@ public class PMDWarningTest {
 	public void testChangeOfRuleSet() {
 		String expected = "Basic1";
 		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
-		String actual = pmd.getRuleSet();
-		pmd.setRuleSet(expected);
+		String actual = pmd.getMessage();
+		pmd.setMessage(expected);
 		assertNotEquals(expected, actual);
 	}
 	
