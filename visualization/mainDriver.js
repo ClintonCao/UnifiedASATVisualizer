@@ -224,7 +224,7 @@ function runTreeMap() {
     treeMapBuilder.createTreeMap({
         title: ""
     }, {
-        fileName: "",
+        fileName: projectName,
         values: finalJson
     });
 }

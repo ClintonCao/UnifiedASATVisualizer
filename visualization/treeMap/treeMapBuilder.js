@@ -134,7 +134,7 @@ var treeMapBuilder = (function() {
     function sumNodeForASAT(d, root) {
         var nodeAndSummation = [];
         var sum = 0;
-        if (d.fileName == "") {
+        if (d.fileName == projectName) {
             for (var i = 0; i < root.length; i++) {
                 for (var j = 0; j < root[i].length; j++) {
                     sum += root[i][j].amountOfWarnings;
@@ -181,7 +181,7 @@ var treeMapBuilder = (function() {
             .datum(d.parent)
             .on("click", navigationUp)
             .select("text")
-            .text(backButtonText)
+            .text(name(d))
             .style("fill", function() {
                 return '#333333';
             });
@@ -201,12 +201,12 @@ var treeMapBuilder = (function() {
             .classed("children", true)
             .on("click", navigationDown)
             .on("mouseover", function(d) {
-				$('#extra-info-div') .css('display', 'inline-block')
+				$('#extra-info-div').css('display', 'inline-block');
 				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
             })
             .on("mouseout", function(d) {
 				$('#extra-info-div').html("");
-				$('#extra-info-div') .css('display', 'none')
+				$('#extra-info-div').css('display', 'none');
             });
 
         var childrenArray = g.filter(function(d) {
