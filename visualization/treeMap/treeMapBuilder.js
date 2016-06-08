@@ -4,7 +4,8 @@
     var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
     var refreshing = false;
     var upperLevel = true;
-    var currentNodePath = []
+    var currentNodePath = [];
+    var currentPathNodes = [];
 	
     // initialize the entire treemap up till displaying
     function initializeTheTree(root) {
@@ -396,11 +397,13 @@
 
         function navigationDown(d) {
             currentNodePath.push(findChildNumber(d, d.parent));
+            currentPathNodes.push(d.parent);
             transition(d)
         }
 
         function toSourceCode(d) {
             $('input.updateContent').attr('disabled','disabled');
+            currentPathNodes.push(d.parent);
             sourceCode.show(d, name(d));
             setPath(d, name(d));
         	$('.CodeMirror').width(opts.width).height(opts.height - 30);
@@ -417,6 +420,8 @@
 
         function navigationUp(d) {
             currentNodePath.pop();
+            currentPathNodes.pop();
+            console.log("Going Up: " + currentPathNodes);
             transition(d)
         }
 
@@ -514,12 +519,25 @@
         if(path.indexOf('/') > -1) {
             var pathFirstPart = path.substring(0, path.lastIndexOf("/") + 1);
             var pathSecondPart = path.split(/[/ ]+/).pop();
+            var allPreviousLevels = path.split("/");
             if(pathSecondPart.indexOf("java") > -1) {
-                subTitleDiv.innerHTML = '<span id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
-                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(d.parent, true, currentNodePath);}, false);
+                var newPath = "";
+                var usedIDs = [];
+                for(var i = 0; i < allPreviousLevels.length - 1; i++) {
+                    var id = "prevLocation" + i;
+                    newPath += '<span id="\'' + ("prevLocation" + i) + '\'">' + allPreviousLevels[i] + '</span>/ ';
+                    usedIDs.push(id);
+                }
+                newPath += '<span id="currentLocation">' + allPreviousLevels[allPreviousLevels.length - 1] + '</span>';
+                console.log(newPath);
+                subTitleDiv.innerHTML = newPath;
+                for(var i = 0; i < usedIDs.length; i++) {
+                    var stringID = "'" + usedIDs[i] + "'";
+                    document.getElementById(stringID).addEventListener("click", function() {goToRelevantLevel(currentPathNodes[i], true, currentNodePath, currentPathNodes);}, false);
+                }
             } else {
                 subTitleDiv.innerHTML = '<span id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
-                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(d.parent, false, currentNodePath);}, false);
+                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(d.parent, false, currentNodePath, currentPathNodes);}, false);
             }
         } else {
            subTitleDiv.innerHTML = " <span id='currentLocation'>" + path + "</span>";
@@ -628,8 +646,9 @@
             initializeTheTree(root);
             display(root);
         },
-        navigationUp: function(o, data, d, newNodePath) {
+        navigationUp: function(o, data, d, newNodePath, newNodes) {
             currentNodePath = newNodePath;
+            currentPathNodes = newNodes;
             // First we create all variables that are needed for this treemap.
             setTheVariables(o, data);
             // After cresating the variables we can start initializing and displaying the tree.

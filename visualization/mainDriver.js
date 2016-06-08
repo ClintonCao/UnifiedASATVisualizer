@@ -9,8 +9,11 @@ runTreeMap();
 addAllAcceptedTypesAndCategories();
 setAllCheckboxesOnDefault();
 
-function goToRelevantLevel(d, fromSourceCode, nodePath) {
+function goToRelevantLevel(d, fromSourceCode, nodePath, allNodes) {
 	nodePath.pop();
+	allNodes.pop();
+	console.log("the D: ");
+	console.log(fromSourceCode);
 	if(fromSourceCode) {
 		$('input.updateContent').attr('disabled', false);
 		//$('#current-path').html(packagePath);
@@ -25,7 +28,7 @@ function goToRelevantLevel(d, fromSourceCode, nodePath) {
     }, {
         fileName: projectName,
         values: finalJson
-    }, d, nodePath);
+    }, d, nodePath, allNodes);
 }
 /*
  * Will set all available checkboxes on checked
