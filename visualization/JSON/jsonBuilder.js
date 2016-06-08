@@ -317,20 +317,7 @@ function createJsonTreeMap(packages){
 					warningsMaintainabilityDefects: classes.amountOfMaintainabilityDefects,
 					warningsOtherDefects: classes.amountOfOtherDefects
 				});
-		}/*
-	return [
-		{
-			fileName: "Project",
-			loc: upperLevelLoc,
-			values: jsonArrPackage,
-			warnings: upperLevelTotal,
-			warningsCheckStyle: upperLevelCSW,
-			warningsPMD: upperLevelPMDW,
-			warningsFindBugs: upperLevelFBW,
-			warningsFunctionalDefects: upperLevelFD,
-			warningsMaintainabilityDefects: upperLevelMD,
-			warningsOtherDefects: upperLevelOD
-		}];*/
+		}
 		return jsonArrPackage;
 }
 

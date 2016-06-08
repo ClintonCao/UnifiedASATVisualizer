@@ -134,14 +134,6 @@ var treeMapBuilder = (function() {
     function sumNodeForASAT(d, root) {
         var nodeAndSummation = [];
         var sum = 0;
-        if (d.fileName == "Project" || d.fileName == "Test Project") {
-            for (var i = 0; i < root.length; i++) {
-                for (var j = 0; j < root[i].length; j++) {
-                    sum += root[i][j].amountOfWarnings;
-                }
-            }
-            return sum;
-        } else {
             for (var i = 0; i < root.length; i++) {
                 if (root[i].packageName == d.fileName) {
                     for (var j = 0; j < root[i].length; j++) {
@@ -150,7 +142,6 @@ var treeMapBuilder = (function() {
                     return sum;
                 }
             }
-        }
         return -1;
     }
 	  // Code to find a certain node in the treemap
@@ -276,11 +267,7 @@ var treeMapBuilder = (function() {
 
         function reloadContent() {
             var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
-			console.log("pack");
-			console.log(packages);
             var finalJson = createJsonTreeMap(packages);
-			console.log("finalJson");
-			console.log(finalJson);
             root.values = finalJson;
             initialize(root, width, height);
             accumulateValue(root);
