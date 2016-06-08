@@ -173,16 +173,6 @@
 
         setPath(name(d));
 
-        /*
-         * Creates a tooltip that will be shown on hover over a node
-         */
-        var tooltip = d3.select("#chart")
-            .append("div")
-			.attr("id","d3-tip")
-            .style("position", "absolute")
-            .style("z-index", "10")
-            .style("visibility", "hidden");
-
         /* 
          * Creates the navigation balk where you can keep track of
          * which level you are and which you can use to navigate back
@@ -225,8 +215,7 @@
 			// bottom layer now we add a click to go to the code editor
 			if ( childrenArray[0].length == 0 ){
 				g.on("click", toSourceCode).on("mouseover", function(d) {
-                    tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
-                    tooltip.style("visibility", "visible");
+                    
             	})
             	.on("mousemove", function(d) {
 					$('#extra-info-div') .css('display', 'inline-block')
@@ -448,8 +437,6 @@
             } 
             upperLevel = false;
             transitioning = true;
-
-            tooltip.style("visibility", "hidden");
 
             var g2 = display(d),
                 t1 = g1.transition().duration(100),
