@@ -76,10 +76,11 @@ function setBackButton(d, curPath){
 		packagePath = packagePath.substring(0, packagePath.length - 2);
         var pathFirstPart = packagePath.substring(0, packagePath.lastIndexOf("/") + 1);
         var pathSecondPart = packagePath.split(/[/ ]+/).pop();
-        $('#back-div').html(pathFirstPart + " <span id='currentLocation'>" + pathSecondPart + "</span>");
+        $('#current-path').html(pathFirstPart + " <span id='currentLocation'>" + pathSecondPart + "</span>");
 
 		$('#back-div').click(function() {
     		$('input.updateContent').attr('disabled',false);
+    		$('#current-path').html(packagePath);
 		  	sourceCode.hide();
 		});
 	}

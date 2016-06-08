@@ -9,6 +9,24 @@ runTreeMap();
 addAllAcceptedTypesAndCategories();
 setAllCheckboxesOnDefault();
 
+function goToRelevantLevel(d, fromSourceCode, nodePath) {
+	nodePath.pop();
+	if(fromSourceCode) {
+		$('input.updateContent').attr('disabled', false);
+		//$('#current-path').html(packagePath);
+  		sourceCode.hide();
+	} else {
+		removeChart();
+	}	
+	var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+    var finalJson =  createJsonTreeMap(packages);
+    treeMapBuilder.navigationUp({
+        title: ""
+    }, {
+        fileName: projectName,
+        values: finalJson
+    }, d, nodePath);
+}
 /*
  * Will set all available checkboxes on checked
  */

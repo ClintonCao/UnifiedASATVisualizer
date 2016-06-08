@@ -1,4 +1,4 @@
-var treeMapBuilder = (function() {
+	var treeMapBuilder = (function() {
 
     // initialize all variables
     var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
@@ -166,27 +166,22 @@ var treeMapBuilder = (function() {
 	function display(d) {
 		// id for all squares
 		var id = 0;
-        var backButtonText = "Highest level";
-        if(name(d).indexOf('/') > -1) {
-            backButtonText = " ← ";
-        }
 
-        setPath(name(d));
+        setPath(d, name(d));
 
         /* 
          * Creates the navigation balk where you can keep track of
          * which level you are and which you can use to navigate back
          */
-        grandparent
-            .datum(d.parent)
-            .on("click", navigationUp)
-            .select("text")
-            .text(name(d))
-            .style("fill", function() {
-                return '#333333';
-            });
+        // grandparent
+        //     .datum(d.parent)
+        //     .on("click", navigationUp)
+        //     .select("text")
+        //     .style("fill", function() {
+        //         return '#333333';
+        //     });
 
-        var g1 = svg.insert("g", ".grandparent")
+        var g1 = svg.insert("g", ".chart-and-code")
             .datum(d)
             .attr("class", "depth");
 
@@ -407,8 +402,8 @@ var treeMapBuilder = (function() {
         function toSourceCode(d) {
             $('input.updateContent').attr('disabled','disabled');
             sourceCode.show(d, name(d));
-            setPath(name(d));
-        	$('.CodeMirror').width(opts.width).height(opts.height-30);
+            setPath(d, name(d));
+        	$('.CodeMirror').width(opts.width).height(opts.height - 30);
         }
 
         function findChildNumber(d, parent) {
@@ -418,10 +413,6 @@ var treeMapBuilder = (function() {
                 }
             }
             return null;
-        }
-
-        function testFunction() {
-            console.log("Clicked balk");
         }
 
         function navigationUp(d) {
@@ -518,22 +509,27 @@ var treeMapBuilder = (function() {
             });
     }
 
-    function setPath(path) {
+    function setPath(d, path) {
         var subTitleDiv = document.getElementById("current-path");
         if(path.indexOf('/') > -1) {
             var pathFirstPart = path.substring(0, path.lastIndexOf("/") + 1);
             var pathSecondPart = path.split(/[/ ]+/).pop();
-            subTitleDiv.innerHTML = pathFirstPart + " <span id='currentLocation'>" + pathSecondPart + "</span>";
+            if(pathSecondPart.indexOf("java") > -1) {
+                subTitleDiv.innerHTML = '<span id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
+                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(d.parent, true, currentNodePath);}, false);
+            } else {
+                subTitleDiv.innerHTML = '<span id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
+                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(d.parent, false, currentNodePath);}, false);
+            }
         } else {
-            subTitleDiv.innerHTML = path;
+           subTitleDiv.innerHTML = " <span id='currentLocation'>" + path + "</span>";
         }
     }
 
     // Sets the current path in a specific div and
     // gives the return button the text
     function name(d) {
-        var path = d.parent ? name(d.parent) + " / " + d.fileName : //+ " (" + formatNumber(d.warnings) + ")" :
-                                d.fileName; // + " (" + formatNumber(d.warnings) + ")";
+        var path = d.parent ? name(d.parent) + " / " + d.fileName : d.fileName; 
         return path;
     }
 	
@@ -561,9 +557,9 @@ var treeMapBuilder = (function() {
         theight = 36 + 16;
 
         // size of the chart 
-        $('#chart-and-code').width(opts.width+ 70).height(opts.height);
-        $('#chart').width(opts.width).height(opts.height);		
-        $('#code-div').width(opts.width).height(opts.height);
+        $('#chart-and-code').width(opts.width + 70).height(opts.height - 30);
+        $('#chart').width(opts.width).height(0);		
+        $('#code-div').width(opts.width).height(opts.height - 30);
         width = opts.width - margin.left - margin.right;
         height = opts.height - margin.top - margin.bottom;
         // Uses a range of 100 values between green and red
@@ -592,25 +588,25 @@ var treeMapBuilder = (function() {
         // creating the chart and appending it to views
         svg = d3.select("#chart").append("svg")
             .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.bottom + margin.top)
+            .attr("height", height + margin.bottom + margin.top - 30)
             .style("margin-left", -margin.left + "px")
             .style("margin.right", -margin.right + "px")
-            .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .style("shape-rendering", "crispEdges");
 
-        grandparent = svg.append("g")
-            .attr("class", "grandparent");
+        // grandparent = svg.append("g")
+        //     .attr("class", "grandparent")
+        //     .attr("id", "grandparent");
 
-        grandparent.append("rect")
-            .attr("y", -margin.top)
-            .attr("width", width)
-            .attr("height", margin.top);
+        // grandparent.append("rect")
+        //     .attr("y", -margin.top)
+        //     .attr("width", width)
+        //     .attr("height", margin.top);
 
-        grandparent.append("text")
-            .attr("x", 6)
-            .attr("y", 6 - margin.top)
-            .attr("dy", ".75em")
+        // grandparent.append("text")
+        //     .attr("x", 6)
+        //     .attr("y", 6 - margin.top)
+        //     .attr("dy", ".75em")
 
         if (data instanceof Array) {
             root = {
@@ -631,6 +627,14 @@ var treeMapBuilder = (function() {
             // After cresating the variables we can start initializing and displaying the tree.
             initializeTheTree(root);
             display(root);
+        },
+        navigationUp: function(o, data, d, newNodePath) {
+            currentNodePath = newNodePath;
+            // First we create all variables that are needed for this treemap.
+            setTheVariables(o, data);
+            // After cresating the variables we can start initializing and displaying the tree.
+            initializeTheTree(root);
+            display(d);
         }
     };
 
