@@ -11,6 +11,9 @@ var sourceCode = (function() {
 function highlight(lineNumber, type){
 		   var childs = $( '.CodeMirror-code').children()
 		   var child = childs[lineNumber - 1];
+		   
+			$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css( 'cursor', 'crosshair' );
+			$(child).css( 'cursor', 'crosshair' );
 		  switch(type) {
 		case 'CheckStyle':
 			$(child).css('background','#386938');

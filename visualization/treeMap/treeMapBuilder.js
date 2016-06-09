@@ -525,7 +525,7 @@
                 var usedIDs = [];
                 for(var i = 0; i < allPreviousLevels.length - 1; i++) {
                     var id = "prevLocation" + i;
-                    newPath += '<span id="\'' + ("prevLocation" + i) + '\'">' + allPreviousLevels[i] + '</span>/ ';
+                    newPath += '<span class="path-span" id="\'' + ("prevLocation" + i) + '\'">' + allPreviousLevels[i] + '</span>/ ';
                     usedIDs.push(id);
                 }
                 newPath += '<span id="currentLocation">' + allPreviousLevels[allPreviousLevels.length - 1] + '</span>';
@@ -538,7 +538,7 @@
                     document.getElementById(stringID).addEventListener("click", function() {console.log("Node added: "); console.log($(this).id); console.log(currentPathNodes); goToRelevantLevel(node, true, currentNodePath, currentPathNodes);}, false);
                 }
             } else {
-                subTitleDiv.innerHTML = '<span id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
+                subTitleDiv.innerHTML = '<span class="path-span" id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
                 document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(d.parent, false, currentNodePath, currentPathNodes);}, false);
             }
         } else {

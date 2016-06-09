@@ -282,11 +282,16 @@ rect.child:hover {
 
 #current-path {
   color: #FFFFFF;
+  cursor:pointer;
   text-align: center;
   font-family: 'Roboto Mono', sans-serif;
   font-weight: 300;
   padding-bottom: -25px;
   margin:8px;
+}
+
+span.path-span:hover{
+  color:#CCC;
 }
 
 /*
