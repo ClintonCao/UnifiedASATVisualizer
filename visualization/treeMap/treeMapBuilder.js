@@ -560,7 +560,37 @@
             });
     }
 
-
+    function setPath(d, path) {
+        var subTitleDiv = document.getElementById("current-path");
+        if(path.indexOf('/') > -1) {
+            var pathFirstPart = path.substring(0, path.lastIndexOf("/") + 1);
+            var pathSecondPart = path.split(/[/ ]+/).pop();
+            var allPreviousLevels = path.split("/");
+            if(pathSecondPart.indexOf("java") > -1) {
+                var newPath = "";
+                var usedIDs = [];
+                for(var i = 0; i < allPreviousLevels.length - 1; i++) {
+                    var id = "prevLocation" + i;
+                    newPath += '<span class="path-span" id="\'' + ("prevLocation" + i) + '\'">' + allPreviousLevels[i] + '</span>/ ';
+                    usedIDs.push(id);
+                }
+                newPath += '<span id="currentLocation">' + allPreviousLevels[allPreviousLevels.length - 1] + '</span>';
+                console.log(newPath);
+                subTitleDiv.innerHTML = newPath;
+                for(var i = 0; i < usedIDs.length; i++) {
+                    var stringID = "'" + usedIDs[i] + "'";
+					var node = currentPathNodes[i];
+                    console.log(node);
+                    document.getElementById(stringID).addEventListener("click", function() {console.log("Node added: "); console.log($(this).id); console.log(currentPathNodes); goToRelevantLevel(node, true, currentNodePath, currentPathNodes);}, false);
+                }
+            } else {
+                subTitleDiv.innerHTML = '<span class="path-span" id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
+                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(d.parent, false, currentNodePath, currentPathNodes);}, false);
+            }
+        } else {
+           subTitleDiv.innerHTML = " <span id='currentLocation'>" + path + "</span>";
+        }
+    }
 
     // Sets the current path in a specific div and
     // gives the return button the text
