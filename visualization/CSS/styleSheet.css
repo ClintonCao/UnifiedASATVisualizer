@@ -113,6 +113,7 @@ div#back-div:hover {
 }
 #currentLocation {
   font-weight: bold;
+  color:#339df9;
 }
 
 /* 
@@ -126,10 +127,13 @@ div#chart {
   margin-right:30px;
   margin-bottom:30px;
 }
+svg{	
+  border:#FFF 2px solid;
+}
 div#code-div{
   margin-right:30px;
   margin-left:30px;
-  border:#FFF 6px solid;
+  border:#FFF 3px solid;
   visibility:hidden;
   z-index: 3;
   position: absolute;
