@@ -1,11 +1,11 @@
 	var treeMapBuilder = (function() {
 
     // initialize all variables
-    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
+    var treemap, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
     var refreshing = false;
     var upperLevel = true;
-    var currentNodePath = [];
-    var currentPathNodes = [];
+	var currentNodePath = [];
+	var root;
 
     // initialize the entire treemap up till displaying
     function initializeTheTree(root) {
@@ -127,6 +127,16 @@
             });
         }
     }
+	
+	  // Code to find a certain node in the treemap
+        function findNode(path, root) {
+            var node = root;
+            for (var i = 0; i < path.length; i++) {
+                node = node._children[path[i]]
+            }
+            return node;
+        }
+
     /*
      * Sums for each node how many warnings they have.
      * It still checks on Project and Test Project hard coded to find wheter it is on
@@ -154,14 +164,6 @@
         }
         return -1;
     }
-	  // Code to find a certain node in the treemap
-        function findNode(path, root) {
-            var node = root;
-            for (var i = 0; i < path.length; i++) {
-                node = node._children[path[i]]
-            }
-            return node;
-        }
 
     //Renders the chart with given depth and children
 	function display(d) {
@@ -397,13 +399,11 @@
 
         function navigationDown(d) {
             currentNodePath.push(findChildNumber(d, d.parent));
-            currentPathNodes.push(d.parent);
             transition(d)
         }
 
         function toSourceCode(d) {
             $('input.updateContent').attr('disabled','disabled');
-            currentPathNodes.push(d.parent);
             sourceCode.show(d, name(d));
             setPath(d, name(d));
         	$('.CodeMirror').width(opts.width).height(opts.height - 30);
@@ -420,8 +420,6 @@
 
         function navigationUp(d) {
             currentNodePath.pop();
-            currentPathNodes.pop();
-            console.log("Going Up: " + currentPathNodes);
             transition(d)
         }
 
@@ -468,6 +466,54 @@
             });
         }
 
+		function goToRelevantLevel(indexString, fromSourceCode) {
+			var index = parseInt(indexString.substring(indexString.length-2,indexString.length-1));
+			
+			while (currentNodePath.length > index){
+				console.log("pop");
+				currentNodePath.pop();
+			}
+				var d = findNode(currentNodePath, root);
+			if(fromSourceCode) {
+				sourceCode.hide();
+				transition(d);
+			}else{
+				transition(d);
+				display(d);
+			}
+		}
+		function setPath(d, path) {
+			var subTitleDiv = document.getElementById("current-path");
+			if(path.indexOf('/') > -1) {
+				var pathFirstPart = path.substring(0, path.lastIndexOf("/") + 1);
+				var pathSecondPart = path.split(/[/ ]+/).pop();
+				var allPreviousLevels = path.split("/");
+				if(pathSecondPart.indexOf("java") > -1) {
+					var newPath = "";
+					var usedIDs = [];
+					for(var i = 0; i < allPreviousLevels.length - 1; i++) {
+						var id = "prevLocation" + i;
+						newPath += '<span class="path-span" id="\'' + ("prevLocation" + i) + '\'">' + allPreviousLevels[i] + '</span>/ ';
+						usedIDs.push(id);
+					}
+					var index = allPreviousLevels.length - 1;
+					newPath += '<span id="currentLocation">' + allPreviousLevels[allPreviousLevels.length - 1] + '</span>';
+					subTitleDiv.innerHTML = newPath;
+					for(var i = 0; i < usedIDs.length; i++) {
+						var stringID = "'" + usedIDs[i] + "'";
+						document.getElementById(stringID).addEventListener("click", function() {
+							goToRelevantLevel($(this).attr('id'), true);
+							}, false);
+					}
+				} else {
+					var index = pathSecondPart;
+					subTitleDiv.innerHTML = '<span class="path-span" id="\'prevLocation0\'"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
+					document.getElementById("\'prevLocation0\'").addEventListener("click", function() {goToRelevantLevel($(this).attr('id'), false);}, false);
+				}
+			} else {
+			   subTitleDiv.innerHTML = " <span id='currentLocation'>" + path + "</span>";
+			}
+		}
         return g;
     }
 
@@ -514,37 +560,7 @@
             });
     }
 
-    function setPath(d, path) {
-        var subTitleDiv = document.getElementById("current-path");
-        if(path.indexOf('/') > -1) {
-            var pathFirstPart = path.substring(0, path.lastIndexOf("/") + 1);
-            var pathSecondPart = path.split(/[/ ]+/).pop();
-            var allPreviousLevels = path.split("/");
-            if(pathSecondPart.indexOf("java") > -1) {
-                var newPath = "";
-                var usedIDs = [];
-                for(var i = 0; i < allPreviousLevels.length - 1; i++) {
-                    var id = "prevLocation" + i;
-                    newPath += '<span class="path-span" id="\'' + ("prevLocation" + i) + '\'">' + allPreviousLevels[i] + '</span>/ ';
-                    usedIDs.push(id);
-                }
-                newPath += '<span id="currentLocation">' + allPreviousLevels[allPreviousLevels.length - 1] + '</span>';
-                console.log(newPath);
-                subTitleDiv.innerHTML = newPath;
-                for(var i = 0; i < usedIDs.length; i++) {
-                    var stringID = "'" + usedIDs[i] + "'";
-										var element = currentPathNodes[i];
-										console.log(element);
-                    document.getElementById(stringID).addEventListener("click", function() {goToRelevantLevel(element, true, currentNodePath, currentPathNodes);}, false);
-                }
-            } else {
-                subTitleDiv.innerHTML = '<span class="path-span" id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
-                document.getElementById("prevLocation").addEventListener("click", function() {goToRelevantLevel(d.parent, false, currentNodePath, currentPathNodes);}, false);
-            }
-        } else {
-           subTitleDiv.innerHTML = " <span id='currentLocation'>" + path + "</span>";
-        }
-    }
+
 
     // Sets the current path in a specific div and
     // gives the return button the text
@@ -647,15 +663,6 @@
             // After cresating the variables we can start initializing and displaying the tree.
             initializeTheTree(root);
             display(root);
-        },
-        navigationUp: function(o, data, d, newNodePath, newNodes) {
-            currentNodePath = newNodePath;
-            currentPathNodes = newNodes;
-            // First we create all variables that are needed for this treemap.
-            setTheVariables(o, data);
-            // After cresating the variables we can start initializing and displaying the tree.
-            initializeTheTree(root);
-            display(d);
         }
     };
 
