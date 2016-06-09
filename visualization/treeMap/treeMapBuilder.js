@@ -533,9 +533,9 @@
                 subTitleDiv.innerHTML = newPath;
                 for(var i = 0; i < usedIDs.length; i++) {
                     var stringID = "'" + usedIDs[i] + "'";
-										var element = currentPathNodes[i];
-										console.log(element);
-                    document.getElementById(stringID).addEventListener("click", function() {goToRelevantLevel(element, true, currentNodePath, currentPathNodes);}, false);
+					var node = currentPathNodes[i];
+                    console.log(node);
+                    document.getElementById(stringID).addEventListener("click", function() {console.log("Node added: "); console.log($(this).id); console.log(currentPathNodes); goToRelevantLevel(node, true, currentNodePath, currentPathNodes);}, false);
                 }
             } else {
                 subTitleDiv.innerHTML = '<span id="prevLocation"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
@@ -654,7 +654,7 @@
             // First we create all variables that are needed for this treemap.
             setTheVariables(o, data);
             // After cresating the variables we can start initializing and displaying the tree.
-            initializeTheTree(root);
+            //initializeTheTree(root);
             display(d);
         }
     };
