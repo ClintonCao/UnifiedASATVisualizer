@@ -216,7 +216,7 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
 //Setup tree map and shows it
 function runTreeMap() {
     var title = document.getElementById("main-title");
-    title.innerHTML = "'Future name of tool'";
+    title.innerHTML = "𝕌𝔸𝕍";
 
     var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     var finalJson =  createJsonTreeMap(packages);

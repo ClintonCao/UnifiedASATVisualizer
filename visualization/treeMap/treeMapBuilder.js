@@ -241,6 +241,7 @@
                 } else if($(this).prop('name') == "relative") {
                     handleClickRelativeColours($(this));
                 }
+                console.log(sourceCodeLevel);
                 if(sourceCodeLevel) {
                     console.log("Hiding");
                     sourceCode.hide();
@@ -250,6 +251,11 @@
                 } else {
                     fastReload();
                 }
+                var millisecondsToWait = 0;
+                setTimeout(function() {
+                    refreshing = false;
+                    $(this).disable = false
+                }, millisecondsToWait);
             }
         })
 
