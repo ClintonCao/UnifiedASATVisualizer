@@ -131,6 +131,7 @@ function getTotalASATWarning(warningType, className) {
 		classArray.packageName = package.packageName;
 		packageArray.push(classArray)
 	}
+	packageArray.warningType = warningType;
 	return packageArray;
 }
 
@@ -187,10 +188,8 @@ function getTotalCategoryWarning(warningType, className) {
 			for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j];
 				if(className.indexOf("java") > -1) {
-					console.log("java found");
 					if($.inArray(warningJson.type, acceptedTypes) > -1 && warningJson.classification == warningType && warningJson.fileName == className) {
 			  			classObject.amountOfWarnings++;
-			  			console.log("increase");
 					}
 				} else {
 					if($.inArray(warningJson.type, acceptedTypes) > -1 && warningJson.classification == warningType) {
@@ -203,6 +202,7 @@ function getTotalCategoryWarning(warningType, className) {
 		classArray.packageName = package.packageName;
 		packageArray.push(classArray)
 	}
+	packageArray.warningType = warningType;
 	return packageArray;
 }
 

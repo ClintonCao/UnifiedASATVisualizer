@@ -33,7 +33,6 @@
         var CheckStyleWarnings = sumNodeForASAT(d, getTotalASATWarning("CheckStyle", currentClassName));
         var PMDWarnings = sumNodeForASAT(d, getTotalASATWarning("PMD", currentClassName));
         var FindBugsWarnings = sumNodeForASAT(d, getTotalASATWarning("FindBugs", currentClassName));
-        console.log("Updated " + CheckStyleWarnings + "  " + PMDWarnings);
         appendInfoToSAT(CheckStyleWarnings, PMDWarnings, FindBugsWarnings);
     }
 
@@ -144,7 +143,6 @@
     /*
      * Sums for each node how many warnings they have.
      * It still checks on Project and Test Project hard coded to find wheter it is on
-     * TODO: package level or class level, this should be changed to a dynamic way in the future.
      */
     function sumNodeForASAT(d, root) {
         var nodeAndSummation = [];
@@ -159,13 +157,17 @@
         } else {
             for (var i = 0; i < root.length; i++) {
                 if(sourceCodeLevel) {
-                    for (var j = 0; j < root[i].length; j++) {
-                        sum += root[i][j].amountOfWarnings;
+                    if (root[i].packageName == d.parent.fileName) {
+                        for (var j = 0; j < root[i].length; j++) {
+                            if(sourceCodeLevel && root[i][j].fileName == currentClassName) {
+                                return root[i][j].amountOfWarnings;
+                            }
+                            sum += root[i][j].amountOfWarnings;
+                        }
+                        return sum;
                     }
-                    return sum;
                 } else {
                     if (root[i].packageName == d.fileName) {
-                        console.log("Found");
                         for (var j = 0; j < root[i].length; j++) {
                             sum += root[i][j].amountOfWarnings;
                         }
@@ -174,7 +176,6 @@
                 }
             }
         }
-        console.log("Fault");
         return -1;
     }
 
