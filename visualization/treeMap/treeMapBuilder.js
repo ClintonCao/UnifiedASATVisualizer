@@ -487,17 +487,17 @@
 				var pathFirstPart = path.substring(0, path.lastIndexOf("/") + 1);
 				var pathSecondPart = path.split(/[/ ]+/).pop();
 				var allPreviousLevels = path.split("/");
+                var newPath = "";
+                var usedIDs = [];
+                for(var i = 0; i < allPreviousLevels.length - 1; i++) {
+                    var id = "prevLocation" + i;
+                    newPath += '<span class="path-span" id="\'' + ("prevLocation" + i) + '\'">' + allPreviousLevels[i] + '</span>/ ';
+                    usedIDs.push(id);
+                }
+                var index = allPreviousLevels.length - 1;
+                newPath += '<span id="currentLocation">' + allPreviousLevels[allPreviousLevels.length - 1] + '</span>';
+                subTitleDiv.innerHTML = newPath;
 				if(pathSecondPart.indexOf("java") > -1) {
-					var newPath = "";
-					var usedIDs = [];
-					for(var i = 0; i < allPreviousLevels.length - 1; i++) {
-						var id = "prevLocation" + i;
-						newPath += '<span class="path-span" id="\'' + ("prevLocation" + i) + '\'">' + allPreviousLevels[i] + '</span>/ ';
-						usedIDs.push(id);
-					}
-					var index = allPreviousLevels.length - 1;
-					newPath += '<span id="currentLocation">' + allPreviousLevels[allPreviousLevels.length - 1] + '</span>';
-					subTitleDiv.innerHTML = newPath;
 					for(var i = 0; i < usedIDs.length; i++) {
 						var stringID = "'" + usedIDs[i] + "'";
 						document.getElementById(stringID).addEventListener("click", function() {
@@ -505,9 +505,12 @@
 							}, false);
 					}
 				} else {
-					var index = pathSecondPart;
-					subTitleDiv.innerHTML = '<span class="path-span" id="\'prevLocation0\'"> ' + pathFirstPart + ' </span><span id="currentLocation">' + pathSecondPart + "</span>";
-					document.getElementById("\'prevLocation0\'").addEventListener("click", function() {goToRelevantLevel($(this).attr('id'), false);}, false);
+                    for(var i = 0; i < usedIDs.length; i++) {
+                        var stringID = "'" + usedIDs[i] + "'";
+                        document.getElementById(stringID).addEventListener("click", function() {
+                            goToRelevantLevel($(this).attr('id'), false);
+                            }, false);
+                    }
 				}
 			} else {
 			   subTitleDiv.innerHTML = " <span id='currentLocation'>" + path + "</span>";
