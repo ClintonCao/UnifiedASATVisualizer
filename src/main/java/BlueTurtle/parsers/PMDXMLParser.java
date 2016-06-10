@@ -60,9 +60,6 @@ public class PMDXMLParser extends XMLParser {
 					
 					// Retrieve the message corresponds the warnings.
 					String message = fileElement.getElementsByTagName("violation").item(0).getTextContent();
-					
-					//debug info
-					System.out.println("message: " + message );
 
 					addWarnings(fileName, warningList, pmdWarnings, message);
 

@@ -1,8 +1,5 @@
 package BlueTurtle.warnings;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * This class is used to represent a checkstyle warning.
  * 
