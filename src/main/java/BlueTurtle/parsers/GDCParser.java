@@ -20,7 +20,7 @@ import lombok.Getter;
  * Reengineering (SANER), Osaka (Japan), 2016.
  *
  */
-public class GDCParser extends MarkdownParser {
+public final class GDCParser extends MarkdownParser {
 	
 	private static GDCParser gdcParser = null;
 	

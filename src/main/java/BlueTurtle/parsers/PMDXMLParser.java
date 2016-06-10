@@ -54,11 +54,14 @@ public class PMDXMLParser extends XMLParser {
 
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
-
+					
 					// Get all the warnings.
 					NodeList warningList = fileElement.getElementsByTagName("violation");
+					
+					// Retrieve the message corresponds the warnings.
+					String message = fileElement.getElementsByTagName("violation").item(0).getTextContent();
 
-					addWarnings(fileName, warningList, pmdWarnings);
+					addWarnings(fileName, warningList, pmdWarnings, message);
 
 				}
 			}
@@ -75,8 +78,10 @@ public class PMDXMLParser extends XMLParser {
 	 *            is a list of warnings.
 	 * @param pmdWarnings
 	 *            is list of PMD warnings.
+	 * @param message
+	 *            is the message of PMD warnings.
 	 */
-	public void addWarnings(String fileName, NodeList warningList, List<Warning> pmdWarnings) {
+	public void addWarnings(String fileName, NodeList warningList, List<Warning> pmdWarnings, String message) {
 
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
@@ -117,7 +122,7 @@ public class PMDXMLParser extends XMLParser {
 				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
 
 				// Add warning to the list of warnings.
-				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName, classification));
+				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName, message, classification));
 			}
 		}
 	}

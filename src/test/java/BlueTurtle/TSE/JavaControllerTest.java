@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import BlueTurtle.finders.ProjectInfoFinder;
+import BlueTurtle.gui.GUIController;
 import BlueTurtle.gui.GUIController.ASAT;
 
 /**
@@ -36,6 +37,7 @@ public class JavaControllerTest {
 	 */
 	@Before
 	public void setUp() throws IOException {
+		GUIController.setProjectPath("test");
 		new ProjectInfoFinder().findFiles(new File(System.getProperty("user.dir")));
 		JavaController.setCheckStyleOutputFile(null);
 		JavaController.setPmdOutputFile(null);
@@ -48,6 +50,7 @@ public class JavaControllerTest {
 	@After
 	public void cleanUp() {
 		File f = new File(System.getProperty("user.dir") + "/src/main/resources/SummarizedOuput.js");
+		GUIController.setProjectPath(null);
 		if (f.exists()) {
 			f.delete();
 		}
@@ -137,7 +140,7 @@ public class JavaControllerTest {
 		JavaController.setASATOutput(ASAT.FindBugs, new File(findBugsOutputFilePath));
 		JavaController jc = new JavaController();
 		jc.execute();
-		assertTrue(new File(System.getProperty("user.dir") + "/visualization/JSON/OOPPJSON.js").exists());
+		assertTrue(new File(System.getProperty("user.dir") + "/visualization/JSON/outputWarningsJSON.js").exists());
 	}
 
 }

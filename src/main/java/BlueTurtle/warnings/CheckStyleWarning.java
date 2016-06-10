@@ -1,8 +1,5 @@
 package BlueTurtle.warnings;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * This class is used to represent a checkstyle warning.
  * 
@@ -11,8 +8,6 @@ import lombok.Setter;
  */
 public class CheckStyleWarning extends Warning {
 
-	@Getter @Setter private int line;
-	@Getter @Setter private String message;
 
 	/**
 	 * Constructor.
@@ -32,8 +27,7 @@ public class CheckStyleWarning extends Warning {
 	 *            of the violated rule of the warning.
 	 */
 	public CheckStyleWarning(String filePath, String filename, int line, String message, String ruleName, String classification) {
-		super(filePath, filename, "CheckStyle", ruleName, classification);
-		setLine(line);
+		super(filePath, filename, line, "CheckStyle", ruleName, message, classification);
 		setMessage(message.replaceAll("'", ""));
 	}
 

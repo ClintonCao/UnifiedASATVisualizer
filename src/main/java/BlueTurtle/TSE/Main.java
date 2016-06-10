@@ -5,10 +5,8 @@ import java.io.IOException;
 
 import BlueTurtle.gui.GUI;
 
-
-
 /**
- * Temporary main class to run the commands.
+ * Main class to run the system.
  * 
  * @author BlueTurtle.
  *
