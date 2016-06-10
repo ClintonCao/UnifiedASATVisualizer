@@ -17,7 +17,7 @@ public abstract class Warning {
 	@Getter @Setter protected String type;
 	@Getter @Setter protected String filePath;
 	@Getter @Setter protected String ruleName;
-	@Getter @Setter protected static String message;
+	@Getter @Setter protected String message;
 
 	/**
 	 * Constructor.
