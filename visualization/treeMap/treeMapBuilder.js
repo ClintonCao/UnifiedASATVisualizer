@@ -409,6 +409,9 @@
 
         function toSourceCode(d) {
             sourceCodeLevel = true;
+            $("#normalButton").prop('checked', false);
+            $("#asatButton").prop('checked', true);
+            setASATColoured();
             sourceCode.show(d, name(d));
             setPath(d, name(d));
         	$('.CodeMirror').width(opts.width).height(opts.height - 30);

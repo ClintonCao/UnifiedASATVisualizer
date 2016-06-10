@@ -109,24 +109,31 @@ return {
 		curLine = -1;
 		
 		$('input.relative').attr('disabled','disabled');
+		$('#normalButton').attr('disabled','disabled');
 		var chartDiv = document.getElementById("code-div");
-			chartDiv.style.visibility = 'visible';
-			document.getElementById("chart").style.visibility = 'hidden';
-			document.getElementById('relativeLabel').style.textDecoration = 'line-through';
-			
-			displayCode(d.filePath);
-			var warnings = getWarningLines(d.fileName);
-			for( var i =0 ; i < warnings.warningList.length; i ++ ){
-				highlight(warnings.warningList[i].line, warnings.warningList[i].type);
-			}
-			var warnings = getWarningLines(d.fileName);
-			for( var i =0 ; i < warnings.warningList.length; i ++ ){
-				setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
-			}
+
+		chartDiv.style.visibility = 'visible';
+		document.getElementById("chart").style.visibility = 'hidden';
+		document.getElementById('normalColourLabel').style.textDecoration = 'line-through';
+		document.getElementById('relativeLabel').style.textDecoration = 'line-through';
+		
+		displayCode(d.filePath);
+		var warnings = getWarningLines(d.fileName);
+		for( var i =0 ; i < warnings.warningList.length; i ++ ){
+			highlight(warnings.warningList[i].line, warnings.warningList[i].type);
+		}
+		var warnings = getWarningLines(d.fileName);
+		for( var i =0 ; i < warnings.warningList.length; i ++ ){
+			setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
+		}
 	},
 	hide: function(){
 		$('input.relative').removeAttr("disabled");
+		$('#normalButton').removeAttr("disabled");
+		$("#normalButton").prop('checked', true);
+        $("#asatButton").prop('checked', false);
 		document.getElementById('relativeLabel').style.textDecoration = 'none';
+		document.getElementById('normalColourLabel').style.textDecoration = 'none';
 		var myNode = document.getElementById("code-article");
 		while (myNode.firstChild) {
 			myNode.removeChild(myNode.firstChild);
