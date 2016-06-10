@@ -410,6 +410,7 @@
             sourceCodeLevel = true;
             $("#normalButton").prop('checked', false);
             $("#asatButton").prop('checked', true);
+            $("#asatButton").click();
             setASATColoured();
             sourceCode.show(d, name(d));
             setPath(d, name(d));
@@ -475,6 +476,9 @@
 
 		function goToRelevantLevel(indexString, fromSourceCode) {
             sourceCodeLevel = false;
+            $("#normalButton").prop('checked', true);
+            $("#asatButton").prop('checked', false);
+            $("#normalButton").click();
 			var index = parseInt(indexString.substring(indexString.length-2,indexString.length-1));
 			
 			while (currentNodePath.length > index){

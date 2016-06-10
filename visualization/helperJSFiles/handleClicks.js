@@ -67,9 +67,12 @@ function handleClickColorScale(radioButton) {
 		backgroundObject.setColorMethod(0);
 	} else if ( radioButton.value == "asat" ){
 		setASATColoured();
+		sourceCode.setColorMethod(0); 
 		backgroundObject.setColorMethod(1);
 	} else if ( radioButton.value == "category" ){
 		setCategoriesColoured();
+				console.log("category clicked");
+		sourceCode.setColorMethod(1); 
 		backgroundObject.setColorMethod(2);
 	}
 }
@@ -93,11 +96,9 @@ function handleClickRelativeColours(radioButton) {
 		backgroundObject.setColorMethod(0);
 	} else if ( document.getElementById("asatButton").checked ){
 		setASATColoured();
-		sourceCode.setColorMethod(0); 
 		backgroundObject.setColorMethod(1);
 	} else if ( document.getElementById("categoryButton").checked ){
 		setCategoriesColoured();
-		sourceCode.setColorMethod(1); 
 		backgroundObject.setColorMethod(2);
 	} 
 }

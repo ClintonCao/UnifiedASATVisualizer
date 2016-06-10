@@ -18,7 +18,7 @@ function highlight(lineNumber, type, cat){
    
 	$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css( 'cursor', 'crosshair' );
 	$(child).css( 'cursor', 'crosshair' );
-	if(colorMethod = 0) {
+	if(colorMethod == 0) {
 		switch(type) {
 			case 'CheckStyle':
 				$(child).css('background','#386938');
@@ -33,7 +33,7 @@ function highlight(lineNumber, type, cat){
 				$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#043e70');
 				break;
 		}
-	} else if(colorMethod = 1) {
+	} else if(colorMethod == 1) {
 		switch(categorizeWarningType(cat)) {
 			case 0:
 				$(child).css('background','#386938');
@@ -52,15 +52,12 @@ function highlight(lineNumber, type, cat){
 }
 
 function setLabels(lineNumber, type, cat, message) {
-	console.log("Labeling");
 	var childs = $( '.CodeMirror-code').children()
 	var child = childs[lineNumber - 1];
 			currentAsatWarnings.push(type);
 			currentCatWarnings.push(cat);
 			currentMessageWarnings.push(message);
 		if( curLine != lineNumber)  {
-			 console.log("if case");	
-			 console.log(child);
 			 /*
 			 * Creates a tooltip that will be shown on hover over a node
 			 */
@@ -149,8 +146,6 @@ return {
 	hide: function(){
 		$('input.relative').removeAttr("disabled");
 		$('#normalButton').removeAttr("disabled");
-		$("#normalButton").prop('checked', true);
-        $("#asatButton").prop('checked', false);
 		document.getElementById('relativeLabel').style.textDecoration = 'none';
 		document.getElementById('normalColourLabel').style.textDecoration = 'none';
 		var myNode = document.getElementById("code-article");
@@ -167,6 +162,7 @@ return {
 		$('.CodeMirror').width(opts.width).height(opts.height - 30);
 	},
 	setColorMethod: function(method) {
+		console.log("Method: " + method);
 		colorMethod = method;
 	}
 }
