@@ -4,7 +4,7 @@ var currentAsatWarnings = [];
 var currentCatWarnings = [];
 var currentMessageWarnings = [];
 var currentTooltip;
-var curLine = 1;
+var curLine = -1;
 
 var sourceCode = (function() {
 
@@ -33,17 +33,14 @@ function highlight(lineNumber, type){
 function setLabels(lineNumber, type, cat, message) {
 	var childs = $( '.CodeMirror-code').children()
 	var child = childs[lineNumber - 1];
-	var child2 = childs[curLine - 1]
-		if( curLine == $(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text()) {
 			currentAsatWarnings.push(type);
 			currentCatWarnings.push(cat);
 			currentMessageWarnings.push(message);
-
-		} else {
-
+		if( curLine != lineNumber)  {
 			/*
 			 * Creates a tooltip that will be shown on hover over a node
 			 */
+			curLine = lineNumber;
 			var tooltip = d3.select("#chart-and-code")
 			    .append("div")
 				.attr("class","d3-tip2")
@@ -56,22 +53,20 @@ function setLabels(lineNumber, type, cat, message) {
 			for(var i = 0; i < currentAsatWarnings.length; i++) {
 				textInTooltip += "<br>-" + currentAsatWarnings[i] + "<br>-" + currentCatWarnings[i] + "<br>-" + currentMessageWarnings[i] + "<br>"
 			}
-
-			$(child2).mouseenter(function(){
+			$(child).mouseenter(function(){
 				tooltip.html(textInTooltip);
                 tooltip.style("visibility", "visible");
 			});
-			$(child2).mousemove(function(){
+			$(child).mousemove(function(){
 				tooltip.style("top", (event.pageY - 130) + "px").style("left", (event.pageX - 280) + "px");
 			});
-			$(child2).mouseleave(function(){
+			$(child).mouseleave(function(){
 				tooltip.style("visibility", "hidden");
 			});
 
-			curLine = $(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').text();
-			currentAsatWarnings = [type];
-			currentCatWarnings = [cat];
-			currentMessageWarnings = [message];
+			currentAsatWarnings = [];
+			currentCatWarnings = [];
+			currentMessageWarnings = [];
 		}
 }
 function setBackButton(d, curPath){
@@ -122,15 +117,11 @@ return {
 			displayCode(d.filePath);
 			var warnings = getWarningLines(d.fileName);
 			for( var i =0 ; i < warnings.warningList.length; i ++ ){
-				console.log(warnings.warningList[i] );
-				console.log("warning light: "+ warnings.warningList[i].line );
 				highlight(warnings.warningList[i].line, warnings.warningList[i].type);
 			}
 			setBackButton(d, curPath);
 			var warnings = getWarningLines(d.fileName);
 			for( var i =0 ; i < warnings.warningList.length; i ++ ){
-				console.log(warnings.warningList[i] );
-				console.log("warning label: "+ warnings.warningList[i].line );
 				setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
 			}
 	},
