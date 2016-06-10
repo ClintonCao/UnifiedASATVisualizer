@@ -478,7 +478,6 @@
 			var index = parseInt(indexString.substring(indexString.length-2,indexString.length-1));
 			
 			while (currentNodePath.length > index){
-				console.log("pop");
 				currentNodePath.pop();
 			}
 				var d = findNode(currentNodePath, root);

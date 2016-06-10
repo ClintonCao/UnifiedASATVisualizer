@@ -1,66 +1,28 @@
 /*
  * This function will map each specific warning category to the upper level classification 
  */
-function categorizeWarningType(classification) {
-	switch(classification) {
-		case 'Check':
+ 
+
+var categoryMapper = (function() {	
+	var FunctionalDefects =["Check", "Concurrency", "ErrorHandling", "Interface", "Logic", "Migration", "Resource" ]
+	var MaintainabilityDefects = [ "Best Practices", "Code Structure", "Documentation Conventions", "Metric", "Naming Conventions", "Object Oriented Design", "Refactorings - Simplifications", "Refactorings - Redundancies", "Style Conventions"]
+	var Other = ["Other", "Regular Expressions", "Tool Specific"]
+	
+return {
+	
+	categorizeWarningType: function(classification) {
+		if ( FunctionalDefects.indexOf(classification) > 0 ){
 			return 0;
-			break;
-		case 'Concurrency':
-			return 0;
-			break;
-		case 'ErrorHandling':
-			return 0;
-			break;
-		case 'Interface':
-			return 0;
-			break;
-		case 'Logic':
-			return 0;
-			break;
-		case 'Migration':
-			return 0;
-			break;
-		case 'Resource':
-			return 0;
-			break;
-		case 'Best Practices':
+		}
+		if ( MaintainabilityDefects.indexOf(classification) > 0 ){
 			return 1;
-			break;
-		case 'Code Structure':
-			return 1;
-			break;
-		case 'Documentation Conventions':
-			return 1;
-			break;
-		case 'Metric':
-			return 1;
-			break;
-		case 'Naming Conventions':
-			return 1;
-			break;
-		case 'Object Oriented Design':
-			return 1;
-			break;
-		case 'Refactorings - Simplifications':
-			return 1;
-			break;
-		case 'Refactorings - Redundancies':
-			return 1;
-			break;
-		case 'Style Conventions':
-			return 1;
-			break;
-		case 'Other':
+		}
+		if ( Other.indexOf(classification) > 0 ){
 			return 2;
-			break;
-		case 'Regular Expressions':
-			return 2;
-			break;
-		case 'Tool Specific':
-			return 2;
-			break;
-		default:
-			break;
+		}else{
+			return -1;
+		}
 	}
+
 }
+}());

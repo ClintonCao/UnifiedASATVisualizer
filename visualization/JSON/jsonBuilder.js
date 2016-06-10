@@ -60,7 +60,7 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 		  				default:
 		  					break;
 		  			}
-		  			switch(categorizeWarningType(warningJson.classification)) {
+		  			switch(categoryMapper.categorizeWarningType(warningJson.classification)) {
 		  				case 0:
 		  					classObject.amountOfFunctionalDefects++;
 		  					break;

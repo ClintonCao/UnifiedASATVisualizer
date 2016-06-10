@@ -106,6 +106,9 @@ function handleClickRelativeColours(radioButton) {
 * handles the clicks on Sat categories
 */
 function handleClickCategorySat(value, checked) {
+	if(value == "FunctionalDefects"){
+		
+	}
  	if (checked) {
         var index = acceptedCategories.indexOf(value);
        if (index < 0) {
