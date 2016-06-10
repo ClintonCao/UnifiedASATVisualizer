@@ -102,7 +102,7 @@ var inputData =
             "ruleName": "TooManyMethods"
           },
           {
-            "lineNumber": 140,
+            "line": 140,
             "message": "Call to BlueTurtle.warnings.CheckStyleWarning.equals(Integer) in BlueTurtle.warnings.ChecktStyleWarningTest.testEqualsFalseWithIntegerObject()",
             "category": "CORRECTNESS",
             "priority": "Normal",
@@ -240,7 +240,7 @@ var inputData =
             "ruleName": "AvoidDuplicateLiterals"
           },
           {
-            "lineNumber": 171,
+            "line": 171,
             "message": "Call to BlueTurtle.groupers.WarningGrouper.equals(Integer) in BlueTurtle.groupers.WarningGrouperTest.testEqualsFalseDifferentObject()",
             "category": "CORRECTNESS",
             "priority": "Normal",
@@ -251,7 +251,7 @@ var inputData =
             "ruleName": "EC_UNRELATED_TYPES"
           },
           {
-            "lineNumber": 99,
+            "line": 99,
             "message": "Null passed for non-null parameter of WarningGrouper.groupBy(Enum) in BlueTurtle.groupers.WarningGrouperTest.testGroupByDefaultCase()",
             "category": "CORRECTNESS",
             "priority": "Normal",
@@ -292,7 +292,7 @@ var inputData =
         "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\computers\\LOCComputer.java",
         "warningList": [
           {
-            "lineNumber": 47,
+            "line": 47,
             "message": "Found reliance on default encoding in BlueTurtle.computers.LOCComputer.computeLOC(String): new java.io.FileReader(String)",
             "category": "I18N",
             "priority": "High",
@@ -363,7 +363,7 @@ var inputData =
             "ruleName": "AppendCharacterWithChar"
           },
           {
-            "lineNumber": 29,
+            "line": 29,
             "message": "Found reliance on default encoding in BlueTurtle.TSE.CodeFile.getCodeFromFile(File): new java.io.FileReader(File)",
             "category": "I18N",
             "priority": "High",
@@ -501,7 +501,7 @@ var inputData =
             "ruleName": "AvoidDuplicateLiterals"
           },
           {
-            "lineNumber": 55,
+            "line": 55,
             "message": "Exceptional return value of java.io.File.delete() ignored in BlueTurtle.TSE.JavaControllerTest.cleanUp()",
             "category": "BAD_PRACTICE",
             "priority": "Normal",
@@ -543,7 +543,7 @@ var inputData =
         "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\finders\\PackageNameFinder.java",
         "warningList": [
           {
-            "lineNumber": 47,
+            "line": 47,
             "message": "Found reliance on default encoding in BlueTurtle.finders.PackageNameFinder.findPackageName(String): new java.io.FileReader(String)",
             "category": "I18N",
             "priority": "High",
@@ -554,7 +554,7 @@ var inputData =
             "ruleName": "DM_DEFAULT_ENCODING"
           },
           {
-            "lineNumber": 49,
+            "line": 49,
             "message": "Dereference of the result of readLine() without nullcheck in BlueTurtle.finders.PackageNameFinder.findPackageName(String)",
             "category": "STYLE",
             "priority": "Normal",
@@ -580,7 +580,7 @@ var inputData =
         "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\finders\\ProjectInfoFinder.java",
         "warningList": [
           {
-            "lineNumber": 43,
+            "line": 43,
             "message": "Possible null pointer dereference in BlueTurtle.finders.ProjectInfoFinder.findFiles(File) due to return value of called method",
             "category": "STYLE",
             "priority": "Normal",
@@ -698,7 +698,7 @@ var inputData =
             "ruleName": "NoWhitespaceBefore"
           },
           {
-            "lineNumber": 87,
+            "line": 87,
             "message": "Found reliance on default encoding in BlueTurtle.writers.JSWriter.writeSourceCodeToJS(ArrayList, String): new java.io.FileWriter(String)",
             "category": "I18N",
             "priority": "High",
@@ -709,7 +709,7 @@ var inputData =
             "ruleName": "DM_DEFAULT_ENCODING"
           },
           {
-            "lineNumber": 62,
+            "line": 62,
             "message": "Found reliance on default encoding in BlueTurtle.writers.JSWriter.writeToJSFormat(String): new java.io.FileWriter(String)",
             "category": "I18N",
             "priority": "High",
@@ -746,7 +746,7 @@ var inputData =
             "ruleName": "AvoidDuplicateLiterals"
           },
           {
-            "lineNumber": 71,
+            "line": 71,
             "message": "Exceptional return value of java.io.File.delete() ignored in BlueTurtle.writers.JSWriterTest.cleanup()",
             "category": "BAD_PRACTICE",
             "priority": "Normal",
@@ -757,7 +757,7 @@ var inputData =
             "ruleName": "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE"
           },
           {
-            "lineNumber": 59,
+            "line": 59,
             "message": "Exceptional return value of java.io.File.delete() ignored in BlueTurtle.writers.JSWriterTest.initialize()",
             "category": "BAD_PRACTICE",
             "priority": "Normal",
@@ -840,7 +840,7 @@ var inputData =
             "ruleName": "AvoidDuplicateLiterals"
           },
           {
-            "lineNumber": 197,
+            "line": 197,
             "message": "Call to BlueTurtle.summarizers.PackageSummarizer.equals(Integer) in BlueTurtle.summarizers.PackageSummarizerTest.testEqualsWithAnotherObject()",
             "category": "CORRECTNESS",
             "priority": "Normal",
@@ -962,7 +962,7 @@ var inputData =
             "ruleName": "FinalClass"
           },
           {
-            "lineNumber": 57,
+            "line": 57,
             "message": "Write to static field BlueTurtle.parsers.GDCParser.categoryInfo from instance method BlueTurtle.parsers.GDCParser.parseFile(String)",
             "category": "STYLE",
             "priority": "High",

@@ -20,6 +20,8 @@ function handleClickTreeMapTypeSat(value, checked) {
             acceptedTypes.splice(index, 1);
         }
     }
+	console.log("acceptedTypes");
+	console.log(acceptedTypes);
 }
 
 /*
@@ -115,6 +117,8 @@ function handleClickCategorySat(value, checked) {
             acceptedCategories.splice(index, 1);
         }
     }
+	console.log("acceptedCategories");
+	console.log(acceptedCategories);
 }
 
 /*

@@ -114,6 +114,7 @@ return {
 	readAllCode: function(){	
 	},
 	show: function(d, curPath){
+		$('input.updateContent').attr('disabled','disabled');
 		var chartDiv = document.getElementById("code-div");
 			chartDiv.style.visibility = 'visible';
 			document.getElementById("chart").style.visibility = 'hidden';
@@ -121,15 +122,20 @@ return {
 			displayCode(d.filePath);
 			var warnings = getWarningLines(d.fileName);
 			for( var i =0 ; i < warnings.warningList.length; i ++ ){
+				console.log(warnings.warningList[i] );
+				console.log("warning light: "+ warnings.warningList[i].line );
 				highlight(warnings.warningList[i].line, warnings.warningList[i].type);
 			}
 			setBackButton(d, curPath);
 			var warnings = getWarningLines(d.fileName);
 			for( var i =0 ; i < warnings.warningList.length; i ++ ){
+				console.log(warnings.warningList[i] );
+				console.log("warning label: "+ warnings.warningList[i].line );
 				setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
 			}
 	},
 	hide: function(){
+		$('input.updateContent').removeAttr("disabled");
 		var myNode = document.getElementById("code-article");
 		while (myNode.firstChild) {
 			myNode.removeChild(myNode.firstChild);
