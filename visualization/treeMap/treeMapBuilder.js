@@ -4,6 +4,7 @@
     var treemap, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
     var refreshing = false;
     var upperLevel = true;
+    var sourceCodeLevel = false;
 	var currentNodePath = [];
 	var root;
 
@@ -230,7 +231,7 @@
          * It will refresh the data in the treemap according to which button is clicked
          */
         $('.updateContent').change(function() {
-            if (true && !refreshing) {
+            if (!refreshing) {
                 refreshing = true;
                 $(this).disable = true
                 if ($(this).prop('name') == "sat") {
@@ -240,13 +241,15 @@
                 } else if($(this).prop('name') == "relative") {
                     handleClickRelativeColours($(this));
                 }
-                fastReload();
-                // animation time of the toggle button
-                var millisecondsToWait = 0;
-                setTimeout(function() {
-                    refreshing = false;
-                    $(this).disable = false
-                }, millisecondsToWait);
+                if(sourceCodeLevel) {
+                    console.log("Hiding");
+                    sourceCode.hide();
+                    sourceCode.show(d, name(d));
+                    setPath(d, name(d));
+                    $('.CodeMirror').width(opts.width).height(opts.height - 30);
+                } else {
+                    fastReload();
+                }
             }
         })
 
@@ -403,6 +406,7 @@
         }
 
         function toSourceCode(d) {
+            sourceCodeLevel = true;
             sourceCode.show(d, name(d));
             setPath(d, name(d));
         	$('.CodeMirror').width(opts.width).height(opts.height - 30);
@@ -466,6 +470,7 @@
         }
 
 		function goToRelevantLevel(indexString, fromSourceCode) {
+            sourceCodeLevel = false;
 			var index = parseInt(indexString.substring(indexString.length-2,indexString.length-1));
 			
 			while (currentNodePath.length > index){

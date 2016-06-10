@@ -9,12 +9,12 @@ var curLine = -1;
 var sourceCode = (function() {
 
 function highlight(lineNumber, type){
-		   var childs = $( '.CodeMirror-code').children()
-		   var child = childs[lineNumber - 1];
-		   
-			$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css( 'cursor', 'crosshair' );
-			$(child).css( 'cursor', 'crosshair' );
-		  switch(type) {
+   var childs = $( '.CodeMirror-code').children()
+   var child = childs[lineNumber - 1];
+   
+	$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css( 'cursor', 'crosshair' );
+	$(child).css( 'cursor', 'crosshair' );
+	switch(type) {
 		case 'CheckStyle':
 			$(child).css('background','#386938');
 			$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#386938');
@@ -27,7 +27,7 @@ function highlight(lineNumber, type){
 			$(child).css('background','#043e70');
 			$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#043e70');
 			break;
-		  }
+	}
 }
 
 function setLabels(lineNumber, type, cat, message) {
@@ -109,10 +109,11 @@ return {
 	readAllCode: function(){	
 	},
 	show: function(d, curPath){
-		$('input.updateContent').attr('disabled','disabled');
+		$('input.relative').attr('disabled','disabled');
 		var chartDiv = document.getElementById("code-div");
 			chartDiv.style.visibility = 'visible';
 			document.getElementById("chart").style.visibility = 'hidden';
+			document.getElementById('relativeLabel').style.textDecoration = 'line-through';
 			
 			displayCode(d.filePath);
 			var warnings = getWarningLines(d.fileName);
@@ -126,7 +127,8 @@ return {
 			}
 	},
 	hide: function(){
-		$('input.updateContent').removeAttr("disabled");
+		$('input.relative').removeAttr("disabled");
+		document.getElementById('relativeLabel').style.textDecoration = 'none';
 		var myNode = document.getElementById("code-article");
 		while (myNode.firstChild) {
 			myNode.removeChild(myNode.firstChild);
