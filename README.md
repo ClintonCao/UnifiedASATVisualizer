@@ -36,6 +36,10 @@ This tool is for creating a visualization of the warnings/defects that were gene
 |Sprint Backlog 6 | [sprint backlog 6] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog6(BlueTurtle).pdf)|
 |Sprint Retrospective 6 | [sprint retrospective 6] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective6(BlueTurtle).pdf)|
 |Sprint Backlog 7 | [sprint backlog 7] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog7(BlueTurtle).pdf)|
+|Sprint Retrospective 7 | [sprint retrospective 7] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective7(BlueTurtle).pdf)|
+|Sprint Backlog 8 | [sprint backlog 8] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog8(BlueTurtle).pdf)|
+|Sprint Retrospective 8 | available next week friday|
+
 
 ## Links to product related documents:
 
@@ -51,7 +55,7 @@ This tool is for creating a visualization of the warnings/defects that were gene
 
 ASAT Research: [asat research] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/ASAT%20research/StaticanalysistoolsresearchBlueTurtle.pdf)
 
-Maven Execution Research [maven execution research]()
+Maven Execution Research [maven execution research](https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/MavenResearch/MavenResearch.md)
 
 Testing Documentation [testing documentation](https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Testing%20related%20documents/TestingDocumentation.md)
 
