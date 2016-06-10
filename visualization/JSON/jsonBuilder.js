@@ -223,6 +223,7 @@ function getWarningLines(className) {
 			}
 		}
 	}
+	console.log(classObject);
 	return classObject;
 }
 /*

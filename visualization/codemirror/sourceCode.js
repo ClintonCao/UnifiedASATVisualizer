@@ -7,10 +7,10 @@ var currentCatWarnings = [];
 var currentMessageWarnings = [];
 var currentTooltip;
 var curLine = -1;
+var	localD;
+var	localCurPath;
 
 function highlight(lineNumber, type){
-	var	localD;
-	var	localCurPath;
 	var childs = $( '.CodeMirror-code').children()
 	var child = childs[lineNumber - 1];
    
@@ -33,13 +33,16 @@ function highlight(lineNumber, type){
 }
 
 function setLabels(lineNumber, type, cat, message) {
+	console.log("Labeling");
 	var childs = $( '.CodeMirror-code').children()
 	var child = childs[lineNumber - 1];
 			currentAsatWarnings.push(type);
 			currentCatWarnings.push(cat);
 			currentMessageWarnings.push(message);
 		if( curLine != lineNumber)  {
-			/*
+			 console.log("if case");	
+			 console.log(child);
+			 /*
 			 * Creates a tooltip that will be shown on hover over a node
 			 */
 			curLine = lineNumber;
@@ -113,6 +116,10 @@ return {
 	show: function(d, curPath){
 		localD = d;
 		localCurPath = curPath;
+		currentAsatWarnings = [];
+		currentCatWarnings = [];
+		currentMessageWarnings = [];
+		curLine = -1;
 		
 		$('input.relative').attr('disabled','disabled');
 		var chartDiv = document.getElementById("code-div");
@@ -143,7 +150,9 @@ return {
 			document.getElementById("chart").style.visibility = 'visible';
 	},
 	fullReload: function(){
-		show(localD, localCurPath);
+		sourceCode.hide();
+		sourceCode.show(localD, localCurPath);
+		$('.CodeMirror').width(opts.width).height(opts.height - 30);
 	}
 }
 

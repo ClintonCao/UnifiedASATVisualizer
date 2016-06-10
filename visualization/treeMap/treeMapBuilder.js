@@ -243,11 +243,7 @@
                 }
                 console.log(sourceCodeLevel);
                 if(sourceCodeLevel) {
-                    console.log("Hiding");
-                    sourceCode.hide();
-                    sourceCode.show(d, name(d));
-                    setPath(d, name(d));
-                    $('.CodeMirror').width(opts.width).height(opts.height - 30);
+                    sourceCode.fullReload();
                 } else {
                     fastReload();
                 }
