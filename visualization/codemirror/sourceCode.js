@@ -1,16 +1,18 @@
 
-//chrome.exe --disable-web-security
+
+var sourceCode = (function() {
+
 var currentAsatWarnings = [];
 var currentCatWarnings = [];
 var currentMessageWarnings = [];
 var currentTooltip;
 var curLine = -1;
 
-var sourceCode = (function() {
-
 function highlight(lineNumber, type){
-   var childs = $( '.CodeMirror-code').children()
-   var child = childs[lineNumber - 1];
+	var	localD;
+	var	localCurPath;
+	var childs = $( '.CodeMirror-code').children()
+	var child = childs[lineNumber - 1];
    
 	$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css( 'cursor', 'crosshair' );
 	$(child).css( 'cursor', 'crosshair' );
@@ -109,6 +111,9 @@ return {
 	readAllCode: function(){	
 	},
 	show: function(d, curPath){
+		localD = d;
+		localCurPath = curPath;
+		
 		$('input.relative').attr('disabled','disabled');
 		var chartDiv = document.getElementById("code-div");
 			chartDiv.style.visibility = 'visible';
@@ -136,6 +141,9 @@ return {
 		var chartDiv = document.getElementById("code-div");
 			chartDiv.style.visibility = 'hidden';
 			document.getElementById("chart").style.visibility = 'visible';
+	},
+	fullReload: function(){
+		show(localD, localCurPath);
 	}
 }
 
