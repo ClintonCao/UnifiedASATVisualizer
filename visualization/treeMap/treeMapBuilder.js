@@ -241,7 +241,6 @@
                 } else if($(this).prop('name') == "relative") {
                     handleClickRelativeColours($(this));
                 }
-                console.log(sourceCodeLevel);
                 if(sourceCodeLevel) {
                     sourceCode.fullReload();
                 } else {
