@@ -12,7 +12,6 @@ import lombok.Setter;
 public class FindBugsWarning extends Warning {
 
 	
-	@Getter @Setter private int line;
 	@Getter @Setter private String category;
 	@Getter @Setter private String priority;
 
@@ -38,8 +37,7 @@ public class FindBugsWarning extends Warning {
 	 *            of the violated rule of the warning.
 	 */
 	public FindBugsWarning(String filePath, String filename, int line, String message, String category, String priority, String ruleName, String classification) {
-		super(filePath, filename, "FindBugs", ruleName, message, classification);
-		setLine(line);
+		super(filePath, filename, line, "FindBugs", ruleName, message, classification);
 		setCategory(category);
 		setPriority(priority);
 	}

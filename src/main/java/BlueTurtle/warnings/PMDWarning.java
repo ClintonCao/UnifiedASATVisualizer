@@ -11,7 +11,6 @@ import lombok.Setter;
  */
 public class PMDWarning extends Warning {
 
-	@Getter @Setter private int line;
 	@Getter @Setter private String ruleSet;
 	@Getter @Setter private String method;
 	@Getter @Setter private String packageName;
@@ -37,8 +36,7 @@ public class PMDWarning extends Warning {
 	 *            of the violated rule of the warning.
 	 */
 	public PMDWarning(String filePath, String filename, int line, String packageName, String ruleSet, String method,  String ruleName, String message, String classification) {
-		super(filePath, filename, "PMD", ruleName, message, classification);
-		setLine(line);
+		super(filePath, filename, line, "PMD", ruleName, message, classification);
 		setPackageName(packageName);
 		setRuleSet(ruleSet);
 		setMethod(method);

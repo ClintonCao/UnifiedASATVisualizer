@@ -18,6 +18,8 @@ public abstract class Warning {
 	@Getter @Setter protected String filePath;
 	@Getter @Setter protected String ruleName;
 	@Getter @Setter protected String message;
+	@Getter @Setter protected int line;
+
 
 	/**
 	 * Constructor.
@@ -26,6 +28,8 @@ public abstract class Warning {
 	 *            the path to the file where the warning is located.
 	 * @param filename
 	 *            the name of the file where the warning is located.
+	 * @param line
+	 *            the line number where the warning is located.
 	 * @param type
 	 *            the type of the warning e.g. PMD.
 	 * @param ruleName
@@ -35,9 +39,10 @@ public abstract class Warning {
 	 * @param classification
 	 *            of the violated rule of the warning.
 	 */
-	public Warning(String filePath, String filename, String type, String ruleName, String message, String classification) {
+	public Warning(String filePath, String filename, int line, String type, String ruleName, String message, String classification) {
 		setFileName(filename);
 		setFilePath(filePath);
+		setLine(line);
 		setType(type);
 		setRuleName(ruleName);
 		setClassification(classification); 
