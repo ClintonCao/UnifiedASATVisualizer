@@ -118,6 +118,7 @@ return {
 		var chartDiv = document.getElementById("code-div");
 		chartDiv.style.visibility = 'visible';
 		document.getElementById("chart").style.visibility = 'hidden';
+		document.getElementById('relativeLabel').style.textDecoration = 'line-through';
 		
 		displayCode(d.filePath);
 		var warnings = getWarningLines(d.fileName);
@@ -136,6 +137,7 @@ return {
 	},
 	hide: function(){
 		$('input.relative').removeAttr("disabled");
+		document.getElementById('relativeLabel').style.textDecoration = 'none';
 		var myNode = document.getElementById("code-article");
 		while (myNode.firstChild) {
 			myNode.removeChild(myNode.firstChild);
