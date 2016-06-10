@@ -5,6 +5,7 @@
     var refreshing = false;
     var upperLevel = true;
     var sourceCodeLevel = false;
+    var currentClassName = "";
 	var currentNodePath = [];
 	var root;
 
@@ -29,9 +30,10 @@
      * Will put the #warnings for each ASAT
      */
     function updateASATWarningsCount(d) {
-        var CheckStyleWarnings = sumNodeForASAT(d, getTotalASATWarning("CheckStyle"));
-        var PMDWarnings = sumNodeForASAT(d, getTotalASATWarning("PMD"));
-        var FindBugsWarnings = sumNodeForASAT(d, getTotalASATWarning("FindBugs"));
+        var CheckStyleWarnings = sumNodeForASAT(d, getTotalASATWarning("CheckStyle", currentClassName));
+        var PMDWarnings = sumNodeForASAT(d, getTotalASATWarning("PMD", currentClassName));
+        var FindBugsWarnings = sumNodeForASAT(d, getTotalASATWarning("FindBugs", currentClassName));
+        console.log("Updated " + CheckStyleWarnings + "  " + PMDWarnings);
         appendInfoToSAT(CheckStyleWarnings, PMDWarnings, FindBugsWarnings);
     }
 
@@ -39,13 +41,13 @@
      * Will put the #warnings for the function defects category
      */
     function updateFunctionalDefectsCount(d) {
-        var CheckWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Check"));
-        var ConcWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Concurrency"));
-        var ErrorWarnings = sumNodeForASAT(d, getTotalCategoryWarning("ErrorHandling"));
-        var InterfaceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Interface"));
-        var LogicWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Logic"));
-        var MigrationWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Migration"));
-        var ResourceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Resource"));
+        var CheckWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Check", currentClassName));
+        var ConcWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Concurrency", currentClassName));
+        var ErrorWarnings = sumNodeForASAT(d, getTotalCategoryWarning("ErrorHandling", currentClassName));
+        var InterfaceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Interface", currentClassName));
+        var LogicWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Logic", currentClassName));
+        var MigrationWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Migration", currentClassName));
+        var ResourceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Resource", currentClassName));
         appendInfoToFunctionalDefects(CheckWarnings, ConcWarnings, ErrorWarnings, InterfaceWarnings, LogicWarnings, MigrationWarnings, ResourceWarnings);
     }
 
@@ -53,15 +55,15 @@
      * Will put the #warnings for the maintainability defects category
      */
     function updateMaintainabilityDefectsCount(d) {
-        var BestPracticeWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Best Practices"));
-        var CodeStructureWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Code Structure"));
-        var DocConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Documentation Conventions"));
-        var MetricWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Metric"));
-        var NamingConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Naming Conventions"));
-        var OODesignWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Object Oriented Design"));
-        var SimplificationsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Simplifications"));
-        var ReduncanciesWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Redundancies"));
-        var StyleConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Style Conventions"));
+        var BestPracticeWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Best Practices", currentClassName));
+        var CodeStructureWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Code Structure", currentClassName));
+        var DocConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Documentation Conventions", currentClassName));
+        var MetricWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Metric", currentClassName));
+        var NamingConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Naming Conventions", currentClassName));
+        var OODesignWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Object Oriented Design", currentClassName));
+        var SimplificationsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Simplifications", currentClassName));
+        var ReduncanciesWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Redundancies", currentClassName));
+        var StyleConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Style Conventions", currentClassName));
         appendInfoToMaintainabilityDefects(BestPracticeWarnings, CodeStructureWarnings, DocConventionsWarnings, MetricWarnings, NamingConventionsWarnings, OODesignWarnings, SimplificationsWarnings, ReduncanciesWarnings, StyleConventionsWarnings);
     }
 
@@ -69,9 +71,9 @@
      * Will put the #warnings for the other defects category
      */
     function updateOtherDefectsCount(d) {
-        var OtherWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Other"));
-        var RegularExpressionsWarnings =sumNodeForASAT(d, getTotalCategoryWarning("Regular Expressions"));
-        var ToolSpecificWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Tool Specific"));
+        var OtherWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Other", currentClassName));
+        var RegularExpressionsWarnings =sumNodeForASAT(d, getTotalCategoryWarning("Regular Expressions", currentClassName));
+        var ToolSpecificWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Tool Specific", currentClassName));
         appendInfoToOtherDefects(OtherWarnings, RegularExpressionsWarnings, ToolSpecificWarnings);
     }
 
@@ -79,6 +81,7 @@
      * Will put the #warnings for each specific ASAT and warning type
      */
     function updateWarningsCountInUI(d) {
+        currentClassName = d.fileName;
         updateASATWarningsCount(d);
         updateFunctionalDefectsCount(d);
         updateMaintainabilityDefectsCount(d);
@@ -112,7 +115,7 @@
     // of sibling was laid out in 1×1, we must rescale to fit using absolute
     // coordinates. This lets us use a viewport to zoom.
     function layout(d, treemap) {
-        updateWarningsCountInUI(d);
+        //updateWarningsCountInUI(d);
 
         if (d._children) {
             treemap.nodes({
@@ -155,14 +158,23 @@
              return sum;
         } else {
             for (var i = 0; i < root.length; i++) {
-                if (root[i].packageName == d.fileName) {
+                if(sourceCodeLevel) {
                     for (var j = 0; j < root[i].length; j++) {
                         sum += root[i][j].amountOfWarnings;
                     }
                     return sum;
+                } else {
+                    if (root[i].packageName == d.fileName) {
+                        console.log("Found");
+                        for (var j = 0; j < root[i].length; j++) {
+                            sum += root[i][j].amountOfWarnings;
+                        }
+                        return sum;
+                    }
                 }
             }
         }
+        console.log("Fault");
         return -1;
     }
 
@@ -259,8 +271,6 @@
             var newNode = findNode(currentNodePath, root);
             transition(newNode);
         }
-
-
 
         // Updates all warning counts for all ASATS and categories
         updateWarningsCountInUI(d);
@@ -412,6 +422,7 @@
             $("#asatButton").prop('checked', true);
             $("#asatButton").click();
             setASATColoured();
+            updateWarningsCountInUI(d);
             sourceCode.show(d, name(d));
             setPath(d, name(d));
         	$('.CodeMirror').width(opts.width).height(opts.height - 30);
