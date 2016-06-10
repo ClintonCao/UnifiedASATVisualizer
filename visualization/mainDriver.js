@@ -170,7 +170,7 @@ function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, R
     MigrationElement.innerHTML = "&thinsp; Migration (" + Mig + ")";
     ResourceElement.innerHTML = '&thinsp; Resource (' + Res + ")";
     var sum = sumFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res);
-    FuncDefElement.innerHTML = ' Functional Defects (' + sum + ")";
+    FuncDefElement.innerHTML = ' Functional Defects (' + sum + ") &thinsp;";
 }
 
 // Add total amount of warnings to each sub category within the maintainability defects in the right menu
@@ -196,7 +196,7 @@ function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamCon
     RedundanciesElement.innerHTML = "&thinsp; Redundancies (" + Red + ")";
     StyleConventionsElement.innerHTML = '&thinsp; Style Conventions (' + StyleConv + ")";
     var sum = sumMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, Simp, Red, StyleConv);
-    MainDefElement.innerHTML = ' Maintainability Defects (' + sum + ")";
+    MainDefElement.innerHTML = ' Maintainability Defects (' + sum + ") &thinsp; ";
 }
 
 // Add total amount of warnings to each sub category within the other category in the right menu
@@ -210,7 +210,7 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
     RegularExpressionsElement.innerHTML = "&thinsp; Regular Expressions (" + RegExpr + ")";
     ToolSpecificElement.innerHTML = "&thinsp; Tool Specific(" + Tools + ")";
     var sum = sumOtherDefects(Other, RegExpr, Tools);
-    OthElement.innerHTML = " Other (" + sum + ")";
+    OthElement.innerHTML = " Other (" + sum + ") &thinsp;";
 }
 
 //Setup tree map and shows it
