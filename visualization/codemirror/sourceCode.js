@@ -74,19 +74,6 @@ function setLabels(lineNumber, type, cat, message) {
 			currentMessageWarnings = [];
 		}
 }
-function setBackButton(d, curPath){
-		var packagePath = curPath.substring(0, curPath.lastIndexOf("/") + 1);
-		packagePath = packagePath.substring(0, packagePath.length - 2);
-        var pathFirstPart = packagePath.substring(0, packagePath.lastIndexOf("/") + 1);
-        var pathSecondPart = packagePath.split(/[/ ]+/).pop();
-        $('#current-path').html(pathFirstPart + " <span id='currentLocation'>" + pathSecondPart + "</span>");
-
-		$('#back-div').click(function() {
-    		$('input.updateContent').attr('disabled',false);
-    		$('#current-path').html(packagePath);
-		  	sourceCode.hide();
-		});
-	}
 function displayCode(pathID){	
 	for ( var i = 0; i < codeExport.length; i++){	
 
@@ -132,7 +119,6 @@ return {
 			for( var i =0 ; i < warnings.warningList.length; i ++ ){
 				highlight(warnings.warningList[i].line, warnings.warningList[i].type);
 			}
-			setBackButton(d, curPath);
 			var warnings = getWarningLines(d.fileName);
 			for( var i =0 ; i < warnings.warningList.length; i ++ ){
 				setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
