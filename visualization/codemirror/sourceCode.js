@@ -9,12 +9,12 @@ var curLine = 1;
 var sourceCode = (function() {
 
 function highlight(lineNumber, type){
-		   var childs = $( '.CodeMirror-code').children()
-		   var child = childs[lineNumber - 1];
-		   
-			$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css( 'cursor', 'crosshair' );
-			$(child).css( 'cursor', 'crosshair' );
-		  switch(type) {
+   var childs = $( '.CodeMirror-code').children()
+   var child = childs[lineNumber - 1];
+   
+	$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css( 'cursor', 'crosshair' );
+	$(child).css( 'cursor', 'crosshair' );
+	switch(type) {
 		case 'CheckStyle':
 			$(child).css('background','#386938');
 			$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#386938');
@@ -27,7 +27,7 @@ function highlight(lineNumber, type){
 			$(child).css('background','#043e70');
 			$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#043e70');
 			break;
-		  }
+	}
 }
 
 function setLabels(lineNumber, type, cat, message) {

@@ -210,7 +210,7 @@ function getWarningLines(className) {
 				classObject.warningList = []
 				for (j = 0; j < classObjectJson.warningList.length; j++) { 
 					var warningJson = classObjectJson.warningList[j]
-					if(($.inArray(warningJson.classification, acceptedCategories) > -1)) {
+					if(($.inArray(warningJson.classification, acceptedCategories) > -1) && ($.inArray(warningJson.type, acceptedTypes) > -1)) {
 						classObject.amountOfWarnings++;
 						var warningObject = new Object();
 						warningObject.line = warningJson.line;

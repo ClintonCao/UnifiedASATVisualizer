@@ -230,7 +230,7 @@
          * It will refresh the data in the treemap according to which button is clicked
          */
         $('.updateContent').change(function() {
-            if (true && !refreshing) {
+            if (!refreshing) {
                 refreshing = true;
                 $(this).disable = true
                 if ($(this).prop('name') == "sat") {
@@ -241,12 +241,6 @@
                     handleClickRelativeColours($(this));
                 }
                 fastReload();
-                // animation time of the toggle button
-                var millisecondsToWait = 0;
-                setTimeout(function() {
-                    refreshing = false;
-                    $(this).disable = false
-                }, millisecondsToWait);
             }
         })
 
