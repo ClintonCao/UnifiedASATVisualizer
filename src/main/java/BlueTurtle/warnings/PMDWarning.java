@@ -12,10 +12,9 @@ import lombok.Setter;
 public class PMDWarning extends Warning {
 
 	@Getter @Setter private int line;
+	@Getter @Setter private String ruleSet;
 	@Getter @Setter private String method;
 	@Getter @Setter private String packageName;
-	@Getter @Setter private String ruleSet;
-
 	
 	/**
 	 * Constructor.
@@ -37,11 +36,11 @@ public class PMDWarning extends Warning {
 	 * @param classification
 	 *            of the violated rule of the warning.
 	 */
-	public PMDWarning(String filePath, String filename, int line, String packageName, String message, String ruleSet,  String ruleName, String classification) {
+	public PMDWarning(String filePath, String filename, int line, String packageName, String ruleSet, String method,  String ruleName, String classification) {
 		super(filePath, filename, "PMD", ruleName, message, classification);
 		setLine(line);
-		setRuleSet(ruleSet);
 		setPackageName(packageName);
+		setRuleSet(ruleSet);
 		setMethod(method);
 	}
 
@@ -73,15 +72,15 @@ public class PMDWarning extends Warning {
 	public int hashCode() {
 		return java.util.Objects.hash(filePath, fileName, type, line, packageName, ruleSet, method, ruleName, classification);
 	}
-
+	
 	/**
 	 * toString method for PMDWarning.
 	 */
 	@Override
 	public String toString() {
-		return "PMDWarning [line=" + line + ", method=" + method + ", packageName=" + packageName + ", classification="
-				+ classification + ", fileName=" + fileName + ", type=" + type + ", filePath=" + filePath
-				+ ", ruleName=" + ruleName + ", ruleSet=" + ruleSet + "]";
+		return "PMDWarning [line=" + line + ", ruleSet=" + ruleSet + ", method=" + method + ", packageName="
+				+ packageName + ", classification=" + classification + ", fileName=" + fileName + ", type=" + type
+				+ ", filePath=" + filePath + ", ruleName=" + ruleName + "]";
 	}
 	
 }
