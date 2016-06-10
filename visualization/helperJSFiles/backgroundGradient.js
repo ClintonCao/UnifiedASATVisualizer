@@ -8,11 +8,11 @@ var backgroundObject = (function() {
 	function reloadColorScale(){
 		twoColors = [d3.rgb("#00a700"), d3.rgb('#a90000')];
 		color = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
-		greenTints = [d3.rgb("#8c9b8b"), d3.rgb('#0b9c01')];
+		greenTints = [d3.rgb("#679a64"), d3.rgb('#0aa100')];
 		greenScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(greenTints);
-		blueTints = [d3.rgb("#a7b1bc"), d3.rgb('#06387b')];	
+		blueTints = [d3.rgb("#6f87a2"), d3.rgb('#004aae')];	
 		blueScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(blueTints);
-		redTints = [d3.rgb("#c2b6b6"), d3.rgb('#8e0000')];	
+		redTints = [d3.rgb("#9c7777"), d3.rgb('#ac0000')];	
 		redScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(redTints);
 		grayTints = [d3.rgb("#a2a2a2"), d3.rgb('#a2a2a2')];	
 		grayScale =  d3.scale.linear().domain([0, 0]).interpolate(d3.interpolateHcl).range(grayTints);
@@ -83,7 +83,6 @@ var backgroundObject = (function() {
 			.attr("stop-opacity", 1);
 	}
 	function createGradientColours(gradient, onlyOneColour, whichOne, weight, ratioArray) {
-		console.log("R array: " + ratioArray);
 		if(onlyOneColour) {
 			switch(whichOne) {
 				case 0:

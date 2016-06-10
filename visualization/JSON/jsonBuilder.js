@@ -11,70 +11,6 @@ function replaceAll(stringObject, target, replacement){
 	return stringObject.split(target).join(replacement);
 }
 
-function categorizeWarningType(classification) {
-	switch(classification) {
-		case 'Check':
-			return 0;
-			break;
-		case 'Concurrency':
-			return 0;
-			break;
-		case 'ErrorHandling':
-			return 0;
-			break;
-		case 'Interface':
-			return 0;
-			break;
-		case 'Logic':
-			return 0;
-			break;
-		case 'Migration':
-			return 0;
-			break;
-		case 'Resource':
-			return 0;
-			break;
-		case 'Best Practices':
-			return 1;
-			break;
-		case 'Code Structure':
-			return 1;
-			break;
-		case 'Documentation Conventions':
-			return 1;
-			break;
-		case 'Metric':
-			return 1;
-			break;
-		case 'Naming Conventions':
-			return 1;
-			break;
-		case 'Object Oriented Design':
-			return 1;
-			break;
-		case 'Refactorings - Simplifications':
-			return 1;
-			break;
-		case 'Refactorings - Redundancies':
-			return 1;
-			break;
-		case 'Style Conventions':
-			return 1;
-			break;
-		case 'Other':
-			return 2;
-			break;
-		case 'Regular Expressions':
-			return 2;
-			break;
-		case 'Tool Specific':
-			return 2;
-			break;
-		default:
-			break;
-	}
-}
-
 /*
  *
  * Filter on type of tool and/or warnings
@@ -104,6 +40,8 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 			classObject.amountOfMaintainabilityDefects = 0;
 			classObject.amountOfOtherDefects = 0;
 	  		classObject.loc = classObjectJson.loc;
+	  		classObject.message = classObjectJson.message;
+	  		classObject.filePath = classObjectJson.filePath;
 	  		classObject.fileName = classObjectJson.fileName;
 	  		for (j = 0; j < classObjectJson.warningList.length; j++) { 
 				var warningJson = classObjectJson.warningList[j];
@@ -191,6 +129,39 @@ function getTotalASATWarning(warningType) {
 }
 
 /*
+ * Get object with all warnings with lines from a certain class
+ * filterd on warning type
+ */
+function getWarningLines(className) {
+	for(var p =0; p < inputData.length; p++){
+		var package = inputData[p];
+		var classesArray = package.classes;
+		var classArray = [];
+		for (i = 0; i < classesArray.length; i++) {
+			classObjectJson = classesArray[i];
+			if(className == classObjectJson.fileName){
+				var classObject = new Object();
+				classObject.amountOfWarnings = 0;
+				classObject.fileName = classObjectJson.fileName;
+				classObject.warningList = []
+				for (j = 0; j < classObjectJson.warningList.length; j++) { 
+					var warningJson = classObjectJson.warningList[j]
+					if(($.inArray(warningJson.classification, acceptedCategories) > -1) && ($.inArray(warningJson.type, acceptedTypes) > -1)) {
+						classObject.amountOfWarnings++;
+						var warningObject = new Object();
+						warningObject.line = warningJson.line;
+						warningObject.type = warningJson.type;
+						warningObject.message = warningJson.message;
+						warningObject.cat = warningJson.classification;
+						classObject.warningList.push(warningObject);
+					}
+				}
+			}
+		}
+	}
+	return classObject;
+}
+/*
  *
  * Counts for a specific category how many warnings there are
  *
@@ -245,6 +216,8 @@ function createJsonTreeMap(packages){
 				var linesOfCode = classes[i].loc;
 				jsonArrClass.push({
 					fileName: fileName,
+					filePath: classes[i].filePath,
+					message: classes[i].message,
 					loc: linesOfCode,
 					warnings: classes[i].amountOfWarnings,
 					warningsCheckStyle: classes[i].amountOfCheckStyleWarnings,
@@ -281,19 +254,7 @@ function createJsonTreeMap(packages){
 					warningsOtherDefects: classes.amountOfOtherDefects
 				});
 		}
-	return [
-		{
-			fileName: "Project",
-			loc: upperLevelLoc,
-			values: jsonArrPackage,
-			warnings: upperLevelTotal,
-			warningsCheckStyle: upperLevelCSW,
-			warningsPMD: upperLevelPMDW,
-			warningsFindBugs: upperLevelFBW,
-			warningsFunctionalDefects: upperLevelFD,
-			warningsMaintainabilityDefects: upperLevelMD,
-			warningsOtherDefects: upperLevelOD
-		}];
+		return jsonArrPackage;
 }
 
 /*

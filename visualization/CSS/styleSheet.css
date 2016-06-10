@@ -10,6 +10,7 @@ body{
 	background-repeat:no-repeat;
 	background-size:cover;
 	height:100%;width:100%;
+  overflow-y: hidden;
   font-family: 'Roboto', sans-serif;
 }
 .UIText {
@@ -37,7 +38,30 @@ div#right-menu{
 /* 
  * Option menu left
  */
+div#left-wrapper{
+  float: left;
+  margin-left: 20px;
+  width: 270px;
+}
 div#menu-left-wrapper{
+  float: left;
+  width: 270px;
+  background: rgba(55, 58, 60, 0.8);
+}
+div#extra-info-left-wrapper{
+  float: left;
+  margin-top: 15px;
+  width: 270px;
+  background: rgba(55, 58, 60, 0.8);
+}
+div#extra-info-div{
+	color:#FFF;
+	padding:20px;
+	display:none;
+	font-size:16px;
+}
+div#extra-info-left{
+  height:400px;
   float: left;
   margin-left: 20px;
   width: 270px;
@@ -49,6 +73,19 @@ div#left-menu{
   opacity:0.8;
   color: #fff;
   font-family: 'Roboto Mono', sans-serif;
+}
+div#back-div{
+  width:100%;
+  height:30px;
+  border-bottom:#FFF 2px solid;
+  background: #337ab7;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 700;
+  padding-left:5px;
+  font-size: 16px;
+}
+div#back-div:hover {
+  background: #2d6da4;
 }
 #checkStyleLabel {
   color: #FFFFFF;
@@ -74,19 +111,49 @@ div#left-menu{
   color: #FFFFFF;
   font-family: 'Roboto Mono', sans-serif;
 }
+#currentLocation {
+  font-weight: bold;
+  color:#339df9;
+}
 
 /* 
  * Styling for the chart
  */
+div#chart-and-code {
+  position: relative;
+}
 div#chart {
-  cursor: pointer;
-  background:#CCC;
-  margin:30px;
-  border: 5px #FFFFFF solid;
+  margin-left:30px;
+  margin-right:30px;
+  margin-bottom:30px;
+}
+svg{	
+  border:#FFF 2px solid;
+}
+div#code-div{
+  margin-right:30px;
+  margin-left:30px;
+  border:#FFF 3px solid;
+  visibility:hidden;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.CodeMirror-hscrollbar {
+  display: none !important;
+}
+.CodeMirror-vscrollbar {
+  display: none !important;
 }
 div#chart-wrapper{
-  margin:0 20px 0 20px;
+  margin: 0 20px 0 20px;
   float:left;
+  padding-bottom: 40px;
   background: rgba(55, 58, 60, 0.8);
 }
 
@@ -127,6 +194,20 @@ div#chart-wrapper{
   color: #fff;
   font-family: 'Roboto Mono', sans-serif;
   font-weight: 100;
+  padding: 10px;
+  background-color: rgba(55, 58, 60, 0.75);
+}
+
+/*
+ * Styling for the tooltip of the treemap
+ */
+.d3-tip2{
+  font-size:15px;
+  color: #FFFFFF !important;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 100;
+  padding: 10px;
+  background-color: rgba(55, 58, 60, 0.75);
 }
 
 /* Title */
@@ -169,6 +250,7 @@ text {
 .grandparent text {
   font-family: 'Roboto Mono', sans-serif;
   font-weight: 700;
+  font-size: 17px;
 }
 rect {
   fill: none;
@@ -178,10 +260,12 @@ rect {
 .grandparent rect {
   stroke-width: 2px;
   fill: #337ab7;
+  display: none;
 }
 
 .grandparent:hover rect {
-  fill: #2d6da4;
+  fill: #6c98bf;
+  font-weight: 700;
 }
 
 .children rect.parent,
@@ -189,11 +273,29 @@ rect {
   cursor: pointer;
 }
 .children:hover rect.child {
-  fill: rgba(255,255,255, 0.25);
+  fill: rgba(255,255,255, 0.4);
 }
 g.children:hover{
   stroke-width: 0.3px;
   stroke: #000000;
+}
+
+rect.child:hover {
+  fill: rgba(255,255,255, 0.4);
+}
+
+#current-path {
+  color: #FFFFFF;
+  cursor:pointer;
+  text-align: center;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 300;
+  padding-bottom: -25px;
+  margin:8px;
+}
+
+span.path-span:hover{
+  color:#CCC;
 }
 
 /*

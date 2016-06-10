@@ -3,7 +3,6 @@
  */
 var acceptedTypes = [];
 var acceptedCategories = [];
-
 defineHovers();
 runTreeMap();
 addAllAcceptedTypesAndCategories();
@@ -54,9 +53,102 @@ function appendInfoToSAT(CS, PMD, FB) {
     var PMDElement = document.getElementById("PMDLabel");
     var findBugsElement = document.getElementById("FindBugsLabel");
 
-    checkStyleElement.innerHTML = '&thinsp; CheckStyle(' + CS + ")";
-    PMDElement.innerHTML = "&thinsp; PMD(" + PMD + ")";
-    findBugsElement.innerHTML = "&thinsp; FindBugs(" + FB + ")";
+    checkStyleElement.innerHTML = '&thinsp; CheckStyle&thinsp;(' + CS + ")";
+    PMDElement.innerHTML = "&thinsp; PMD&thinsp;(" + PMD + ")";
+    findBugsElement.innerHTML = "&thinsp; FindBugs&thinsp;(" + FB + ")";
+}
+
+/*
+ * Sum how many active functional defects there are
+ */
+function sumFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res) {
+	var summation = 0;
+	for(var i = 0; i < acceptedCategories.length; i++) {
+		switch(acceptedCategories[i]) {
+			case 'Check':
+				summation += Check;
+				break;
+			case 'Concurrency':
+				summation += Conc;
+				break;
+			case 'ErrorHandling':
+				summation += ErrorH;
+				break;
+			case 'Interface':
+				summation += Inter;
+				break;
+			case 'Logic':
+				summation += Logic;
+				break;
+			case 'Migration':
+				summation += Mig;
+				break;
+			case 'Resource':
+				summation += Res;
+				break;
+		}
+	}
+	return summation;
+}
+
+/*
+ * Sum how many active maintainability defects there are
+ */
+function sumMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, Simp, Red, StyleConv) {
+	var summation = 0;
+	for(var i = 0; i < acceptedCategories.length; i++) {
+		switch(acceptedCategories[i]) {
+			case 'Best Practices':
+				summation += Prac;
+				break;
+			case 'Code Structure':
+				summation += Struc;
+				break;
+			case 'Documentation Conventions':
+				summation += DocConv;
+				break;
+			case 'Metric':
+				summation += Metric;
+				break;
+			case 'Naming Conventions':
+				summation += NamConv;
+				break;
+			case 'Object Oriented Design':
+				summation += OOD;
+				break;
+			case 'Refactorings - Simplifications':
+				summation += Simp;
+				break;
+			case 'Refactorings - Redundancies':
+				summation += Red;
+				break;
+			case 'Style Conventions':
+				summation += StyleConv;
+				break;
+		}
+	}
+	return summation;
+}
+
+/*
+ * Sum how many active other defects there are
+ */
+function sumOtherDefects(Other, RegExpr, Tools) {
+	var summation = 0;
+	for(var i = 0; i < acceptedCategories.length; i++) {
+		switch(acceptedCategories[i]) {
+			case 'Other':
+				summation += Other;
+				break;
+			case 'Regular Expressions':
+				summation += RegExpr;
+				break;
+			case 'Tool Specific':
+				summation += Tools;
+				break;
+		}
+	}
+	return summation;
 }
 
 // Add total amount of warnings to each sub category within the functional defects in the right menu
@@ -68,6 +160,7 @@ function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, R
     var LogicElement = document.getElementById("LogicLabel");
     var MigrationElement = document.getElementById("MigrationLabel");
     var ResourceElement = document.getElementById("ResourceLabel");
+    var FuncDefElement = document.getElementById("FuncDefLabel");
 
     CheckElement.innerHTML = '&thinsp; Check (' + Check + ")";
     ConcElement.innerHTML = "&thinsp; Concurrency (" + Conc + ")";
@@ -76,6 +169,8 @@ function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, R
     LogicElement.innerHTML = "&thinsp; Logic (" + Logic + ")";
     MigrationElement.innerHTML = "&thinsp; Migration (" + Mig + ")";
     ResourceElement.innerHTML = '&thinsp; Resource (' + Res + ")";
+    var sum = sumFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res);
+    FuncDefElement.innerHTML = ' Functional Defects (' + sum + ")";
 }
 
 // Add total amount of warnings to each sub category within the maintainability defects in the right menu
@@ -89,6 +184,7 @@ function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamCon
     var SimplificationsElement = document.getElementById("SimplificationsLabel");
     var RedundanciesElement = document.getElementById("RedundanciesLabel");
     var StyleConventionsElement = document.getElementById("StyleConventionsLabel");
+    var MainDefElement = document.getElementById("MainDefLabel");
 
     BestPracticesElement.innerHTML = '&thinsp; Best Practices (' + Prac + ")";
     CodeStructureElement.innerHTML = "&thinsp; Code Structure (" + Struc + ")";
@@ -99,6 +195,8 @@ function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamCon
     SimplificationsElement.innerHTML = '&thinsp; Simplifications (' + Simp + ")";
     RedundanciesElement.innerHTML = "&thinsp; Redundancies (" + Red + ")";
     StyleConventionsElement.innerHTML = '&thinsp; Style Conventions (' + StyleConv + ")";
+    var sum = sumMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, Simp, Red, StyleConv);
+    MainDefElement.innerHTML = ' Maintainability Defects (' + sum + ")";
 }
 
 // Add total amount of warnings to each sub category within the other category in the right menu
@@ -106,33 +204,32 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
     var OtherElement = document.getElementById("OtherLabel");
     var RegularExpressionsElement = document.getElementById("RegularExpressionsLabel");
     var ToolSpecificElement = document.getElementById("ToolSpecificLabel");
+    var OthElement = document.getElementById("OthLabel");
 
     OtherElement.innerHTML = '&thinsp; Other (' + Other + ")";
     RegularExpressionsElement.innerHTML = "&thinsp; Regular Expressions (" + RegExpr + ")";
     ToolSpecificElement.innerHTML = "&thinsp; Tool Specific(" + Tools + ")";
+    var sum = sumOtherDefects(Other, RegExpr, Tools);
+    OthElement.innerHTML = " Other (" + sum + ")";
 }
 
 //Setup tree map and shows it
 function runTreeMap() {
-    removeChart();
     var title = document.getElementById("main-title");
-    title.innerHTML = "Treemap view of project";
-    var graphButtonDiv = document.getElementById("sub-title");
-    graphButtonDiv.style.display = 'none';
+    title.innerHTML = "𝕌𝔸𝕍";
 
     var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
     var finalJson =  createJsonTreeMap(packages);
     treeMapBuilder.createTreeMap({
         title: ""
     }, {
-        fileName: "Test Project",
+        fileName: projectName,
         values: finalJson
     });
 }
 
 //Setup graph and shows it
 function runGraph() {
-    removeChart();
     packagesLevel = true;
     graphTraceIndex = 0;
     var graphButtonDiv = document.getElementById("sub-title");

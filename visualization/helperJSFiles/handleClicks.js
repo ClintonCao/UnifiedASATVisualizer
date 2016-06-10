@@ -67,9 +67,12 @@ function handleClickColorScale(radioButton) {
 		backgroundObject.setColorMethod(0);
 	} else if ( radioButton.value == "asat" ){
 		setASATColoured();
+		sourceCode.setColorMethod(0); 
 		backgroundObject.setColorMethod(1);
 	} else if ( radioButton.value == "category" ){
 		setCategoriesColoured();
+				console.log("category clicked");
+		sourceCode.setColorMethod(1); 
 		backgroundObject.setColorMethod(2);
 	}
 }
@@ -104,7 +107,6 @@ function handleClickRelativeColours(radioButton) {
 * handles the clicks on Sat categories
 */
 function handleClickCategorySat(value, checked) {
-		
  	if (checked) {
         var index = acceptedCategories.indexOf(value);
        if (index < 0) {
@@ -116,8 +118,6 @@ function handleClickCategorySat(value, checked) {
             acceptedCategories.splice(index, 1);
         }
     }
-    //$('.toggle').attr('data-toggle');
-    //setTimeout(function(){ }, 100);
 }
 
 /*

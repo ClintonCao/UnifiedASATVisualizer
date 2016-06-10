@@ -1,3 +1,4 @@
+var projectName = "Test Project";
 var inputData = 
 [
   {
@@ -2407,7 +2408,7 @@ var inputData =
             "ruleName": "FinalParameters"
           }
         ],
-        "loc": 6060,
+        "loc": 1260,
         "packageName": "Brain",
         "numberOfWarnings": 186,
         "warningTypes": [
@@ -5814,7 +5815,7 @@ var inputData =
             "ruleName": "CollapsibleIfStatements"
           }
         ],
-        "loc": 7150,
+        "loc": 1550,
         "packageName": "Brain",
         "numberOfWarnings": 247,
         "warningTypes": [
@@ -27117,7 +27118,7 @@ var inputData =
             "ruleName": "MagicNumber"
           }
         ],
-        "loc": 7000,
+        "loc": 3000,
         "packageName": "junitTests",
         "numberOfWarnings": 27,
         "warningTypes": [
@@ -39716,7 +39717,7 @@ var inputData =
             "ruleName": "AvoidUsingOctalValues"
           }
         ],
-        "loc": 8280,
+        "loc": 2280,
         "packageName": "junitTests",
         "numberOfWarnings": 1039,
         "warningTypes": [
@@ -44759,7 +44760,7 @@ var inputData =
             "ruleName": "JumbledIncrementer"
           }
         ],
-        "loc": 185,
+        "loc": 585,
         "packageName": "GUI",
         "numberOfWarnings": 56,
         "warningTypes": [

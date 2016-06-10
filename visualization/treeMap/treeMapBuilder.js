@@ -1,10 +1,13 @@
-var treeMapBuilder = (function() {
+	var treeMapBuilder = (function() {
 
     // initialize all variables
-    var treemap, root, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
+    var treemap, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
     var refreshing = false;
-    var currentNodePath = []
-	
+    var upperLevel = true;
+    var sourceCodeLevel = false;
+	var currentNodePath = [];
+	var root;
+
     // initialize the entire treemap up till displaying
     function initializeTheTree(root) {
         initialize(root, width, height);
@@ -21,15 +24,21 @@ var treeMapBuilder = (function() {
         root.depth = 0;
     }
 
+
     /*
-     * Will put the #warnings for each specific ASAT and warning type
+     * Will put the #warnings for each ASAT
      */
-    function updateWarningsCountInUI(d) {
+    function updateASATWarningsCount(d) {
         var CheckStyleWarnings = sumNodeForASAT(d, getTotalASATWarning("CheckStyle"));
         var PMDWarnings = sumNodeForASAT(d, getTotalASATWarning("PMD"));
         var FindBugsWarnings = sumNodeForASAT(d, getTotalASATWarning("FindBugs"));
         appendInfoToSAT(CheckStyleWarnings, PMDWarnings, FindBugsWarnings);
+    }
 
+    /*
+     * Will put the #warnings for the function defects category
+     */
+    function updateFunctionalDefectsCount(d) {
         var CheckWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Check"));
         var ConcWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Concurrency"));
         var ErrorWarnings = sumNodeForASAT(d, getTotalCategoryWarning("ErrorHandling"));
@@ -38,7 +47,12 @@ var treeMapBuilder = (function() {
         var MigrationWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Migration"));
         var ResourceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Resource"));
         appendInfoToFunctionalDefects(CheckWarnings, ConcWarnings, ErrorWarnings, InterfaceWarnings, LogicWarnings, MigrationWarnings, ResourceWarnings);
+    }
 
+    /*
+     * Will put the #warnings for the maintainability defects category
+     */
+    function updateMaintainabilityDefectsCount(d) {
         var BestPracticeWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Best Practices"));
         var CodeStructureWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Code Structure"));
         var DocConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Documentation Conventions"));
@@ -49,12 +63,26 @@ var treeMapBuilder = (function() {
         var ReduncanciesWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Redundancies"));
         var StyleConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Style Conventions"));
         appendInfoToMaintainabilityDefects(BestPracticeWarnings, CodeStructureWarnings, DocConventionsWarnings, MetricWarnings, NamingConventionsWarnings, OODesignWarnings, SimplificationsWarnings, ReduncanciesWarnings, StyleConventionsWarnings);
+    }
 
+    /*
+     * Will put the #warnings for the other defects category
+     */
+    function updateOtherDefectsCount(d) {
         var OtherWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Other"));
         var RegularExpressionsWarnings =sumNodeForASAT(d, getTotalCategoryWarning("Regular Expressions"));
         var ToolSpecificWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Tool Specific"));
         appendInfoToOtherDefects(OtherWarnings, RegularExpressionsWarnings, ToolSpecificWarnings);
+    }
 
+    /*
+     * Will put the #warnings for each specific ASAT and warning type
+     */
+    function updateWarningsCountInUI(d) {
+        updateASATWarningsCount(d);
+        updateFunctionalDefectsCount(d);
+        updateMaintainabilityDefectsCount(d);
+        updateOtherDefectsCount(d);
     }
 
     // Aggregate the values for internal nodes. This is normally done by the
@@ -100,21 +128,31 @@ var treeMapBuilder = (function() {
             });
         }
     }
-    /* 
+	
+	  // Code to find a certain node in the treemap
+        function findNode(path, root) {
+            var node = root;
+            for (var i = 0; i < path.length; i++) {
+                node = node._children[path[i]]
+            }
+            return node;
+        }
+
+    /*
      * Sums for each node how many warnings they have.
-     * It still checks on Project and Test Project hard coded to find wheter it is on 
-     * package level or class level, this should be changed to a dynamic way in the future.
+     * It still checks on Project and Test Project hard coded to find wheter it is on
+     * TODO: package level or class level, this should be changed to a dynamic way in the future.
      */
     function sumNodeForASAT(d, root) {
         var nodeAndSummation = [];
         var sum = 0;
-        if (d.fileName == "Project" || d.fileName == "Test Project") {
+        if (d.fileName == projectName) {
             for (var i = 0; i < root.length; i++) {
                 for (var j = 0; j < root[i].length; j++) {
                     sum += root[i][j].amountOfWarnings;
-                }
-            }
-            return sum;
+                 }
+             }
+             return sum;
         } else {
             for (var i = 0; i < root.length; i++) {
                 if (root[i].packageName == d.fileName) {
@@ -127,35 +165,27 @@ var treeMapBuilder = (function() {
         }
         return -1;
     }
+
     //Renders the chart with given depth and children
 	function display(d) {
 		// id for all squares
 		var id = 0;
 
-        /*
-         * Creates a tooltip that will be shown on hover over a node
-         */
-        var tooltip = d3.select("#chart")
-            .append("div")
-			.attr("id","d3-tip")
-            .style("position", "absolute")
-            .style("z-index", "10")
-            .style("visibility", "hidden");
+        setPath(d, name(d));
 
-        /* 
+        /*
          * Creates the navigation balk where you can keep track of
          * which level you are and which you can use to navigate back
          */
-        grandparent
-            .datum(d.parent)
-            .on("click", navigationUp)
-            .select("text")
-            .text(name(d))
-            .style("fill", function() {
-                return '#333333';
-            });
+        // grandparent
+        //     .datum(d.parent)
+        //     .on("click", navigationUp)
+        //     .select("text")
+        //     .style("fill", function() {
+        //         return '#333333';
+        //     });
 
-        var g1 = svg.insert("g", ".grandparent")
+        var g1 = svg.insert("g", ".chart-and-code")
             .datum(d)
             .attr("class", "depth");
 
@@ -170,14 +200,12 @@ var treeMapBuilder = (function() {
             .classed("children", true)
             .on("click", navigationDown)
             .on("mouseover", function(d) {
-                tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
-                tooltip.style("visibility", "visible");
-            })
-            .on("mousemove", function(d) {
-                tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+				$('#extra-info-div').css('display', 'inline-block');
+				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
             })
             .on("mouseout", function(d) {
-                tooltip.style("visibility", "hidden");
+				$('#extra-info-div').html("");
+				$('#extra-info-div').css('display', 'none');
             });
 
         var childrenArray = g.filter(function(d) {
@@ -186,23 +214,24 @@ var treeMapBuilder = (function() {
 			// bottom layer now we add a click to go to the code editor
 			if ( childrenArray[0].length == 0 ){
 				g.on("click", toSourceCode).on("mouseover", function(d) {
-                    tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
-                    tooltip.style("visibility", "visible");
+
             	})
             	.on("mousemove", function(d) {
-                    tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+					$('#extra-info-div') .css('display', 'inline-block')
+					$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
             	})
             	.on("mouseout", function(d) {
-                    tooltip.style("visibility", "hidden");
+					$('#extra-info-div').html("");
+				$('#extra-info-div') .css('display', 'none')
             	});
 			}
-            
-        /* 
+
+        /*
          * This function will be triggered when the user clicks on a button
          * It will refresh the data in the treemap according to which button is clicked
          */
         $('.updateContent').change(function() {
-            if (true && !refreshing) {
+            if (!refreshing) {
                 refreshing = true;
                 $(this).disable = true
                 if ($(this).prop('name') == "sat") {
@@ -212,8 +241,11 @@ var treeMapBuilder = (function() {
                 } else if($(this).prop('name') == "relative") {
                     handleClickRelativeColours($(this));
                 }
-                fastReload();
-                // animation time of the toggle button
+                if(sourceCodeLevel) {
+                    sourceCode.fullReload();
+                } else {
+                    fastReload();
+                }
                 var millisecondsToWait = 0;
                 setTimeout(function() {
                     refreshing = false;
@@ -225,21 +257,12 @@ var treeMapBuilder = (function() {
         function fastReload() {
             reloadContent();
             var newNode = findNode(currentNodePath, root);
-            // g.filter(function(newNode) {
-            //     return newNode;
-            // });
             transition(newNode);
         }
 
-        // Code to find a certain node in the treemap
-        function findNode(path, root) {
-            var node = root;
-            for (var i = 0; i < path.length; i++) {
-                node = node._children[path[i]]
-            }
-            return node;
-        }
 
+
+        // Updates all warning counts for all ASATS and categories
         updateWarningsCountInUI(d);
 
         function reloadContent() {
@@ -276,13 +299,12 @@ var treeMapBuilder = (function() {
 				var ratios =  backgroundObject.getRatios(d);
 				var weight = d.warnings / d.value;
 				id +=1;
-                console.log(d.fileName);
 				var gradientBackground = backgroundObject.getBackground(svg, ratios,weight, id,x(d.x + d.dx),y(d.y + d.dy) );
                 return "url(#gradient"+ id + ")";
             })
             .append("title");
-		
-        /* 
+
+        /*
          * Sets in the lower right corner of a node the filename
          */
         children.append("text")
@@ -322,7 +344,7 @@ var treeMapBuilder = (function() {
             .attr("class", "ptext")
             .attr("dy", ".75em");
 
-        /* 
+        /*
          * Sets in the upper left corner of a node the filename
          */
         t.append("tspan")
@@ -333,7 +355,7 @@ var treeMapBuilder = (function() {
                 return d.fileName;
             });
 
-        /* 
+        /*
          * Sets in the upper left corner of a node the amount of warnings
          */
         t.append("tspan")
@@ -375,8 +397,8 @@ var treeMapBuilder = (function() {
 				var gradientBackground = backgroundGradient.getBackground(svg);
                 return "url(#gradient)";
                 //return backgroundGradient.getBackground();
-				
-				
+
+
             });*/
 
         function navigationDown(d) {
@@ -385,8 +407,14 @@ var treeMapBuilder = (function() {
         }
 
         function toSourceCode(d) {
-        	sessionStorage.setItem('fileName', d.fileName);
-			window.open('codeEditor.html','_self',false)
+            sourceCodeLevel = true;
+            $("#normalButton").prop('checked', false);
+            $("#asatButton").prop('checked', true);
+            $("#asatButton").click();
+            setASATColoured();
+            sourceCode.show(d, name(d));
+            setPath(d, name(d));
+        	$('.CodeMirror').width(opts.width).height(opts.height - 30);
         }
 
         function findChildNumber(d, parent) {
@@ -406,11 +434,11 @@ var treeMapBuilder = (function() {
         function transition(d) {
 
             if (transitioning || !d) {
+                upperLevel = true;
                 return;
             }
+            upperLevel = false;
             transitioning = true;
-
-            tooltip.style("visibility", "hidden");
 
             var g2 = display(d),
                 t1 = g1.transition().duration(100),
@@ -446,6 +474,60 @@ var treeMapBuilder = (function() {
             });
         }
 
+		function goToRelevantLevel(indexString, fromSourceCode) {
+            sourceCodeLevel = false;
+            $("#normalButton").prop('checked', true);
+            $("#asatButton").prop('checked', false);
+            $("#normalButton").click();
+			var index = parseInt(indexString.substring(indexString.length-2,indexString.length-1));
+			
+			while (currentNodePath.length > index){
+				currentNodePath.pop();
+			}
+				var d = findNode(currentNodePath, root);
+			if(fromSourceCode) {
+				sourceCode.hide();
+				transition(d);
+			}else{
+				transition(d);
+				display(d);
+			}
+		}
+		function setPath(d, path) {
+			var subTitleDiv = document.getElementById("current-path");
+			if(path.indexOf('/') > -1) {
+				var pathFirstPart = path.substring(0, path.lastIndexOf("/") + 1);
+				var pathSecondPart = path.split(/[/ ]+/).pop();
+				var allPreviousLevels = path.split("/");
+                var newPath = "";
+                var usedIDs = [];
+                for(var i = 0; i < allPreviousLevels.length - 1; i++) {
+                    var id = "prevLocation" + i;
+                    newPath += '<span class="path-span" id="\'' + ("prevLocation" + i) + '\'">' + allPreviousLevels[i] + '</span>/ ';
+                    usedIDs.push(id);
+                }
+                var index = allPreviousLevels.length - 1;
+                newPath += '<span id="currentLocation">' + allPreviousLevels[allPreviousLevels.length - 1] + '</span>';
+                subTitleDiv.innerHTML = newPath;
+				if(pathSecondPart.indexOf("java") > -1) {
+					for(var i = 0; i < usedIDs.length; i++) {
+						var stringID = "'" + usedIDs[i] + "'";
+						document.getElementById(stringID).addEventListener("click", function() {
+							goToRelevantLevel($(this).attr('id'), true);
+							}, false);
+					}
+				} else {
+                    for(var i = 0; i < usedIDs.length; i++) {
+                        var stringID = "'" + usedIDs[i] + "'";
+                        document.getElementById(stringID).addEventListener("click", function() {
+                            goToRelevantLevel($(this).attr('id'), false);
+                            }, false);
+                    }
+				}
+			} else {
+			   subTitleDiv.innerHTML = " <span id='currentLocation'>" + path + "</span>";
+			}
+		}
         return g;
     }
 
@@ -491,13 +573,14 @@ var treeMapBuilder = (function() {
                 return y(d.y + d.dy) - y(d.y);
             });
     }
-    //title above the chart
+
+    // Sets the current path in a specific div and
+    // gives the return button the text
     function name(d) {
-        return d.parent ?
-            name(d.parent) + " / " + d.fileName : //+ " (" + formatNumber(d.warnings) + ")" :
-            d.fileName; // + " (" + formatNumber(d.warnings) + ")";
+        var path = d.parent ? name(d.parent) + " / " + d.fileName : d.fileName;
+        return path;
     }
-	
+
     function setTheVariables(o, data) {
         // hard coded the depth where the click should go to source code (no zoom)
         maxDepth = 2
@@ -514,8 +597,6 @@ var treeMapBuilder = (function() {
             width: window.innerWidth - 750,
             height: window.innerHeight - 175
         };
-        // Remove the chart if there is already one.
-        removeChart();
         // Setting up some values about number format(rounding) and marigns
         opts = $.extend(true, {}, defaults, o);
         formatNumber = d3.format(opts.format);
@@ -523,8 +604,10 @@ var treeMapBuilder = (function() {
         margin = opts.margin;
         theight = 36 + 16;
 
-        // size of the chart 
-        $('#chart').width(opts.width).height(opts.height);
+        // size of the chart
+        $('#chart-and-code').width(opts.width + 70).height(opts.height - 30);
+        $('#chart').width(opts.width).height(0);
+        $('#code-div').width(opts.width).height(opts.height - 30);
         width = opts.width - margin.left - margin.right;
         height = opts.height - margin.top - margin.bottom;
         // Uses a range of 100 values between green and red
@@ -553,25 +636,25 @@ var treeMapBuilder = (function() {
         // creating the chart and appending it to views
         svg = d3.select("#chart").append("svg")
             .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.bottom + margin.top)
+            .attr("height", height + margin.bottom + margin.top - 30)
             .style("margin-left", -margin.left + "px")
             .style("margin.right", -margin.right + "px")
-            .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .style("shape-rendering", "crispEdges");
 
-        grandparent = svg.append("g")
-            .attr("class", "grandparent");
+        // grandparent = svg.append("g")
+        //     .attr("class", "grandparent")
+        //     .attr("id", "grandparent");
 
-        grandparent.append("rect")
-            .attr("y", -margin.top)
-            .attr("width", width)
-            .attr("height", margin.top);
+        // grandparent.append("rect")
+        //     .attr("y", -margin.top)
+        //     .attr("width", width)
+        //     .attr("height", margin.top);
 
-        grandparent.append("text")
-            .attr("x", 6)
-            .attr("y", 6 - margin.top)
-            .attr("dy", ".75em")
+        // grandparent.append("text")
+        //     .attr("x", 6)
+        //     .attr("y", 6 - margin.top)
+        //     .attr("dy", ".75em")
 
         if (data instanceof Array) {
             root = {
@@ -582,7 +665,7 @@ var treeMapBuilder = (function() {
             root = data;
         }
     }
-	
+
     return {
         // The main method which is called to create the treeMap.
         // This calls all the methods needed like initialize.
@@ -593,7 +676,6 @@ var treeMapBuilder = (function() {
             initializeTheTree(root);
             display(root);
         }
-
     };
 
 }());
