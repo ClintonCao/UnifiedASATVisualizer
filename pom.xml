@@ -9,6 +9,29 @@
 
   <name>TSE</name>
   <url>http://maven.apache.org</url>
+  
+    <!-- Developers for this project. -->
+    <developers>
+      <developer>
+        <name>Boning Gong</name>
+      </developer>
+      
+      <developer>
+        <name>Clinton Cao</name>
+      </developer>
+      
+      <developer>
+        <name>Michiel Doesburg</name>
+      </developer>
+      
+      <developer>
+        <name>Sunwei Wang</name>
+      </developer>
+      
+      <developer>
+        <name>Tim Buckers</name>
+      </developer>
+    </developers>
 
   <build>
     <plugins>

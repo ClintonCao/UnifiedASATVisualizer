@@ -28,15 +28,15 @@
             </Pane>
          </children>
       </AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="746.0" SplitPane.resizableWithParent="false">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="418.0" prefWidth="812.0" SplitPane.resizableWithParent="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9e5ff" height="44.0" layoutX="140.0" layoutY="216.0" stroke="BLACK" strokeType="INSIDE" width="686.0" />
-            <Button fx:id="selectButton" layoutX="11.0" layoutY="215.0" mnemonicParsing="false" onMouseClicked="#selectButtonEvent" prefHeight="38.0" prefWidth="122.0" text="Select ">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9e5ff" height="44.0" layoutX="137.0" layoutY="216.0" stroke="BLACK" strokeType="INSIDE" width="686.0" />
+            <Button fx:id="selectButton" layoutX="9.0" layoutY="214.0" mnemonicParsing="false" onMouseClicked="#selectButtonEvent" prefHeight="38.0" prefWidth="122.0" text="Select ">
                <font>
                   <Font name="Gill Sans MT" size="25.0" />
                </font>
             </Button>
-            <Text fx:id="projectSourcePathText" layoutX="140.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select your project folder." textAlignment="CENTER" wrappingWidth="686.0">
+            <Text fx:id="projectSourcePathText" layoutX="137.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select your project folder." textAlignment="CENTER" wrappingWidth="686.0">
                <font>
                   <Font name="Gill Sans MT" size="17.0" />
                </font>
@@ -52,7 +52,7 @@
                   <Font name="Gill Sans MT" size="22.0" />
                </font>
             </Text>
-            <Text layoutX="128.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please make sure you have run mvn site before selecting your project folder." wrappingWidth="714.826171875">
+            <Text layoutX="143.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please make sure you have run mvn site before clicking on Visualize." wrappingWidth="614.826171875">
                <font>
                   <Font name="Gill Sans MT" size="22.0" />
                </font>

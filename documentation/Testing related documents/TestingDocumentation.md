@@ -10,4 +10,10 @@ The coverage for this week has improved from 76% to 97.8%. We improved the cover
 #### Test coverage of the system
 Almost all packages have 100% coverage. The only package that does not have 100% is `BlueTurtle.summarizers`. The reason for this is because the default case `incrementNumberOfWarnings` is not covered. It is not covered because that case can never be reached. We are using `enums` in order to increment the number of warnings. If `incrementNumberOfWarnings`called with a non-existing `enum`, then the `enum` itself will throw an `IllegalArgumentException`. Therefore the default case can never be reached.
 
+## Test coverage (10-June-2016)
+
+#### Test coverage of the system
+The coverage this week has dropped by 0.005%. This is because some extra lines are added in the `handle` method of `VisualizeButtonEventHandler`. This class is not excluded in the report of JaCoCo and therefore the coverage dropped by a little bit.
+
+
  

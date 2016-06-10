@@ -210,7 +210,7 @@ public class ComponentSummarizerTest {
 	@Test
 	public void testNumPMDWarningsIsNotZeroAfterSummarise() {
 		ComponentSummarizer cs = new ComponentSummarizer(fileName, filePath, packageName);
-		warningList.add(new PMDWarning(filePath, fileName, 3, packageName, "test", "test2", "test3", "Class"));
+		warningList.add(new PMDWarning(filePath, fileName, 3, packageName, "test", "test2", "test3", "test4", "Class"));
 		cs.summarise(warningList);
 		assertSame(1, cs.numberOfPMDWarnings);
 	}

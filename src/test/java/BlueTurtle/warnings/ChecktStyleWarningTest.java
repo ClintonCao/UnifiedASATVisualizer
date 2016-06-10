@@ -102,7 +102,7 @@ public class ChecktStyleWarningTest {
 	 */
 	@Test
 	public void testEqualsFalsePMDandCheckStyle() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 1, "", "", "", ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, "", "", "", ruleName, "", classification);
 		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName, classification);
 		assertNotEquals(expected, actual);
 	}

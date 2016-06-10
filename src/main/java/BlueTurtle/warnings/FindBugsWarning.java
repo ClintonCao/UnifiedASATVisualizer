@@ -12,8 +12,6 @@ import lombok.Setter;
 public class FindBugsWarning extends Warning {
 
 	
-	@Getter @Setter private int lineNumber;
-	@Getter @Setter private String message;
 	@Getter @Setter private String category;
 	@Getter @Setter private String priority;
 
@@ -39,9 +37,7 @@ public class FindBugsWarning extends Warning {
 	 *            of the violated rule of the warning.
 	 */
 	public FindBugsWarning(String filePath, String filename, int line, String message, String category, String priority, String ruleName, String classification) {
-		super(filePath, filename, "FindBugs", ruleName, classification);
-		setLineNumber(line);
-		setMessage(message);
+		super(filePath, filename, line, "FindBugs", ruleName, message, classification);
 		setCategory(category);
 		setPriority(priority);
 	}
@@ -63,7 +59,7 @@ public class FindBugsWarning extends Warning {
 
 		FindBugsWarning that = (FindBugsWarning) other;
 
-		return (filePath.equals(that.filePath) && fileName.equals(that.fileName) && lineNumber == that.lineNumber
+		return (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
 				&& message.equals(that.message) && category.equals(that.category) && classification.equals(that.classification)
 				&& priority.equals(that.priority) && type.equals(that.type) && ruleName.equals(that.ruleName));
 	}
@@ -73,7 +69,7 @@ public class FindBugsWarning extends Warning {
 	 */
 	@Override
 	public int hashCode() {
-		return java.util.Objects.hash(filePath, fileName, type, lineNumber, message, category, priority, ruleName, classification);
+		return java.util.Objects.hash(filePath, fileName, type, line, message, category, priority, ruleName, classification);
 	}
 	
 	/**
@@ -81,7 +77,7 @@ public class FindBugsWarning extends Warning {
 	 */
 	@Override
 	public String toString() {
-		return "FindBugsWarning [lineNumber=" + lineNumber + ", message=" + message + ", category=" + category
+		return "FindBugsWarning [lineNumber=" + line + ", message=" + message + ", category=" + category
 				+ ", priority=" + priority + ", classification="
 				+ classification + ", fileName=" + fileName + ", type=" + type + ", filePath=" + filePath
 				+ ", ruleName=" + ruleName + "]";
