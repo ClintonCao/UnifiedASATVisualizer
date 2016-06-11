@@ -12,7 +12,7 @@ var backgroundObject = (function() {
 		greenScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(greenTints);
 		blueTints = [d3.rgb(colours.lightBlue()), d3.rgb(colours.darkBlue())];	
 		blueScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(blueTints);
-		orangeTints = [d3.rgb(colours.normalOrange()), d3.rgb(colours.darkOrange())];	
+		orangeTints = [d3.rgb(colours.lightOrange()), d3.rgb(colours.darkOrange())];	
 		orangeScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(orangeTints);
 		grayTints = [d3.rgb(colours.grey()), d3.rgb(colours.grey())];	
 		grayScale =  d3.scale.linear().domain([0, 0]).interpolate(d3.interpolateHcl).range(grayTints);
@@ -244,7 +244,7 @@ var backgroundObject = (function() {
 		
 			var ratioFunctionalDefects = Math.round(constant * d.warningsFunctionalDefects / warningsTotal);	
 			ratioArrayCategory.push(ratioFunctionalDefects);
-			
+
 			return [ratioArrayASAT,ratioArrayCategory]
 		}
     }

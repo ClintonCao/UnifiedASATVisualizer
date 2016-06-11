@@ -20,7 +20,7 @@ var colours = (function() {
 	var lightGreen = "#679a64";
 	var lightRed = "#9c7777";
 	var lightBlue = "#6f87a2";
-	var lightOrange = "#FFD3C2";
+	var lightOrange = "#F59C6F";
 
 	return {
         white: function() { return white; },
