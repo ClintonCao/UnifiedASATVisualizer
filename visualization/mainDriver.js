@@ -15,7 +15,7 @@ function setAllCheckboxesOnDefault() {
 	$(".updateContent").prop('checked', false); 
 	$("#treemapButton").prop('checked', true);
 	$("#normalButton").prop('checked', true);
-	$(".FunctionalDefects").click();
+	
 	$(".MaintainabilityDefects").click();
 	$(".StyleConventions").click();
 	$(".sats").click();

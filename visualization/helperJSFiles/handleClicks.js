@@ -108,7 +108,12 @@ function handleClickRelativeColours(radioButton) {
 */
 function handleClickCategorySat(value, checked) {
 	if(value == "FunctionalDefects"){
+		//categoryMapper.warningsFromCategorize(0);
+		console.log("boning");
 		
+	$(".FunctionalDefects").click();
+	$(".FunctionalDefects").prop('checked', true); 
+	
 	}
  	if (checked) {
         var index = acceptedCategories.indexOf(value);
@@ -121,6 +126,7 @@ function handleClickCategorySat(value, checked) {
             acceptedCategories.splice(index, 1);
         }
     }
+	console.log(acceptedCategories);
 }
 
 /*
