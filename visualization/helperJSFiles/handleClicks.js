@@ -82,11 +82,6 @@ function handleClickColorScale(radioButton) {
  * Handles click for relative
  */
 function handleClickRelativeColours(radioButton) {
-	
-	var normalButtonElement = document.getElementById("normalButton");
-	var asatButtonElement = document.getElementById("asatButton");
-	var categoryButtonElement = document.getElementById("categoryButton");
-
 	if($(radioButton).prop('checked')) {
 		backgroundObject.setColorsRelative();
 	} else {
@@ -103,7 +98,6 @@ function handleClickRelativeColours(radioButton) {
 		setCategoriesColoured();
 		backgroundObject.setColorMethod(2);
 	}
-	
 }
 
 /*
@@ -120,7 +114,7 @@ function handleClickCategorySat(value, checked) {
 		$(arrayClasses[index]).prop('checked', checked); 
 		$(arrayClasses[index]).click();
 		toggleAcceptedCategories([arrayClasses[index]],checked);
-	}else{
+	} else{
 		if (checked) {
 			var index = acceptedCategories.indexOf(value);
 		   if (index < 0) {
@@ -145,23 +139,4 @@ function handleClickVisualiser(radioButton) {
     } else if (radioButton.value == "treemap") {
         runTreeMap();
     }
-}
-
-/*
- * toggle all category checkboxes of a group
- */
-function handleClickCategory(category) {
-	// for next week
-	/*
-	if( category == "FunctionDefects" ){
-		$('.FunctionalDefects').click()
-		
-		
-	}else if( category == "MaintainabilityDefects" ){
-		$('.MaintainabilityDefects').click()
-		
-		
-	}else if( category == "StyleConventions" ){
-		$('.StyleConventions').click()
-	}*/
 }

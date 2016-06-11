@@ -26,57 +26,57 @@
     }
 
     /*
-     * Will put the #warnings for each ASAT
+     * Will set the number of current warnings for each ASAT
      */
     function updateASATWarningsCount(d) {
-        var CheckStyleWarnings = sumNodeForASAT(d, getTotalASATWarning("CheckStyle", currentClassName));
-        var PMDWarnings = sumNodeForASAT(d, getTotalASATWarning("PMD", currentClassName));
-        var FindBugsWarnings = sumNodeForASAT(d, getTotalASATWarning("FindBugs", currentClassName));
+        var CheckStyleWarnings = sumNodeForASAT(d, getTotalASATWarning("CheckStyle", d.fileName));
+        var PMDWarnings = sumNodeForASAT(d, getTotalASATWarning("PMD", d.fileName));
+        var FindBugsWarnings = sumNodeForASAT(d, getTotalASATWarning("FindBugs", d.fileName));
         appendInfoToSAT(CheckStyleWarnings, PMDWarnings, FindBugsWarnings);
     }
 
     /*
-     * Will put the #warnings for the function defects category
+     * Will set the number of current warnings for the function defects category
      */
     function updateFunctionalDefectsCount(d) {
-        var CheckWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Check", currentClassName));
-        var ConcWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Concurrency", currentClassName));
-        var ErrorWarnings = sumNodeForASAT(d, getTotalCategoryWarning("ErrorHandling", currentClassName));
-        var InterfaceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Interface", currentClassName));
-        var LogicWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Logic", currentClassName));
-        var MigrationWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Migration", currentClassName));
-        var ResourceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Resource", currentClassName));
+        var CheckWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Check", d.fileName));
+        var ConcWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Concurrency", d.fileName));
+        var ErrorWarnings = sumNodeForASAT(d, getTotalCategoryWarning("ErrorHandling", d.fileName));
+        var InterfaceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Interface", d.fileName));
+        var LogicWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Logic", d.fileName));
+        var MigrationWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Migration", d.fileName));
+        var ResourceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Resource", d.fileName));
         appendInfoToFunctionalDefects(CheckWarnings, ConcWarnings, ErrorWarnings, InterfaceWarnings, LogicWarnings, MigrationWarnings, ResourceWarnings);
     }
 
     /*
-     * Will put the #warnings for the maintainability defects category
+     * Will set the number of current warnings for the maintainability defects category
      */
     function updateMaintainabilityDefectsCount(d) {
-        var BestPracticeWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Best Practices", currentClassName));
-        var CodeStructureWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Code Structure", currentClassName));
-        var DocConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Documentation Conventions", currentClassName));
-        var MetricWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Metric", currentClassName));
-        var NamingConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Naming Conventions", currentClassName));
-        var OODesignWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Object Oriented Design", currentClassName));
-        var SimplificationsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Simplifications", currentClassName));
-        var ReduncanciesWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Redundancies", currentClassName));
-        var StyleConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Style Conventions", currentClassName));
+        var BestPracticeWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Best Practices", d.fileName));
+        var CodeStructureWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Code Structure", d.fileName));
+        var DocConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Documentation Conventions", d.fileName));
+        var MetricWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Metric", d.fileName));
+        var NamingConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Naming Conventions", d.fileName));
+        var OODesignWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Object Oriented Design", d.fileName));
+        var SimplificationsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Simplifications", d.fileName));
+        var ReduncanciesWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Redundancies", d.fileName));
+        var StyleConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Style Conventions", d.fileName));
         appendInfoToMaintainabilityDefects(BestPracticeWarnings, CodeStructureWarnings, DocConventionsWarnings, MetricWarnings, NamingConventionsWarnings, OODesignWarnings, SimplificationsWarnings, ReduncanciesWarnings, StyleConventionsWarnings);
     }
 
     /*
-     * Will put the #warnings for the other defects category
+     * Will set the number of current warnings for the other defects category
      */
     function updateOtherDefectsCount(d) {
-        var OtherWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Other", currentClassName));
-        var RegularExpressionsWarnings =sumNodeForASAT(d, getTotalCategoryWarning("Regular Expressions", currentClassName));
-        var ToolSpecificWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Tool Specific", currentClassName));
+        var OtherWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Other", d.fileName));
+        var RegularExpressionsWarnings =sumNodeForASAT(d, getTotalCategoryWarning("Regular Expressions", d.fileName));
+        var ToolSpecificWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Tool Specific", d.fileName));
         appendInfoToOtherDefects(OtherWarnings, RegularExpressionsWarnings, ToolSpecificWarnings);
     }
 
     /*
-     * Will put the #warnings for each specific ASAT and warning type
+     * Will set the amount of current warnings for each specific ASAT and warning type
      */
     function updateWarningsCountInUI(d) {
         currentClassName = d.fileName;
@@ -388,17 +388,6 @@
             }
             return output.slice(0, -3);
         }
-		/*
-		// code for normal color based on amount of warnings relative to lines
-        g.selectAll("rect")
-            .style("fill", function(d) {
-                var ratio = 100 * d.warnings / d.value;
-				var gradientBackground = backgroundGradient.getBackground(svg);
-                return "url(#gradient)";
-                //return backgroundGradient.getBackground();
-
-
-            });*/
 
         function navigationDown(d) {
             currentNodePath.push(findChildNumber(d, d.parent));
@@ -408,9 +397,14 @@
         function toSourceCode(d) {
             sourceCoded = d;
             sourceCodeLevel = true;
-            $("#normalButton").prop('checked', false);
-            $("#asatButton").prop('checked', true);
-            $("#asatButton").click();
+            if ( document.getElementById("asatButton").checked || document.getElementById("normalButton").checked ){
+                $("#normalButton").prop('checked', false);
+                $("#asatButton").prop('checked', true);
+                $("#asatButton").click();
+            } else if ( document.getElementById("categoryButton").checked ){
+                $("#categoryButton").prop('checked', true);
+                $("#categoryButton").click();
+            }
             setASATColoured();
             updateWarningsCountInUI(d);
             sourceCode.show(d, name(d));
@@ -467,9 +461,13 @@
 
 		function goToRelevantLevel(indexString, fromSourceCode) {
             sourceCodeLevel = false;
-            $("#normalButton").prop('checked', true);
-            $("#asatButton").prop('checked', false);
-            $("#normalButton").click();
+            
+            if ( document.getElementById("asatButton").checked ){
+                $("#asatButton").click();
+            } else if ( document.getElementById("categoryButton").checked ){
+                $("#categoryButton").click();
+            }
+
 			var index = parseInt(indexString.substring(indexString.length-2,indexString.length-1));
 			
 			while (currentNodePath.length > index){
