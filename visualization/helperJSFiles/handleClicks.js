@@ -54,9 +54,9 @@ function setCategoriesColoured() {
 	CheckStyleElement.style.color = colours.white();
 	PMDElement.style.color = colours.white();
 	FindBugsElement.style.color = colours.white();
-	MaintainabilityDefectsElement.style.color = colours.normalOrange();
-	FunctionDefectsElement.style.color = colours.normalGreen();
-	OtherElement.style.color = colours.normalBlue();
+	MaintainabilityDefectsElement.style.color = colours.normalGreen();
+	FunctionDefectsElement.style.color = colours.normalBlue();
+	OtherElement.style.color = colours.normalOrange();
 }
 
 /*

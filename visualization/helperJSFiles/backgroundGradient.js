@@ -18,9 +18,7 @@ var backgroundObject = (function() {
 		grayScale =  d3.scale.linear().domain([0, 0]).interpolate(d3.interpolateHcl).range(grayTints);
 	}
 	/*
-	 *
 	 * Calculates the worst case of #warnings/loc
-	 *
 	 */ 
 	function getRelativeWarnings() {
 		var worstRatio = 0;
@@ -237,8 +235,6 @@ var backgroundObject = (function() {
 			ratioArrayASAT.push(ratioFindBugs);
 			
 			ratioArrayCategory = [];
-            var ratioFunctionalDefects = Math.round(constant * d.warningsFunctionalDefects / warningsTotal);	
-			ratioArrayCategory.push(ratioFunctionalDefects);
 			
             var ratioMaintainabilityDefects = Math.round(constant * d.warningsMaintainabilityDefects / warningsTotal);	
 			ratioArrayCategory.push(ratioMaintainabilityDefects);
@@ -246,6 +242,9 @@ var backgroundObject = (function() {
             var ratioOtherDefects = Math.round(constant * d.warningsOtherDefects / warningsTotal);	
 			ratioArrayCategory.push(ratioOtherDefects);
 		
+			var ratioFunctionalDefects = Math.round(constant * d.warningsFunctionalDefects / warningsTotal);	
+			ratioArrayCategory.push(ratioFunctionalDefects);
+			
 			return [ratioArrayASAT,ratioArrayCategory]
 		}
     }
