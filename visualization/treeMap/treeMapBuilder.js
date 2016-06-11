@@ -312,7 +312,7 @@
                 return d.fileName;
             })
             .style("fill", function() {
-                return '#FFFFFF';
+                return colours.white();
             })
             .call(textBottomRight);
 
@@ -348,7 +348,7 @@
          */
         t.append("tspan")
             .style("fill", function(d) {
-                return '#FFFFFF';
+                return colours.white();
             })
             .text(function(d) {
                 return d.fileName;
@@ -363,7 +363,7 @@
                 return d.warnings;
             })
             .style("fill", function(d) {
-                return '#FFFFFF';
+                return colours.white();
             });
         t.call(text);
 
@@ -651,6 +651,6 @@
             initializeTheTree(root);
             display(root);
         }
-    };
+    }
 
 }());

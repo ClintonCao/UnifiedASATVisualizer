@@ -27,36 +27,36 @@ function handleClickTreeMapTypeSat(value, checked) {
  * Sets all ASAT and Categorie labels to white
  */
 function setAllLabelsWhite() {
-	CheckStyleElement.style.color = "#FFFFFF";
-	PMDElement.style.color = "#FFFFFF";
-	FindBugsElement.style.color = "#FFFFFF";
-	MaintainabilityDefectsElement.style.color = "#FFFFFF";
-	FunctionDefectsElement.style.color = "#FFFFFF";
-	OtherElement.style.color = "#FFFFFF";
+	CheckStyleElement.style.color = colours.white();
+	PMDElement.style.color = colours.white();
+	FindBugsElement.style.color = colours.white();
+	MaintainabilityDefectsElement.style.color = colours.white();
+	FunctionDefectsElement.style.color = colours.white();
+	OtherElement.style.color = colours.white();
 }
 
 /*
  * Colors based on ASAT so the labels are given colours
  */
 function setASATColoured() {
-	CheckStyleElement.style.color = "#12B212";
-	PMDElement.style.color = "#ED4337"
-	FindBugsElement.style.color = "#75B4EB";
-	MaintainabilityDefectsElement.style.color = "#FFFFFF";
-	FunctionDefectsElement.style.color = "#FFFFFF";
-	OtherElement.style.color = "#FFFFFF";
+	CheckStyleElement.style.color = colours.normalGreen();
+	PMDElement.style.color = colours.normalRed();
+	FindBugsElement.style.color = colours.normalBlue();
+	MaintainabilityDefectsElement.style.color = colours.white();
+	FunctionDefectsElement.style.color = colours.white();
+	OtherElement.style.color = colours.white();
 }
 
 /*
  * Colors based on Categories so the labels are given colours
  */
 function setCategoriesColoured() {
-	CheckStyleElement.style.color = "#FFFFFF";
-	PMDElement.style.color = "#FFFFFF";
-	FindBugsElement.style.color = "#FFFFFF";
-	MaintainabilityDefectsElement.style.color = "#ED4337";
-	FunctionDefectsElement.style.color = "#12B212";
-	OtherElement.style.color = "#75B4EB";
+	CheckStyleElement.style.color = colours.white();
+	PMDElement.style.color = colours.white();
+	FindBugsElement.style.color = colours.white();
+	MaintainabilityDefectsElement.style.color = colours.normalRed();
+	FunctionDefectsElement.style.color = colours.normalGreen();
+	OtherElement.style.color = colours.normalBlue();
 }
 
 /*
@@ -72,7 +72,6 @@ function handleClickColorScale(radioButton) {
 		backgroundObject.setColorMethod(1);
 	} else if ( radioButton.value == "category" ){
 		setCategoriesColoured();
-				console.log("category clicked");
 		sourceCode.setColorMethod(1); 
 		backgroundObject.setColorMethod(2);
 	}
@@ -107,14 +106,15 @@ function handleClickCategorySat(value, checked) {
 	var arrayClasses = [".FunctionalDefects",".MaintainabilityDefects",".StyleConventions"];
 	var arrayNames = ["FunctionalDefects","MaintainabilityDefects","StyleConventions"];
 
-		console.log(value);
+	console.log(value);
 	var index = arrayNames.indexOf(value);
-		console.log(index);
-	if(index > -1){
+	console.log(index);
+
+	if(index > -1) {
 		$(arrayClasses[index]).prop('checked', checked); 
 		$(arrayClasses[index]).click();
 		toggleAcceptedCategories([arrayClasses[index]],checked);
-	} else{
+	} else {
 		if (checked) {
 			var index = acceptedCategories.indexOf(value);
 		   if (index < 0) {
