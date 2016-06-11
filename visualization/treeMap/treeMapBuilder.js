@@ -26,56 +26,6 @@ var treeMapBuilder = (function() {
     }
 
     /*
-     * Will set the number of current warnings for each ASAT
-     */
-    function updateASATWarningsCount(d) {
-        var CheckStyleWarnings = sumNodeForASAT(d, getTotalASATWarning("CheckStyle", d.fileName));
-        var PMDWarnings = sumNodeForASAT(d, getTotalASATWarning("PMD", d.fileName));
-        var FindBugsWarnings = sumNodeForASAT(d, getTotalASATWarning("FindBugs", d.fileName));
-        appendInfoToSAT(CheckStyleWarnings, PMDWarnings, FindBugsWarnings);
-    }
-
-    /*
-     * Will set the number of current warnings for the function defects category
-     */
-    function updateFunctionalDefectsCount(d) {
-        var CheckWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Check", d.fileName));
-        var ConcWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Concurrency", d.fileName));
-        var ErrorWarnings = sumNodeForASAT(d, getTotalCategoryWarning("ErrorHandling", d.fileName));
-        var InterfaceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Interface", d.fileName));
-        var LogicWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Logic", d.fileName));
-        var MigrationWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Migration", d.fileName));
-        var ResourceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Resource", d.fileName));
-        appendInfoToFunctionalDefects(CheckWarnings, ConcWarnings, ErrorWarnings, InterfaceWarnings, LogicWarnings, MigrationWarnings, ResourceWarnings);
-    }
-
-    /*
-     * Will set the number of current warnings for the maintainability defects category
-     */
-    function updateMaintainabilityDefectsCount(d) {
-        var BestPracticeWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Best Practices", d.fileName));
-        var CodeStructureWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Code Structure", d.fileName));
-        var DocConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Documentation Conventions", d.fileName));
-        var MetricWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Metric", d.fileName));
-        var NamingConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Naming Conventions", d.fileName));
-        var OODesignWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Object Oriented Design", d.fileName));
-        var SimplificationsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Simplifications", d.fileName));
-        var ReduncanciesWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Redundancies", d.fileName));
-        var StyleConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Style Conventions", d.fileName));
-        appendInfoToMaintainabilityDefects(BestPracticeWarnings, CodeStructureWarnings, DocConventionsWarnings, MetricWarnings, NamingConventionsWarnings, OODesignWarnings, SimplificationsWarnings, ReduncanciesWarnings, StyleConventionsWarnings);
-    }
-
-    /*
-     * Will set the number of current warnings for the other defects category
-     */
-    function updateOtherDefectsCount(d) {
-        var OtherWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Other", d.fileName));
-        var RegularExpressionsWarnings =sumNodeForASAT(d, getTotalCategoryWarning("Regular Expressions", d.fileName));
-        var ToolSpecificWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Tool Specific", d.fileName));
-        appendInfoToOtherDefects(OtherWarnings, RegularExpressionsWarnings, ToolSpecificWarnings);
-    }
-
-    /*
      * Will set the amount of current warnings for each specific ASAT and warning type
      */
     function updateWarningsCountInUI(d) {
@@ -130,52 +80,13 @@ var treeMapBuilder = (function() {
         }
     }
 	
-	  // Code to find a certain node in the treemap
-        function findNode(path, root) {
-            var node = root;
-            for (var i = 0; i < path.length; i++) {
-                node = node._children[path[i]]
-            }
-            return node;
+    // Code to find a certain node in the treemap
+    function findNode(path, root) {
+        var node = root;
+        for (var i = 0; i < path.length; i++) {
+            node = node._children[path[i]]
         }
-
-    /*
-     * Sums for each node how many warnings they have.
-     * It still checks on Project and Test Project hard coded to find wheter it is on
-     */
-    function sumNodeForASAT(d, root) {
-        var nodeAndSummation = [];
-        var sum = 0;
-        if (d.fileName == projectName) {
-            for (var i = 0; i < root.length; i++) {
-                for (var j = 0; j < root[i].length; j++) {
-                    sum += root[i][j].amountOfWarnings;
-                 }
-             }
-             return sum;
-        } else {
-            for (var i = 0; i < root.length; i++) {
-                if(sourceCodeLevel) {
-                    if (root[i].packageName == d.parent.fileName) {
-                        for (var j = 0; j < root[i].length; j++) {
-                            if(sourceCodeLevel && root[i][j].fileName == currentClassName) {
-                                return root[i][j].amountOfWarnings;
-                            }
-                            sum += root[i][j].amountOfWarnings;
-                        }
-                        return sum;
-                    }
-                } else {
-                    if (root[i].packageName == d.fileName) {
-                        for (var j = 0; j < root[i].length; j++) {
-                            sum += root[i][j].amountOfWarnings;
-                        }
-                        return sum;
-                    }
-                }
-            }
-        }
-        return -1;
+        return node;
     }
 
     //Renders the chart with given depth and children

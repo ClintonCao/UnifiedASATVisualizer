@@ -26,46 +26,33 @@ function handleClickTreeMapTypeSat(value, checked) {
  * handles the clicks on Sat categories
  */
 function handleClickCategorySat(value, checked) {
-	console.log(checked);
-	// var arrayClasses = [".FunctionalDefects",".MaintainabilityDefects",".StyleConventions"];
-	// var arrayNames = ["FunctionalDefects","MaintainabilityDefects","StyleConventions"];
+	//console.log(checked);
 
-	// console.log(value);
-	// var index = arrayNames.indexOf(value);
-	// console.log(index);
+	var arrayClasses = [".FunctionalDefects",".MaintainabilityDefects",".StyleConventions"];
+	var arrayNames = ["FunctionalDefects","MaintainabilityDefects","StyleConventions"];
 
-	if(checked) {
-		var index = acceptedCategories.indexOf(value);
-		if(index < 0) {
-			acceptedCategories.push(value);
-		}
+	//console.log(value);
+	var index = arrayNames.indexOf(value);
+	//console.log(index);
+
+	if(index > -1) {
+		$(arrayClasses[index]).prop('checked', checked); 
+		$(arrayClasses[index]).click();
+		toggleAcceptedCategories([arrayClasses[index]],checked);
 	} else {
-		var index = acceptedCategories.indexOf(value);
-		if(index > -1) {
-			acceptedCategories.splice(index, 1);
+		if (checked) {
+			var index = acceptedCategories.indexOf(value);
+		   if (index < 0) {
+				acceptedCategories.push(value)
+		   }
+		} else {
+			var index = acceptedCategories.indexOf(value);
+			if (index > -1) {
+				acceptedCategories.splice(index, 1);
+			}
 		}
 	}
-
-	console.log(acceptedCategories);
-
-	// if(index > -1) {
-	// 	$(arrayClasses[index]).prop('checked', checked); 
-	// 	$(arrayClasses[index]).click();
-	// 	toggleAcceptedCategories([arrayClasses[index]],checked);
-	// } else {
-	// 	if (checked) {
-	// 		var index = acceptedCategories.indexOf(value);
-	// 	   if (index < 0) {
-	// 			acceptedCategories.push(value)
-	// 	   }
-	// 	} else {
-	// 		var index = acceptedCategories.indexOf(value);
-	// 		if (index > -1) {
-	// 			acceptedCategories.splice(index, 1);
-	// 		}
-	// 	}
-	// }
-	// console.log(acceptedCategories);
+	//console.log(acceptedCategories);
 }
 
 /*
