@@ -102,7 +102,7 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
  * Counts for a specific ASAT how many warnings there are
  *
  */
-function getTotalASATWarning(warningType) {
+function getTotalASATWarning(warningType, className) {
 	var packageArray = [];
 	var classObject = new Object();
 	for(var p =0; p < inputData.length; p++){
@@ -115,9 +115,15 @@ function getTotalASATWarning(warningType) {
 			classObject.amountOfWarnings = 0;
 			classObject.fileName = classObjectJson.fileName;
 			for (j = 0; j < classObjectJson.warningList.length; j++) { 
-				var warningJson = classObjectJson.warningList[j]
-				if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
-		  			classObject.amountOfWarnings++;
+				var warningJson = classObjectJson.warningList[j];
+				if(className.indexOf("java") > -1) {
+					if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1) && warningJson.fileName == className) {
+		  				classObject.amountOfWarnings++;
+					}
+				} else {
+					if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
+		  				classObject.amountOfWarnings++;
+					}
 				}
 	  		}
 	  		classArray.push(classObject);
@@ -125,6 +131,7 @@ function getTotalASATWarning(warningType) {
 		classArray.packageName = package.packageName;
 		packageArray.push(classArray)
 	}
+	packageArray.warningType = warningType;
 	return packageArray;
 }
 
@@ -166,7 +173,7 @@ function getWarningLines(className) {
  * Counts for a specific category how many warnings there are
  *
  */
-function getTotalCategoryWarning(warningType) {
+function getTotalCategoryWarning(warningType, className) {
 	var packageArray = [];
 	var classObject = new Object();
 	for(var p =0; p < inputData.length; p++){
@@ -179,9 +186,15 @@ function getTotalCategoryWarning(warningType) {
 			classObject.amountOfWarnings = 0;
 			classObject.fileName = classObjectJson.fileName;
 			for (j = 0; j < classObjectJson.warningList.length; j++) { 
-				var warningJson = classObjectJson.warningList[j]
-				if($.inArray(warningJson.type, acceptedTypes) > -1 && warningJson.classification == warningType) {
-		  			classObject.amountOfWarnings++;
+				var warningJson = classObjectJson.warningList[j];
+				if(className.indexOf("java") > -1) {
+					if($.inArray(warningJson.type, acceptedTypes) > -1 && warningJson.classification == warningType && warningJson.fileName == className) {
+			  			classObject.amountOfWarnings++;
+					}
+				} else {
+					if($.inArray(warningJson.type, acceptedTypes) > -1 && warningJson.classification == warningType) {
+			  			classObject.amountOfWarnings++;
+					}
 				}
 	  		}
 	  		classArray.push(classObject);
@@ -189,6 +202,7 @@ function getTotalCategoryWarning(warningType) {
 		classArray.packageName = package.packageName;
 		packageArray.push(classArray)
 	}
+	packageArray.warningType = warningType;
 	return packageArray;
 }
 

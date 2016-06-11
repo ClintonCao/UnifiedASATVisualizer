@@ -9,31 +9,79 @@
 
   <name>TSE</name>
   <url>http://maven.apache.org</url>
+  
+    <!-- Developers for this project. -->
+    <developers>
+      <developer>
+        <name>Boning Gong</name>
+      </developer>
+      
+      <developer>
+        <name>Clinton Cao</name>
+      </developer>
+      
+      <developer>
+        <name>Michiel Doesburg</name>
+      </developer>
+      
+      <developer>
+        <name>Sunwei Wang</name>
+      </developer>
+      
+      <developer>
+        <name>Tim Buckers</name>
+      </developer>
+    </developers>
 
   <build>
     <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-                <excludes>
+           <plugin>
+             <artifactId>maven-compiler-plugin</artifactId>
+             <version>3.3</version>
+             <configuration>
+                 <excludes>
                     <exclude>src/main/resources/*</exclude>
-                </excludes>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-      
+                 </excludes>
+               <source>1.8</source>
+               <target>1.8</target>
+             </configuration>
+           </plugin>
+
+	       <plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-checkstyle-plugin</artifactId>
+			  <version>${checkstyle.plugin.version}</version>
+			  <configuration>
+				<configLocation>${basedir}/checkstyle.xml</configLocation>
+				<includeTestSourceDirectory>true</includeTestSourceDirectory>
+			  </configuration>
+	        </plugin>
+
+	        <!-- Maven Shade Plugin -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>${checkstyle.plugin.version}</version>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-shade-plugin</artifactId>
+			  <version>2.4.3</version>
+			  <executions>
+			   <!-- Run shade goal on package phase -->
+			   <execution>
+				<phase>package</phase>
+				<goals>
+					<goal>shade</goal>
+				</goals>
 				<configuration>
-					<configLocation>${basedir}/checkstyle.xml</configLocation>
-					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+				  <transformers>
+					<!-- add Main-Class to manifest file -->
+   	                       <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+						   <mainClass>BlueTurtle.TSE.Main</mainClass>
+				           </transformer>
+				  </transformers>
+				  <outputDirectory>${basedir}</outputDirectory>
 				</configuration>
+			   </execution>
+			  </executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
@@ -46,7 +94,7 @@
 					</rulesets>
 				</configuration>
 			</plugin>
-		
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
@@ -63,7 +111,7 @@
 				</artifactId>
 				<version>2.8</version>
 			</plugin>
-			
+
 			<plugin>
     			<groupId>org.eluder.coveralls</groupId>
     			<artifactId>coveralls-maven-plugin</artifactId>
@@ -72,7 +120,7 @@
         			<repoToken>IpaLknWcYdYhldynI4UquehucHIXkrxck</repoToken>
     			</configuration>
 			</plugin>
-			
+
 			<plugin>
     			<groupId>org.jacoco</groupId>
     			<artifactId>jacoco-maven-plugin</artifactId>
@@ -94,10 +142,10 @@
         		  </execution>
     			</executions>
 			</plugin>
-						
+
     </plugins>
   </build>
-  
+
 	<reporting>
 		<plugins>
 			<plugin>
@@ -149,15 +197,15 @@
 			</plugin>
 
 			<plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.5.201505241946</version>
-                <configuration>
-   				 <excludes>
-        			<exclude>**/GUI*</exclude>
-        			<exclude>**/GUIController*</exclude>
-        			<exclude>**/SelectButtonEventHandler*</exclude>
-        			<exclude>**/Main*</exclude>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.7.5.201505241946</version>
+          <configuration>
+   			  <excludes>
+        			 <exclude>**/GUI*</exclude>
+        			 <exclude>**/GUIController*</exclude>
+        			 <exclude>**/SelectButtonEventHandler*</exclude>
+        			 <exclude>**/Main*</exclude>
     			</excludes>
 				</configuration>
                 <reportSets>
@@ -167,7 +215,7 @@
                     </reports>
                 </reportSet>
             </reportSets>
-            </plugin>
+      </plugin>
 
 			<!-- PMD configuration for JUnit tests -->
 			<plugin>
@@ -192,10 +240,10 @@
                     <includeTests>true</includeTests>
                  </configuration>
 			</plugin>
-			
+
 		</plugins>
 	</reporting>
-	
+
   <dependencies>
   	<dependency>
 			<groupId>junit</groupId>
@@ -206,15 +254,15 @@
   		<groupId>org.mockito</groupId>
   		<artifactId>mockito-all</artifactId>
   		<version>1.9.5</version>
-  	</dependency>	
-  	
+  	</dependency>
+
   	<dependency>
 		<groupId>org.projectlombok</groupId>
 		<artifactId>lombok</artifactId>
 		<version>1.16.8</version>
 		<scope>provided</scope>
 	</dependency>
-  	
+
     <!--  Gson: Java to Json conversion -->
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -222,22 +270,22 @@
       <version>2.6.2</version>
       <scope>compile</scope>
     </dependency>
-    
+
  	<dependency>
       <!-- jsoup HTML parser library @ http://jsoup.org/ -->
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
       <version>1.9.1</version>
     </dependency>
-  	
+
   </dependencies>
-  
+
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   	<checkstyle.plugin.version>2.15</checkstyle.plugin.version>
   	<pmd.plugin.version>3.4</pmd.plugin.version>
   	<findbugs.version>3.0.1</findbugs.version>
   </properties>
-  
-  
+
+
 </project>

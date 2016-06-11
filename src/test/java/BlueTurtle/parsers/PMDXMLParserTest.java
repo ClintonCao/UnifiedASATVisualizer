@@ -34,6 +34,7 @@ public class PMDXMLParserTest {
 	private static String testSetRuleSet = "Basic";
 	private static String testSetMethod = "equals";
 	private static String testSetClassification = "Interface";
+	private static String testSetMessage = "\nEnsure you override both equals() and hashCode()\n";
 	private static String testSet3FilePath = System.getProperty("user.dir") + File.separatorChar + "src"
 			+ File.separatorChar + "main" + File.separatorChar + "java" + File.separatorChar + "BlueTurtle"
 			+ File.separatorChar + "warnings" + File.separatorChar + "CheckStyleWarning.java";
@@ -83,11 +84,11 @@ public class PMDXMLParserTest {
 		XMLParser parser = new PMDXMLParser();
 
 		PMDWarning expected = new PMDWarning(testSet3FilePath, testSetFileName, 43, testSetPackageName, testSetRuleSet,
-				testSetMethod, testSetRuleName, testSetClassification);
+				testSetMethod, testSetRuleName, testSetMessage, testSetClassification);
 
 		PMDWarning actual = (PMDWarning) parser.parseFile(testSet2).get(0);
 
-		assertEquals(expected, actual);
+		assertEquals(expected.getMessage(), actual.getMessage());
 	}
 
 	/**

@@ -14,6 +14,7 @@ import org.junit.Test;
 import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.groupers.WarningGrouper;
 import BlueTurtle.groupers.WarningGrouper.Criteria;
+import BlueTurtle.gui.GUIController;
 import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.CheckStyleWarning;
 import BlueTurtle.warnings.Warning;
@@ -50,6 +51,7 @@ public class JSWriterTest {
 		WarningGrouper wg = new WarningGrouper(list);
 		summarizedWarnings = wg.groupBy(Criteria.PACKAGES);
 		jsWriter.setSummarizedWarnings(summarizedWarnings);
+		GUIController.setProjectPath("test");
 
 		// make sure that the file does not already exist by coincidence.
 		File file = new File(outputPath);
@@ -71,6 +73,7 @@ public class JSWriterTest {
 		ProjectInfoFinder.getClassPaths().clear();
 		ProjectInfoFinder.getClassPackage().clear();
 		ProjectInfoFinder.getPackages().clear();
+		GUIController.setProjectPath(null);
 	}
 
 	/**
