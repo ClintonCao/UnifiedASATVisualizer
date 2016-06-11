@@ -15,7 +15,9 @@ function setAllCheckboxesOnDefault() {
 	$(".updateContent").prop('checked', false); 
 	$("#treemapButton").prop('checked', true);
 	$("#normalButton").prop('checked', true);
+	$(".DefectCategory").prop('checked', true);
 	
+	$(".FunctionalDefects").click();
 	$(".MaintainabilityDefects").click();
 	$(".StyleConventions").click();
 	$(".sats").click();
@@ -25,17 +27,26 @@ function setAllCheckboxesOnDefault() {
  * In the first run all ASATs and categories are included
  */
 function addAllAcceptedTypesAndCategories(){
-	for ( var i = 0; i < $(".FunctionalDefects").size(); i ++){
-		handleClickCategorySat($(".FunctionalDefects")[i].value, true);
+	var arrayCat = [".MaintainabilityDefects",".FunctionalDefects",".StyleConventions"];
+	var arrayTypes = [".sats"];
+	toggleAcceptedCategories(arrayCat, true);
+	toggleAcceptedTypes(arrayTypes, true);
+}
+function toggleAcceptedCategories(array, checked){
+	console.log("sduinbadifubs");
+	console.log(array);
+	
+	for (var index =0; index < array.length; index++){
+		for ( var i = 0; i < $(array[index]).size(); i ++){
+			handleClickCategorySat($(array[index])[i].value, checked);
+		}
 	}
-	for ( var i = 0; i < $(".MaintainabilityDefects").size(); i ++){
-		handleClickCategorySat($(".MaintainabilityDefects")[i].value, true);
-	}
-	for ( var i = 0; i < $(".StyleConventions").size(); i ++){
-		handleClickCategorySat($(".StyleConventions")[i].value, true);
-	}
-	for ( var i = 0; i < $(".sats").size(); i ++){
-		handleClickTreeMapTypeSat($(".sats")[i].value, true);
+}
+function toggleAcceptedTypes(array, checked){
+	for (var index =0; index < array.length; index++){
+		for ( var i = 0; i < $(array[index]).size(); i ++){
+			handleClickTreeMapTypeSat($(array[index])[i].value, checked);
+		}
 	}
 }
 

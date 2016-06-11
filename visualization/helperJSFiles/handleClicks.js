@@ -20,6 +20,7 @@ function handleClickTreeMapTypeSat(value, checked) {
             acceptedTypes.splice(index, 1);
         }
     }
+	console.log(acceptedTypes);
 }
 
 /*
@@ -81,6 +82,7 @@ function handleClickColorScale(radioButton) {
  * Handles click for relative
  */
 function handleClickRelativeColours(radioButton) {
+	
 	var normalButtonElement = document.getElementById("normalButton");
 	var asatButtonElement = document.getElementById("asatButton");
 	var categoryButtonElement = document.getElementById("categoryButton");
@@ -100,32 +102,37 @@ function handleClickRelativeColours(radioButton) {
 	} else if ( document.getElementById("categoryButton").checked ){
 		setCategoriesColoured();
 		backgroundObject.setColorMethod(2);
-	} 
+	}
+	
 }
 
 /*
 * handles the clicks on Sat categories
 */
 function handleClickCategorySat(value, checked) {
-	if(value == "FunctionalDefects"){
-		//categoryMapper.warningsFromCategorize(0);
-		console.log("boning");
-		
-	$(".FunctionalDefects").click();
-	$(".FunctionalDefects").prop('checked', true); 
-	
+	var arrayClasses = [".FunctionalDefects",".MaintainabilityDefects",".StyleConventions"];
+	var arrayNames = ["FunctionalDefects","MaintainabilityDefects","StyleConventions"];
+
+		console.log(value);
+	var index = arrayNames.indexOf(value);
+		console.log(index);
+	if(index > -1){
+		$(arrayClasses[index]).prop('checked', checked); 
+		$(arrayClasses[index]).click();
+		toggleAcceptedCategories([arrayClasses[index]],checked);
+	}else{
+		if (checked) {
+			var index = acceptedCategories.indexOf(value);
+		   if (index < 0) {
+				acceptedCategories.push(value)
+		   }
+		} else {
+			var index = acceptedCategories.indexOf(value);
+			if (index > -1) {
+				acceptedCategories.splice(index, 1);
+			}
+		}
 	}
- 	if (checked) {
-        var index = acceptedCategories.indexOf(value);
-       if (index < 0) {
-			acceptedCategories.push(value)
-       }
-    } else {
-        var index = acceptedCategories.indexOf(value);
-        if (index > -1) {
-            acceptedCategories.splice(index, 1);
-        }
-    }
 	console.log(acceptedCategories);
 }
 
@@ -139,8 +146,6 @@ function handleClickVisualiser(radioButton) {
         runTreeMap();
     }
 }
-
-
 
 /*
  * toggle all category checkboxes of a group
