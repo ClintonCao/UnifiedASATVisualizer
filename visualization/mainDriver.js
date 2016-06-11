@@ -47,7 +47,9 @@ function toggleAcceptedTypes(array, checked){
 	}
 }
 
-// Delete the entire chart from the page.
+/*
+ * Delete the treemap chart from the page
+ */
 function removeChart() {
     var chartNode = document.getElementById("chart");
     while (chartNode.firstChild) {
@@ -55,7 +57,9 @@ function removeChart() {
     }
 }
 
-//Setup tree map and shows it
+/*
+ * Sets up the treemap and shows it
+ */
 function runTreeMap() {
     var title = document.getElementById("main-title");
     title.innerHTML = "𝕌𝔸𝕍";
