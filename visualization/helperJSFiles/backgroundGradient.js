@@ -1,20 +1,20 @@
 var backgroundObject = (function() {
 	var maxConstant = 100;
 	var colorMethod = 0;
-	var twoColors, color, greenTints, greenScale, blueTints, blueScale, redTints, redScale, grayTints, grayScale;
+	var twoColors, color, greenTints, greenScale, blueTints, blueScale, orangeTints, orangeScale, grayTints, grayScale;
 	var firstRatioBegin, firstRatioEnd, SecondRatioBegin, SecondRatioEnd, ThirdRatioBegin, ThirdRatioEnd, firstEdgeBegin, firstEdgeEnd, SecondEdgeBegin, SecondEdgeEnd, ThridEdgeBegin, ThirdEdgeEnd;
 	reloadColorScale();
 	
 	function reloadColorScale(){
-		twoColors = [d3.rgb("#00a700"), d3.rgb('#a90000')];
+		twoColors = [d3.rgb(colours.lightGreen()), d3.rgb(colours.darkRed())];
 		color = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
-		greenTints = [d3.rgb("#679a64"), d3.rgb('#0aa100')];
+		greenTints = [d3.rgb(colours.lightGreen()), d3.rgb(colours.darkGreen())];
 		greenScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(greenTints);
-		blueTints = [d3.rgb("#6f87a2"), d3.rgb('#004aae')];	
+		blueTints = [d3.rgb(colours.lightBlue()), d3.rgb(colours.darkBlue())];	
 		blueScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(blueTints);
-		redTints = [d3.rgb("#9c7777"), d3.rgb('#ac0000')];	
-		redScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(redTints);
-		grayTints = [d3.rgb("#a2a2a2"), d3.rgb('#a2a2a2')];	
+		orangeTints = [d3.rgb(colours.normalOrange()), d3.rgb(colours.darkOrange())];	
+		orangeScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(orangeTints);
+		grayTints = [d3.rgb(colours.grey()), d3.rgb(colours.grey())];	
 		grayScale =  d3.scale.linear().domain([0, 0]).interpolate(d3.interpolateHcl).range(grayTints);
 	}
 	/*
@@ -65,11 +65,11 @@ var backgroundObject = (function() {
 	function setRedScale(gradient, start, end, weight) {
 		gradient.append("stop")
 			.attr("offset", start)
-			.attr("stop-color", redScale(weight*100))
+			.attr("stop-color", orangeScale(weight*100))
 			.attr("stop-opacity", 1);
 		gradient.append("stop")
 			.attr("offset", end)
-			.attr("stop-color", redScale(weight*100))
+			.attr("stop-color", orangeScale(weight*100))
 			.attr("stop-opacity", 1);
 	}
 	function setBlueScale(gradient, start, end, weight) {

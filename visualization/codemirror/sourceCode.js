@@ -14,8 +14,8 @@ var sourceCode = (function() {
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkGreen());
 	}
 	function colorTwo(line) {
-		$(line).css('background',colours.darkRed());
-		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkRed());
+		$(line).css('background',colours.darkOrange());
+		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkOrange());
 	}
 	function colorThree(line) {
 		$(line).css('background',colours.darkBlue());
