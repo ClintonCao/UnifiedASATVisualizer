@@ -11,6 +11,18 @@ var	localD;
 var	localCurPath;
 var colorMethod = 0;
 
+function colorLineGreen(line) {
+	$(line).css('background','#386938');
+	$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#386938');
+}
+function colorLineRed(line) {
+	$(line).css('background','#88120a');
+	$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#88120a');
+}
+function colorLineBlue(line) {
+	$(line).css('background','#043e70');
+	$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#043e70');
+}
 
 function highlight(lineNumber, type, cat){
 	var childs = $( '.CodeMirror-code').children()
@@ -21,31 +33,25 @@ function highlight(lineNumber, type, cat){
 	if(colorMethod == 0) {
 		switch(type) {
 			case 'CheckStyle':
-				$(child).css('background','#386938');
-				$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#386938');
+				colorLineGreen(child);
 				break;
 			case 'PMD':
-				$(child).css('background','#88120a');
-				$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#88120a');
+				colorLineRed(child);
 				break;
 			case 'FindBugs':
-				$(child).css('background','#043e70');
-				$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#043e70');
+				colorLineBlue(child);
 				break;
 		}
 	} else if(colorMethod == 1) {
 		switch(categorizeWarningType(cat)) {
 			case 0:
-				$(child).css('background','#386938');
-				$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#386938');
+				colorLineGree(child);
 				break;
 			case 1:
-				$(child).css('background','#88120a');
-				$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#88120a');
+				colorLineRed(child);
 				break;
 			case 2:
-				$(child).css('background','#043e70');
-				$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#043e70');
+				colorLineBlue(child);
 				break;
 		}
 	}
@@ -92,11 +98,9 @@ function setLabels(lineNumber, type, cat, message) {
 }
 function displayCode(pathID){	
 	for ( var i = 0; i < codeExport.length; i++){	
-
 		if (codeExport[i].path == pathID){
 			var value = codeExport[i].code.substring(1, codeExport[i].code.length -2);
 		}
-		
 	}
 	var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
 	    value: value,

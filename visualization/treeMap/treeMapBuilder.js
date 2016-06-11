@@ -185,18 +185,6 @@
 
         setPath(d, name(d));
 
-        /*
-         * Creates the navigation balk where you can keep track of
-         * which level you are and which you can use to navigate back
-         */
-        // grandparent
-        //     .datum(d.parent)
-        //     .on("click", navigationUp)
-        //     .select("text")
-        //     .style("fill", function() {
-        //         return '#333333';
-        //     });
-
         var g1 = svg.insert("g", ".chart-and-code")
             .datum(d)
             .attr("class", "depth");
@@ -439,11 +427,6 @@
             return null;
         }
 
-        function navigationUp(d) {
-            currentNodePath.pop();
-            transition(d)
-        }
-
         function transition(d) {
 
             if (transitioning || !d) {
@@ -463,11 +446,6 @@
 
             // Enable anti-aliasing during the transition.
             svg.style("shape-rendering", null);
-
-            // Draw child nodes on top of parent nodes.
-            // svg.selectAll(".depth").sort(function(a, b) {
-            //     return a.depth - b.depth;
-            // });
 
             // Fade-in entering text.
             g2.selectAll("text").style("fill-opacity", 0);
@@ -654,20 +632,6 @@
             .style("margin.right", -margin.right + "px")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .style("shape-rendering", "crispEdges");
-
-        // grandparent = svg.append("g")
-        //     .attr("class", "grandparent")
-        //     .attr("id", "grandparent");
-
-        // grandparent.append("rect")
-        //     .attr("y", -margin.top)
-        //     .attr("width", width)
-        //     .attr("height", margin.top);
-
-        // grandparent.append("text")
-        //     .attr("x", 6)
-        //     .attr("y", 6 - margin.top)
-        //     .attr("dy", ".75em")
 
         if (data instanceof Array) {
             root = {
