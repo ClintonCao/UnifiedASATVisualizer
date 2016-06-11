@@ -1,7 +1,7 @@
 	var treeMapBuilder = (function() {
 
     // initialize all variables
-    var treemap, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
+    var treemap, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults, sourceCoded
     var refreshing = false;
     var upperLevel = true;
     var sourceCodeLevel = false;
@@ -256,6 +256,7 @@
                 }
                 if(sourceCodeLevel) {
                     sourceCode.fullReload();
+                    updateWarningsCountInUI(sourceCoded);
                 } else {
                     fastReload();
                 }
@@ -418,6 +419,7 @@
         }
 
         function toSourceCode(d) {
+            sourceCoded = d;
             sourceCodeLevel = true;
             $("#normalButton").prop('checked', false);
             $("#asatButton").prop('checked', true);
