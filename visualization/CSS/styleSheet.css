@@ -583,3 +583,46 @@ h4.category-titles{
     font-family: 'Roboto Mono', sans-serif;
 }
 
+#ASAT-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#ColourScale-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#relativeLabel-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#main-title-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}

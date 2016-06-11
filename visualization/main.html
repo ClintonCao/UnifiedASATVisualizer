@@ -26,13 +26,18 @@
       <nav id="main-title"  class="navbar navbar-dark bg-inverse">
          <!-- Title of the current view -->
       </nav>
+      <span id="main-title-hover">
+      Unified ASATs Visualizer
+      </span>
       <div id="wrapper">
        	  <div id="left-wrapper">
               <div id="menu-left-wrapper">
                 <div id="left-menu">
-                <h3 onClick="handleClickSatType()">ASATs</h3>
-                   
-                   <form name="button-options" action="">
+                <h3 onClick="handleClickSatType()" id='ASAT'>ASATs</h3>
+                    <span id="ASAT-hover">
+                    Automated static analysis tools. <br> The analysis of source code without executing the code itself.
+                    </span>
+                    <form name="button-options" action="">
                       <div id="checkStyleDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="checkstyleButton" name="sat" value="CheckStyle"><label id="checkStyleLabel"> CheckStyle</label><br></div>
                       <div id="PMDDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="pmdButton" name="sat" value="PMD"><label id="PMDLabel"> PMD</label><br></div>
                       <div id="FindBugsDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="findBugsButton" name="sat" value="FindBugs"><label id="FindBugsLabel"> FindBugs</label><br></div>
@@ -40,7 +45,10 @@
                       <h3>Visualizers </h3>
                       <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap"> Treemap<br>
                       <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>-->
-                      <h3>Colour scale </h3>
+                      <h3 id="ColourScale" >Colour scale </h3>
+                      <span id="ColourScale-hover">
+                      Choose wheter you want to show the amount of warnings, the ASATs plotted together or the categories of warnings plotted together.
+                      </span>
                       <input type="radio" id="normalButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="normal">
                       <div class="buttonText" id="normalColourLabel">Normal</div><br/>
                       <input type="radio" id="asatButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asat">
@@ -48,7 +56,9 @@
                       <input type="radio" id="categoryButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="category">
                       <div class="buttonText">Category</div><br/><br/>
                       <div class="buttonText"><input type="checkbox" onClick="handleClickRelative(this)" data-toggle="toggle" data-size="mini" class="updateContent relative" name="relative" id="relativeButton" value="Relative"><label id="relativeLabel"> Relative</label><br></div>
-    
+                      <span id="relativeLabel-hover">
+                      Normally the scale goes from 0 to 1 warning/line. Relative will use the highest ratio in your project of warning/lines of code instead of 1.
+                      </span>
                    </form>
                 </div>
              </div>
