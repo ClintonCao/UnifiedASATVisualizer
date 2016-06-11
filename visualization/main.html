@@ -72,7 +72,7 @@
          <div id="menu-right-wrapper">
             <div id="right-menu">
                   <h3>Category</h3>
-                  <span id="GDCFunctionalDefects" class="UIText"><h4 class="category-titles" id="functionalDefectsLabel"  onClick="handleClickCategory('FunctionDefects')"><label id="FuncDefLabel" class="UIText">Functional Defects</label></h4></span>
+                  <span id="GDCFunctionalDefects" class="UIText"><h4 class="category-titles" id="functionalDefectsLabel"  onClick="handleClickCategory('FunctionDefects')"><label id="FuncDefLabel" class="UIText">Functional Defects</label><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="FunctionalDefects"></h4></span>
                   <span id="GDCFunctionalDefects-hover">
                     Rules that check for defects that affect the behavior of the program.
                     </span>
@@ -109,7 +109,7 @@
                 <span id="GDCResource-hover">
                     Errors concerning the initialization, casting, or release of data, whether that data is external (databases) or internal (variables).
                   </span>
-                  <span id="GDCMaintainabilityDefects" class="UIText"><h4 id="maintainabilityDefectsLabel"   class="category-titles" onClick="handleClickCategory('MaintainabilityDefects')"><label id="MainDefLabel" class="UIText">Maintainability Defects</label></h4></span>
+                  <span id="GDCMaintainabilityDefects" class="UIText"><h4 id="maintainabilityDefectsLabel"   class="category-titles" onClick="handleClickCategory('MaintainabilityDefects')"><label id="MainDefLabel" class="UIText">Maintainability Defects</label> <input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="MaintainabilityDefects"></h4></span>
                    <span id="GDCMaintainabilityDefects-hover">
                     Rules that check for problems that only affect the future development efforts of changing or adding to the system, but have no impact on the correctness of the program.
                     </span>
@@ -149,7 +149,7 @@
                 <span id="GDCStyleConventions-hover">
                     Rules that check the code for violations of style conventions, that do not affect the compiled output of the code.
                   </span>
-                  <span class="UIText"><h4 class="category-titles" id="otherLabel" onClick="handleClickCategory('StyleConventions')"><label id="OthLabel" class="UIText">Other</label></h4></span>
+                  <span class="UIText"><h4 class="category-titles" id="otherLabel" onClick="handleClickCategory('StyleConventions')"><label id="OthLabel" class="UIText">Other</label>  <input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="StyleConventions"></h4></span>
                   <span id="GDCOther"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Other"><label id="OtherLabel" class="UIText"> Other</label></span><br>
                   <span id="GDCOther-hover">
                     Rules that identify neither functional nor maintainability defects.

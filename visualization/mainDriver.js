@@ -15,6 +15,8 @@ function setAllCheckboxesOnDefault() {
 	$(".updateContent").prop('checked', false); 
 	$("#treemapButton").prop('checked', true);
 	$("#normalButton").prop('checked', true);
+	$(".DefectCategory").prop('checked', true);
+	
 	$(".FunctionalDefects").click();
 	$(".MaintainabilityDefects").click();
 	$(".StyleConventions").click();
@@ -25,17 +27,26 @@ function setAllCheckboxesOnDefault() {
  * In the first run all ASATs and categories are included
  */
 function addAllAcceptedTypesAndCategories(){
-	for ( var i = 0; i < $(".FunctionalDefects").size(); i ++){
-		handleClickCategorySat($(".FunctionalDefects")[i].value, true);
+	var arrayCat = [".MaintainabilityDefects",".FunctionalDefects",".StyleConventions"];
+	var arrayTypes = [".sats"];
+	toggleAcceptedCategories(arrayCat, true);
+	toggleAcceptedTypes(arrayTypes, true);
+}
+function toggleAcceptedCategories(array, checked){
+	console.log("sduinbadifubs");
+	console.log(array);
+	
+	for (var index =0; index < array.length; index++){
+		for ( var i = 0; i < $(array[index]).size(); i ++){
+			handleClickCategorySat($(array[index])[i].value, checked);
+		}
 	}
-	for ( var i = 0; i < $(".MaintainabilityDefects").size(); i ++){
-		handleClickCategorySat($(".MaintainabilityDefects")[i].value, true);
-	}
-	for ( var i = 0; i < $(".StyleConventions").size(); i ++){
-		handleClickCategorySat($(".StyleConventions")[i].value, true);
-	}
-	for ( var i = 0; i < $(".sats").size(); i ++){
-		handleClickTreeMapTypeSat($(".sats")[i].value, true);
+}
+function toggleAcceptedTypes(array, checked){
+	for (var index =0; index < array.length; index++){
+		for ( var i = 0; i < $(array[index]).size(); i ++){
+			handleClickTreeMapTypeSat($(array[index])[i].value, checked);
+		}
 	}
 }
 
@@ -170,7 +181,7 @@ function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, R
     MigrationElement.innerHTML = "&thinsp; Migration (" + Mig + ")";
     ResourceElement.innerHTML = '&thinsp; Resource (' + Res + ")";
     var sum = sumFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res);
-    FuncDefElement.innerHTML = ' Functional Defects (' + sum + ")";
+    FuncDefElement.innerHTML = ' Functional Defects (' + sum + ") &thinsp;";
 }
 
 // Add total amount of warnings to each sub category within the maintainability defects in the right menu
@@ -196,7 +207,7 @@ function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamCon
     RedundanciesElement.innerHTML = "&thinsp; Redundancies (" + Red + ")";
     StyleConventionsElement.innerHTML = '&thinsp; Style Conventions (' + StyleConv + ")";
     var sum = sumMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, Simp, Red, StyleConv);
-    MainDefElement.innerHTML = ' Maintainability Defects (' + sum + ")";
+    MainDefElement.innerHTML = ' Maintainability Defects (' + sum + ") &thinsp; ";
 }
 
 // Add total amount of warnings to each sub category within the other category in the right menu
@@ -210,7 +221,7 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
     RegularExpressionsElement.innerHTML = "&thinsp; Regular Expressions (" + RegExpr + ")";
     ToolSpecificElement.innerHTML = "&thinsp; Tool Specific(" + Tools + ")";
     var sum = sumOtherDefects(Other, RegExpr, Tools);
-    OthElement.innerHTML = " Other (" + sum + ")";
+    OthElement.innerHTML = " Other (" + sum + ") &thinsp;";
 }
 
 //Setup tree map and shows it

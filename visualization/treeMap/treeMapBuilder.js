@@ -25,7 +25,6 @@
         root.depth = 0;
     }
 
-
     /*
      * Will put the #warnings for each ASAT
      */
