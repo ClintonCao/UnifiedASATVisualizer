@@ -33,9 +33,6 @@ function addAllAcceptedTypesAndCategories(){
 	toggleAcceptedTypes(arrayTypes, true);
 }
 function toggleAcceptedCategories(array, checked){
-	console.log("sduinbadifubs");
-	console.log(array);
-	
 	for (var index =0; index < array.length; index++){
 		for ( var i = 0; i < $(array[index]).size(); i ++){
 			handleClickCategorySat($(array[index])[i].value, checked);
