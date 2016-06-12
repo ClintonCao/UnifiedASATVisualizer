@@ -319,11 +319,12 @@ var treeMapBuilder = (function() {
                 $("#normalButton").prop('checked', false);
                 $("#asatButton").prop('checked', true);
                 $("#asatButton").click();
+                setASATColoured();
             } else if ( document.getElementById("categoryButton").checked ){
                 $("#categoryButton").prop('checked', true);
                 $("#categoryButton").click();
+                setCategoriesColoured();
             }
-            setASATColoured();
             updateWarningsCountInUI(d);
             sourceCode.show(d, name(d));
             setPath(d, name(d));
