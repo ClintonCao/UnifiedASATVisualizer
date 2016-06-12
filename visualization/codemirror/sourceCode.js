@@ -34,7 +34,7 @@ function highlight(lineNumber, type, cat){
 				break;
 		}
 	} else if(colorMethod == 1) {
-		switch(categorizeWarningType(cat)) {
+		switch(categoryMapper.categorizeWarningType(cat)) {
 			case 0:
 				$(child).css('background','#386938');
 				$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','#386938');
