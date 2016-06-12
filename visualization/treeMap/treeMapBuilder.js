@@ -1,11 +1,11 @@
+var currentClassName = "";
+var sourceCodeLevel = false;
 var treeMapBuilder = (function() {
 
     // initialize all variables
     var treemap, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults, sourceCoded
     var refreshing = false;
     var upperLevel = true;
-    var sourceCodeLevel = false;
-    var currentClassName = "";
 	var currentNodePath = [];
 	var root;
 

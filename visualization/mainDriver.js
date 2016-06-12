@@ -31,7 +31,7 @@ function setAllCheckboxesOnDefault() {
 }
 
 /**
- * detect IE
+ * Detects IE
  * returns version of IE or false, if browser is not Internet Explorer
  */
 function detectIE() {
@@ -70,7 +70,7 @@ function detectIE() {
     return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
   }
 
-  // other browser
+  // Other browsers
   return false;
 }
 
