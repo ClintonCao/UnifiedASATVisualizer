@@ -5,7 +5,7 @@ var MaintainabilityDefectsElement = document.getElementById("maintainabilityDefe
 var FunctionDefectsElement = document.getElementById("functionalDefectsLabel");
 var OtherElement = document.getElementById("otherLabel");
 
-/*
+/**
  * Handles click on checkboxes for showing results of different tools
  */
 function handleClickTreeMapTypeSat(value, checked) {
@@ -22,7 +22,7 @@ function handleClickTreeMapTypeSat(value, checked) {
     }
 }
 
-/*
+/**
  * handles the clicks on Sat categories
  */
 function handleClickCategorySat(value, checked) {
@@ -55,7 +55,7 @@ function handleClickCategorySat(value, checked) {
 	//console.log(acceptedCategories);
 }
 
-/*
+/**
  * Sets all ASAT and Categorie labels to white
  */
 function setAllLabelsWhite() {
@@ -67,7 +67,7 @@ function setAllLabelsWhite() {
 	OtherElement.style.color = colours.white();
 }
 
-/*
+/**
  * Colors based on ASAT so the labels are given colours
  */
 function setASATColoured() {
@@ -79,7 +79,7 @@ function setASATColoured() {
 	OtherElement.style.color = colours.white();
 }
 
-/*
+/**
  * Colors based on Categories so the labels are given colours
  */
 function setCategoriesColoured() {
@@ -91,7 +91,7 @@ function setCategoriesColoured() {
 	OtherElement.style.color = colours.normalOrange();
 }
 
-/*
+/**
  * Handles click on checkboxes for using different colorscales
  */
 function handleClickColorScale(radioButton) {
@@ -109,7 +109,7 @@ function handleClickColorScale(radioButton) {
 	}
 }
 
-/*
+/**
  * Handles click for relative
  */
 function handleClickRelativeColours(radioButton) {
@@ -131,7 +131,7 @@ function handleClickRelativeColours(radioButton) {
 	}
 }
 
-/*
+/**
  * Toggles between the graph and tree map visualization
  */
 function handleClickVisualiser(radioButton) {

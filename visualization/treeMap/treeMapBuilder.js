@@ -25,7 +25,7 @@ var treeMapBuilder = (function() {
         root.depth = 0;
     }
 
-    /*
+    /**
      * Will set the amount of current warnings for each specific ASAT and warning type
      */
     function updateWarningsCountInUI(d) {
@@ -36,10 +36,12 @@ var treeMapBuilder = (function() {
         updateOtherDefectsCount(d);
     }
 
-    // Aggregate the values for internal nodes. This is normally done by the
-    // treemap layout, but not here because of our custom implementation.
-    // We also take a snapshot of the original children (_children) to avoid
-    // the children being overwritten when when layout is computed.
+    /**
+     * Aggregate the values for internal nodes. This is normally done by the
+     * treemap layout, but not here because of our custom implementation.
+     * We also take a snapshot of the original children (_children) to avoid
+     * the children being overwritten when when layout is computed.
+     */
     function accumulateValue(d) {
         return (d._children = d.values) ?
             d.value = d.values.reduce(function(p, v) {
@@ -55,13 +57,15 @@ var treeMapBuilder = (function() {
             }, 0) :
             d.warnings;
     }
-    // Compute the treemap layout recursively such that each group of siblings
-    // uses the same size (1×1) rather than the dimensions of the parent cell.
-    // This optimizes the layout for the current zoom state. Note that a wrapper
-    // object is created for the parent node for each group of siblings so that
-    // the parent’s dimensions are not discarded as we recurse. Since each group
-    // of sibling was laid out in 1×1, we must rescale to fit using absolute
-    // coordinates. This lets us use a viewport to zoom.
+    /**
+     * Compute the treemap layout recursively such that each group of siblings
+     * uses the same size (1×1) rather than the dimensions of the parent cell.
+     * This optimizes the layout for the current zoom state. Note that a wrapper
+     * object is created for the parent node for each group of siblings so that
+     * the parent’s dimensions are not discarded as we recurse. Since each group
+     * of sibling was laid out in 1×1, we must rescale to fit using absolute
+     * coordinates. This lets us use a viewport to zoom.
+     */
     function layout(d, treemap) {
         //updateWarningsCountInUI(d);
 
@@ -94,6 +98,7 @@ var treeMapBuilder = (function() {
 		// id for all squares
 		var id = 0;
 
+        // sets the path to the current node above the treemap
         setPath(d, name(d));
 
         var g1 = svg.insert("g", ".chart-and-code")
@@ -104,7 +109,7 @@ var treeMapBuilder = (function() {
             .data(d._children)
             .enter().append("g");
 
-        //on click square to go more in depth
+        // on click square to go more in depth
         g.filter(function(d) {
                 return d._children;
             })
@@ -137,9 +142,9 @@ var treeMapBuilder = (function() {
             	});
 			}
 
-        /*
-         * This function will be triggered when the user clicks on a button
-         * It will refresh the data in the treemap according to which button is clicked
+        /**
+         * This function will be triggered when the user clicks on a button.
+         * It will refresh the data in the treemap according to which button is clicked.
          */
         $('.updateContent').change(function() {
             if (!refreshing) {
@@ -214,7 +219,7 @@ var treeMapBuilder = (function() {
             })
             .append("title");
 
-        /*
+        /**
          * Sets in the lower right corner of a node the filename
          */
         children.append("text")
@@ -254,7 +259,7 @@ var treeMapBuilder = (function() {
             .attr("class", "ptext")
             .attr("dy", ".75em");
 
-        /*
+        /**
          * Sets in the upper left corner of a node the filename
          */
         t.append("tspan")
@@ -265,7 +270,7 @@ var treeMapBuilder = (function() {
                 return d.fileName;
             });
 
-        /*
+        /**
          * Sets in the upper left corner of a node the amount of warnings
          */
         t.append("tspan")
@@ -300,11 +305,13 @@ var treeMapBuilder = (function() {
             return output.slice(0, -3);
         }
 
+        // pushes the clicked node to the array and then shows the node
         function navigationDown(d) {
             currentNodePath.push(findChildNumber(d, d.parent));
             transition(d)
         }
 
+        // will go to the source code view if the clicked node is a class
         function toSourceCode(d) {
             sourceCoded = d;
             sourceCodeLevel = true;
@@ -323,6 +330,7 @@ var treeMapBuilder = (function() {
         	$('.CodeMirror').width(opts.width).height(opts.height - 30);
         }
 
+        // returns the number of a child node if possible, otherwise null
         function findChildNumber(d, parent) {
             for (var i = 0; i < parent._children.length; i++) {
                 if (parent._children[i].fileName == d.fileName) {
@@ -332,6 +340,7 @@ var treeMapBuilder = (function() {
             return null;
         }
 
+        // performs a transition to a deeper level
         function transition(d) {
 
             if (transitioning || !d) {
@@ -370,6 +379,10 @@ var treeMapBuilder = (function() {
             });
         }
 
+        /**
+         * Goes directly to a specific level.
+         * Used when the user goes back by clicking on a specific node in the path
+         */
 		function goToRelevantLevel(indexString, fromSourceCode) {
             sourceCodeLevel = false;
             
@@ -393,6 +406,11 @@ var treeMapBuilder = (function() {
 				display(d);
 			}
 		}
+
+        /**
+         * Will set the path will all nodes that were needed to go to the current node.
+         * All these nodes in the path are clickable and you will directly jump to them on click.
+         */
 		function setPath(d, path) {
 			var subTitleDiv = document.getElementById("current-path");
 			if(path.indexOf('/') > -1) {
@@ -474,8 +492,10 @@ var treeMapBuilder = (function() {
             });
     }
 
-    // Sets the current path in a specific div and
-    // gives the return button the text
+    /**
+     * Sets the current path in a specific div and
+     * gives the return button the text
+     */
     function name(d) {
         var path = d.parent ? name(d.parent) + " / " + d.fileName : d.fileName;
         return path;
@@ -553,11 +573,15 @@ var treeMapBuilder = (function() {
     }
 
     return {
-        // The main method which is called to create the treeMap.
-        // This calls all the methods needed like initialize.
+
+        /*
+         * The main method which is called to create the treeMap.
+         * This calls all the methods needed like initialize.
+         */
         createTreeMap: function(o, data) {
             // First we create all variables that are needed for this treemap.
             setTheVariables(o, data);
+
             // After cresating the variables we can start initializing and displaying the tree.
             initializeTheTree(root);
             display(root);

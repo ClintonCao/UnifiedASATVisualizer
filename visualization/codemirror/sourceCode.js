@@ -9,19 +9,23 @@ var sourceCode = (function() {
 	var	localCurPath;
 	var colorMethod = 0;
 
+	// Gives a specific line a specific colour
 	function colorOne(line) {
 		$(line).css('background',colours.darkGreen());
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkGreen());
 	}
+	// Gives a specific line a specific colour
 	function colorTwo(line) {
 		$(line).css('background',colours.darkOrange());
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkOrange());
 	}
+	// Gives a specific line a specific colour
 	function colorThree(line) {
 		$(line).css('background',colours.darkBlue());
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkBlue());
 	}
 
+	// Highlights a line according to either the ASAT or the category
 	function highlight(lineNumber, type, cat) {
 		var childs = $( '.CodeMirror-code').children()
 		var child = childs[lineNumber - 1];
@@ -55,6 +59,7 @@ var sourceCode = (function() {
 		}
 	}
 
+	// Set the information for when the user is hovering over a warning
 	function setLabels(lineNumber, type, cat, message) {
 		var childs = $( '.CodeMirror-code').children()
 		var child = childs[lineNumber - 1];
@@ -62,7 +67,7 @@ var sourceCode = (function() {
 				currentCatWarnings.push(cat);
 				currentMessageWarnings.push(message);
 			if( curLine != lineNumber)  {
-				 /*
+				/**
 				 * Creates a tooltip that will be shown on hover over a node
 				 */
 				curLine = lineNumber;
@@ -95,6 +100,7 @@ var sourceCode = (function() {
 			}
 	}
 
+	// Will set up CodeMirror with the given class
 	function displayCode(pathID) {	
 		for ( var i = 0; i < codeExport.length; i++){	
 			if (codeExport[i].path == pathID){
@@ -116,10 +122,7 @@ var sourceCode = (function() {
 		}
 
 	return {
-		
-		readAllCode: function() {	
-		},
-
+		// will set up CodeMirror and shows it to the user
 		show: function(d, curPath) {
 			localD = d;
 			localCurPath = curPath;
@@ -148,6 +151,7 @@ var sourceCode = (function() {
 			}
 		},
 
+		// hides code mirror to show the treemap
 		hide: function() {
 			$('input.relative').removeAttr("disabled");
 			$('#normalButton').removeAttr("disabled");
@@ -162,12 +166,14 @@ var sourceCode = (function() {
 				document.getElementById("chart").style.visibility = 'visible';
 		},
 
+		// reloads the content of the current CodeMirror according to filtered ASATs and/or categories
 		fullReload: function() {
 			sourceCode.hide();
 			sourceCode.show(localD, localCurPath);
 			$('.CodeMirror').width(opts.width).height(opts.height - 30);
 		},
 
+		// either 0 for ASATs filter or 1 for categories filter
 		setColorMethod: function(method) {
 			colorMethod = method;
 		}

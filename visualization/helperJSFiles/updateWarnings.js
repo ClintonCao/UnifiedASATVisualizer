@@ -1,4 +1,4 @@
-/*
+/**
  * Will calculate the number of current warnings for each ASAT and then sets it
  */
 function updateASATWarningsCount(d) {
@@ -8,7 +8,7 @@ function updateASATWarningsCount(d) {
     appendInfoToSAT(CheckStyleWarnings, PMDWarnings, FindBugsWarnings);
 }
 
-/*
+/**
  * Will calculate the number of current warnings for the function defects category and then sets it
  */
 function updateFunctionalDefectsCount(d) {
@@ -22,7 +22,7 @@ function updateFunctionalDefectsCount(d) {
     appendInfoToFunctionalDefects(CheckWarnings, ConcWarnings, ErrorWarnings, InterfaceWarnings, LogicWarnings, MigrationWarnings, ResourceWarnings);
 }
 
-/*
+/**
  * Will calculate the number of current warnings for the maintainability defects category and then sets it
  */
 function updateMaintainabilityDefectsCount(d) {
@@ -38,7 +38,7 @@ function updateMaintainabilityDefectsCount(d) {
     appendInfoToMaintainabilityDefects(BestPracticeWarnings, CodeStructureWarnings, DocConventionsWarnings, MetricWarnings, NamingConventionsWarnings, OODesignWarnings, SimplificationsWarnings, ReduncanciesWarnings, StyleConventionsWarnings);
 }
 
-/*
+/**
  * Will calculate the number of current warnings for the other defects category and then sets it
  */
 function updateOtherDefectsCount(d) {
@@ -48,7 +48,7 @@ function updateOtherDefectsCount(d) {
     appendInfoToOtherDefects(OtherWarnings, RegularExpressionsWarnings, ToolSpecificWarnings);
 }
 
-/*
+/**
  * Sums for each node how many warnings they have.
  */
 function sumNodeForASAT(d, root) {
@@ -86,7 +86,7 @@ function sumNodeForASAT(d, root) {
     return -1;
 }
 
-/*
+/**
  * Add total amount of active warnings for each ASAT in the left menu
  */
 function appendInfoToSAT(CS, PMD, FB) {
@@ -95,7 +95,7 @@ function appendInfoToSAT(CS, PMD, FB) {
     document.getElementById("FindBugsLabel").innerHTML = "&thinsp; FindBugs&thinsp;(" + FB + ")";
 }
 
-/*
+/**
  * Add total amount of active warnings to each sub category within the functional defects in the right menu
  */
 function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res) {
@@ -110,7 +110,7 @@ function appendInfoToFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, R
         sumFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res) + ") &thinsp;";
 }
 
-/*
+/**
  * Add total amount of active warnings to each sub category within the maintainability defects in the right menu
  */
 function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, Simp, Red, StyleConv) {
@@ -127,7 +127,7 @@ function appendInfoToMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamCon
         sumMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, Simp, Red, StyleConv) + ") &thinsp; ";
 }
 
-/*
+/**
  * Add total amount of active warnings to each sub category within the other category in the right menu
  */
 function appendInfoToOtherDefects(Other, RegExpr, Tools) {
@@ -137,7 +137,7 @@ function appendInfoToOtherDefects(Other, RegExpr, Tools) {
     document.getElementById("OthLabel").innerHTML = " Other (" + sumOtherDefects(Other, RegExpr, Tools) + ") &thinsp;";
 }
 
-/*
+/**
  * Sums how many active functional defects there are
  */
 function sumFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res) {
@@ -170,7 +170,7 @@ function sumFunctionalDefects(Check, Conc, ErrorH, Inter, Logic, Mig, Res) {
     return summation;
 }
 
-/*
+/**
  * Sums how many active maintainability defects there are
  */
 function sumMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, Simp, Red, StyleConv) {
@@ -209,7 +209,7 @@ function sumMaintainabilityDefects(Prac, Struc, DocConv, Metric, NamConv, OOD, S
     return summation;
 }
 
-/*
+/**
  * Sums how many active other defects there are
  */
 function sumOtherDefects(Other, RegExpr, Tools) {

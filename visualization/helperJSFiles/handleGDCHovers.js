@@ -1,4 +1,4 @@
-/*
+/**
  * Link all categories with the right descriptions
  */
 function defineHovers() {
@@ -13,7 +13,7 @@ function defineHovers() {
     }
 }
 
-/*
+/**
  * Enables the hover effect for a given category label
  */
 function showHover(category) {

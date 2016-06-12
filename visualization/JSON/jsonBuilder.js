@@ -1,11 +1,9 @@
-/*
+/**
  * A class which holds all functions that uses JSON 
  */
 
-/*
- *
+/**
  * Filter on type of tool and/or warnings
- *
  */
 function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	var packageArray = [];
@@ -88,10 +86,8 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	return packageArray;
 }
 
-/*
- *
+/**
  * Counts for a specific ASAT how many warnings there are
- *
  */
 function getTotalASATWarning(warningType, className) {
 	var packageArray = [];
@@ -126,7 +122,7 @@ function getTotalASATWarning(warningType, className) {
 	return packageArray;
 }
 
-/*
+/**
  * Get object with all warnings with lines from a certain class
  * filterd on warning type
  */
@@ -159,10 +155,8 @@ function getWarningLines(className) {
 	}
 	return classObject;
 }
-/*
- *
+/**
  * Counts for a specific category how many warnings there are
- *
  */
 function getTotalCategoryWarning(warningType, className) {
 	var packageArray = [];
@@ -197,10 +191,8 @@ function getTotalCategoryWarning(warningType, className) {
 	return packageArray;
 }
 
-/*
- *
+/**
  * Creates a JSON file that could be used by the tree map
- *
  */
 function createJsonTreeMap(packages){
 	var jsonArrPackage = [];
@@ -262,7 +254,7 @@ function createJsonTreeMap(packages){
 		return jsonArrPackage;
 }
 
-/*
+/**
  * Replace \ for / in path for usage
  */ 
 function replaceAll(stringObject, target, replacement){

@@ -5,7 +5,7 @@ var backgroundObject = (function() {
 	var firstRatioBegin, firstRatioEnd, SecondRatioBegin, SecondRatioEnd, ThirdRatioBegin, ThirdRatioEnd, firstEdgeBegin, firstEdgeEnd, SecondEdgeBegin, SecondEdgeEnd, ThridEdgeBegin, ThirdEdgeEnd;
 	reloadColorScale();
 	
-	/*
+	/**
 	 * Defines all different colour scales
 	 */
 	function reloadColorScale() {
@@ -20,7 +20,7 @@ var backgroundObject = (function() {
 		grayTints = [d3.rgb(colours.grey()), d3.rgb(colours.grey())];	
 		grayScale =  d3.scale.linear().domain([0, 0]).interpolate(d3.interpolateHcl).range(grayTints);
 	}
-	/*
+	/**
 	 * Calculates the worst case of #warnings/loc
 	 */ 
 	function getRelativeWarnings() {
@@ -43,7 +43,7 @@ var backgroundObject = (function() {
 		return (worstRatio * 100);
 	}
 	function getNormalColors() {
-			return d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
+		return d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
 	}
 	function setToPercentages() {
 		firstEdgeBegin = firstRatioBegin + "%";
