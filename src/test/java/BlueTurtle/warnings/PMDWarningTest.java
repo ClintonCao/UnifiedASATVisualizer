@@ -20,6 +20,7 @@ public class PMDWarningTest {
 	private static String ruleSet = "JUnit";
 	private static String method = "equals";
 	private static String classification = "Refactorings - Redundancies";
+	private static String message = "Ensure you override both equals() and hashCode()";
 
 
 	/**
@@ -27,8 +28,8 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testEqualsTrue() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		assertEquals(expected, actual);
 	}
 	
@@ -37,8 +38,8 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testSameHashCode() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		assertEquals(expected.hashCode(), actual.hashCode());
 	}
 
@@ -47,9 +48,9 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentPath() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		expected.setFilePath("\\src\\temp\\");
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		assertNotEquals(expected, actual);
 	}
 	
@@ -58,9 +59,9 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentFileName() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		expected.setFileName("okay.java");
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		assertNotEquals(expected, actual);
 	}	
 
@@ -69,8 +70,8 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentLines() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, classification);
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, message, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		assertNotEquals(expected, actual);
 	}	
 	
@@ -79,9 +80,9 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentRules() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, message, classification);
 		expected.setClassification("OverrideBothEqualsAndHashcode");
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		assertNotEquals(expected, actual);
 	}
 	
@@ -90,9 +91,9 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentPackages() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, message, classification);
 		expected.setPackageName("BlueTurtle.warnings");
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		assertNotEquals(expected, actual);
 	}
 	
@@ -101,9 +102,9 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentTypes() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, message, classification);
 		expected.setType("warning1");
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		actual.setType("warning2");
 		assertNotEquals(expected, actual);
 	}		
@@ -113,9 +114,9 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentRuleSets() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, classification);
-		expected.setRuleSet("Basic");
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, message, classification);
+		expected.setMessage("Basic");
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		assertNotEquals(expected, actual);
 	}		
 
@@ -124,9 +125,9 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testEqualsFalseWithDifferentMethods() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 2, packageName, ruleSet, method, ruleName, message, classification);
 		expected.setMethod("foo");
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		assertNotEquals(expected, actual);
 	}
 	
@@ -135,8 +136,8 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testEqualsFalsePMDandCheckStyle() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
-		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, "lalala", ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
+		CheckStyleWarning actual = new CheckStyleWarning(filePath, fileName, 1, message, ruleName, classification);
 		assertNotEquals(expected, actual);
 	}	
 	
@@ -146,7 +147,7 @@ public class PMDWarningTest {
 	@Test
 	public void testChangeOfLine() {
 		int expected = 5;
-		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		int actual = pmd.getLine();
 		pmd.setLine(expected);
 		assertNotSame(expected, actual);
@@ -158,7 +159,7 @@ public class PMDWarningTest {
 	@Test
 	public void testChangeOfPackageName() {
 		String expected = "BlueTurtle.parsers";
-		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		String actual = pmd.getPackageName();
 		pmd.setPackageName(expected);
 		assertNotEquals(expected, actual);
@@ -170,9 +171,9 @@ public class PMDWarningTest {
 	@Test
 	public void testChangeOfRuleSet() {
 		String expected = "Basic1";
-		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
-		String actual = pmd.getRuleSet();
-		pmd.setRuleSet(expected);
+		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
+		String actual = pmd.getMessage();
+		pmd.setMessage(expected);
 		assertNotEquals(expected, actual);
 	}
 	
@@ -182,7 +183,7 @@ public class PMDWarningTest {
 	@Test
 	public void testChangeOfMethod() {
 		String expected = "func";
-		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning pmd = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		String actual = pmd.getMethod();
 		pmd.setMethod(expected);
 		assertNotEquals(expected, actual);
@@ -193,8 +194,8 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testTwoEqualWarningReturnSameString() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
-		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
 		assertEquals(expected.toString(), actual.toString());
 	}
 	
@@ -203,8 +204,8 @@ public class PMDWarningTest {
 	 */
 	@Test
 	public void testTwoDifferentWarningReturnDifferentString() {
-		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, classification);
-		PMDWarning actual = new PMDWarning(filePath, fileName, 5, packageName, ruleSet, method, ruleName, classification);
+		PMDWarning expected = new PMDWarning(filePath, fileName, 1, packageName, ruleSet, method, ruleName, message, classification);
+		PMDWarning actual = new PMDWarning(filePath, fileName, 5, packageName, ruleSet, method, ruleName, message, classification);
 		assertNotEquals(expected.toString(), actual.toString());
 	}
 	

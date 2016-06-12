@@ -1,0 +1,277 @@
+/*
+ * Defines for all descriptions of categories how they should appear on a hover action
+ */
+#GDCFunctionalDefects-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCCheck-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCConcurrency-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCErrorHandling-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCInterface-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCLogic-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+} 
+            
+#GDCMigration-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCResource-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCMaintainabilityDefects-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCBestPractices-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCCodeStructure-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCDocConventions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index: 10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+                
+#GDCMetric-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCNamingConventions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCOODesign-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCSimplifications-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCRedundancies-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCStyleConventions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCOther-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCRegularExpressions-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#GDCToolSpecific-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#ASAT-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#ColourScale-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#relativeLabel-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+#main-title-hover {
+    display:none;
+    background: rgba(55, 58, 60, 1.0);
+    padding: 10px;
+    width: 250px;
+    color: #FFFFFF;
+    position:absolute;
+    z-index:10002;
+    font-family: 'Roboto Mono', sans-serif;
+}

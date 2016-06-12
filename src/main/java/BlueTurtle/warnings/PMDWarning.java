@@ -11,7 +11,6 @@ import lombok.Setter;
  */
 public class PMDWarning extends Warning {
 
-	@Getter @Setter private int line;
 	@Getter @Setter private String ruleSet;
 	@Getter @Setter private String method;
 	@Getter @Setter private String packageName;
@@ -36,9 +35,8 @@ public class PMDWarning extends Warning {
 	 * @param classification
 	 *            of the violated rule of the warning.
 	 */
-	public PMDWarning(String filePath, String filename, int line, String packageName, String ruleSet, String method,  String ruleName, String classification) {
-		super(filePath, filename, "PMD", ruleName, classification);
-		setLine(line);
+	public PMDWarning(String filePath, String filename, int line, String packageName, String ruleSet, String method,  String ruleName, String message, String classification) {
+		super(filePath, filename, line, "PMD", ruleName, message, classification);
 		setPackageName(packageName);
 		setRuleSet(ruleSet);
 		setMethod(method);
@@ -60,7 +58,7 @@ public class PMDWarning extends Warning {
 
 		PMDWarning that = (PMDWarning) other;
 
-		return (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line
+		return (filePath.equals(that.filePath) && fileName.equals(that.fileName) && line == that.line && message.equals(that.message)
 				&& classification.equals(that.classification) && packageName.equals(that.packageName) && type.equals(that.type) 
 				&& ruleSet.equals(that.ruleSet) && method.equals(that.method) && ruleName.equals(that.ruleName));
 	}
@@ -70,7 +68,7 @@ public class PMDWarning extends Warning {
 	 */
 	@Override
 	public int hashCode() {
-		return java.util.Objects.hash(filePath, fileName, type, line, packageName, ruleSet, method, ruleName, classification);
+		return java.util.Objects.hash(filePath, fileName, type, line, packageName, ruleSet, method, ruleName, message, classification);
 	}
 	
 	/**
@@ -80,7 +78,7 @@ public class PMDWarning extends Warning {
 	public String toString() {
 		return "PMDWarning [line=" + line + ", ruleSet=" + ruleSet + ", method=" + method + ", packageName="
 				+ packageName + ", classification=" + classification + ", fileName=" + fileName + ", type=" + type
-				+ ", filePath=" + filePath + ", ruleName=" + ruleName + "]";
+				+ ", filePath=" + filePath + ", message=" + message + ", ruleName=" + ruleName + "]";
 	}
 	
 }

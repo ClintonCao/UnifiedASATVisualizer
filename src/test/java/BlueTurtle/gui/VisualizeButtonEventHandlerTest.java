@@ -21,10 +21,10 @@ public class VisualizeButtonEventHandlerTest {
 	 */
 	@Test
 	public void testSetOutputFiles() {
-		GUIController.setSourcePath(System.getProperty("user.dir"));
+		GUIController.setProjectPath(System.getProperty("user.dir"));
 		VisualizeButtonEventHandler eventHandler = new VisualizeButtonEventHandler();
 		eventHandler.setOutputFiles();
-		String sourcePath = GUIController.getSourcePath();
+		String sourcePath = GUIController.getProjectPath();
 		assertTrue(JavaController.getCheckStyleOutputFile()
 				.equals(sourcePath + File.separator + "target" + File.separator + "checkstyle-result.xml")
 				&& JavaController.getPmdOutputFile()

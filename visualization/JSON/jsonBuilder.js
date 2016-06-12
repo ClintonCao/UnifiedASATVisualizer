@@ -1,20 +1,9 @@
-/*
+/**
  * A class which holds all functions that uses JSON 
  */
 
-/*
- *
- * Replace \ for / in path for usage
- *
- */ 
-function replaceAll(stringObject, target, replacement){
-	return stringObject.split(target).join(replacement);
-}
-
-/*
- *
+/**
  * Filter on type of tool and/or warnings
- *
  */
 function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	var packageArray = [];
@@ -97,12 +86,10 @@ function filterTypeRuleName(acceptedTypes, acceptedCategories){
 	return packageArray;
 }
 
-/*
- *
+/**
  * Counts for a specific ASAT how many warnings there are
- *
  */
-function getTotalASATWarning(warningType) {
+function getTotalASATWarning(warningType, className) {
 	var packageArray = [];
 	var classObject = new Object();
 	for(var p =0; p < inputData.length; p++){
@@ -115,9 +102,15 @@ function getTotalASATWarning(warningType) {
 			classObject.amountOfWarnings = 0;
 			classObject.fileName = classObjectJson.fileName;
 			for (j = 0; j < classObjectJson.warningList.length; j++) { 
-				var warningJson = classObjectJson.warningList[j]
-				if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
-		  			classObject.amountOfWarnings++;
+				var warningJson = classObjectJson.warningList[j];
+				if(className.indexOf("java") > -1) {
+					if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1) && warningJson.fileName == className) {
+		  				classObject.amountOfWarnings++;
+					}
+				} else {
+					if(warningJson.type == warningType && ($.inArray(warningJson.classification, acceptedCategories) > -1)) {
+		  				classObject.amountOfWarnings++;
+					}
 				}
 	  		}
 	  		classArray.push(classObject);
@@ -125,10 +118,11 @@ function getTotalASATWarning(warningType) {
 		classArray.packageName = package.packageName;
 		packageArray.push(classArray)
 	}
+	packageArray.warningType = warningType;
 	return packageArray;
 }
 
-/*
+/**
  * Get object with all warnings with lines from a certain class
  * filterd on warning type
  */
@@ -161,12 +155,10 @@ function getWarningLines(className) {
 	}
 	return classObject;
 }
-/*
- *
+/**
  * Counts for a specific category how many warnings there are
- *
  */
-function getTotalCategoryWarning(warningType) {
+function getTotalCategoryWarning(warningType, className) {
 	var packageArray = [];
 	var classObject = new Object();
 	for(var p =0; p < inputData.length; p++){
@@ -179,9 +171,15 @@ function getTotalCategoryWarning(warningType) {
 			classObject.amountOfWarnings = 0;
 			classObject.fileName = classObjectJson.fileName;
 			for (j = 0; j < classObjectJson.warningList.length; j++) { 
-				var warningJson = classObjectJson.warningList[j]
-				if($.inArray(warningJson.type, acceptedTypes) > -1 && warningJson.classification == warningType) {
-		  			classObject.amountOfWarnings++;
+				var warningJson = classObjectJson.warningList[j];
+				if(className.indexOf("java") > -1) {
+					if($.inArray(warningJson.type, acceptedTypes) > -1 && warningJson.classification == warningType && warningJson.fileName == className) {
+			  			classObject.amountOfWarnings++;
+					}
+				} else {
+					if($.inArray(warningJson.type, acceptedTypes) > -1 && warningJson.classification == warningType) {
+			  			classObject.amountOfWarnings++;
+					}
 				}
 	  		}
 	  		classArray.push(classObject);
@@ -189,13 +187,12 @@ function getTotalCategoryWarning(warningType) {
 		classArray.packageName = package.packageName;
 		packageArray.push(classArray)
 	}
+	packageArray.warningType = warningType;
 	return packageArray;
 }
 
-/*
- *
+/**
  * Creates a JSON file that could be used by the tree map
- *
  */
 function createJsonTreeMap(packages){
 	var jsonArrPackage = [];
@@ -257,70 +254,9 @@ function createJsonTreeMap(packages){
 		return jsonArrPackage;
 }
 
-/*
- *
- * Creates a JSON file that could be used by the graph for package level
- *
- */
-function createJsonGraphPackages(packages){
-	var jsonArrPackage = [];
-	var linksArray = [];
- 	for(var p =0; p < packages.length; p++){
- 		for(var z = p+1; z < packages.length; z++) {
- 			if((Math.floor(Math.random() * 10) + 1) <= 8) {
- 				linksArray.push({"source":p, "target":z, "value": 10});
- 			}
- 		}
-	  	var jsonArrClass = [];
-	  	var classes = packages[p];
-	  	var totalWarningsPackage = 0;
-	  	var numberOfClasses = 0;
-	  	var totalLines = 0;
-      	for (var i = 0; i < classes.length; i++) {
-        	var fileName = classes[i].fileName;
-        	var linesOfCode = classes[i].loc;
-        	var amountOfWarnings = classes[i].amountOfWarnings;
-        	totalWarningsPackage += amountOfWarnings;
-        	totalLines += classes[i].loc;
-        	numberOfClasses++;
-        	jsonArrClass.push({
-          	fileName: fileName,
-          	loc: linesOfCode,
-          	warnings: amountOfWarnings
-        	});
-      	}
-      	jsonArrPackage.push({fileName: classes.packageName, numberOfClasses: numberOfClasses, totalWarnings:totalWarningsPackage, loc:totalLines, classes: jsonArrClass});
-	}
-	return {nodes: jsonArrPackage, links: linksArray };
-}
-
-/*
- *
- * Creates a JSON file that could be used by the graph for project level
- *
- */
-function createJsonGraphClasses(packages, packageName){
- 	for(var p =0; p < packages.length; p++){
-    	if(packages[p].packageName == packageName) {
-      	var jsonArrClass = [];
-      	var linksArray = [];
-      	var classes = packages[p];
-	      	for (var i = 0; i < classes.length; i++) {
-	      		for(var z = i+1; z < classes.length; z++) {
-	      			if((Math.floor(Math.random() * 10) + 1) <= 2) {
-		 				linksArray.push({"source":i, "target":z, "value": 10});
-		 			}
-		 		}
-	        	var fileName = classes[i].fileName;
-	        	var linesOfCode = classes[i].loc;
-	        	var amountOfWarnings = classes[i].amountOfWarnings;
-	        	jsonArrClass.push({
-	          	fileName: fileName,
-	          	loc: linesOfCode,
-	          	warnings: amountOfWarnings
-	        	});
-	      	}
-    	}
-  	}
-	return {nodes: jsonArrClass, links: linksArray };
+/**
+ * Replace \ for / in path for usage
+ */ 
+function replaceAll(stringObject, target, replacement){
+	return stringObject.split(target).join(replacement);
 }

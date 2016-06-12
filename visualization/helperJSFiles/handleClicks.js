@@ -5,7 +5,7 @@ var MaintainabilityDefectsElement = document.getElementById("maintainabilityDefe
 var FunctionDefectsElement = document.getElementById("functionalDefectsLabel");
 var OtherElement = document.getElementById("otherLabel");
 
-/*
+/**
  * Handles click on checkboxes for showing results of different tools
  */
 function handleClickTreeMapTypeSat(value, checked) {
@@ -22,43 +22,76 @@ function handleClickTreeMapTypeSat(value, checked) {
     }
 }
 
-/*
+/**
+ * handles the clicks on Sat categories
+ */
+function handleClickCategorySat(value, checked) {
+	//console.log(checked);
+
+	var arrayClasses = [".FunctionalDefects",".MaintainabilityDefects",".StyleConventions"];
+	var arrayNames = ["FunctionalDefects","MaintainabilityDefects","StyleConventions"];
+
+	//console.log(value);
+	var index = arrayNames.indexOf(value);
+	//console.log(index);
+
+	if(index > -1) {
+		$(arrayClasses[index]).prop('checked', checked); 
+		$(arrayClasses[index]).click();
+		toggleAcceptedCategories([arrayClasses[index]],checked);
+	} else {
+		if (checked) {
+			var index = acceptedCategories.indexOf(value);
+		   if (index < 0) {
+				acceptedCategories.push(value)
+		   }
+		} else {
+			var index = acceptedCategories.indexOf(value);
+			if (index > -1) {
+				acceptedCategories.splice(index, 1);
+			}
+		}
+	}
+	//console.log(acceptedCategories);
+}
+
+/**
  * Sets all ASAT and Categorie labels to white
  */
 function setAllLabelsWhite() {
-	CheckStyleElement.style.color = "#FFFFFF";
-	PMDElement.style.color = "#FFFFFF";
-	FindBugsElement.style.color = "#FFFFFF";
-	MaintainabilityDefectsElement.style.color = "#FFFFFF";
-	FunctionDefectsElement.style.color = "#FFFFFF";
-	OtherElement.style.color = "#FFFFFF";
+	CheckStyleElement.style.color = colours.white();
+	PMDElement.style.color = colours.white();
+	FindBugsElement.style.color = colours.white();
+	MaintainabilityDefectsElement.style.color = colours.white();
+	FunctionDefectsElement.style.color = colours.white();
+	OtherElement.style.color = colours.white();
 }
 
-/*
+/**
  * Colors based on ASAT so the labels are given colours
  */
 function setASATColoured() {
-	CheckStyleElement.style.color = "#12B212";
-	PMDElement.style.color = "#ED4337"
-	FindBugsElement.style.color = "#75B4EB";
-	MaintainabilityDefectsElement.style.color = "#FFFFFF";
-	FunctionDefectsElement.style.color = "#FFFFFF";
-	OtherElement.style.color = "#FFFFFF";
+	CheckStyleElement.style.color = colours.normalGreen();
+	PMDElement.style.color = colours.normalOrange();
+	FindBugsElement.style.color = colours.normalBlue();
+	MaintainabilityDefectsElement.style.color = colours.white();
+	FunctionDefectsElement.style.color = colours.white();
+	OtherElement.style.color = colours.white();
 }
 
-/*
+/**
  * Colors based on Categories so the labels are given colours
  */
 function setCategoriesColoured() {
-	CheckStyleElement.style.color = "#FFFFFF";
-	PMDElement.style.color = "#FFFFFF";
-	FindBugsElement.style.color = "#FFFFFF";
-	MaintainabilityDefectsElement.style.color = "#ED4337";
-	FunctionDefectsElement.style.color = "#12B212";
-	OtherElement.style.color = "#75B4EB";
+	CheckStyleElement.style.color = colours.white();
+	PMDElement.style.color = colours.white();
+	FindBugsElement.style.color = colours.white();
+	MaintainabilityDefectsElement.style.color = colours.normalGreen();
+	FunctionDefectsElement.style.color = colours.normalBlue();
+	OtherElement.style.color = colours.normalOrange();
 }
 
-/*
+/**
  * Handles click on checkboxes for using different colorscales
  */
 function handleClickColorScale(radioButton) {
@@ -71,20 +104,15 @@ function handleClickColorScale(radioButton) {
 		backgroundObject.setColorMethod(1);
 	} else if ( radioButton.value == "category" ){
 		setCategoriesColoured();
-				console.log("category clicked");
 		sourceCode.setColorMethod(1); 
 		backgroundObject.setColorMethod(2);
 	}
 }
 
-/*
+/**
  * Handles click for relative
  */
 function handleClickRelativeColours(radioButton) {
-	var normalButtonElement = document.getElementById("normalButton");
-	var asatButtonElement = document.getElementById("asatButton");
-	var categoryButtonElement = document.getElementById("categoryButton");
-
 	if($(radioButton).prop('checked')) {
 		backgroundObject.setColorsRelative();
 	} else {
@@ -100,30 +128,10 @@ function handleClickRelativeColours(radioButton) {
 	} else if ( document.getElementById("categoryButton").checked ){
 		setCategoriesColoured();
 		backgroundObject.setColorMethod(2);
-	} 
-}
-
-/*
-* handles the clicks on Sat categories
-*/
-function handleClickCategorySat(value, checked) {
-	if(value == "FunctionalDefects"){
-		
 	}
- 	if (checked) {
-        var index = acceptedCategories.indexOf(value);
-       if (index < 0) {
-			acceptedCategories.push(value)
-       }
-    } else {
-        var index = acceptedCategories.indexOf(value);
-        if (index > -1) {
-            acceptedCategories.splice(index, 1);
-        }
-    }
 }
 
-/*
+/**
  * Toggles between the graph and tree map visualization
  */
 function handleClickVisualiser(radioButton) {
@@ -132,25 +140,4 @@ function handleClickVisualiser(radioButton) {
     } else if (radioButton.value == "treemap") {
         runTreeMap();
     }
-}
-
-
-
-/*
- * toggle all category checkboxes of a group
- */
-function handleClickCategory(category) {
-	// for next week
-	/*
-	if( category == "FunctionDefects" ){
-		$('.FunctionalDefects').click()
-		
-		
-	}else if( category == "MaintainabilityDefects" ){
-		$('.MaintainabilityDefects').click()
-		
-		
-	}else if( category == "StyleConventions" ){
-		$('.StyleConventions').click()
-	}*/
 }

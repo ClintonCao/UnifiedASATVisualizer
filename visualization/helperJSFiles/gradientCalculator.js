@@ -81,11 +81,11 @@ var gradientCalculator = (function() {
 				y = 0.01;
 			}
 			measurements(x, y);
-			console.log("x: " + x);
-			console.log("y: " + y);
-			console.log("a: " + a);
-			console.log("b: " + b);
-			console.log("c: " + c);
+			// console.log("x: " + x);
+			// console.log("y: " + y);
+			// console.log("a: " + a);
+			// console.log("b: " + b);
+			// console.log("c: " + c);
 			return calculateBoundaries(a, b, a+b+c);
 		},
 		get45Angle: function (x,y){

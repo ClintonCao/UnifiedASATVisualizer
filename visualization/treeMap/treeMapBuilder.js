@@ -1,10 +1,11 @@
-	var treeMapBuilder = (function() {
+var currentClassName = "";
+var sourceCodeLevel = false;
+var treeMapBuilder = (function() {
 
     // initialize all variables
-    var treemap, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults
+    var treemap, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults, sourceCoded
     var refreshing = false;
     var upperLevel = true;
-    var sourceCodeLevel = false;
 	var currentNodePath = [];
 	var root;
 
@@ -24,71 +25,23 @@
         root.depth = 0;
     }
 
-
-    /*
-     * Will put the #warnings for each ASAT
-     */
-    function updateASATWarningsCount(d) {
-        var CheckStyleWarnings = sumNodeForASAT(d, getTotalASATWarning("CheckStyle"));
-        var PMDWarnings = sumNodeForASAT(d, getTotalASATWarning("PMD"));
-        var FindBugsWarnings = sumNodeForASAT(d, getTotalASATWarning("FindBugs"));
-        appendInfoToSAT(CheckStyleWarnings, PMDWarnings, FindBugsWarnings);
-    }
-
-    /*
-     * Will put the #warnings for the function defects category
-     */
-    function updateFunctionalDefectsCount(d) {
-        var CheckWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Check"));
-        var ConcWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Concurrency"));
-        var ErrorWarnings = sumNodeForASAT(d, getTotalCategoryWarning("ErrorHandling"));
-        var InterfaceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Interface"));
-        var LogicWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Logic"));
-        var MigrationWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Migration"));
-        var ResourceWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Resource"));
-        appendInfoToFunctionalDefects(CheckWarnings, ConcWarnings, ErrorWarnings, InterfaceWarnings, LogicWarnings, MigrationWarnings, ResourceWarnings);
-    }
-
-    /*
-     * Will put the #warnings for the maintainability defects category
-     */
-    function updateMaintainabilityDefectsCount(d) {
-        var BestPracticeWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Best Practices"));
-        var CodeStructureWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Code Structure"));
-        var DocConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Documentation Conventions"));
-        var MetricWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Metric"));
-        var NamingConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Naming Conventions"));
-        var OODesignWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Object Oriented Design"));
-        var SimplificationsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Simplifications"));
-        var ReduncanciesWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Refactorings - Redundancies"));
-        var StyleConventionsWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Style Conventions"));
-        appendInfoToMaintainabilityDefects(BestPracticeWarnings, CodeStructureWarnings, DocConventionsWarnings, MetricWarnings, NamingConventionsWarnings, OODesignWarnings, SimplificationsWarnings, ReduncanciesWarnings, StyleConventionsWarnings);
-    }
-
-    /*
-     * Will put the #warnings for the other defects category
-     */
-    function updateOtherDefectsCount(d) {
-        var OtherWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Other"));
-        var RegularExpressionsWarnings =sumNodeForASAT(d, getTotalCategoryWarning("Regular Expressions"));
-        var ToolSpecificWarnings = sumNodeForASAT(d, getTotalCategoryWarning("Tool Specific"));
-        appendInfoToOtherDefects(OtherWarnings, RegularExpressionsWarnings, ToolSpecificWarnings);
-    }
-
-    /*
-     * Will put the #warnings for each specific ASAT and warning type
+    /**
+     * Will set the amount of current warnings for each specific ASAT and warning type
      */
     function updateWarningsCountInUI(d) {
+        currentClassName = d.fileName;
         updateASATWarningsCount(d);
         updateFunctionalDefectsCount(d);
         updateMaintainabilityDefectsCount(d);
         updateOtherDefectsCount(d);
     }
 
-    // Aggregate the values for internal nodes. This is normally done by the
-    // treemap layout, but not here because of our custom implementation.
-    // We also take a snapshot of the original children (_children) to avoid
-    // the children being overwritten when when layout is computed.
+    /**
+     * Aggregate the values for internal nodes. This is normally done by the
+     * treemap layout, but not here because of our custom implementation.
+     * We also take a snapshot of the original children (_children) to avoid
+     * the children being overwritten when when layout is computed.
+     */
     function accumulateValue(d) {
         return (d._children = d.values) ?
             d.value = d.values.reduce(function(p, v) {
@@ -104,15 +57,17 @@
             }, 0) :
             d.warnings;
     }
-    // Compute the treemap layout recursively such that each group of siblings
-    // uses the same size (1×1) rather than the dimensions of the parent cell.
-    // This optimizes the layout for the current zoom state. Note that a wrapper
-    // object is created for the parent node for each group of siblings so that
-    // the parent’s dimensions are not discarded as we recurse. Since each group
-    // of sibling was laid out in 1×1, we must rescale to fit using absolute
-    // coordinates. This lets us use a viewport to zoom.
+    /**
+     * Compute the treemap layout recursively such that each group of siblings
+     * uses the same size (1×1) rather than the dimensions of the parent cell.
+     * This optimizes the layout for the current zoom state. Note that a wrapper
+     * object is created for the parent node for each group of siblings so that
+     * the parent’s dimensions are not discarded as we recurse. Since each group
+     * of sibling was laid out in 1×1, we must rescale to fit using absolute
+     * coordinates. This lets us use a viewport to zoom.
+     */
     function layout(d, treemap) {
-        updateWarningsCountInUI(d);
+        //updateWarningsCountInUI(d);
 
         if (d._children) {
             treemap.nodes({
@@ -129,41 +84,13 @@
         }
     }
 	
-	  // Code to find a certain node in the treemap
-        function findNode(path, root) {
-            var node = root;
-            for (var i = 0; i < path.length; i++) {
-                node = node._children[path[i]]
-            }
-            return node;
+    // Code to find a certain node in the treemap
+    function findNode(path, root) {
+        var node = root;
+        for (var i = 0; i < path.length; i++) {
+            node = node._children[path[i]]
         }
-
-    /*
-     * Sums for each node how many warnings they have.
-     * It still checks on Project and Test Project hard coded to find wheter it is on
-     * TODO: package level or class level, this should be changed to a dynamic way in the future.
-     */
-    function sumNodeForASAT(d, root) {
-        var nodeAndSummation = [];
-        var sum = 0;
-        if (d.fileName == projectName) {
-            for (var i = 0; i < root.length; i++) {
-                for (var j = 0; j < root[i].length; j++) {
-                    sum += root[i][j].amountOfWarnings;
-                 }
-             }
-             return sum;
-        } else {
-            for (var i = 0; i < root.length; i++) {
-                if (root[i].packageName == d.fileName) {
-                    for (var j = 0; j < root[i].length; j++) {
-                        sum += root[i][j].amountOfWarnings;
-                    }
-                    return sum;
-                }
-            }
-        }
-        return -1;
+        return node;
     }
 
     //Renders the chart with given depth and children
@@ -171,19 +98,8 @@
 		// id for all squares
 		var id = 0;
 
+        // sets the path to the current node above the treemap
         setPath(d, name(d));
-
-        /*
-         * Creates the navigation balk where you can keep track of
-         * which level you are and which you can use to navigate back
-         */
-        // grandparent
-        //     .datum(d.parent)
-        //     .on("click", navigationUp)
-        //     .select("text")
-        //     .style("fill", function() {
-        //         return '#333333';
-        //     });
 
         var g1 = svg.insert("g", ".chart-and-code")
             .datum(d)
@@ -193,7 +109,7 @@
             .data(d._children)
             .enter().append("g");
 
-        //on click square to go more in depth
+        // on click square to go more in depth
         g.filter(function(d) {
                 return d._children;
             })
@@ -226,9 +142,9 @@
             	});
 			}
 
-        /*
-         * This function will be triggered when the user clicks on a button
-         * It will refresh the data in the treemap according to which button is clicked
+        /**
+         * This function will be triggered when the user clicks on a button.
+         * It will refresh the data in the treemap according to which button is clicked.
          */
         $('.updateContent').change(function() {
             if (!refreshing) {
@@ -243,6 +159,7 @@
                 }
                 if(sourceCodeLevel) {
                     sourceCode.fullReload();
+                    updateWarningsCountInUI(sourceCoded);
                 } else {
                     fastReload();
                 }
@@ -259,8 +176,6 @@
             var newNode = findNode(currentNodePath, root);
             transition(newNode);
         }
-
-
 
         // Updates all warning counts for all ASATS and categories
         updateWarningsCountInUI(d);
@@ -304,7 +219,7 @@
             })
             .append("title");
 
-        /*
+        /**
          * Sets in the lower right corner of a node the filename
          */
         children.append("text")
@@ -313,7 +228,7 @@
                 return d.fileName;
             })
             .style("fill", function() {
-                return '#FFFFFF';
+                return colours.white();
             })
             .call(textBottomRight);
 
@@ -344,18 +259,18 @@
             .attr("class", "ptext")
             .attr("dy", ".75em");
 
-        /*
+        /**
          * Sets in the upper left corner of a node the filename
          */
         t.append("tspan")
             .style("fill", function(d) {
-                return '#FFFFFF';
+                return colours.white();
             })
             .text(function(d) {
                 return d.fileName;
             });
 
-        /*
+        /**
          * Sets in the upper left corner of a node the amount of warnings
          */
         t.append("tspan")
@@ -364,7 +279,7 @@
                 return d.warnings;
             })
             .style("fill", function(d) {
-                return '#FFFFFF';
+                return colours.white();
             });
         t.call(text);
 
@@ -389,34 +304,33 @@
             }
             return output.slice(0, -3);
         }
-		/*
-		// code for normal color based on amount of warnings relative to lines
-        g.selectAll("rect")
-            .style("fill", function(d) {
-                var ratio = 100 * d.warnings / d.value;
-				var gradientBackground = backgroundGradient.getBackground(svg);
-                return "url(#gradient)";
-                //return backgroundGradient.getBackground();
 
-
-            });*/
-
+        // pushes the clicked node to the array and then shows the node
         function navigationDown(d) {
             currentNodePath.push(findChildNumber(d, d.parent));
             transition(d)
         }
 
+        // will go to the source code view if the clicked node is a class
         function toSourceCode(d) {
+            sourceCoded = d;
             sourceCodeLevel = true;
-            $("#normalButton").prop('checked', false);
-            $("#asatButton").prop('checked', true);
-            $("#asatButton").click();
+            if ( document.getElementById("asatButton").checked || document.getElementById("normalButton").checked ){
+                $("#normalButton").prop('checked', false);
+                $("#asatButton").prop('checked', true);
+                $("#asatButton").click();
+            } else if ( document.getElementById("categoryButton").checked ){
+                $("#categoryButton").prop('checked', true);
+                $("#categoryButton").click();
+            }
             setASATColoured();
+            updateWarningsCountInUI(d);
             sourceCode.show(d, name(d));
             setPath(d, name(d));
         	$('.CodeMirror').width(opts.width).height(opts.height - 30);
         }
 
+        // returns the number of a child node if possible, otherwise null
         function findChildNumber(d, parent) {
             for (var i = 0; i < parent._children.length; i++) {
                 if (parent._children[i].fileName == d.fileName) {
@@ -426,11 +340,7 @@
             return null;
         }
 
-        function navigationUp(d) {
-            currentNodePath.pop();
-            transition(d)
-        }
-
+        // performs a transition to a deeper level
         function transition(d) {
 
             if (transitioning || !d) {
@@ -451,11 +361,6 @@
             // Enable anti-aliasing during the transition.
             svg.style("shape-rendering", null);
 
-            // Draw child nodes on top of parent nodes.
-            // svg.selectAll(".depth").sort(function(a, b) {
-            //     return a.depth - b.depth;
-            // });
-
             // Fade-in entering text.
             g2.selectAll("text").style("fill-opacity", 0);
 
@@ -474,11 +379,19 @@
             });
         }
 
+        /**
+         * Goes directly to a specific level.
+         * Used when the user goes back by clicking on a specific node in the path
+         */
 		function goToRelevantLevel(indexString, fromSourceCode) {
             sourceCodeLevel = false;
-            $("#normalButton").prop('checked', true);
-            $("#asatButton").prop('checked', false);
-            $("#normalButton").click();
+            
+            if ( document.getElementById("asatButton").checked ){
+                $("#asatButton").click();
+            } else if ( document.getElementById("categoryButton").checked ){
+                $("#categoryButton").click();
+            }
+
 			var index = parseInt(indexString.substring(indexString.length-2,indexString.length-1));
 			
 			while (currentNodePath.length > index){
@@ -493,6 +406,11 @@
 				display(d);
 			}
 		}
+
+        /**
+         * Will set the path will all nodes that were needed to go to the current node.
+         * All these nodes in the path are clickable and you will directly jump to them on click.
+         */
 		function setPath(d, path) {
 			var subTitleDiv = document.getElementById("current-path");
 			if(path.indexOf('/') > -1) {
@@ -574,8 +492,10 @@
             });
     }
 
-    // Sets the current path in a specific div and
-    // gives the return button the text
+    /**
+     * Sets the current path in a specific div and
+     * gives the return button the text
+     */
     function name(d) {
         var path = d.parent ? name(d.parent) + " / " + d.fileName : d.fileName;
         return path;
@@ -642,20 +562,6 @@
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .style("shape-rendering", "crispEdges");
 
-        // grandparent = svg.append("g")
-        //     .attr("class", "grandparent")
-        //     .attr("id", "grandparent");
-
-        // grandparent.append("rect")
-        //     .attr("y", -margin.top)
-        //     .attr("width", width)
-        //     .attr("height", margin.top);
-
-        // grandparent.append("text")
-        //     .attr("x", 6)
-        //     .attr("y", 6 - margin.top)
-        //     .attr("dy", ".75em")
-
         if (data instanceof Array) {
             root = {
                 fileName: rname,
@@ -667,15 +573,19 @@
     }
 
     return {
-        // The main method which is called to create the treeMap.
-        // This calls all the methods needed like initialize.
+
+        /*
+         * The main method which is called to create the treeMap.
+         * This calls all the methods needed like initialize.
+         */
         createTreeMap: function(o, data) {
             // First we create all variables that are needed for this treemap.
             setTheVariables(o, data);
+
             // After cresating the variables we can start initializing and displaying the tree.
             initializeTheTree(root);
             display(root);
         }
-    };
+    }
 
 }());

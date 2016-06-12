@@ -3,6 +3,8 @@
    <head>
       <!-- Style for the UI -->
       <link rel="stylesheet" type="text/css" href="css/styleSheet.css">
+      <!-- Style for all elements which will be showed on hover -->
+      <link rel="stylesheet" type="text/css" href="css/showHover.css">
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <!-- Optional theme -->
@@ -11,36 +13,40 @@
       <link href="css/bootstrap-toggle.min.css" rel="stylesheet">
       <!-- Imports Google fonts for more awesome UI -->
       <link href='https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400,700' rel='stylesheet' type='text/css'>
-      
       <!-- code mirror -->
-	<link rel=stylesheet href="codemirror/doc/docs.css">
+    	<link rel=stylesheet href="codemirror/doc/docs.css">
+    	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+    	<link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css">
+    	<link rel="stylesheet" href="codemirror/addon/dialog/dialog.css">
+    	<link rel="stylesheet" href="codemirror/theme/monokai.css">
 
-	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
-	<link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css">
-	<link rel="stylesheet" href="codemirror/addon/dialog/dialog.css">
-	<link rel="stylesheet" href="codemirror/theme/monokai.css">
       <meta charset="utf-8">
       <title>Visualization of different ASATs</title>
    </head>
+
    <body>
       <nav id="main-title"  class="navbar navbar-dark bg-inverse">
-         <!-- Title of the current view -->
+         <!-- Here comes the main title, this is set in mainDriver.js -->
       </nav>
+      <span id="main-title-hover">
+      Unified ASATs Visualizer
+      </span>
       <div id="wrapper">
        	  <div id="left-wrapper">
               <div id="menu-left-wrapper">
                 <div id="left-menu">
-                <h3 onClick="handleClickSatType()">ASATs</h3>
-                   
-                   <form name="button-options" action="">
+                <h3 onClick="handleClickSatType()" id='ASAT'>ASATs</h3>
+                    <span id="ASAT-hover">
+                    Automated static analysis tools. <br> The analysis of source code without executing the code itself.
+                    </span>
+                    <form name="button-options" action="">
                       <div id="checkStyleDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="checkstyleButton" name="sat" value="CheckStyle"><label id="checkStyleLabel"> CheckStyle</label><br></div>
                       <div id="PMDDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="pmdButton" name="sat" value="PMD"><label id="PMDLabel"> PMD</label><br></div>
                       <div id="FindBugsDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="findBugsButton" name="sat" value="FindBugs"><label id="FindBugsLabel"> FindBugs</label><br></div>
-                      <!--
-                      <h3>Visualizers </h3>
-                      <input type="radio" id="treemapButton" name="visualisation" onclick="handleClickVisualiser(this);"  value="treemap"> Treemap<br>
-                      <input type="radio" id="graphButton" name="visualisation" onclick="handleClickVisualiser(this);" value="graph"> Graph<br>-->
-                      <h3>Colour scale </h3>
+                      <h3 id="ColourScale" >Colour scale </h3>
+                      <span id="ColourScale-hover">
+                      Choose wheter you want to show the amount of warnings, the ASATs plotted together or the categories of warnings plotted together.
+                      </span>
                       <input type="radio" id="normalButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="normal">
                       <div class="buttonText" id="normalColourLabel">Normal</div><br/>
                       <input type="radio" id="asatButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asat">
@@ -48,7 +54,9 @@
                       <input type="radio" id="categoryButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="category">
                       <div class="buttonText">Category</div><br/><br/>
                       <div class="buttonText"><input type="checkbox" onClick="handleClickRelative(this)" data-toggle="toggle" data-size="mini" class="updateContent relative" name="relative" id="relativeButton" value="Relative"><label id="relativeLabel"> Relative</label><br></div>
-    
+                      <span id="relativeLabel-hover">
+                      Normally the scale goes from 0 to 1 warning/line. Relative will use the highest ratio in your project of warning/lines of code instead of 1.
+                      </span>
                    </form>
                 </div>
              </div>
@@ -63,7 +71,6 @@
               <div id="chart">
               </div>
               <div id="code-div">
-              <!--<div id="back-div">Back</div>-->
               <article id="code-article"></article>
               </div>
             </div>
@@ -72,7 +79,7 @@
          <div id="menu-right-wrapper">
             <div id="right-menu">
                   <h3>Category</h3>
-                  <span id="GDCFunctionalDefects" class="UIText"><h4 class="category-titles" id="functionalDefectsLabel"  onClick="handleClickCategory('FunctionDefects')"><label id="FuncDefLabel" class="UIText">Functional Defects</label><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="FunctionalDefects"></h4></span>
+                  <span id="GDCFunctionalDefects" class="UIText"><h4 class="category-titles" id="functionalDefectsLabel"  onClick="handleClickCategory('FunctionDefects')"><label id="FuncDefLabel" class="UIText">Functional Defects</label><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="FunctionalDefects"></h4></span>
                   <span id="GDCFunctionalDefects-hover">
                     Rules that check for defects that affect the behavior of the program.
                     </span>
@@ -109,7 +116,7 @@
                 <span id="GDCResource-hover">
                     Errors concerning the initialization, casting, or release of data, whether that data is external (databases) or internal (variables).
                   </span>
-                  <span id="GDCMaintainabilityDefects" class="UIText"><h4 id="maintainabilityDefectsLabel"   class="category-titles" onClick="handleClickCategory('MaintainabilityDefects')"><label id="MainDefLabel" class="UIText">Maintainability Defects</label></h4></span>
+                  <span id="GDCMaintainabilityDefects" class="UIText"><h4 id="maintainabilityDefectsLabel"   class="category-titles" onClick="handleClickCategory('MaintainabilityDefects')"><label id="MainDefLabel" class="UIText">Maintainability Defects</label> <input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="MaintainabilityDefects"></h4></span>
                    <span id="GDCMaintainabilityDefects-hover">
                     Rules that check for problems that only affect the future development efforts of changing or adding to the system, but have no impact on the correctness of the program.
                     </span>
@@ -149,7 +156,7 @@
                 <span id="GDCStyleConventions-hover">
                     Rules that check the code for violations of style conventions, that do not affect the compiled output of the code.
                   </span>
-                  <span class="UIText"><h4 class="category-titles" id="otherLabel" onClick="handleClickCategory('StyleConventions')"><label id="OthLabel" class="UIText">Other</label></h4></span>
+                  <span class="UIText"><h4 class="category-titles" id="otherLabel" onClick="handleClickCategory('StyleConventions')"><label id="OthLabel" class="UIText">Other</label>  <input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="StyleConventions"></h4></span>
                   <span id="GDCOther"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Other"><label id="OtherLabel" class="UIText"> Other</label></span><br>
                   <span id="GDCOther-hover">
                     Rules that identify neither functional nor maintainability defects.
@@ -167,12 +174,10 @@
          </div>
       </div>
 
-	<!--
-		All Javascript files
-        The order is important first included all libraries
-        Then the visualization methods
-        And finally the mainDriver which controlls erverything.
-	-->
+    <!-- All Javascript files -->
+    <!-- The order is important! -->
+    <!-- First include all libraries, then the visualization methods. -->
+    <!-- Then the mainDriver which controlls erverything. -->
     <script src="jQuery/jquery-1.12.3.min.js"></script>
     <script src="Bootstrap/bootstrap.min.js"></script>
     <script src="Bootstrap/bootstrap-toggle.min.js"></script>
@@ -194,11 +199,13 @@
     <script src="JSON/outputCodeJSON.js"></script>
     <script src="JSON/jsonBuilder.js"></script>
     <script src="helperJSFiles/categoryMapper.js"></script>
+    <script src="helperJSFiles/colours.js"></script>
     <script src="helperJSFiles/backgroundGradient.js"></script>
     <script src="helperJSFiles/gradientCalculator.js"></script>
     <script src="helperJSFiles/handleClicks.js"></script>
-    <script src="treemap/treeMapBuilder.js"></script>
     <script src="helperJSFiles/handleGDCHovers.js"></script> 
+    <script src="helperJSFiles/updateWarnings.js"></script> 
+    <script src="treemap/treeMapBuilder.js"></script>
     <script src="mainDriver.js"></script>
 
 </body>
