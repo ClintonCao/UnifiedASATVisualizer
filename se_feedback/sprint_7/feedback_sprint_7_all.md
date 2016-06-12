@@ -23,6 +23,8 @@ Total: ****
 | reflection            |     |
 
 ## Notes
+* Good Job
+* Looks like it was a smooth Sprint
 
 #Code Evolution Quality Feedback
 
