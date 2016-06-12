@@ -13,7 +13,7 @@ var categoryMapper = (function() {
 		// maps a given category to one of the three main categories
 		categorizeWarningType: function(classification) {
 			for ( var index =0; index < allCategories.length; index++){
-				if ( allCategories[index].indexOf(classification) > 0 ){
+				if ( allCategories[index].indexOf(classification) >= 0 ){
 					return index;
 				}
 			}
