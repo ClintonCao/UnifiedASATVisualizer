@@ -11,7 +11,15 @@ import BlueTurtle.gui.GUI;
  * @author BlueTurtle.
  *
  */
-public class Main {
+public final class Main {
+	
+	
+	/**
+	 * Private constructor for this utility class.
+	 */
+	private Main() {
+		// not called
+	}
 
 	/**
 	 * All the modes (programming languages).
