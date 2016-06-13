@@ -1,11 +1,11 @@
-var currentClassName = "";
-var sourceCodeLevel = false;
 var treeMapBuilder = (function() {
 
     // initialize all variables
     var treemap, formatNumber, rname, margin, theight, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults, sourceCoded
     var refreshing = false;
     var upperLevel = true;
+    var sourceCodeLevel = false;
+    var currentClassName = "";
 	var currentNodePath = [];
 	var root;
 
@@ -575,7 +575,7 @@ var treeMapBuilder = (function() {
 
     return {
 
-        /*
+        /**
          * The main method which is called to create the treeMap.
          * This calls all the methods needed like initialize.
          */
@@ -586,6 +586,20 @@ var treeMapBuilder = (function() {
             // After cresating the variables we can start initializing and displaying the tree.
             initializeTheTree(root);
             display(root);
+        },
+
+        /**
+         * Returns the local boolean 'sourceCodeLevel'
+         */
+        getSourceCodeLevel: function() {
+            return sourceCodeLevel;
+        },
+        
+        /**
+         * Returns the local string 'currentClassName'
+         */
+        getCurrentClassName: function() {
+            return currentClassName;
         }
     }
 
