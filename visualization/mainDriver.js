@@ -5,6 +5,7 @@ var acceptedTypes = [];
 var acceptedCategories = [];
 if(!detectIE()) {
 	defineHovers();
+  backgroundObject.setColorsRelative();
 	runTreeMap();
 	addAllAcceptedTypesAndCategories();
 	setAllCheckboxesOnDefault();
@@ -32,6 +33,7 @@ function setAllCheckboxesOnDefault() {
 	$(".MaintainabilityDefects").click();
 	$(".StyleConventions").click();
 	$(".sats").click();
+  $("#relativeButton").click();
 }
 
 /**
@@ -72,6 +74,7 @@ function detectFirefox(){
     return false;
   }
 }
+
 /**
  * In the first run all ASATs and categories are included
  */

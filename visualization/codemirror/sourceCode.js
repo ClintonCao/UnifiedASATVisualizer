@@ -46,12 +46,15 @@ var sourceCode = (function() {
 			}
 		} else if(colorMethod == 1) {
 			switch(categoryMapper.categorizeWarningType(cat)) {
+				// Functional Defects
 				case 0:
 					colorOne(child);
 					break;
+				// Maintainability Defects
 				case 1:
 					colorThree(child);
 					break;
+				// Other
 				case 2:
 					colorTwo(child);
 					break;
