@@ -23,7 +23,7 @@ Total: ****
 | reflection            |     |
 
 ## Notes
-* Good Job
+* Good Job!
 * Looks like it was a smooth Sprint
 
 #Code Evolution Quality Feedback
@@ -60,3 +60,26 @@ Total: ****
 | Code Review            |     |
 
 ##Notes
+* Parsers have high cyclomatic complexity (ex. PMDXMLParser)
+	* consider splitting into smaller pieces. 
+	* Ex:
+	 
+   ```
+   for (condition) {
+      if (condition) {
+         code -> move to a new function
+      }
+   }
+   ```
+	* You've done this in `ProjectInfoFinder.findFiles`
+* `JSONFormatter`
+	* hardcoded String `"visualization/JSON/outputWarningsJSON.js"`
+		* use a config file or an easy to find constant
+* Visualisation
+	* `mainDriver`
+		* `sumXXXX` (3 functions)
+			* why are summations part of the MainDriver's responsibilities?
+			* consider moving to another class
+	* `treeMapBuilder` - good job splitting
+	* two folders `css` and `CSS`? 
+* Good job taking the feedback into account
