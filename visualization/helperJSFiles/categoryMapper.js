@@ -9,6 +9,14 @@ var categoryMapper = (function() {
 	var Other = ["Other", "Regular Expressions", "Tool Specific"]
 	var allCategories = [FunctionalDefects, MaintainabilityDefects, Other];
 	
+	// all labels
+	var FunctionalDefectsLabel =["CheckLabel", "ConcurrencyLabel", "ErrorHandlingLabel", "InterfaceLabel", "LogicLabel", "MigrationLabel", "ResourceLabel" ]
+	var MaintainabilityDefectsLabel = [ "BestPracticesLabel", "CodeStructureLabel", "DocConventionsLabel", "MetricLabel", "NamingConventionsLabel", "OODesignLabel", "SimplificationsLabel", "RedundanciesLabel", "StyleConventionsLabel"]
+	var OtherLabel = ["OtherLabel", "RegularExpressionsLabel", "ToolSpecificLabel"]
+	var allCategoriesLabel = [FunctionalDefectsLabel, MaintainabilityDefectsLabel, OtherLabel];
+	
+	
+	
 	return {
 		// maps a given category to one of the three main categories
 		categorizeWarningType: function(classification) {
@@ -21,7 +29,14 @@ var categoryMapper = (function() {
 		},
 		warningsFromCategorize: function(category) {
 				return allCategories[category];
+		},
+		getDefects: function(index){
+			return allCategories[index];
+		},
+		getDefectLabels: function(index){
+			return allCategoriesLabel[index];
 		}
+		
 	}
 	
 }());

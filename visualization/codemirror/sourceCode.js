@@ -11,8 +11,8 @@ var sourceCode = (function() {
 
 	// Gives a specific line a specific colour
 	function colorOne(line) {
-		$(line).css('background',colours.darkPurple());
-		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkPurple());
+		$(line).css('background',colours.normalPurple());
+		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.normalPurple());
 	}
 	// Gives a specific line a specific colour
 	function colorTwo(line) {
