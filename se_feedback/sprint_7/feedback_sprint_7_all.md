@@ -8,19 +8,19 @@
 #Sprint Feedback
 Feedback and Grades for Sprint 7.
 
-Total: ****
+Total: **10**
 
 | User Story | Score |
 |------------|-------|
-| definition |      |
-| splitting  |      |
-| responsibility |   |
+| definition |   10   |
+| splitting  |   10   |
+| responsibility | 10  |
 
 | Learning from History | Score |
 |-----------------------|-------|
-| estimation            |      |
-| prioritisation        |      |
-| reflection            |     |
+| estimation            |  10    |
+| prioritisation        |  10    |
+| reflection            |  10   |
 
 ## Notes
 * Good Job!
@@ -28,36 +28,36 @@ Total: ****
 
 #Code Evolution Quality Feedback
 
-Total: ****
+Total: **9.41**
 
 | Architecture                       | Score |
 |------------------------------------|-------|
-| Changes                            |      |
-| Architecture Design Document (ADD) |      |
+| Changes                            |   9   |
+| Architecture Design Document (ADD) |   8   |
 
 |                     | Score |
 |---------------------|-------|
-| Code Change Quality |       |
+| Code Change Quality |   8    |
 
 | Code Readability | Score |
 |------------------|-------|
-| Formatting       |      |
-| Naming           |      |
-| Comments         |      |
+| Formatting       |  10    |
+| Naming           |   9   |
+| Comments         |  10    |
 
 | Continuous Integration | Score |
 |------------------------|-------|
-| Building               |     |
-| Testing                |     |
+| Building               |  10   |
+| Testing                |  10   |
 
 |         | Score |
 |---------|-------|
-| Tooling |     |
+| Tooling |  10   |
 
 | Pull-based Development | Score |
 |------------------------|-------|
-| Branching              |     |
-| Code Review            |     |
+| Branching              |  10   |
+| Code Review            |  10   |
 
 ##Notes
 * Parsers have high cyclomatic complexity (ex. PMDXMLParser)
