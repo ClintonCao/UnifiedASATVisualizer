@@ -63,10 +63,10 @@ function sumNodeForASAT(d, root) {
          return sum;
     } else {
         for (var i = 0; i < root.length; i++) {
-            if(sourceCodeLevel) {
+            if(treeMapBuilder.getSourceCodeLevel()) {
                 if (root[i].packageName == d.parent.fileName) {
                     for (var j = 0; j < root[i].length; j++) {
-                        if(sourceCodeLevel && root[i][j].fileName == currentClassName) {
+                        if(treeMapBuilder.getSourceCodeLevel() && root[i][j].fileName == treeMapBuilder.getCurrentClassName()) {
                             return root[i][j].amountOfWarnings;
                         }
                         sum += root[i][j].amountOfWarnings;
