@@ -7,7 +7,7 @@ function updateASATWarningsCount(d) {
 	var cat = categoryMapper.getDefects(i);
 	for ( var index =0; index < mainTitles.length; index++) {
 		var warning = sumNodeForASAT(d, getTotalASATWarning(mainTitles[index], d.fileName));
-		document.getElementById(mainLabels[index]).innerHTML = '&thinsp; '+ mainLabels[index] + ' (' + warning + ")";
+		document.getElementById(mainLabels[index]).innerHTML = '&thinsp;&thinsp;'+ mainTitles[index] + '&thinsp;(' + warning + ")";
 	}
 }
 
