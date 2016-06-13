@@ -3,12 +3,16 @@
  */
 var acceptedTypes = [];
 var acceptedCategories = [];
-var version = detectIE();
-if(version == false) {
+if(!detectIE()) {
 	defineHovers();
 	runTreeMap();
 	addAllAcceptedTypesAndCategories();
 	setAllCheckboxesOnDefault();
+	if(detectFirefox()){
+			 console.log("ASDIU");
+		$("#svg").css({ "border-width":"0px"});
+			 console.log("ASDIU");
+	}
 } else {
 	document.getElementById("main-title").innerHTML = "We are sorry, IE and Edge are not supported. <br> Please use Firefox, Chrome or Safari instead.";
 	$("#wrapper").hide();
@@ -55,11 +59,19 @@ function detectIE() {
     // Edge (IE 12+) => return version number
     return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
   }
-
   // Other browsers
   return false;
 }
-
+function detectFirefox(){
+  var ua = window.navigator.userAgent;
+	
+  var firefox = ua.indexOf('Firefox/');
+  if (firefox > 0) {
+    return true;
+  }else{
+    return false;
+  }
+}
 /**
  * In the first run all ASATs and categories are included
  */
