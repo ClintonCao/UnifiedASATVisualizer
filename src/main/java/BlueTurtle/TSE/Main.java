@@ -12,14 +12,6 @@ import BlueTurtle.gui.GUI;
  *
  */
 public final class Main {
-	
-	
-	/**
-	 * Private constructor for this utility class.
-	 */
-	private Main() {
-		// not called
-	}
 
 	/**
 	 * All the modes (programming languages).
@@ -33,7 +25,14 @@ public final class Main {
 
 	private static Controller controller;
 	private static Mode currentMode = Mode.JAVA;
-
+	
+	/**
+	 * Private constructor for this utility class.
+	 */
+	private Main() {
+		// not called
+	}
+	
 	/**
 	 * Main method.
 	 * 
