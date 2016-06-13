@@ -23,8 +23,8 @@ public class Main {
 		JAVA
 	}
 
-	static Controller controller;
-	static Mode currentMode = Mode.JAVA;
+	private static Controller controller;
+	private static Mode currentMode = Mode.JAVA;
 
 	/**
 	 * Main method.
