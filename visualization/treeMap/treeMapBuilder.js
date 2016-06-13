@@ -361,6 +361,7 @@ var treeMapBuilder = (function() {
 
             // Enable anti-aliasing during the transition.
             svg.style("shape-rendering", null);
+			svg.attr("id", "svg")
 
             // Fade-in entering text.
             g2.selectAll("text").style("fill-opacity", 0);
