@@ -11,18 +11,18 @@ var sourceCode = (function() {
 
 	// Gives a specific line a specific colour
 	function colorOne(line) {
-		$(line).css('background',colours.darkBlue());
-		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkBlue());
-	}
-	// Gives a specific line a specific colour
-	function colorTwo(line) {
 		$(line).css('background',colours.darkGreen());
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkGreen());
 	}
 	// Gives a specific line a specific colour
-	function colorThree(line) {
+	function colorTwo(line) {
 		$(line).css('background',colours.darkOrange());
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkOrange());
+	}
+	// Gives a specific line a specific colour
+	function colorThree(line) {
+		$(line).css('background',colours.darkBlue());
+		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkBlue());
 	}
 
 	// Highlights a line according to either the ASAT or the category
