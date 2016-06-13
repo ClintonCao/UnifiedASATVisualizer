@@ -11,20 +11,23 @@ var colours = (function() {
 	// all dark colours
 	var darkGreen = "#386938";
 	var darkRed = "#88120a";
-	var darkBlue = "#043e70";
-	var darkOrange = "#B13E0F";
+	var darkBlue = "#013b76";
+	var darkGreenGradient = "#2c5207";
+	var darkPurple = "#46102e";
 
 	// all normal colours
 	var normalGreen = "#12B212";
 	var normalRed = "#ED4337";
-	var normalBlue = "#75B4EB";
-	var normalOrange = "#FF7D40";
+	var normalBlue = "#3182bd";
+	var normalGreenGradient = "#64aa2d";
+	var normalPurple = "#a83e6b";
 
 	// all light colours
 	var lightGreen = "#679a64";
 	var lightRed = "#9c7777";
-	var lightBlue = "#6f87a2";
-	var lightOrange = "#F59C6F";
+	var lightBlue = "#bdd7e7";
+	var lightGreenGradient = "#82d78c";
+	var lightPurple = "#ebafbe";
 
     /**
      * All public functions that we return the defined colours
@@ -36,15 +39,18 @@ var colours = (function() {
         darkGreen: function() { return darkGreen; }, 
 		darkRed: function() { return darkRed; }, 
         darkBlue: function() { return darkBlue; },
-        darkOrange: function() { return darkOrange; },
+        darkGreenGradient: function() { return darkGreenGradient; },
+        darkPurple: function() { return darkPurple },
  		normalGreen: function() { return normalGreen; }, 
 		normalRed: function() { return normalRed; }, 
 		normalBlue: function() { return normalBlue; },
-		normalOrange: function() { return normalOrange; },
+		normalGreenGradient: function() { return normalGreenGradient; },
+		normalPurple: function() { return normalPurple },
 		lightGreen: function() { return lightGreen; }, 
 		lightRed: function() { return lightRed; }, 
 		lightBlue: function() { return lightBlue; },
-		lightOrange: function() { return lightOrange; }
+		lightGreenGradient: function() { return lightGreenGradient; },
+		lightPurple: function() { return lightPurple; }
     }
     
 }());

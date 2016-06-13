@@ -1,7 +1,7 @@
 var backgroundObject = (function() {
 	var maxConstant = 100;
 	var colorMethod = 0;
-	var twoColors, color, greenTints, greenScale, blueTints, blueScale, orangeTints, orangeScale, grayTints, grayScale;
+	var twoColors, color, blueTints, blueScale, purpleTints, purpleScale, greenGradientTints, greenGradientScale, grayTints, grayScale;
 	var firstRatioBegin, firstRatioEnd, SecondRatioBegin, SecondRatioEnd, ThirdRatioBegin, ThirdRatioEnd, firstEdgeBegin, firstEdgeEnd, SecondEdgeBegin, SecondEdgeEnd, ThridEdgeBegin, ThirdEdgeEnd;
 	reloadColorScale();
 	
@@ -11,12 +11,12 @@ var backgroundObject = (function() {
 	function reloadColorScale() {
 		twoColors = [d3.rgb(colours.lightGreen()), d3.rgb(colours.darkRed())];
 		color = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
-		greenTints = [d3.rgb(colours.lightGreen()), d3.rgb(colours.darkGreen())];
-		greenScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(greenTints);
-		blueTints = [d3.rgb(colours.lightBlue()), d3.rgb(colours.darkBlue())];	
+		blueTints = [d3.rgb(colours.lightBlue()), d3.rgb(colours.darkBlue())];
 		blueScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(blueTints);
-		orangeTints = [d3.rgb(colours.lightOrange()), d3.rgb(colours.darkOrange())];	
-		orangeScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(orangeTints);
+		purpleTints = [d3.rgb(colours.lightPurple()), d3.rgb(colours.darkPurple())];	
+		purpleScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(purpleTints);
+		greenGradientTints = [d3.rgb(colours.lightGreenGradient()), d3.rgb(colours.darkGreenGradient())];	
+		greenGradientScale = d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(greenGradientTints);
 		grayTints = [d3.rgb(colours.grey()), d3.rgb(colours.grey())];	
 		grayScale =  d3.scale.linear().domain([0, 0]).interpolate(d3.interpolateHcl).range(grayTints);
 	}
@@ -53,26 +53,6 @@ var backgroundObject = (function() {
 		ThridEdgeBegin = ThridRatioBegin + "%";
 		ThirdEdgeEnd = ThirdRatioEnd + "%";
 	}
-	function setGreenScale(gradient, start, end, weight) {
-		gradient.append("stop")
-			.attr("offset", start)
-			.attr("stop-color", greenScale(weight*100))
-			.attr("stop-opacity", 1);
-		gradient.append("stop")
-			.attr("offset", end)
-			.attr("stop-color", greenScale(weight*100))
-			.attr("stop-opacity", 1);
-	}
-	function setOrangeScale(gradient, start, end, weight) {
-		gradient.append("stop")
-			.attr("offset", start)
-			.attr("stop-color", orangeScale(weight*100))
-			.attr("stop-opacity", 1);
-		gradient.append("stop")
-			.attr("offset", end)
-			.attr("stop-color", orangeScale(weight*100))
-			.attr("stop-opacity", 1);
-	}
 	function setBlueScale(gradient, start, end, weight) {
 		gradient.append("stop")
 			.attr("offset", start)
@@ -81,6 +61,26 @@ var backgroundObject = (function() {
 		gradient.append("stop")
 			.attr("offset", end)
 			.attr("stop-color", blueScale(weight*100))
+			.attr("stop-opacity", 1);
+	}
+	function setGreenGradientScale(gradient, start, end, weight) {
+		gradient.append("stop")
+			.attr("offset", start)
+			.attr("stop-color", greenGradientScale(weight*100))
+			.attr("stop-opacity", 1);
+		gradient.append("stop")
+			.attr("offset", end)
+			.attr("stop-color", greenGradientScale(weight*100))
+			.attr("stop-opacity", 1);
+	}
+	function setPurpleScale(gradient, start, end, weight) {
+		gradient.append("stop")
+			.attr("offset", start)
+			.attr("stop-color", purpleScale(weight*100))
+			.attr("stop-opacity", 1);
+		gradient.append("stop")
+			.attr("offset", end)
+			.attr("stop-color", purpleScale(weight*100))
 			.attr("stop-opacity", 1);
 	}
 	function setNormalScale(gradient) {
@@ -97,34 +97,34 @@ var backgroundObject = (function() {
 		if(onlyOneColour) {
 			switch(whichOne) {
 				case 0:
-					setGreenScale(gradient, "0%", "100%", weight);
+					setBlueScale(gradient, "0%", "100%", weight);
 					return gradient;
 				case 1:
-					setOrangeScale(gradient, "0%", "100%", weight);
+					setGreenGradientScale(gradient, "0%", "100%", weight);
 					return gradient;
 				case 2:
-					setBlueScale(gradient, "0%", "100%", weight);
+					setPurpleScale(gradient, "0%", "100%", weight);
 					return gradient;
 				default:
 					return gradient;
 			}
 		} else {
 			if(ratioArray[0] == 0 && ratioArray[1] != 0 && ratioArray[2] != 0) {			
-				setOrangeScale(gradient, "0%", SecondEdgeEnd, weight);
+				setGreenGradientScale(gradient, "0%", SecondEdgeEnd, weight);
 				ThridEdgeBegin = (SecondRatioEnd + 0.01) + "%";
-				setBlueScale(gradient, ThridEdgeBegin, "100%", weight);
+				setPurpleScale(gradient, ThridEdgeBegin, "100%", weight);
 			} else if(ratioArray[1] == 0 && ratioArray[0] != 0 && ratioArray[2] != 0) {
-				setGreenScale(gradient, "0%", firstEdgeEnd, weight);
+				setBlueScale(gradient, "0%", firstEdgeEnd, weight);
 				ThridEdgeBegin = (firstRatioEnd + 0.01) + "%";
-				setBlueScale(gradient, ThridEdgeBegin, "100%", weight);
+				setPurpleScale(gradient, ThridEdgeBegin, "100%", weight);
 			} else if(ratioArray[2] == 0 && ratioArray[1] != 0 && ratioArray[0] != 0) {
-				setGreenScale(gradient, "0%", firstEdgeEnd, weight);
+				setBlueScale(gradient, "0%", firstEdgeEnd, weight);
 				SecondEdgeBegin = (firstRatioEnd + 0.01) + "%";
-				setOrangeScale(gradient, SecondEdgeBegin, "100%", weight);
+				setGreenGradientScale(gradient, SecondEdgeBegin, "100%", weight);
 			} else {
-				setGreenScale(gradient, "0%", firstEdgeEnd, weight)
-				setOrangeScale(gradient, SecondEdgeBegin, SecondEdgeEnd, weight);
-				setBlueScale(gradient, ThridEdgeBegin, "100%", weight);
+				setBlueScale(gradient, "0%", firstEdgeEnd, weight)
+				setGreenGradientScale(gradient, SecondEdgeBegin, SecondEdgeEnd, weight);
+				setPurpleScale(gradient, ThridEdgeBegin, "100%", weight);
 			}
 			return gradient;
 		}

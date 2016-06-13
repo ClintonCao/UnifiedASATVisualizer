@@ -11,13 +11,13 @@ var sourceCode = (function() {
 
 	// Gives a specific line a specific colour
 	function colorOne(line) {
-		$(line).css('background',colours.darkGreen());
-		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkGreen());
+		$(line).css('background',colours.darkPurple());
+		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkPurple());
 	}
 	// Gives a specific line a specific colour
 	function colorTwo(line) {
-		$(line).css('background',colours.darkOrange());
-		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkOrange());
+		$(line).css('background',colours.darkGreenGradient());
+		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkGreenGradient());
 	}
 	// Gives a specific line a specific colour
 	function colorThree(line) {
@@ -35,13 +35,13 @@ var sourceCode = (function() {
 		if(colorMethod == 0) {
 			switch(type) {
 				case 'CheckStyle':
-					colorOne(child);
+					colorThree(child);
 					break;
 				case 'PMD':
 					colorTwo(child);
 					break;
 				case 'FindBugs':
-					colorThree(child);
+					colorOne(child);
 					break;
 			}
 		} else if(colorMethod == 1) {
@@ -50,10 +50,10 @@ var sourceCode = (function() {
 					colorOne(child);
 					break;
 				case 1:
-					colorTwo(child);
+					colorThree(child);
 					break;
 				case 2:
-					colorThree(child);
+					colorTwo(child);
 					break;
 			}
 		}

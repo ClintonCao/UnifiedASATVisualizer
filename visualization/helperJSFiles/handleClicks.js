@@ -56,7 +56,7 @@ function handleClickCategorySat(value, checked) {
 }
 
 /**
- * Sets all ASAT and Categorie labels to white
+ * Sets all ASAT and Category labels to white
  */
 function setAllLabelsWhite() {
 	CheckStyleElement.style.color = colours.white();
@@ -71,9 +71,9 @@ function setAllLabelsWhite() {
  * Colors based on ASAT so the labels are given colours
  */
 function setASATColoured() {
-	CheckStyleElement.style.color = colours.normalGreen();
-	PMDElement.style.color = colours.normalOrange();
-	FindBugsElement.style.color = colours.normalBlue();
+	CheckStyleElement.style.color = colours.normalBlue();
+	PMDElement.style.color = colours.normalGreenGradient();
+	FindBugsElement.style.color = colours.lightPurple();
 	MaintainabilityDefectsElement.style.color = colours.white();
 	FunctionDefectsElement.style.color = colours.white();
 	OtherElement.style.color = colours.white();
@@ -86,9 +86,9 @@ function setCategoriesColoured() {
 	CheckStyleElement.style.color = colours.white();
 	PMDElement.style.color = colours.white();
 	FindBugsElement.style.color = colours.white();
-	MaintainabilityDefectsElement.style.color = colours.normalOrange();
-	FunctionDefectsElement.style.color = colours.normalGreen();
-	OtherElement.style.color = colours.normalBlue();
+	MaintainabilityDefectsElement.style.color = colours.normalBlue();
+	FunctionDefectsElement.style.color = colours.lightPurple();
+	OtherElement.style.color = colours.normalGreenGradient();
 }
 
 /**
