@@ -205,29 +205,10 @@ function createJsonTreeMap(packages){
 	var upperLevelMD = 0;
 	var upperLevelOD = 0;
 		for(var p =0; p < packages.length; p++){
-			var jsonArrClass = [];
 			var classes = packages[p];
-			var middleLevelLOC = 0;
-			for (var i = 0; i < classes.length; i++) {
-				var fileName = classes[i].fileName;
-				var linesOfCode = classes[i].loc;
-				jsonArrClass.push({
-					fileName: fileName,
-					filePath: classes[i].filePath,
-					message: classes[i].message,
-					loc: linesOfCode,
-					warnings: classes[i].amountOfWarnings,
-					warningsCheckStyle: classes[i].amountOfCheckStyleWarnings,
-					warningsPMD: classes[i].amountOfPMDWarnings,
-					warningsFindBugs: classes[i].amountOfFindBugsWarnings,
-					warningsFunctionalDefects: classes[i].amountOfFunctionalDefects,
-					warningsMaintainabilityDefects: classes[i].amountOfMaintainabilityDefects,
-					warningsOtherDefects: classes[i].amountOfOtherDefects,
-					value: linesOfCode
-				});
-				middleLevelLOC += classes[i].loc;
-			}
-
+			var tuple = createClassJsonTreeMap(classes);
+			var jsonArrClass = tuple[0];
+			var middleLevelLOC = tuple[1];
 			upperLevelCSW += classes.amountOfCheckStyleWarnings;
 			upperLevelPMDW += classes.amountOfPMDWarnings;
 			upperLevelFBW += classes.amountOfFindBugsWarnings;
@@ -253,6 +234,33 @@ function createJsonTreeMap(packages){
 		}
 		return jsonArrPackage;
 }
+
+/**
+ * Creates class part of JSON
+ */
+function createClassJsonTreeMap(classes) {
+	var jsonArrClass = [];
+	var middleLevelLOC = 0;
+	for (var i = 0; i < classes.length; i++) {
+		jsonArrClass.push({
+			fileName: classes[i].fileName,
+			filePath: classes[i].filePath,
+			message: classes[i].message,
+			loc: classes[i].loc,
+			warnings: classes[i].amountOfWarnings,
+			warningsCheckStyle: classes[i].amountOfCheckStyleWarnings,
+			warningsPMD: classes[i].amountOfPMDWarnings,
+			warningsFindBugs: classes[i].amountOfFindBugsWarnings,
+			warningsFunctionalDefects: classes[i].amountOfFunctionalDefects,
+			warningsMaintainabilityDefects: classes[i].amountOfMaintainabilityDefects,
+			warningsOtherDefects: classes[i].amountOfOtherDefects,
+			value: classes[i].loc
+		});
+		middleLevelLOC += classes[i].loc;
+	}
+	return [jsonArrClass, middleLevelLOC];
+}
+
 
 /**
  * Replace \ for / in path for usage
