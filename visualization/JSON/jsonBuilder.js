@@ -195,44 +195,39 @@ function getTotalCategoryWarning(warningType, className) {
  * Creates a JSON file that could be used by the tree map
  */
 function createJsonTreeMap(packages){
-	var jsonArrPackage = [];
-	var upperLevelLoc = 0;
-	var upperLevelTotal = 0;
-	var upperLevelCSW = 0;
-	var upperLevelPMDW = 0;
-	var upperLevelFBW = 0;
-	var upperLevelFD = 0;
-	var upperLevelMD = 0;
-	var upperLevelOD = 0;
-		for(var p =0; p < packages.length; p++){
-			var classes = packages[p];
-			var tuple = createClassJsonTreeMap(classes);
-			var jsonArrClass = tuple[0];
-			var middleLevelLOC = tuple[1];
-			upperLevelCSW += classes.amountOfCheckStyleWarnings;
-			upperLevelPMDW += classes.amountOfPMDWarnings;
-			upperLevelFBW += classes.amountOfFindBugsWarnings;
-			upperLevelFD += classes.amountOfFunctionalDefects;
-			upperLevelMD += classes.amountOfMaintainabilityDefects;
-			upperLevelOD += classes.amountOfOtherDefects;
-			upperLevelTotal += classes.amountOfWarnings;
-			upperLevelLoc += middleLevelLOC;
+	return createPackageJsonTreeMap(packages);
+}
 
-			jsonArrPackage.push(
-				{
-					fileName: classes.packageName, 
-					loc: middleLevelLOC,
-					values: jsonArrClass,
-					warnings: classes.amountOfWarnings,
-					warningsCheckStyle: classes.amountOfCheckStyleWarnings,
-					warningsPMD: classes.amountOfPMDWarnings,
-					warningsFindBugs: classes.amountOfFindBugsWarnings,
-					warningsFunctionalDefects: classes.amountOfFunctionalDefects,
-					warningsMaintainabilityDefects: classes.amountOfMaintainabilityDefects,
-					warningsOtherDefects: classes.amountOfOtherDefects
-				});
-		}
-		return jsonArrPackage;
+/**
+ * Creates package part of JSON
+ */
+function createPackageJsonTreeMap(packages) {
+	var jsonArrPackage = [];
+	var upperLevelLoc = upperLevelTotal = upperLevelCSW = upperLevelPMDW = upperLevelFBW = upperLevelFD = upperLevelMD =  upperLevelOD = 0;
+	for(var p =0; p < packages.length; p++){
+		var classes = packages[p];
+		var tuple = createClassJsonTreeMap(classes);
+		var jsonArrClass = tuple[0];
+		var middleLevelLOC = tuple[1];
+		upperLevelCSW += classes.amountOfCheckStyleWarnings; upperLevelPMDW += classes.amountOfPMDWarnings;
+		upperLevelFBW += classes.amountOfFindBugsWarnings; upperLevelFD += classes.amountOfFunctionalDefects;
+		upperLevelMD += classes.amountOfMaintainabilityDefects; upperLevelOD += classes.amountOfOtherDefects;
+		upperLevelTotal += classes.amountOfWarnings; upperLevelLoc += middleLevelLOC;
+		jsonArrPackage.push(
+			{
+				fileName: classes.packageName, 
+				loc: middleLevelLOC,
+				values: jsonArrClass,
+				warnings: classes.amountOfWarnings,
+				warningsCheckStyle: classes.amountOfCheckStyleWarnings,
+				warningsPMD: classes.amountOfPMDWarnings,
+				warningsFindBugs: classes.amountOfFindBugsWarnings,
+				warningsFunctionalDefects: classes.amountOfFunctionalDefects,
+				warningsMaintainabilityDefects: classes.amountOfMaintainabilityDefects,
+				warningsOtherDefects: classes.amountOfOtherDefects
+			});
+	}
+	return jsonArrPackage;
 }
 
 /**
