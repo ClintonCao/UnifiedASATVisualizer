@@ -45,7 +45,7 @@ public class PMDXMLParser extends XMLParser {
 				// Get the file from the list.
 				Node file = nList.item(i);
 
-				if (file.getNodeType() == Node.ELEMENT_NODE) {
+
 					// Convert the node to an element.
 					Element fileElement = (Element) file;
 
@@ -63,7 +63,7 @@ public class PMDXMLParser extends XMLParser {
 
 					addWarnings(fileName, warningList, pmdWarnings, message);
 
-				}
+
 			}
 
 		return pmdWarnings;
@@ -87,7 +87,6 @@ public class PMDXMLParser extends XMLParser {
 			// Get the warning from the list of warnings.
 			Node warning = warningList.item(j);
 
-			if (warning.getNodeType() == Node.ELEMENT_NODE) {
 				// Convert the node to an element.
 				Element warningElement = (Element) warning;
 
@@ -123,7 +122,6 @@ public class PMDXMLParser extends XMLParser {
 
 				// Add warning to the list of warnings.
 				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName, message, classification));
-			}
 		}
 	}
 
