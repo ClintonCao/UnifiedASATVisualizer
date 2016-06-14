@@ -22,7 +22,6 @@ import BlueTurtle.writers.JSWriter;
  *
  */
 public class JSONFormatter {
-	private XMLParser xmlParser;
 	private List<Warning> totalWarnings = new ArrayList<Warning>();
 
 	/**
@@ -35,58 +34,28 @@ public class JSONFormatter {
 	 */
 	public void format() throws IOException {
 				
-		parseCheckStyleXML(new File(JavaController.getCheckStyleOutputFile()));
+		parseFile(new CheckStyleXMLParser(), JavaController.getCheckStyleOutputFile());
 
-		parsePMDXML(new File(JavaController.getPmdOutputFile()));
+		parseFile(new PMDXMLParser(), JavaController.getPmdOutputFile());
 
-		parseFindBugsXML(new File(JavaController.getFindBugsOutputFile()));
+		parseFile(new FindBugsXMLParser(), JavaController.getFindBugsOutputFile());
 		
 		writeJSON();
 	}
 	
 	/**
-	 * Parse CheckStyle output and produce list of warnings.
+	 * Parse ASAT output and produce list of warnings.
 	 * 
 	 * @return List of warnings.
 	 * @throws IOException
 	 *             File not found.
 	 */
-	private void parseCheckStyleXML(File file) throws IOException {
+	private void parseFile(XMLParser xmlParser, String filePath) throws IOException {
+		File file = new File(filePath);
 		if(!file.exists()) {
 			return;
 		}
-		xmlParser = new CheckStyleXMLParser();
-		totalWarnings.addAll(xmlParser.parseFile(JavaController.getCheckStyleOutputFile()));
-	}
-
-	/**
-	 * Parse PMD output and produce list of warnings.
-	 * 
-	 * @return List of warnings.
-	 * @throws IOException
-	 *             File not found.
-	 */
-	private void parsePMDXML(File file) throws IOException {
-		if(!file.exists()) {
-			return;
-		}
-		xmlParser = new PMDXMLParser();
-		totalWarnings.addAll(xmlParser.parseFile(JavaController.getPmdOutputFile()));
-	}
-
-	/**
-	 * Parse FindBugs output and produce list of warnings.
-	 * 
-	 * @return List of warnings.
-	 * @throws IOException
-	 *             File not found.
-	 */
-	private void parseFindBugsXML(File file) throws IOException {
-		if(!file.exists()) {
-			return;
-		}
-		xmlParser = new FindBugsXMLParser();
-		totalWarnings.addAll(xmlParser.parseFile(JavaController.getFindBugsOutputFile()));
+		totalWarnings.addAll(xmlParser.parseFile(filePath));
 	}
 
 	/**
