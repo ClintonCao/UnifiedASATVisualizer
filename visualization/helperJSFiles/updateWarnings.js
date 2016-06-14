@@ -39,33 +39,48 @@ function sumNodeForASAT(d, root) {
     var nodeAndSummation = [];
     var sum = 0;
     if (d.fileName == projectName) {
-        for (var i = 0; i < root.length; i++) {
-            for (var j = 0; j < root[i].length; j++) {
-                sum += root[i][j].amountOfWarnings;
-             }
-         }
-         return sum;
+        return sumHighestLevelNode(root);
     } else {
-        for (var i = 0; i < root.length; i++) {
-            if(treeMapBuilder.getSourceCodeLevel()) {
-                if (root[i].packageName == d.parent.fileName) {
-                    for (var j = 0; j < root[i].length; j++) {
-                        if(treeMapBuilder.getSourceCodeLevel() && root[i][j].fileName == treeMapBuilder.getCurrentClassName()) {
-                            return root[i][j].amountOfWarnings;
-                        }
-                        sum += root[i][j].amountOfWarnings;
+        return sumOtherLevelsNode(d, root);
+    }
+    return -1;
+}
+
+/**
+ * Sums for each package how many warnings it has
+ */
+function sumHighestLevelNode(root) {
+    sum = 0;
+    for (var i = 0; i < root.length; i++) {
+        for (var j = 0; j < root[i].length; j++) {
+            sum += root[i][j].amountOfWarnings;
+         }
+     }
+     return sum;
+}
+
+/**
+ * Sums for class or source code level the amount of warnings
+ */
+function sumOtherLevelsNode(d, root) {
+    for (var i = 0; i < root.length; i++) {
+        if(treeMapBuilder.getSourceCodeLevel()) {
+            if (root[i].packageName == d.parent.fileName) {
+                for (var j = 0; j < root[i].length; j++) {
+                    if(treeMapBuilder.getSourceCodeLevel() && root[i][j].fileName == treeMapBuilder.getCurrentClassName()) {
+                        return root[i][j].amountOfWarnings;
                     }
-                    return sum;
+                    sum += root[i][j].amountOfWarnings;
                 }
-            } else {
-                if (root[i].packageName == d.fileName) {
-                    for (var j = 0; j < root[i].length; j++) {
-                        sum += root[i][j].amountOfWarnings;
-                    }
-                    return sum;
+                return sum;
+            }
+        } else {
+            if (root[i].packageName == d.fileName) {
+                for (var j = 0; j < root[i].length; j++) {
+                    sum += root[i][j].amountOfWarnings;
                 }
+                return sum;
             }
         }
     }
-    return -1;
 }

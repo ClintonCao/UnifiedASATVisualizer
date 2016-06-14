@@ -32,8 +32,6 @@ var treeMapBuilder = (function() {
         currentClassName = d.fileName;
         updateASATWarningsCount(d);
 		updateDefectsCount(d);
-       // updateMaintainabilityDefectsCount(d);
-        //updateOtherDefectsCount(d);
     }
 
     /**
