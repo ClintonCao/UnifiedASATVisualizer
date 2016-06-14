@@ -26,16 +26,17 @@ public class CodeFile {
 	 * 			if file is not found, inaccessible, etc.
 	 */
 	public void getCodeFromFile(File file) throws IOException {
-		BufferedReader writer = new BufferedReader(new FileReader(file));
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+
 		String nextLine;
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append('"');
-		while ((nextLine = writer.readLine()) != null) {
+		while ((nextLine = reader.readLine()) != null) {
 			stringBuilder.append(nextLine);
 			stringBuilder.append("\n");
 		}
 		stringBuilder.append('"');
 		setCode(stringBuilder.toString());
-		writer.close();
+		reader.close();
 	}
 }

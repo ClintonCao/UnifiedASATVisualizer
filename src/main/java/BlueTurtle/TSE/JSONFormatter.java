@@ -1,5 +1,6 @@
 package BlueTurtle.TSE;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,8 @@ import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
 import BlueTurtle.writers.JSWriter;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * JSONFormatter reads the output of Checkstyle, Findbugs and PMD and produces a
@@ -21,7 +24,7 @@ import BlueTurtle.writers.JSWriter;
  *
  */
 public class JSONFormatter {
-	private XMLParser xmlParser;
+	@Getter @Setter private List<Warning> totalWarnings = new ArrayList<Warning>();
 
 	/**
 	 * Produces a list of warnings for by reading the output of PMD, Checkstyle
@@ -32,47 +35,28 @@ public class JSONFormatter {
 	 *             File not found.
 	 */
 	public void format() throws IOException {
-		List<Warning> totalWarnings = new ArrayList<Warning>();
-		totalWarnings.addAll(parseCheckStyleXML());
-		totalWarnings.addAll(parsePMDXML());
-		totalWarnings.addAll(parseFindBugsXML());
-		writeJSON(totalWarnings);
-	}
+				
+		parseFile(new CheckStyleXMLParser(), JavaController.getCheckStyleOutputFile());
 
+		parseFile(new PMDXMLParser(), JavaController.getPmdOutputFile());
+
+		parseFile(new FindBugsXMLParser(), JavaController.getFindBugsOutputFile());
+		
+		writeJSON();
+	}
+	
 	/**
-	 * Parse CheckStyle output and produce list of warnings.
+	 * Parse ASAT output and produce list of warnings.
 	 * 
 	 * @return List of warnings.
 	 * @throws IOException
 	 *             File not found.
 	 */
-	private List<Warning> parseCheckStyleXML() throws IOException {
-		xmlParser = new CheckStyleXMLParser();
-		return xmlParser.parseFile(JavaController.getCheckStyleOutputFile());
-	}
-
-	/**
-	 * Parse PMD output and produce list of warnings.
-	 * 
-	 * @return List of warnings.
-	 * @throws IOException
-	 *             File not found.
-	 */
-	private List<Warning> parsePMDXML() throws IOException {
-		xmlParser = new PMDXMLParser();
-		return xmlParser.parseFile(JavaController.getPmdOutputFile());
-	}
-
-	/**
-	 * Parse FindBugs output and produce list of warnings.
-	 * 
-	 * @return List of warnings.
-	 * @throws IOException
-	 *             File not found.
-	 */
-	private List<Warning> parseFindBugsXML() throws IOException {
-		xmlParser = new FindBugsXMLParser();
-		return xmlParser.parseFile(JavaController.getFindBugsOutputFile());
+	private void parseFile(XMLParser xmlParser, String filePath) throws IOException {
+		if (!new File(filePath).exists()) {
+			return;
+		}
+		totalWarnings.addAll(xmlParser.parseFile(filePath));
 	}
 
 	/**
@@ -84,8 +68,8 @@ public class JSONFormatter {
 	 * @throws IOException
 	 *             Output file not found.
 	 */
-	private void writeJSON(List<Warning> warnings) throws IOException {
-		WarningGrouper wg = new WarningGrouper(warnings);
+	private void writeJSON() throws IOException {
+		WarningGrouper wg = new WarningGrouper(totalWarnings);
 		List<Summarizer> list = wg.groupBy(Criteria.PACKAGES);
 
 		JSWriter jwriter = JSWriter.getInstance();
