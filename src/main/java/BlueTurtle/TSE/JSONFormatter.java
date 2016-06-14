@@ -51,8 +51,7 @@ public class JSONFormatter {
 	 *             File not found.
 	 */
 	private void parseFile(XMLParser xmlParser, String filePath) throws IOException {
-		File file = new File(filePath);
-		if(!file.exists()) {
+		if(!new File(filePath).exists()) {
 			return;
 		}
 		totalWarnings.addAll(xmlParser.parseFile(filePath));
