@@ -36,17 +36,17 @@ public class JSONFormatter {
 		List<Warning> totalWarnings = new ArrayList<Warning>();
 		
 		File file = new File(JavaController.getCheckStyleOutputFile());
-		if(file.exists() && !file.isDirectory()) { 
+		if(file.exists()) { 
 			totalWarnings.addAll(parseCheckStyleXML());
 		}
 		
 		file = new File(JavaController.getPmdOutputFile());
-		if(file.exists() && !file.isDirectory()) {
+		if(file.exists()) {
 			totalWarnings.addAll(parsePMDXML());
 		}
 		
 		file = new File(JavaController.getFindBugsOutputFile());
-		if(file.exists() && !file.isDirectory()) {
+		if(file.exists()) {
 			totalWarnings.addAll(parseFindBugsXML());
 		}
 		
