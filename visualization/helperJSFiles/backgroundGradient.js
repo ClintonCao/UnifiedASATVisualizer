@@ -109,48 +109,46 @@ var backgroundObject = (function() {
 			}
 	}
 	function createGradientColours(gradient, onlyOneColour, whichOne, weight, ratioArray) {
-		if(onlyOneColour) {
-			getSolidColorAsGradient(whichOne, gradient,weight);
+		if(onlyOneColour) { 
+			getSolidColorAsGradient(whichOne, gradient,weight); 
 		} else {
-			if(ratioArray[0] == 0 && ratioArray[1] != 0 && ratioArray[2] != 0) {			
-				setGreenGradientScale(gradient, "0%", SecondEdgeEnd, weight);
-				ThridEdgeBegin = (SecondRatioEnd + 0.01) + "%";
-				setPurpleScale(gradient, ThridEdgeBegin, "100%", weight);
-			} else if(ratioArray[1] == 0 && ratioArray[0] != 0 && ratioArray[2] != 0) {
-				setBlueScale(gradient, "0%", firstEdgeEnd, weight);
-				ThridEdgeBegin = (firstRatioEnd + 0.01) + "%";
-				setPurpleScale(gradient, ThridEdgeBegin, "100%", weight);
-			} else if(ratioArray[2] == 0 && ratioArray[1] != 0 && ratioArray[0] != 0) {
-				setBlueScale(gradient, "0%", firstEdgeEnd, weight);
-				SecondEdgeBegin = (firstRatioEnd + 0.01) + "%";
-				setGreenGradientScale(gradient, SecondEdgeBegin, "100%", weight);
-			} else {
-				setBlueScale(gradient, "0%", firstEdgeEnd, weight)
-				setGreenGradientScale(gradient, SecondEdgeBegin, SecondEdgeEnd, weight);
-				setPurpleScale(gradient, ThridEdgeBegin, "100%", weight);
-			}
-			return gradient;
+			multipleColors(gradient, weight, ratioArray);
+		}
+		return gradient;
+	}
+	function multipleColors(gradient, weight, ratioArray) {
+		if(ratioArray[0] == 0 && ratioArray[1] != 0 && ratioArray[2] != 0) {			
+			setGreenGradientScale(gradient, "0%", SecondEdgeEnd, weight);
+			ThridEdgeBegin = (SecondRatioEnd + 0.01) + "%";
+			setPurpleScale(gradient, ThridEdgeBegin, "100%", weight);
+		} else if(ratioArray[1] == 0 && ratioArray[0] != 0 && ratioArray[2] != 0) {
+			setBlueScale(gradient, "0%", firstEdgeEnd, weight);
+			ThridEdgeBegin = (firstRatioEnd + 0.01) + "%";
+			setPurpleScale(gradient, ThridEdgeBegin, "100%", weight);
+		} else if(ratioArray[2] == 0 && ratioArray[1] != 0 && ratioArray[0] != 0) {
+			setBlueScale(gradient, "0%", firstEdgeEnd, weight);
+			SecondEdgeBegin = (firstRatioEnd + 0.01) + "%";
+			setGreenGradientScale(gradient, SecondEdgeBegin, "100%", weight);
+		} else {
+			setBlueScale(gradient, "0%", firstEdgeEnd, weight)
+			setGreenGradientScale(gradient, SecondEdgeBegin, SecondEdgeEnd, weight);
+			setPurpleScale(gradient, ThridEdgeBegin, "100%", weight);
 		}
 	}
-	function calculateBackgroundGradient(svg,ratioArray,weight, id,x,y) {
-		var total = ratioArray[0] + ratioArray[1] + ratioArray[2];
-		var tuple = gradientCalculator.calculate(x,y, ratioArray[0], ratioArray[1], ratioArray[2]);
-		var tupleAngle = gradientCalculator.get45Angle(x,y);
-
+	function setRatioBoundaries(tuple) {
 		firstRatioBegin = 0;
 		firstRatioEnd = tuple[0];
 		SecondRatioBegin = firstRatioEnd + 0.01;
 		SecondRatioEnd = tuple[1]
 		ThridRatioBegin = SecondRatioEnd + 0.01;
 		ThirdRatioEnd = 100;
-		var gradient = svg.append("defs")
-				.append("linearGradient")
-				.attr("id", "gradient" + id)
-				.attr("x1", "0%")
-				.attr("y1", "0%")
-				.attr("x2", "100%")
-				.attr("y2", "100%")
-				.attr("spreadMethod", "pad");
+	}
+	function calculateBackgroundGradient(svg,ratioArray,weight, id,x,y) {
+		var total = ratioArray[0] + ratioArray[1] + ratioArray[2];
+		var tuple = gradientCalculator.calculate(x,y, ratioArray[0], ratioArray[1], ratioArray[2]);
+		var tupleAngle = gradientCalculator.get45Angle(x,y);
+		setRatioBoundaries(tuple);
+		var gradient = svg.append("defs").append("linearGradient").attr("id", "gradient" + id).attr("x1", "0%").attr("y1", "0%").attr("x2", "100%").attr("y2", "100%").attr("spreadMethod", "pad");
 
 		if(total == 0) {
 			setNormalScale(gradient);
