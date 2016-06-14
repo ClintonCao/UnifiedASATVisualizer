@@ -4,9 +4,7 @@ var gradientCalculator = (function() {
 
 	function measurements(x, y) {
 		if( x > y) {
-			var temp = x;
-			x = y;
-			y = temp;
+			var temp = x;x = y;y = temp;
 		}
 		var b = y - x;
 		var v = Math.sqrt(2 * x * x);
@@ -17,8 +15,8 @@ var gradientCalculator = (function() {
 		totalLineLength = Math.sqrt(2 * b * b) * 0.5 + v;
 		secondBoundary = totalLineLength - firstBoundary;
 
-		surfHead = 0.5 * v *v;
-		mainSurf = (secondBoundary - firstBoundary) * v; //x * y - surfHead* 2;
+		surfHead = 0.5 * v * v;
+		mainSurf = (secondBoundary - firstBoundary) * v;
 		surfTail = surfHead;
 
 		surface = surfHead + mainSurf + surfTail;
@@ -81,11 +79,6 @@ var gradientCalculator = (function() {
 				y = 0.01;
 			}
 			measurements(x, y);
-			// console.log("x: " + x);
-			// console.log("y: " + y);
-			// console.log("a: " + a);
-			// console.log("b: " + b);
-			// console.log("c: " + c);
 			return calculateBoundaries(a, b, a+b+c);
 		},
 		get45Angle: function (x,y){
