@@ -142,5 +142,22 @@ public class JavaControllerTest {
 		jc.execute();
 		assertTrue(new File(System.getProperty("user.dir") + "/visualization/JSON/outputWarningsJSON.js").exists());
 	}
+	
+	/**
+	 * Tests if the JSONFormatter generates an empty list of warnings when it finds no 
+	 * output files.
+	 * @throws IOException
+	 * 				throws an exception if a problem is encountered while reading
+	 * 				the file.
+	 */
+	@Test
+	public void testNoOutputFile() throws IOException  {
+		JavaController.setASATOutput(ASAT.CheckStyle, new File("nopath"));
+		JavaController.setASATOutput(ASAT.PMD, new File("nopath"));
+		JavaController.setASATOutput(ASAT.FindBugs, new File("nopath"));
+		JSONFormatter jsonFormatter = new JSONFormatter();
+		jsonFormatter.format();
+		assertTrue(jsonFormatter.getTotalWarnings().size() == 0);
+	}
 
 }

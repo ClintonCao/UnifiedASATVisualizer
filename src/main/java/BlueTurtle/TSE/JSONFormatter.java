@@ -13,6 +13,8 @@ import BlueTurtle.parsers.XMLParser;
 import BlueTurtle.summarizers.Summarizer;
 import BlueTurtle.warnings.Warning;
 import BlueTurtle.writers.JSWriter;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * JSONFormatter reads the output of Checkstyle, Findbugs and PMD and produces a
@@ -22,7 +24,7 @@ import BlueTurtle.writers.JSWriter;
  *
  */
 public class JSONFormatter {
-	private List<Warning> totalWarnings = new ArrayList<Warning>();
+	@Getter @Setter private List<Warning> totalWarnings = new ArrayList<Warning>();
 
 	/**
 	 * Produces a list of warnings for by reading the output of PMD, Checkstyle
@@ -51,7 +53,7 @@ public class JSONFormatter {
 	 *             File not found.
 	 */
 	private void parseFile(XMLParser xmlParser, String filePath) throws IOException {
-		if(!new File(filePath).exists()) {
+		if (!new File(filePath).exists()) {
 			return;
 		}
 		totalWarnings.addAll(xmlParser.parseFile(filePath));
