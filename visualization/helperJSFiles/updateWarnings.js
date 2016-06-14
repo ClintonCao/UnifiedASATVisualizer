@@ -17,7 +17,7 @@ function updateASATWarningsCount(d) {
 function updateDefectsCount(d) {
 	var mainLabels = ["FuncDefLabel", "MainDefLabel", "OthLabel"];
 	var mainLabelsTitles = ["Functional Defects", "Maintainability Defects", "Other"];
-	for ( var i =0; i< 2; i++) {
+	for ( var i =0; i< 3; i++) {
 		var total = 0;
 		var catLabel = categoryMapper.getDefectLabels(i);
 		var cat = categoryMapper.getDefects(i);

@@ -93,9 +93,8 @@ var backgroundObject = (function() {
 				.attr("stop-color",  grayScale(0))
 				.attr("stop-opacity", 1);
 	}
-	function createGradientColours(gradient, onlyOneColour, whichOne, weight, ratioArray) {
-		if(onlyOneColour) {
-			switch(whichOne) {
+	function getSolidColorAsGradient(colorIndex, gradient, weight){
+		switch(colorIndex) {
 				case 0:
 					setBlueScale(gradient, "0%", "100%", weight);
 					return gradient;
@@ -108,6 +107,10 @@ var backgroundObject = (function() {
 				default:
 					return gradient;
 			}
+	}
+	function createGradientColours(gradient, onlyOneColour, whichOne, weight, ratioArray) {
+		if(onlyOneColour) {
+			getSolidColorAsGradient(whichOne, gradient,weight);
 		} else {
 			if(ratioArray[0] == 0 && ratioArray[1] != 0 && ratioArray[2] != 0) {			
 				setGreenGradientScale(gradient, "0%", SecondEdgeEnd, weight);
@@ -140,18 +143,13 @@ var backgroundObject = (function() {
 		SecondRatioEnd = tuple[1]
 		ThridRatioBegin = SecondRatioEnd + 0.01;
 		ThirdRatioEnd = 100;
-
-		var y2 = "100%";
-		if(total == 0) {
-			y2 = "0%";
-		}
 		var gradient = svg.append("defs")
 				.append("linearGradient")
 				.attr("id", "gradient" + id)
 				.attr("x1", "0%")
 				.attr("y1", "0%")
 				.attr("x2", "100%")
-				.attr("y2", y2)
+				.attr("y2", "100%")
 				.attr("spreadMethod", "pad");
 
 		if(total == 0) {
