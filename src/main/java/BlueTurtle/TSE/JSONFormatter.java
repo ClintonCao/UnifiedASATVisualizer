@@ -1,5 +1,6 @@
 package BlueTurtle.TSE;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +34,22 @@ public class JSONFormatter {
 	 */
 	public void format() throws IOException {
 		List<Warning> totalWarnings = new ArrayList<Warning>();
-		totalWarnings.addAll(parseCheckStyleXML());
-		totalWarnings.addAll(parsePMDXML());
-		totalWarnings.addAll(parseFindBugsXML());
+		
+		File file = new File(JavaController.getCheckStyleOutputFile());
+		if(file.exists() && !file.isDirectory()) { 
+			totalWarnings.addAll(parseCheckStyleXML());
+		}
+		
+		file = new File(JavaController.getPmdOutputFile());
+		if(file.exists() && !file.isDirectory()) {
+			totalWarnings.addAll(parsePMDXML());
+		}
+		
+		file = new File(JavaController.getFindBugsOutputFile());
+		if(file.exists() && !file.isDirectory()) {
+			totalWarnings.addAll(parseFindBugsXML());
+		}
+		
 		writeJSON(totalWarnings);
 	}
 
