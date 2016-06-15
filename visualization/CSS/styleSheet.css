@@ -266,6 +266,7 @@ rect {
 .grandparent:hover rect {
   fill: #6c98bf;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .children rect.parent,
@@ -274,14 +275,16 @@ rect {
 }
 .children:hover rect.child {
   fill: rgba(255,255,255, 0.4);
+  cursor: pointer;
 }
 g.children:hover{
   stroke-width: 0.3px;
   stroke: #000000;
+  cursor: pointer;
 }
 
-rect.child:hover {
-  fill: rgba(255,255,255, 0.4);
+.child:hover {
+  cursor: pointer !important;
 }
 
 #current-path {

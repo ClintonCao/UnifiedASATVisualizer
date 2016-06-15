@@ -37,8 +37,6 @@ var sourceCode = (function() {
 	function highlight(lineNumber, type, cat) {
 		var childs = $( '.CodeMirror-code').children()
 		var child = childs[lineNumber - 1];
-		$(child).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css( 'cursor', 'crosshair' );
-		$(child).css( 'cursor', 'crosshair' );
 		if(colorMethod == 0) {
 			highlightASATs(child, type);
 		} else if(colorMethod == 1) {
