@@ -5,7 +5,7 @@ function updateASATWarningsCount(d) {
 	var mainLabels = ["checkStyleLabel", "PMDLabel", "FindBugsLabel"];
 	var mainTitles = ["CheckStyle", "PMD", "FindBugs"];
 	var cat = categoryMapper.getDefects(i);
-	for ( var index =0; index < mainTitles.length; index++) {
+	for ( var index = 0; index < mainTitles.length; index++) {
 		var warning = sumNodeForASAT(d, getTotalASATWarning(mainTitles[index], d.fileName));
 		document.getElementById(mainLabels[index]).innerHTML = '&thinsp;&thinsp;'+ mainTitles[index] + '&thinsp;(' + warning + ")";
 	}
@@ -63,6 +63,7 @@ function sumHighestLevelNode(root) {
  * Sums for class or source code level the amount of warnings
  */
 function sumOtherLevelsNode(d, root) {
+    sum = 0;
     for (var i = 0; i < root.length; i++) {
         if(treeMapBuilder.getSourceCodeLevel()) {
             if (root[i].packageName == d.parent.fileName) {
