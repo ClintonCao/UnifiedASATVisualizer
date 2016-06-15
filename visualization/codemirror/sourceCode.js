@@ -97,7 +97,9 @@ var sourceCode = (function() {
 	 * Clear all three arrays
 	 */
 	function emptyArrays() {
-		currentAsatWarnings, currentCatWarnings, currentMessageWarnings = [];
+		currentAsatWarnings = [];
+		currentCatWarnings = [];
+		currentMessageWarnings = [];
 	}
 
 	/**
