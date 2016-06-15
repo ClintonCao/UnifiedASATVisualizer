@@ -1,8 +1,8 @@
 var sourceCode = (function() {
 
-	var currentAsatWarnings = [];
-	var currentCatWarnings = [];
-	var currentMessageWarnings = [];
+	var currentAsatWarnings = currentCatWarnings = currentMessageWarnings = [];
+	var totalAsats = totalCats = [false, false, false];
+	var latestAsatSet = latestCatSet = "";
 	var currentTooltip;
 	var curLine = -1;
 	var	localD;
@@ -25,10 +25,30 @@ var sourceCode = (function() {
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkBlue());
 	}
 	
-	// Gives a specific line a specific colour
-	function threeColors(line) {
-		$(line).css('background','url(images/bg.png)');
-		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','url(images/bg.png)');
+	// Gives a specific line multiple colours
+	function multipleColors(line, green, blue, purple) {
+		if(green) {
+			if(blue) {
+				if(purple) {
+					$(line).css('background','url(images/bpg.png)');
+					$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','url(images/bpg.png)');
+				} else {
+					$(line).css('background','url(images/bg.png)');
+					$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','url(images/bg.png)');
+				}
+			} else {
+				if(purple) {
+					$(line).css('background','url(images/gp.png)');
+					$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','url(images/gp.png)');
+				} 
+			}
+		} else if(blue) {
+			if(purple) {
+				$(line).css('background','url(images/bp.png)');
+				$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','url(images/bp.png)');
+			}
+		}
+		
 	}
 	
 	/**
@@ -48,16 +68,26 @@ var sourceCode = (function() {
 	 * Highlights a line according to the ASATs
 	 */
 	function highlightASATs(child, type) {
-		switch(type) {
-			case 'CheckStyle':
-				threeColors(child);
-				break;
-			case 'PMD':
-				colorTwo(child);
-				break;
-			case 'FindBugs':
-				colorOne(child);
-				break;
+		var count = 0;
+		for(var i = 0; i < totalCats.length; i++ ) {
+			if(totalCats[i]) {
+				count++;
+			}
+		}
+		if(count > 1) {
+			multipleColors(child, totalAsats[1], totalAsats[0], totalAsats[2]);
+		} else {
+			switch(type) {
+				case 'CheckStyle':
+					colorThree(child);
+					break;
+				case 'PMD':
+					colorTwo(child);
+					break;
+				case 'FindBugs':
+					colorOne(child);
+					break;
+			}
 		}
 	}
 
@@ -65,18 +95,86 @@ var sourceCode = (function() {
 	 * Highlights a line according to the category
 	 */
 	function highlightCategories(child, cat) {
-		switch(categoryMapper.categorizeWarningType(cat)) {
+		var count = 0;
+		for(var i = 0; i < totalAsats.length; i++ ) {
+			if(totalAsats[i]) {
+				count++;
+			}
+		}
+		if(count > 1) {
+			multipleColors(child, totalCats[2], totalCats[1], totalCats[0]);
+		} else {
+			switch(categoryMapper.categorizeWarningType(cat)) {
+				// Functional Defects
+				case 0:
+					colorOne(child);
+					break;
+				// Maintainability Defects
+				case 1:
+					colorThree(child);
+					break;
+				// Other
+				case 2:
+					colorTwo(child);
+					break;
+			}
+		}
+	}
+
+	function removeLatestAsatAndCat() {
+		switch(latestAsatSet) {
+			case 'CheckStyle':
+				totalAsats[0] = false;
+				break;
+			case 'PMD':
+				totalAsats[1] = false;
+				break;
+			case 'FindBugs':
+				totalAsats[2] = false;
+				break;
+		}
+		switch(latestCatSet) {
 			// Functional Defects
 			case 0:
-				colorOne(child);
+				totalCats[0] = false;
 				break;
 			// Maintainability Defects
 			case 1:
-				colorThree(child);
+				totalCats[1] = false;
 				break;
 			// Other
 			case 2:
-				colorTwo(child);
+				totalCats[2] = false;
+				break;
+		}
+	}
+
+	function checkAsatAndCat(type, cat) {
+		latestAsatSet = type;
+		latestCatSet = cat;
+		switch(type) {
+			case 'CheckStyle':
+				totalAsats[0] = true;
+				break;
+			case 'PMD':
+				totalAsats[1] = true;
+				break;
+			case 'FindBugs':
+				totalAsats[2] = true;
+				break;
+		}
+		switch(categoryMapper.categorizeWarningType(cat)) {
+			// Functional Defects
+			case 0:
+				totalCats[0] = true;
+				break;
+			// Maintainability Defects
+			case 1:
+				totalCats[1] = true;
+				break;
+			// Other
+			case 2:
+				totalCats[2] = true;
 				break;
 		}
 	}
@@ -85,16 +183,25 @@ var sourceCode = (function() {
 	 * Set the information for when the user is hovering over a warning
 	 */
 	function setLabels(lineNumber, type, cat, message) {
-		var childs = $( '.CodeMirror-code').children()
-		var child = childs[lineNumber - 1];
 		currentAsatWarnings.push(type);
 		currentCatWarnings.push(cat);
 		currentMessageWarnings.push(message);
-		if( curLine != lineNumber)  {
-			curLine = lineNumber;
+		checkAsatAndCat(type, cat);
+		if( curLine != lineNumber ) {
+			currentAsatWarnings.pop();
+			currentCatWarnings.pop();
+			currentMessageWarnings.pop();
+			removeLatestAsatAndCat();
+			highlight(curLine);
+			var childs = $( '.CodeMirror-code').children()
+			var child = childs[curLine - 1];
 			setToolTip(child);
+			curLine = lineNumber;
 			emptyArrays();
-		}
+			currentAsatWarnings.push(type);
+			currentCatWarnings.push(cat);
+			currentMessageWarnings.push(message);
+		} 
 	}
 
 	/**
@@ -104,6 +211,8 @@ var sourceCode = (function() {
 		currentAsatWarnings = [];
 		currentCatWarnings = [];
 		currentMessageWarnings = [];
+		totalAsats = [false, false, false];
+		totalCats = [false, false, false];
 	}
 
 	/**
@@ -157,13 +266,14 @@ var sourceCode = (function() {
 			
 			displayCode(d.filePath);
 			var warnings = getWarningLines(d.fileName);
-			for( var i =0 ; i < warnings.warningList.length; i ++ ){
-				highlight(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat);
-			}
-			var warnings = getWarningLines(d.fileName);
+			curLine = warnings.warningList[0].line;
 			for( var i =0 ; i < warnings.warningList.length; i ++ ){
 				setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
 			}
+			highlight(curLine, warnings.warningList[warnings.warningList.length-1].type, warnings.warningList[warnings.warningList.length-1].cat);
+			var childs = $( '.CodeMirror-code').children()
+			var child = childs[curLine - 1];
+			setToolTip(child);
 		},
 
 		// hides code mirror to show the treemap
