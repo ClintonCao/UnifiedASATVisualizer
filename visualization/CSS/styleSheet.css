@@ -275,10 +275,10 @@ rect {
 }
 .children:hover rect.child {
   fill: rgba(255,255,255, 0.4);
-  cursor: pointer;
+  cursor: pointer !important;
 }
 g.children:hover{
-  stroke-width: 0.3px;
+  stroke-width: 0.4px;
   stroke: #000000;
   cursor: pointer;
 }

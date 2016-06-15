@@ -148,6 +148,7 @@ var treeMapBuilder = (function() {
             .on("mouseover", function(d) {
 				$('#extra-info-div').css('display', 'inline-block');
 				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
+                this.parentNode.appendChild(this);
             })
             .on("mouseout", function(d) {
 				$('#extra-info-div').html("");
