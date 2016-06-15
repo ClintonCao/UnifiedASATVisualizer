@@ -14,18 +14,19 @@ var inputData =
     "classes": [
       {
         "fileName": "FindBugsWarningTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\FindBugsWarningTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\FindBugsWarningTest.java",
         "warningList": [
           {
-            "line": 15,
-            "message": "Code Size",
+            "ruleSet": "Code Size",
             "method": "",
             "packageName": "BlueTurtle.warnings",
             "classification": "Metric",
             "fileName": "FindBugsWarningTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\FindBugsWarningTest.java",
-            "ruleName": "TooManyMethods"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\FindBugsWarningTest.java",
+            "ruleName": "TooManyMethods",
+            "message": "\nThis class has too many methods, consider refactoring it.\n",
+            "line": 15
           }
         ],
         "loc": 222,
@@ -40,19 +41,19 @@ var inputData =
       },
       {
         "fileName": "PMDWarning.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\PMDWarning.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\PMDWarning.java",
         "warningList": [
           {
-            "line": 39,
-            "message": "More than 7 parameters (found 8).",
             "classification": "Metric",
             "fileName": "PMDWarning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\PMDWarning.java",
-            "ruleName": "ParameterNumber"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\PMDWarning.java",
+            "ruleName": "ParameterNumber",
+            "message": "More than 7 parameters (found 9).",
+            "line": 38
           }
         ],
-        "loc": 77,
+        "loc": 75,
         "packageName": "BlueTurtle.warnings",
         "numberOfWarnings": 1,
         "warningTypes": [
@@ -64,19 +65,19 @@ var inputData =
       },
       {
         "fileName": "FindBugsWarning.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java",
         "warningList": [
           {
-            "line": 41,
-            "message": "More than 7 parameters (found 8).",
             "classification": "Metric",
             "fileName": "FindBugsWarning.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java",
-            "ruleName": "ParameterNumber"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\warnings\\FindBugsWarning.java",
+            "ruleName": "ParameterNumber",
+            "message": "More than 7 parameters (found 8).",
+            "line": 39
           }
         ],
-        "loc": 80,
+        "loc": 76,
         "packageName": "BlueTurtle.warnings",
         "numberOfWarnings": 1,
         "warningTypes": [
@@ -88,29 +89,30 @@ var inputData =
       },
       {
         "fileName": "ChecktStyleWarningTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\ChecktStyleWarningTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\ChecktStyleWarningTest.java",
         "warningList": [
           {
-            "line": 16,
-            "message": "Code Size",
+            "ruleSet": "Code Size",
             "method": "",
             "packageName": "BlueTurtle.warnings",
             "classification": "Metric",
             "fileName": "ChecktStyleWarningTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\ChecktStyleWarningTest.java",
-            "ruleName": "TooManyMethods"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\ChecktStyleWarningTest.java",
+            "ruleName": "TooManyMethods",
+            "message": "\nThis class has too many methods, consider refactoring it.\n",
+            "line": 16
           },
           {
-            "line": 140,
-            "message": "Call to BlueTurtle.warnings.CheckStyleWarning.equals(Integer) in BlueTurtle.warnings.ChecktStyleWarningTest.testEqualsFalseWithIntegerObject()",
             "category": "CORRECTNESS",
             "priority": "Normal",
             "classification": "Logic",
             "fileName": "ChecktStyleWarningTest.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\ChecktStyleWarningTest.java",
-            "ruleName": "EC_UNRELATED_TYPES"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\ChecktStyleWarningTest.java",
+            "ruleName": "EC_UNRELATED_TYPES",
+            "message": "Call to BlueTurtle.warnings.CheckStyleWarning.equals(Integer) in BlueTurtle.warnings.ChecktStyleWarningTest.testEqualsFalseWithIntegerObject()",
+            "line": 140
           }
         ],
         "loc": 176,
@@ -126,21 +128,22 @@ var inputData =
       },
       {
         "fileName": "PMDWarningTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\PMDWarningTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\PMDWarningTest.java",
         "warningList": [
           {
-            "line": 14,
-            "message": "Code Size",
+            "ruleSet": "Code Size",
             "method": "",
             "packageName": "BlueTurtle.warnings",
             "classification": "Metric",
             "fileName": "PMDWarningTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\PMDWarningTest.java",
-            "ruleName": "TooManyMethods"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\PMDWarningTest.java",
+            "ruleName": "TooManyMethods",
+            "message": "\nThis class has too many methods, consider refactoring it.\n",
+            "line": 14
           }
         ],
-        "loc": 199,
+        "loc": 200,
         "packageName": "BlueTurtle.warnings",
         "numberOfWarnings": 1,
         "warningTypes": [
@@ -167,99 +170,113 @@ var inputData =
     "classes": [
       {
         "fileName": "WarningGrouperTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
         "warningList": [
           {
-            "line": 1,
-            "message": "Import Statements",
+            "ruleSet": "Import Statements",
             "method": "",
             "packageName": "BlueTurtle.groupers",
+            "classification": "Code Structure",
             "fileName": "WarningGrouperTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
-            "ruleName": "TooManyStaticImports"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
+            "ruleName": "TooManyStaticImports",
+            "message": "\nToo many static imports may lead to messy code\n",
+            "line": 1
           },
           {
-            "line": 58,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "initialize",
             "packageName": "BlueTurtle.groupers",
+            "classification": "Refactorings - Redundancies",
             "fileName": "WarningGrouperTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"resources\" appears 4 times in this file; the first occurrence is on line 58\n",
+            "line": 58
           },
           {
-            "line": 58,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "initialize",
             "packageName": "BlueTurtle.groupers",
+            "classification": "Refactorings - Redundancies",
             "fileName": "WarningGrouperTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"src\" appears 4 times in this file; the first occurrence is on line 58\n",
+            "line": 58
           },
           {
-            "line": 58,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "initialize",
             "packageName": "BlueTurtle.groupers",
+            "classification": "Refactorings - Redundancies",
             "fileName": "WarningGrouperTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"test\" appears 4 times in this file; the first occurrence is on line 58\n",
+            "line": 58
           },
           {
-            "line": 62,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "initialize",
             "packageName": "BlueTurtle.groupers",
+            "classification": "Refactorings - Redundancies",
             "fileName": "WarningGrouperTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"Class\" appears 4 times in this file; the first occurrence is on line 62\n",
+            "line": 62
           },
           {
-            "line": 62,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "initialize",
             "packageName": "BlueTurtle.groupers",
+            "classification": "Refactorings - Redundancies",
             "fileName": "WarningGrouperTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"Test\" appears 4 times in this file; the first occurrence is on line 62\n",
+            "line": 62
           },
           {
-            "line": 62,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "initialize",
             "packageName": "BlueTurtle.groupers",
+            "classification": "Refactorings - Redundancies",
             "fileName": "WarningGrouperTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"TestRule\" appears 4 times in this file; the first occurrence is on line 62\n",
+            "line": 62
           },
           {
-            "line": 171,
-            "message": "Call to BlueTurtle.groupers.WarningGrouper.equals(Integer) in BlueTurtle.groupers.WarningGrouperTest.testEqualsFalseDifferentObject()",
             "category": "CORRECTNESS",
             "priority": "Normal",
             "classification": "Logic",
             "fileName": "WarningGrouperTest.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
-            "ruleName": "EC_UNRELATED_TYPES"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
+            "ruleName": "EC_UNRELATED_TYPES",
+            "message": "Call to BlueTurtle.groupers.WarningGrouper.equals(Integer) in BlueTurtle.groupers.WarningGrouperTest.testEqualsFalseDifferentObject()",
+            "line": 171
           },
           {
-            "line": 99,
-            "message": "Null passed for non-null parameter of WarningGrouper.groupBy(Enum) in BlueTurtle.groupers.WarningGrouperTest.testGroupByDefaultCase()",
             "category": "CORRECTNESS",
             "priority": "Normal",
             "classification": "Interface",
             "fileName": "WarningGrouperTest.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
-            "ruleName": "NP_NULL_PARAM_DEREF_ALL_TARGETS_DANGEROUS"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\groupers\\WarningGrouperTest.java",
+            "ruleName": "NP_NULL_PARAM_DEREF_ALL_TARGETS_DANGEROUS",
+            "message": "Null passed for non-null parameter of WarningGrouper.groupBy(Enum) in BlueTurtle.groupers.WarningGrouperTest.testGroupByDefaultCase()",
+            "line": 99
           }
         ],
         "loc": 148,
@@ -289,18 +306,18 @@ var inputData =
     "classes": [
       {
         "fileName": "LOCComputer.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\computers\\LOCComputer.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\computers\\LOCComputer.java",
         "warningList": [
           {
-            "line": 47,
-            "message": "Found reliance on default encoding in BlueTurtle.computers.LOCComputer.computeLOC(String): new java.io.FileReader(String)",
             "category": "I18N",
             "priority": "High",
             "classification": "Interface",
             "fileName": "LOCComputer.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\computers\\LOCComputer.java",
-            "ruleName": "DM_DEFAULT_ENCODING"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\computers\\LOCComputer.java",
+            "ruleName": "DM_DEFAULT_ENCODING",
+            "message": "Found reliance on default encoding in BlueTurtle.computers.LOCComputer.computeLOC(String): new java.io.FileReader(String)",
+            "line": 47
           }
         ],
         "loc": 49,
@@ -328,50 +345,54 @@ var inputData =
     "classes": [
       {
         "fileName": "CodeFile.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\CodeFile.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\CodeFile.java",
         "warningList": [
           {
-            "line": 18,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.TSE",
             "classification": "Refactorings - Redundancies",
             "fileName": "CodeFile.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\CodeFile.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\CodeFile.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027path\u0027.\n",
+            "line": 18
           },
           {
-            "line": 19,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.TSE",
             "classification": "Refactorings - Redundancies",
             "fileName": "CodeFile.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\CodeFile.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\CodeFile.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027code\u0027.\n",
+            "line": 19
           },
           {
-            "line": 35,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "getCodeFromFile",
             "packageName": "BlueTurtle.TSE",
+            "classification": "Best Practices",
             "fileName": "CodeFile.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\CodeFile.java",
-            "ruleName": "AppendCharacterWithChar"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\CodeFile.java",
+            "ruleName": "AppendCharacterWithChar",
+            "message": "\nAvoid appending characters as strings in StringBuffer.append.\n",
+            "line": 35
           },
           {
-            "line": 29,
-            "message": "Found reliance on default encoding in BlueTurtle.TSE.CodeFile.getCodeFromFile(File): new java.io.FileReader(File)",
             "category": "I18N",
             "priority": "High",
             "classification": "Interface",
             "fileName": "CodeFile.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\CodeFile.java",
-            "ruleName": "DM_DEFAULT_ENCODING"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\CodeFile.java",
+            "ruleName": "DM_DEFAULT_ENCODING",
+            "message": "Found reliance on default encoding in BlueTurtle.TSE.CodeFile.getCodeFromFile(File): new java.io.FileReader(File)",
+            "line": 29
           }
         ],
         "loc": 32,
@@ -387,51 +408,55 @@ var inputData =
       },
       {
         "fileName": "JavaController.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\JavaController.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\JavaController.java",
         "warningList": [
           {
-            "line": 20,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.TSE",
             "classification": "Refactorings - Redundancies",
             "fileName": "JavaController.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\JavaController.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\JavaController.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027userDir\u0027.\n",
+            "line": 20
           },
           {
-            "line": 21,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.TSE",
             "classification": "Refactorings - Redundancies",
             "fileName": "JavaController.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\JavaController.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\JavaController.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027checkStyleOutputFile\u0027.\n",
+            "line": 21
           },
           {
-            "line": 22,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.TSE",
             "classification": "Refactorings - Redundancies",
             "fileName": "JavaController.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\JavaController.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\JavaController.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027pmdOutputFile\u0027.\n",
+            "line": 22
           },
           {
-            "line": 23,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.TSE",
             "classification": "Refactorings - Redundancies",
             "fileName": "JavaController.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\JavaController.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\JavaController.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027findBugsOutputFile\u0027.\n",
+            "line": 23
           }
         ],
         "loc": 52,
@@ -446,73 +471,66 @@ var inputData =
       },
       {
         "fileName": "Main.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\Main.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\Main.java",
         "warningList": [
           {
-            "line": 14,
-            "message": "Utility classes should not have a public or default constructor.",
-            "classification": "Object Oriented Design",
+            "classification": "Documentation Conventions",
             "fileName": "Main.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\Main.java",
-            "ruleName": "HideUtilityClassConstructor"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\Main.java",
+            "ruleName": "JavadocStyle",
+            "message": "First sentence should end with a period.",
+            "line": 17
           },
           {
-            "line": 26,
-            "message": "Variable controller must be private and have accessor methods.",
-            "classification": "Object Oriented Design",
+            "classification": "Style Conventions",
             "fileName": "Main.java",
             "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\Main.java",
-            "ruleName": "VisibilityModifier"
-          },
-          {
-            "line": 27,
-            "message": "Variable currentMode must be private and have accessor methods.",
-            "classification": "Object Oriented Design",
-            "fileName": "Main.java",
-            "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\Main.java",
-            "ruleName": "VisibilityModifier"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\TSE\\Main.java",
+            "ruleName": "WhitespaceAround",
+            "message": "{ is not preceded with whitespace.",
+            "line": 20
           }
         ],
-        "loc": 51,
+        "loc": 59,
         "packageName": "BlueTurtle.TSE",
-        "numberOfWarnings": 3,
+        "numberOfWarnings": 2,
         "warningTypes": [
           "CheckStyle"
         ],
-        "numberOfCheckStyleWarnings": 3,
+        "numberOfCheckStyleWarnings": 2,
         "numberOfPMDWarnings": 0,
         "numberOfFindBugsWarnings": 0
       },
       {
         "fileName": "JavaControllerTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\TSE\\JavaControllerTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\TSE\\JavaControllerTest.java",
         "warningList": [
           {
-            "line": 26,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "",
             "packageName": "BlueTurtle.TSE",
+            "classification": "Refactorings - Redundancies",
             "fileName": "JavaControllerTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\TSE\\JavaControllerTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\TSE\\JavaControllerTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"user.dir\" appears 7 times in this file; the first occurrence is on line 26\n",
+            "line": 26
           },
           {
-            "line": 55,
-            "message": "Exceptional return value of java.io.File.delete() ignored in BlueTurtle.TSE.JavaControllerTest.cleanUp()",
             "category": "BAD_PRACTICE",
             "priority": "Normal",
             "classification": "Check",
             "fileName": "JavaControllerTest.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\TSE\\JavaControllerTest.java",
-            "ruleName": "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\TSE\\JavaControllerTest.java",
+            "ruleName": "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE",
+            "message": "Exceptional return value of java.io.File.delete() ignored in BlueTurtle.TSE.JavaControllerTest.cleanUp()",
+            "line": 55
           }
         ],
-        "loc": 120,
+        "loc": 137,
         "packageName": "BlueTurtle.TSE",
         "numberOfWarnings": 2,
         "warningTypes": [
@@ -526,13 +544,13 @@ var inputData =
     ],
     "numberOfClasses": 4,
     "packageName": "BlueTurtle.TSE",
-    "numberOfWarnings": 13,
+    "numberOfWarnings": 12,
     "warningTypes": [
       "PMD",
       "CheckStyle",
       "FindBugs"
     ],
-    "numberOfCheckStyleWarnings": 3,
+    "numberOfCheckStyleWarnings": 2,
     "numberOfPMDWarnings": 8,
     "numberOfFindBugsWarnings": 2
   },
@@ -540,29 +558,29 @@ var inputData =
     "classes": [
       {
         "fileName": "PackageNameFinder.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\finders\\PackageNameFinder.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\finders\\PackageNameFinder.java",
         "warningList": [
           {
-            "line": 47,
-            "message": "Found reliance on default encoding in BlueTurtle.finders.PackageNameFinder.findPackageName(String): new java.io.FileReader(String)",
             "category": "I18N",
             "priority": "High",
             "classification": "Interface",
             "fileName": "PackageNameFinder.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\finders\\PackageNameFinder.java",
-            "ruleName": "DM_DEFAULT_ENCODING"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\finders\\PackageNameFinder.java",
+            "ruleName": "DM_DEFAULT_ENCODING",
+            "message": "Found reliance on default encoding in BlueTurtle.finders.PackageNameFinder.findPackageName(String): new java.io.FileReader(String)",
+            "line": 47
           },
           {
-            "line": 49,
-            "message": "Dereference of the result of readLine() without nullcheck in BlueTurtle.finders.PackageNameFinder.findPackageName(String)",
             "category": "STYLE",
             "priority": "Normal",
             "classification": "Check",
             "fileName": "PackageNameFinder.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\finders\\PackageNameFinder.java",
-            "ruleName": "NP_DEREFERENCE_OF_READLINE_VALUE"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\finders\\PackageNameFinder.java",
+            "ruleName": "NP_DEREFERENCE_OF_READLINE_VALUE",
+            "message": "Dereference of the result of readLine() without nullcheck in BlueTurtle.finders.PackageNameFinder.findPackageName(String)",
+            "line": 49
           }
         ],
         "loc": 47,
@@ -577,18 +595,18 @@ var inputData =
       },
       {
         "fileName": "ProjectInfoFinder.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\finders\\ProjectInfoFinder.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\finders\\ProjectInfoFinder.java",
         "warningList": [
           {
-            "line": 43,
-            "message": "Possible null pointer dereference in BlueTurtle.finders.ProjectInfoFinder.findFiles(File) due to return value of called method",
             "category": "STYLE",
             "priority": "Normal",
             "classification": "Check",
             "fileName": "ProjectInfoFinder.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\finders\\ProjectInfoFinder.java",
-            "ruleName": "NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\finders\\ProjectInfoFinder.java",
+            "ruleName": "NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE",
+            "message": "Possible null pointer dereference in BlueTurtle.finders.ProjectInfoFinder.findFiles(File) due to return value of called method",
+            "line": 43
           }
         ],
         "loc": 75,
@@ -616,40 +634,43 @@ var inputData =
     "classes": [
       {
         "fileName": "GUIController.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\gui\\GUIController.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\gui\\GUIController.java",
         "warningList": [
           {
-            "line": 41,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.gui",
             "classification": "Refactorings - Redundancies",
             "fileName": "GUIController.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\gui\\GUIController.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\gui\\GUIController.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027resources\u0027.\n",
+            "line": 41
           },
           {
-            "line": 44,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.gui",
             "classification": "Refactorings - Redundancies",
             "fileName": "GUIController.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\gui\\GUIController.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\gui\\GUIController.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027location\u0027.\n",
+            "line": 44
           },
           {
-            "line": 55,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.gui",
             "classification": "Refactorings - Redundancies",
             "fileName": "GUIController.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\gui\\GUIController.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\gui\\GUIController.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027projectPath\u0027.\n",
+            "line": 55
           }
         ],
         "loc": 159,
@@ -677,95 +698,78 @@ var inputData =
     "classes": [
       {
         "fileName": "JSWriter.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\writers\\JSWriter.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\writers\\JSWriter.java",
         "warningList": [
           {
-            "line": 64,
-            "message": "+ is not followed by whitespace.",
-            "classification": "Style Conventions",
+            "category": "I18N",
+            "priority": "High",
+            "classification": "Interface",
             "fileName": "JSWriter.java",
-            "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\writers\\JSWriter.java",
-            "ruleName": "WhitespaceAround"
-          },
-          {
-            "line": 71,
-            "message": "; is preceded with whitespace.",
-            "classification": "Style Conventions",
-            "fileName": "JSWriter.java",
-            "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\writers\\JSWriter.java",
-            "ruleName": "NoWhitespaceBefore"
-          },
-          {
-            "line": 87,
+            "type": "FindBugs",
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\writers\\JSWriter.java",
+            "ruleName": "DM_DEFAULT_ENCODING",
             "message": "Found reliance on default encoding in BlueTurtle.writers.JSWriter.writeSourceCodeToJS(ArrayList, String): new java.io.FileWriter(String)",
-            "category": "I18N",
-            "priority": "High",
-            "classification": "Interface",
-            "fileName": "JSWriter.java",
-            "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\writers\\JSWriter.java",
-            "ruleName": "DM_DEFAULT_ENCODING"
+            "line": 86
           },
           {
-            "line": 62,
-            "message": "Found reliance on default encoding in BlueTurtle.writers.JSWriter.writeToJSFormat(String): new java.io.FileWriter(String)",
             "category": "I18N",
             "priority": "High",
             "classification": "Interface",
             "fileName": "JSWriter.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\writers\\JSWriter.java",
-            "ruleName": "DM_DEFAULT_ENCODING"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\writers\\JSWriter.java",
+            "ruleName": "DM_DEFAULT_ENCODING",
+            "message": "Found reliance on default encoding in BlueTurtle.writers.JSWriter.writeToJSFormat(String): new java.io.FileWriter(String)",
+            "line": 61
           }
         ],
-        "loc": 73,
+        "loc": 72,
         "packageName": "BlueTurtle.writers",
-        "numberOfWarnings": 4,
+        "numberOfWarnings": 2,
         "warningTypes": [
-          "CheckStyle",
           "FindBugs"
         ],
-        "numberOfCheckStyleWarnings": 2,
+        "numberOfCheckStyleWarnings": 0,
         "numberOfPMDWarnings": 0,
         "numberOfFindBugsWarnings": 2
       },
       {
         "fileName": "JSWriterTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\writers\\JSWriterTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\writers\\JSWriterTest.java",
         "warningList": [
           {
-            "line": 48,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "initialize",
             "packageName": "BlueTurtle.writers",
+            "classification": "Refactorings - Redundancies",
             "fileName": "JSWriterTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\writers\\JSWriterTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\writers\\JSWriterTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"test\" appears 4 times in this file; the first occurrence is on line 48\n",
+            "line": 48
           },
           {
-            "line": 71,
+            "category": "BAD_PRACTICE",
+            "priority": "Normal",
+            "classification": "Check",
+            "fileName": "JSWriterTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\writers\\JSWriterTest.java",
+            "ruleName": "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE",
             "message": "Exceptional return value of java.io.File.delete() ignored in BlueTurtle.writers.JSWriterTest.cleanup()",
-            "category": "BAD_PRACTICE",
-            "priority": "Normal",
-            "classification": "Check",
-            "fileName": "JSWriterTest.java",
-            "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\writers\\JSWriterTest.java",
-            "ruleName": "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE"
+            "line": 71
           },
           {
-            "line": 59,
-            "message": "Exceptional return value of java.io.File.delete() ignored in BlueTurtle.writers.JSWriterTest.initialize()",
             "category": "BAD_PRACTICE",
             "priority": "Normal",
             "classification": "Check",
             "fileName": "JSWriterTest.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\writers\\JSWriterTest.java",
-            "ruleName": "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\writers\\JSWriterTest.java",
+            "ruleName": "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE",
+            "message": "Exceptional return value of java.io.File.delete() ignored in BlueTurtle.writers.JSWriterTest.initialize()",
+            "line": 59
           }
         ],
         "loc": 75,
@@ -782,13 +786,12 @@ var inputData =
     ],
     "numberOfClasses": 2,
     "packageName": "BlueTurtle.writers",
-    "numberOfWarnings": 7,
+    "numberOfWarnings": 5,
     "warningTypes": [
       "PMD",
-      "CheckStyle",
       "FindBugs"
     ],
-    "numberOfCheckStyleWarnings": 2,
+    "numberOfCheckStyleWarnings": 0,
     "numberOfPMDWarnings": 1,
     "numberOfFindBugsWarnings": 4
   },
@@ -806,49 +809,54 @@ var inputData =
     "classes": [
       {
         "fileName": "PackageSummarizerTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\PackageSummarizerTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\PackageSummarizerTest.java",
         "warningList": [
           {
-            "line": 1,
-            "message": "Import Statements",
+            "ruleSet": "Import Statements",
             "method": "",
             "packageName": "BlueTurtle.summarizers",
+            "classification": "Code Structure",
             "fileName": "PackageSummarizerTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\PackageSummarizerTest.java",
-            "ruleName": "TooManyStaticImports"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\PackageSummarizerTest.java",
+            "ruleName": "TooManyStaticImports",
+            "message": "\nToo many static imports may lead to messy code\n",
+            "line": 1
           },
           {
-            "line": 31,
-            "message": "Code Size",
+            "ruleSet": "Code Size",
             "method": "",
             "packageName": "BlueTurtle.summarizers",
             "classification": "Metric",
             "fileName": "PackageSummarizerTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\PackageSummarizerTest.java",
-            "ruleName": "TooManyMethods"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\PackageSummarizerTest.java",
+            "ruleName": "TooManyMethods",
+            "message": "\nThis class has too many methods, consider refactoring it.\n",
+            "line": 31
           },
           {
-            "line": 53,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "initialize",
             "packageName": "BlueTurtle.summarizers",
+            "classification": "Refactorings - Redundancies",
             "fileName": "PackageSummarizerTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\PackageSummarizerTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\PackageSummarizerTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"ExampleClass.java\" appears 4 times in this file; the first occurrence is on line 53\n",
+            "line": 53
           },
           {
-            "line": 197,
-            "message": "Call to BlueTurtle.summarizers.PackageSummarizer.equals(Integer) in BlueTurtle.summarizers.PackageSummarizerTest.testEqualsWithAnotherObject()",
             "category": "CORRECTNESS",
             "priority": "Normal",
             "classification": "Logic",
             "fileName": "PackageSummarizerTest.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\PackageSummarizerTest.java",
-            "ruleName": "EC_UNRELATED_TYPES"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\PackageSummarizerTest.java",
+            "ruleName": "EC_UNRELATED_TYPES",
+            "message": "Call to BlueTurtle.summarizers.PackageSummarizer.equals(Integer) in BlueTurtle.summarizers.PackageSummarizerTest.testEqualsWithAnotherObject()",
+            "line": 197
           }
         ],
         "loc": 181,
@@ -864,28 +872,31 @@ var inputData =
       },
       {
         "fileName": "CategorySummarizerTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\CategorySummarizerTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\CategorySummarizerTest.java",
         "warningList": [
           {
-            "line": 24,
-            "message": "Code Size",
+            "ruleSet": "Code Size",
             "method": "",
             "packageName": "BlueTurtle.summarizers",
             "classification": "Metric",
             "fileName": "CategorySummarizerTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\CategorySummarizerTest.java",
-            "ruleName": "TooManyMethods"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\CategorySummarizerTest.java",
+            "ruleName": "TooManyMethods",
+            "message": "\nThis class has too many methods, consider refactoring it.\n",
+            "line": 24
           },
           {
-            "line": 48,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "setUp",
             "packageName": "BlueTurtle.summarizers",
+            "classification": "Refactorings - Redundancies",
             "fileName": "CategorySummarizerTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\CategorySummarizerTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\CategorySummarizerTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"Naming Conventions\" appears 18 times in this file; the first occurrence is on line 48\n",
+            "line": 48
           }
         ],
         "loc": 159,
@@ -900,28 +911,31 @@ var inputData =
       },
       {
         "fileName": "ComponentSummarizerTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\ComponentSummarizerTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\ComponentSummarizerTest.java",
         "warningList": [
           {
-            "line": 30,
-            "message": "Code Size",
+            "ruleSet": "Code Size",
             "method": "",
             "packageName": "BlueTurtle.summarizers",
             "classification": "Metric",
             "fileName": "ComponentSummarizerTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\ComponentSummarizerTest.java",
-            "ruleName": "TooManyMethods"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\ComponentSummarizerTest.java",
+            "ruleName": "TooManyMethods",
+            "message": "\nThis class has too many methods, consider refactoring it.\n",
+            "line": 30
           },
           {
-            "line": 53,
-            "message": "String and StringBuffer",
+            "ruleSet": "String and StringBuffer",
             "method": "initialize",
             "packageName": "BlueTurtle.summarizers",
+            "classification": "Refactorings - Redundancies",
             "fileName": "ComponentSummarizerTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\ComponentSummarizerTest.java",
-            "ruleName": "AvoidDuplicateLiterals"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\summarizers\\ComponentSummarizerTest.java",
+            "ruleName": "AvoidDuplicateLiterals",
+            "message": "\nThe String literal \"test\" appears 5 times in this file; the first occurrence is on line 53\n",
+            "line": 53
           }
         ],
         "loc": 230,
@@ -950,54 +964,45 @@ var inputData =
     "classes": [
       {
         "fileName": "GDCParser.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\parsers\\GDCParser.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\parsers\\GDCParser.java",
         "warningList": [
           {
-            "line": 23,
-            "message": "Class GDCParser should be declared as final.",
-            "classification": "Object Oriented Design",
-            "fileName": "GDCParser.java",
-            "type": "CheckStyle",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\parsers\\GDCParser.java",
-            "ruleName": "FinalClass"
-          },
-          {
-            "line": 57,
-            "message": "Write to static field BlueTurtle.parsers.GDCParser.categoryInfo from instance method BlueTurtle.parsers.GDCParser.parseFile(String)",
             "category": "STYLE",
             "priority": "High",
             "classification": "Best Practices",
             "fileName": "GDCParser.java",
             "type": "FindBugs",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\main\\java\\BlueTurtle\\parsers\\GDCParser.java",
-            "ruleName": "ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\main\\java\\BlueTurtle\\parsers\\GDCParser.java",
+            "ruleName": "ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD",
+            "message": "Write to static field BlueTurtle.parsers.GDCParser.categoryInfo from instance method BlueTurtle.parsers.GDCParser.parseFile(String)",
+            "line": 57
           }
         ],
         "loc": 74,
         "packageName": "BlueTurtle.parsers",
-        "numberOfWarnings": 2,
+        "numberOfWarnings": 1,
         "warningTypes": [
-          "CheckStyle",
           "FindBugs"
         ],
-        "numberOfCheckStyleWarnings": 1,
+        "numberOfCheckStyleWarnings": 0,
         "numberOfPMDWarnings": 0,
         "numberOfFindBugsWarnings": 1
       },
       {
         "fileName": "GDCParserTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\parsers\\GDCParserTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\parsers\\GDCParserTest.java",
         "warningList": [
           {
-            "line": 20,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.parsers",
             "classification": "Refactorings - Redundancies",
             "fileName": "GDCParserTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\parsers\\GDCParserTest.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\parsers\\GDCParserTest.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027testSet2\u0027.\n",
+            "line": 20
           }
         ],
         "loc": 42,
@@ -1012,29 +1017,31 @@ var inputData =
       },
       {
         "fileName": "FindBugsXMLParserTest.java",
-        "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\parsers\\FindBugsXMLParserTest.java",
+        "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\parsers\\FindBugsXMLParserTest.java",
         "warningList": [
           {
-            "line": 26,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.parsers",
             "classification": "Refactorings - Redundancies",
             "fileName": "FindBugsXMLParserTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\parsers\\FindBugsXMLParserTest.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\parsers\\FindBugsXMLParserTest.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027testSet\u0027.\n",
+            "line": 26
           },
           {
-            "line": 28,
-            "message": "Unused Code",
+            "ruleSet": "Unused Code",
             "method": "",
             "packageName": "BlueTurtle.parsers",
             "classification": "Refactorings - Redundancies",
             "fileName": "FindBugsXMLParserTest.java",
             "type": "PMD",
-            "filePath": "C:\\Users\\Clinton\\Documents\\GitHub\\ContextProject-TSE\\src\\test\\java\\BlueTurtle\\parsers\\FindBugsXMLParserTest.java",
-            "ruleName": "UnusedPrivateField"
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\parsers\\FindBugsXMLParserTest.java",
+            "ruleName": "UnusedPrivateField",
+            "message": "\nAvoid unused private fields such as \u0027testSet3\u0027.\n",
+            "line": 28
           }
         ],
         "loc": 72,
@@ -1050,13 +1057,12 @@ var inputData =
     ],
     "numberOfClasses": 3,
     "packageName": "BlueTurtle.parsers",
-    "numberOfWarnings": 5,
+    "numberOfWarnings": 4,
     "warningTypes": [
       "PMD",
-      "CheckStyle",
       "FindBugs"
     ],
-    "numberOfCheckStyleWarnings": 1,
+    "numberOfCheckStyleWarnings": 0,
     "numberOfPMDWarnings": 3,
     "numberOfFindBugsWarnings": 1
   },
@@ -1071,4 +1077,4 @@ var inputData =
     "numberOfFindBugsWarnings": 0
   }
 ];
-var projectName = "ContextProject-TSE";
+var projectName = "Contextproject-TSE";

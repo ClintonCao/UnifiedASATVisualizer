@@ -3,6 +3,7 @@ package BlueTurtle.parsers;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -76,7 +77,11 @@ public abstract class XMLParser implements Parser {
 		GDCParser gp = GDCParser.getInstance();
 		gp.parseFile(mdFilePath);
 		HashMap<String, String> categoryInfo = gp.getCategoryInfo();
-		String classification = categoryInfo.get(ruleName);
+		Set<String> ruleNames = categoryInfo.keySet();
+		System.out.println("input rule: "+ ruleName);
+		String finalRuleName = ruleNames.stream().filter(p -> p.endsWith(ruleName)).findFirst().get();
+		System.out.println("final rule: "+ finalRuleName);
+		String classification = categoryInfo.get(finalRuleName);
 		return classification;
 	}
 }

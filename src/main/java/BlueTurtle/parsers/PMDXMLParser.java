@@ -101,10 +101,13 @@ public class PMDXMLParser extends XMLParser {
 				String ruleName = warningElement.getAttribute("rule");
 
 				// PMD rule name is a special concatenation of rule set and rule name.
-				String pmdRN = ruleSet.replace(" ", "").toLowerCase() + ".xml/" + ruleName;
+//				String pmdRN = ruleSet.replace(" ", "").toLowerCase() + ".xml/" + ruleName;
 
 				// find the correct classification given the rule name and the rule set.
-				String classification = classify(pmdRN);
+				String classification = classify(ruleName);
+				
+				// debug info
+				if(classification == null) System.out.println("rule name: " + ruleName);
 
 				// replace the backward slash in the file name with file separator.
 				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
