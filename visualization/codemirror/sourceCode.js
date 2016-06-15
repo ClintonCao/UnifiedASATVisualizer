@@ -24,7 +24,13 @@ var sourceCode = (function() {
 		$(line).css('background',colours.darkBlue());
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkBlue());
 	}
-
+	
+	// Gives a specific line a specific colour
+	function threeColors(line) {
+		$(line).css('background','url(images/bg.png)');
+		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','url(images/bg.png)');
+	}
+	
 	/**
 	 * Highlights a line according to either the ASAT or the category
 	 */
@@ -46,7 +52,7 @@ var sourceCode = (function() {
 	function highlightASATs(child, type) {
 		switch(type) {
 			case 'CheckStyle':
-				colorThree(child);
+				threeColors(child);
 				break;
 			case 'PMD':
 				colorTwo(child);
