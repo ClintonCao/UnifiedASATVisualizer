@@ -46,7 +46,6 @@ public class FindBugsXMLParser extends XMLParser {
 				// Get the file from the list.
 				Node file = nList.item(i);
 
-				if (file.getNodeType() == Node.ELEMENT_NODE) {
 					// Convert the node to an element.
 					Element fileElement = (Element) file;
 
@@ -57,7 +56,6 @@ public class FindBugsXMLParser extends XMLParser {
 					NodeList warningList = fileElement.getElementsByTagName("BugInstance");
 
 					addWarnings(fileName, warningList, findBugsWarnings, nList);
-				}
 			}
 
 		return findBugsWarnings;
@@ -81,7 +79,6 @@ public class FindBugsXMLParser extends XMLParser {
 			// Get the warning from the list of warnings.
 			Node warning = warningList.item(j);
 
-			if (warning.getNodeType() == Node.ELEMENT_NODE) {
 				// Convert the node to an element.
 				Element warningElement = (Element) warning;
 
@@ -116,7 +113,6 @@ public class FindBugsXMLParser extends XMLParser {
 
 				// Add warning to the list of warnings.
 				findBugsWarnings.add(fbw);
-			}
 		}
 	}
 

@@ -45,7 +45,7 @@ public class PMDXMLParser extends XMLParser {
 				// Get the file from the list.
 				Node file = nList.item(i);
 
-				if (file.getNodeType() == Node.ELEMENT_NODE) {
+
 					// Convert the node to an element.
 					Element fileElement = (Element) file;
 
@@ -55,15 +55,9 @@ public class PMDXMLParser extends XMLParser {
 					// Get the name of the file where the warning is from.
 					String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
 					
-					// Get all the warnings.
-					NodeList warningList = fileElement.getElementsByTagName("violation");
-					
-					// Retrieve the message corresponds the warnings.
-					String message = fileElement.getElementsByTagName("violation").item(0).getTextContent();
+					addWarnings(fileName, fileElement, pmdWarnings);
 
-					addWarnings(fileName, warningList, pmdWarnings, message);
 
-				}
 			}
 
 		return pmdWarnings;
@@ -74,20 +68,20 @@ public class PMDXMLParser extends XMLParser {
 	 * 
 	 * @param fileName
 	 *            is the file name of the warning.
-	 * @param warningList
-	 *            is a list of warnings.
+	 * @param fileElement
+	 *            is a file element which contains all the warnings.
 	 * @param pmdWarnings
 	 *            is list of PMD warnings.
-	 * @param message
-	 *            is the message of PMD warnings.
 	 */
-	public void addWarnings(String fileName, NodeList warningList, List<Warning> pmdWarnings, String message) {
+	public void addWarnings(String fileName, Element fileElement, List<Warning> pmdWarnings) {
 
+		// Get all the warnings.
+		NodeList warningList = fileElement.getElementsByTagName("violation");
+		
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
 			Node warning = warningList.item(j);
 
-			if (warning.getNodeType() == Node.ELEMENT_NODE) {
 				// Convert the node to an element.
 				Element warningElement = (Element) warning;
 
@@ -106,12 +100,9 @@ public class PMDXMLParser extends XMLParser {
 				// Get the category of the warning.
 				String ruleName = warningElement.getAttribute("rule");
 
-				// PMD rule name is a special concatenation of rule set and rule name.
-				String pmdRN = ruleSet.replace(" ", "").toLowerCase() + ".xml/" + ruleName;
-
 				// find the correct classification given the rule name and the rule set.
-				String classification = classify(pmdRN);
-
+				String classification = classify(ruleName);
+				
 				// replace the backward slash in the file name with file separator.
 				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
 
@@ -121,9 +112,11 @@ public class PMDXMLParser extends XMLParser {
 				// Get the name of the file where the warning is from.
 				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
 
+				// Retrieve the message corresponds to this warning.
+				String message = fileElement.getElementsByTagName("violation").item(j).getTextContent();
+
 				// Add warning to the list of warnings.
 				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName, message, classification));
-			}
 		}
 	}
 
