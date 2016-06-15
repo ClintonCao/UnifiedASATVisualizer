@@ -77,7 +77,6 @@ public abstract class XMLParser implements Parser {
 		gp.parseFile(mdFilePath);
 		HashMap<String, String> categoryInfo = GDCParser.getCategoryInfo();
 		String finalRuleName = categoryInfo.keySet().stream().filter(p -> p.endsWith(ruleName)).findFirst().get();
-		String classification = categoryInfo.get(finalRuleName);
-		return classification;
+		return categoryInfo.get(finalRuleName);
 	}
 }
