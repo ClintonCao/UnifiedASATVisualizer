@@ -47,7 +47,6 @@ var treeMapBuilder = (function() {
             }, 0) :
             d.value;
     }
-
     function accumulateWarnings(d) {
         return (d._children = d.values) ?
             d.warnings = d.values.reduce(function(p, v) {
@@ -148,6 +147,7 @@ var treeMapBuilder = (function() {
             .on("mouseover", function(d) {
 				$('#extra-info-div').css('display', 'inline-block');
 				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
+                this.parentNode.appendChild(this);
             })
             .on("mouseout", function(d) {
 				$('#extra-info-div').html("");
@@ -200,6 +200,10 @@ var treeMapBuilder = (function() {
                 }, millisecondsToWait);
             }
         })
+		/**
+		* find the current node and reload the tree
+		* with directly navigating to this node
+		*/
 		function fastReload() {
             reloadContent();
             var newNode = findNode(currentNodePath, root);
@@ -433,6 +437,11 @@ var treeMapBuilder = (function() {
         return g;
     }
 
+
+    /**
+    * Sets all text for all elemetents in the treemap
+	* for e.g. the title of the squares but also of the packages.
+    */
 	function text(text) {
         text.selectAll("tspan")
             .attr("x", function(d) {
