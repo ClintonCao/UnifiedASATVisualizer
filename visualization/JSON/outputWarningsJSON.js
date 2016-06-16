@@ -118,13 +118,13 @@ var inputData =
             "ruleSet": "Code Size",
             "method": "",
             "packageName": "BlueTurtle.warnings",
-            "classification": "Metric",
+            "classification": "Check",
             "fileName": "ChecktStyleWarningTest.java",
-            "type": "FindBugs",
+            "type": "CheckStyle",
             "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\ChecktStyleWarningTest.java",
             "ruleName": "TooManyMethods",
             "message": "\nThis class has too many methods, consider refactoring it.\n",
-            "line": 140
+            "line": 17
           }
         ],
         "loc": 176,

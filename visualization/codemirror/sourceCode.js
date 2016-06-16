@@ -9,24 +9,37 @@ var sourceCode = (function() {
 	var	localCurPath;
 	var colorMethod = 0;
 
-	// Gives a specific line a specific colour
+	/**
+	 * Gives a specific line a specific colour
+	 */
 	function colorOne(line) {
 		$(line).css('background',colours.normalPurple());
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.normalPurple());
 	}
-	// Gives a specific line a specific colour
+
+	/**
+	 * Gives a specific line a specific colour
+	 */
 	function colorTwo(line) {
 		$(line).css('background',colours.darkGreenGradient());
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkGreenGradient());
 	}
-	// Gives a specific line a specific colour
+
+	/**
+	 * Gives a specific line a specific colour
+	 */
 	function colorThree(line) {
 		$(line).css('background',colours.darkBlue());
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkBlue());
 	}
 	
-	// Gives a specific line multiple colours
+	/**
+	 * Gives a specific colour or a mix of colours
+	 */
 	function multipleColors(line, green, blue, purple) {
+		console.log("Green: " + green);
+		console.log("Blue: " + blue);
+		console.log("Purple: " + purple);
 		if(green) {
 			if(blue) {
 				if(purple) {
@@ -40,13 +53,20 @@ var sourceCode = (function() {
 				if(purple) {
 					$(line).css('background','url(images/gp.png)');
 					$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','url(images/gp.png)');
-				} 
+				} else {
+					console.log("Test");
+					colorTwo(line);
+				}
 			}
 		} else if(blue) {
 			if(purple) {
 				$(line).css('background','url(images/bp.png)');
 				$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','url(images/bp.png)');
+			} else {
+				colorThree(line);
 			}
+		} else if(purple) {
+			colorOne(line);
 		}
 		
 	}
@@ -74,14 +94,17 @@ var sourceCode = (function() {
 				count++;
 			}
 		}
+		console.log("Count" + count);
 		if(count > 1) {
 			multipleColors(child, totalAsats[1], totalAsats[0], totalAsats[2]);
 		} else {
+			console.log("Color one: " + type);
 			switch(type) {
 				case 'CheckStyle':
 					colorThree(child);
 					break;
 				case 'PMD':
+				console.log("PMDing");
 					colorTwo(child);
 					break;
 				case 'FindBugs':
@@ -121,60 +144,58 @@ var sourceCode = (function() {
 		}
 	}
 
+	/**
+	 * Removes the specific asat and category if it
+	 * was not in the array
+	 */
 	function removeLatestAsatAndCat() {
-		switch(latestAsatSet) {
-			case 'CheckStyle':
-				totalAsats[0] = false;
-				break;
-			case 'PMD':
-				totalAsats[1] = false;
-				break;
-			case 'FindBugs':
-				totalAsats[2] = false;
-				break;
+		var containsAsat = false;
+		var containsCat = false;
+		for(var i = 0; i < currentAsatWarnings.length; i++) {
+			if(currentAsatWarnings[i] == latestAsatSet) {
+				containsAsat = true;
+			}
+			if(currentCatWarnings[i] == latestCatSet) {
+				containsCat = true;
+			}
 		}
-		switch(latestCatSet) {
-			// Functional Defects
-			case 0:
-				totalCats[0] = false;
-				break;
-			// Maintainability Defects
-			case 1:
-				totalCats[1] = false;
-				break;
-			// Other
-			case 2:
-				totalCats[2] = false;
-				break;
+		if(!containsAsat) {
+			checkAsatAndCat(latestAsatSet, "", false);
+		}
+		if(!containsCat) {
+			checkAsatAndCat("", latestCatSet, false);
 		}
 	}
 
-	function checkAsatAndCat(type, cat) {
+	/**
+	 * Sets the type and category to true or false
+	 */
+	function checkAsatAndCat(type, cat, trueOrFalse) {
 		latestAsatSet = type;
 		latestCatSet = cat;
 		switch(type) {
 			case 'CheckStyle':
-				totalAsats[0] = true;
+				totalAsats[0] = trueOrFalse;
 				break;
 			case 'PMD':
-				totalAsats[1] = true;
+				totalAsats[1] = trueOrFalse;
 				break;
 			case 'FindBugs':
-				totalAsats[2] = true;
+				totalAsats[2] = trueOrFalse;
 				break;
 		}
 		switch(categoryMapper.categorizeWarningType(cat)) {
 			// Functional Defects
 			case 0:
-				totalCats[0] = true;
+				totalCats[0] = trueOrFalse;
 				break;
 			// Maintainability Defects
 			case 1:
-				totalCats[1] = true;
+				totalCats[1] = trueOrFalse;
 				break;
 			// Other
 			case 2:
-				totalCats[2] = true;
+				totalCats[2] = trueOrFalse;
 				break;
 		}
 	}
@@ -186,13 +207,13 @@ var sourceCode = (function() {
 		currentAsatWarnings.push(type);
 		currentCatWarnings.push(cat);
 		currentMessageWarnings.push(message);
-		checkAsatAndCat(type, cat);
+		checkAsatAndCat(type, cat, true);
 		if( curLine != lineNumber ) {
 			currentAsatWarnings.pop();
 			currentCatWarnings.pop();
 			currentMessageWarnings.pop();
 			removeLatestAsatAndCat();
-			highlight(curLine);
+			highlight(curLine, currentAsatWarnings[currentAsatWarnings.length - 1], currentCatWarnings[currentCatWarnings.length - 1]);
 			var childs = $( '.CodeMirror-code').children()
 			var child = childs[curLine - 1];
 			setToolTip(child);
@@ -205,7 +226,7 @@ var sourceCode = (function() {
 	}
 
 	/**
-	 * Clear all three arrays
+	 * Clear all different arrays to standard values
 	 */
 	function emptyArrays() {
 		currentAsatWarnings = [];
@@ -236,7 +257,22 @@ var sourceCode = (function() {
 		});
 	}
 
-	// Will set up CodeMirror with the given class
+	/**
+	 * It disables the normal and relative options
+	 * Those are not needed when showing the source code
+	 */
+	function disableCertainOptions() {
+		$('input.relative').attr('disabled','disabled');
+		$('#normalButton').attr('disabled','disabled');
+		document.getElementById("code-div").style.visibility = 'visible';
+		document.getElementById("chart").style.visibility = 'hidden';
+		document.getElementById('normalColourLabel').style.textDecoration = 'line-through';
+		document.getElementById('relativeLabel').style.textDecoration = 'line-through';
+	}
+
+	/**
+	 * Will set up CodeMirror with the given class
+	 */
 	function displayCode(pathID) {	
 		for ( var i = 0; i < codeExport.length; i++){	
 			if (codeExport[i].path == pathID){
@@ -247,36 +283,36 @@ var sourceCode = (function() {
 		{	value: value, lineNumbers: true, mode: "javascript", keyMap: "sublime", readOnly: "nocursor", autoCloseBrackets: true,
 		    matchBrackets: true, showCursorWhenSelecting: true, theme: "monokai", tabSize: 2
 		});
-		}
+	}
 
 	return {
-		// will set up CodeMirror and shows it to the user
+		/**
+	 	 * Will set up CodeMirror and shows it to the user
+	 	 */
 		show: function(d, curPath) {
 			localD = d;
 			localCurPath = curPath;
 			emptyArrays();
-			curLine = -1;
-			
-			$('input.relative').attr('disabled','disabled');
-			$('#normalButton').attr('disabled','disabled');
-			document.getElementById("code-div").style.visibility = 'visible';
-			document.getElementById("chart").style.visibility = 'hidden';
-			document.getElementById('normalColourLabel').style.textDecoration = 'line-through';
-			document.getElementById('relativeLabel').style.textDecoration = 'line-through';
-			
+			disableCertainOptions();
 			displayCode(d.filePath);
 			var warnings = getWarningLines(d.fileName);
-			curLine = warnings.warningList[0].line;
+			if(warnings.warningList.length > 0) {
+				curLine = warnings.warningList[0].line;
+			}
 			for( var i =0 ; i < warnings.warningList.length; i ++ ){
 				setLabels(warnings.warningList[i].line, warnings.warningList[i].type, warnings.warningList[i].cat, warnings.warningList[i].message);
 			}
-			highlight(curLine, warnings.warningList[warnings.warningList.length-1].type, warnings.warningList[warnings.warningList.length-1].cat);
-			var childs = $( '.CodeMirror-code').children()
-			var child = childs[curLine - 1];
-			setToolTip(child);
+			if(warnings.warningList.length > 0) {
+				highlight(curLine, warnings.warningList[warnings.warningList.length-1].type, warnings.warningList[warnings.warningList.length-1].cat);
+				var childs = $( '.CodeMirror-code').children();
+				var child = childs[curLine - 1];
+				setToolTip(child);
+			}
 		},
 
-		// hides code mirror to show the treemap
+		/**
+	 	 * Hides code mirror to show the treemap
+	 	 */
 		hide: function() {
 			$('input.relative').removeAttr("disabled");
 			$('#normalButton').removeAttr("disabled");
@@ -291,14 +327,18 @@ var sourceCode = (function() {
 				document.getElementById("chart").style.visibility = 'visible';
 		},
 
-		// reloads the content of the current CodeMirror according to filtered ASATs and/or categories
+		/**
+	 	 * Reloads the content of the current CodeMirror according to filtered ASATs and/or categories
+	 	 */
 		fullReload: function() {
 			sourceCode.hide();
 			sourceCode.show(localD, localCurPath);
 			$('.CodeMirror').width(opts.width).height(opts.height - 30);
 		},
 
-		// either 0 for ASATs filter or 1 for categories filter
+		/**
+	 	 * Either 0 for ASATs filter or 1 for categories filter
+	 	 */
 		setColorMethod: function(method) {
 			colorMethod = method;
 		}
