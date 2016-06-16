@@ -33,7 +33,7 @@ public class CodeFile {
 		stringBuilder.append('"');
 		while ((nextLine = reader.readLine()) != null) {
 			stringBuilder.append(nextLine);
-			stringBuilder.append("\n");
+			stringBuilder.append('\n');
 		}
 		stringBuilder.append('"');
 		setCode(stringBuilder.toString());
