@@ -25,7 +25,6 @@ function handleClickTreeMapTypeSat(value, checked) {
 * Handles all clicks on label redirect to a click on the box
 */
 function onClickLabel(idToggle) {
-	console.log(idToggle);
   	$(idToggle).prop('checked', !$(idToggle).prop('checked'));
 	$(idToggle).click();
 }
