@@ -23,10 +23,10 @@ import BlueTurtle.gui.GUIController.ASAT;
  */
 public class JavaControllerTest {
 
-	private String checkStyleOutputFilePath = System.getProperty("user.dir")
-			+ "/src/test/resources/exampleCheckstyle1.xml";
-	private String pmdOutputFilePath = System.getProperty("user.dir") + "/src/test/resources/examplePmd1.xml";
-	private String findBugsOutputFilePath = System.getProperty("user.dir") + "/src/test/resources/exampleFindbugs1.xml";
+	private String userDir = System.getProperty("user.dir");
+	private String checkStyleOutputFilePath = userDir + "/src/test/resources/exampleCheckstyle1.xml";
+	private String pmdOutputFilePath = userDir + "/src/test/resources/examplePmd1.xml";
+	private String findBugsOutputFilePath = userDir + "/src/test/resources/exampleFindbugs1.xml";
 
 	/**
 	 * Clear the attributes of JavaController.
@@ -38,7 +38,7 @@ public class JavaControllerTest {
 	@Before
 	public void setUp() throws IOException {
 		GUIController.setProjectPath("test");
-		new ProjectInfoFinder().findFiles(new File(System.getProperty("user.dir")));
+		new ProjectInfoFinder().findFiles(new File(userDir));
 		JavaController.setCheckStyleOutputFile(null);
 		JavaController.setPmdOutputFile(null);
 		JavaController.setFindBugsOutputFile(null);
@@ -49,10 +49,10 @@ public class JavaControllerTest {
 	 */
 	@After
 	public void cleanUp() {
-		File f = new File(System.getProperty("user.dir") + "/src/main/resources/SummarizedOuput.js");
+		File f = new File(userDir + "/src/main/resources/SummarizedOuput.js");
 		GUIController.setProjectPath(null);
 		if (f.exists()) {
-			f.delete();
+			f.delete(); 
 		}
 		ProjectInfoFinder.getClassLocs().clear();
 		ProjectInfoFinder.getPackages().clear();
@@ -65,7 +65,7 @@ public class JavaControllerTest {
 	 */
 	@Test
 	public void testUserDir() {
-		String expected = System.getProperty("user.dir");
+		String expected = userDir;
 		String actual = JavaController.getUserDir();
 		assertEquals(expected, actual);
 	}
@@ -140,7 +140,7 @@ public class JavaControllerTest {
 		JavaController.setASATOutput(ASAT.FindBugs, new File(findBugsOutputFilePath));
 		JavaController jc = new JavaController();
 		jc.execute();
-		assertTrue(new File(System.getProperty("user.dir") + "/visualization/JSON/outputWarningsJSON.js").exists());
+		assertTrue(new File(userDir + "/visualization/JSON/outputWarningsJSON.js").exists());
 	}
 	
 	/**

@@ -30,8 +30,7 @@ public final class GDCParser extends MarkdownParser {
 	/**
 	 * Constructor. Only through this can GDCParser instantiate itself.
 	 */
-	private GDCParser() {
-	}
+	private GDCParser() { }
 
 	/**
 	 * Get an instance of GDCParser.

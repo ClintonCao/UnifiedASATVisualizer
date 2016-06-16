@@ -15,8 +15,8 @@ import lombok.Setter;
  *
  */
 public class CodeFile {
-	@Getter @Setter private String path;
-	@Getter @Setter private String code = "";
+	@Getter @Setter private String path; //NOPMD - Warning caused by lombok.
+	@Getter @Setter private String code = ""; //NOPMD - Warning caused by lombok.
 	
 	/**
 	 * Reads the code from a file and saves it in the code field.
