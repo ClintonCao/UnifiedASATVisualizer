@@ -2,6 +2,7 @@ package BlueTurtle.TSE;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -157,7 +158,7 @@ public class JavaControllerTest {
 		JavaController.setASATOutput(ASAT.FindBugs, new File("nopath"));
 		JSONFormatter jsonFormatter = new JSONFormatter();
 		jsonFormatter.format();
-		assertTrue(jsonFormatter.getTotalWarnings().size() == 0);
+		assertSame(jsonFormatter.getTotalWarnings().size(), 0);
 	}
 
 }
