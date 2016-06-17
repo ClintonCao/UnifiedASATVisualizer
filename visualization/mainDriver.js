@@ -3,6 +3,7 @@
  */
 var acceptedTypes = [];
 var acceptedCategories = [];
+var sourceCodeLevel = false;
 if(!detectIE()) {
 	defineHovers();
   backgroundObject.setColorsRelative();

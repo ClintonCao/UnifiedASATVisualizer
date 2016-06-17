@@ -259,7 +259,8 @@ var sourceCode = (function() {
 		$('#normalButton').attr('disabled','disabled');
 		document.getElementById("code-div").style.visibility = 'visible';
 		document.getElementById("chart").style.visibility = 'hidden';
-		document.getElementById('normalColourLabel').style.textDecoration = 'line-through';
+		document.getElementById('normalColourLabel2').style.textDecoration = 'line-through';
+		document.getElementById('normalColourLabel2').style.cursor = 'default';
 		document.getElementById('relativeLabel').style.textDecoration = 'line-through';
 	}
 
