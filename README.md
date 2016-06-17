@@ -61,7 +61,7 @@ Maven Execution Research [maven execution research](https://github.com/ClintonCa
 Testing Documentation [testing documentation](https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Testing%20related%20documents/TestingDocumentation.md)
 
 ## Link to SIG Feedback & Code Improvements:
-The feedback of SIG and the code improvements can be found [here](https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/SIG%20Feedback/SIGFeedback.JPG).
+The feedback of SIG and the code improvements can be found [here](https://github.com/ClintonCao/Contextproject-TSE/tree/master/documentation/SIG%20Feedback).
 
 ## Requirements:
 * One of the following internet browsers: Google Chrome or Safari.
