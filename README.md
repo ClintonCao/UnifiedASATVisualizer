@@ -38,7 +38,7 @@ This tool is for creating a visualization of the warnings/defects that were gene
 |Sprint Backlog 7 | [sprint backlog 7] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog7(BlueTurtle).pdf)|
 |Sprint Retrospective 7 | [sprint retrospective 7] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Retrospectives/SprintRetrospective7(BlueTurtle).pdf)|
 |Sprint Backlog 8 | [sprint backlog 8] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Sprint%20Plans/SprintBacklog8(BlueTurtle).pdf)|
-|Sprint Retrospective 8 | available next week friday|
+|Sprint Retrospective 8 | [retrospective 8](https://github.com/ClintonCao/Contextproject-TSE/blob/Docs/documentation/Sprint%20Retrospectives/SprintRetrospective8(BlueTurtle).pdf)|
 
 
 ## Links to product related documents:
