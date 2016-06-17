@@ -38,10 +38,10 @@ public class GUIController {
 	public enum ASAT { CheckStyle, PMD, FindBugs; }
 
 	@FXML // ResourceBundle that was given to the FXMLLoader
-	private ResourceBundle resources;
+	private ResourceBundle resources; //NOPMD - needed for the FXMLLoader.
 
 	@FXML // URL location of the FXML file that was given to the FXMLLoader
-	private URL location;
+	private URL location; //NOPMD - needed for the FXMLLoader.
 
 	@FXML // fx:id="selectButton"
 	private Button selectButton; // Value injected by FXMLLoader
@@ -52,7 +52,7 @@ public class GUIController {
 	@FXML // fx:id="visualizeButton"
 	private Button visualizeButton; // Value injected by FXMLLoader
 	
-	@Getter @Setter private static String projectPath;
+	@Getter @Setter private static String projectPath; //NOPMD - warning caused by lombok.
 
 	/**
 	 * Event for CheckStyle button.
