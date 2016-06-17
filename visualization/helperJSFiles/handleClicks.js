@@ -29,7 +29,11 @@ function onClickLabel(idToggle) {
 	$(idToggle).click();
 }
 function onClickLabelRadioButton(idToggle) {
-	$(idToggle).click();
+	if(sourceCodeLevel && idToggle == "#normalButton") {
+		return;
+	} else {
+		$(idToggle).click();
+	}
 }
 
 /**
