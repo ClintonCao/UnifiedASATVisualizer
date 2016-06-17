@@ -64,7 +64,7 @@ Testing Documentation [testing documentation](https://github.com/ClintonCao/Cont
 The feedback of SIG and the code improvements can be found [here](https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/SIG%20Feedback/SIGFeedback.JPG).
 
 ## Requirements:
-* One of the following internet browsers: Google Chrome, Mozilla FireFox or Safari.
+* One of the following internet browsers: Google Chrome or Safari.
 * Java JDK 1.8.
 * ASATs version:
   * Checkstyle 6.1.1, PMD 5.2.3 and FindBugs 3.0.1. (CheckStyle 6.17 and PMD version 5.3.2 also work).
