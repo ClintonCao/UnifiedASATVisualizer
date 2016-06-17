@@ -48,11 +48,11 @@
                       Choose wheter you want to show the amount of warnings, the ASATs plotted together or the categories of warnings plotted together.
                       </span>
                       <input type="radio" id="normalButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="normal">
-                      <div class="buttonText pointer" id="normalColourLabel" onClick="onClickLabel('#normalButton')" >Normal</div><br/>
+                      <div class="buttonText pointer" id="normalColourLabel" onClick="onClickLabelRadioButton('#normalButton')" ><label class="pointer">Normal</label></div><br/>
                       <input type="radio" id="asatButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asat">
-                      <div class="buttonText pointer"  onClick="onClickLabel('#asatButton')" >ASAT </div><br/>
+                      <div class="buttonText"  onClick="onClickLabelRadioButton('#asatButton')" ><label class="pointer">ASAT</label> </div><br/>
                       <input type="radio" id="categoryButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="category">
-                      <div class="buttonText pointer" onClick="onClickLabel('#categoryButton')" >Category</div><br/><br/>
+                      <div class="buttonText pointer" onClick="onClickLabelRadioButton('#categoryButton')" ><label class="pointer">Category</label></div><br/><br/>
                       <div class="buttonText"><input type="checkbox" onClick="handleClickRelative(this)" data-toggle="toggle" data-size="mini" class="updateContent relative" name="relative" id="relativeButton" value="Relative"><label id="relativeLabel" onClick="onClickLabel('#relativeButton')" class="pointer"> Relative</label><br></div>
                       <span id="relativeLabel-hover">
                       Normally the scale goes from 0 to 1 warning/line. Relative will use the highest ratio in your project of warning/lines of code instead of 1.

@@ -10,9 +10,7 @@ if(!detectIE()) {
 	addAllAcceptedTypesAndCategories();
 	setAllCheckboxesOnDefault();
 	if(detectFirefox()){
-			 console.log("ASDIU");
 		$("#svg").css({ "border-width":"0px"});
-			 console.log("ASDIU");
 	}
 } else {
 	document.getElementById("main-title").innerHTML = "We are sorry, IE and Edge are not supported. <br> Please use Firefox, Chrome or Safari instead.";
