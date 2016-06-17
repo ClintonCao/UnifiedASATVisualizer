@@ -18,7 +18,7 @@ The coverage this week has dropped by 0.005%. This is because some extra lines a
 ## Test coverage (15-June-2016)
 
 #### Test coverage of the system
-The coverage this week has dropped from 97.72% to 97.68%. This is a bit strange, because we didn't make any big changes in the analyser. An test case extra test case written, in order to test the changes that were made in `JSONFormatter`. We have taken a look at the coverage results from Coveralls, but we couldn't figure out why the coverage has dropped. Because the coverage didn't drop by a lot (only 0.04%), we decided to leave it as it is.
+The coverage this week has dropped from 97.72% to 97.56%. This is because we removed a class that is not used. The number lines of code that is not tested is therefore relatively bigger.
 
 
  
