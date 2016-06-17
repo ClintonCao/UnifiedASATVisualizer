@@ -18,7 +18,7 @@ The coverage this week has dropped by 0.005%. This is because some extra lines a
 ## Test coverage (15-June-2016)
 
 #### Test coverage of the system
-The coverage this week has dropped from 97.72% to 97.56%. This is because we removed a class that is not used. The number lines of code that is not tested is therefore relatively bigger.
+The coverage this week has dropped from 97.72% to 97.55%. This is because we removed a class that is not used. The number lines of code that is not tested is therefore relatively bigger.
 
 
  
