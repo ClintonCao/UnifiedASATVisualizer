@@ -247,6 +247,9 @@ div#chart-wrapper{
 text {
   pointer-events: none;
 }
+label.pointer{
+	cursor:pointer;
+}
 .grandparent text {
   font-family: 'Roboto Mono', sans-serif;
   font-weight: 700;
