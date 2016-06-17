@@ -28,19 +28,19 @@ function onClickLabel(idToggle) {
   	$(idToggle).prop('checked', !$(idToggle).prop('checked'));
 	$(idToggle).click();
 }
+function onClickLabelRadioButton(idToggle) {
+	$(idToggle).click();
+}
 
 /**
  * handles the clicks on Sat categories
  */
 function handleClickCategorySat(value, checked) {
-	//console.log(checked);
-
+	
 	var arrayClasses = [".FunctionalDefects",".MaintainabilityDefects",".StyleConventions"];
 	var arrayNames = ["FunctionalDefects","MaintainabilityDefects","StyleConventions"];
 
-	//console.log(value);
 	var index = arrayNames.indexOf(value);
-	//console.log(index);
 
 	if(index > -1) {
 		$(arrayClasses[index]).prop('checked', checked); 
@@ -59,7 +59,6 @@ function handleClickCategorySat(value, checked) {
 			}
 		}
 	}
-	//console.log(acceptedCategories);
 }
 
 /**

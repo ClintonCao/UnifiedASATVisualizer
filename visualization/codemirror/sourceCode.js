@@ -37,9 +37,6 @@ var sourceCode = (function() {
 	 * Gives a specific colour or a mix of colours
 	 */
 	function multipleColors(line, green, blue, purple) {
-		console.log("Green: " + green);
-		console.log("Blue: " + blue);
-		console.log("Purple: " + purple);
 		if(green) {
 			if(blue) {
 				if(purple) {
@@ -54,7 +51,6 @@ var sourceCode = (function() {
 					$(line).css('background','url(images/gp.png)');
 					$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background','url(images/gp.png)');
 				} else {
-					console.log("Test");
 					colorTwo(line);
 				}
 			}
@@ -94,17 +90,14 @@ var sourceCode = (function() {
 				count++;
 			}
 		}
-		console.log("Count" + count);
 		if(count > 1) {
 			multipleColors(child, totalAsats[1], totalAsats[0], totalAsats[2]);
 		} else {
-			console.log("Color one: " + type);
 			switch(type) {
 				case 'CheckStyle':
 					colorThree(child);
 					break;
 				case 'PMD':
-				console.log("PMDing");
 					colorTwo(child);
 					break;
 				case 'FindBugs':
