@@ -149,21 +149,20 @@ var treeMapBuilder = (function() {
 				$('#extra-info-div').css('display', 'none');
             });
 
-        var childrenArray = g.filter(function(d) {
-                return d._children;
-            })
-			// bottom layer now we add a click to go to the code editor
-			if ( childrenArray[0].length == 0 ){
-				g.on("click", toSourceCode)
-            	.on("mousemove", function(d) {
-					$('#extra-info-div') .css('display', 'inline-block')
-					$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
-            	})
-            	.on("mouseout", function(d) {
-					$('#extra-info-div').html("");
-				    $('#extra-info-div') .css('display', 'none')
-            	});
-			}
+        var childrenArray = g.filter(function(d) { return d._children; })
+
+		// bottom layer now we add a click to go to the code editor
+		if ( childrenArray[0].length == 0 ){
+			g.on("click", toSourceCode)
+        	.on("mousemove", function(d) {
+				$('#extra-info-div') .css('display', 'inline-block')
+				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
+        	})
+        	.on("mouseout", function(d) {
+				$('#extra-info-div').html("");
+			    $('#extra-info-div') .css('display', 'none')
+        	});
+		}
 
         /**
          * This function will be triggered when the user clicks on a button.
@@ -187,10 +186,7 @@ var treeMapBuilder = (function() {
                     fastReload();
                 }
                 var millisecondsToWait = 0;
-                setTimeout(function() {
-                    refreshing = false;
-                    $(this).disable = false
-                }, millisecondsToWait);
+                setTimeout(function() { refreshing = false; $(this).disable = false; }, millisecondsToWait);
             }
         })
 		/**
@@ -203,7 +199,6 @@ var treeMapBuilder = (function() {
             transition(newNode);
         }
         
-
         // Updates all warning counts for all ASATS and categories
         updateWarningsCountInUI(d);
 
@@ -253,8 +248,7 @@ var treeMapBuilder = (function() {
         /**
          * Sets in the upper left corner of a node the amount of warnings
          */
-        t.append("tspan").attr("dy", "1.2em").text(function(d) { return d.warnings; })
-            .style("fill", function(d) { return colours.white(); });
+        t.append("tspan").attr("dy", "1.2em").text(function(d) { return d.warnings; }).style("fill", function(d) { return colours.white(); });
         t.call(text);
 
        
@@ -268,11 +262,8 @@ var treeMapBuilder = (function() {
         function toSourceCode(d) {
             sourceCoded = d;
             sourceCodeLevel = true;
-            if ( document.getElementById("asatButton").checked || document.getElementById("normalButton").checked ){
-                $("#normalButton").prop('checked', false);
-                $("#asatButton").prop('checked', true);
-                $("#asatButton").click();
-                setASATColoured();
+            if ( document.getElementById("asatButton").checked || document.getElementById("normalButton").checked ) {
+                disableNormalButton();
             } else if ( document.getElementById("categoryButton").checked ){
                 $("#categoryButton").prop('checked', true);
                 $("#categoryButton").click();
@@ -374,6 +365,13 @@ var treeMapBuilder = (function() {
         return g;
     }
 
+    function disableNormalButton() {
+        $("#normalButton").prop('checked', false);
+        $("#asatButton").prop('checked', true);
+        $("#asatButton").click();
+        setASATColoured();
+    }
+
 
     /**
     * Sets all text for all elemetents in the treemap
@@ -444,21 +442,12 @@ var treeMapBuilder = (function() {
         $('#code-div').width(opts.width).height(opts.height - 30);
         width = opts.width - margin.left - margin.right;
         height = opts.height - margin.top - margin.bottom;
-        // Uses a range of 100 values between green and red
-        // The closer the value is to 0, the more green it will use
-        // The closer the value is to 100, the more red it will use
-
         x = d3.scale.linear().domain([0, width]).range([0, width]);
         y = d3.scale.linear().domain([0, height]).range([0, height]);
 
         // Create the d3 treemap from the library
-        treemap = d3.layout.treemap()
-            .children(function(d, depth) {
-                return depth ? null : d._children;
-            })
-            .sort(function(a, b) {
-                return a.value - b.value;
-            })
+        treemap = d3.layout.treemap().children(function(d, depth) { return depth ? null : d._children; })
+            .sort(function(a, b) { return a.value - b.value; })
             .ratio(height / width * 0.5 * (1 + Math.sqrt(5))).round(false);
 
         // creating the chart and appending it to views
