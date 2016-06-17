@@ -64,8 +64,6 @@ var treeMapBuilder = (function() {
      * coordinates. This lets us use a viewport to zoom.
      */
     function layout(d, treemap) {
-        //updateWarningsCountInUI(d);
-
         if (d._children) {
             treemap.nodes({
                 _children: d._children
@@ -113,13 +111,13 @@ var treeMapBuilder = (function() {
 	
 	// reload the content by reloading all the json and calculation the values agian.
     function reloadContent() {
-            var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
-            var finalJson = createJsonTreeMap(packages);
-            root.values = finalJson;
-            initialize(root, width, height);
-            accumulateValue(root);
-            accumulateWarnings(root);
-            layout(root, treemap);
+        var packages = filterTypeRuleName(acceptedTypes, acceptedCategories);
+        var finalJson = createJsonTreeMap(packages);
+        root.values = finalJson;
+        initialize(root, width, height);
+        accumulateValue(root);
+        accumulateWarnings(root);
+        layout(root, treemap);
     }
  	// returns the number of a child node if possible, otherwise null
     function findChildNumber(d, parent) {
@@ -139,38 +137,32 @@ var treeMapBuilder = (function() {
         var g = g1.selectAll("g").data(d._children).enter().append("g");
 
         // on click square to go more in depth
-        g.filter(function(d) {
-                return d._children;
-            })
+        g.filter(function(d) { return d._children; })
             .classed("children", true)
             .on("click", navigationDown)
             .on("mouseover", function(d) {
 				$('#extra-info-div').css('display', 'inline-block');
 				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
-                this.parentNode.appendChild(this);
             })
             .on("mouseout", function(d) {
 				$('#extra-info-div').html("");
 				$('#extra-info-div').css('display', 'none');
             });
 
-        var childrenArray = g.filter(function(d) {
-                return d._children;
-            })
-			// bottom layer now we add a click to go to the code editor
-			if ( childrenArray[0].length == 0 ){
-				g.on("click", toSourceCode).on("mouseover", function(d) {
+        var childrenArray = g.filter(function(d) { return d._children; })
 
-            	})
-            	.on("mousemove", function(d) {
-					$('#extra-info-div') .css('display', 'inline-block')
-					$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
-            	})
-            	.on("mouseout", function(d) {
-					$('#extra-info-div').html("");
-				$('#extra-info-div') .css('display', 'none')
-            	});
-			}
+		// bottom layer now we add a click to go to the code editor
+		if ( childrenArray[0].length == 0 ){
+			g.on("click", toSourceCode)
+        	.on("mousemove", function(d) {
+				$('#extra-info-div') .css('display', 'inline-block')
+				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
+        	})
+        	.on("mouseout", function(d) {
+				$('#extra-info-div').html("");
+			    $('#extra-info-div') .css('display', 'none')
+        	});
+		}
 
         /**
          * This function will be triggered when the user clicks on a button.
@@ -194,10 +186,7 @@ var treeMapBuilder = (function() {
                     fastReload();
                 }
                 var millisecondsToWait = 0;
-                setTimeout(function() {
-                    refreshing = false;
-                    $(this).disable = false
-                }, millisecondsToWait);
+                setTimeout(function() { refreshing = false; $(this).disable = false; }, millisecondsToWait);
             }
         })
 		/**
@@ -210,28 +199,17 @@ var treeMapBuilder = (function() {
             transition(newNode);
         }
         
-
         // Updates all warning counts for all ASATS and categories
         updateWarningsCountInUI(d);
 
         var children = g.selectAll(".child")
-            .data(function(d) {
-                return d._children || [d];
-            })
+            .data(function(d) { return d._children || [d]; })
             .enter().append("g").append("rect")
             .attr("class", "child")
-            .attr("x", function(d) {
-                return x(d.x);
-            })
-            .attr("y", function(d) {
-                return y(d.y);
-            })
-            .attr("width", function(d) {
-                return x(d.x + d.dx) - x(d.x);
-            })
-            .attr("height", function(d) {
-                return y(d.y + d.dy) - y(d.y);
-            })
+            .attr("x", function(d) { return x(d.x); })
+            .attr("y", function(d) { return y(d.y); })
+            .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
+            .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
 			.style("fill", function(d) {
 				var ratios =  backgroundObject.getRatios(d);
 				var weight = d.warnings / d.value;
@@ -244,65 +222,33 @@ var treeMapBuilder = (function() {
         /**
          * Sets in the lower right corner of a node the filename
          */
-        children.append("text")
-            .attr("class", "ctext")
-            .text(function(d) {
-                return d.fileName;
-            })
-            .style("fill", function() {
-                return colours.white();
-            })
+        children.append("text").attr("class", "ctext")
+            .text(function(d) { return d.fileName; })
+            .style("fill", function() { return colours.white(); })
             .call(textBottomRight);
 
         if(currentNodePath.length == 1) {
-            g.append("rect")
-            .attr("class", "parent")
-            .attr("class", "child")
-            .attr("x", function(d) {
-                return x(d.x);
-            })
-            .attr("y", function(d) {
-                return y(d.y);
-            })
-            .attr("width", function(d) {
-                return x(d.x + d.dx) - x(d.x);
-            })
-            .attr("height", function(d) {
-                return y(d.y + d.dy) - y(d.y);
-            });
+            g.append("rect").attr("class", "parent").attr("class", "child")
+            .attr("x", function(d) { return x(d.x); })
+            .attr("y", function(d) { return y(d.y); })
+            .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
+            .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); });
         } else {
-            g.append("rect")
-            .attr("class", "parent")
-            .attr("class", "child")
-            .call(rect);
+            g.append("rect").attr("class", "parent").attr("class", "child").call(rect);
         }
 
-        var t = g.append("text")
-            .attr("class", "ptext")
-            .attr("dy", ".75em");
+        var t = g.append("text").attr("class", "ptext").attr("dy", ".75em");
 
         /**
          * Sets in the upper left corner of a node the filename
          */
-        t.append("tspan")
-            .style("fill", function(d) {
-                return colours.white();
-            })
-            .text(function(d) {
-                return d.fileName;
-            });
+        t.append("tspan").style("fill", function(d) { return colours.white(); })
+            .text(function(d) { return d.fileName; });
 
         /**
          * Sets in the upper left corner of a node the amount of warnings
          */
-        t.append("tspan")
-            .attr("dy", "1.2em")
-            .text(function(d) {
-                return d.warnings;
-            })
-            .style("fill", function(d) {
-                return colours.white();
-            });
+        t.append("tspan").attr("dy", "1.2em").text(function(d) { return d.warnings; }).style("fill", function(d) { return colours.white(); });
         t.call(text);
 
        
@@ -316,11 +262,8 @@ var treeMapBuilder = (function() {
         function toSourceCode(d) {
             sourceCoded = d;
             sourceCodeLevel = true;
-            if ( document.getElementById("asatButton").checked || document.getElementById("normalButton").checked ){
-                $("#normalButton").prop('checked', false);
-                $("#asatButton").prop('checked', true);
-                $("#asatButton").click();
-                setASATColoured();
+            if ( document.getElementById("asatButton").checked || document.getElementById("normalButton").checked ) {
+                disableNormalButton();
             } else if ( document.getElementById("categoryButton").checked ){
                 $("#categoryButton").prop('checked', true);
                 $("#categoryButton").click();
@@ -338,9 +281,7 @@ var treeMapBuilder = (function() {
             upperLevel = false;
             transitioning = true;
 
-            var g2 = display(d),
-                t1 = g1.transition().duration(100),
-                t2 = g2.transition().duration(100);
+            var g2 = display(d), t1 = g1.transition().duration(100), t2 = g2.transition().duration(100);
 
             // Update the domain only after entering new elements.
             x.domain([d.x, d.x + d.dx]);
@@ -362,10 +303,7 @@ var treeMapBuilder = (function() {
             t2.selectAll("rect").call(rect);
 
             // Remove the old node when the transition is finished.
-            t1.remove().each("end", function() {
-                svg.style("shape-rendering", "crispEdges");
-                transitioning = false;
-            });
+            t1.remove().each("end", function() { svg.style("shape-rendering", "crispEdges"); transitioning = false; });
         }
 
         /**
@@ -383,15 +321,9 @@ var treeMapBuilder = (function() {
 
 			var index = parseInt(indexString.substring(indexString.length-2,indexString.length-1));
 			
-			while (currentNodePath.length > index){
-				currentNodePath.pop();
-			}
+			while (currentNodePath.length > index) { currentNodePath.pop(); }
 			var d = findNode(currentNodePath, root);
-			if(fromSourceCode) {
-				sourceCode.hide();
-			}else{
-				display(d);
-			}
+			if(fromSourceCode) { sourceCode.hide(); } else { display(d); }
 			transition(d);
 		}
 
@@ -418,16 +350,12 @@ var treeMapBuilder = (function() {
 				if(pathSecondPart.indexOf("java") > -1) {
 					for(var i = 0; i < usedIDs.length; i++) {
 						var stringID = "'" + usedIDs[i] + "'";
-						document.getElementById(stringID).addEventListener("click", function() {
-							goToRelevantLevel($(this).attr('id'), true);
-							}, false);
+						document.getElementById(stringID).addEventListener("click", function() { goToRelevantLevel($(this).attr('id'), true); }, false);
 					}
 				} else {
                     for(var i = 0; i < usedIDs.length; i++) {
                         var stringID = "'" + usedIDs[i] + "'";
-                        document.getElementById(stringID).addEventListener("click", function() {
-                            goToRelevantLevel($(this).attr('id'), false);
-                            }, false);
+                        document.getElementById(stringID).addEventListener("click", function() { goToRelevantLevel($(this).attr('id'), false); }, false);
                     }
 				}
 			} else {
@@ -437,22 +365,21 @@ var treeMapBuilder = (function() {
         return g;
     }
 
+    function disableNormalButton() {
+        $("#normalButton").prop('checked', false);
+        $("#asatButton").prop('checked', true);
+        $("#asatButton").click();
+        setASATColoured();
+    }
+
 
     /**
     * Sets all text for all elemetents in the treemap
 	* for e.g. the title of the squares but also of the packages.
     */
 	function text(text) {
-        text.selectAll("tspan")
-            .attr("x", function(d) {
-                return x(d.x) + 6;
-            })
-        text.attr("x", function(d) {
-                return x(d.x) + 6;
-            })
-            .attr("y", function(d) {
-                return y(d.y) + 6;
-            })
+        text.selectAll("tspan").attr("x", function(d) { return x(d.x) + 6; })
+        text.attr("x", function(d) { return x(d.x) + 6; }).attr("y", function(d) { return y(d.y) + 6; })
             .style("opacity", function(d) {
                 return this.getComputedTextLength() < x(d.x + d.dx) - x(d.x) ? 1 : 0;
             });
@@ -515,23 +442,13 @@ var treeMapBuilder = (function() {
         $('#code-div').width(opts.width).height(opts.height - 30);
         width = opts.width - margin.left - margin.right;
         height = opts.height - margin.top - margin.bottom;
-        // Uses a range of 100 values between green and red
-        // The closer the value is to 0, the more green it will use
-        // The closer the value is to 100, the more red it will use
-
         x = d3.scale.linear().domain([0, width]).range([0, width]);
         y = d3.scale.linear().domain([0, height]).range([0, height]);
 
         // Create the d3 treemap from the library
-        treemap = d3.layout.treemap()
-            .children(function(d, depth) {
-                return depth ? null : d._children;
-            })
-            .sort(function(a, b) {
-                return a.value - b.value;
-            })
-            .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
-            .round(false);
+        treemap = d3.layout.treemap().children(function(d, depth) { return depth ? null : d._children; })
+            .sort(function(a, b) { return a.value - b.value; })
+            .ratio(height / width * 0.5 * (1 + Math.sqrt(5))).round(false);
 
         // creating the chart and appending it to views
         svg = d3.select("#chart").append("svg")
@@ -542,11 +459,7 @@ var treeMapBuilder = (function() {
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .style("shape-rendering", "crispEdges");
 
-        if (data instanceof Array) {
-            root = {fileName: rname,values: data};
-        } else {
-            root = data;
-        }
+        if (data instanceof Array) { root = {fileName: rname,values: data}; } else { root = data; }
     }
 
     return {
