@@ -17,10 +17,10 @@ import lombok.Setter;
  *
  */
 public class JavaController implements Controller {
-	@Getter @Setter private static String userDir = System.getProperty("user.dir");
-	@Getter @Setter private static String checkStyleOutputFile;
-	@Getter @Setter private static String pmdOutputFile;
-	@Getter @Setter private static String findBugsOutputFile;
+	@Getter @Setter private static String userDir = System.getProperty("user.dir"); //NOPMD - caused by lombok.
+	@Getter @Setter private static String checkStyleOutputFile; //NOPMD - caused by lombok.
+	@Getter @Setter private static String pmdOutputFile; //NOPMD - caused by lombok.
+	@Getter @Setter private static String findBugsOutputFile; //NOPMD - caused by lombok.
 
 	/**
 	 * Execute controller. A command is constructed for every ASAT which needs

@@ -10,9 +10,7 @@ if(!detectIE()) {
 	addAllAcceptedTypesAndCategories();
 	setAllCheckboxesOnDefault();
 	if(detectFirefox()){
-			 console.log("ASDIU");
 		$("#svg").css({ "border-width":"0px"});
-			 console.log("ASDIU");
 	}
 } else {
 	document.getElementById("main-title").innerHTML = "We are sorry, IE and Edge are not supported. <br> Please use Firefox, Chrome or Safari instead.";
@@ -28,7 +26,7 @@ function setAllCheckboxesOnDefault() {
 	$("#treemapButton").prop('checked', true);
 	$("#normalButton").prop('checked', true);
 	$(".DefectCategory").prop('checked', true);
-  $("#relativeButton").prop('checked', true);
+ 	$("#relativeButton").prop('checked', true);
 	
 	$(".FunctionalDefects").click();
 	$(".MaintainabilityDefects").click();

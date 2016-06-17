@@ -15,8 +15,8 @@ import lombok.Setter;
  *
  */
 public class CodeFile {
-	@Getter @Setter private String path;
-	@Getter @Setter private String code = "";
+	@Getter @Setter private String path; //NOPMD - Warning caused by lombok.
+	@Getter @Setter private String code = ""; //NOPMD - Warning caused by lombok.
 	
 	/**
 	 * Reads the code from a file and saves it in the code field.
@@ -33,7 +33,7 @@ public class CodeFile {
 		stringBuilder.append('"');
 		while ((nextLine = reader.readLine()) != null) {
 			stringBuilder.append(nextLine);
-			stringBuilder.append("\n");
+			stringBuilder.append('\n');
 		}
 		stringBuilder.append('"');
 		setCode(stringBuilder.toString());

@@ -40,20 +40,20 @@
                     Automated static analysis tools. <br> The analysis of source code without executing the code itself.
                     </span>
                     <form name="button-options" action="">
-                      <div id="checkStyleDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="checkstyleButton" name="sat" value="CheckStyle"><label id="checkStyleLabel"> CheckStyle</label><br></div>
-                      <div id="PMDDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="pmdButton" name="sat" value="PMD"><label id="PMDLabel"> PMD</label><br></div>
-                      <div id="FindBugsDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="findBugsButton" name="sat" value="FindBugs"><label id="FindBugsLabel"> FindBugs</label><br></div>
+                      <div id="checkStyleDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="checkstyleButton" name="sat" value="CheckStyle"><label id="checkStyleLabel" onClick="onClickLabel('#checkstyleButton')" class="pointer"> CheckStyle</label><br></div>
+                      <div id="PMDDiv"><input type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="pmdButton" name="sat" value="PMD"><label id="PMDLabel"  onClick="onClickLabel('#pmdButton')" class="pointer"> PMD</label><br></div>
+                      <div id="FindBugsDiv"><input  type="checkbox" data-toggle="toggle" data-size="mini" class="updateContent sats" id="findBugsButton" name="sat" value="FindBugs"><label id="FindBugsLabel" onClick="onClickLabel('#findBugsButton')" class="pointer"> FindBugs</label><br></div>
                       <h3 id="ColourScale" >Colour scale </h3>
                       <span id="ColourScale-hover">
                       Choose wheter you want to show the amount of warnings, the ASATs plotted together or the categories of warnings plotted together.
                       </span>
                       <input type="radio" id="normalButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="normal">
-                      <div class="buttonText" id="normalColourLabel">Normal</div><br/>
+                      <div class="buttonText pointer" id="normalColourLabel" onClick="onClickLabelRadioButton('#normalButton')" ><label class="pointer">Normal</label></div><br/>
                       <input type="radio" id="asatButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="asat">
-                      <div class="buttonText">ASAT </div><br/>
+                      <div class="buttonText"  onClick="onClickLabelRadioButton('#asatButton')" ><label class="pointer">ASAT</label> </div><br/>
                       <input type="radio" id="categoryButton" class="updateContent radioButton" name="colorScale" onclick="handleClickColorScale(this);" value="category">
-                      <div class="buttonText">Category</div><br/><br/>
-                      <div class="buttonText"><input type="checkbox" onClick="handleClickRelative(this)" data-toggle="toggle" data-size="mini" class="updateContent relative" name="relative" id="relativeButton" value="Relative"><label id="relativeLabel"> Relative</label><br></div>
+                      <div class="buttonText pointer" onClick="onClickLabelRadioButton('#categoryButton')" ><label class="pointer">Category</label></div><br/><br/>
+                      <div class="buttonText"><input type="checkbox" onClick="handleClickRelative(this)" data-toggle="toggle" data-size="mini" class="updateContent relative" name="relative" id="relativeButton" value="Relative"><label id="relativeLabel" onClick="onClickLabel('#relativeButton')" class="pointer"> Relative</label><br></div>
                       <span id="relativeLabel-hover">
                       Normally the scale goes from 0 to 1 warning/line. Relative will use the highest ratio in your project of warning/lines of code instead of 1.
                       </span>
@@ -79,23 +79,23 @@
          <div id="menu-right-wrapper">
             <div id="right-menu">
                   <h3>Category</h3>
-                  <span id="GDCFunctionalDefects" class="UIText"><h4 class="category-titles" id="functionalDefectsLabel"><label id="FuncDefLabel" class="UIText">Functional Defects</label><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="FunctionalDefects"></h4></span>
+                  <span id="GDCFunctionalDefects" class="UIText"><h4 class="category-titles" id="functionalDefectsLabel"><label  onClick="onClickLabel('#FuncDefTogglee')"  id="FuncDefLabel" class="UIText pointer">Functional Defects</label><input id="FuncDefTogglee" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="FunctionalDefects"></h4></span>
                   <span id="GDCFunctionalDefects-hover">
                     Rules that check for defects that affect the behavior of the program.
                     </span>
-                  <span id="GDCCheck"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Check"><label id="CheckLabel" class="UIText"> Check</label></span><br>
+                  <span id="GDCCheck"><input id="GDCCheckToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Check"><label id="CheckLabel" onClick="onClickLabel('#GDCCheckToggle')" class="pointer UIText"> Check</label></span><br>
                   <span id="GDCCheck-hover">
                     Errors pertaining to the validation of data, whether that is external (user input) or internal (result values). Most often the absence of a check for return values or user input when such a check might prevent errors.
                   </span>
-                <span id="GDCConcurrency"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Concurrency"><label id="ConcurrencyLabel" class="UIText"> Concurrency</label></span><br>
+                <span id="GDCConcurrency"><input id="GDCConcurrencyToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Concurrency"><label id="ConcurrencyLabel" onClick="onClickLabel('#GDCConcurrencyToggle')" class="pointer UIText"> Concurrency</label></span><br>
                 <span id="GDCConcurrency-hover">
                     Rules that check violations regarding concurrency issues.
                   </span>
-                <span id="GDCErrorHandling"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="ErrorHandling"><label id="ErrorHandlingLabel" class="UIText"> Error Handling</label></span><br>
+                <span id="GDCErrorHandling"><input id="GDCErrorHandlingToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="ErrorHandling"><label id="ErrorHandlingLabel" onClick="onClickLabel('#GDCErrorHandlingToggle')" class="pointer UIText"> Error Handling</label></span><br>
                 <span id="GDCErrorHandling-hover">
                     Rules that check that errors and exceptions are properly handled.
                   </span>
-                <span id="GDCInterface"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Interface"><label id="InterfaceLabel" class="UIText"> Interface</label></span><br>
+                <span id="GDCInterface"><input id="GDCInterfacToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Interface"><label id="InterfaceLabel" onClick="onClickLabel('#GDCInterfacToggle')" class="pointer UIText"> Interface</label></span><br>
                 <span id="GDCInterface-hover">
                     Errors concerning interactions with different parts of the system. <br> This can be: <br>
                     • Interacting with external entities such as libraries, hardware, or the oper- ating system. <br>
@@ -104,68 +104,68 @@
                     • Errors made during inheritance, such as errors made when overriding
                     methods.
                   </span>
-                <span id="GDCLogic"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Logic"><label id="LogicLabel" class="UIText"> Logic</label></span><br>
+                <span id="GDCLogic"><input id="GDCLogicToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Logic"><label id="LogicLabel" onClick="onClickLabel('#GDCLogicToggle')" class="pointer UIText"> Logic</label></span><br>
                 <span id="GDCLogic-hover">
                     Errors pertaining to program logic. Primarily concerned with comparisons, control flow, and algorithms.
                   </span>
-                <span id="GDCMigration"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Migration"><label id="MigrationLabel" class="UIText"> Migration</label></span><br>
+                <span id="GDCMigration"><input id="GDCMigrationToggle" type="checkbox"  data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Migration"><label id="MigrationLabel" onClick="onClickLabel('#GDCMigrationToggle')" class="pointer UIText"> Migration</label></span><br>
                 <span id="GDCMigration-hover">
                     Rules that check violations regarding the migration of one version of the pro- gramming language to another.
                   </span>
-                <span id="GDCResource"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Resource"><label id="ResourceLabel" class="UIText"> Resource</label></span><br>
+                <span id="GDCResource"><input id="GDCResourceToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent FunctionalDefects" name="category" value="Resource"><label id="ResourceLabel" onClick="onClickLabel('#GDCResourceToggle')" class="pointer UIText"> Resource</label></span><br>
                 <span id="GDCResource-hover">
                     Errors concerning the initialization, casting, or release of data, whether that data is external (databases) or internal (variables).
                   </span>
-                  <span id="GDCMaintainabilityDefects" class="UIText"><h4 id="maintainabilityDefectsLabel"   class="category-titles"><label id="MainDefLabel" class="UIText">Maintainability Defects</label> <input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="MaintainabilityDefects"></h4></span>
+                  <span id="GDCMaintainabilityDefects" class="UIText"><h4 id="maintainabilityDefectsLabel"   class="category-titles"><label id="MainDefLabel" onClick="onClickLabel('#checkToggle')" class="pointer UIText">Maintainability Defects</label> <input id="checkToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="MaintainabilityDefects"></h4></span>
                    <span id="GDCMaintainabilityDefects-hover">
                     Rules that check for problems that only affect the future development efforts of changing or adding to the system, but have no impact on the correctness of the program.
                     </span>
-                <span id="GDCBestPractices"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Best Practices"><label id="BestPracticesLabel" class="UIText"> Best practices</label></span><br>
+                <span id="GDCBestPractices"><input id="GDCBestPracticesToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Best Practices"><label onClick="onClickLabel('#GDCBestPracticesToggle')" class="pointer UIText" id="BestPracticesLabel"> Best practices</label></span><br>
                 <span id="GDCBestPractices-hover">
                     Rules that check the code for violations regarding coding conventions that affect the compiled output of the code.
                   </span>
-                <span id="GDCCodeStructure"><input type="checkbox" data-toggle="toggle" data-size="mini"  data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Code Structure"><label id="CodeStructureLabel" class="UIText"> Code Structure</label></span><br>
+                <span id="GDCCodeStructure"><input id="GDCCodeStructureToggle" type="checkbox" data-toggle="toggle" data-size="mini"  data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Code Structure"><label onClick="onClickLabel('#GDCCodeStructureToggle')" class="pointer UIText" id="CodeStructureLabel"> Code Structure</label></span><br>
                 <span id="GDCCodeStructure-hover">
                     Rules that check the structure, in terms of the file system or the coupling, for violations of common conventions.
                   </span>
-                <span id="GDCDocConventions"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Documentation Conventions"><label id="DocConventionsLabel" class="UIText"> Doc. Conventions</label></span><br>
+                <span id="GDCDocConventions"><input id="GDCDocConventionsToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Documentation Conventions"><label id="DocConventionsLabel" onClick="onClickLabel('#GDCDocConventionsToggle')" class="pointer UIText"> Doc. Conventions</label></span><br>
                 <span id="GDCDocConventions-hover">
                     Rules that check the documentation for violations of common conventions.
                   </span>
-                <span id="GDCMetric"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Metric"><label id="MetricLabel" class="UIText"> Metric</label></span><br>
+                <span id="GDCMetric"><input id="GDCMetricToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Metric"><label id="MetricLabel"onClick="onClickLabel('#GDCMetricToggle')" class="pointer UIText"> Metric</label></span><br>
                 <span id="GDCMetric-hover">
                     A rule that measures a certain attribute of the code. The rule might only be to inform the developer of the value of the attribute, or it can give warnings/errors based on certain thresholds.
                   </span>
-                <span id="GDCNamingConventions"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Naming Conventions"><label id="NamingConventionsLabel" class="UIText"> Naming Conventions</label></span><br>
+                <span id="GDCNamingConventions"><input id="GDCNamingConventionsToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Naming Conventions"><label onClick="onClickLabel('#GDCNamingConventionsToggle')" class="pointer UIText" id="NamingConventionsLabel"> Naming Conventions</label></span><br>
                 <span id="GDCNamingConventions-hover">
                     Rules that check violations of common naming conventions.
                   </span>
-                <span id="GDCOODesign"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Object Oriented Design"><label id="OODesignLabel" class="UIText"> OO Design</label></span><br>
+                <span id="GDCOODesign"><input id="GDCOODesignToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Object Oriented Design"><label onClick="onClickLabel('#GDCOODesignToggle')" class="pointer UIText" id="OODesignLabel" > OO Design</label></span><br>
                 <span id="GDCOODesign-hover">
                     Rules that check for violations of proper object oriented design principles.
                   </span>
-                <span id="GDCSimplifications"><input type="checkbox"data-toggle="toggle" data-size="mini"  data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Refactorings - Simplifications"><label id="SimplificationsLabel" class="UIText"> Simplifications</label></span><br>
+                <span id="GDCSimplifications"><input id="GDCSimplificationsToggle" type="checkbox"data-toggle="toggle" data-size="mini"  data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Refactorings - Simplifications"><label id="SimplificationsLabel" onClick="onClickLabel('#GDCSimplificationsToggle')"  class="UIText pointer"> Simplifications</label></span><br>
                 <span id="GDCSimplifications-hover">
                     Rules that determine if a specific piece of code could be simplified to improve readability and understandability.
                   </span>
-                <span id="GDCRedundancies"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Refactorings - Redundancies"><label id="RedundanciesLabel" class="UIText"> Redundancies</label></span><br>
+                <span id="GDCRedundancies"><input id="GDCRedundanciesToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Refactorings - Redundancies"><label onClick="onClickLabel('#GDCRedundanciesToggle')" class="pointer UIText" id="RedundanciesLabel"> Redundancies</label></span><br>
                 <span id="GDCRedundancies-hover">
                     Rules that determine if a piece of code or artifact is redundant and can be safely deleted.
                   </span>
-                <span id="GDCStyleConventions"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Style Conventions"><label id="StyleConventionsLabel" class="UIText"> Style Conventions</label></span><br>
+                <span id="GDCStyleConventions"><input id="GDCStyleConventionsToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent MaintainabilityDefects" name="category" value="Style Conventions"><label onClick="onClickLabel('#GDCStyleConventionsToggle')" class="pointer UIText" id="StyleConventionsLabel"> Style Conventions</label></span><br>
                 <span id="GDCStyleConventions-hover">
                     Rules that check the code for violations of style conventions, that do not affect the compiled output of the code.
                   </span>
-                  <span class="UIText"><h4 class="category-titles" id="otherLabel"><label id="OthLabel" class="UIText">Other</label>  <input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="StyleConventions"></h4></span>
-                  <span id="GDCOther"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Other"><label id="OtherLabel" class="UIText"> Other</label></span><br>
+                  <span class="UIText"><h4 class="category-titles" id="otherLabel"><label id="OthLabel"  onClick="onClickLabel('#otherLabelToggle')"  class="UIText pointer">Other</label>  <input id="otherLabelToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent DefectCategory" name="category" value="StyleConventions"></h4></span>
+                  <span id="GDCOther"><input type="checkbox"  id="otherLabelToggle2"  data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Other"><label id="OtherLabel" onClick="onClickLabel('#otherLabelToggle2')" class="pointer UIText"> Other</label></span><br>
                   <span id="GDCOther-hover">
                     Rules that identify neither functional nor maintainability defects.
                   </span>
-                <span id="GDCRegularExpressions"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Regular Expressions"><label id="RegularExpressionsLabel" class="UIText"> Regular Expressions</label></span><br>
+                <span id="GDCRegularExpressions"><input id="GDCRegularExpressionsToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Regular Expressions"><label onClick="onClickLabel('#GDCRegularExpressionsToggle')" class="pointer UIText" id="RegularExpressionsLabel"> Regular Expressions</label></span><br>
                 <span id="GDCRegularExpressions-hover">
                     Rules that rely on user defined regular expressions. Because the user can use them to check a multitude of things, it is not possible to categorize these rules in general.
                   </span>   
-                <span id="GDCToolSpecific"><input type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Tool Specific"><label id="ToolSpecificLabel" class="UIText"> Tool Specific</label></span><br>
+                <span id="GDCToolSpecific"><input id="GDCToolSpecificToggle" type="checkbox" data-toggle="toggle" data-size="mini" data-style="quick" class="updateContent StyleConventions" name="category" value="Tool Specific"><label onClick="onClickLabel('#GDCToolSpecificToggle')" class="pointer UIText" id="ToolSpecificLabel"> Tool Specific</label></span><br>
                 <span id="GDCToolSpecific-hover">
                     Rules that configure how the tool works, rather than which defects it checks for (or does not check for). Examples of such rules might be: whether to colorize the output, how to write the results to file, or how much memory the tool can use.
                   </span>
