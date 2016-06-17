@@ -4,7 +4,6 @@ var treeMapBuilder = (function() {
     var treemap, formatNumber, rname, margin, width, height, transitioning, x, y, svg, grandparent, maxDepth, defaults, sourceCoded
     var refreshing = false;
     var upperLevel = true;
-    var sourceCodeLevel = false;
     var currentClassName = "";
 	var currentNodePath = [];
 	var root;
@@ -79,26 +78,26 @@ var treeMapBuilder = (function() {
         }
     }
 	 // Method for counting the different warnings
-        function getSatWarningsPrint(d) {
-            output = ""
-            output += "Lines of code: " + d.loc + " <br> ";
-            for (var i = 0; i < acceptedTypes.length; i++) {
-                switch (acceptedTypes[i]) {
-                    case "CheckStyle":
-                        output += acceptedTypes[i] + ": " + formatNumber(d.warningsCheckStyle) + " <br> ";
-                        break;
-                    case "PMD":
-                        output += acceptedTypes[i] + ": " + formatNumber(d.warningsPMD) + " <br> ";
-                        break;
-                    case "FindBugs":
-                        output += acceptedTypes[i] + ": " + formatNumber(d.warningsFindBugs) + " <br> ";
-                        break;
-                    default:
-                        output += "";
-                }
+    function getSatWarningsPrint(d) {
+        output = "";
+        output += "Lines of code: " + d.loc + " <br> ";
+        for (var i = 0; i < acceptedTypes.length; i++) {
+            switch (acceptedTypes[i]) {
+                case "CheckStyle":
+                    output += acceptedTypes[i] + ": " + formatNumber(d.warningsCheckStyle) + " <br> ";
+                    break;
+                case "PMD":
+                    output += acceptedTypes[i] + ": " + formatNumber(d.warningsPMD) + " <br> ";
+                    break;
+                case "FindBugs":
+                    output += acceptedTypes[i] + ": " + formatNumber(d.warningsFindBugs) + " <br> ";
+                    break;
+                default:
+                    output += "";
             }
-            return output.slice(0, -3);
         }
+        return output.slice(0, -3);
+    }
 
     // Code to find a certain node in the treemap
     function findNode(path, root) {
@@ -312,6 +311,8 @@ var treeMapBuilder = (function() {
          */
 		function goToRelevantLevel(indexString, fromSourceCode) {
             sourceCodeLevel = false;
+            document.getElementById('normalColourLabel2').style.textDecoration = 'none';
+            document.getElementById('normalColourLabel2').style.cursor = 'pointer';
             
             if ( document.getElementById("asatButton").checked ){
                 $("#asatButton").click();
@@ -369,9 +370,10 @@ var treeMapBuilder = (function() {
         $("#normalButton").prop('checked', false);
         $("#asatButton").prop('checked', true);
         $("#asatButton").click();
+        document.getElementById('normalColourLabel2').style.textDecoration = 'line-through';
+        document.getElementById('normalColourLabel2').style.cursor = 'default';
         setASATColoured();
     }
-
 
     /**
     * Sets all text for all elemetents in the treemap
