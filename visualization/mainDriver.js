@@ -14,7 +14,7 @@ if(!detectIE()) {
 		$("#svg").css({ "border-width":"0px"});
 	}
 } else {
-	document.getElementById("main-title").innerHTML = "We are sorry, IE and Edge are not supported. <br> Please use Firefox, Chrome or Safari instead.";
+	document.getElementById("main-title").innerHTML = "We are sorry, IE, Edge and Firefox are not supported. <br> Please use Chrome or Safari instead.";
 	$("#wrapper").hide();
 }
 
@@ -60,6 +60,11 @@ function detectIE() {
     // Edge (IE 12+) => return version number
     return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
   }
+  
+   var firefox = ua.indexOf('Firefox/');
+   if (firefox > 0) {
+    return true;
+   }
   // Other browsers
   return false;
 }
