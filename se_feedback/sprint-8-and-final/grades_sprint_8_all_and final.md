@@ -23,6 +23,8 @@ Total: ****
 | reflection            |    |
 
 ## Notes
+* Task Division, workload, user stories are great
+* Good job
 
 #Code Evolution Quality Feedback
 
@@ -58,6 +60,10 @@ Total: ****
 | Code Review            |      |
 
 ##Notes
+* Excellent Testing Coverage and Motivation
+* Excellent Branching, Building, Code Review, and Tooling
+* Excellent ADD
+* Good code changes
 
 #Final Software Product
 
@@ -80,3 +86,6 @@ Total: ****
 | Responsiveness to Feedback |      |
 
 ##Notes
+* Replied critically to most feedback given
+* Clear and well motivated architecture
+* High code quality
