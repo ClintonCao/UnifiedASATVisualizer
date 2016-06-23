@@ -50,7 +50,8 @@ This tool is for creating a visualization of the warnings/defects that were gene
 |Architecture Design  | [architecture design] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Product%20related%20documents/ArchitectureDesign(BlueTurtle).pdf)|
 |Product Requirement | [product requirement] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Requirements/RequirementsSoftwareVisualizationToolBlueTurtle.pdf)|
 |First Concept  | [first concept] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/First%20Concept/FirstConceptBlueTurtle.pdf) |
-|Final Report (Draft) | [final report] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Final%20Report/FinalReport(BlueTurtle).pdf) |
+|Final Report | [final report] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Final%20Report/FinalReport(BlueTurtle).pdf) |
+|Final Report (Draft) | [final report] (https://github.com/ClintonCao/Contextproject-TSE/blob/master/documentation/Final%20Report/FinalReport_draft(BlueTurtle).pdf) |
 
 ## Links to other documents:
 
