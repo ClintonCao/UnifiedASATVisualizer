@@ -69,7 +69,7 @@ The feedback of SIG and the code improvements can be found [here](https://github
 * Java JDK 1.8.
 * ASATs version:
   * Checkstyle 6.1.1, PMD 5.2.3 and FindBugs 3.0.1. (CheckStyle 6.17 and PMD version 5.3.2 also work).
-* User must have Maven (IDE plugin or standalone app) installed to run `mvn site`. (For more information, please look at the "Maven Execution Ressearch" document). 
+* User must have Maven (IDE plugin or standalone app) installed to run `mvn site`. (For more information, please look at the "Maven Execution Research" document). 
 * The project (that is going to be analyzed) must be a Maven Project.
 
 ## Running the Program:
