@@ -142,6 +142,9 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 		this.visualizeButton = vButton;
 	}
 	
+	/**
+	 * Show an reminder to the user, after the user has selected the project folder.
+	 */
 	public void showAlert() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Info");
