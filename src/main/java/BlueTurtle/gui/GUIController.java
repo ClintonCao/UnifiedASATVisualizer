@@ -148,7 +148,9 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 	public void showAlert() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Info");
-		alert.setContentText("Please make sure that you have run mvn site before clicking on the " + '"' + "Visualize" + '"' + " button!");
+		alert.setResizable(true);
+		alert.setContentText("Please make sure that you have run mvn site" + "\n"
+						+ "before clicking on the " + '"' + "Visualize" + '"' + " button!");
 		alert.showAndWait();
 	}
 
