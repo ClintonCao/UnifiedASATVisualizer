@@ -1,6 +1,8 @@
 package BlueTurtle.gui;
 
 import java.awt.Desktop;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType; 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -112,7 +114,7 @@ public class GUIController {
 		selectButton.setOnMouseClicked(new SelectButtonEventHandler(projectSourcePathText, visualizeButton));
 		visualizeButton.setOnMouseClicked(new VisualizeButtonEventHandler());
 	}
-
+	
 }
 
 /**
@@ -139,6 +141,18 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 		this.sourcePathText = sourcePathText;
 		this.visualizeButton = vButton;
 	}
+	
+	/**
+	 * Show an reminder to the user, after the user has selected the project folder.
+	 */
+	public void showAlert() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Info");
+		alert.setResizable(true);
+		alert.setContentText("Please make sure that you have run mvn site" + "\n"
+						+ "before clicking on the " + '"' + "Visualize" + '"' + " button!");
+		alert.showAndWait();
+	}
 
 	/**
 	 * Event handler for the button.
@@ -156,6 +170,7 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 		} else {
 			sourcePathText.setText(selectedDirectory.getAbsolutePath());
 			GUIController.setProjectPath(sourcePathText.getText());
+			showAlert();
 			visualizeButton.setDisable(false);
 		}
 	}
@@ -183,7 +198,6 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 			ProjectInfoFinder pif = new ProjectInfoFinder();
 			pif.findFiles(new File(GUIController.getProjectPath()));
 			pif.retrieveCodeFiles();
-			
 			Main.runVisualization();
 			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
 		} catch (IOException e) {
