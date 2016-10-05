@@ -7,10 +7,10 @@ var colours = (function() {
 	var black = "#000000";
 	var grey = "#A2A2A2"
 	// Always in order of light - normal - dark
-	var greenNormal = ["#679a64", "#12B212", "#386938"];
+	var greenNormal = ["#679a64", "#00ae00", "#386938"];
 	var red = ["#9c7777", "#ED4337", "#88120a"];
 	var blue = ["#bdd7e7", "#3182bd", "#013b76"];
-	var purple = ["#ebafbe", "#a83e6b", "#46102e"];
+	var purple = ["#ebafbe", "#bc4175", "#46102e"];
 	var greenGradient = ["#82d78c", "#64aa2d", "#2c5207"];
 	// Index for kind of color
 	var lightColor = 0;
