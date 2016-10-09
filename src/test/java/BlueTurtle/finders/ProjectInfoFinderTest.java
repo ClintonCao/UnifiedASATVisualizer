@@ -7,12 +7,16 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import BlueTurtle.gui.GUIController.ASAT;
 
 /**
  * Test for the ProjectInforFinder class.
@@ -24,6 +28,9 @@ public class ProjectInfoFinderTest {
 
 	private ProjectInfoFinder pif;
 	private String exampleFilePath;
+	private String checkstyleOutputPath;
+	private String findbugsOutputPath;
+	private String pmdOutputPath;
 
 	/**
 	 * Initialize the objects that are needed.
@@ -39,8 +46,16 @@ public class ProjectInfoFinderTest {
 		ProjectInfoFinder.getClassPackage().clear();
 		ProjectInfoFinder.getPackages().clear();
 		ProjectInfoFinder.getClassPaths().clear();
+		ProjectInfoFinder.getOutputFilesPaths().clear();
 		exampleFilePath = Paths.get("src", "test", "resources", "TestCodeFolder", "AllClosestPoints.java")
 				.toAbsolutePath().toString();
+		checkstyleOutputPath = Paths.get("src", "test", "resources", "checkstyle-result.xml")
+				                    .toAbsolutePath().toString();
+		findbugsOutputPath = Paths.get("src", "test", "resources", "findbugsXml.xml")
+                                    .toAbsolutePath().toString();
+		pmdOutputPath = Paths.get("src", "test", "resources", "pmd.xml")
+                                    .toAbsolutePath().toString();
+		
 		pif.findFiles(new File(Paths.get("src", "test", "resources").toAbsolutePath().toString()));
 	}
 
@@ -57,6 +72,7 @@ public class ProjectInfoFinderTest {
 		ProjectInfoFinder.getClassPackage().clear();
 		ProjectInfoFinder.getPackages().clear();
 		ProjectInfoFinder.getClassPaths().clear();
+		ProjectInfoFinder.getOutputFilesPaths().clear();
 	}
 
 	/**
@@ -98,7 +114,7 @@ public class ProjectInfoFinderTest {
 		Set<String> expected = new HashSet<String>();
 		expected.add("default");
 		expected.add("SomePackage.different");
-		expected.add("SomePackage.subpackage");
+		expected.add("SomePackage.subpackage");		
 		assertEquals(expected, actual);
 	}
 	
@@ -112,5 +128,21 @@ public class ProjectInfoFinderTest {
 		pif.retrieveCodeFiles();
 		assertTrue(pif.getCodeFiles().size() > 0);
 	}
+	
+	/**
+	 * Test whether all three output files are found and added into the HashMap.
+	 */
+	@Test 
+	public void testCorrectOutputFilesPaths() {
+		assertTrue(ProjectInfoFinder.getOutputFilesPaths().get(ASAT.CheckStyle).contains(checkstyleOutputPath)
+					&& ProjectInfoFinder.getOutputFilesPaths().get(ASAT.FindBugs).contains(findbugsOutputPath)
+					&& ProjectInfoFinder.getOutputFilesPaths().get(ASAT.PMD).contains(pmdOutputPath));
+	}
+	
+	@Test
+	public void testCheckForOutputFile() {
+		
+	}
+	
 
 }
