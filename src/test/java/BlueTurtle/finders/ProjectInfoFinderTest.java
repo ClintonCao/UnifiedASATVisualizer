@@ -139,10 +139,20 @@ public class ProjectInfoFinderTest {
 					&& ProjectInfoFinder.getOutputFilesPaths().get(ASAT.PMD).contains(pmdOutputPath));
 	}
 	
+	/**
+	 * Test the correct behaviour of checkForOutputFile.
+	 */
 	@Test
-	public void testCheckForOutputFile() {
-		
+	public void testCheckForOutputFileTrue() {
+		assertTrue(new ProjectInfoFinder().checkForASATOutputFile("checkstyle-result.xml"));
 	}
 	
-
+	/**
+	 * Test the correct behaviour of checkForOutputFile.
+	 */
+	@Test
+	public void testCheckForOutputFileFalse() {
+		assertFalse(new ProjectInfoFinder().checkForASATOutputFile("Hello I am a testring"));
+	}
+	
 }
