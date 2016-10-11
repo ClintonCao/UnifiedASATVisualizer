@@ -4,10 +4,10 @@
 
   <groupId>BlueTurtle</groupId>
   <artifactId>TSE</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
-  <name>TSE</name>
+  <name>Unified ASAT Visualizer</name>
   <url>http://maven.apache.org</url>
   
     <!-- Developers for this project. -->
@@ -288,4 +288,5 @@
   </properties>
 
 
+  <description>A tool that generates one single visualization that shows where all the warnings from different ASAT (CheckStyle, PMD and Findbugs) are located in your project.</description>
 </project>

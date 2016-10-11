@@ -193,13 +193,19 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 	 */
 	@Override
 	public void handle(MouseEvent event) {
+		//long begin = System.currentTimeMillis();
 		setOutputFiles();
 		try {
 			ProjectInfoFinder pif = new ProjectInfoFinder();
 			pif.findFiles(new File(GUIController.getProjectPath()));
+			JavaController.setASATOutputFiles(ASAT.CheckStyle, ProjectInfoFinder.getOutputFilesPaths().get(ASAT.CheckStyle));
+			JavaController.setASATOutputFiles(ASAT.PMD, ProjectInfoFinder.getOutputFilesPaths().get(ASAT.PMD));
+			JavaController.setASATOutputFiles(ASAT.FindBugs, ProjectInfoFinder.getOutputFilesPaths().get(ASAT.FindBugs));
 			pif.retrieveCodeFiles();
 			Main.runVisualization();
 			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
+			//long end = System.currentTimeMillis();
+			//System.out.println("Took " + (end-begin) + " ms" );
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
