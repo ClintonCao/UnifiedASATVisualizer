@@ -14,8 +14,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import BlueTurtle.gui.GUIController.ASAT;
-
 /**
  * Test for the ProjectInforFinder class.
  * 

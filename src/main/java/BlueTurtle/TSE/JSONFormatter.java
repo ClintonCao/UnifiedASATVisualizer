@@ -55,11 +55,13 @@ public class JSONFormatter {
 	 * 				throws an exception if problem is encountered while parsing the files.
 	 */
 	private void parseListOfFiles(XMLParser xmlParser, ArrayList<String> filePaths) throws IOException {
-		for (String path : filePaths) {
-			parseFile(xmlParser, path);
+		if (filePaths != null) {
+			for (String path : filePaths) {
+				parseFile(xmlParser, path);
+			}
 		}
 	}
-	
+
 	/**
 	 * Parse an single output file of an ASAT.
 	 * 
