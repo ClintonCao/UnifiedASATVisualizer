@@ -130,6 +130,7 @@
         			<exclude>**/GUI*</exclude>
         			<exclude>**/GUIController*</exclude>
         			<exclude>**/SelectButtonEventHandler*</exclude>
+        			<exclude>**/VisualizeButtonEventHandler*</exclude>
         			<exclude>**/Main*</exclude>
     			</excludes>
 				</configuration>
@@ -282,8 +283,8 @@
 
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  	<checkstyle.plugin.version>2.15</checkstyle.plugin.version>
-  	<pmd.plugin.version>3.4</pmd.plugin.version>
+  	<checkstyle.plugin.version>2.16</checkstyle.plugin.version>
+  	<pmd.plugin.version>3.6</pmd.plugin.version>
   	<findbugs.version>3.0.1</findbugs.version>
   </properties>
 

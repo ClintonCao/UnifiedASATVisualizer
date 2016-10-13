@@ -1,11 +1,9 @@
 package BlueTurtle.TSE;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import BlueTurtle.gui.GUIController.ASAT;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,11 +16,8 @@ import lombok.Setter;
  *
  */
 public class JavaController implements Controller {
-	@Getter @Setter private static String userDir = System.getProperty("user.dir"); //NOPMD - caused by lombok.
-	@Getter @Setter private static String checkStyleOutputFile; //NOPMD - caused by lombok.
-	@Getter @Setter private static String pmdOutputFile; //NOPMD - caused by lombok.
-	@Getter @Setter private static String findBugsOutputFile; //NOPMD - caused by lombok.
 	
+	@Getter @Setter private static String userDir = System.getProperty("user.dir"); //NOPMD - caused by lombok.
 	@Getter @Setter private static ArrayList<String> checkStyleOutputFiles; //NOPMD - caused by lombok.
 	@Getter @Setter private static ArrayList<String> pmdOutputFiles; //NOPMD - caused by lombok.
 	@Getter @Setter private static ArrayList<String> findBugsOutputFiles; //NOPMD - caused by lombok.
@@ -38,33 +33,6 @@ public class JavaController implements Controller {
 	public void execute() throws IOException {
 		new JSONFormatter().format();
 	}
-
-	/**
-	 * Set the output path for the ASAT.
-	 * 
-	 * @param asat
-	 *            the asat type.
-	 * @param file
-	 *            the output file.
-	 */
-	public static void setASATOutput(ASAT asat, File file) {
-		if (file == null) {
-			return;
-		}
-		switch (asat) {
-		case PMD:
-			pmdOutputFile = file.getAbsolutePath();
-			break;
-		case CheckStyle:
-			checkStyleOutputFile = file.getAbsolutePath();
-			break;
-		case FindBugs:
-			findBugsOutputFile = file.getAbsolutePath();
-			break;
-		default:
-			break;
-		}
-	}
 	
 	/**
 	 * Set the output paths for the ASAT.
@@ -75,9 +43,7 @@ public class JavaController implements Controller {
 	 *            the list of output file paths.
 	 */
 	public static void setASATOutputFiles(ASAT asat, ArrayList<String> filePaths) {
-		
-		System.out.println(asat);
-		if (filePaths == null || filePaths.isEmpty()) {
+		if (filePaths == null) {
 			return;
 		}
 		switch (asat) {

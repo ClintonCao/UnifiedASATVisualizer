@@ -100,7 +100,7 @@ public class ProjectInfoFinder {
 		case "checkstyle-result.xml":
 			addOutputFilePath(ASAT.CheckStyle, file.getAbsolutePath());
 			break;
-		case "findbugsXml.xml":
+		case "findbugs.xml":
 			addOutputFilePath(ASAT.FindBugs, file.getAbsolutePath());
 			break;
 		case "pmd.xml": 
@@ -137,7 +137,7 @@ public class ProjectInfoFinder {
 	 * 			returns true if it is an output file of an ASAT.
 	 */
 	public Boolean checkForASATOutputFile(String fileName) {
-		return (fileName.contains("checkstyle-result") || fileName.contains("pmd.") || fileName.contains("findbugsXml"));
+		return (fileName.contains("checkstyle-result") || fileName.contains("pmd.") || fileName.contains("findbugs."));
 	}
 
 	/**

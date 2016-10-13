@@ -36,21 +36,35 @@ public class JSONFormatter {
 	 */
 	public void format() throws IOException {
 				
-		parseFile(new CheckStyleXMLParser(), JavaController.getCheckStyleOutputFile());
+		parseListOfFiles(new CheckStyleXMLParser(), JavaController.getCheckStyleOutputFiles());
 
-		parseFile(new PMDXMLParser(), JavaController.getPmdOutputFile());
+		parseListOfFiles(new PMDXMLParser(), JavaController.getPmdOutputFiles());
 
-		parseFile(new FindBugsXMLParser(), JavaController.getFindBugsOutputFile());
+		parseListOfFiles(new FindBugsXMLParser(), JavaController.getFindBugsOutputFiles());
 		
 		writeJSON();
 	}
 	
 	/**
-	 * Parse ASAT output and produce list of warnings.
+	 * Parse the list of output files for an ASAT.
+	 * @param xmlParser 
+	 * 				the parser for parsing the xml files.
+	 * @param filePaths
+	 * 				the list containing the paths of the output files of an ASAT.
+	 * @throws IOException 
+	 * 				throws an exception if problem is encountered while parsing the files.
+	 */
+	private void parseListOfFiles(XMLParser xmlParser, ArrayList<String> filePaths) throws IOException {
+		for (String path : filePaths) {
+			parseFile(xmlParser, path);
+		}
+	}
+	
+	/**
+	 * Parse an single output file of an ASAT.
 	 * 
-	 * @return List of warnings.
 	 * @throws IOException
-	 *             File not found.
+	 *             Throws an exception if problem is encountered while parsing the file.
 	 */
 	private void parseFile(XMLParser xmlParser, String filePath) throws IOException {
 		if (!new File(filePath).exists()) {

@@ -26,9 +26,6 @@ public class ProjectInfoFinderTest {
 
 	private ProjectInfoFinder pif;
 	private String exampleFilePath;
-	private String checkstyleOutputPath;
-	private String findbugsOutputPath;
-	private String pmdOutputPath;
 
 	/**
 	 * Initialize the objects that are needed.
@@ -47,13 +44,6 @@ public class ProjectInfoFinderTest {
 		ProjectInfoFinder.getOutputFilesPaths().clear();
 		exampleFilePath = Paths.get("src", "test", "resources", "TestCodeFolder", "AllClosestPoints.java")
 				.toAbsolutePath().toString();
-		checkstyleOutputPath = Paths.get("src", "test", "resources", "checkstyle-result.xml")
-				                    .toAbsolutePath().toString();
-		findbugsOutputPath = Paths.get("src", "test", "resources", "findbugsXml.xml")
-                                    .toAbsolutePath().toString();
-		pmdOutputPath = Paths.get("src", "test", "resources", "pmd.xml")
-                                    .toAbsolutePath().toString();
-		
 		pif.findFiles(new File(Paths.get("src", "test", "resources").toAbsolutePath().toString()));
 	}
 
@@ -127,15 +117,6 @@ public class ProjectInfoFinderTest {
 		assertTrue(pif.getCodeFiles().size() > 0);
 	}
 	
-	/**
-	 * Test whether all three output files are found and added into the HashMap.
-	 */
-	@Test 
-	public void testCorrectOutputFilesPaths() {
-		assertTrue(ProjectInfoFinder.getOutputFilesPaths().get(ASAT.CheckStyle).contains(checkstyleOutputPath)
-					&& ProjectInfoFinder.getOutputFilesPaths().get(ASAT.FindBugs).contains(findbugsOutputPath)
-					&& ProjectInfoFinder.getOutputFilesPaths().get(ASAT.PMD).contains(pmdOutputPath));
-	}
 	
 	/**
 	 * Test the correct behaviour of checkForOutputFile.
@@ -150,7 +131,7 @@ public class ProjectInfoFinderTest {
 	 */
 	@Test
 	public void testCheckForOutputFileFalse() {
-		assertFalse(new ProjectInfoFinder().checkForASATOutputFile("Hello I am a testring"));
+		assertFalse(new ProjectInfoFinder().checkForASATOutputFile("Hello I am a test string"));
 	}
 	
 }

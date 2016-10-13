@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
@@ -25,6 +26,9 @@ import BlueTurtle.gui.GUIController.ASAT;
 public class JavaControllerTest {
 
 	private String userDir = System.getProperty("user.dir");
+	private ArrayList<String> checkstyleList = new ArrayList<String>();
+	private ArrayList<String> pmdList = new ArrayList<String>();
+	private ArrayList<String> findBugsList = new ArrayList<String>();
 	private String checkStyleOutputFilePath = userDir + "/src/test/resources/exampleCheckstyle1.xml";
 	private String pmdOutputFilePath = userDir + "/src/test/resources/examplePmd1.xml";
 	private String findBugsOutputFilePath = userDir + "/src/test/resources/exampleFindbugs1.xml";
@@ -39,12 +43,15 @@ public class JavaControllerTest {
 	@Before
 	public void setUp() throws IOException {
 		GUIController.setProjectPath("test");
+		checkstyleList.add(checkStyleOutputFilePath);
+		pmdList.add(pmdOutputFilePath);
+		findBugsList.add(findBugsOutputFilePath);
 		new ProjectInfoFinder().findFiles(new File(userDir));
-		JavaController.setCheckStyleOutputFile(null);
-		JavaController.setPmdOutputFile(null);
-		JavaController.setFindBugsOutputFile(null);
+		JavaController.setCheckStyleOutputFiles(null);
+		JavaController.setPmdOutputFiles(null);
+		JavaController.setFindBugsOutputFiles(null);
 	}
-	
+
 	/**
 	 * Delete the created files.
 	 */
@@ -53,7 +60,7 @@ public class JavaControllerTest {
 		File f = new File(userDir + "/src/main/resources/SummarizedOuput.js");
 		GUIController.setProjectPath(null);
 		if (f.exists()) {
-			f.delete(); 
+			f.delete();
 		}
 		ProjectInfoFinder.getClassLocs().clear();
 		ProjectInfoFinder.getPackages().clear();
@@ -76,59 +83,58 @@ public class JavaControllerTest {
 	 */
 	@Test
 	public void allFilesStringsAreNull() {
-		assertTrue(JavaController.getCheckStyleOutputFile() == null && JavaController.getPmdOutputFile() == null
-				&& JavaController.getFindBugsOutputFile() == null);
+		assertTrue(JavaController.getCheckStyleOutputFiles() == null && JavaController.getPmdOutputFiles() == null
+				&& JavaController.getFindBugsOutputFiles() == null);
 	}
 
 	/**
-	 * Test changing CheckStyle output file.
+	 * Test changing CheckStyle list of output file.
 	 */
 	@Test
 	public void testChangingCheckStyleOutputFile() {
-		String emptyFile = JavaController.getCheckStyleOutputFile();
-		File newFile = new File("newFile");
-		JavaController.setASATOutput(ASAT.CheckStyle, newFile);
-		String checkStyleFile = JavaController.getCheckStyleOutputFile();
-		assertNotEquals(emptyFile, checkStyleFile);
+		ArrayList<String> list = JavaController.getCheckStyleOutputFiles();
+		ArrayList<String> newList = new ArrayList<String>();
+		newList.add("test path for checkstyle");
+		JavaController.setASATOutputFiles(ASAT.CheckStyle, newList);
+		assertNotEquals(list, JavaController.getCheckStyleOutputFiles());
 	}
 
 	/**
-	 * Test changing PMD output file.
+	 * Test changing PMD list of output file.
 	 */
 	@Test
 	public void testChangingPMDOutputFile() {
-		String emptyFile = JavaController.getPmdOutputFile();
-		File newFile = new File("newFile");
-		JavaController.setASATOutput(ASAT.PMD, newFile);
-		String pmdFile = JavaController.getPmdOutputFile();
-		assertNotEquals(emptyFile, pmdFile);
+		ArrayList<String> list = JavaController.getPmdOutputFiles();
+		ArrayList<String> newList = new ArrayList<String>();
+		newList.add("test path for pmd");
+		JavaController.setASATOutputFiles(ASAT.PMD, newList);
+		assertNotEquals(list, JavaController.getPmdOutputFiles());
 	}
 
 	/**
-	 * Test changing FindBugs output file.
+	 * Test changing FindBugs list of output files.
 	 */
 	@Test
 	public void testChangingFindBugsOutputFile() {
-		String emptyFile = JavaController.getFindBugsOutputFile();
-		File newFile = new File("newFile");
-		JavaController.setASATOutput(ASAT.FindBugs, newFile);
-		String findBugsFile = JavaController.getFindBugsOutputFile();
-		assertNotEquals(emptyFile, findBugsFile);
+		ArrayList<String> list = JavaController.getFindBugsOutputFiles();
+		ArrayList<String> newList = new ArrayList<String>();
+		newList.add("test path for findbugs");
+		JavaController.setASATOutputFiles(ASAT.FindBugs, newList);
+		assertNotEquals(list, JavaController.getFindBugsOutputFiles());
 	}
 
 	/**
-	 * Test SetASATOutput with a null.
+	 * Test SetASATOutputFiles with a null.
 	 */
 	@Test
 	public void testSetOutputWithNull() {
-		String currentFile = JavaController.getCheckStyleOutputFile();
-		JavaController.setASATOutput(ASAT.CheckStyle, null);
-		String newFile = JavaController.getCheckStyleOutputFile();
-		assertEquals(currentFile, newFile);
+		ArrayList<String> fileList = JavaController.getCheckStyleOutputFiles();
+		JavaController.setASATOutputFiles(ASAT.CheckStyle, null);
+		assertEquals(fileList, JavaController.getCheckStyleOutputFiles());
 	}
 
 	/**
-	 * Test execute should output file.
+	 * Test execute should produce an output file.
 	 * 
 	 * @throws IOException
 	 *             throws an exception if a problem is encountered while reading
@@ -136,29 +142,71 @@ public class JavaControllerTest {
 	 */
 	@Test
 	public void testExecute() throws IOException {
-		JavaController.setASATOutput(ASAT.CheckStyle, new File(checkStyleOutputFilePath));
-		JavaController.setASATOutput(ASAT.PMD, new File(pmdOutputFilePath));
-		JavaController.setASATOutput(ASAT.FindBugs, new File(findBugsOutputFilePath));
+		JavaController.setASATOutputFiles(ASAT.CheckStyle, new ArrayList<String>());
+		JavaController.setASATOutputFiles(ASAT.PMD, new ArrayList<String>());
+		JavaController.setASATOutputFiles(ASAT.FindBugs, new ArrayList<String>());
 		JavaController jc = new JavaController();
 		jc.execute();
 		assertTrue(new File(userDir + "/visualization/JSON/outputWarningsJSON.js").exists());
 	}
-	
+
 	/**
-	 * Tests if the JSONFormatter generates an empty list of warnings when it finds no 
-	 * output files.
+	 * Tests if the JSONFormatter generates an empty list of warnings when it
+	 * finds no output files.
+	 * 
 	 * @throws IOException
-	 * 				throws an exception if a problem is encountered while reading
-	 * 				the file.
+	 *             throws an exception if a problem is encountered while reading
+	 *             the file.
 	 */
 	@Test
-	public void testNoOutputFile() throws IOException  {
-		JavaController.setASATOutput(ASAT.CheckStyle, new File("nopath"));
-		JavaController.setASATOutput(ASAT.PMD, new File("nopath"));
-		JavaController.setASATOutput(ASAT.FindBugs, new File("nopath"));
+	public void testNoOutputFile() throws IOException {
+		JavaController.setASATOutputFiles(ASAT.CheckStyle, new ArrayList<String>());
+		JavaController.setASATOutputFiles(ASAT.PMD, new ArrayList<String>());
+		JavaController.setASATOutputFiles(ASAT.FindBugs, new ArrayList<String>());
 		JSONFormatter jsonFormatter = new JSONFormatter();
 		jsonFormatter.format();
 		assertSame(jsonFormatter.getTotalWarnings().size(), 0);
+	}
+
+	/**
+	 * Tests if the JSONFormatter generates a list of warnings when the list of
+	 * output files are not empty There is just one output file for each ASAT.
+	 * The output files are modified (smaller output files) for the test.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if a problem is encountered while reading
+	 *             the file.
+	 */
+	@Test
+	public void testListOfOneOutputFile() throws IOException {
+		JavaController.setASATOutputFiles(ASAT.CheckStyle, checkstyleList);
+		JavaController.setASATOutputFiles(ASAT.PMD, pmdList);
+		JavaController.setASATOutputFiles(ASAT.FindBugs, findBugsList);
+		JSONFormatter jsonFormatter = new JSONFormatter();
+		jsonFormatter.format();
+		assertSame(jsonFormatter.getTotalWarnings().size(), 8);
+	}
+	
+	/**
+	 * Tests if the JSONFormatter generates a list of warnings when the list of
+	 * output files are not empty. There are two output files for each ASAT.
+	 * The output files are modified (smaller output files) for the test.
+	 * 
+	 * @throws IOException
+	 *             throws an exception if a problem is encountered while reading
+	 *             the file.
+	 */
+	@Test
+	public void testListOfTwoOutputFile() throws IOException {
+		checkstyleList.add(checkStyleOutputFilePath);
+		pmdList.add(pmdOutputFilePath);
+		findBugsList.add(findBugsOutputFilePath);
+		JavaController.setASATOutputFiles(ASAT.CheckStyle, checkstyleList);
+		JavaController.setASATOutputFiles(ASAT.PMD, pmdList);
+		JavaController.setASATOutputFiles(ASAT.FindBugs, findBugsList);
+		JSONFormatter jsonFormatter = new JSONFormatter();
+		jsonFormatter.format();
+		assertSame(jsonFormatter.getTotalWarnings().size(), 16);
 	}
 
 }
