@@ -1,7 +1,6 @@
 package BlueTurtle.gui;
 
 import java.awt.Desktop;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType; 
 import java.io.File;
 import java.io.IOException;
@@ -142,17 +141,6 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 		this.visualizeButton = vButton;
 	}
 	
-	/**
-	 * Show an reminder to the user, after the user has selected the project folder.
-	 */
-	public void showAlert() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Info");
-		alert.setResizable(true);
-		alert.setContentText("Please make sure that you have run mvn site" + "\n"
-						+ "before clicking on the " + '"' + "Visualize" + '"' + " button!");
-		alert.showAndWait();
-	}
 
 	/**
 	 * Event handler for the button.
@@ -170,7 +158,8 @@ class SelectButtonEventHandler implements EventHandler<MouseEvent> {
 		} else {
 			sourcePathText.setText(selectedDirectory.getAbsolutePath());
 			GUIController.setProjectPath(sourcePathText.getText());
-			showAlert();
+			AlertCreator.getInstance().createAlert(AlertType.INFORMATION, "Info", "Please make sure that you have run mvn site" + "\n"
+					+ "before clicking on the " + '"' + "Visualize" + '"' + " button!").showAndWait();
 			visualizeButton.setDisable(false);
 		}
 	}

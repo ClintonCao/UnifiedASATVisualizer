@@ -4,7 +4,7 @@
 
   <groupId>BlueTurtle</groupId>
   <artifactId>TSE</artifactId>
-  <version>1.1</version>
+  <version>1.1.1</version>
   <packaging>jar</packaging>
 
   <name>Unified ASAT Visualizer</name>
@@ -131,6 +131,7 @@
         			<exclude>**/GUIController*</exclude>
         			<exclude>**/SelectButtonEventHandler*</exclude>
         			<exclude>**/VisualizeButtonEventHandler*</exclude>
+        			<exclude>**/AlertCreator*</exclude>
         			<exclude>**/Main*</exclude>
     			</excludes>
 				</configuration>

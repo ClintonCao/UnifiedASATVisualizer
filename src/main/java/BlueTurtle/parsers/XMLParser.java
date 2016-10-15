@@ -19,9 +19,8 @@ import BlueTurtle.warnings.Warning;
  *
  */
 public abstract class XMLParser implements Parser {
-	
-	private static String mdFilePath = "./src/main/resources/asat-gdc-mapping.html";
 
+	private static String mdFilePath = "./src/main/resources/asat-gdc-mapping.html";
 
 	/**
 	 * Parse a XML file.
@@ -62,7 +61,7 @@ public abstract class XMLParser implements Parser {
 
 		return nList;
 	}
-	
+
 	/**
 	 * Classify the rule name to the correct classification according to
 	 * categoryInfo.
