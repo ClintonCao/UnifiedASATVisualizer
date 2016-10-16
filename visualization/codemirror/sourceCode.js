@@ -233,21 +233,23 @@ var sourceCode = (function() {
 	 * Creates a tooltip that will be shown on hover over a node
 	 */
 	function setToolTip(child) {
-		var tooltip = d3.select("#chart-and-code").append("div").attr("class","d3-tip2").style("width", 300).style("position", "absolute").style("z-index", "10").style("visibility", "hidden");
+		
 		var textInTooltip = "Line " + curLine + ": ";
 		for(var i = 0; i < currentAsatWarnings.length; i++) {
-			textInTooltip += "<br>-" + currentAsatWarnings[i] + "<br>-" + currentCatWarnings[i] + "<br>-" + currentMessageWarnings[i] + "<br>"
+			textInTooltip += "<br>- " + currentAsatWarnings[i] + "<br>- " + currentCatWarnings[i] + "<br>" + currentMessageWarnings[i] + "<br>"
 		}
-		$(child).mouseenter(function(){
-			tooltip.html(textInTooltip);
-            tooltip.style("visibility", "visible");
+		$(child).mouseover(function(){
+			$('#extra-info-div').css('display', 'block');
+			$('#extra-info-div').css('overflow-wrap', 'break-word');
+			$('#extra-info-div').html(textInTooltip);
 		});
-		$(child).mousemove(function(){
-			tooltip.style("top", (event.pageY - 130) + "px").style("left", (event.pageX - 280) + "px");
-		});
-		$(child).mouseleave(function(){
-			tooltip.style("visibility", "hidden");
-		});
+        $(child).mouseout(function(){
+			$('#extra-info-div').html("");
+			$('#extra-info-div').css('display', 'none');
+        });
+	
+		
+		
 	}
 
 	/**
