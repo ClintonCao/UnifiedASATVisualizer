@@ -200,6 +200,7 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 			pif.retrieveCodeFiles();
 			Main.runVisualization();
 			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
+			ProjectInfoFinder.clearInfo();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

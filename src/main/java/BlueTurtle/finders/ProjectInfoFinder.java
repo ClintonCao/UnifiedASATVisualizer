@@ -91,4 +91,11 @@ public class ProjectInfoFinder {
 
 		jswriter.writeSourceCodeToJS(codeFiles, "visualization/JSON/outputCodeJSON.js");
 	}
+	
+	public static void clearInfo() {
+		classPaths = new ArrayList<String>();
+		classLocs = new HashMap<String, Integer>();
+		classPackage = new HashMap<String, String>();
+		packages = new HashSet<String>();
+	}
 }
