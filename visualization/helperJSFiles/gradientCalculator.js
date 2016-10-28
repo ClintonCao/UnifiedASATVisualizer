@@ -2,6 +2,10 @@ var gradientCalculator = (function() {
 
 	var surface, surfHead, mainSurf, surfTail, firstBoundary, secondBoundary, totalLineLength;
 
+	/**
+	* calculate the 3 different areas in the square.
+	* 2 traingles and the center part: head, main, tail
+	*/
 	function measurements(x, y) {
 		if( x > y) {
 			var temp = x;x = y;y = temp;
@@ -22,7 +26,9 @@ var gradientCalculator = (function() {
 		surface = surfHead + mainSurf + surfTail;
 
 	}
-
+	/**
+	* calculate the right boudaries depending on the rations of a,b,c
+	*/
 	function calculateBoundaries(a, b, total) {
 		
 		var aLoc = calculateSpecificBoundary(a, total);
@@ -31,6 +37,9 @@ var gradientCalculator = (function() {
 		return [aLoc/totalLineLength * 100, bLoc/totalLineLength * 100];
 	}
 
+	/**
+	* distinguish all cases where the boundary of the gradient is in part 1,2 or 3.
+	*/ 
 	function calculateSpecificBoundary(z, total) {
 		var zSurf = (z/total) * surface;
 		var zLocation = 0;
@@ -48,19 +57,27 @@ var gradientCalculator = (function() {
 			return inSurfHead(zSurf);
 		}
 	}
-
+	/**
+	* the case the boundary is in the head part
+	*/
 	function inSurfHead(remainder) {
 		var occupiedSurf = remainder / surfHead;
 		var length = Math.sqrt(occupiedSurf);
 		return length * firstBoundary;
 	}
 
+	/**
+	* the case the boundary is in the main part
+	*/
 	function inMainSurf(remainder, curLength) {
 		var occupiedSurf = remainder / mainSurf;
 		var extraLength = occupiedSurf * (secondBoundary - firstBoundary);
 		return curLength + extraLength;
 	}	
 
+	/**
+	* the case the boundary is in the tail part
+	*/
 	function inSurfTail(remainder, curLength) {
 		var occupiedSurf = remainder / surfTail;
 		var length
@@ -71,6 +88,9 @@ var gradientCalculator = (function() {
 	}
 
 	return {
+		/**
+		* the public method to call for calculating the boundaries in the gradient.
+		*/
 		calculate: function(x, y, a, b ,c) {
 			if(x == 0) {
 				x = 0.01;
@@ -81,6 +101,10 @@ var gradientCalculator = (function() {
 			measurements(x, y);
 			return calculateBoundaries(a, b, a+b+c);
 		},
+		/**
+		* method to calculate the direction of the gradient for a perfect 45 degree angle.
+		* But this doesn't work for some reason maybe in the future a nice extra feature.
+		*/
 		get45Angle: function (x,y){
 			if ( x > y ){
 				var ratio  = (100* (y/x)) + "%";

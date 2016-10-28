@@ -15,5 +15,10 @@ Almost all packages have 100% coverage. The only package that does not have 100%
 #### Test coverage of the system
 The coverage this week has dropped by 0.005%. This is because some extra lines are added in the `handle` method of `VisualizeButtonEventHandler`. This class is not excluded in the report of JaCoCo and therefore the coverage dropped by a little bit.
 
+## Test coverage (15-June-2016)
+
+#### Test coverage of the system
+The coverage this week has dropped from 97.72% to 97.55%. This is because we removed a class that is not used. The number lines of code that is not tested is therefore relatively bigger.
+
 
  

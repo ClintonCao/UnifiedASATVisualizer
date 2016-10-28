@@ -45,6 +45,9 @@ var backgroundObject = (function() {
 	function getNormalColors() {
 		return d3.scale.linear().domain([0, maxConstant]).interpolate(d3.interpolateHcl).range(twoColors);
 	}
+	/**
+	* set every number to percentage, because the 3d.js library works with % values
+	*/
 	function setToPercentages() {
 		firstEdgeBegin = firstRatioBegin + "%";
 		firstEdgeEnd = firstRatioEnd + "%";
@@ -53,6 +56,9 @@ var backgroundObject = (function() {
 		ThridEdgeBegin = ThridRatioBegin + "%";
 		ThirdEdgeEnd = ThirdRatioEnd + "%";
 	}
+	/** 
+	* the three solid colors for the ASATs
+	*/
 	function setBlueScale(gradient, start, end, weight) {
 		gradient.append("stop")
 			.attr("offset", start)
@@ -93,6 +99,9 @@ var backgroundObject = (function() {
 				.attr("stop-color",  grayScale(0))
 				.attr("stop-opacity", 1);
 	}
+	/**
+	* determine the solid color depending on the weight of the square.
+	*/
 	function getSolidColorAsGradient(colorIndex, gradient, weight){
 		switch(colorIndex) {
 				case 0:
@@ -108,6 +117,10 @@ var backgroundObject = (function() {
 					return gradient;
 			}
 	}
+	/**
+	* make different between gradient colors and solid colos
+	* to make it easier we simulate the solid color with a simple one color gradient
+	*/
 	function createGradientColours(gradient, onlyOneColour, whichOne, weight, ratioArray) {
 		if(onlyOneColour) { 
 			getSolidColorAsGradient(whichOne, gradient,weight); 
@@ -116,6 +129,9 @@ var backgroundObject = (function() {
 		}
 		return gradient;
 	}
+	/**
+	* handle the cases of the multiple colored gradients
+	*/
 	function multipleColors(gradient, weight, ratioArray) {
 		if(ratioArray[0] == 0 && ratioArray[1] != 0 && ratioArray[2] != 0) {			
 			setGreenGradientScale(gradient, "0%", SecondEdgeEnd, weight);
@@ -135,6 +151,11 @@ var backgroundObject = (function() {
 			setPurpleScale(gradient, ThridEdgeBegin, "100%", weight);
 		}
 	}
+	/**
+	* set a boundary between the colors 
+	* with 2 values very close to eachother so the transition of colors
+	* is almost solid this gives a more proffesional look then smooth gradient
+	*/
 	function setRatioBoundaries(tuple) {
 		firstRatioBegin = 0;
 		firstRatioEnd = tuple[0];
@@ -143,6 +164,9 @@ var backgroundObject = (function() {
 		ThridRatioBegin = SecondRatioEnd + 0.01;
 		ThirdRatioEnd = 100;
 	}
+	/** 
+	* Determine which methods to call to create the right gradient or solid color.
+	*/
 	function calculateBackgroundGradient(svg,ratioArray,weight, id,x,y) {
 		var total = ratioArray[0] + ratioArray[1] + ratioArray[2];
 		var tuple = gradientCalculator.calculate(x,y, ratioArray[0], ratioArray[1], ratioArray[2]);
@@ -173,6 +197,9 @@ var backgroundObject = (function() {
 			return number;
 		}
 	}
+	/**
+	* Apply the created gradient from top left to bottom right.
+	*/
 	function calculateBackground(svg, weight, id) {
 		var currentColorScale = getNormalColors();
 		var gradient = svg.append("defs")

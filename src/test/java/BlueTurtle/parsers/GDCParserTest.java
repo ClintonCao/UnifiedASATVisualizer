@@ -17,7 +17,6 @@ import org.junit.Test;
 public class GDCParserTest {
 
 	private static String testSet = "./src/test/resources/htmlExample.html";
-	private static String testSet2 = "./src/test/resources/asat-gdc-mapping.html";
 
 
 	/**

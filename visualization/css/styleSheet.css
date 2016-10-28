@@ -46,7 +46,7 @@ div#left-wrapper{
 div#menu-left-wrapper{
   float: left;
   width: 270px;
-  background: rgba(55, 58, 60, 0.8);
+  background: rgba(55, 58, 60, 0.85);
 }
 div#extra-info-left-wrapper{
   float: left;
@@ -247,6 +247,9 @@ div#chart-wrapper{
 text {
   pointer-events: none;
 }
+label.pointer{
+	cursor:pointer;
+}
 .grandparent text {
   font-family: 'Roboto Mono', sans-serif;
   font-weight: 700;
@@ -266,6 +269,7 @@ rect {
 .grandparent:hover rect {
   fill: #6c98bf;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .children rect.parent,
@@ -274,14 +278,16 @@ rect {
 }
 .children:hover rect.child {
   fill: rgba(255,255,255, 0.4);
+  cursor: pointer !important;
 }
 g.children:hover{
-  stroke-width: 0.3px;
+  stroke-width: 0.4px;
   stroke: #000000;
+  cursor: pointer;
 }
 
-rect.child:hover {
-  fill: rgba(255,255,255, 0.4);
+.child:hover {
+  cursor: pointer !important;
 }
 
 #current-path {

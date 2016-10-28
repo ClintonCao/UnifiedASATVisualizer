@@ -3,6 +3,7 @@
  */
 var acceptedTypes = [];
 var acceptedCategories = [];
+var sourceCodeLevel = false;
 if(!detectIE()) {
 	defineHovers();
   backgroundObject.setColorsRelative();
@@ -10,12 +11,10 @@ if(!detectIE()) {
 	addAllAcceptedTypesAndCategories();
 	setAllCheckboxesOnDefault();
 	if(detectFirefox()){
-			 console.log("ASDIU");
 		$("#svg").css({ "border-width":"0px"});
-			 console.log("ASDIU");
 	}
 } else {
-	document.getElementById("main-title").innerHTML = "We are sorry, IE and Edge are not supported. <br> Please use Firefox, Chrome or Safari instead.";
+	document.getElementById("main-title").innerHTML = "We are sorry, IE, Edge and Firefox are not supported. <br> Please use Chrome or Safari instead.";
 	$("#wrapper").hide();
 }
 
@@ -28,7 +27,7 @@ function setAllCheckboxesOnDefault() {
 	$("#treemapButton").prop('checked', true);
 	$("#normalButton").prop('checked', true);
 	$(".DefectCategory").prop('checked', true);
-  $("#relativeButton").prop('checked', true);
+ 	$("#relativeButton").prop('checked', true);
 	
 	$(".FunctionalDefects").click();
 	$(".MaintainabilityDefects").click();
@@ -61,6 +60,11 @@ function detectIE() {
     // Edge (IE 12+) => return version number
     return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
   }
+  
+   var firefox = ua.indexOf('Firefox/');
+   if (firefox > 0) {
+    return true;
+   }
   // Other browsers
   return false;
 }

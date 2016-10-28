@@ -106,13 +106,25 @@ var inputData =
           {
             "category": "CORRECTNESS",
             "priority": "Normal",
-            "classification": "Logic",
+            "classification": "Other",
             "fileName": "ChecktStyleWarningTest.java",
-            "type": "FindBugs",
+            "type": "CheckStyle",
             "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\ChecktStyleWarningTest.java",
             "ruleName": "EC_UNRELATED_TYPES",
             "message": "Call to BlueTurtle.warnings.CheckStyleWarning.equals(Integer) in BlueTurtle.warnings.ChecktStyleWarningTest.testEqualsFalseWithIntegerObject()",
-            "line": 140
+            "line": 16
+          },
+          {
+            "ruleSet": "Code Size",
+            "method": "",
+            "packageName": "BlueTurtle.warnings",
+            "classification": "Check",
+            "fileName": "ChecktStyleWarningTest.java",
+            "type": "FindBugs",
+            "filePath": "C:\\Users\\wangs\\Documents\\GitHub\\Contextproject-TSE\\src\\test\\java\\BlueTurtle\\warnings\\ChecktStyleWarningTest.java",
+            "ruleName": "TooManyMethods",
+            "message": "\nThis class has too many methods, consider refactoring it.\n",
+            "line": 16
           }
         ],
         "loc": 176,
