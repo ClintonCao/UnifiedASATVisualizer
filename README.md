@@ -7,6 +7,11 @@ This tool is for creating a visualization of the warnings/defects that were gene
 * From which packages (and also classes) most of the warnings are from.
 * From which of the three categories (_Functional Defects_, _Maintainability Defects_ and _Other_) most of the warnings are from. (Please take a look at this [paper](http://www.st.ewi.tudelft.nl/~zaidman/publications/bellerSANER2016.pdf) for more information on the three categories.)
 
+The tool comprises two applications:
+
+1. A Java application, which creates a unified list of ASAT warnings. Its output is a single JSON.
+2. A website, mainly developed in JavaScript, which can read the generated JSON and visualizes it.
+
 ## Team Members:
 
 | Member name |
@@ -119,3 +124,4 @@ Copy the whole snippet **only** if you do not have `<reporting>` in your pom.xml
 * Follow the instruction on UAV's User Interface.
 * Select the top-level project directory (on your computer) that you want to visualize.
 * Click the `Visualize` button. Depending on the project's size and number of warnings, this may take some time to generate the HTML visualization.
+* If the visualization does not open automatically (known problems with Linux) or the Java application appears to have crashed, try manually opnening visualization/main.html in Chrome or Firefox.
