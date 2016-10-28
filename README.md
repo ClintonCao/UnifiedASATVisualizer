@@ -67,11 +67,21 @@ SIG Feedback: [SIG Feedback](https://github.com/ClintonCao/Contextproject-TSE/bl
 * ASATs version:
   * Checkstyle 6.1.1, PMD 5.2.3 and FindBugs 3.0.1. (CheckStyle 6.17 and PMD version 5.3.2 also work).
 * User must have Maven (IDE plugin or standalone app) installed to run `mvn site`. (For more information, please look at the "Maven Execution Ressearch" document). 
-* The project (that is going to be analyzed) must be a Maven Project.
+* The project that is going to be analyzed must be a Maven Project.
+* The project that is going to be analyzed must support the execution of ASATs. We support FindBugs, Checkstyle, PMD. 
+
+## Building
+Run `mvn package`.
+
 
 ## Running the Program:
-* Go to the `src/main/java/BlueTurtle/TSE` folder.
-* Run the file `Main.java`.
+* Add the following snippets to the project's pom.xml file that you want to analyze
+```XML
+Some snippet
+```
+
+* Run `mvn site` on this project (this generates the ASAT reports which are read-in by UAV)
+* Start via `java -jar uav.jar`
 * Follow the instruction on the User Interface.
 * Select the project (on your local machine) that you want to visualize.
 * Click the `Visualize` button.
