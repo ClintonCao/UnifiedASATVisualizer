@@ -3,6 +3,7 @@ package BlueTurtle.parsers;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 
 import org.w3c.dom.Element;
@@ -34,29 +35,30 @@ public class FindBugsXMLParser extends XMLParser {
 		// List to store the warnings.
 		List<Warning> findBugsWarnings = new LinkedList<Warning>();
 
-			// Get all list of files where there are warnings.
-			NodeList nList = setUp(xmlFilePath);
-			
-			// if there are no files with warnings, there return an empty list of warnings.
-			if (nList == null) { 
-				return findBugsWarnings; 
-			}
+		// Get all list of files where there are warnings.
+		NodeList nList = setUp(xmlFilePath);
 
-			for (int i = 0; i < nList.getLength(); i++) {
-				// Get the file from the list.
-				Node file = nList.item(i);
+		// if there are no files with warnings, there return an empty list of
+		// warnings.
+		if (nList == null) {
+			return findBugsWarnings;
+		}
 
-					// Convert the node to an element.
-					Element fileElement = (Element) file;
+		for (int i = 0; i < nList.getLength(); i++) {
+			// Get the file from the list.
+			Node file = nList.item(i);
 
-					// Get the name of the file where the warning is from.
-					String fileName = fileElement.getAttribute("classname");
+			// Convert the node to an element.
+			Element fileElement = (Element) file;
 
-					// Get all the warnings.
-					NodeList warningList = fileElement.getElementsByTagName("BugInstance");
+			// Get the name of the file where the warning is from.
+			String fileName = fileElement.getAttribute("classname");
 
-					addWarnings(fileName, warningList, findBugsWarnings, nList);
-			}
+			// Get all the warnings.
+			NodeList warningList = fileElement.getElementsByTagName("BugInstance");
+
+			addWarnings(fileName, warningList, findBugsWarnings, nList);
+		}
 
 		return findBugsWarnings;
 	}
@@ -79,40 +81,49 @@ public class FindBugsXMLParser extends XMLParser {
 			// Get the warning from the list of warnings.
 			Node warning = warningList.item(j);
 
-				// Convert the node to an element.
-				Element warningElement = (Element) warning;
+			// Convert the node to an element.
+			Element warningElement = (Element) warning;
 
-				// The message contained by the warning.
-				String message = warningElement.getAttribute("message");
+			// The message contained by the warning.
+			String message = warningElement.getAttribute("message");
 
-				// The category of warning.
-				String category = warningElement.getAttribute("category");
+			// The category of warning.
+			String category = warningElement.getAttribute("category");
 
-				// The priority of warning, can be high or low.
-				String priority = warningElement.getAttribute("priority");
+			// The priority of warning, can be high or low.
+			String priority = warningElement.getAttribute("priority");
 
-				// line number where the warning is located.
-				int line = Integer.parseInt(warningElement.getAttribute("lineNumber"));
+			// line number where the warning is located.
+			int line = Integer.parseInt(warningElement.getAttribute("lineNumber"));
 
-				// Get the category of the warning.
-				String ruleName = warningElement.getAttribute("type");
+			// Get the category of the warning.
+			String ruleName = warningElement.getAttribute("type");
 
-				String classification = classify(ruleName);
+			String classification = classify(ruleName);
 
+			try {
 				// replace the dot in the file name with file separator.
 				String fileNWithSep = fileName.replaceAll("\\.", Matcher.quoteReplacement(File.separator)) + ".java";
 
 				// for-loop in stream.
-				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
+				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep))
+						.findFirst().get();
 
 				// Get the name of the file where the warning is from.
-				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
+				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1,
+						fileNWithSep.length());
 
 				// Construct the new FindBugsWarning.
-				FindBugsWarning fbw = new FindBugsWarning(filePath, finalFileName, line, message, category, priority, ruleName, classification);
+				FindBugsWarning fbw = new FindBugsWarning(filePath, finalFileName, line, message, category, priority,
+						ruleName, classification);
 
 				// Add warning to the list of warnings.
 				findBugsWarnings.add(fbw);
+			} catch (NoSuchElementException e) {
+				// TODO (MMB) perhaps add some more advanced error state
+				// handling?
+				// Optional did not return a file Name
+			}
 		}
 	}
 
