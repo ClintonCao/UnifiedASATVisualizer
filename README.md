@@ -77,14 +77,14 @@ The feedback of SIG and the code improvements can be found [here](https://github
 Run `mvn package`.
 
 ## Running the Program:
-* Add the following snippets to the project's pom.xml file that you want to analyze
+* Add the following snippets to the project's pom.xml file that you want to analyze:
 
 ```XML
 Some snippet
 ```
 
-* Run `mvn site` on this project (this generates the ASAT reports which are read-in by UAV)
-* Start via `java -jar uav.jar`
-* Follow the instruction on the User Interface.
+* Run `mvn site` on the project you want to analyze (this generates the ASAT reports which are read-in by UAV).
+* Start UAV via `java -jar uav.jar`
+* Follow the instruction on UAV's User Interface.
 * Select the top-level project directory (on your computer) that you want to visualize.
-* Click the `Visualize` button. This may take some time to generate the HTML visualization.
+* Click the `Visualize` button. Depending on the project's size and number of warnings, this may take some time to generate the HTML visualization.
