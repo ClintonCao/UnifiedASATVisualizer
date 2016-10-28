@@ -66,7 +66,7 @@ The feedback of SIG and the code improvements can be found [here](https://github
 
 ## Requirements:
 * One of the following internet browsers: Google Chrome or Safari.
-* Java JDK 1.8.
+* Java JDK 1.8 (or higher).
 * ASATs version:
   * Checkstyle 6.1.1, PMD 5.2.3 and FindBugs 3.0.1. (CheckStyle 6.17 and PMD version 5.3.2 also work).
 * Users must have Maven (IDE plugin or standalone app) installed to run `mvn site`. (For more information, please look at the "Maven Execution Ressearch" document.)
@@ -78,11 +78,41 @@ The feedback of SIG and the code improvements can be found [here](https://github
 * If you want to develop UAV, please install Lombok to auto-generate getters and setters. (Via `java -jar lib/lombok.jar install path/to/your/ide`)
 
 ## Running the Program:
-* Add the following snippets to the project's pom.xml file that you want to analyze:
+* Add the following snippet to the project's pom.xml file that you want to analyze:
 
 ```XML
-Some snippet
+ <reporting>
+    <plugins>
+    
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.17</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.7</version>
+      </plugin>
+    
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.4</version>
+      </plugin>
+    
+    </plugins>
+ </reporting>
 ```
+Copy the whole snippet **only** if you do not have `<reporting>` in your pom.xml. If you do, then just copy the plugins. For more information on how to exclude certain files or how to use specific rulesets, please check the following links: ([FindBugs](http://gleclaire.github.io/findbugs-maven-plugin/usage.html), [CheckStyle](https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html), [PMD](https://maven.apache.org/plugins/maven-pmd-plugin/usage.html))
 
 * Run `mvn site` on the project you want to analyze (this generates the ASAT reports which are read-in by UAV).
 * Start UAV via `java -jar uav.jar`
