@@ -74,7 +74,8 @@ The feedback of SIG and the code improvements can be found [here](https://github
 * The project that is going to be analyzed must support the execution of ASATs. We support FindBugs, Checkstyle, PMD. 
 
 ## Building
-Run `mvn package`.
+* Run `mvn package`.
+* If you want to develop UAV, please install Lombok to auto-generate getters and setters. (Via `java -jar lib/lombok.jar install path/to/your/ide`)
 
 ## Running the Program:
 * Add the following snippets to the project's pom.xml file that you want to analyze:
