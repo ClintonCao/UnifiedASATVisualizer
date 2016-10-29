@@ -32,7 +32,7 @@ public class GUI extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			stage.setTitle("BlueTurtle Visualizer");
+			stage.setTitle("Unified ASAT Visualizer");
 			stage.getIcons().add(new Image(GUI.class.getResourceAsStream("/blueturtlelogo.png")));
 			stage.setHeight(420);
 			stage.setWidth(1083);
