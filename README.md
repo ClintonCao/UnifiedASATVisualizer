@@ -7,6 +7,11 @@ This tool is for creating a visualization of the warnings/defects that were gene
 * From which packages (and also classes) most of the warnings are from.
 * From which of the three categories (_Functional Defects_, _Maintainability Defects_ and _Other_) most of the warnings are from. (Please take a look at this [paper](http://www.st.ewi.tudelft.nl/~zaidman/publications/bellerSANER2016.pdf) for more information on the three categories.)
 
+The tool comprises two applications:
+
+1. A Java application, which creates a unified list of ASAT warnings. Its output is a single JSON.
+2. A website, mainly developed in JavaScript, which can read the generated JSON and visualizes it.
+
 ## Team Members:
 
 | Member name |
@@ -66,15 +71,57 @@ The feedback of SIG and the code improvements can be found [here](https://github
 
 ## Requirements:
 * One of the following internet browsers: Google Chrome or Safari.
-* Java JDK 1.8.
+* Java JDK 1.8 (or higher).
 * ASATs version:
   * Checkstyle 6.1.1, PMD 5.2.3 and FindBugs 3.0.1. (CheckStyle 6.17 and PMD version 5.3.2 also work).
-* User must have Maven (IDE plugin or standalone app) installed to run `mvn site`. (For more information, please look at the "Maven Execution Research" document). 
-* The project (that is going to be analyzed) must be a Maven Project.
+* Users must have Maven (IDE plugin or standalone app) installed to run `mvn site`. (For more information, please look at the "Maven Execution Ressearch" document.)
+* The project that is going to be analyzed must be a Maven Project.
+* The project that is going to be analyzed must support the execution of ASATs. We support FindBugs, Checkstyle, PMD. 
+
+## Building
+* Run `mvn package`.
+* If you want to develop UAV, please install Lombok to auto-generate getters and setters. (Via `java -jar lib/lombok.jar install path/to/your/ide`)
 
 ## Running the Program:
-* Go to the `src/main/java/BlueTurtle/TSE` folder.
-* Run the file `Main.java`.
-* Follow the instruction on the User Interface.
-* Select the project (on your local machine) that you want to visualize.
-* Click the `Visualize` button.
+* Add the following snippet to the project's pom.xml file that you want to analyze:
+
+```XML
+ <reporting>
+    <plugins>
+    
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.17</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.7</version>
+      </plugin>
+    
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.4</version>
+      </plugin>
+    
+    </plugins>
+ </reporting>
+```
+Copy the whole snippet **only** if you do not have `<reporting>` in your pom.xml. If you do, then just copy the plugins. For more information on how to exclude certain files or how to use specific rulesets, please check the following links: ([FindBugs](http://gleclaire.github.io/findbugs-maven-plugin/usage.html), [CheckStyle](https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html), [PMD](https://maven.apache.org/plugins/maven-pmd-plugin/usage.html))
+
+* Run `mvn site` on the project you want to analyze (this generates the ASAT reports which are read-in by UAV).
+* Start UAV via `java -jar uav.jar`
+* Follow the instruction on UAV's User Interface.
+* Select the top-level project directory (on your computer) that you want to visualize.
+* Click the `Visualize` button. Depending on the project's size and number of warnings, this may take some time to generate the HTML visualization.
+* If the visualization does not open automatically (known problems with Linux) or the Java application appears to have crashed, try manually opnening visualization/main.html in Chrome or Firefox.
