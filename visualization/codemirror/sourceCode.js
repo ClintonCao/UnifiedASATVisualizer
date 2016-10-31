@@ -21,16 +21,16 @@ var sourceCode = (function() {
 	 * Gives a specific line a specific colour
 	 */
 	function colorTwo(line) {
-		$(line).css('background',colours.darkGreenGradient());
-		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkGreenGradient());
+		$(line).css('background',colours.normalGreenGradient());
+		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.normalGreenGradient());
 	}
 
 	/**
 	 * Gives a specific line a specific colour
 	 */
 	function colorThree(line) {
-		$(line).css('background',colours.darkBlue());
-		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.darkBlue());
+		$(line).css('background',colours.normalBlue());
+		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.normalBlue());
 	}
 	
 	/**

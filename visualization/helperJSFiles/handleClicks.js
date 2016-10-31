@@ -83,7 +83,7 @@ function setAllLabelsWhite() {
 function setASATColoured() {
 	CheckStyleElement.style.color = colours.normalBlue();
 	PMDElement.style.color = colours.normalGreenGradient();
-	FindBugsElement.style.color = colours.lightPurple();
+	FindBugsElement.style.color = colours.normalPurple();
 	MaintainabilityDefectsElement.style.color = colours.white();
 	FunctionDefectsElement.style.color = colours.white();
 	OtherElement.style.color = colours.white();
@@ -97,7 +97,7 @@ function setCategoriesColoured() {
 	PMDElement.style.color = colours.white();
 	FindBugsElement.style.color = colours.white();
 	MaintainabilityDefectsElement.style.color = colours.normalBlue();
-	FunctionDefectsElement.style.color = colours.lightPurple();
+	FunctionDefectsElement.style.color = colours.normalPurple();
 	OtherElement.style.color = colours.normalGreenGradient();
 }
 
