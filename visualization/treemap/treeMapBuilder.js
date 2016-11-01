@@ -159,14 +159,17 @@ var treeMapBuilder = (function() {
 		// bottom layer now we add a click to go to the code editor
 		if ( childrenArray[0].length == 0 ){
 			g.on("click", toSourceCode)
-        	.on("mousemove", function(d) {
-				$('#extra-info-div') .css('display', 'inline-block')
-				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
-        	})
-        	.on("mouseout", function(d) {
-				$('#extra-info-div').html("");
-			    $('#extra-info-div') .css('display', 'none')
-        	});
+			 .on("mouseover", function(d) {
+				tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
+				tooltip.style("visibility", "visible");
+            })
+            .on("mousemove", function(d) {
+				tooltip.style("top", (event.pageY - 130) + "px").style("left", (event.pageX - 280) + "px");
+            })
+            .on("mouseout", function(d) {
+				tooltip.style("visibility", "hidden");
+				console.log(d.fileName + "<br>" + getSatWarningsPrint(d));
+            });
 		}
 
         /**
