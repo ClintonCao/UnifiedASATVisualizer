@@ -238,6 +238,7 @@ var sourceCode = (function() {
 		for(var i = 0; i < currentAsatWarnings.length; i++) {
 			textInTooltip += "<br>-" + currentAsatWarnings[i] + "<br>-" + currentCatWarnings[i] + "<br>-" + currentMessageWarnings[i] + "<br>"
 		}
+		
 		$(child).mouseenter(function(){
 			tooltip.html(textInTooltip);
             tooltip.style("visibility", "visible");
