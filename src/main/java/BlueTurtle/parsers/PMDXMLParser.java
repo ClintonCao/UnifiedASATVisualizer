@@ -3,6 +3,7 @@ package BlueTurtle.parsers;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 
 import org.w3c.dom.Element;
@@ -33,32 +34,31 @@ public class PMDXMLParser extends XMLParser {
 		// List to store the warnings.
 		List<Warning> pmdWarnings = new LinkedList<Warning>();
 
-			// Get all list of files where there are warnings.
-			NodeList nList = setUp(xmlFilePath);
+		// Get all list of files where there are warnings.
+		NodeList nList = setUp(xmlFilePath);
 
-			// if there are no files with warnings, there return an empty list of warnings.
-			if (nList == null) {
-				return pmdWarnings;
-			}
-			
-			for (int i = 0; i < nList.getLength(); i++) {
-				// Get the file from the list.
-				Node file = nList.item(i);
+		// if there are no files with warnings, there return an empty list of
+		// warnings.
+		if (nList == null) {
+			return pmdWarnings;
+		}
 
+		for (int i = 0; i < nList.getLength(); i++) {
+			// Get the file from the list.
+			Node file = nList.item(i);
 
-					// Convert the node to an element.
-					Element fileElement = (Element) file;
+			// Convert the node to an element.
+			Element fileElement = (Element) file;
 
-					// Get the path of the file where the warning is from.
-					String filePath = fileElement.getAttribute("name");
+			// Get the path of the file where the warning is from.
+			String filePath = fileElement.getAttribute("name");
 
-					// Get the name of the file where the warning is from.
-					String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
-					
-					addWarnings(fileName, fileElement, pmdWarnings);
+			// Get the name of the file where the warning is from.
+			String fileName = filePath.substring(filePath.lastIndexOf("src") + 3, filePath.length());
 
+			addWarnings(fileName, fileElement, pmdWarnings);
 
-			}
+		}
 
 		return pmdWarnings;
 	}
@@ -77,46 +77,55 @@ public class PMDXMLParser extends XMLParser {
 
 		// Get all the warnings.
 		NodeList warningList = fileElement.getElementsByTagName("violation");
-		
+
 		for (int j = 0; j < warningList.getLength(); j++) {
 			// Get the warning from the list of warnings.
 			Node warning = warningList.item(j);
 
-				// Convert the node to an element.
-				Element warningElement = (Element) warning;
+			// Convert the node to an element.
+			Element warningElement = (Element) warning;
 
-				// package which warning is in.
-				String packageName = warningElement.getAttribute("package");
+			// package which warning is in.
+			String packageName = warningElement.getAttribute("package");
 
-				// the ruleSet of warning.
-				String ruleSet = warningElement.getAttribute("ruleset");
+			// the ruleSet of warning.
+			String ruleSet = warningElement.getAttribute("ruleset");
 
-				// method of warning.
-				String method = warningElement.getAttribute("method");
+			// method of warning.
+			String method = warningElement.getAttribute("method");
 
-				// line number where the warning is located.
-				int line = Integer.parseInt(warningElement.getAttribute("beginline"));
+			// line number where the warning is located.
+			int line = Integer.parseInt(warningElement.getAttribute("beginline"));
 
-				// Get the category of the warning.
-				String ruleName = warningElement.getAttribute("rule");
+			// Get the category of the warning.
+			String ruleName = warningElement.getAttribute("rule");
 
-				// find the correct classification given the rule name and the rule set.
-				String classification = classify(ruleName);
-				
-				// replace the backward slash in the file name with file separator.
-				String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
+			// find the correct classification given the rule name and the rule
+			// set.
+			String classification = classify(ruleName);
 
+			// replace the backward slash in the file name with file separator.
+			String fileNWithSep = fileName.replaceAll("\\\\", Matcher.quoteReplacement(File.separator));
+
+			try {
 				// for-loop in stream, find correct filePath.
-				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep)).findFirst().get();
+				String filePath = ProjectInfoFinder.getClassPaths().stream().filter(p -> p.endsWith(fileNWithSep))
+						.findFirst().get();
 
 				// Get the name of the file where the warning is from.
-				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1, fileNWithSep.length());
+				String finalFileName = fileNWithSep.substring(fileNWithSep.lastIndexOf(File.separatorChar) + 1,
+						fileNWithSep.length());
 
 				// Retrieve the message corresponds to this warning.
 				String message = fileElement.getElementsByTagName("violation").item(j).getTextContent();
 
 				// Add warning to the list of warnings.
-				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName, message, classification));
+				pmdWarnings.add(new PMDWarning(filePath, finalFileName, line, packageName, ruleSet, method, ruleName,
+						message, classification));
+			} catch (NoSuchElementException e) {
+				// TODO (MMB) perhaps add some more advanced error state handling?
+				// Optional did not return a file Name
+			}
 		}
 	}
 
