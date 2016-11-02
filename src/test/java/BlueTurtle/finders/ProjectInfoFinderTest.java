@@ -39,6 +39,7 @@ public class ProjectInfoFinderTest {
 		ProjectInfoFinder.getClassPackage().clear();
 		ProjectInfoFinder.getPackages().clear();
 		ProjectInfoFinder.getClassPaths().clear();
+		ProjectInfoFinder.getOutputFilesPaths().clear();
 		exampleFilePath = Paths.get("src", "test", "resources", "TestCodeFolder", "AllClosestPoints.java")
 				.toAbsolutePath().toString();
 		pif.findFiles(new File(Paths.get("src", "test", "resources").toAbsolutePath().toString()));
@@ -57,6 +58,7 @@ public class ProjectInfoFinderTest {
 		ProjectInfoFinder.getClassPackage().clear();
 		ProjectInfoFinder.getPackages().clear();
 		ProjectInfoFinder.getClassPaths().clear();
+		ProjectInfoFinder.getOutputFilesPaths().clear();
 	}
 
 	/**
@@ -98,7 +100,7 @@ public class ProjectInfoFinderTest {
 		Set<String> expected = new HashSet<String>();
 		expected.add("default");
 		expected.add("SomePackage.different");
-		expected.add("SomePackage.subpackage");
+		expected.add("SomePackage.subpackage");		
 		assertEquals(expected, actual);
 	}
 	
@@ -112,5 +114,22 @@ public class ProjectInfoFinderTest {
 		pif.retrieveCodeFiles();
 		assertTrue(pif.getCodeFiles().size() > 0);
 	}
-
+	
+	
+	/**
+	 * Test the correct behaviour of checkForOutputFile.
+	 */
+	@Test
+	public void testCheckForOutputFileTrue() {
+		assertTrue(new ProjectInfoFinder().checkForASATOutputFile("checkstyle-result.xml"));
+	}
+	
+	/**
+	 * Test the correct behaviour of checkForOutputFile.
+	 */
+	@Test
+	public void testCheckForOutputFileFalse() {
+		assertFalse(new ProjectInfoFinder().checkForASATOutputFile("Hello I am a test string"));
+	}
+	
 }

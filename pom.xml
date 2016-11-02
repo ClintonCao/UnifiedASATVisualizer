@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>BlueTurtle</groupId>
-  <artifactId>TSE</artifactId>
-  <version>1.0</version>
+  <artifactId>UnifiedASATVisualizer</artifactId>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
-  <name>TSE</name>
+  <name>Unified ASAT Visualizer</name>
   <url>http://maven.apache.org</url>
   
     <!-- Developers for this project. -->
@@ -73,7 +73,7 @@
 				  <transformers>
 					<!-- add Main-Class to manifest file -->
    	                       <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-						   <mainClass>BlueTurtle.TSE.Main</mainClass>
+						   <mainClass>BlueTurtle.uav.Main</mainClass>
 				           </transformer>
 				  </transformers>
 				  <outputDirectory>${basedir}</outputDirectory>
@@ -130,6 +130,7 @@
         			<exclude>**/GUI*</exclude>
         			<exclude>**/GUIController*</exclude>
         			<exclude>**/SelectButtonEventHandler*</exclude>
+        			<exclude>**/VisualizeButtonEventHandler*</exclude>
         			<exclude>**/Main*</exclude>
     			</excludes>
 				</configuration>
@@ -282,10 +283,11 @@
 
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  	<checkstyle.plugin.version>2.15</checkstyle.plugin.version>
-  	<pmd.plugin.version>3.4</pmd.plugin.version>
+  	<checkstyle.plugin.version>2.16</checkstyle.plugin.version>
+  	<pmd.plugin.version>3.6</pmd.plugin.version>
   	<findbugs.version>3.0.1</findbugs.version>
   </properties>
 
 
+  <description>A tool that generates one single visualization that shows where all the warnings from different ASAT (CheckStyle, PMD and Findbugs) are located in your project.</description>
 </project>

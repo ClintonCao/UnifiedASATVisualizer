@@ -34,6 +34,8 @@ public class PMDWarning extends Warning {
 	 *            the method of the warning.
 	 * @param classification
 	 *            of the violated rule of the warning.
+	 * @param message
+	 * 			  the message of the warning.
 	 */
 	public PMDWarning(String filePath, String filename, int line, String packageName, String ruleSet, String method,  String ruleName, String message, String classification) {
 		super(filePath, filename, line, "PMD", ruleName, message, classification);
