@@ -2,20 +2,17 @@ package BlueTurtle.gui;
 
 import java.awt.Desktop;
 import java.awt.TextField;
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType; 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javax.swing.Popup;
-
-import BlueTurtle.TSE.JavaController;
-import BlueTurtle.TSE.Main;
 import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.gui.GUIController.ASAT;
+import BlueTurtle.uav.JavaController;
+import BlueTurtle.uav.Main;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

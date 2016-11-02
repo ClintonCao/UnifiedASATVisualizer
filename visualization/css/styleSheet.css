@@ -10,12 +10,11 @@ body{
 	background-repeat:no-repeat;
 	background-size:cover;
 	height:100%;width:100%;
-  overflow-y: hidden;
+  	overflow-y: hidden;
   font-family: 'Roboto', sans-serif;
 }
 .UIText {
   font-family: 'Roboto', sans-serif;
-  font-weight: 100;
 }
 
 /* 
@@ -89,26 +88,32 @@ div#back-div:hover {
 }
 #checkStyleLabel {
   color: #FFFFFF;
+  font-weight: 200px;
   font-family: 'Roboto Mono', sans-serif;
 }
 #PMDLabel {
   color: #FFFFFF;
+  font-weight: 200px;
   font-family: 'Roboto Mono', sans-serif;
 }
 #FindBugsLabel {
   color: #FFFFFF;
+  font-weight: 200px;
   font-family: 'Roboto Mono', sans-serif;
 }
 #maintainabilityDefectsLabel{
   color: #FFFFFF;
+  font-weight: 200px;
   font-family: 'Roboto Mono', sans-serif;
 }
 #functionalDefectsLabel{
   color: #FFFFFF;
+  font-weight: 200px;
   font-family: 'Roboto Mono', sans-serif;
 }
 #otherLabel{
   color: #FFFFFF;
+  font-weight: 200px;
   font-family: 'Roboto Mono', sans-serif;
 }
 #currentLocation {

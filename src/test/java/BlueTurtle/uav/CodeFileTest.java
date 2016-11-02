@@ -1,4 +1,4 @@
-package BlueTurtle.TSE;
+package BlueTurtle.uav;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import BlueTurtle.uav.CodeFile;
 
 /**
  * Test CodeFile class.

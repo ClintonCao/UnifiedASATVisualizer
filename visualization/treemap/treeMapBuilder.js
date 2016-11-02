@@ -135,17 +135,23 @@ var treeMapBuilder = (function() {
         var g1 = svg.insert("g", ".chart-and-code").datum(d).attr("class", "depth");
         var g = g1.selectAll("g").data(d._children).enter().append("g");
 
+		var tooltip = d3.select("#chart-and-code").append("div").attr("class","d3-tip2").style("width", 300).style("position", "absolute").style("z-index", "10").style("visibility", "hidden");
+		
         // on click square to go more in depth
         g.filter(function(d) { return d._children; })
             .classed("children", true)
             .on("click", navigationDown)
             .on("mouseover", function(d) {
-				$('#extra-info-div').css('display', 'inline-block');
-				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
+				tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
+				tooltip.style("visibility", "visible");
+				console.log(d.fileName + "<br>" + getSatWarningsPrint(d));
+            })
+            .on("mousemove", function(d) {
+				tooltip.style("top", (event.pageY - 130) + "px").style("left", (event.pageX - 280) + "px");
             })
             .on("mouseout", function(d) {
-				$('#extra-info-div').html("");
-				$('#extra-info-div').css('display', 'none');
+				tooltip.style("visibility", "hidden");
+				console.log(d.fileName + "<br>" + getSatWarningsPrint(d));
             });
 
         var childrenArray = g.filter(function(d) { return d._children; })
@@ -153,14 +159,17 @@ var treeMapBuilder = (function() {
 		// bottom layer now we add a click to go to the code editor
 		if ( childrenArray[0].length == 0 ){
 			g.on("click", toSourceCode)
-        	.on("mousemove", function(d) {
-				$('#extra-info-div') .css('display', 'inline-block')
-				$('#extra-info-div').html(d.fileName + "<br>" + getSatWarningsPrint(d));
-        	})
-        	.on("mouseout", function(d) {
-				$('#extra-info-div').html("");
-			    $('#extra-info-div') .css('display', 'none')
-        	});
+			 .on("mouseover", function(d) {
+				tooltip.html(d.fileName + "<br>" + getSatWarningsPrint(d));
+				tooltip.style("visibility", "visible");
+            })
+            .on("mousemove", function(d) {
+				tooltip.style("top", (event.pageY - 130) + "px").style("left", (event.pageX - 280) + "px");
+            })
+            .on("mouseout", function(d) {
+				tooltip.style("visibility", "hidden");
+				console.log(d.fileName + "<br>" + getSatWarningsPrint(d));
+            });
 		}
 
         /**

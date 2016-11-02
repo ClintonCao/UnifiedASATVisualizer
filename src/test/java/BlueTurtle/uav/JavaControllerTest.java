@@ -1,4 +1,4 @@
-package BlueTurtle.TSE;
+package BlueTurtle.uav;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -16,6 +16,8 @@ import org.junit.Test;
 import BlueTurtle.finders.ProjectInfoFinder;
 import BlueTurtle.gui.GUIController;
 import BlueTurtle.gui.GUIController.ASAT;
+import BlueTurtle.uav.JSONFormatter;
+import BlueTurtle.uav.JavaController;
 
 /**
  * Test for the JavaController class.

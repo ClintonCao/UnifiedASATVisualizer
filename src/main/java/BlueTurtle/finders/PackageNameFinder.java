@@ -46,10 +46,13 @@ public final class PackageNameFinder {
 		String packageName = "default";
 		BufferedReader reader = new BufferedReader(new FileReader(filePath));
 		String line = reader.readLine();
-		String[] packageInfo = line.split(" ");
+		
+		while (line != null && !line.startsWith("package") && !line.startsWith("import")) {
+			line = reader.readLine();
+		}
 
-		if (packageInfo[0].equals("package")) {
-			packageName = packageInfo[1].split(";")[0];
+		if (line != null && line.split(" ")[0].equals("package")) {
+			packageName = line.split(" ")[1].split(";")[0];
 		}
 
 		reader.close();
