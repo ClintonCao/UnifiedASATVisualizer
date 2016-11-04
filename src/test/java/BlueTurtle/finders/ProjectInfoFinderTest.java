@@ -35,11 +35,7 @@ public class ProjectInfoFinderTest {
 	@Before
 	public void setUp() throws Exception {
 		pif = new ProjectInfoFinder();
-		ProjectInfoFinder.getClassLocs().clear();
-		ProjectInfoFinder.getClassPackage().clear();
-		ProjectInfoFinder.getPackages().clear();
-		ProjectInfoFinder.getClassPaths().clear();
-		ProjectInfoFinder.getOutputFilesPaths().clear();
+		ProjectInfoFinder.cleanup();
 		exampleFilePath = Paths.get("src", "test", "resources", "TestCodeFolder", "AllClosestPoints.java")
 				.toAbsolutePath().toString();
 		pif.findFiles(new File(Paths.get("src", "test", "resources").toAbsolutePath().toString()));
@@ -54,11 +50,7 @@ public class ProjectInfoFinderTest {
 	 */
 	@After
 	public void cleanUp() throws Exception {
-		ProjectInfoFinder.getClassLocs().clear();
-		ProjectInfoFinder.getClassPackage().clear();
-		ProjectInfoFinder.getPackages().clear();
-		ProjectInfoFinder.getClassPaths().clear();
-		ProjectInfoFinder.getOutputFilesPaths().clear();
+		ProjectInfoFinder.cleanup();
 	}
 
 	/**
@@ -112,7 +104,7 @@ public class ProjectInfoFinderTest {
 	@Test
 	public void testRetrieveCodeFiles() throws IOException {
 		pif.retrieveCodeFiles();
-		assertTrue(pif.getCodeFiles().size() > 0);
+		assertTrue(ProjectInfoFinder.getCodeFiles().size() > 0);
 	}
 	
 	
@@ -130,6 +122,17 @@ public class ProjectInfoFinderTest {
 	@Test
 	public void testCheckForOutputFileFalse() {
 		assertFalse(new ProjectInfoFinder().checkForASATOutputFile("Hello I am a test string"));
+	}
+	
+	/**
+	 * Test whether cleanup really clears the values of the fields.
+	 */
+	@Test
+	public void testCleanUp() {
+		ProjectInfoFinder.cleanup();
+		assertTrue(ProjectInfoFinder.getClassLocs().size() == 0 && ProjectInfoFinder.getClassPackage().size() == 0
+				 && ProjectInfoFinder.getClassPaths().size() == 0 && ProjectInfoFinder.getCodeFiles().size() == 0 
+				 && ProjectInfoFinder.getOutputFilesPaths().size() == 0 && ProjectInfoFinder.getPackages().size() == 0);
 	}
 	
 }

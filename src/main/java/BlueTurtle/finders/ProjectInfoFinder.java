@@ -25,7 +25,7 @@ public class ProjectInfoFinder {
 	@Getter private static HashMap<String, Integer> classLocs = new HashMap<String, Integer>();
 	@Getter private static HashMap<String, String> classPackage = new HashMap<String, String>();
 	@Getter private static Set<String> packages = new HashSet<String>();
-	@Getter private ArrayList<CodeFile> codeFiles = new ArrayList<CodeFile>();
+	@Getter private static ArrayList<CodeFile> codeFiles = new ArrayList<CodeFile>();
 	@Getter private static HashMap<ASAT, ArrayList<String>> outputFilesPaths = new HashMap<ASAT, ArrayList<String>>();
 
 	/**
@@ -159,5 +159,17 @@ public class ProjectInfoFinder {
 		JSWriter jswriter = JSWriter.getInstance();
 
 		jswriter.writeSourceCodeToJS(codeFiles, "visualization/JSON/outputCodeJSON.js");
+	}
+
+	/**
+	 * Clear the values off all fields.
+	 */
+	public static void cleanup() {
+		classLocs.clear();
+		classPaths.clear();
+		classPackage.clear();
+		packages.clear();
+		codeFiles.clear();
+		outputFilesPaths.clear();
 	}
 }
