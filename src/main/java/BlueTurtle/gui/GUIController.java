@@ -186,7 +186,7 @@ class VisualizeButtonEventHandler implements EventHandler<MouseEvent> {
 	public void handle(MouseEvent event) {
 		try {
 			Alert alert = alertCreator.createAlert(AlertType.INFORMATION, "info", "Collecting the data may take a few minutes for large projects.");
-			alert.show();
+			alert.showAndWait();
 			findProjectInfo();
 			Main.runVisualization();
 			Desktop.getDesktop().browse(new File("visualization/main.html").toURI());
