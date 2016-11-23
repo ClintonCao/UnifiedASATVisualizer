@@ -32,7 +32,7 @@ var sourceCode = (function() {
 		$(line).css('background',colours.normalBlue());
 		$(line).find('.CodeMirror-gutter-wrapper').find('.CodeMirror-linenumber').css('background',colours.normalBlue());
 	}
-	
+
 	/**
 	 * Gives a specific colour or a mix of colours
 	 */
@@ -64,9 +64,9 @@ var sourceCode = (function() {
 		} else if(purple) {
 			colorOne(line);
 		}
-		
+
 	}
-	
+
 	/**
 	 * Highlights a line according to either the ASAT or the category
 	 */
@@ -85,8 +85,8 @@ var sourceCode = (function() {
 	 */
 	function highlightASATs(child, type) {
 		var count = 0;
-		for(var i = 0; i < totalCats.length; i++ ) {
-			if(totalCats[i]) {
+		for(var i = 0; i < totalAsats.length; i++ ) {
+			if(totalAsats[i]) {
 				count++;
 			}
 		}
@@ -112,8 +112,8 @@ var sourceCode = (function() {
 	 */
 	function highlightCategories(child, cat) {
 		var count = 0;
-		for(var i = 0; i < totalAsats.length; i++ ) {
-			if(totalAsats[i]) {
+		for(var i = 0; i < totalCats.length; i++ ) {
+			if(totalCats[i]) {
 				count++;
 			}
 		}
@@ -215,7 +215,7 @@ var sourceCode = (function() {
 			currentAsatWarnings.push(type);
 			currentCatWarnings.push(cat);
 			currentMessageWarnings.push(message);
-		} 
+		}
 	}
 
 	/**
@@ -238,7 +238,7 @@ var sourceCode = (function() {
 		for(var i = 0; i < currentAsatWarnings.length; i++) {
 			textInTooltip += "<br>-" + currentAsatWarnings[i] + "<br>-" + currentCatWarnings[i] + "<br>-" + currentMessageWarnings[i] + "<br>"
 		}
-		
+
 		$(child).mouseenter(function(){
 			tooltip.html(textInTooltip);
             tooltip.style("visibility", "visible");
@@ -268,13 +268,13 @@ var sourceCode = (function() {
 	/**
 	 * Will set up CodeMirror with the given class
 	 */
-	function displayCode(pathID) {	
-		for ( var i = 0; i < codeExport.length; i++){	
+	function displayCode(pathID) {
+		for ( var i = 0; i < codeExport.length; i++){
 			if (codeExport[i].path == pathID){
 				var value = codeExport[i].code.substring(1, codeExport[i].code.length -2);
 			}
 		}
-		var editor = CodeMirror(document.body.getElementsByTagName("article")[0], 
+		var editor = CodeMirror(document.body.getElementsByTagName("article")[0],
 		{	value: value, lineNumbers: true, mode: "javascript", keyMap: "sublime", readOnly: "nocursor", autoCloseBrackets: true,
 		    matchBrackets: true, showCursorWhenSelecting: true, theme: "monokai", tabSize: 2
 		});
