@@ -11,7 +11,7 @@ This tool is for creating a visualization of the warnings/defects that were gene
 * Java JDK 1.8 (or higher).
 * ASATs version:
   * Checkstyle 6.1.1, PMD 5.2.3 and FindBugs 3.0.1. (CheckStyle 6.17 and PMD version 5.3.2 also work).
-* Users must have Maven (IDE plugin or standalone app) installed to run `mvn site`. (For more information, please look at the "Maven Execution Ressearch" document.)
+* Users must have Maven (IDE plugin or standalone app) installed to run `mvn site`.
 * The project that is going to be analyzed must be a Maven Project.
 * The project that is going to be analyzed must support the execution of ASATs. We support FindBugs, Checkstyle, PMD. 
 
@@ -61,4 +61,4 @@ Copy the whole snippet **only** if you do not have `<reporting>` in your pom.xml
 * Follow the instruction on UAV's User Interface.
 * Select the top-level project directory (on your computer) that you want to visualize.
 * Click the `Visualize` button. Depending on the project's size and number of warnings, this may take some time to generate the HTML visualization.
-* If the visualization does not open automatically (known problems with Linux) or the Java application appears to have crashed, try manually opnening visualization/main.html in Chrome or Firefox.
+* If the visualization does not open automatically (known problems with Linux) or the Java application appears to have crashed, try manually opnening visualization/main.html in Chrome or Safari.
