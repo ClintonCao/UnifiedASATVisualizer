@@ -262,6 +262,7 @@ var treeMapBuilder = (function() {
        
         // pushes the clicked node to the array and then shows the node
         function navigationDown(d) {
+			tooltip.style("visibility", "visible");
             currentNodePath.push(findChildNumber(d, d.parent));
             transition(d)
         }
