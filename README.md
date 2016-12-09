@@ -8,7 +8,7 @@ This tool is for creating a visualization of the warnings/defects that were gene
 
 ## Requirements:
 * One of the following internet browsers: Google Chrome or Safari.
-* Java JDK 1.8 (or higher).
+* Java JDK 1.8 (Update 40 or higher).
 * ASATs version:
   * Checkstyle 6.1.1, PMD 5.2.3 and FindBugs 3.0.1. (CheckStyle 6.17 and PMD version 5.3.2 also work).
 * Users must have Maven (IDE plugin or standalone app) installed to run `mvn site`.
