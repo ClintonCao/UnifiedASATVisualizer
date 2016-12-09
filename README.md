@@ -16,7 +16,7 @@ This tool is for creating a visualization of the warnings/defects that were gene
 * The project that is going to be analyzed must support the execution of ASATs. We support FindBugs, Checkstyle, PMD. 
 
 ## Building
-* Make sure your java compiler is higher than 1.8.0_45. You can check this by doing `javac -version`.
+* Make sure your java compiler is higher than 1.8.0_40. You can check this by doing `javac -version`.
 * Run `mvn package`.
 * If you want to develop UAV, please install Lombok to auto-generate getters and setters. (Via `java -jar lib/lombok.jar install path/to/your/ide`)
 
