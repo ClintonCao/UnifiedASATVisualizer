@@ -439,7 +439,7 @@ var treeMapBuilder = (function() {
         defaults = {
             margin: {top: 30,right: 0,bottom: 0,left: 0},
             rootname: "TOP", format: ",d", title: "",
-            width: window.innerWidth - 750,
+            width: window.innerWidth - 730,
             height: window.innerHeight - 175
         };
         // Setting up some values about number format(rounding) and marigns

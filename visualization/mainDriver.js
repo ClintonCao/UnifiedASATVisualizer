@@ -10,6 +10,7 @@ if(!detectIE()) {
 	runTreeMap();
 	addAllAcceptedTypesAndCategories();
 	setAllCheckboxesOnDefault();
+	setMaxHeightSideMenus();
 	if(detectFirefox()){
 		$("#svg").css({ "border-width":"0px"});
 	}
@@ -127,4 +128,19 @@ function runTreeMap() {
         fileName: projectName,
         values: finalJson
     });
+}
+
+/**
+* For small screen resolutions the left and right wrapper have a max height.
+* In this case the user can scroll in the div. (overflow-y: scroll)
+*/
+function setMaxHeightSideMenus(){
+	if ($('#menu-right-wrapper').height() >  window.innerHeight - 130){
+    	$('#menu-right-wrapper').css('max-height', window.innerHeight - 130);
+    	$('#menu-right-wrapper').css('overflow-y', 'scroll');
+	}
+	if ($('#left-wrapper').height() >  window.innerHeight - 130){
+        $('#left-wrapper').css('max-height', window.innerHeight - 130);
+    	$('#left-wrapper').css('overflow-y', 'scroll');
+	}
 }

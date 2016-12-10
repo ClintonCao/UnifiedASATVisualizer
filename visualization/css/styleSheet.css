@@ -21,15 +21,15 @@ body{
  * Option menu right
  */
 div#menu-right-wrapper{
-  width: 320px;
+  width: 350px;
   float: right;
   margin-right: 15px;
   background: rgba(55, 58, 60, 0.8);
 }
 div#right-menu{
   padding: 0 0 20px 20px;
-  margin: 0 10px 0 0;
   opacity:0.8;
+  overflow-x: hidden;
   color: #fff;
   font-family: 'Roboto Mono', sans-serif;
 }
@@ -40,18 +40,7 @@ div#right-menu{
 div#left-wrapper{
   float: left;
   margin-left: 15px;
-  width: 270px;
-}
-div#menu-left-wrapper{
-  float: left;
-  width: 270px;
-  background: rgba(55, 58, 60, 0.85);
-}
-div#extra-info-left-wrapper{
-  float: left;
-  margin-top: 15px;
-  width: 270px;
-  background: rgba(55, 58, 60, 0.8);
+  width: 250px;
 }
 div#extra-info-div{
 	color:#FFF;
@@ -67,10 +56,14 @@ div#extra-info-left{
   background: rgba(55, 58, 60, 0.8);
 }
 div#left-menu{
+  float: left;
+  width: 220px;
+  background: rgba(55, 58, 60, 0.85);
   padding: 0 0 20px 20px;
   margin: 0 20px 0 0;
   opacity:0.8;
   color: #fff;
+  overflow-x: hidden;
   font-family: 'Roboto Mono', sans-serif;
 }
 div#back-div{
@@ -156,7 +149,6 @@ div#code-div{
   display: none !important;
 }
 div#chart-wrapper{
-  margin: 0 20px 0 20px;
   float:left;
   padding-bottom: 40px;
   background: rgba(55, 58, 60, 0.8);
