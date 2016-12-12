@@ -95,7 +95,9 @@
 			      </goals>
 			      <configuration>
 				<target>
-				  <delete file="${project.build.directory}/${project.artifactId}-${project.version}.jar"/>
+				  <delete
+				      file="${project.build.directory}/${project.artifactId}-${project.version}.jar"/>
+				  <copy file="${basedir}/${project.artifactId}-${project.version}.jar" tofile="${project.build.directory}/${project.artifactId}-${project.version}.jar"/>
 				</target>
 			      </configuration>
 			    </execution>
